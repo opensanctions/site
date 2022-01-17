@@ -1,12 +1,13 @@
 ---
-title: 
+title: The CIA lost track of who runs Aruba, so I picked up the slack
 summary: |
-    A guest post from Tony Bowden.
+    A guest post from Tony Bowden about his efforts to build an open source dataset
+    of world leaders inside of Wikidata, the structured-data version of Wikipedia.
 ---
 
 When I started building [EveryPolitician](http://everypolitician.org), back in 2015, I chose not to include Heads of Government and Cabinet Ministers, in part because I believed these were already well covered elsewhere. Turns out, I was wrong.
 
-The main source people tend to use for this data is the [CIA World Leaders directory](https://www.cia.gov/resources/world-leaders/). This covers approximately 200 governments around the world, and claims to be published weekly. But it has a lot of problems.
+The main source people tend to use for this data is the [CIA World Leaders directory](https://www.cia.gov/resources/world-leaders/) ([OpenSanctions dataset](https://www.opensanctions.org/datasets/us_cia_world_leaders/)). This covers approximately 200 governments around the world, and claims to be published weekly. But it has a lot of problems.
 
 It's not as up to date as "published weekly" implies. It frequently lags far behind even full changes of government, never mind reshuffles or single member changes. In some cases it can be many years out of date.
 
@@ -16,7 +17,7 @@ I’m not convinced the site has had *any* updates at all since November 2020. B
 
 When you do find an error, there also isn’t really much you can do about it. There’s no obvious way to let anyone involved with this project directly know about issues, just a generic (and slightly scary) CIA/OPA contact form. A December request from the OpenSanctions team regarding the maintenance of the World Leaders database remains unanswered.
 
-There are also some surprising omissions. For the UK, the data is definitely over a year out of date, but also manages to entirely leave out some interesting positions, like the Prime Minister and Foreign Secretary!
+There are also some surprising omissions. [For the UK](https://www.cia.gov/resources/government/united-kingdom/), the data is definitely over a year out of date, but also manages to entirely leave out some interesting positions, like the Prime Minister and Foreign Secretary!
 
 The list of countries and territories also isn't as widespread as might be hoped. Thankfully it isn't restricted to places where the US has diplomatic relations, but the coverage is noticeably narrower than the 267 covered by their ”World Factbook“.
 
@@ -48,7 +49,9 @@ Unlike the CIA database, however, with Wikidata I can actually *do* something ab
 
 I’ve been working my way around the world, finding official lists of government ministers, bringing Wikidata up-to-date with them, and setting up alerts to let me know any time anything changes, to help ensure things _stay_ up to date.
 
-Unfortunately Wikidata's single-item-based view, coupled with inconsistent modelling across different countries, makes it really difficult to see what's missing or incorrect without becoming an expert in both SPARQL and comparative political structures of the world
+Unfortunately Wikidata's single-item-based view, coupled with inconsistent modelling across different countries, makes it really difficult to see what's missing or incorrect without becoming an expert in both SPARQL and comparative political structures of the world.
+
+<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/peppercat-home.png">
 
 So, to make it more likely that someone with much better local knowledge than me can spot obvious errors or omissions (given that even official sites are often out of date), I've also built a simple site, [Peppercat.org](https://peppercat.org), to show everything in a consistent format.
 
@@ -56,8 +59,12 @@ Currently this has Minister-level data, plus a sprinkling of other key positions
 
 But it’s starting to get progressively harder for me to find good source lists for many of the places currently missing. This is where I could really do with some help.
 
+<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/peppercat-coverage.png">
+
 It’s usually not _too_ hard to find sources with lists of government Ministers at a single point of time (e.g. when a Cabinet was initially appointed, or there was a reshuffle). But it’s much better if there’s an official list that gets updated when there are changes.
 
 So if you know where to find such a list for somewhere that Peppercat doesn’t include yet, please do let me know, and I’ll look do my best to include it, and check the source daily for updates.
 
 And, of course, more people looking for errors or out of date information, and either fixing things directly in Wikidata, or letting me know so I can look into it, is also always very helpful. Much as I enjoy this, I can’t really commit to hours of updates every day forever!
+
+*Tony Bowden created the EveryPolitician project at mySociety in 2015, and led it to becoming a key dataset of politicians worldwide. For five years before that he ran a funding and training program for civic tech projects across Central and Eastern Europe, the Balkans, the South Caucasus, Latin America, and Sub-Saharan Africa.*
