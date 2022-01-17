@@ -27,23 +27,23 @@ And of course the most notable omission is the US government itself. That makes 
 
 The US-centric view of the world pops up in other ways too. Perhaps the most obvious is the inclusion of each country's Ambassador to the US, and Permanent Representative to the UN in New York, but not any of their other (often much more domestically important) diplomats.
 
-But even beyond all this, there are some significantly deeper problems. The main one is that everything is entirely plain text (Strings, not Things). This is about as far from "Linked Data" as you can get: no-one even has IDs that could be pointed at from anywhere else.
+But even beyond all this, there are some significantly deeper problems. The main one is that everything is entirely plain text ([Strings, not Things](https://medium.com/occrp-unreported/things-not-strings-knowledge-graphs-for-investigative-reporting-9d8a26913f65)). This is about as far from "Linked Data" as you can get: no-one even has IDs that could be pointed at from anywhere else.
 
 To get any further information on any of these people you’ll have to search for them elsewhere by name (and manually resolve any disambiguation). To make this harder, the names have been Amercanised: [Andrej Babis](https://www.opensanctions.org/entities/Q10819807/), rather than Babiš; Juri, rather than Jüri, Ratas etc.
 
 This is, at its heart, a print publication that has been quite awkwardly dumped onto a website, and the world really deserves something better.
 
-These days, the ideal home for this sort of information is, of course, Wikidata, with everything wonderfully linked together in glorious multi-lingual technicolour.
+These days, the ideal home for this sort of information is, of course, [Wikidata](https://www.wikidata.org), with everything wonderfully linked together in glorious multi-lingual technicolour.
 
 So a few months ago I started digging into how good the coverage was there, and how well things get kept up to date. Unfortunately, beyond a couple of dozen countries the answer quickly came back as "not very".
 
 For about half the countries in the world, at least 80% of the key people did have Wikidata items, but for about half of those, there was nothing to show what offices they currently held. 
 
-And in a significant number of cases a key reason for that was that Wikidata didn't even have an item yet for the position (e.g. Minister of Education of Bolivia). There'd be an item for the Ministry, or the List of Ministers, but not the Minister itself.
+And in a significant number of cases a key reason for that was that Wikidata didn't even have an item yet for the position (e.g. [Minister of Education of Bolivia](https://www.wikidata.org/wiki/Q25414135)). There'd be an item for the Ministry, or the List of Ministers, but not the Minister itself.
 
 Of the ones who _did_ have statements about holding a relevant position, a large amount of those were entirely un-dated, or claimed to be current, even though the person left office several years ago.
 
-And in the _other_ half of the world, coverage falls off fast. with the average number of government ministers already existing in Wikidata falling below 20% in lots of countries, and  up-to-date information on their positions lower still.
+And in the _other_ half of the world, coverage falls off fast. The average number of government ministers already existing in Wikidata falls below 20% in lots of countries, and up-to-date information on their positions is lower still.
 
 Unlike the CIA database, however, with Wikidata I can actually *do* something about this. So I've spent the last few months trying to make this a lot better.
 
