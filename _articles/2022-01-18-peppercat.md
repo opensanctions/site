@@ -67,6 +67,10 @@ It’s usually not _too_ hard to find sources with lists of government Ministers
 
 So if you know where to find such a list for [somewhere that Peppercat doesn’t include yet](https://peppercat.org/), [please do let me know](https://peppercat.org/about.html), and I’ll look do my best to include it, and check the source daily for updates.
 
-And, of course, more people looking for errors or out of date information, and either fixing things directly in Wikidata, or letting me know so I can look into it, is also always very helpful. Much as I enjoy this, I can’t really commit to hours of updates every day forever!
+And, of course, more people looking for errors or out of date information, and either fixing things directly in Wikidata, or letting me know so I can investigate, is also always very helpful.
+
+But mostly I’m hoping that people will start to *use* the data in interesting ways. Having everything directly in Wikidata means that much of it is already enhanced with lots of basic biographical information (gender, date and place of birth, etc), their career history, and an ever-increasing list of identifiers to cross-match with other datasets.
+
+Comprehensive and up-to-date policial information is critical in civic tech, academia, data journalism, PEP checking, and many other areas. And Wikidata is going to be a key element of all those areas. So: explore and play, help make the data even better, and let us know how you get on!
 
 *Tony Bowden created the EveryPolitician project at mySociety in 2015, and led it to becoming a key dataset of politicians worldwide. For five years before that he ran a funding and training program for civic tech projects across Central and Eastern Europe, the Balkans, the South Caucasus, Latin America, and Sub-Saharan Africa.*
