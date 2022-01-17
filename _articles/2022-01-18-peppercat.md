@@ -15,7 +15,7 @@ It's not as up to date as "published weekly" implies. It frequently lags far beh
 
 [Fredis Refunjol](https://www.opensanctions.org/entities/Q1266936/) is still listed as the Governor of Aruba, for example, even though he left office in 2016. The most out of date I’ve found so far is [Philibert Andzembe](https://www.opensanctions.org/entities/us-cia-cameroon-philibert-andzembe-governor-central-bank/), who was fired as the Governor of the Bank of Central African States back in 2009.
 
-I’m not convinced the site has had *any* updates at all since November 2020. But they don't make it easy to tell that, and as they don’t provide any provenance/source info, it's not always easy to even check if it seems to be up-to-date.
+I’m not convinced the site has had *any* updates at all since November 2020. But they don't make it easy to tell that. As they don’t provide any sources, it's not always easy to even check if the published information is correct.
 
 When you do find an error, there also isn’t really much you can do about it. There’s no obvious way to let anyone involved with this project directly know about issues, just a generic (and slightly scary) CIA/OPA contact form. A December request from the OpenSanctions team regarding the maintenance of the World Leaders database remains unanswered.
 
@@ -29,7 +29,7 @@ And of course the most notable omission is the US government itself. That makes 
 
 The US-centric view of the world pops up in other ways too. Perhaps the most obvious is the inclusion of each country's Ambassador to the US, and Permanent Representative to the UN in New York, but not any of their other (often much more domestically important) diplomats.
 
-But even beyond all this, there are some significantly deeper problems. The main one is that everything is entirely plain text ([Strings, not Things](https://medium.com/occrp-unreported/things-not-strings-knowledge-graphs-for-investigative-reporting-9d8a26913f65)). This is about as far from "Linked Data" as you can get: no-one even has IDs that could be pointed at from anywhere else.
+But even beyond all this, there are some deeper problems. The main one is that everything is entirely plain text ([Strings, not Things](https://medium.com/occrp-unreported/things-not-strings-knowledge-graphs-for-investigative-reporting-9d8a26913f65)). This is about as far from "Linked Data" as you can get: no-one even has IDs that could be pointed at from anywhere else.
 
 To get any further information on any of these people you’ll have to search for them elsewhere by name (and manually resolve any disambiguation). To make this harder, the names have been Amercanised: [Andrej Babis](https://www.opensanctions.org/entities/Q10819807/), rather than Babiš; Juri, rather than Jüri, Ratas etc.
 
