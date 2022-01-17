@@ -1,5 +1,5 @@
 ---
-title: The CIA lost track of who runs the United Kingdom, so I picked up the slack
+title: The CIA lost track of who runs the UK, so I picked up the slack
 summary: |
     A guest post from Tony Bowden about his efforts to build an open source dataset
     of world leaders inside of Wikidata, the structured-data version of Wikipedia.
