@@ -1,5 +1,5 @@
 ---
-title: The CIA lost track of who runs Aruba, so I picked up the slack
+title: The CIA lost track of who runs the United Kingdom, so I picked up the slack
 summary: |
     A guest post from Tony Bowden about his efforts to build an open source dataset
     of world leaders inside of Wikidata, the structured-data version of Wikipedia.
@@ -41,7 +41,7 @@ So a few months ago I started digging into how good the coverage was there, and 
 
 For about half the countries in the world, at least 80% of the key people did have Wikidata items, but for about half of those, there was nothing to show what offices they currently held. 
 
-And in a significant number of cases a key reason for that was that Wikidata didn't even have an item yet for the position (e.g. [Minister of Education of Bolivia](https://www.wikidata.org/wiki/Q25414135)). There'd be an item for the Ministry, or the List of Ministers, but not the Minister itself.
+And in a significant number of cases a key reason for that was that Wikidata didn't even have an item yet for the position (e.g. [Minister of Education of Bolivia](https://www.wikidata.org/wiki/Q110419069)). There'd be an item for the Ministry, or the List of Ministers, but not the Minister itself.
 
 Of the ones who _did_ have statements about holding a relevant position, a large amount of those were entirely un-dated, or claimed to be current, even though the person left office several years ago.
 
@@ -53,11 +53,11 @@ I’ve been working my way around the world, finding official lists of governmen
 
 Unfortunately Wikidata's single-item-based view, coupled with inconsistent modelling across different countries, makes it really difficult to see what's missing or incorrect without becoming an expert in both SPARQL and comparative political structures of the world.
 
-<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-home.png">
-
 So, to make it more likely that someone with much better local knowledge than me can spot obvious errors or omissions (given that even official sites are often out of date), I've also built a simple site, [Peppercat.org](https://peppercat.org), to show everything in a consistent format.
 
-Currently this has Minister-level data, plus a sprinkling of other key positions (Attorney General, Head of the Military, Governor of the Central Bank, etc.) for about 150 places, and I'm trying to add another one new one every day.
+<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-home.png">
+
+Currently this has Minister-level data, plus a sprinkling of other key positions (Attorney General, Head of the Military, Governor of the Central Bank, etc.) for over 150 places, and I'm trying to add another one new one every day.
 
 But it’s starting to get progressively harder for me to find good source lists for many of the places currently missing. This is where I could really do with some help.
 
@@ -65,7 +65,7 @@ But it’s starting to get progressively harder for me to find good source lists
 
 It’s usually not _too_ hard to find sources with lists of government Ministers at a single point of time (e.g. when a Cabinet was initially appointed, or there was a reshuffle). But it’s much better if there’s an official list that gets updated when there are changes.
 
-So if you know where to find such a list for somewhere that Peppercat doesn’t include yet, please do let me know, and I’ll look do my best to include it, and check the source daily for updates.
+So if you know where to find such a list for [somewhere that Peppercat doesn’t include yet](https://peppercat.org/), [please do let me know](https://peppercat.org/about.html), and I’ll look do my best to include it, and check the source daily for updates.
 
 And, of course, more people looking for errors or out of date information, and either fixing things directly in Wikidata, or letting me know so I can look into it, is also always very helpful. Much as I enjoy this, I can’t really commit to hours of updates every day forever!
 
