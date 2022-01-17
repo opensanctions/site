@@ -19,7 +19,7 @@ When you do find an error, there also isn’t really much you can do about it. T
 
 There are also some surprising omissions. [For the UK](https://www.cia.gov/resources/government/united-kingdom/), the data is definitely over a year out of date, but also manages to entirely leave out some interesting positions, like the Prime Minister and Foreign Secretary!
 
-The list of countries and territories also isn't as widespread as might be hoped. Thankfully it isn't restricted to places where the US has diplomatic relations, but the coverage is noticeably narrower than the 267 covered by their ”World Factbook“.
+The list of countries and territories also isn't as widespread as might be hoped. Thankfully it isn't restricted to places where the US has diplomatic relations, but the coverage is noticeably narrower than the 267 covered by their [World Factbook](https://www.cia.gov/the-world-factbook/).
 
 There might be some sort of consistency behind what's included, but I've struggled to find it. Aruba is there, but not Curaçao or Sint Maarten; or indeed Greenland, or Scotland, both of which are probably significantly more autonomous. Yet Bermuda somehow also gets in.
 
@@ -51,7 +51,7 @@ I’ve been working my way around the world, finding official lists of governmen
 
 Unfortunately Wikidata's single-item-based view, coupled with inconsistent modelling across different countries, makes it really difficult to see what's missing or incorrect without becoming an expert in both SPARQL and comparative political structures of the world.
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/peppercat-home.png">
+<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-home.png">
 
 So, to make it more likely that someone with much better local knowledge than me can spot obvious errors or omissions (given that even official sites are often out of date), I've also built a simple site, [Peppercat.org](https://peppercat.org), to show everything in a consistent format.
 
@@ -59,7 +59,7 @@ Currently this has Minister-level data, plus a sprinkling of other key positions
 
 But it’s starting to get progressively harder for me to find good source lists for many of the places currently missing. This is where I could really do with some help.
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/peppercat-coverage.png">
+<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-coverage.png">
 
 It’s usually not _too_ hard to find sources with lists of government Ministers at a single point of time (e.g. when a Cabinet was initially appointed, or there was a reshuffle). But it’s much better if there’s an official list that gets updated when there are changes.
 
