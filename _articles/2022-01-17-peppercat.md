@@ -9,6 +9,8 @@ When I started building [EveryPolitician](http://everypolitician.org), back in 2
 
 The main source people tend to use for this data is the [CIA World Leaders directory](https://www.cia.gov/resources/world-leaders/) ([OpenSanctions dataset](https://www.opensanctions.org/datasets/us_cia_world_leaders/)). This covers approximately 200 governments around the world, and claims to be published weekly. But it has a lot of problems.
 
+<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-cia.png">
+
 It's not as up to date as "published weekly" implies. It frequently lags far behind even full changes of government, never mind reshuffles or single member changes. In some cases it can be many years out of date.
 
 [Fredis Refunjol](https://www.opensanctions.org/entities/Q1266936/) is still listed as the Governor of Aruba, for example, even though he left office in 2016. The most out of date I’ve found so far is [Philibert Andzembe](https://www.opensanctions.org/entities/us-cia-cameroon-philibert-andzembe-governor-central-bank/), who was fired as the Governor of the Bank of Central African States back in 2009.
