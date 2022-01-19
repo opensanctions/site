@@ -222,14 +222,14 @@ type ResponsePaginationProps = {
 }
 
 export function ResponsePagination({ response }: ResponsePaginationProps) {
-  if (response.total === 0) {
+  if (response.total.value === 0) {
     return null;
   }
   const router = useRouter();
   const nextOffset = response.offset + response.limit;
-  const upper = Math.min(response.total, nextOffset);
+  const upper = Math.min(response.total.value, nextOffset);
   const hasPrev = response.offset > 0;
-  const hasNext = response.total > nextOffset;
+  const hasNext = response.total.value > nextOffset;
 
   const prevLink = queryString.stringify({
     ...router.query,
@@ -239,12 +239,13 @@ export function ResponsePagination({ response }: ResponsePaginationProps) {
     ...router.query,
     offset: response.offset + response.limit
   })
+  const relationText = response.total.relation == 'gte' ? 'more than ' : '';
 
   return (
     <Pagination>
       <Pagination.Prev disabled={!hasPrev} href={`?${prevLink}`} />
       <Pagination.Item disabled>
-        {response.offset + 1} - {upper} of {response.total}
+        {response.offset + 1} - {upper} of {relationText} {response.total.value}
       </Pagination.Item>
       <Pagination.Next disabled={!hasNext} href={`?${nextLink}`} />
     </Pagination>

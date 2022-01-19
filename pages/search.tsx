@@ -71,7 +71,7 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
         </Row>
         <Row>
           <Col md={8}>
-            {response.total === 0 && (
+            {response.total.value === 0 && (
               <Alert variant="warning">
                 <Alert.Heading> No matching entities were found.</Alert.Heading>
                 <p>
@@ -87,7 +87,7 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
             <ResponsePagination response={response} />
           </Col>
           <Col md={4}>
-            {response.facets && response.total > 0 && (
+            {response.facets && response.total.value > 0 && (
               <>
                 <SearchFacet field="topics" facet={response.facets.topics} />
                 <SearchFacet field="datasets" facet={response.facets.datasets} />

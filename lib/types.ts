@@ -168,8 +168,13 @@ export interface ISearchFacet {
   values: Array<ISearchFacetItem>
 }
 
+export interface IResponseTotal {
+  value: number
+  relation: string
+}
+
 export interface IPaginatedResponse {
-  total: number
+  total: IResponseTotal
   limit: number
   offset: number
 }
