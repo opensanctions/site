@@ -89,7 +89,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
       filters.push({
         'field': 'countries',
         'value': country,
-        'label': <TypeValue type={countryType} value={country} />
+        'label': <TypeValue type={countryType} value={country} plain={true} />
       })
     }
   }
@@ -101,7 +101,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
       filters.push({
         'field': 'topics',
         'value': topic,
-        'label': <TypeValue type={topicType} value={topic} />
+        'label': <TypeValue type={topicType} value={topic} plain={true} />
       })
     }
   }
@@ -117,7 +117,6 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
       })
     }
   }
-
 
   if (filters.length === 0) {
     return null;

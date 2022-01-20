@@ -10,27 +10,33 @@ import { EntityLink, EntityProps } from "./Entity";
 type TypeValueProps = {
   type: PropertyType
   value: Value
+  plain?: boolean
   prop?: Property
   entity?: ComponentType<EntityProps>
 }
 
-export function TypeValue({ type, value, entity: Entity = EntityLink, prop }: TypeValueProps) {
+export function TypeValue({ type, value, plain = false, entity: Entity = EntityLink, prop }: TypeValueProps) {
   if (['country', 'language'].indexOf(type.name) != -1) {
     return <>{type.values.get(value as string) || value}</>
   }
   if (type.name === 'date') {
     return <FormattedDate date={value as string} />
   }
-  if (type.name === 'url') {
+  if (type.name === 'url' && !plain) {
     return <URLLink url={value as string} />
   }
-  if (type.name === 'identifier') {
+  if (type.name === 'identifier' && !plain) {
     return <code>{value}</code>
   }
   if (type.name === 'topic') {
-    return <Badge bg="warning">{type.values.get(value as string) || value}</Badge>
+    const label = type.values.get(value as string) || value;
+    if (plain) {
+      return <>{label}</>;
+    } else {
+      return <Badge bg="warning">{label}</Badge>
+    }
   }
-  if (type.name === 'entity') {
+  if (type.name === 'entity' && !plain) {
     if (typeof (value) !== 'string') {
       return <Entity entity={value as OpenSanctionsEntity} via={prop} />
     }

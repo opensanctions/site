@@ -5,7 +5,19 @@ import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IOpenSanct
 import { API_URL, BASE_URL, INDEX_URL, ISSUES_URL } from "./constants";
 import { markdownToHtml } from './util';
 
-// const indexCache = join(process.cwd(), 'public', '_index.json')
+import indexJson from '../data/index.json';
+
+const index = { ...indexJson } as unknown as IIndex;
+index.details = {};
+index.datasets = index.datasets.map((raw: any) => {
+  const { description, targets, resources, ...ds } = raw;
+  const markdown = markdownToHtml(description)
+  index.details[ds.name] = { description: markdown, targets, resources } as IDatasetDetails
+  ds.link = `/datasets/${ds.name}/`
+  ds.opensanctions_url = BASE_URL + ds.link
+  return ds.type === 'collection' ? ds as ICollection : ds as ISource
+})
+index.model = index.model as IModelDatum
 
 async function fetchJsonUrl(url: string): Promise<any> {
   const data = await fetch(url)
@@ -13,19 +25,6 @@ async function fetchJsonUrl(url: string): Promise<any> {
 }
 
 export async function fetchIndex(): Promise<IIndex> {
-  const data = await fetch(INDEX_URL, { cache: "force-cache" })
-  const index = await data.json()
-  index.details = {};
-  index.datasets = index.datasets.map((raw: any) => {
-    const { description, targets, resources, ...ds } = raw;
-    const markdown = markdownToHtml(description)
-    index.details[ds.name] = { description: markdown, targets, resources } as IDatasetDetails
-    ds.link = `/datasets/${ds.name}/`
-    ds.opensanctions_url = BASE_URL + ds.link
-
-    return ds.type === 'collection' ? ds as ICollection : ds as ISource
-  })
-  index.model = index.model as IModelDatum
   return index as IIndex
 }
 
