@@ -17,22 +17,6 @@ index.datasets = index.datasets.map((raw: any) => {
   ds.opensanctions_url = BASE_URL + ds.link
   return ds.type === 'collection' ? ds as ICollection : ds as ISource
 })
-// delete index.model.schemata.Audio;
-// delete index.model.schemata.Video;
-// delete index.model.schemata.Call;
-// delete index.model.schemata.Assessment;
-// delete index.model.schemata.EconomicActivity;
-// delete index.model.schemata.HyperText;
-// delete index.model.schemata.Mention;
-// delete index.model.schemata.Note;
-// delete index.model.schemata.Message;
-// delete index.model.schemata.Package;
-// delete index.model.schemata.Page;
-// delete index.model.schemata.Pages;
-// delete index.model.schemata.PlainText;
-// delete index.model.schemata.Table;
-// delete index.model.schemata.UserAccount;
-// delete index.model.schemata.Workbook;
 index.model = index.model as IModelDatum
 
 async function fetchJsonUrl(url: string): Promise<any> {
