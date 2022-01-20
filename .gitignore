@@ -6,7 +6,7 @@
 .pnp.js
 
 public/sitemap.xml
-_data
+data/index.json
 
 # testing
 /coverage

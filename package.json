@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "fetch-index": "node scripts/fetch-index.js",
+    "dev": "npm run fetch-index && next dev",
+    "build": "npm run fetch-index && next build",
     "start": "next start"
   },
   "dependencies": {
