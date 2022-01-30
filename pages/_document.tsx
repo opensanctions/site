@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { GA_TRACKING_ID } from '../lib/gtag';
@@ -7,22 +8,19 @@ export default class SiteDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
-            async
+          <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            strategy="afterInteractive"
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', '${GA_TRACKING_ID}');
+            `}
+          </Script>
         </Head>
         <body>
           <Main />
