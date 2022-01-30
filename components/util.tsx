@@ -146,11 +146,11 @@ export function URLLink({ url, label, icon = true }: URLLinkProps) {
   return (
     <>
       {icon && (
-        <a href={href} target="_blank" title={textLabel}>
+        <a href={href} rel="noreferrer" target="_blank" title={textLabel}>
           <Link45deg className="bsIcon" />
         </a>
       )}
-      <a href={href} target="_blank" title={url}>{textLabel}</a>
+      <a href={href} rel="noreferrer" target="_blank" title={url}>{textLabel}</a>
     </>
   );
 }
