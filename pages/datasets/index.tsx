@@ -8,13 +8,13 @@ import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { INDEX_URL, COLLECTIONS } from '../../lib/constants';
 import { getDatasets } from '../../lib/data'
-import { getSchemaDataCatalog } from '../../lib/schema'
+import { getDataCatalog } from '../../lib/schema'
 import { ICollection, isCollection, isSource } from '../../lib/types';
 import { JSONLink } from '../../components/util';
 
 
 export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const structured = getSchemaDataCatalog(datasets)
+  const structured = getDataCatalog()
   const allCollections = datasets.filter(isCollection)
   const collections = COLLECTIONS.map(n => allCollections.find(c => c.name == n)) as Array<ICollection>
   const sources = datasets.filter(isSource).filter((ds) => !ds.hidden)

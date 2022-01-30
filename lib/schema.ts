@@ -46,13 +46,14 @@ export function getSchemaWebSite() {
   }
 }
 
-function getDataCatalog() {
+export function getDataCatalog() {
   return {
     "@context": "https://schema.org/",
     "@type": "DataCatalog",
     "name": SITE,
     "url": `${BASE_URL}/datasets/`,
-    "creator": getSchemaOpenSanctionsOrganization()
+    "creator": getSchemaOpenSanctionsOrganization(),
+    license: LICENSE_URL,
   }
 }
 
@@ -120,14 +121,6 @@ export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
   return schema;
 }
 
-
-export function getSchemaDataCatalog(datasets: Array<IDataset>) {
-  return {
-    ...getDataCatalog(),
-    license: LICENSE_URL,
-    dataset: datasets.map((d) => getSchemaDataset(d).url)
-  }
-}
 
 function getSchemaAddress(address: Entity) {
   // https://schema.org/PostalAddress
