@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Twitter, Github, HeartFill, Slack } from 'react-bootstrap-icons';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { Twitter, Github, HeartFill, Slack } from 'react-bootstrap-icons';
 
 import styles from '../styles/Footer.module.scss';
 import { LICENSE_URL, SPACER } from '../lib/constants';

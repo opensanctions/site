@@ -1,8 +1,8 @@
-import { Model } from '@alephdata/followthemoney';
+import { Model } from '../../lib/ftm/model';
 import Container from 'react-bootstrap/Container';
 
 import Layout from '../../components/Layout'
-import { ISource, isSource, OpenSanctionsEntity } from '../../lib/types';
+import { ISource, isSource } from '../../lib/types';
 import { fetchIndex, getDatasets, getEntityById } from '../../lib/data';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
@@ -29,7 +29,7 @@ export default function Entity({ entityId, entityData, modelData, sources }: Inf
   if (entityData.id !== entityId) {
     return <EntityRedirect entity={entityData} />
   }
-  const entity = OpenSanctionsEntity.fromData(model, entityData)
+  const entity = model.getEntity(entityData)
   const structured = getSchemaEntityPage(entity, sources)
   const apiUrl = `${API_URL}/entities/${entityId}`
 

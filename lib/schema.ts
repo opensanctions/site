@@ -3,7 +3,8 @@
 // https://schema.org/Dataset
 
 import { BASE_URL, LICENSE_URL, CLAIM, EMAIL, SITE } from './constants';
-import { IArticleInfo, IDataset, IDatasetDetails, IResource, ISourcePublisher, isSource, OpenSanctionsEntity } from './types';
+import { Entity } from './ftm';
+import { IArticleInfo, IDataset, IDatasetDetails, IResource, ISourcePublisher, isSource } from './types';
 
 
 export function getSchemaOpenSanctionsOrganization() {
@@ -128,7 +129,7 @@ export function getSchemaDataCatalog(datasets: Array<IDataset>) {
   }
 }
 
-function getSchemaAddress(address: OpenSanctionsEntity) {
+function getSchemaAddress(address: Entity) {
   // https://schema.org/PostalAddress
   return {
     "@context": "https://schema.org/",
@@ -143,14 +144,14 @@ function getSchemaAddress(address: OpenSanctionsEntity) {
   }
 }
 
-function applyProperty(entity: OpenSanctionsEntity, prop: string, field: string) {
+function applyProperty(entity: Entity, prop: string, field: string) {
   if (entity.hasProperty(prop)) {
     return { [field]: entity.getProperty(prop) }
   }
   return {}
 }
 
-function getSchemaEntity(entity: OpenSanctionsEntity) {
+function getSchemaEntity(entity: Entity) {
   let schema: any = {
     "@context": "https://schema.org/",
     "@type": "Thing",
@@ -166,7 +167,7 @@ function getSchemaEntity(entity: OpenSanctionsEntity) {
   if (entity.hasProperty('addressEntity')) {
     schema = {
       ...schema,
-      'address': entity.getProperty('addressEntity').map(a => getSchemaAddress(a as OpenSanctionsEntity))
+      'address': entity.getProperty('addressEntity').map(a => getSchemaAddress(a as Entity))
     }
   }
   const identifierType = entity.schema.model.getType('identifier');
@@ -203,7 +204,7 @@ function getSchemaEntity(entity: OpenSanctionsEntity) {
   return schema;
 }
 
-export function getSchemaEntityPage(entity: OpenSanctionsEntity, datasets: Array<IDataset>) {
+export function getSchemaEntityPage(entity: Entity, datasets: Array<IDataset>) {
   const entitySchema = getSchemaEntity(entity)
   return {
     "@context": "https://schema.org/",

@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import rehypeHighlight from 'rehype-highlight'
-import { Schema } from '@alephdata/followthemoney'
+import { Schema } from './ftm/schema'
 
 
 export function markdownToHtml(markdown: string): string {

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { InferGetStaticPropsType } from 'next'
-import { Model } from "@alephdata/followthemoney"
+import { Model } from "../lib/ftm/model"
 import Alert from 'react-bootstrap/Alert';
 
 import Layout from '../components/Layout'

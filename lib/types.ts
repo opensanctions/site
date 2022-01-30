@@ -1,4 +1,4 @@
-import { Entity, IEntityDatum, IModelDatum, Model, Property } from "@alephdata/followthemoney"
+import { IEntityDatum, IModelDatum } from "./ftm";
 
 
 export interface IContent {
@@ -147,16 +147,6 @@ export interface IIndex {
   details: { [key: string]: IDatasetDetails }
 }
 
-export interface IOpenSanctionsEntity extends IEntityDatum {
-  caption: string
-  referents: Array<string>
-  datasets: Array<string>
-  last_seen: string
-  first_seen: string
-  target: boolean
-  properties: EntityProperties
-}
-
 export interface ISearchFacetItem {
   name: string
   label: string
@@ -180,7 +170,7 @@ export interface IPaginatedResponse {
 }
 
 export interface ISearchAPIResponse extends IPaginatedResponse {
-  results: Array<IOpenSanctionsEntity>
+  results: Array<IEntityDatum>
   facets: { [prop: string]: ISearchFacet }
 }
 
@@ -200,87 +190,3 @@ export interface IStatement {
 export interface IStatementAPIResponse extends IPaginatedResponse {
   results: Array<IStatement>
 }
-
-
-export type Value = string | OpenSanctionsEntity
-export type Values = Array<Value>
-export type EntityProperties = { [prop: string]: Array<Value> }
-
-
-export class OpenSanctionsEntity extends Entity {
-  public caption: string
-  public first_seen: string
-  public last_seen: string
-  public referents: Array<string>
-  public datasets: Array<string>
-  public target: boolean
-  // public properties: Map<Property, Values> = new Map()
-
-  constructor(model: Model, data: IOpenSanctionsEntity) {
-    super(model, data)
-    this.caption = data.caption
-    this.first_seen = data.first_seen
-    this.last_seen = data.last_seen
-    this.referents = data.referents
-    this.datasets = data.datasets
-    this.target = data.target
-  }
-
-  setProperty(prop: string | Property, value: Value): Values {
-    const property = this.schema.getProperty(prop)
-    const values = this.properties.get(property) || []
-    if (value === undefined || value === null) {
-      return values as Values
-    }
-    if (property.type.name === 'entity') {
-      if (typeof (value) === 'string') {
-        // don't allow setting stringy entity properties.
-        // this may backfire later.
-        return values as Values
-      }
-      const entity = value as unknown as IOpenSanctionsEntity
-      value = new OpenSanctionsEntity(this.schema.model, entity)
-    }
-    values.push(value)
-    // console.log('set', property, values);
-    this.properties.set(property, values)
-    return values as Values
-  }
-
-  hasProperty(prop: string | Property): boolean {
-    try {
-      const property = this.schema.getProperty(prop)
-      return this.properties.has(property)
-    } catch {
-      return false
-    }
-  }
-
-  getProperty(prop: string | Property): Values {
-    try {
-      const property = this.schema.getProperty(prop)
-      if (!this.properties.has(property)) {
-        return []
-      }
-      return this.properties.get(property) as Values
-    } catch {
-      return []
-    }
-  }
-
-  getDisplayProperties(): Array<Property> {
-    const properties = this.schema.getFeaturedProperties();
-    const existingProps = this.getProperties().sort((a, b) => a.label.localeCompare(b.label))
-    for (let prop of existingProps) {
-      if (properties.indexOf(prop) == -1) {
-        properties.push(prop)
-      }
-    }
-    return properties.filter((p) => !p.hidden);
-  }
-
-  static fromData(model: Model, data: IOpenSanctionsEntity): OpenSanctionsEntity {
-    return new OpenSanctionsEntity(model, data)
-  }
-}
-

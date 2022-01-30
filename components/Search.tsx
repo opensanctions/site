@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
-import { Model } from '@alephdata/followthemoney';
+import { Model } from '../lib/ftm/model';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import Badge from "react-bootstrap/Badge";
 
-import { IDataset, IOpenSanctionsEntity, ISearchFacet, OpenSanctionsEntity, Values } from "../lib/types";
+import { IEntityDatum, Values } from '../lib/ftm';
+import { IDataset, ISearchFacet } from "../lib/types";
 import { NumericBadge, Spacer } from "./util";
 import { SEARCH_DATASET, SEARCH_SCHEMA } from "../lib/constants";
 import { EntityLink } from './Entity';
@@ -141,12 +142,12 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
 }
 
 type SearchResultEntityProps = {
-  data: IOpenSanctionsEntity
+  data: IEntityDatum
   model: Model
 }
 
 export function SearchResultEntity({ data, model }: SearchResultEntityProps) {
-  const entity = OpenSanctionsEntity.fromData(model, data);
+  const entity = model.getEntity(data);
   const countryType = model.getType('country');
   const countries = entity.getTypeValues(countryType) as Values;
   const topicType = model.getType('topic');

@@ -1,8 +1,7 @@
 import { ComponentType, useState } from 'react';
 import Badge from "react-bootstrap/Badge";
 
-import { Property, PropertyType } from "@alephdata/followthemoney";
-import { OpenSanctionsEntity, Value, Values } from "../lib/types";
+import { Property, PropertyType, Entity, Value, Values } from "../lib/ftm";
 import { FormattedDate, SpacedList, URLLink } from "./util";
 import { EntityLink, EntityProps } from "./Entity";
 
@@ -38,7 +37,7 @@ export function TypeValue({ type, value, plain = false, entity: Entity = EntityL
   }
   if (type.name === 'entity' && !plain) {
     if (typeof (value) !== 'string') {
-      return <Entity entity={value as OpenSanctionsEntity} via={prop} />
+      return <Entity entity={value as Entity} via={prop} />
     }
     return <code>{value}</code>
   }

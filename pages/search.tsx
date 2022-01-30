@@ -1,5 +1,5 @@
 import React from 'react';
-import { Model } from '@alephdata/followthemoney';
+import { Model } from '../lib/ftm/model';
 import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

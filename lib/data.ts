@@ -1,8 +1,8 @@
 // import { join } from 'path'
 // import { promises as fs } from 'fs';
-import { IModelDatum } from "@alephdata/followthemoney"
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IOpenSanctionsEntity, IDatasetDetails } from "./types";
-import { API_URL, BASE_URL, INDEX_URL, ISSUES_URL } from "./constants";
+import { IModelDatum, IEntityDatum } from "./ftm";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails } from "./types";
+import { API_URL, BASE_URL, ISSUES_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
@@ -54,7 +54,7 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
   return issues.filter(issue => issue.dataset === dataset?.name);
 }
 
-export async function getEntityById(id: string): Promise<IOpenSanctionsEntity | null> {
+export async function getEntityById(id: string): Promise<IEntityDatum | null> {
   const url = `${API_URL}/entities/${id}`
   const data = await fetch(url)
   if (!data.ok) {

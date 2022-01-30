@@ -1,4 +1,6 @@
-import { Property, PropertyType, Schema } from "@alephdata/followthemoney"
+import { Property } from "../lib/ftm/property";
+import { PropertyType } from "../lib/ftm/type";
+import { Schema } from "../lib/ftm/schema";
 import Link from "next/link";
 import Table from 'react-bootstrap/Table';
 import { wordList } from "../lib/util";

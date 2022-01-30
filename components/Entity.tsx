@@ -7,10 +7,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
-import { Property } from '@alephdata/followthemoney';
+import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
-import { IDataset, IOpenSanctionsEntity, OpenSanctionsEntity } from '../lib/types'
+import { IEntityDatum, Entity } from '../lib/ftm'
+import { IDataset } from '../lib/types'
 import { PropertyValues } from './Property';
 import { FormattedDate, HelpLink, SpacedList, Summary } from './util';
 import Dataset from './Dataset';
@@ -21,7 +22,7 @@ import { LicenseInfo } from './Policy';
 
 
 export type EntityRawLinkProps = {
-  entity: OpenSanctionsEntity
+  entity: Entity
   prop: string
 }
 
@@ -35,7 +36,7 @@ export function EntityRawLink({ entity, prop }: EntityRawLinkProps) {
 
 
 export type EntityProps = {
-  entity: OpenSanctionsEntity
+  entity: Entity
   datasets?: Array<IDataset>
   showEmpty?: boolean
   via?: Property
@@ -95,7 +96,7 @@ export function EntityCard({ entity, via, showEmpty = false }: EntityProps) {
 }
 
 export type EntitySchemaTableProps = {
-  entities: Array<OpenSanctionsEntity>,
+  entities: Array<Entity>,
   datasets?: Array<IDataset>,
   prop: Property
 }
@@ -115,7 +116,7 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
   }
   const featured = featuredNames.filter((n) => n !== reverse.name).map((n) => schema.getProperty(n));
 
-  const toggleExpand = function (e: React.MouseEvent<HTMLAnchorElement>, entity: OpenSanctionsEntity) {
+  const toggleExpand = function (e: React.MouseEvent<HTMLAnchorElement>, entity: Entity) {
     e.preventDefault();
     setExpanded(expanded === entity.id ? 'none' : entity.id);
   }
@@ -184,7 +185,7 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
 
 
 export type EntitySidebarProps = {
-  entity: OpenSanctionsEntity,
+  entity: Entity,
 }
 
 export function EntitySidebar({ entity }: EntityProps) {
@@ -220,7 +221,7 @@ export function EntitySidebar({ entity }: EntityProps) {
 }
 
 export type EntityDisplayProps = {
-  entity: OpenSanctionsEntity,
+  entity: Entity,
   datasets: Array<IDataset>
 }
 
@@ -245,7 +246,7 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
           <div className={styles.entityPageSection} key={prop.qname}>
             <EntitySchemaTable
               prop={prop}
-              entities={entity.getProperty(prop).map((v) => v as OpenSanctionsEntity)}
+              entities={entity.getProperty(prop).map((v) => v as Entity)}
               datasets={datasets}
             />
           </div>
@@ -279,7 +280,7 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
 
 
 type EntityRedirectProps = {
-  entity: IOpenSanctionsEntity
+  entity: IEntityDatum
 }
 
 export function EntityRedirect({ entity }: EntityRedirectProps) {
