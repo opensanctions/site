@@ -125,7 +125,7 @@ export function getSchemaDataCatalog(datasets: Array<IDataset>) {
   return {
     ...getDataCatalog(),
     license: LICENSE_URL,
-    dataset: datasets.map((d) => getSchemaDataset(d))
+    dataset: datasets.map((d) => getSchemaDataset(d).url)
   }
 }
 
@@ -211,7 +211,7 @@ export function getSchemaEntityPage(entity: Entity, datasets: Array<IDataset>) {
     "@type": "WebPage",
     "name": entity.caption,
     "maintainer": getSchemaOpenSanctionsOrganization(),
-    "isPartOf": datasets.map(d => getSchemaDataset(d)),
+    "isPartOf": datasets.map(d => getSchemaDataset(d).url),
     "license": LICENSE_URL,
     "mainEntity": entitySchema,
     "dateCreated": entity.first_seen,
