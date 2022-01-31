@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 import type { AppProps } from 'next/app'
 import { SSRProvider } from '@react-aria/ssr';
 
@@ -21,6 +22,24 @@ export default function OpenSanctionsApp({ Component, pageProps }: AppProps) {
 
   return (
     <SSRProvider>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gtag.GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+        }}
+      />
       <Component {...pageProps} />
     </SSRProvider>
   );
