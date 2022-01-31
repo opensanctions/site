@@ -1,17 +1,18 @@
 ---
 title: "How-to: Using the matching API to do KYC-style checks"
 summary: |
-    Know-Your-Customer (KYC) checks are unlike normal text searches: your query is supposed to describe a person or company in some detail to allow the OpenSanctions
-    API to check if that entity (or a similar one) exists.
+    Know-Your-Customer (KYC) checks are a different challenge to normal text searches: your query is supposed to describe a person or company in some detail to allow the OpenSanctions API to check if that entity (or a similar one) is flagged.
 ---
 
-OpenSanctions open source API server [yente](https://github.com/opensanctions/yente) is a powerful way to query and access the entities in our database. [License holders](/licensing) can use it both online and as an on-premises installed tool to match a set of customer records against international sanctions and politicians lists.
+OpenSanctions open source API server, [yente](https://github.com/opensanctions/yente), is a powerful way to query and access the entities in our database. [Business license holders](/licensing) can use it both online and as an on-premises deployment to match a set of customer records against international sanctions and politicians lists.
 
-A very basic way to do those bulk searches might be via simple text queries using the `/search` endpoint - but this will lead to imprecise and incomplete results. Instead, this how-to will show you how to use the `/match` endpoint to get more precise matches using *query-by-example*.
+The most basic way to do those bulk searches might be running simple text queries against the `/search` endpoint - but this will lead to imprecise and incomplete results. Instead, this how-to will show you how to use the `/match` endpoint to get more precise matches using *query-by-example* to do multi-attribute lookups.
 
 ### Step 1: Speak the language
 
-Let's say, for example, that you have a `customers` dataset that specifies the name, birth date, nationality and perhaps a national ID number for each person you want to check. Your first step would then be to implement a piece of code that makes a version of each of these entries conform with the [entity format](/docs/entities/) used by OpenSanctions, assigning each of the columns in your source data to one of the fields specified in the [data dictionary](/reference) (This, of course, works not just for [people](/reference/#schema.Person), but also [companies](/reference/#schema.Company), [vessels](/reference/#schema.Vessel), even [crypto wallets](/reference/#schema.CryptoWallet)).
+Let's say, for example, that you have a customers dataset that specifies the name, birth date, nationality and perhaps a national ID number for each person you want to check. 
+
+The first step would then be to implement a piece of code formats each of these entries conform with the [entity format](/docs/entities/) used by OpenSanctions, assigning each of the columns in your source data to one of the fields specified in the [data dictionary](/reference) (This, of course, works not just for [people](/reference/#schema.Person), but also [companies](/reference/#schema.Company), [vessels](/reference/#schema.Vessel), even [crypto wallets](/reference/#schema.CryptoWallet)).
 
 Here's an example entity in JSON format:
 
@@ -28,11 +29,11 @@ Here's an example entity in JSON format:
 
 A few things to note:
 
-* The `schema` section on top defines the type of entities to match. It could also be `Company`, or a [`LegalEntity`](/reference/#schema.LegalEntity) (a more general entity type that matches both people and companies!).
-* You can specify a list of property values, rather than a single value - for example, different variations of the name.
+* The `schema` defines the type of entities to match this example against. Of course, the schema could also be `Company`, or a [`LegalEntity`](/reference/#schema.LegalEntity) (a more general entity type that matches both people and companies!).
+* You can specify a list of property values, rather than a single value - for example, different variations of the name, or different addresses and identification numbers.
 * The API internally uses standardised formats for [country codes](/reference#type.country), [dates](/reference#type.date), phone numbers etc., but you can just supply a country name and the API will attempt to identify the correct country code (in this case: `ru`) for the entity.
 
-Generating this JSON form of your records should be a simple exercise. Do not worry too much about details like whether a country name goes into the `country` or `jurisdiction` property: the matching happens by data type (in this case: [country](/reference#type.country)), not precise field name.
+Generating this JSON form of your records should be a simple exercise. Do not worry too much about details like whether a country name should live in the `country` or `jurisdiction` properties: the matching happens by data type (in this case: [country](/reference#type.country)), not precise field name.
 
 ### Step 2: Choose where to look
 
@@ -42,9 +43,9 @@ OpenSanctions combines data from dozens of different sources - some are sanction
 * [`sanctions`](/datasets/sanctions/) contains only the entities mentioned in the international sanctions lists included by the system.
 * [`peps`](/datasets/peps/) lists the entities known to be politically exposed persons (PEPs), e.g. politicians and their close associates and family members.
 
-The collection to be queried is determined by the URL of the matching endpoint used in your integration, e.g. `https://api.opensanctions.org/match/sanctions`.
+What collection will be queried is determined by the URL of the matching endpoint used in your integration, e.g. `https://api.opensanctions.org/match/sanctions`.
 
-### Step 3: Do it in small batches
+### Step 3: Chunk your lookups into batches
 
 In order to avoid the overhead of sending thousands upon thousands of HTTP requests, you can group the entities to be matched into batches, sending a few of them at a time. A good batch size is 20 or 50, not 5000. 
 
@@ -108,7 +109,7 @@ for result in example_2_response['results']:
 
 If one of your queries returns a result, this is not immediately cause for alarm: the database for politically exposed persons in particular contains many individuals with common names, and matches will be fairly frequent. Instead, you should set up a process for human review.
 
-In terms of analysis, it's always helpful to look at the [`topics`](/reference/#type.topic) property for entities: it will often indicate the relevance of an entity (whether it is sanctioned, a politician or just an associate). You can also view the OpenSanctions entity page (`https://opensanctions.org/entities/<id>`) for each result to see their documented connections to other items (this is also available via the `/entities/<id>` API endpoint!).
+In terms of analysis, it's helpful to look at the [`topics`](/reference/#type.topic) property for entities: it will often indicate the relevance of an entity (whether it is sanctioned, a politician or just an associate). You can also view the OpenSanctions entity page (`https://opensanctions.org/entities/<id>`) for each result to see their documented connections to other items (connection/graph data is also available via the `/entities/<id>` API endpoint!).
 
 ### Give us feedback!
 
