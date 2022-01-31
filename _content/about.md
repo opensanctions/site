@@ -25,7 +25,7 @@ We believe that the solution to this is to establish a **data commons**, an open
 
 The development of OpenSanctions is coordinated by [Friedrich Lindenberg](https://pudo.org).
 From 2017 to 2019, maintenance of the crawlers was assumed by [Tarashish Mishra](https://sunu.in/) at the [Organized Crime and Corruption Reporting Project](https://occrp.org). You can
-see a list of those who have contributed crawlers [on Github](https://github.com/pudo/opensanctions/graphs/contributors).
+see a list of those who have contributed crawlers [on Github](https://github.com/opensanctions/opensanctions/graphs/contributors).
 
 We'd also like to thank [Marc da Costa](https://marcdacosta.com/), [Paul May](https://twitter.com/mrpaulmay) and [Tony Bowden](https://twitter.com/tmtm) for their tireless advice on the
 project.

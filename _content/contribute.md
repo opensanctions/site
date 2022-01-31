@@ -18,11 +18,11 @@ topical coverage.
 Contributing a crawler is easy for anyone familiar with the basics of **web scraping in Python 3**. While OpenSanctions uses an advanced data pipeline for quality assurance, data integration and storage, the crawler API is simple and well-documented.
 
 1. If you don't have a specific dataset in mind yet, check out the [OpenSanctions source survey](https://bit.ly/osa-sources) to find a list of candidate sources.
-2. File a [GitHub issue](https://github.com/pudo/opensanctions/issues) to share your plan to contribute a data source. This grants the developer team an opportunity to give feedback regarding the [relevance](#criteria) of the suggested dataset.
+2. File a [GitHub issue](https://github.com/opensanctions/opensanctions/issues) to share your plan to contribute a data source. This grants the developer team an opportunity to give feedback regarding the [relevance](#criteria) of the suggested dataset.
 3. Consult the [technical documentation](https://docs.opensanctions.org/en/latest/index.html) to install the codebase on your machine and learn how to write a crawler using the project framework.
 4. Before submitting the crawler, please make sure that you have [provided descriptive metadata](https://docs.opensanctions.org/en/latest/crawlers.html#source-metadata) and added the source to any appropriate collections.
-5. When your crawler is running and producing good data, submit a pull request to the [opensanctions repository](https://github.com/pudo/opensanctions).
-6. Check the [dataset page](/datasets/) on OpenSanctions for your crawler regularly to see if it is producing any errors or warnings that require maintenance. You can also [inspect the nightly console output](https://github.com/pudo/opensanctions/actions/workflows/production.yml) on GitHub Actions to supervise your crawlers operation.
+5. When your crawler is running and producing good data, submit a pull request to the [opensanctions repository](https://github.com/opensanctions/opensanctions).
+6. Check the [dataset page](/datasets/) on OpenSanctions for your crawler regularly to see if it is producing any errors or warnings that require maintenance. You can also [inspect the nightly console output](https://github.com/opensanctions/opensanctions/actions/workflows/production.yml) on GitHub Actions to supervise your crawlers operation.
 
 Thanks for getting involved!
 

@@ -15,8 +15,8 @@ summary: |
 * [Contributing a crawler](/docs/contribute/)
     * [Technical documentation](https://docs.opensanctions.org/en/latest/) (readthedocs.org)
     * [Installing the codebase](https://docs.opensanctions.org/en/latest/install.html) (readthedocs.org)
-* [GitHub repository](https://github.com/pudo/opensanctions)
-    * [Issues](https://github.com/pudo/opensanctions/issues) and feature planning
-* [Data pipeline status](https://github.com/pudo/opensanctions/actions/workflows/production.yml) (GitHub Actions)
+* [GitHub repository](https://github.com/opensanctions/opensanctions)
+    * [Issues](https://github.com/opensanctions/opensanctions/issues) and feature planning
+* [Data pipeline status](https://github.com/opensanctions/opensanctions/actions/workflows/production.yml) (GitHub Actions)
 * [Contact us](/contact/)
 

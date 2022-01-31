@@ -55,9 +55,9 @@ export default function ArticleIndex({ articles }: InferGetStaticPropsType<typeo
                 <Link href="https://bit.ly/osa-slack">Slack chat</Link>
               </li>
               <li>
-                <Link href="https://github.com/pudo/opensanctions"><Github /></Link>
+                <Link href="https://github.com/opensanctions/opensanctions"><Github /></Link>
                 {' '}
-                <Link href="https://github.com/pudo/opensanctions">Github code</Link>
+                <Link href="https://github.com/opensanctions/opensanctions">Github code</Link>
               </li>
             </ul>
           </Col>

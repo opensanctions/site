@@ -65,9 +65,9 @@ export default class Footer extends React.Component {
                       <Link href="https://twitter.com/open_sanctions">Twitter</Link>
                     </li>
                     <li>
-                      <Link href="https://github.com/pudo/opensanctions"><Github /></Link>
+                      <Link href="https://github.com/opensanctions/opensanctions"><Github /></Link>
                       {' '}
-                      <Link href="https://github.com/pudo/opensanctions">Github code</Link>
+                      <Link href="https://github.com/opensanctions/opensanctions">Github code</Link>
                     </li>
                   </ul>
                 </Col>

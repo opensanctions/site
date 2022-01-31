@@ -19,7 +19,7 @@ No, we are just bad at naming things. The project includes sanctions lists, list
 
 OpenSanctions is a resource for journalists and civil society who need to perform due diligence-style tasks (e.g. searching for persons of interest in a leak or open dataset), and for companies in the fintech/regtech space that need to perform basic know-your-customer checks.
 
-OpenSanctions is an open project, anyone is invited to use the datasets, the [code base used to generate it](https://github.com/pudo/opensanctions), or to contribute additional information.
+OpenSanctions is an open project, anyone is invited to use the datasets, the [code base used to generate it](https://github.com/opensanctions/opensanctions), or to contribute additional information.
 
 
 ### Where does the data come from?
@@ -29,7 +29,7 @@ Our preferred sources are official datasets published by governments and other a
 
 ### <a id="updates"></a> How frequently is OpenSanctions updated?
 
-Most data sources are updated daily and published in the early morning (CET). You can inspect the [public data pipeline](https://github.com/pudo/opensanctions/actions/workflows/production.yml) and see a list of any errors or warnings [each dataset](/datasets/) has generated. 
+Most data sources are updated daily and published in the early morning (CET). You can inspect the [public data pipeline](https://github.com/opensanctions/opensanctions/actions/workflows/production.yml) and see a list of any errors or warnings [each dataset](/datasets/) has generated. 
 
 For data sources that require screen scraping rather than publishing structured data, a HTTP response cache with a maximum age of ten days is used to avoid running into rate limiting errors.
 
