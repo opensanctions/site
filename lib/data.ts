@@ -20,8 +20,12 @@ index.datasets = index.datasets.map((raw: any) => {
 index.model = index.model as IModelDatum
 
 async function fetchJsonUrl(url: string): Promise<any> {
-  const data = await fetch(url)
-  return await data.json()
+  const data = await fetch(url, { cache: "force-cache" });
+  if (!data.ok) {
+    // console.log('ERROR', data);
+    return null;
+  }
+  return await data.json();
 }
 
 export async function fetchIndex(): Promise<IIndex> {
@@ -55,11 +59,6 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
 }
 
 export async function getEntityById(id: string): Promise<IEntityDatum | null> {
-  const url = `${API_URL}/entities/${id}`
-  const data = await fetch(url)
-  if (!data.ok) {
-    // console.log('ERROR', data);
-    return null;
-  }
-  return await data.json()
+  const raw = await fetchJsonUrl(`${API_URL}/entities/${id}`);
+  return raw === null ? null : raw as IEntityDatum;
 }

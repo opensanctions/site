@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Layout from '../../components/Layout'
 import { ISource, isSource } from '../../lib/types';
 import { fetchIndex, getDatasets, getEntityById } from '../../lib/data';
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
 import { JSONLink } from '../../components/util';
 import { getSchemaEntityPage } from '../../lib/schema';
@@ -47,7 +47,7 @@ export default function Entity({ entityId, entityData, modelData, sources }: Inf
 }
 
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const entityId = context.params?.id as (string | undefined);
   if (entityId === undefined) {
     return { redirect: { destination: '/search/', permanent: false } };
@@ -69,7 +69,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       entityData: entity,
       modelData: index.model
     },
-    revalidate: 360
+    revalidate: 3600
   };
 }
 
