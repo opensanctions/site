@@ -54,7 +54,10 @@ export class Entity {
   }
 
   setProperty(prop: string | Property, value: Value | IEntityDatum | undefined | null): Values {
-    const property = this.schema.getProperty(prop)
+    const property = this.schema.getProperty(prop);
+    if (property === undefined) {
+      return [];
+    }
     const values = this.properties.get(property) || []
     if (value === undefined || value === null) {
       return values as Values
@@ -74,24 +77,19 @@ export class Entity {
   }
 
   hasProperty(prop: string | Property): boolean {
-    try {
-      const property = this.schema.getProperty(prop)
-      return this.properties.has(property)
-    } catch {
-      return false
+    const property = this.schema.getProperty(prop)
+    if (property === undefined) {
+      return false;
     }
+    return this.properties.has(property)
   }
 
   getProperty(prop: string | Property): Values {
-    try {
-      const property = this.schema.getProperty(prop)
-      if (!this.properties.has(property)) {
-        return []
-      }
-      return this.properties.get(property) as Values
-    } catch {
+    const property = this.schema.getProperty(prop)
+    if (property === undefined || !this.properties.has(property)) {
       return []
     }
+    return this.properties.get(property) as Values;
   }
 
   /**

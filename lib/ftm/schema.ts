@@ -121,7 +121,7 @@ export class Schema {
   }
 
   getFeaturedProperties(): Array<Property> {
-    return this.featured.map(name => this.getProperty(name))
+    return this.featured.map(name => this.getProperty(name)).filter(Property.isProperty)
   }
 
   hasProperty(prop: string | Property): boolean {
@@ -137,15 +137,11 @@ export class Schema {
    *
    * @param prop name or Property
    */
-  getProperty(prop: string | Property): Property {
+  getProperty(prop: string | Property): Property | undefined {
     if (Property.isProperty(prop)) {
       return prop
     }
-    const propObj = this.getProperties().get(prop)
-    if (propObj === undefined) {
-      throw new Error('Property does not exist: ' + prop)
-    }
-    return propObj;
+    return this.getProperties().get(prop);
   }
 
   isA(schema: SchemaSpec): boolean {
