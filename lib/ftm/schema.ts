@@ -125,7 +125,7 @@ export class Schema {
   }
 
   hasProperty(prop: string | Property): boolean {
-    if (prop instanceof Property) {
+    if (Property.isProperty(prop)) {
       return this.getProperties(true).has(prop.qname)
     }
     return this.getProperties().has(prop)
@@ -138,14 +138,14 @@ export class Schema {
    * @param prop name or Property
    */
   getProperty(prop: string | Property): Property {
-    if (prop instanceof Property) {
+    if (Property.isProperty(prop)) {
       return prop
     }
-    if (this.hasProperty(prop)) {
-      return this.getProperties().get(prop) as Property
-    } else {
+    const propObj = this.getProperties().get(prop)
+    if (propObj === undefined) {
       throw new Error('Property does not exist: ' + prop)
     }
+    return propObj;
   }
 
   isA(schema: SchemaSpec): boolean {

@@ -60,7 +60,10 @@ export class Property {
     return this.getRange().getProperty(this.reverse)
   }
 
-  static isProperty = (item: Property | undefined): item is Property => {
+  static isProperty = (item: Property | string | undefined): item is Property => {
+    if (typeof (item) === 'string') {
+      return false;
+    }
     return !!item
   }
 
