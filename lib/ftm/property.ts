@@ -28,8 +28,6 @@ export class Property {
   public readonly matchable: boolean
   public readonly description: string | null
   public readonly stub: boolean
-  public readonly hasReverse: boolean
-  public readonly hasRange: boolean
   private readonly range: string | null
   private readonly reverse: string | null
 
@@ -45,19 +43,21 @@ export class Property {
     this.range = property.range || null
     this.reverse = property.reverse || null
     this.type = schema.model.getType(property.type)
-    this.hasRange = this.range !== null
-    this.hasReverse = this.range !== null && this.reverse !== null
   }
 
-  getRange(): Schema {
+  getRange(): Schema | undefined {
+    if (!this.range) {
+      return undefined;
+    }
     return this.schema.model.getSchema(this.range)
   }
 
-  getReverse(): Property {
-    if (this.range === null || this.reverse === null) {
-      throw new Error("This property has no reverse")
+  getReverse(): Property | undefined {
+    const range = this.getRange()
+    if (range === undefined || this.reverse === null) {
+      return undefined;
     }
-    return this.getRange().getProperty(this.reverse)
+    return range.getProperty(this.reverse)
   }
 
   static isProperty = (item: Property | string | undefined): item is Property => {

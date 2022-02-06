@@ -4,7 +4,6 @@ import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 
 import styles from '../styles/Issue.module.scss'
-import { SPACER } from "../lib/constants";
 import { IIssue } from "../lib/types";
 import { FormattedDate, Spacer } from "./util";
 

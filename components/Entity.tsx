@@ -47,8 +47,9 @@ export function EntityLink({ entity }: EntityProps) {
 }
 
 export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: EntityProps) {
+  const viaReverse = via?.getReverse();
   const props = entity.getDisplayProperties()
-    .filter((p) => via === undefined || p.qname !== via.getReverse().qname)
+    .filter((p) => viaReverse === undefined || p.qname !== viaReverse.qname)
     .filter((p) => showEmpty || entity.getProperty(p).length > 0)
 
   return (
@@ -104,6 +105,9 @@ export type EntitySchemaTableProps = {
 export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTableProps) {
   const schema = prop.getRange();
   const reverse = prop.getReverse();
+  if (schema === undefined || reverse === undefined) {
+    return null;
+  }
   const [expanded, setExpanded] = useState('none');
   let featuredNames = schema.featured;
   ['startDate', 'endDate'].forEach((p) => {
@@ -114,7 +118,10 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
   if (schema.isA('Address')) {
     featuredNames = ['full', 'country'];
   }
-  const featured = featuredNames.filter((n) => n !== reverse.name).map((n) => schema.getProperty(n));
+  const featured = featuredNames
+    .filter((n) => n !== reverse.name)
+    .map((n) => schema.getProperty(n))
+    .filter(Property.isProperty);
 
   const toggleExpand = function (e: React.MouseEvent<HTMLAnchorElement>, entity: Entity) {
     e.preventDefault();

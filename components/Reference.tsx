@@ -47,8 +47,9 @@ type PropTypeLinkProps = {
 }
 
 function PropTypeLink({ prop }: PropTypeLinkProps) {
-  if (prop.hasRange) {
-    return <code><Link href={`#schema.${prop.getRange().name}`}>{prop.getRange().name}</Link></code>
+  const range = prop.getRange()
+  if (range !== undefined) {
+    return <code><Link href={`#schema.${range.name}`}>{range.name}</Link></code>
   }
   if (['country', 'topic', 'date'].indexOf(prop.type.name) !== -1) {
     return <code><Link href={`#type.${prop.type.name}`}>{prop.type.name}</Link></code>
@@ -56,6 +57,24 @@ function PropTypeLink({ prop }: PropTypeLinkProps) {
   return <code>{prop.type.name}</code>;
 }
 
+type PropInverseLinkProps = {
+  prop: Property
+}
+
+
+function PropInverseLink({ prop }: PropInverseLinkProps) {
+  const reverse = prop.getReverse();
+  if (prop.stub || reverse === undefined) {
+    return null;
+  }
+  return (
+    <code>
+      see{' '}
+      <Link href={`#prop.${reverse.qname}`}>{reverse.qname}</Link>
+      {' '}(inverse)
+    </code>
+  )
+}
 
 type SchemaReferenceProps = {
   schema: Schema
@@ -66,7 +85,10 @@ export function SchemaReference({ schema, schemata }: SchemaReferenceProps) {
   const allProperties = Array.from(schema.getProperties().values())
   const properties = allProperties
     .filter(prop => !prop.hidden)
-    .filter(prop => !prop.hasRange || -1 !== schemata.indexOf(prop.getRange()))
+    .filter(prop => {
+      const range = prop.getRange();
+      return range === undefined || -1 !== schemata.indexOf(range)
+    })
   const parents = schema.getParents()
     .map(s => <Link href={`#schema.${s.name}`}>{s.name}</Link>)
   const children = schema.getChildren()
@@ -111,13 +133,7 @@ export function SchemaReference({ schema, schemata }: SchemaReferenceProps) {
               <td><PropTypeLink prop={prop} /></td>
               <td>{prop.label}</td>
               <td>
-                {!!prop.stub && (
-                  <code>
-                    see{' '}
-                    <Link href={`#prop.${prop.getReverse().qname}`}>{prop.getReverse().qname}</Link>
-                    {' '}(inverse)
-                  </code>
-                )}
+                <PropInverseLink prop={prop} />
                 {prop.description}
               </td>
             </tr>
