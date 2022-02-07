@@ -20,3 +20,11 @@ Beyond the definition of [non-commercial use](https://creativecommons.org/faq/#d
 * Public interest groups working to to advance [human rights](https://www.un.org/en/about-us/universal-declaration-of-human-rights) or the promotion of democratic governance. 
 
 We further reserve the right to issue zero-cost licenses to other individuals and groups. Please [contact us](/contact/) if you'd like to use OpenSanctions but see the required licensing as a hindrance in doing so.
+
+### <a id="sponsor"></a> Support us by sponsorship
+
+Some users might prefer to sponsor the ongoing development and growth of OpenSanctions independently of the commercial licensing model. That's why we have enrolled in the GitHub sponsors program to accept contributions from sponsors.
+
+Thanks so much for considering this, it means the world to us!
+
+<iframe src="https://github.com/sponsors/pudo/card" title="Sponsor pudo" height="225" width="600" style="border: 0;"></iframe>

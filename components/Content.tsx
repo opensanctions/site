@@ -60,9 +60,6 @@ function ContentMenu({ title, children, jsonLink }: React.PropsWithChildren<Cont
               <RoutedNavLink href="/licensing/">Licensing the data</RoutedNavLink>
             </Nav.Item>
             <Nav.Item>
-              <RoutedNavLink href="/sponsor/">Support the project</RoutedNavLink>
-            </Nav.Item>
-            <Nav.Item>
               <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
             </Nav.Item>
           </Nav>
