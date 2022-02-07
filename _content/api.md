@@ -30,5 +30,5 @@ In its current iteration, the API includes the following endpoints:
 
 * [``/entities/<ID>``](https://api.opensanctions.org/#operation/fetch_entity_entities__entity_id__get) gives users direct access to all the data linked to a specific entity. This includes the local graph context of the entity, i.e. any entities linked to or from the given item.
 
-* [``/statements``](https://api.opensanctions.org/#operation/statements_statements_get) gives users direct access the raw data storage of OpenSanctions, which is a statement-based data model. This can be used to determine which property values on a given entity stem from which data source, and when they were first included in that source.
+* [``/statements``](https://api.opensanctions.org/#operation/statements_statements_get) gives users direct access the raw data storage of OpenSanctions, which is a [statement-based data model](/docs/statements/). This can be used to determine which property values on a given entity stem from which data source, and when they were first included in that source.
 

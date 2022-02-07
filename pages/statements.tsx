@@ -4,6 +4,7 @@ import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container';
 
 import Layout from '../components/Layout'
@@ -93,6 +94,10 @@ export default function Statements({ apiUrl, error, response }: InferGetServerSi
         </Row>
         <Row>
           <Col md={12}>
+            <Alert variant="primary">
+              This table shows statement-based, sourced records from our database. For more context,
+              learn about <Alert.Link href="/docs/statements/">how OpenSanctions stores information</Alert.Link>.
+            </Alert>
             <Table bordered size="sm">
               <thead>
                 <tr>

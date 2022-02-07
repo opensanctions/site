@@ -8,7 +8,7 @@ summary: |
 > If you would like to see another file format or slice of the data included in
 > this project, please [get in touch](/contact/) to discuss your idea.
 
-Please also refer to the [API documentation](/docs/api/), [entity structure definition](/docs/entities/) and the [data dictionary](/reference/).
+Please also refer to the [API documentation](/docs/api/), [entity structure definition](/docs/entities/) and the [data dictionary](/reference/). Advanced users may also want to learn about the [statement-based data model](/docs/statements/).
 
 ## <a id="formats" /> Formats
 

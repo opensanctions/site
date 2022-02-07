@@ -55,7 +55,7 @@ This corpus of decisions should provide a valuable resource going forward, espec
 
 Resulting from entity resolution is a graph of entity IDs, reflecting the positive and negative judgements that have been made (it's actually a [JSON file](https://github.com/opensanctions/opensanctions/blob/main/opensanctions/static/resolve.ijson) you can play with). Computing the [connected components](https://en.wikipedia.org/wiki/Component_(graph_theory)) on that graph gives us a set of all entity groups to be merged.
 
-Next, we need to apply these merges to the data itself and combine the source entities into a new, combined form. This is where the unusual data model used by OpenSanctions comes into play: the system stores all entities as a set of *statements*. Each statement describes one value for a [property of the entity](/reference/#schema). For example: the entity `ofac-20601` has the property `name` with value `PAK, Han Se` according to the dataset `us_trade_csl` on `2021-10-03`.
+Next, we need to apply these merges to the data itself and combine the source entities into a new, combined form. This is where the unusual data model used by OpenSanctions comes into play: the [system stores all entities as a set of statements](/docs/statements/). Each statement describes one value for a [property of the entity](/docs/entities/). For example: the entity `ofac-20601` has the property `name` with value `PAK, Han Se` according to the dataset `us_trade_csl` on `2021-10-03`.
 
 <a href="https://assets.pudo.org/opensanctions/images/statements2.png">
     <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/statements2.png">
