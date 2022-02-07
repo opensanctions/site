@@ -193,17 +193,20 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
 
 export type EntitySidebarProps = {
   entity: Entity,
+  rawLinks?: boolean
 }
 
-export function EntitySidebar({ entity }: EntityProps) {
+export function EntitySidebar({ entity, rawLinks = true }: EntitySidebarProps) {
   const properties = entity.getDisplayProperties();
   const sidebarProperties = properties.filter((p) => p.type.name !== 'entity' && p.name !== 'notes');
   return (
     <>
       <p>
-        <span className={styles.rawFloat}>
-          <EntityRawLink entity={entity} prop="id" />
-        </span>
+        {rawLinks && (
+          <span className={styles.rawFloat}>
+            <EntityRawLink entity={entity} prop="id" />
+          </span>
+        )}
         <strong>Type</strong><br />
         <span>{entity.schema.label}</span>
       </p>
@@ -282,26 +285,5 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
         </div>
       </Col>
     </Row >
-  );
-}
-
-
-type EntityRedirectProps = {
-  entity: IEntityDatum
-}
-
-export function EntityRedirect({ entity }: EntityRedirectProps) {
-  const url = `${BASE_URL}/entities/${entity.id}/`
-  return (
-    <>
-      <Head>
-        <title>Redirect to {entity.caption}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="refresh" content={`0; url=${url}`} />
-      </Head>
-      <p>
-        See: <a href={url}>{entity.caption}</a>
-      </p>
-    </>
   );
 }

@@ -6,6 +6,7 @@ import { API_URL, BASE_URL, ISSUES_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
+import issuesJson from '../data/issues.json';
 
 const index = { ...indexJson } as unknown as IIndex;
 index.details = {};
@@ -19,7 +20,7 @@ index.datasets = index.datasets.map((raw: any) => {
 })
 index.model = index.model as IModelDatum
 
-async function fetchJsonUrl(url: string): Promise<any> {
+export async function fetchJsonUrl(url: string): Promise<any> {
   const data = await fetch(url, { cache: "force-cache" });
   if (!data.ok) {
     // console.log('ERROR', data);
@@ -48,17 +49,11 @@ export async function getDatasetDetails(name: string): Promise<IDatasetDetails |
 }
 
 export async function getIssues(): Promise<Array<IIssue>> {
-  // const index = await parseJsonFile('issues.json') as IIssueIndex;
-  const index = await fetchJsonUrl(ISSUES_URL) as IIssueIndex;
+  const index = { ...issuesJson } as unknown as IIssueIndex;
   return index.issues
 }
 
 export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue>> {
   const issues = await getIssues()
   return issues.filter(issue => issue.dataset === dataset?.name);
-}
-
-export async function getEntityById(id: string): Promise<IEntityDatum | null> {
-  const raw = await fetchJsonUrl(`${API_URL}/entities/${id}`);
-  return raw === null ? null : raw as IEntityDatum;
 }

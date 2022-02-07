@@ -1,38 +1,22 @@
-import { Model } from '../../lib/ftm/model';
 import Container from 'react-bootstrap/Container';
 
 import Layout from '../../components/Layout'
 import { ISource, isSource } from '../../lib/types';
-import { fetchIndex, getDatasets, getEntityById } from '../../lib/data';
+import { fetchIndex, fetchJsonUrl, getDatasets } from '../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
 import { JSONLink } from '../../components/util';
 import { getSchemaEntityPage } from '../../lib/schema';
-import { EntityDisplay, EntityRedirect } from '../../components/Entity';
+import { EntityDisplay } from '../../components/Entity';
+import { IEntityDatum, Model } from '../../lib/ftm';
 
 // import styles from '../styles/Search.module.scss'
 
 
-export default function Entity({ entityId, entityData, modelData, sources }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Entity({ apiUrl, entityData, modelData, sources }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(modelData);
-  if (entityData === null || entityData.id === undefined) {
-    return (
-      <Layout.Base title="Failed to load">
-        <Container>
-          <h1 className="errorTitle">
-            Could not load: {entityId}
-          </h1>
-        </Container>
-      </Layout.Base >
-    );
-  }
-  if (entityData.id !== entityId) {
-    return <EntityRedirect entity={entityData} />
-  }
-  const entity = model.getEntity(entityData)
-  const structured = getSchemaEntityPage(entity, sources)
-  const apiUrl = `${API_URL}/entities/${entityId}`
-
+  const entity = model.getEntity(entityData);
+  const structured = getSchemaEntityPage(entity, sources);
   return (
     <Layout.Base title={entity.caption} structured={structured}>
       <Container>
@@ -54,7 +38,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   const index = await fetchIndex();
   const datasets = await getDatasets();
-  const entity = await getEntityById(entityId);
+  const apiUrl = `${API_URL}/entities/${entityId}`;
+  const raw = await fetchJsonUrl(apiUrl);
+  if (raw === undefined || raw === null || raw.id === undefined) {
+    return { notFound: true }
+  }
+  const entity = raw as IEntityDatum;
+  if (entity.id !== entityId) {
+    return { redirect: { destination: `/entities/${entity.id}`, permanent: false } };
+  }
   const sourceNames = entity !== null ? entity.datasets : [];
 
   const sources = sourceNames
@@ -65,6 +57,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       entityId,
+      apiUrl,
       sources: sources,
       entityData: entity,
       modelData: index.model
