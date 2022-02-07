@@ -11,6 +11,9 @@ Our objective is to continually release high-quality sanctions and persons of in
 
 We encourage companies to use OpenSanctions data in a commercial context. If you intend to do so, **please contact us at [info@opensanctions.org](/contact/)** to discuss the terms of obtaining a license. Licenses will be priced competitively, as they are only meant to cover the cost of running and maintaining the project.
 
+* Blog post: [Introducing business licenses for OpenSanctions](https://www.opensanctions.org/articles/2021-12-10-sustainability/).
+* Contact us to [discuss licensing conditions](/contact/) or [book a call](https://calendly.com/flindenberg/30min).
+
 ### License exceptions (journalism, advocacy)
 
 Beyond the definition of [non-commercial use](https://creativecommons.org/faq/#does-my-use-violate-the-noncommercial-clause-of-the-licenses) provided by Creative Commons, we also grant a zero-cost license to the groups listed below. They are entitled to use the data pursuant to the terms of [CC BY 4.0](https://creativecommons.org/licenses/by-nc/4.0/), but not to undertake any commercial redistribution of the data in bulk or in large parts.
