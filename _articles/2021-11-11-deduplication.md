@@ -7,7 +7,7 @@ summary: |
 draft: false
 ---
 
-Sanctions lists are published by many institutions, including the [UN Security Council](/datasets/un_sc_sanctions/), the [US](/datasets/us_ofac_sdn/) and [UK Treasury](/gb_hmt_sanctions/), the [EU foreign service](/datasets/eu_fsf/) and many others. Between these lists, there is both overlap and disagreement: for example, 12 separate sources target [Han Se Pak](https://opensanctions.org/entities/NK-Z9kSq8KRj7uNrV5c3x2QZx/), who leads the North Korean arms trading organisation KOMID. On the other hand, [Yevgeni Prigozhin](https://opensanctions.org/entities/NK-ewCHMoMiX5iEkXoj7YxGsz/), the man behind the famous St. Petersburg troll farm "Internet Research Agency" and the private military group "Wagner", is named on only five lists.
+Sanctions lists are published by many institutions, including the [UN Security Council](/datasets/un_sc_sanctions/), the [US](/datasets/us_ofac_sdn/) and [UK Treasury](/gb_hmt_sanctions/), the [EU foreign service](/datasets/eu_fsf/) and many others. Between these lists, there is both overlap and disagreement: for example, 12 separate sources target [Han Se Pak](https://opensanctions.org/entities/NK-Z9kSq8KRj7uNrV5c3x2QZx/), who leads the North Korean arms trading organisation KOMID. On the other hand, [Yevgeni Prigozhin](https://opensanctions.org/entities/Q20850503/), the man behind the famous St. Petersburg troll farm "Internet Research Agency" and the private military group "Wagner", is named on only five lists.
 
 In order to provide an integrated view of such entities, OpenSanctions needs to establish a mechanism for entity integration. In this article, we want to describe our approach to this challenge in terms of its three key steps: *blocking, matching and integration*.
 
