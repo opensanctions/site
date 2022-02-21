@@ -2,7 +2,7 @@
 // import { promises as fs } from 'fs';
 import { IModelDatum, IEntityDatum } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails } from "./types";
-import { API_URL, BASE_URL, ISSUES_URL } from "./constants";
+import { BASE_URL, API_TOKEN } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
@@ -21,7 +21,8 @@ index.datasets = index.datasets.map((raw: any) => {
 index.model = index.model as IModelDatum
 
 export async function fetchJsonUrl(url: string): Promise<any> {
-  const data = await fetch(url, { cache: "force-cache" });
+  const headers = { 'Authorization': `Token ${API_TOKEN}` }
+  const data = await fetch(url, { cache: "force-cache", headers });
   if (!data.ok) {
     // console.log('ERROR', data);
     return null;

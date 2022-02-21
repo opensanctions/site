@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 
 import Layout from '../components/Layout'
 import { ISearchAPIResponse } from '../lib/types';
-import { fetchIndex, getDatasets } from '../lib/data';
+import { fetchIndex, fetchJsonUrl, getDatasets } from '../lib/data';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../components/Search';
 import styles from '../styles/Search.module.scss'
@@ -18,12 +18,12 @@ import { FormattedDate, JSONLink, ResponsePagination } from '../components/util'
 
 const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
 
-export default function Search({ modelData, apiUrl, query, datasets, scopeName, error, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Search({ modelData, apiUrl, query, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const model = new Model(modelData);
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
 
-  if (error || scope === undefined) {
+  if (response === null || scope === undefined) {
     return (
       <Layout.Base title="Failed to load">
         <Container>
@@ -117,15 +117,12 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
   })
 
-  const ret = await fetch(apiUrl)
-  const response = await ret.json() as ISearchAPIResponse;
-
+  const response = await fetchJsonUrl(apiUrl) as ISearchAPIResponse;
   return {
     props: {
       query,
       response,
       apiUrl,
-      error: !ret.ok,
       scopeName,
       datasets: datasets,
       modelData: index.model

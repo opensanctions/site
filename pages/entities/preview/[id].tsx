@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 
 import { fetchIndex, fetchJsonUrl } from '../../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { API_URL, BASE_URL } from '../../../lib/constants';
+import { API_URL } from '../../../lib/constants';
 import { IEntityDatum, Model } from '../../../lib/ftm';
 import { EntitySidebar } from '../../../components/Entity';
 import Head from 'next/head';

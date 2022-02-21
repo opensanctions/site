@@ -5,6 +5,7 @@ export const INDEX_URL = "https://data.opensanctions.org/datasets/latest/index.j
 export const ISSUES_URL = "https://data.opensanctions.org/datasets/latest/issues.json"
 export const LICENSE_URL = "https://creativecommons.org/licenses/by-nc/4.0/"
 export const API_URL = "https://api.opensanctions.org"
+export const API_TOKEN = process.env.API_TOKEN || "site-dev"
 export const SEARCH_DATASET = "default"
 export const RENDER_DATASET = "sanctions"
 export const SEARCH_SCHEMA = "Thing"
