@@ -63,6 +63,16 @@ function EntityRow({ stmt, model, sourceMap, entityMap }: EntityRowProps) {
 
 export default function DatasetRecent({ dataset, apiUrl, modelData, statements, sourceMap, entityMap }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(modelData);
+  if (statements === null || statements === undefined) {
+    return (
+      <Layout.Base title="Failed to load">
+        <Container>
+          <h2>Could not load search function.</h2>
+        </Container>
+      </Layout.Base >
+    );
+  }
+
   return (
     <Layout.Base title={`Latest entries: ${dataset.title}`}>
       <Container>
@@ -138,6 +148,9 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     }
   })
   const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+  if (statements === null) {
+    return { props: { dataset, modelData: index.model, statements, apiUrl, sourceMap: {}, entityMap: {} } }
+  }
   const sourceNames = statements.results.map(s => s.dataset);
   const sources = datasets.filter((d) => sourceNames.indexOf(d.name) !== -1)
   const sourceMap = sources.reduce((a, d) => ({ ...a, [d.name]: d }), {})
