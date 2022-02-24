@@ -176,6 +176,7 @@ export interface ISearchAPIResponse extends IPaginatedResponse {
 
 
 export interface IStatement {
+  id: string
   entity_id: string
   canonical_id: string
   prop: string

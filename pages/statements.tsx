@@ -15,6 +15,7 @@ import styles from '../styles/Statement.module.scss'
 import { API_URL } from '../lib/constants';
 import { FormattedDate, JSONLink } from '../components/util';
 import { AspectRatioFill, Link45deg } from 'react-bootstrap-icons';
+import { fetchJsonUrl } from '../lib/data';
 
 type ExpandProps = {
   href: string
@@ -62,8 +63,8 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
 }
 
 
-export default function Statements({ apiUrl, error, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  if (error) {
+export default function Statements({ apiUrl, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  if (response === null) {
     return (
       <Layout.Base title="Failed to load">
         <Container>
@@ -111,8 +112,8 @@ export default function Statements({ apiUrl, error, response }: InferGetServerSi
                 </tr>
               </thead>
               <tbody>
-                {response.results.map((stmt, idx) => (
-                  <tr key={`stmt-${idx}`}>
+                {response.results.map((stmt) => (
+                  <tr key={`stmt-${stmt.id}`}>
                     <td className={styles.colCanonical}>
                       <Link href={filterQuery({ canonical_id: stmt.canonical_id })}>
                         {stmt.canonical_id}
@@ -157,8 +158,6 @@ export default function Statements({ apiUrl, error, response }: InferGetServerSi
 
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  // const index = await fetchIndex();
-  // const datasets = await getDatasets();
   const apiUrl = queryString.stringifyUrl({
     'url': `${API_URL}/statements`,
     'query': {
@@ -167,16 +166,11 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
   })
 
-  const ret = await fetch(apiUrl)
-  const response = await ret.json() as IStatementAPIResponse;
+  const response = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
   return {
     props: {
       response,
-      // query: context.query,
       apiUrl,
-      error: !ret.ok,
-      // datasets: datasets,
-      // modelData: index.model
     }
   };
 }
