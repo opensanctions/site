@@ -159,7 +159,9 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     .map(s => s.canonical_id)
     .map(id => fetchJsonUrl(`${API_URL}/entities/${id}?nested=false`));
   const responses = await Promise.all(promises) as IEntityDatum[]
-  const entityMap = responses.reduce((a, e) => ({ ...a, [e.id]: e }), {})
+  const entityMap = responses
+    .filter((e) => e !== null)
+    .reduce((a, e) => ({ ...a, [e.id]: e }), {})
   return { props: { dataset, modelData: index.model, statements, apiUrl, sourceMap, entityMap } }
 }
 
