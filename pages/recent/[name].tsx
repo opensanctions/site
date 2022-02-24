@@ -28,7 +28,7 @@ type EntityRowProps = {
 function EntityRow({ stmt, model, sourceMap, entityMap }: EntityRowProps) {
   const source = sourceMap[stmt.dataset];
   const entityData = entityMap[stmt.canonical_id];
-  if (source === undefined || entityData == undefined) {
+  if (source === undefined || source == null || entityData == undefined || entityData == null) {
     return null;
   }
   const countryType = model.getType('country');
