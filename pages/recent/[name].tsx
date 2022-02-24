@@ -1,7 +1,11 @@
 import queryString from 'query-string';
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 import Table from 'react-bootstrap/Table';
+import Badge from 'react-bootstrap/Badge';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import Layout from '../../components/Layout';
 import { API_URL } from "../../lib/constants";
@@ -9,8 +13,9 @@ import { fetchIndex, fetchJsonUrl, getDatasetByName, getDatasets } from "../../l
 import Dataset from '../../components/Dataset';
 import { IEntityDatum, Model } from '../../lib/ftm';
 import { IDataset, IStatement, IStatementAPIResponse } from '../../lib/types';
-import { FormattedDate } from '../../components/util';
+import { FormattedDate, JSONLink, Spacer } from '../../components/util';
 import { EntityLink } from '../../components/Entity';
+import { TypeValues } from '../../components/Property';
 
 
 type EntityRowProps = {
@@ -26,17 +31,27 @@ function EntityRow({ stmt, model, sourceMap, entityMap }: EntityRowProps) {
   if (source === undefined || entityData == undefined) {
     return null;
   }
+  const countryType = model.getType('country');
   const entity = model.getEntity(entityData);
+  const countries = entity.getTypeValues(countryType);
   return (
     <tr key={`stmt-${stmt.id}`}>
       <td>
         <FormattedDate date={stmt.value} />
       </td>
       <td>
-        <EntityLink entity={entity} />
-      </td>
-      <td>
-        {entity.schema.label}
+        <strong>
+          <EntityLink entity={entity} />
+        </strong>
+        <p>
+          <Badge bg="light">{entity.schema.label}</Badge>
+          {!!countries.length && (
+            <>
+              <Spacer />
+              <TypeValues type={countryType} values={countries} limit={4} />
+            </>
+          )}
+        </p>
       </td>
       <td>
         <Dataset.Link dataset={source} />
@@ -46,34 +61,55 @@ function EntityRow({ stmt, model, sourceMap, entityMap }: EntityRowProps) {
 }
 
 
-export default function DatasetRecent({ dataset, modelData, statements, sourceMap, entityMap }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function DatasetRecent({ dataset, apiUrl, modelData, statements, sourceMap, entityMap }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(modelData);
   return (
     <Layout.Base title={`Latest entries: ${dataset.title}`}>
       <Container>
-        <h1>
-          {`Latest entries: ${dataset.title}`}
-        </h1>
-        <Table bordered size="sm">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Target</th>
-              <th>Type</th>
-              <th>Source</th>
-            </tr>
-          </thead>
-          <tbody>
-            {statements.results.map((stmt) => (
-              <EntityRow
-                stmt={stmt}
-                model={model}
-                sourceMap={sourceMap}
-                entityMap={entityMap}
-              />
-            ))}
-          </tbody>
-        </Table>
+        <Row>
+          <Col md={12}>
+            <h1>
+              {`Latest targeted entities`}
+              <JSONLink href={apiUrl} />
+            </h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={9}>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Target</th>
+                  <th>Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {statements.results.map((stmt) => (
+                  <EntityRow
+                    stmt={stmt}
+                    model={model}
+                    sourceMap={sourceMap}
+                    entityMap={entityMap}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+          <Col md={3}>
+            <p>
+              <Badge bg="light">
+                Data as of <FormattedDate date={dataset.last_change} />
+              </Badge>
+            </p>
+            <Alert variant="primary">
+              See the latest targets published in <Alert.Link href={`/datasets/${dataset.name}`}>{dataset.title}</Alert.Link>. This table shows
+              when a particular entity was added to the source - the profile page
+              will instead name the first date the entity was targeted by any of the
+              sources included in our database.
+            </Alert>
+          </Col>
+        </Row>
       </Container>
     </Layout.Base >
   )
@@ -94,7 +130,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     'url': `${API_URL}/statements`,
     'query': {
       // ...context.query,
-      'limit': 50,
+      'limit': 100,
       'dataset': dataset.name,
       'target': true,
       'prop': 'createdAt',
