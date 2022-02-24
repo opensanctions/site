@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -14,7 +15,7 @@ import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY } from '../lib/constants'
 import { getSchemaWebSite } from '../lib/schema';
 import { Download, Search } from 'react-bootstrap-icons';
-import { FormattedDate, Numeric, NumericBadge } from '../components/util';
+import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
 import { getArticles } from '../lib/content';
 import Dataset from '../components/Dataset';
@@ -121,7 +122,10 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
             </p>
           </Col>
           <Col md={8} className={styles.explainer}>
-            <h4>Collections</h4>
+            <Alert variant="warning">
+              <strong>NEW:</strong> Track the <Alert.Link href="/recent/sanctions">latest sanctions imposed by the US, Europe, Britain, etc...</Alert.Link>
+            </Alert>
+            <h4> Collections</h4>
             <p>
               <Link href="/docs/faq/#collections">Collections</Link> are custom datasets
               provided by OpenSanctions that combine data from <Link href="/datasets/#sources">
