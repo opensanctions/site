@@ -35,7 +35,7 @@ function EntityRow({ stmt, model, sourceMap, entityMap }: EntityRowProps) {
   const entity = model.getEntity(entityData);
   const countries = entity.getTypeValues(countryType);
   return (
-    <tr key={`stmt-${stmt.id}`}>
+    <tr>
       <td>
         <FormattedDate date={stmt.value} />
       </td>
@@ -97,6 +97,7 @@ export default function DatasetRecent({ dataset, apiUrl, modelData, statements, 
               <tbody>
                 {statements.results.map((stmt) => (
                   <EntityRow
+                    key={`stmt-${stmt.id}`}
                     stmt={stmt}
                     model={model}
                     sourceMap={sourceMap}
