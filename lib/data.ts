@@ -1,8 +1,9 @@
 // import { join } from 'path'
 // import { promises as fs } from 'fs';
-import { IModelDatum, IEntityDatum } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails } from "./types";
-import { BASE_URL, API_TOKEN } from "./constants";
+import queryString from 'query-string';
+import { IModelDatum } from "./ftm";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity } from "./types";
+import { BASE_URL, API_TOKEN, API_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
@@ -57,4 +58,23 @@ export async function getIssues(): Promise<Array<IIssue>> {
 export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue>> {
   const issues = await getIssues()
   return issues.filter(issue => issue.dataset === dataset?.name);
+}
+
+export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
+  const apiUrl = queryString.stringifyUrl({
+    'url': `${API_URL}/statements`,
+    'query': {
+      'limit': 500,
+      'dataset': 'sanctions',
+      'target': true,
+      'prop': 'createdAt',
+      'sort': 'value:desc',
+    }
+  })
+  const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+  const canonicalised = new RegExp('(^NK-.*|Q\d*)');
+  const entities: Array<ISitemapEntity> = statements.results
+    .filter((stmt) => canonicalised.test(stmt.canonical_id))
+    .map((stmt) => ({ id: stmt.canonical_id, lastmod: stmt.value }));
+  return entities;
 }

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { join } from 'path'
 import { BASE_URL } from './constants';
-import { IArticleInfo, IContent, IDataset, isCollection } from "./types";
+import { IArticleInfo, IContent, IDataset, isCollection, ISitemapEntity } from "./types";
 
 const PAGES = ['/', '/contact/', '/datasets/', '/docs/']
 
@@ -17,7 +17,7 @@ function writeUrl(url: string, lastmod?: string, changefreq?: string, priority?:
     ${priorityTag}${changefreqTag}${lastmodTag}</url>`
 }
 
-export default function writeSitemap(datasets: Array<IDataset>, articles: Array<IArticleInfo>, contents: Array<IContent>) {
+export default function writeSitemap(datasets: Array<IDataset>, articles: Array<IArticleInfo>, contents: Array<IContent>, entities: Array<ISitemapEntity>) {
   const urls = PAGES.map(url => writeUrl(url, undefined, undefined, 0.9));
   contents.forEach((content) => {
     urls.push(writeUrl(content.path, undefined, undefined, 0.8))
@@ -27,12 +27,13 @@ export default function writeSitemap(datasets: Array<IDataset>, articles: Array<
     const lastmod = dataset.last_change ? dataset.last_change.split('T')[0] : undefined
     urls.push(writeUrl(`/datasets/${dataset.name}/`, lastmod, 'weekly', priority))
   })
-  articles.forEach((a) => {
-    urls.push(writeUrl(a.path, a.date, undefined, 0.8))
+  entities.forEach((entity) => {
+    const lastmod = entity.lastmod.split('T')[0];
+    urls.push(writeUrl(`/entities/${entity.id}/`, lastmod, 'weekly', 0.7))
   })
-  // entityIds.forEach((id) => {
-  //   urls.push(writeUrl(`/entities/?id=${id}`, undefined, undefined, undefined))
-  // })
+  articles.forEach((a) => {
+    urls.push(writeUrl(a.path, a.date, undefined, 1.0))
+  })
   const body = urls.join('\n')
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

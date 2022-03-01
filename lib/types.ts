@@ -191,3 +191,8 @@ export interface IStatement {
 export interface IStatementAPIResponse extends IPaginatedResponse {
   results: Array<IStatement>
 }
+
+export interface ISitemapEntity {
+  id: string
+  lastmod: string
+}

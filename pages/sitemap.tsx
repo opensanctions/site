@@ -1,7 +1,7 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { getArticles, getContents } from '../lib/content';
 
-import { getDatasets } from '../lib/data'
+import { getDatasets, getSitemapEntities } from '../lib/data'
 import writeSitemap from '../lib/sitemap';
 
 
@@ -15,8 +15,8 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const datasets = await getDatasets()
   const articles = await getArticles()
   const contents = await getContents()
-  // const entityIds = await getCanonialEntityIds()
-  writeSitemap(datasets, articles, contents)
+  const entities = await getSitemapEntities()
+  writeSitemap(datasets, articles, contents, entities)
   return {
     props: {}
   }
