@@ -26,7 +26,7 @@ been a member of several political parties in their career.
 The "Simplified CSV" format addresses this by presenting a highly limited view of the
 data, in which only a select set of key columns is provided. These include:
 
-* ``id``: the unique identifier of the given entity.
+* ``id``: the [unique identifier](/docs/identifiers/) of the given entity.
 * ``schema``: the [entity type](/reference/#schema).
 * ``name``: the display name of the given entity.
 * ``aliases``: any alias names (e.g. other scripts, nom de guerre) provided by the data sources.

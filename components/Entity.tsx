@@ -271,17 +271,20 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
           <h3>About this page</h3>
           <ul>
             <li>
-              This page describes an entity ({entity.schema.label}) that is documented as
-              part of the OpenSanctions project in the public interest (<Link href="/docs/faq/">FAQ</Link>).
+              This page describes an entity that is documented as part of the <Link href="/docs/about/">OpenSanctions
+                project</Link> in the public interest (<Link href="/docs/faq/">FAQ</Link>).
             </li>
             <li>
               The entity was added <FormattedDate date={entity.first_seen} /> and last updated <FormattedDate date={entity.last_seen} />.
             </li>
             <li>
-              For experts: <Link href={`/statements/?canonical_id=${entity.id}`}>raw data explorer</Link> with per-attribute information on data provenance.
+              For experts: <Link href={`/statements/?canonical_id=${entity.id}`}>raw data
+                explorer</Link> with per-attribute information on data provenance.
             </li>
           </ul>
           <LicenseInfo />
+          <hr />
+          Source data IDs<HelpLink href="/docs/identifiers/" />: <SpacedList values={entity.referents.map((r) => <code>{r}</code>)} />
         </div>
       </Col>
     </Row >

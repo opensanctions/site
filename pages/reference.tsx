@@ -80,6 +80,12 @@ export default function Reference({ content, activeModel, schemata }: InferGetSt
           types. Other types perform algorithmic validation, e.g. for phone
           numbers, URLs or email addresses.
         </p>
+        <TypeReference type={model.getType('entity')}>
+          Entity references are used by one <Link href="/docs/entities/">entity</Link> to
+          reference another and thus create a link between the two. Take note of
+          the <Link href="/docs/identifiers/">guidance on entity identifiers</Link> to
+          understand how entity IDs change as incoming records are deduplicated.
+        </TypeReference>
         <TypeReference type={model.getType('topic')}>
           Topics are used to tag other entities - mainly organizations and people - with
           semantic roles, e.g. to designate an individual as a politician, terrorist or

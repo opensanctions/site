@@ -30,7 +30,7 @@ What properties can be set for an entity is determined by it's schema. For examp
 
 ## References
 
-Entities can reference other entities. This is achieved via a special property type, `entity`. Properties of this type simply store the ID of another entity. For example, a [Passport](/reference/#schema.Passport) entity can be linked to a [Person](/reference/#schema.Person) entity via its `holder` property:
+Entities can reference other entities. This is achieved via a special property type, `entity`. Properties of this type simply store the [ID](/docs/identifiers/) of another entity. For example, a [Passport](/reference/#schema.Passport) entity can be linked to a [Person](/reference/#schema.Person) entity via its `holder` property:
 
 ```json
 {
