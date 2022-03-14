@@ -24,7 +24,7 @@ OpenSanctions is an open project, anyone is invited to use the datasets, the [co
 
 ### Where does the data come from?
 
-Our preferred sources are official datasets published by governments and other authorities all over the world; including commonly used sanctions and ban lists. In the future, we hope to also include information from media reporting, Wikidata and Wikipedia and litigation.
+Our preferred sources are official datasets published by governments and other authorities all over the world; including commonly used sanctions and ban lists. Much of the data related to politically exposed persons is collected via Wikidata. In the future, we hope to also include information from media reporting, and relevant litigation.
 
 
 ### <a id="updates"></a> How frequently is OpenSanctions updated?
@@ -36,7 +36,7 @@ For data sources that require screen scraping rather than publishing structured 
 
 ### <a id="api"></a> Is there an API for matching entity lists against OpenSanctions?
 
-The core goal of OpenSanctions is providing high-quality bulk data access to its users. Besides doing so, but we also maintain an [OpenSanctions API appliance](/docs/api/) that makes it easy to search the data or to match the sanctions data against a list of customers or suspects.
+The core goal of OpenSanctions is providing high-quality bulk data access to its users. Besides doing so, but we also maintain an [OpenSanctions API](/docs/api/) that makes it easy to search the data or to match the sanctions data against a list of customers or suspects.
 
 If you provide another API that uses the OpenSanctions data, we’d love to hear about it and link to it from this site. Please take note of the [commercial licensing](/licensing/) rules if you do so.
 
@@ -62,6 +62,7 @@ The concept [is important](https://www.fatf-gafi.org/media/fatf/documents/recomm
 
 OpenSanctions includes a [PEPs collection](/datasets/peps/) that combines lists of
 politicians from multiple origins.
+
 
 ### <a id="collections"></a> What is a collection?
 
