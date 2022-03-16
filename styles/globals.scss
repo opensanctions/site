@@ -75,6 +75,12 @@ td.numeric, th.numeric {
     margin-bottom: 1em;
 }
 
+.img-caption {
+    color: $text-muted;
+    font-size: 0.9em;
+    margin-top: 0.4em;
+}
+
 // youtube embeds full-width:
 .video-container {
     overflow: hidden;

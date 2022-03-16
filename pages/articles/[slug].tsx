@@ -22,7 +22,7 @@ type ArticleScreenProps = {
 export default function ArticleScreen({ article }: ArticleScreenProps) {
   const structured = getSchemaArticle(article)
   return (
-    <Layout.Base title={article.title} description={article.summary} structured={structured}>
+    <Layout.Base title={article.title} description={article.summary} imageUrl={article.image_url} structured={structured}>
       <Container>
         <h1>{article.title}</h1>
         <Row>

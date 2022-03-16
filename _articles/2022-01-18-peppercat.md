@@ -1,5 +1,6 @@
 ---
 title: The CIA lost track of who runs the UK, so I picked up the slack
+image_url: https://assets.pudo.org/opensanctions/images/peppercat-cia.png
 summary: |
     A guest post from Tony Bowden about his efforts to build an open source dataset
     of world leaders inside of Wikidata, the structured-data version of Wikipedia.

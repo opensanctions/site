@@ -26,6 +26,7 @@ export async function getContentBySlug(slug: string): Promise<IContent> {
     title: data.title,
     path: data.path || `/docs/${realSlug}/`,
     content: markdownToHtml(content),
+    image_url: data.image_url || null,
     summary: data.summary || null,
   }
 }
@@ -49,6 +50,7 @@ export async function getArticleBySlug(slug: string): Promise<IArticle> {
     url: `${BASE_URL}/articles/${realSlug}`,
     title: data.title || realSlug,
     draft: data.draft || false,
+    image_url: data.image_url || null,
     content: markdownToHtml(content),
     summary: data.summary || null,
   }

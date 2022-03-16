@@ -1,5 +1,6 @@
 ---
 title: "How to sanctions-check a spreadsheet using OpenRefine"
+image_url: https://assets.pudo.org/opensanctions/images/openrefine/entity-link.png
 summary: |
     OpenRefine, a power tool for data cleaning, offers a way to quickly check hundreds or thousands of names against the OpenSanctions database to find the ones that might be persons of interest in an investigation.
 draft: false

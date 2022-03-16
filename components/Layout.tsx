@@ -12,11 +12,12 @@ import { BASE_URL, SITE } from '../lib/constants';
 type LayoutBaseProps = {
   title?: string,
   description?: string | null,
+  imageUrl?: string | null,
   structured?: any,
   navSearch?: boolean
 }
 
-function LayoutBase({ title, description, structured, navSearch, children }: React.PropsWithChildren<LayoutBaseProps>) {
+function LayoutBase({ title, description, imageUrl, structured, navSearch, children }: React.PropsWithChildren<LayoutBaseProps>) {
   const router = useRouter();
   const url = `${BASE_URL}${router.asPath}`;
   const navSearchDef = navSearch === undefined ? true : navSearch;
@@ -46,7 +47,7 @@ function LayoutBase({ title, description, structured, navSearch, children }: Rea
         {structured && (
           <script type="application/ld+json" dangerouslySetInnerHTML={{ '__html': JSON.stringify(structured) }} />
         )}
-        <meta property="og:image" content="/static/card.jpg" />
+        <meta property="og:image" content={(!!imageUrl) ? imageUrl : "/static/card.jpg"} />
         <meta name="og:site" content={SITE} />
         <meta property="og:url" content={url} />
       </Head>
@@ -67,7 +68,7 @@ type LayoutContentProps = {
 
 function LayoutContent({ content, children }: React.PropsWithChildren<LayoutContentProps>) {
   return (
-    <LayoutBase title={content.title} description={content.summary}>
+    <LayoutBase title={content.title} description={content.summary} imageUrl={content.image_url}>
       {children}
     </LayoutBase>
   )

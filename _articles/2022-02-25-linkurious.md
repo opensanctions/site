@@ -1,5 +1,6 @@
 ---
 title: "Using graph analytics to find evidence of corruption"
+image_url: https://assets.pudo.org/opensanctions/images/webinar.png
 summary: |
     In cooperation with Linkurious, we worked to develop a network graph view
     of the OpenSanctions data and demo how it can be used in anti-corruption
