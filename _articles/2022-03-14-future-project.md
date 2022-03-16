@@ -10,7 +10,7 @@ In this post, we want to take a step back from current events and address anothe
 <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/cuba-sanctions.jpeg">
 <p class="img-caption">OFAC sanctions before they adopted the world's most over-engineered XML format.</p>
 
-Following the [introduction of business licenses](/articles/2021-12-10-sustainability/) for our datasets in December, we’ve seen an incredibly encouraging reaction from companies across the fintech and open source intelligence sectors. Many of them have backed the notion that die diligence data can be better if it is made more open and more transparent.
+Following the [introduction of business licenses](/articles/2021-12-10-sustainability/) for our datasets in December, we’ve seen an incredibly encouraging reaction from companies across the fintech and open source intelligence sectors. The notion that due diligence data can be better if it is made more open and more transparent seems to have struck a nerve.
 
 That support also means we have the necessary momentum to take OpenSanctions from an experiment in open data towards a sustainable and long-lived resource. The partnerships we’ve formed so far compel us not just to maintain, but also to grow and advance it.
 
