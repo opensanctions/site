@@ -72,6 +72,9 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
     }
   })
   const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+  if (statements === null) {
+    return []
+  }
   const canonicalised = new RegExp('(^NK-.*|Q\d*)');
   const entities: Array<ISitemapEntity> = statements.results
     .filter((stmt) => canonicalised.test(stmt.canonical_id))
