@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Head from 'next/head';
 import Link from 'next/link'
 import queryString from 'query-string';
 import classNames from 'classnames';
@@ -10,12 +9,11 @@ import Table from 'react-bootstrap/Table';
 import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
-import { IEntityDatum, Entity } from '../lib/ftm'
+import { Entity } from '../lib/ftm'
 import { IDataset } from '../lib/types'
 import { PropertyValues } from './Property';
 import { FormattedDate, HelpLink, SpacedList, Summary } from './util';
 import Dataset from './Dataset';
-import { BASE_URL } from '../lib/constants';
 
 import styles from '../styles/Entity.module.scss'
 import { LicenseInfo } from './Policy';
@@ -31,7 +29,7 @@ export function EntityRawLink({ entity, prop }: EntityRawLinkProps) {
     canonical_id: entity.id,
     prop: prop
   })
-  return <a className={styles.rawLink} href={`/statements/?${query}`}>[raw]</a>
+  return <a className={styles.rawLink} rel="nofollow" href={`/statements/?${query}`}>[raw]</a>
 }
 
 
