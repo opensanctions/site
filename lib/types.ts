@@ -120,6 +120,12 @@ export function isSource(dataset?: IDataset): dataset is ISource {
   return dataset?.type === 'source';
 }
 
+export interface IMatcherFeature {
+  coefficient: number
+  description: string
+  url: string
+}
+
 export const LEVEL_ERROR = 'error'
 export const LEVEL_WARNING = 'warning'
 
@@ -147,6 +153,7 @@ export interface IIndex {
   schemata: Array<string>
   datasets: Array<IDataset>
   details: { [key: string]: IDatasetDetails }
+  matcher: { [key: string]: IMatcherFeature }
 }
 
 export interface ISearchFacetItem {
