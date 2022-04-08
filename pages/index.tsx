@@ -101,9 +101,9 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
           <Col md={4} className={styles.explainer}>
             <h4>Open source code and data</h4>
             OpenSanctions makes both its database and processing tools available
-            for free. It's easy to <Link href="/docs/usage">use the material</Link>,
+            for free. It's easy to <Link href="/docs/usage/">use the material</Link>,
             {' '}<Link href="/docs/contribute/">contribute to the project</Link>
-            {' '}and integrate the technology.
+            {' '}and <Link href="/docs/api/">integrate the technology</Link>.
           </Col>
         </Row>
         <Row>
