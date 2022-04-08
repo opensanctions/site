@@ -7,6 +7,7 @@ import { IContent } from '../lib/types'
 import { JSONLink, Markdown, RoutedNavLink, Summary } from './util';
 
 import styles from '../styles/Content.module.scss';
+import { LicenseInfo } from './Policy';
 
 type ContentProps = {
   content: IContent
@@ -80,6 +81,7 @@ function ContentMenu({ title, children, jsonLink }: React.PropsWithChildren<Cont
               <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
             </Nav.Item>
           </Nav>
+          <LicenseInfo />
         </Col>
       </Row>
     </Container>
