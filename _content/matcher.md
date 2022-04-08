@@ -1,5 +1,5 @@
 ---
-title: Matching criteria
+title: How we score
 path: /matcher/
 summary: |
     The OpenSpending API supports matching of entities using a simple query-by-example
@@ -7,4 +7,4 @@ summary: |
     here. 
 ---
 
-The API uses a simple entity comparison model based on logistic regression. Both the training data and the code are fully public, inviting public scrutiny and proposals for improvement.
+The API uses a simple entity comparison model based on [logistic regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html). Both the [training data](/docs/pairs/) and [the code](https://github.com/opensanctions/nomenklatura/tree/master/nomenklatura/matching) are fully public, inviting public scrutiny and proposals for improvement.

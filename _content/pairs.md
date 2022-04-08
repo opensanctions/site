@@ -13,7 +13,7 @@ Integrating sanctions data from different sources raises the same challenge (*is
 
 The dataset of pairwise judgements is a valuable resource for building our own [matching API](/docs/api/) and its scoring. But as an open project, we're also sharing it for others who might want to develop their own technology. You can find the data here:
 
-* **[pairs.json](https://data.opensanctions.org/contrib/training/pairs.json)** (700MB+, updated daily, [non-commercial use](/licensing/))
+* **[pairs.json](https://data.opensanctions.org/contrib/training/pairs.json)** (700MB+, line-based JSON, updated daily, [non-commercial use](/licensing/))
 
 ## Using the pairs data
 
