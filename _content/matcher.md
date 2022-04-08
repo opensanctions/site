@@ -2,7 +2,7 @@
 title: How we score matches
 path: /matcher/
 summary: |
-    The OpenSpending API supports matching of entities using a simple query-by-example
+    The OpenSanctions API supports matching of entities using a simple query-by-example
     mechanism. For transparency, you can find the weighting of features used in that API
     here. 
 ---
