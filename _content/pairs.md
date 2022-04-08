@@ -17,7 +17,7 @@ The dataset of pairwise judgements is a valuable resource for building our own [
 
 ## Using the pairs data
 
-The data has the following format, with two [entities](/docs/entities/) on each line:
+The data has the following format, with two [entities](/docs/entities/) on each line, and a judgement that states if the two records refer to the same logical item (`positive`) or if they are different logical items (`negative`):
 
 ```json
 {
@@ -28,5 +28,7 @@ The data has the following format, with two [entities](/docs/entities/) on each 
 ```
 
 The data is intended for use with the [nomenklatura](https://github.com/opensanctions/nomenklatura) data integration framework (Python), but can easily be parsed outside of that context. Nomenklatura also contains the basic statistical model which is trained by the OpenSanctions project using the data.
+
+The pairs data is derived from more granular matching judgements that are stored as a directed acyclical identifier graph in the OpenSanctions repository (`opensanctions/static/resolve.ijson`). Using that raw data requires a more granular understanding of the way in which we de-duplicate entities and is not recommended.
 
 If you use this data, please tell us about this! We're keen to hear how people use this data, and how the format or semantics could be improved.
