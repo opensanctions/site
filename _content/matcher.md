@@ -1,5 +1,5 @@
 ---
-title: How we score
+title: How we score matches
 path: /matcher/
 summary: |
     The OpenSpending API supports matching of entities using a simple query-by-example
