@@ -176,7 +176,6 @@ export function JSONLink({ href }: HelpLinkProps) {
       size="sm"
       className={styles.jsonLink}
       href={href}
-      rel="noindex, nofollow"
       type={"application/json" as unknown as undefined}  // fuck that's hacky 
     >
       <FileEarmarkCodeFill className="bsIcon" />
