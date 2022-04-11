@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   const entity = raw as IEntityDatum;
   if (entity.id !== entityId) {
-    return { redirect: { destination: `/entities/${entity.id}/`, permanent: false } };
+    return { redirect: { destination: `/entities/${entity.id}/`, permanent: true } };
   }
   const sourceNames = entity !== null ? entity.datasets : [];
 
