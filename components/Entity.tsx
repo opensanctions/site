@@ -238,14 +238,11 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
   return (
     <Row>
-      <Col md={3}>
-        <EntitySidebar entity={entity} />
-      </Col>
-      <Col md={9}>
+      <Col md={9} className="order-2">
         {entity.hasProperty('notes') && (
           <div className={styles.entityPageSection}>
             {/* <h2>Notes</h2> */}
-            {entity.getProperty('notes').map((v, idx) => (
+            {entity.getStringProperty('notes').sort((a, b) => b.length - a.length).map((v, idx) => (
               <Summary key={idx} summary={v as string} />
             ))}
           </div>
@@ -284,6 +281,9 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
           <hr />
           Source data IDs<HelpLink href="/docs/identifiers/" />: <SpacedList values={entity.referents.map((r) => <code>{r}</code>)} />
         </div>
+      </Col>
+      <Col md={3} className="order-1">
+        <EntitySidebar entity={entity} />
       </Col>
     </Row >
   );

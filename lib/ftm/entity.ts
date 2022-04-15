@@ -92,6 +92,10 @@ export class Entity {
     return this.properties.get(property) as Values;
   }
 
+  getStringProperty(prop: string | Property): string[] {
+    return this.getProperty(prop) as string[];
+  }
+
   /**
    * The first value of a property only.
    *
