@@ -29,7 +29,7 @@ export function EntityRawLink({ entity, prop }: EntityRawLinkProps) {
     canonical_id: entity.id,
     prop: prop
   })
-  return <a className={styles.rawLink} rel="nofollow" href={`/statements/?${query}`}>[raw]</a>
+  return <a className={styles.rawLink} data-nosnippet rel="nofollow" href={`/statements/?${query}`}>[raw]</a>
 }
 
 
