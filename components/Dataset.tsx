@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import TextTruncate from 'react-text-truncate';
 import { FileEarmarkSpreadsheetFill, FolderFill } from 'react-bootstrap-icons';
 
 import { IDataset, isCollection, isSource } from '../lib/types'
@@ -75,7 +76,7 @@ function DatasetItem({ dataset }: DatasetProps) {
           <NumericBadge value={dataset.target_count} className={styles.itemTargets} />
         </a>
         <p className={styles.itemSummary}>
-          {dataset.summary}
+          <TextTruncate line={1} text={dataset.summary} />
         </p>
         <p className={styles.itemDetails}>
           {isCollection(dataset) && (
@@ -87,7 +88,7 @@ function DatasetItem({ dataset }: DatasetProps) {
           )}
           {isSource(dataset) && (
             <>
-              {dataset.publisher.country_label}
+              <Badge bg="light">{dataset.publisher.country_label}</Badge>
               <Spacer />
               {dataset.publisher.name}
             </>
