@@ -74,6 +74,9 @@ function DatasetItem({ dataset }: DatasetProps) {
           <DatasetIcon dataset={dataset} /> {dataset.title}
           <NumericBadge value={dataset.target_count} className={styles.itemTargets} />
         </a>
+        <p className={styles.itemSummary}>
+          {dataset.summary}
+        </p>
         <p className={styles.itemDetails}>
           {isCollection(dataset) && (
             <>

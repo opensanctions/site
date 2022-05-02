@@ -50,10 +50,17 @@
     text-decoration: none;
 }
 
-.itemDetails {
+.itemDetails,
+.itemSummary {
     @include clearfix;
-    color: $text-muted;
+
     margin: 0;
+}
+
+.itemSummary {
+    color: $text-muted;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
 }
 
 .itemTargets {
