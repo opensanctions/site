@@ -25,14 +25,14 @@ export function TypeValue({ type, value, plain = false, entity: Entity = EntityL
     return <URLLink url={value as string} />
   }
   if (type.name === 'identifier' && !plain) {
-    return <code>{value}</code>
+    return <code>{value + ''}</code>
   }
   if (type.name === 'topic') {
     const label = type.values.get(value as string) || value;
     if (plain) {
-      return <>{label}</>;
+      return <>{label + ''}</>;
     } else {
-      return <Badge bg="warning">{label}</Badge>
+      return <Badge bg="warning">{label + ''}</Badge>
     }
   }
   if (type.name === 'entity' && !plain) {
