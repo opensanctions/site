@@ -41,9 +41,9 @@ well on Kubernetes.
 Hardware specifications: 2GB RAM, 1vCPU, 4GB hard drive. For ideal performance,
 consider allocating 4GB RAM and housing the search index on an SSD-backed disk.
 
-### What if we need support with the application?
+### What support is available with the application?
 
 Quite frankly, that's the hitch. The OpenSanctions team will have no visibility
 into a self-hosted service and cannot offer on-demand support. Beyond that, 
 however, we are happy to provide paid consultations to discuss the use of the 
-software.
+software and work out a deployment strategy for your use case.
