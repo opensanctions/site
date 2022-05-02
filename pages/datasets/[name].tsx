@@ -84,7 +84,7 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
               <Tab eventKey="description" title="Description" className={styles.viewTab}>
                 <Markdown markdown={details.description} />
                 {isCollection(dataset) && (
-                  <Alert variant="info">
+                  <Alert variant="primary">
                     This collection contains entities from multiple data sources.
                     {' '}<Link href="/docs/identifier/">Check our documentation</Link> on
                     how we de-duplicate entities and how that affects entity identifiers.
