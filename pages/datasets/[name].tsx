@@ -84,10 +84,10 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
               <Tab eventKey="description" title="Description" className={styles.viewTab}>
                 <Markdown markdown={details.description} />
                 {isCollection(dataset) && (
-                  <Alert variant="warning">
-                    This collection contains entities from multiple data sources. <Link href="/articles/2021-11-11-deduplication/">We have made sigificant progress</Link> on
-                    the de-duplication of entities across sources, but it is not yet complete - so individual companies or people may be
-                    contained more than once.
+                  <Alert variant="info">
+                    This collection contains entities from multiple data sources.
+                    {' '}<Link href="/docs/identifier/">Check our documentation</Link> on
+                    how we de-duplicate entities and how that affects entity identifiers.
                   </Alert>
                 )}
               </Tab>
