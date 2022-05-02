@@ -33,7 +33,7 @@ export default class Footer extends React.Component {
                       <Link href="/docs/">Documentation</Link>
                     </li>
                     <li>
-                      <Link href="/sponsor/">Sponsor the project</Link>
+                      <Link href="/licensing/">Commercial use</Link>
                     </li>
                   </ul>
                 </Col>
@@ -74,11 +74,11 @@ export default class Footer extends React.Component {
               </Row>
               <Row>
                 <p className={styles.copyright}>
-                  The content and data published on this site are licensed under
+                  The data published on this site is licensed under
                   the terms of <Link href={LICENSE_URL}>Creative Commons 4.0 Attribution NonCommercial</Link>.
                 </p>
                 <p className={styles.copyright}>
-                  Made with <HeartFill className={styles.love} /> in Python
+                  Made with <HeartFill className={styles.love} /> in Berlin
                   {SPACER}
                   <Link href="/impressum/">Impressum</Link>
                 </p>

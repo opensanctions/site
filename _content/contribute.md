@@ -10,8 +10,8 @@ to see anyone contribute new crawlers that help us extend the project's geograph
 topical coverage.
 
 > If you would like to see a particular data source added but don't have the time or
-> technical knowledge to do so, please consider [becoming a sponsor](/sponsor/). We will
-> prioritize data sources suggested by our sponsors.
+> technical knowledge to do so, please consider [licensing the data](/licensing/). We
+> will prioritize data sources suggested by our commercial partners.
 
 ## How to contribute
 
