@@ -1,5 +1,4 @@
-import { InferGetStaticPropsType } from 'next'
-import { CaretRightFill, EnvelopeFill, Github, LightbulbFill, Slack, Twitter } from 'react-bootstrap-icons';
+import { EnvelopeFill, LightbulbFill } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
@@ -9,7 +8,6 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Layout from '../components/Layout'
 import Content from '../components/Content'
 import { Summary } from '../components/util';
-import { getStaticContentProps } from '../lib/content'
 import Link from 'next/link';
 
 const TITLE = 'Licensing OpenSanctions';
@@ -18,9 +16,9 @@ const SUMMARY = 'Our objective is to continually release high-quality '
   + 'In order to make this sustainable, we\'re asking for-profit '
   + 'users to support the project and obtain a license.';
 
-export default function Licensing({ content }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Licensing() {
   return (
-    <Layout.Content content={content}>
+    <Layout.Base title={TITLE} description={SUMMARY}>
       <Content.Menu title={TITLE}>
         <Summary summary={SUMMARY} />
         <div className="text-body">
@@ -114,14 +112,12 @@ export default function Licensing({ content }: InferGetStaticPropsType<typeof ge
           <p>
             <strong>Not ideal for you?</strong> OpenSanctions
             provides <strong><Link href="/docs/commercial-faq/#exemptions">licensing exemptions
-              for journalists and activists</Link></strong>. Even beyond that, we're committed
-            to make this data available to everyone. If the licensing is stopping you from using our
+              for journalists and activists</Link></strong>. And beyond that, we're committed
+            to make this data available to everyone. If the licensing is stopping you from using
             OpenSanctions, <Link href="/contact/">contact us</Link> and we'll fix it.
           </p>
         </div>
       </Content.Menu>
-    </Layout.Content >
+    </Layout.Base >
   )
 }
-
-export const getStaticProps = getStaticContentProps('licensing')
