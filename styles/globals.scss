@@ -1,4 +1,3 @@
-
 /* Bootstrap overrides */
 @import "./variables.scss";
 // $theme-colors: (
@@ -13,7 +12,10 @@ html {
     scroll-behavior: auto !important;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-weight: bold;
     color: $gray-700;
 }
@@ -30,7 +32,8 @@ blockquote {
     border-left: 0.2em solid $gray-300;
 }
 
-td.numeric, th.numeric {
+td.numeric,
+th.numeric {
     text-align: right;
 }
 
@@ -50,7 +53,50 @@ td.numeric, th.numeric {
             margin-bottom: 1em;
         }
     }
-    
+
+    &.pricing {
+        .card-title {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .badge {
+            margin-top: 1em;
+            margin-bottom: 1em;
+
+            .num {
+                font-size: 1.4em;
+            }
+        }
+
+        .card-footer {
+            text-align: center;
+
+            .bsIcon {
+                margin-right: 0.3em;
+            }
+
+            .btn {
+                font-weight: 400;
+
+                &.btn-primary,
+                &.btn-secondary {
+                    color: white;
+                }
+            }
+
+            .buy-now {
+                font-size: 0.8em;
+                margin-top: 0.5em;
+
+                a {
+                    color: white;
+                }
+            }
+        }
+
+    }
+
 }
 
 
@@ -85,7 +131,7 @@ td.numeric, th.numeric {
 .video-container {
     overflow: hidden;
     position: relative;
-    width:100%;
+    width: 100%;
     margin-bottom: 1em;
 }
 
@@ -131,6 +177,7 @@ td.numeric, th.numeric {
     width: 6em;
 }
 
-.type-country, .type-identifier {
+.type-country,
+.type-identifier {
     width: 6em;
 }

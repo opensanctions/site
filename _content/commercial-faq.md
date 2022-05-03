@@ -39,13 +39,13 @@ We want people to use the data as **widely and flexibly as possible**. Commercia
 
 Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](https://calendly.com/flindenberg/opensanctions-intro) directly!)
 
-If you need no further convincing, you can also just enroll for a subscription of the [sanctions data](https://buy.stripe.com/5kAdRNad3fmhg6ceV4), [combined sanctions and PEPs data](https://buy.stripe.com/14kfZV5WN8XT9HO28j), or [purchase access to our API service](https://buy.stripe.com/aEU6pl4SJ6PL7zG3co).
+If you need no further convincing, you can also just enroll for a subscription of the [sanctions data](https://buy.stripe.com/5kAdRNad3fmhg6ceV4), [combined sanctions and PEPs data](https://buy.stripe.com/14kfZV5WN8XT9HO28j), or [purchase access to our API service](https://buy.stripe.com/8wM151fxn6PL4nu7sF).
 
-### Who is exempted from commercial licensing?
+### <a id="exemptions"></a> Who is exempted from commercial licensing?
 
-OpenSanctions is fully free to use for: 
+Beyond the definition of [non-commercial use](https://creativecommons.org/faq/#does-my-use-violate-the-noncommercial-clause-of-the-licenses) provided by Creative Commons, we also grant a zero-cost license to the groups listed below:
 
-* any journalistic media that publish their findings in the public interest
+* any journalistic media that publish their findings [in the public interest](https://gijn.org/membership-in-gijn/)
 * advocacy and non-profit groups working to improve democratic governance
 * any public institution of a country invaded by the Russian Armed Forces (UA, GE, MD, BY, KZ).
 
