@@ -5,7 +5,7 @@ summary: |
     partners who wish to license the dataset for business purposes.
 ---
 
-*Please also have a look at our [project-wide FAQ](/docs/api/), which covers product-related questions (e.g. update frequency, project scope).*
+*Please also have a look at our [project-wide FAQ](/docs/faq/), which covers product-related questions (e.g. update frequency, project scope).*
 
 ### Why should I use OpenSanctions?
 
@@ -31,7 +31,7 @@ It’s really up to you! Some of the use cases we have seen include:
 * Expanding anti-corruption and anti-money laundering investigations using open source intelligence and network analysis.
 * Complementing traditional offerings (Refinitiv, LexisNexis, DowJones) with higher-frequency checks. 
 
-### What forms of use are covered by commercial licenses?
+### What uses are covered by commercial licenses?
 
 We want people to use the data as **widely and flexibly as possible**. Commercial license-holders can use the data for any purpose (in-house or in products) that build upon the data. We simply ask that you don’t distribute the data in a way that will directly compete with our bulk data offering (building KYC APIs is enouraged, of course!).
 

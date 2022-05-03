@@ -16,7 +16,7 @@ As you start processing the data, we recommend you read the introduction to [ent
 
 ### Get to know the API
 
-While our [API is documented](/docs/api/) publicly, we ask commercial users to add an authorization header that identifies them. Please add the following to all of your HTTP requests sent to `api.opensanctions.org`:
+While our [API is documented](/docs/api/) publicly, we ask commercial users to add an authorization header that identifies them. Please add the following to all HTTP requests you send to `api.opensanctions.org`:
 
 ```
 Authorization: Bearer <your@email.com>

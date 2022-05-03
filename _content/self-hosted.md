@@ -6,9 +6,11 @@ summary: |
     your customers' privacy.
 ---
 
+<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/selfhosted.png" style="width: 40%; float: right; padding-left: 1em;">
+
 The idea is simple: in addition to offering the [hosted OpenSanctions API](/docs/api/), we've made it easy to run the system by yourself. The API server application, `yente`, is [simple to install](https://github.com/opensanctions/yente) and will update itself with the latest OpenSanctions data in regular intervals.
 
-### What are the benefits of self-hosting the API?
+### What are the benefits of self-hosting?
 
 * Self-hosting the API means none of your customer data is shared with others. Instead of submitting a list of vetting targets to us, your data remains fully within your control.
 * You can [import additional entity lists](https://github.com/opensanctions/yente#adding-custom-datasets) that the API should check against, for example if your organization has an in-house blocking list, or you need to cross-check specific datasets not included in OpenSanctions in order to meet regulatory requirements.
