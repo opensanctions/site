@@ -41,9 +41,9 @@ function ContentMenu({ title, children, jsonLink }: React.PropsWithChildren<Cont
           <Nav className="flex-column justify-content-start" variant="pills">
             <Nav.Item>
               <RoutedNavLink href="/docs/about/">About OpenSanctions</RoutedNavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <RoutedNavLink href="/docs/faq/">Frequently asked questions</RoutedNavLink>
+              <Nav.Item>
+                <RoutedNavLink href="/docs/faq/">Frequently asked questions</RoutedNavLink>
+              </Nav.Item>
             </Nav.Item>
             <Nav.Item>
               <RoutedNavLink href="/docs/usage/">Using the data</RoutedNavLink>
@@ -63,11 +63,13 @@ function ContentMenu({ title, children, jsonLink }: React.PropsWithChildren<Cont
                 <RoutedNavLink href="/docs/statements/">Statement-based data</RoutedNavLink>
               </Nav.Item>
             </Nav.Item>
-
             <Nav.Item>
               <RoutedNavLink href="/docs/api/">Using the API</RoutedNavLink>
               <Nav.Item>
                 <RoutedNavLink href="/matcher/">How we score matches</RoutedNavLink>
+              </Nav.Item>
+              <Nav.Item>
+                <RoutedNavLink href="/docs/self-hosted/">Self-hosted API</RoutedNavLink>
               </Nav.Item>
             </Nav.Item>
 
