@@ -9,7 +9,7 @@ summary: |
 
 ### Why should I use OpenSanctions?
 
-OpenSanctions builds and publishes a high-quality, up-to-date dataset of entities of interest (people and companies), including international sanctions targets, known criminal figures and politically exposed persons (PEPs). To do so, we consolidate and deduplicate data from hundreds of sources covering 240+ countries and territories.
+OpenSanctions builds and publishes a high-quality, up-to-date dataset of entities of interest (people and companies), including [international sanctions targets](/datasets/sanctions/), known [criminal figures](/datasets/crime/) and [politically exposed persons (PEPs)](/datasets/peps/). To do so, we consolidate and deduplicate data from hundreds of sources covering 240+ countries and territories.
 
 We build the **raw materials innovative services need**. By making this data a readily accessible commodity, we help businesses to reduce their exposure to risk and startups to develop cutting-edge technology and services.
 
@@ -17,29 +17,29 @@ We **do things openly and transparently**. That’s why, besides making our [bul
 
 ### What is the value-add from OpenSanctions?
 
-* Our data pipeline pulls in entities from a [wide range of official sources and research-driven databases], creating a unique set of targets.
-* [Deduplication] avoids redundant matches and contextualizes entities across data sources to build comprehensive profiles.
-* Meticulous data cleaning creates a [coherent data structure] with well-defined field names, formats, and country codes. Entity names are stored in multiple alphabets.
-* Our graph of entities contains rich connectivity information, showing family, ownership and business ties between actors.
-* Our API service allows you to search and perform precise matching of your own records against our database.
+* **Our data pipeline** pulls in entities from a [wide range of official sources and research-driven databases](/datasets/), creating a unique set of targets.
+* **[Entity deduplication](/articles/2021-11-11-deduplication/)** avoids redundant matches and contextualizes entities across data sources to build comprehensive profiles.
+* **Meticulous data cleaning** creates a [coherent data structure](/reference/) with well-defined field names, formats, and country codes. Entity names are stored in multiple alphabets.
+* **Our graph of entities** contains rich connectivity information, showing family, ownership and business ties between actors.
+* **Our [API service](/docs/api/)** allows you to search and perform precise matching of your own records against our database.
 
 ### What do people use OpenSanctions for?
 
 It’s really up to you! Some of the use cases we have seen include: 
 
 * Building know-your-customer and enhanced due diligence workflows for regulated industries and organizations that want to understand their own risk exposure.
-* Expanding anti-corruption and anti-money laundering investigations using open source intelligence and network analysis analysis.
+* Expanding anti-corruption and anti-money laundering investigations using open source intelligence and network analysis.
 * Complementing traditional offerings (Refinitiv, LexisNexis, DowJones) with higher-frequency checks. 
 
 ### What forms of use are covered by commercial licenses?
 
-We want people to use the OpenSanctions data as widely and flexibly as possible. Commercial license-holders can use the data for any purpose (in-house or in products) that build upon the data. We simply ask that you don’t distribute the data in a way that will directly compete with our bulk data offering (public KYC APIs are enouraged, of course!).
+We want people to use the data as **widely and flexibly as possible**. Commercial license-holders can use the data for any purpose (in-house or in products) that build upon the data. We simply ask that you don’t distribute the data in a way that will directly compete with our bulk data offering (building KYC APIs is enouraged, of course!).
 
 ### How do I acquire a commercial license?
 
-Please contact us at **info@opensanctions.org** to set up a brief call with the team. (You can also [sneak into the calendar](https://calendly.com/flindenberg/opensanctions-intro) directly!)
+Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](https://calendly.com/flindenberg/opensanctions-intro) directly!)
 
-If you need no further convincing, you can also just enroll for a subscription of the [sanctions data](https://buy.stripe.com/5kAdRNad3fmhg6ceV4), [combined sanctions and PEPs data](https://buy.stripe.com/14kfZV5WN8XT9HO28j), or [purchase access to our API service]().
+If you need no further convincing, you can also just enroll for a subscription of the [sanctions data](https://buy.stripe.com/5kAdRNad3fmhg6ceV4), [combined sanctions and PEPs data](https://buy.stripe.com/14kfZV5WN8XT9HO28j), or [purchase access to our API service](https://buy.stripe.com/aEU6pl4SJ6PL7zG3co).
 
 ### Who is exempted from commercial licensing?
 
@@ -57,7 +57,7 @@ Yes. We’re keen to support projects or products that have not gone to market y
 
 ### Do you offer usage-based licensing?
 
-Not typically. We prefer to keep things simple by using flat monthly pricing. If your own pricing structure does not allow you to make such a commitment, please [get in touch] and we’ll find a solution.
+Not typically. We prefer to keep things simple by using flat monthly pricing. If your own pricing structure does not allow you to make such a commitment, please [get in touch](/contact/) and we’ll find a solution.
 
 ### What data formats do you make available?
 
@@ -75,8 +75,8 @@ A big part of [our roadmap](/articles/2022-03-14-future-project/) is to build co
 
 We commonly use two methods for payment:
 
-* Automated subscription payments via [Stripe](https://stripe.com/). Stripe accepts a [broad range of payment methods](https://stripe.com/global), including credit and debit cards.
-* SEPA bank transfers. We will issue regular invoices for your payment. To reduce bookkeeping overhead, we’re happy to agree on a quarterly or semi-annual billing schedule.
+* **Automated payments via [Stripe](https://stripe.com/)**. Stripe accepts a [broad range of payment methods](https://stripe.com/global), including credit and debit cards.
+* **SEPA bank transfers**. We will issue regular invoices for your payment. To reduce bookkeeping overhead, we’re happy to agree on a quarterly or semi-annual billing schedule.
 
 OpenSanctions is based in Germany. We may be required to apply 19% VAT on invoices inside the EU where the reverse charge method does not apply.
 
