@@ -63,7 +63,7 @@ export default function Contact() {
             the <Link href="/docs/faq">frequently asked questions</Link> for
             detailed information regarding the data and project.
             And, of course, please consider communicating with us
-            in <Link href="/sponsor">the sweetest language of all</Link>.
+            in <Link href="/licensing/">the sweetest language of all</Link>.
           </p>
         </div>
       </Content.Menu>

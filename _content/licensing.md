@@ -7,9 +7,10 @@ summary: >
     and services.
 ---
 
-Our objective is to continually release high-quality sanctions and persons of interest data as a resource for civil society and business. In order to make this sustainable over time, we've decided to use a dual licensing scheme, based on the terms of [Creative Commons 4.0 Attribution NonCommercial](https://creativecommons.org/licenses/by-nc/4.0/). This means that anyone can use OpenSanctions data for non-commercial use, as long as they give credit to this project.
+Our objective is to continually release high-quality sanctions and persons of interest data as a resource for civil society and business. In order to make this sustainable over time, we've decided to use a dual licensing scheme, based on the terms of [Creative Commons 4.0 Attribution NonCommercial](https://creativecommons.org/licenses/by-nc/4.0/).
 
-We encourage companies to use OpenSanctions data in a commercial context. If you intend to do so, **please contact us at [info@opensanctions.org](/contact/)** to discuss the terms of obtaining a license. Licenses will be priced competitively, as they are only meant to cover the cost of running and maintaining the project.
+We encourage companies to use OpenSanctions data in a commercial context. If you intend to do so, **please contact us at [info@opensanctions.org](/contact/)** to discuss the terms of obtaining a license.
+
 
 * Blog post: [Introducing business licenses for OpenSanctions](https://www.opensanctions.org/articles/2021-12-10-sustainability/).
 * Contact us to [discuss licensing conditions](/contact/) or [book a call](https://calendly.com/flindenberg/30min).
