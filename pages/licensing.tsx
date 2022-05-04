@@ -38,7 +38,7 @@ export default function Licensing() {
               </Card.Body>
               <Card.Footer>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/" variant="light">
+                  <Button href="/docs/commercial-faq/#tiers" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
@@ -66,7 +66,7 @@ export default function Licensing() {
               </Card.Body>
               <Card.Footer>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/" variant="light">
+                  <Button href="/docs/commercial-faq/#tiers" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
@@ -94,7 +94,7 @@ export default function Licensing() {
               </Card.Body>
               <Card.Footer>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/" variant="light">
+                  <Button href="/docs/commercial-faq/#tiers" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
@@ -115,6 +115,9 @@ export default function Licensing() {
               for journalists and activists</Link></strong>. And beyond that, we're committed
             to make this data available to everyone. If the licensing is stopping you from using
             OpenSanctions, <Link href="/contact/">contact us</Link> and we'll fix it.
+          </p>
+          <p>
+            <strong>Got more questions?</strong> Check out the <Link href="/docs/commercial-faq/">Commercial use FAQ</Link>
           </p>
         </div>
       </Content.Menu>
