@@ -41,9 +41,9 @@ function ContentMenu({ title, children, jsonLink }: React.PropsWithChildren<Cont
           <Nav className="flex-column justify-content-start" variant="pills">
             <Nav.Item>
               <RoutedNavLink href="/docs/about/">About OpenSanctions</RoutedNavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <RoutedNavLink href="/docs/faq/">Frequently asked questions</RoutedNavLink>
+              <Nav.Item>
+                <RoutedNavLink href="/docs/faq/">Frequently asked questions</RoutedNavLink>
+              </Nav.Item>
             </Nav.Item>
             <Nav.Item>
               <RoutedNavLink href="/docs/usage/">Using the data</RoutedNavLink>
@@ -62,20 +62,24 @@ function ContentMenu({ title, children, jsonLink }: React.PropsWithChildren<Cont
               <Nav.Item>
                 <RoutedNavLink href="/docs/statements/">Statement-based data</RoutedNavLink>
               </Nav.Item>
+              <Nav.Item>
+                <RoutedNavLink href="/docs/contribute/">Contribute a source</RoutedNavLink>
+              </Nav.Item>
             </Nav.Item>
-
             <Nav.Item>
               <RoutedNavLink href="/docs/api/">Using the API</RoutedNavLink>
               <Nav.Item>
                 <RoutedNavLink href="/matcher/">How we score matches</RoutedNavLink>
               </Nav.Item>
-            </Nav.Item>
-
-            <Nav.Item>
-              <RoutedNavLink href="/docs/contribute/">Contribute a source</RoutedNavLink>
+              <Nav.Item>
+                <RoutedNavLink href="/docs/self-hosted/">Self-hosted API</RoutedNavLink>
+              </Nav.Item>
             </Nav.Item>
             <Nav.Item>
               <RoutedNavLink href="/licensing/">Licensing the data</RoutedNavLink>
+              <Nav.Item>
+                <RoutedNavLink href="/docs/commercial-faq/">Commercial use FAQ</RoutedNavLink>
+              </Nav.Item>
             </Nav.Item>
             <Nav.Item>
               <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
