@@ -1,4 +1,5 @@
 import { ComponentType, useState } from 'react';
+import Link from 'next/link'
 import Badge from "react-bootstrap/Badge";
 
 import { Property, PropertyType, Entity, Value, Values } from "../lib/ftm";
@@ -23,6 +24,9 @@ export function TypeValue({ type, value, plain = false, entity: Entity = EntityL
   }
   if (type.name === 'url' && !plain) {
     return <URLLink url={value as string} />
+  }
+  if (prop?.name === 'wikidataId') {
+    return <Link href={`https://wikidata.org/wiki/${value}`}>{value + ''}</Link>
   }
   if (type.name === 'identifier' && !plain) {
     return <code>{value + ''}</code>
