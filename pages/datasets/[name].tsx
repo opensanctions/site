@@ -11,7 +11,6 @@ import Tab from 'react-bootstrap/Tab';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Alert from 'react-bootstrap/Alert';
 import Tooltip from 'react-bootstrap/Tooltip';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
@@ -22,7 +21,7 @@ import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails } from '../../lib/data'
 import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, LEVEL_ERROR, LEVEL_WARNING, IDatasetDetails } from '../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer } from '../../components/util'
+import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, Numeric } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
 import { IssuesList } from '../../components/Issue';
@@ -61,6 +60,8 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
         <Row>
           <Col sm={9}>
             <Summary summary={dataset.summary} />
+            <Markdown markdown={details.description} />
+            <h3>Data overview</h3>
             <Form className="d-flex" action="/search/">
               <input type="hidden" name="scope" value={dataset.name} />
               <InputGroup className={styles.searchBox} size="lg">
@@ -77,95 +78,102 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 </Button>
               </InputGroup>
             </Form>
+            <DatasetMetadataTable dataset={dataset} details={details} collections={collections} issues={issues} />
+            <h3>Data download</h3>
+            <p>
+              Bulk data downloads contain the full set of entities in this dataset. Various
+              file formats are available, and more can be added upon request.
+            </p>
+            <>
+              <Table>
 
+              </Table>
+            </>
 
-            <DatasetMetadataTable dataset={dataset} details={details} collections={collections} />
-            <Tabs activeKey={view} defaultActiveKey="description" onSelect={(k) => setView(k || 'description')}>
-              <Tab eventKey="description" title="Description" className={styles.viewTab}>
-                <Markdown markdown={details.description} />
-                {isCollection(dataset) && (
-                  <Alert variant="primary">
-                    This collection contains entities from multiple data sources.
-                    {' '}<Link href="/docs/identifier/">Check our documentation</Link> on
-                    how we de-duplicate entities and how that affects entity identifiers.
-                  </Alert>
-                )}
-              </Tab>
-              {isSource(dataset) && !!errors.length && (
-                <Tab eventKey="errors" title={<>{'Errors'} <NumericBadge value={errors.length} bg="danger" /></>} className={styles.viewTab}>
-                  <IssuesList issues={errors} showDataset={false} />
-                </Tab>
-              )}
-              {isSource(dataset) && !!warnings.length && (
-                <Tab eventKey="warnings" title={<>{'Warnings'} <NumericBadge value={warnings.length} bg="warning" /></>} className={styles.viewTab}>
-                  <IssuesList issues={warnings} showDataset={false} />
-                </Tab>
-              )}
-              {isCollection(dataset) && sources?.length && (
-                <Tab eventKey="sources" title={<>{'Data sources'} <NumericBadge value={sources.length} /></>} className={styles.viewTab}>
+            <h3>Using the API</h3>
+            <>
+              <p>
+                You can query the data in this dataset via the application programming
+                interface (API) endpoints below. Please <Link href="/docs/api/">read
+                  the introduction</Link> for documentation and terms of service.
+
+                See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
+              </p>
+              <Table className="vertical-center" bordered>
+                <tbody>
+                  <tr>
+                    <td width="40%">
+                      Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="40%">
+                      For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="40%">
+                      For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </>
+
+            {isCollection(dataset) && sources?.length && (
+              <>
+                <h3>Data sources</h3>
+                <p>
+
+                </p>
+                <>
                   {sources.map((d) => (
                     <Dataset.Item key={d.name} dataset={d} />
                   ))}
-                </Tab>
-              )}
-              {!!details.targets.countries.length && (
-                <Tab eventKey="profile" title={<>{'Geographic coverage'} <NumericBadge value={details.targets.countries.length} /></>} className={styles.viewTab}>
-                  <>
-                    <p>
-                      {dataset.title} includes target entities in the following countries.
-                      {' '}<Link href="/reference/#type.country">Read about countries...</Link>
-                    </p>
-                    <Table>
-                      <thead>
-                        <tr>
-                          <th style={{ width: "10%" }}>Code</th>
-                          <th>Country</th>
-                          <th className="numeric">Targets</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {details.targets.countries.map(c =>
-                          <tr key={c.code}>
-                            <td><code>{c.code}</code></td>
-                            <td>
-                              <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
-                                {c.label}
-                              </a>
-                            </td>
-                            <td className="numeric">{c.count}</td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </Table>
-                  </>
-                </Tab>
-              )}
-              <Tab eventKey="api" title={'API'} className={styles.viewTab}>
-                <>
-                  <p>
-                    You can query the data in this dataset via the application programming
-                    interface (API) endpoints below. Please <Link href="/docs/api/">read
-                      the introduction</Link> for documentation and terms of service.
-                  </p>
-                  <p>
-                    Use the <Link href={`${API_URL}/#tag/Reconciliation`}>OpenRefine Reconciliation API</Link>, by entering this URL in the tool:
-                    <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
-                  </p>
-                  <p>
-                    For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
-                    <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
-                  </p>
-                  <p>
-                    For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
-                    <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
-                  </p>
-                  <p>
-                    See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
-                  </p>
                 </>
-              </Tab>
+              </>
+            )}
 
-            </Tabs>
+            <h3>
+              <>{'Geographic coverage'} <NumericBadge value={details.targets.countries.length} /></>
+            </h3>
+            <>
+              <p>
+                {dataset.title} includes target entities in the following countries and territories.
+                {' '}<Link href="/reference/#type.country">Read about countries...</Link>
+              </p>
+              <Table size="sm">
+                <thead>
+                  <tr>
+                    <th style={{ width: "10%" }}>Code</th>
+                    <th>Country</th>
+                    <th className="numeric">Targets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {details.targets.countries.map(c =>
+                    <tr key={c.code}>
+                      <td><code>{c.code}</code></td>
+                      <td>
+                        <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
+                          {c.label}
+                        </a>
+                      </td>
+                      <td className="numeric"><Numeric value={c.count} /></td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            </>
           </Col>
           <Col sm={3}>
             <Card>

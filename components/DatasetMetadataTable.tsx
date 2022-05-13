@@ -1,20 +1,25 @@
 import Link from 'next/link'
+import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
 
-import { IDataset, ICollection, isSource, IDatasetDetails } from '../lib/types'
-import { FormattedDate, HelpLink, Numeric, Plural, Spacer, URLLink } from './util'
+import { IDataset, ICollection, isSource, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types'
+import { FormattedDate, HelpLink, Numeric, NumericBadge, Plural, Spacer, URLLink } from './util'
 import { wordList } from '../lib/util'
 
 import styles from '../styles/Dataset.module.scss'
 
 
+
 type DatasetScreenProps = {
   dataset: IDataset
   details: IDatasetDetails
+  issues: Array<IIssue>
   collections?: Array<ICollection>
 }
 
-export default function DatasetMetadataTable({ dataset, details, collections }: DatasetScreenProps) {
+export default function DatasetMetadataTable({ dataset, details, collections, issues }: DatasetScreenProps) {
+  const errors = issues.filter((i) => i.level === LEVEL_ERROR);
+  const warnings = issues.filter((i) => i.level === LEVEL_WARNING);
   const schemaList = wordList(details.targets.schemata.map((ts) =>
     <span className={styles.noWrap}>
       <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
@@ -77,12 +82,36 @@ export default function DatasetMetadataTable({ dataset, details, collections }: 
               Collections<HelpLink href="/docs/faq/#collections" />:
             </th>
             <td>
-              <>included in </>
+              <>in </>
               {wordList(collections.map((collection) =>
                 <Link href={collection.link}>
                   {collection.title}
                 </Link>
               ), <Spacer />)}
+            </td>
+          </tr>
+        )}
+        {isSource(dataset) && issues.length && (
+          <tr>
+            <th className={styles.tableHeader}>Issues:</th>
+            <td>
+              {!!errors.length && (
+                <>
+                  <Badge bg='danger'>
+                    <Plural value={errors.length} one="Error" many="Errors" />
+                  </Badge>
+                  <Spacer />
+                </>
+              )}
+              {!!warnings.length && (
+                <>
+                  <Badge bg='warning'>
+                    <Plural value={warnings.length} one="Warning" many="Warnings" />
+                  </Badge>
+                  <Spacer />
+                </>
+              )}
+              <Link href="/issues">See all...</Link>
             </td>
           </tr>
         )}

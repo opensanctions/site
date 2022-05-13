@@ -133,6 +133,12 @@ th.numeric {
     }
 }
 
+.vertical-center {
+    td {
+        vertical-align: middle;
+    }
+}
+
 .article-image {
     margin-bottom: 1em;
 }

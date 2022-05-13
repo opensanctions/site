@@ -3,7 +3,7 @@ import { InferGetStaticPropsType } from 'next';
 import Layout from '../components/Layout';
 import Content from '../components/Content';
 import { IssuesList } from '../components/Issue';
-import { JSONLink, Summary } from '../components/util';
+import { Summary } from '../components/util';
 import { ISSUES_URL } from '../lib/constants';
 import { getIssues } from '../lib/data';
 
