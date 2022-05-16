@@ -41,7 +41,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
               <>
                 {schemaList}
                 <>
-                  (<Numeric value={dataset.target_count} /> total)
+                  {' '}(<Numeric value={dataset.target_count} /> total)
                 </>
               </>
             )}

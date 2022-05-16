@@ -18,18 +18,18 @@ function writeUrl(url: string, lastmod?: string, changefreq?: string, priority?:
 }
 
 export default function writeSitemap(datasets: Array<IDataset>, articles: Array<IArticleInfo>, contents: Array<IContent>, entities: Array<ISitemapEntity>) {
-  const urls = PAGES.map(url => writeUrl(url, undefined, undefined, 0.9));
+  const urls = PAGES.map(url => writeUrl(url, undefined, undefined, 1.0));
   contents.forEach((content) => {
-    urls.push(writeUrl(content.path, undefined, undefined, 0.8))
+    urls.push(writeUrl(content.path, undefined, undefined, 1.0))
   })
-  datasets.forEach((dataset) => {
+  datasets.filter(ds => !ds.hidden).forEach((dataset) => {
     const priority = isCollection(dataset) ? 1.0 : 0.7
     const lastmod = dataset.last_change ? dataset.last_change.split('T')[0] : undefined
     urls.push(writeUrl(`/datasets/${dataset.name}/`, lastmod, 'weekly', priority))
   })
   entities.forEach((entity) => {
     const lastmod = entity.lastmod.split('T')[0];
-    urls.push(writeUrl(`/entities/${entity.id}/`, lastmod, 'weekly', 0.7))
+    urls.push(writeUrl(`/entities/${entity.id}/`, lastmod, 'weekly', 0.5))
   })
   articles.forEach((a) => {
     urls.push(writeUrl(a.path, a.date, undefined, 1.0))
