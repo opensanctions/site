@@ -20,6 +20,11 @@ h3,
 h4 {
     font-weight: 600;
     color: #111;
+
+    .badge {
+        font-size: 0.6em;
+        float: right;
+    }
 }
 
 h1 {
@@ -31,10 +36,16 @@ h1 {
 
 h2 {
     font-size: $default-font-size * 1.5;
+    margin-top: 1em;
 }
 
 h3 {
     font-size: $default-font-size * 1.4;
+    margin-top: 1.1em;
+}
+
+a {
+    text-decoration: none;
 }
 
 blockquote {
@@ -47,6 +58,15 @@ blockquote {
 td.numeric,
 th.numeric {
     text-align: right;
+}
+
+td.narrow,
+th.narrow {
+    width: 1%;
+}
+
+.table> :not(:first-child) {
+    border-top: 1px;
 }
 
 .nav-item .nav-item {
@@ -122,10 +142,10 @@ th.numeric {
     max-width: $max-text-width;
     line-height: 1.4;
 
-    a {
-        // color: $default-text-color;
-        text-decoration: none;
-    }
+    // a {
+    //     // color: $default-text-color;
+    //     text-decoration: none;
+    // }
 
     li {
         line-height: 1.4;

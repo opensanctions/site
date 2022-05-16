@@ -3,7 +3,7 @@ import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
 
 import { IDataset, ICollection, isSource, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types'
-import { FormattedDate, HelpLink, Numeric, NumericBadge, Plural, Spacer, URLLink } from './util'
+import { FormattedDate, HelpLink, Numeric, Plural, Spacer, URLLink } from './util'
 import { wordList } from '../lib/util'
 
 import styles from '../styles/Dataset.module.scss'
@@ -91,11 +91,11 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             </td>
           </tr>
         )}
-        {isSource(dataset) && issues.length && (
+        {isSource(dataset) && !!issues?.length && (
           <tr>
             <th className={styles.tableHeader}>Issues:</th>
             <td>
-              {!!errors.length && (
+              {errors.length > 0 && (
                 <>
                   <Badge bg='danger'>
                     <Plural value={errors.length} one="Error" many="Errors" />
@@ -103,7 +103,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
                   <Spacer />
                 </>
               )}
-              {!!warnings.length && (
+              {warnings.length > 0 && (
                 <>
                   <Badge bg='warning'>
                     <Plural value={warnings.length} one="Warning" many="Warnings" />
