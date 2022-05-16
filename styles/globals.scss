@@ -223,3 +223,16 @@ th.narrow {
 .type-identifier {
     width: 6em;
 }
+
+.contains-inner-table {
+    padding: 0 !important;
+}
+
+.inner-table {
+    margin: 0;
+
+    tr:last-child td,
+    tr:last-child th {
+        border-bottom: 0px !important;
+    }
+}

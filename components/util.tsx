@@ -58,6 +58,7 @@ type PluralProps = {
   many: string | ReactNode
 }
 
+
 export function Plural({ value, one, many }: PluralProps) {
   return <><Numeric value={value} /> {value === 1 ? one : many}</>;
 }

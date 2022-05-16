@@ -36,15 +36,31 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             Targets<HelpLink href="/reference/#targets" />:
           </th>
           <td>
-            {details.targets.schemata.length == 1 && schemaList}
-            {details.targets.schemata.length > 1 && (
-              <>
-                {schemaList}
-                <>
-                  {' '}(<Numeric value={dataset.target_count} /> total)
-                </>
-              </>
-            )}
+            <Numeric value={dataset.target_count} />
+          </td>
+        </tr>
+        <tr>
+          <th className={styles.tableHeader}>
+            Entity types:
+          </th>
+          <td className="contains-inner-table">
+            <Table size="sm" className="inner-table">
+              <tbody>
+                {details.targets.schemata.map((ts) =>
+                  <tr key={ts.name}>
+                    <td>
+                      <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
+                        <Plural one={ts.label} many={ts.plural} />
+                      </a>
+                      <HelpLink href={`/reference/#schema.${ts.name}`} />
+                    </td>
+                    <td className="numeric">
+                      <Numeric value={ts.count} />
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
           </td>
         </tr>
         {isSource(dataset) && (
