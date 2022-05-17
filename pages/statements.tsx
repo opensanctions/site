@@ -119,7 +119,7 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
                         {stmt.canonical_id}
                       </Link>
                     </td>
-                    <Expand href={`/entities/${stmt.canonical_id}`} />
+                    <Expand href={`/entities/${stmt.canonical_id}/`} />
                     <td className={styles.colProp}>
                       <code><span className="text-muted">{stmt.schema}:</span>{stmt.prop}</code>
                     </td>

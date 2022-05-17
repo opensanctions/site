@@ -58,6 +58,7 @@ type PluralProps = {
   many: string | ReactNode
 }
 
+
 export function Plural({ value, one, many }: PluralProps) {
   return <><Numeric value={value} /> {value === 1 ? one : many}</>;
 }
@@ -162,7 +163,7 @@ type HelpLinkProps = {
 
 export function HelpLink({ href, size = 10 }: HelpLinkProps) {
   return (
-    <a href={href}>
+    <a href={href} className={styles.helpLink}>
       <sup><QuestionCircleFill size={size} /></sup>
     </a>
   )

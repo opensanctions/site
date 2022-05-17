@@ -1,5 +1,12 @@
 @import './variables.scss';
 
+.datasetPage {
+    section {
+        margin-top: 1em;
+        // border: 1px solid #ddd;
+    }
+}
+
 .searchBox {
     margin-bottom: 1em;
 }
@@ -24,10 +31,6 @@
     margin-bottom: 0;
     padding-bottom: 0;
     color: $text-muted;
-}
-
-.viewTab {
-    padding-top: 1em;
 }
 
 .tableHeader {

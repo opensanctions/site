@@ -46,8 +46,8 @@ export async function getArticleBySlug(slug: string): Promise<IArticle> {
   return {
     slug: realSlug,
     date: data.date || date,
-    path: `/articles/${realSlug}`,
-    url: `${BASE_URL}/articles/${realSlug}`,
+    path: `/articles/${realSlug}/`,
+    url: `${BASE_URL}/articles/${realSlug}/`,
     title: data.title || realSlug,
     draft: data.draft || false,
     image_url: data.image_url || null,

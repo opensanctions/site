@@ -121,84 +121,7 @@ export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
   return schema;
 }
 
-
-function getSchemaAddress(address: Entity) {
-  // https://schema.org/PostalAddress
-  return {
-    "@context": "https://schema.org/",
-    "@type": "PostalAddress",
-    "description": address.caption,
-    ...applyProperty(address, 'country', 'addressCountry'),
-    ...applyProperty(address, 'region', 'addressRegion'),
-    ...applyProperty(address, 'city', 'addressLocality'),
-    ...applyProperty(address, 'street', 'streetAddress'),
-    ...applyProperty(address, 'postalCode', 'postalCode'),
-    ...applyProperty(address, 'postOfficeBox', 'postOfficeBoxNumber'),
-  }
-}
-
-function applyProperty(entity: Entity, prop: string, field: string) {
-  if (entity.hasProperty(prop)) {
-    return { [field]: entity.getProperty(prop) }
-  }
-  return {}
-}
-
-function getSchemaEntity(entity: Entity) {
-  let schema: any = {
-    "@context": "https://schema.org/",
-    "@type": "Thing",
-    "name": entity.caption,
-    "url": `${BASE_URL}/entities/${entity.id}/`,
-    ...applyProperty(entity, 'notes', 'description'),
-    ...applyProperty(entity, 'alias', 'alternateName'),
-    ...applyProperty(entity, 'taxNumber', 'taxID'),
-    ...applyProperty(entity, 'vatCode', 'vatID'),
-    ...applyProperty(entity, 'phone', 'telephone'),
-    ...applyProperty(entity, 'email', 'email'),
-  }
-  if (entity.hasProperty('addressEntity')) {
-    schema = {
-      ...schema,
-      'address': entity.getProperty('addressEntity').map(a => getSchemaAddress(a as Entity))
-    }
-  }
-  const identifierType = entity.schema.model.getType('identifier');
-  const identifiers = entity.getTypeValues(identifierType);
-  if (identifiers.length > 0) {
-    schema = {
-      schema,
-      'identifier': identifiers
-    }
-  }
-  if (entity.schema.name === 'Person') {
-    // https://schema.org/Person
-    schema = {
-      ...schema,
-      "@type": "Person",
-      ...applyProperty(entity, 'nationality', 'nationality'),
-      ...applyProperty(entity, 'gender', 'gender'),
-      ...applyProperty(entity, 'lastName', 'familyName'),
-      ...applyProperty(entity, 'firstName', 'givenName'),
-      ...applyProperty(entity, 'birthDate', 'birthDate'),
-      ...applyProperty(entity, 'birthPlace', 'birthPlace'),
-      ...applyProperty(entity, 'deathDate', 'deathDate'),
-    }
-  } else if (entity.schema.isA('Organization')) {
-    // https://schema.org/Organization
-    // TODO: jusrisdiction?
-    schema = {
-      ...schema,
-      "@type": "Organization",
-      ...applyProperty(entity, 'incorporationDate', 'foundingDate'),
-      ...applyProperty(entity, 'dissolutionDate', 'dissolutionDate'),
-    }
-  }
-  return schema;
-}
-
 export function getSchemaEntityPage(entity: Entity, datasets: Array<IDataset>) {
-  const entitySchema = getSchemaEntity(entity)
   return {
     "@context": "https://schema.org/",
     "@type": "WebPage",
@@ -206,9 +129,8 @@ export function getSchemaEntityPage(entity: Entity, datasets: Array<IDataset>) {
     "maintainer": getSchemaOpenSanctionsOrganization(),
     "isPartOf": datasets.map(d => getSchemaDataset(d).url),
     "license": LICENSE_URL,
-    "mainEntity": entitySchema,
     "dateCreated": entity.first_seen,
-    "dateModified": entity.last_seen,
+    "dateModified": entity.getFirst('modifiedAt') || entity.last_seen,
   }
 }
 

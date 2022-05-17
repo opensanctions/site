@@ -7,11 +7,10 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
 import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
+import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Alert from 'react-bootstrap/Alert';
 import Tooltip from 'react-bootstrap/Tooltip';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
@@ -22,7 +21,7 @@ import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails } from '../../lib/data'
 import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, LEVEL_ERROR, LEVEL_WARNING, IDatasetDetails } from '../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer } from '../../components/util'
+import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, Numeric } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
 import { IssuesList } from '../../components/Issue';
@@ -42,165 +41,176 @@ type DatasetScreenProps = {
 
 export default function DatasetScreen({ dataset, details, issues, sources, collections }: DatasetScreenProps) {
   const router = useRouter();
-  const [view, setView] = useState('description');
-  const errors = issues.filter((i) => i.level === LEVEL_ERROR)
-  const warnings = issues.filter((i) => i.level === LEVEL_WARNING)
-  const structured = getSchemaDataset(dataset, details)
-
-  useEffect(() => {
-    router.events.on("routeChangeComplete", async () => setView('description'))
-  })
-
+  const structured = getSchemaDataset(dataset, details);
   return (
     <Layout.Base title={dataset.title} description={dataset.summary} structured={structured} navSearch={false}>
-      <Container>
+      <Container className={styles.datasetPage}>
         <JSONLink href={dataset.index_url} />
         <h1>
           <Dataset.Icon dataset={dataset} size="30px" /> {dataset.title}
         </h1>
         <Row>
-          <Col sm={9}>
+          <Col md={9}>
             <Summary summary={dataset.summary} />
-            <Form className="d-flex" action="/search/">
-              <input type="hidden" name="scope" value={dataset.name} />
-              <InputGroup className={styles.searchBox} size="lg">
-                <Form.Control
-                  type="search"
-                  name="q"
-                  autoFocus={true}
-                  placeholder={`Search in ${dataset.title}...`}
-                  aria-label="Search"
-                />
-                <Button variant="secondary" type="submit">
-                  <Search className="bsIcon" />{' '}
-                  Search
-                </Button>
-              </InputGroup>
-            </Form>
+          </Col>
+          <Col md={3}>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={9}>
+            <Markdown markdown={details.description} />
+            <section>
+              <h3>
+                <a id="overview"></a>
+                Data overview
+              </h3>
+              <Form className="d-flex" action="/search/">
+                <input type="hidden" name="scope" value={dataset.name} />
+                <InputGroup className={styles.searchBox} size="lg">
+                  <Form.Control
+                    type="search"
+                    name="q"
+                    autoFocus={true}
+                    placeholder={`Search in ${dataset.title}...`}
+                    aria-label="Search"
+                  />
+                  <Button variant="secondary" type="submit">
+                    <Search className="bsIcon" />{' '}
+                    Search
+                  </Button>
+                </InputGroup>
+              </Form>
+              <DatasetMetadataTable dataset={dataset} details={details} collections={collections} issues={issues} />
+            </section>
 
+            <section>
+              <h3>
+                <a id="download"></a>
+                Bulk download
+              </h3>
+              <p>
+                Downloads contain the full set of entities contained in this dataset. You can fetch
+                a simplified tabular form, or detailed, structured data in JSON format. Updated files
+                will be provided once a day at the same location.
+              </p>
+              <Table className="vertical-center" size="sm">
+                <thead>
+                  <tr>
+                    <th className="numeric narrow"></th>
+                    <th>File name</th>
+                    <th>Export type</th>
+                    <th className="numeric">Size</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {details.resources.map((resource) =>
+                    <tr key={resource.path}>
+                      <td className="numeric narrow">
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          rel="nofollow"
+                          // @ts-expect-error
+                          download={true}
+                          href={resource.url}
+                        >
+                          <Download className="bsIcon" />
+                        </Button>
+                      </td>
+                      <td><a href={resource.url} download><code>{resource.path}</code></a></td>
+                      <td>{resource.title}<HelpLink href={`/docs/usage/#${resource.path}`} /></td>
+                      {/* <td>
+                        <OverlayTrigger placement="bottom" overlay={<Tooltip>{resource.mime_type_label}</Tooltip>}>
+                          <code>{resource.mime_type}</code>
+                        </OverlayTrigger>
+                      </td> */}
+                      <td className="numeric">
+                        <FileSize size={resource.size} />
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+              <p>
+                Help: <Link href="/docs/usage">Using the data</Link>
+                <Spacer />
+                <Link href="/reference/">format reference</Link>
+                <Spacer />
+                <Link href="/docs/identifiers/">identifier use</Link>
+                <Spacer />
+                <Link href="/licensing/">commercial licensing</Link>
+              </p>
+            </section>
 
-            <DatasetMetadataTable dataset={dataset} details={details} collections={collections} />
-            <Tabs activeKey={view} defaultActiveKey="description" onSelect={(k) => setView(k || 'description')}>
-              <Tab eventKey="description" title="Description" className={styles.viewTab}>
-                <Markdown markdown={details.description} />
-                {isCollection(dataset) && (
-                  <Alert variant="primary">
-                    This collection contains entities from multiple data sources.
-                    {' '}<Link href="/docs/identifier/">Check our documentation</Link> on
-                    how we de-duplicate entities and how that affects entity identifiers.
-                  </Alert>
-                )}
-              </Tab>
-              {isSource(dataset) && !!errors.length && (
-                <Tab eventKey="errors" title={<>{'Errors'} <NumericBadge value={errors.length} bg="danger" /></>} className={styles.viewTab}>
-                  <IssuesList issues={errors} showDataset={false} />
-                </Tab>
-              )}
-              {isSource(dataset) && !!warnings.length && (
-                <Tab eventKey="warnings" title={<>{'Warnings'} <NumericBadge value={warnings.length} bg="warning" /></>} className={styles.viewTab}>
-                  <IssuesList issues={warnings} showDataset={false} />
-                </Tab>
-              )}
-              {isCollection(dataset) && sources?.length && (
-                <Tab eventKey="sources" title={<>{'Data sources'} <NumericBadge value={sources.length} /></>} className={styles.viewTab}>
-                  {sources.map((d) => (
-                    <Dataset.Item key={d.name} dataset={d} />
-                  ))}
-                </Tab>
-              )}
-              {!!details.targets.countries.length && (
-                <Tab eventKey="profile" title={<>{'Geographic coverage'} <NumericBadge value={details.targets.countries.length} /></>} className={styles.viewTab}>
-                  <>
-                    <p>
-                      {dataset.title} includes target entities in the following countries.
-                      {' '}<Link href="/reference/#type.country">Read about countries...</Link>
-                    </p>
-                    <Table>
-                      <thead>
-                        <tr>
-                          <th style={{ width: "10%" }}>Code</th>
-                          <th>Country</th>
-                          <th className="numeric">Targets</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {details.targets.countries.map(c =>
-                          <tr key={c.code}>
-                            <td><code>{c.code}</code></td>
-                            <td>
-                              <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
-                                {c.label}
-                              </a>
-                            </td>
-                            <td className="numeric">{c.count}</td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </Table>
-                  </>
-                </Tab>
-              )}
-              <Tab eventKey="api" title={'API'} className={styles.viewTab}>
-                <>
-                  <p>
-                    You can query the data in this dataset via the application programming
-                    interface (API) endpoints below. Please <Link href="/docs/api/">read
-                      the introduction</Link> for documentation and terms of service.
-                  </p>
-                  <p>
-                    Use the <Link href={`${API_URL}/#tag/Reconciliation`}>OpenRefine Reconciliation API</Link>, by entering this URL in the tool:
-                    <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
-                  </p>
-                  <p>
-                    For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
-                    <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
-                  </p>
-                  <p>
-                    For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
-                    <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
-                  </p>
-                  <p>
-                    See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
-                  </p>
-                </>
-              </Tab>
+            <section>
+              <h3>
+                <a id="api"></a>
+                Using the API
+              </h3>
+              <p>
+                You can query the data in this dataset via the application programming
+                interface (API) endpoints below. Please <Link href="/docs/api/">read
+                  the introduction</Link> for documentation and terms of service.
 
-            </Tabs>
+                See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
+              </p>
+              <Table className="vertical-center">
+                <tbody>
+                  <tr>
+                    <td width="40%">
+                      Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="40%">
+                      For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="40%">
+                      For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </section>
+
+            {isCollection(dataset) && !!sources?.length && (
+              <section>
+                <h3>
+                  <a id="sources"></a>
+                  Data sources
+                  <NumericBadge value={sources.length} />
+                </h3>
+                <p>
+                  {dataset.title} is a <Link href="/docs/faq/#collections">collection dataset</Link> which
+                  bundles together entities from the following data sources:
+                </p>
+                <Dataset.SourcesTable sources={sources} />
+              </section>
+            )}
           </Col>
           <Col sm={3}>
-            <Card>
-              <Card.Header><strong>Downloads</strong></Card.Header>
-              <ListGroup variant="flush">
-                {details.resources.map((resource) =>
-                  <ListGroup.Item key={resource.path}>
-                    <Button
-                      variant="secondary"
-                      rel="nofollow"
-                      // @ts-expect-error
-                      download={true}
-                      href={resource.url}
-                    >
-                      <Download className="bsIcon" />
-                      {' '}
-                      {resource.title}
-                    </Button>
-                    <div>
-                      <FileSize size={resource.size} />
-                      <Spacer />
-                      <OverlayTrigger placement="bottom" overlay={<Tooltip>{resource.mime_type_label}</Tooltip>}>
-                        <code>{resource.mime_type}</code>
-                      </OverlayTrigger>
-                      <HelpLink href={`/docs/usage/#${resource.path}`} />
-                    </div>
-                  </ListGroup.Item>
+            <div className="position-sticky">
+              <Nav navbarScroll className="flex-column">
+                <Nav.Link href="#overview">Overview</Nav.Link>
+                <Nav.Link href="#download">Download</Nav.Link>
+                <Nav.Link href="#api">API</Nav.Link>
+                {!!sources?.length && (
+                  <Nav.Link href="#sources">Data sources</Nav.Link>
                 )}
-              </ListGroup>
-              <Card.Footer className="text-muted">
-                Help: <Link href="/docs/usage">Using the data</Link>
-                <Spacer /> <Link href="/reference/">reference</Link>
-              </Card.Footer>
-            </Card>
-            <LicenseInfo />
+              </Nav>
+              <LicenseInfo />
+            </div>
           </Col>
         </Row>
       </Container>

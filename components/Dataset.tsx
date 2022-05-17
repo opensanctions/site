@@ -1,11 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Table from 'react-bootstrap/Table';
 import TextTruncate from 'react-text-truncate';
 import { FileEarmarkSpreadsheetFill, FolderFill } from 'react-bootstrap-icons';
 
-import { IDataset, isCollection, isSource } from '../lib/types'
+import { IDataset, isCollection, ISource, isSource } from '../lib/types'
 import { Numeric, NumericBadge, Spacer } from './util';
 import styles from '../styles/Dataset.module.scss'
+import Link from 'next/link';
 
 
 type DatasetProps = {
@@ -103,9 +105,44 @@ function DatasetItem({ dataset }: DatasetProps) {
   )
 }
 
+type SourcesTableProps = {
+  sources: Array<ISource>
+}
+
+function SourcesTable({ sources }: SourcesTableProps) {
+  const sourcesSorted = sources.sort((a, b) => b.target_count - a.target_count)
+  return (
+    <Table size="sm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Country</th>
+          <th className="numeric">Targets</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sourcesSorted.map(source =>
+          <tr key={source.name}>
+            <td>
+              <Link href={source.link}>{source.title}</Link>
+            </td>
+            <td>
+              <Badge bg="light">{source.publisher.country_label}</Badge>
+            </td>
+            <td className="numeric">
+              <Numeric value={source.target_count} />
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </Table>
+  )
+}
+
 export default class Dataset {
   static Card = DatasetCard
   static Item = DatasetItem
+  static SourcesTable = SourcesTable
   static Icon = DatasetIcon
   static Link = DatasetLink
 }
