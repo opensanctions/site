@@ -59,137 +59,144 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
         <Row>
           <Col md={9}>
             <Markdown markdown={details.description} />
-            <h3>
-              <a id="overview"></a>
-              Data overview
-            </h3>
-            <Form className="d-flex" action="/search/">
-              <input type="hidden" name="scope" value={dataset.name} />
-              <InputGroup className={styles.searchBox} size="lg">
-                <Form.Control
-                  type="search"
-                  name="q"
-                  autoFocus={true}
-                  placeholder={`Search in ${dataset.title}...`}
-                  aria-label="Search"
-                />
-                <Button variant="secondary" type="submit">
-                  <Search className="bsIcon" />{' '}
-                  Search
-                </Button>
-              </InputGroup>
-            </Form>
-            <DatasetMetadataTable dataset={dataset} details={details} collections={collections} issues={issues} />
+            <section>
+              <h3>
+                <a id="overview"></a>
+                Data overview
+              </h3>
+              <Form className="d-flex" action="/search/">
+                <input type="hidden" name="scope" value={dataset.name} />
+                <InputGroup className={styles.searchBox} size="lg">
+                  <Form.Control
+                    type="search"
+                    name="q"
+                    autoFocus={true}
+                    placeholder={`Search in ${dataset.title}...`}
+                    aria-label="Search"
+                  />
+                  <Button variant="secondary" type="submit">
+                    <Search className="bsIcon" />{' '}
+                    Search
+                  </Button>
+                </InputGroup>
+              </Form>
+              <DatasetMetadataTable dataset={dataset} details={details} collections={collections} issues={issues} />
+            </section>
 
-            <h3>
-              <a id="download"></a>
-              Bulk download
-            </h3>
-            <p>
-              Bulk data downloads contain the full set of entities in this dataset. Various
-              file formats are available, and more can be added upon request.
-            </p>
-            <Table className="vertical-center" size="sm">
-              <thead>
-                <tr>
-                  <th className="numeric narrow"></th>
-                  <th>File name</th>
-                  <th>Export type</th>
-                  <th className="numeric">Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                {details.resources.map((resource) =>
-                  <tr key={resource.path}>
-                    <td className="numeric narrow">
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        rel="nofollow"
-                        // @ts-expect-error
-                        download={true}
-                        href={resource.url}
-                      >
-                        <Download className="bsIcon" />
-                      </Button>
-                    </td>
-                    <td><a href={resource.url} download><code>{resource.path}</code></a></td>
-                    <td>{resource.title}<HelpLink href={`/docs/usage/#${resource.path}`} /></td>
-                    {/* <td>
+            <section>
+              <h3>
+                <a id="download"></a>
+                Bulk download
+              </h3>
+              <p>
+                Downloads contain the full set of entities contained in this dataset. You can fetch
+                a simplified tabular form, or detailed, structured data in JSON format. Updated files
+                will be provided once a day at the same location.
+              </p>
+              <Table className="vertical-center" size="sm">
+                <thead>
+                  <tr>
+                    <th className="numeric narrow"></th>
+                    <th>File name</th>
+                    <th>Export type</th>
+                    <th className="numeric">Size</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {details.resources.map((resource) =>
+                    <tr key={resource.path}>
+                      <td className="numeric narrow">
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          rel="nofollow"
+                          // @ts-expect-error
+                          download={true}
+                          href={resource.url}
+                        >
+                          <Download className="bsIcon" />
+                        </Button>
+                      </td>
+                      <td><a href={resource.url} download><code>{resource.path}</code></a></td>
+                      <td>{resource.title}<HelpLink href={`/docs/usage/#${resource.path}`} /></td>
+                      {/* <td>
                         <OverlayTrigger placement="bottom" overlay={<Tooltip>{resource.mime_type_label}</Tooltip>}>
                           <code>{resource.mime_type}</code>
                         </OverlayTrigger>
                       </td> */}
-                    <td className="numeric">
-                      <FileSize size={resource.size} />
+                      <td className="numeric">
+                        <FileSize size={resource.size} />
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+              <p>
+                Help: <Link href="/docs/usage">Using the data</Link>
+                <Spacer />
+                <Link href="/reference/">format reference</Link>
+                <Spacer />
+                <Link href="/docs/identifiers/">identifier use</Link>
+                <Spacer />
+                <Link href="/licensing/">commercial licensing</Link>
+              </p>
+            </section>
+
+            <section>
+              <h3>
+                <a id="api"></a>
+                Using the API
+              </h3>
+              <p>
+                You can query the data in this dataset via the application programming
+                interface (API) endpoints below. Please <Link href="/docs/api/">read
+                  the introduction</Link> for documentation and terms of service.
+
+                See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
+              </p>
+              <Table className="vertical-center">
+                <tbody>
+                  <tr>
+                    <td width="40%">
+                      Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
                     </td>
                   </tr>
-                )}
-              </tbody>
-            </Table>
-            <p>
-              Help: <Link href="/docs/usage">Using the data</Link>
-              <Spacer />
-              <Link href="/reference/">format reference</Link>
-              <Spacer />
-              <Link href="/docs/identifiers/">identifier use</Link>
-              <Spacer />
-              <Link href="/licensing/">commercial licensing</Link>
-            </p>
-
-            <h3>
-              <a id="api"></a>
-              Using the API
-            </h3>
-            <p>
-              You can query the data in this dataset via the application programming
-              interface (API) endpoints below. Please <Link href="/docs/api/">read
-                the introduction</Link> for documentation and terms of service.
-
-              See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
-            </p>
-            <Table className="vertical-center">
-              <tbody>
-                <tr>
-                  <td width="40%">
-                    Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
-                  </td>
-                  <td width="60%">
-                    <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
-                  </td>
-                </tr>
-                <tr>
-                  <td width="40%">
-                    For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
-                  </td>
-                  <td width="60%">
-                    <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
-                  </td>
-                </tr>
-                <tr>
-                  <td width="40%">
-                    For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
-                  </td>
-                  <td width="60%">
-                    <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
+                  <tr>
+                    <td width="40%">
+                      For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="40%">
+                      For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
+                    </td>
+                    <td width="60%">
+                      <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </section>
 
             {isCollection(dataset) && !!sources?.length && (
-              <>
+              <section>
                 <h3>
                   <a id="sources"></a>
                   Data sources
-                  <NumericBadge value={sources.length} bg="primary" />
+                  <NumericBadge value={sources.length} />
                 </h3>
                 <p>
                   {dataset.title} is a <Link href="/docs/faq/#collections">collection dataset</Link> which
                   bundles together entities from the following data sources:
                 </p>
                 <Dataset.SourcesTable sources={sources} />
-              </>
+              </section>
             )}
           </Col>
           <Col sm={3}>
