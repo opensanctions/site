@@ -182,7 +182,7 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 <h3>
                   <a id="sources"></a>
                   Data sources
-                  <NumericBadge value={sources.length} />
+                  <NumericBadge value={sources.length} bg="primary" />
                 </h3>
                 <p>
                   {dataset.title} is a <Link href="/docs/faq/#collections">collection dataset</Link> which
@@ -191,40 +191,6 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 <Dataset.SourcesTable sources={sources} />
               </>
             )}
-
-            <h3>
-              <a id="geo"></a>
-              Geographic coverage
-              <NumericBadge value={details.targets.countries.length} />
-            </h3>
-            <>
-              <p>
-                {dataset.title} includes target entities in the following countries and territories.
-                {' '}<Link href="/reference/#type.country">Read about countries...</Link>
-              </p>
-              <Table size="sm">
-                <thead>
-                  <tr>
-                    <th style={{ width: "10%" }}>Code</th>
-                    <th>Country</th>
-                    <th className="numeric">Targets</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {details.targets.countries.map(c =>
-                    <tr key={c.code}>
-                      <td><code>{c.code}</code></td>
-                      <td>
-                        <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
-                          {c.label}
-                        </a>
-                      </td>
-                      <td className="numeric"><Numeric value={c.count} /></td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
-            </>
           </Col>
           <Col sm={3}>
             <div className="position-sticky">
@@ -235,7 +201,6 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 {!!sources?.length && (
                   <Nav.Link href="#sources">Data sources</Nav.Link>
                 )}
-                <Nav.Link href="#geo">Geographic coverage</Nav.Link>
               </Nav>
               <LicenseInfo />
             </div>

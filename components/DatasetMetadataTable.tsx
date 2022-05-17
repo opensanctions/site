@@ -7,6 +7,7 @@ import { FormattedDate, HelpLink, Numeric, Plural, Spacer, URLLink } from './uti
 import { wordList } from '../lib/util'
 
 import styles from '../styles/Dataset.module.scss'
+import { useState } from 'react'
 
 
 
@@ -20,14 +21,7 @@ type DatasetScreenProps = {
 export default function DatasetMetadataTable({ dataset, details, collections, issues }: DatasetScreenProps) {
   const errors = issues.filter((i) => i.level === LEVEL_ERROR);
   const warnings = issues.filter((i) => i.level === LEVEL_WARNING);
-  const schemaList = wordList(details.targets.schemata.map((ts) =>
-    <span className={styles.noWrap}>
-      <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
-        <Plural value={ts.count} one={ts.label} many={ts.plural} />
-      </a>
-      <HelpLink href={`/reference/#schema.${ts.name}`} />
-    </span>
-  ), <Spacer />);
+  const [coverageExpanded, setCoverageExpanded] = useState(false);
   return (
     <Table responsive="md">
       <tbody>
@@ -57,6 +51,42 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
                     <td className="numeric">
                       <Numeric value={ts.count} />
                     </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          </td>
+        </tr>
+        <tr>
+          <th className={styles.tableHeader}>
+            Coverage:
+          </th>
+          <td className="contains-inner-table">
+            <Table size="sm" className="inner-table">
+              <thead>
+                <tr>
+                  <td colSpan={2}>
+                    <Plural value={details.targets.countries.length} one="country" many="countries" />
+                    <HelpLink href={`/reference/#type.country`} />
+                    <Spacer />
+                    {coverageExpanded && (
+                      <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
+                    )}
+                    {!coverageExpanded && (
+                      <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(true) }} href='#'>Show overview...</a>
+                    )}
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                {coverageExpanded && details.targets.countries.map(c =>
+                  <tr key={c.code}>
+                    <td>
+                      <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
+                        {c.label}
+                      </a>
+                    </td>
+                    <td className="numeric"><Numeric value={c.count} /></td>
                   </tr>
                 )}
               </tbody>
