@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -84,6 +85,9 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
 
   return (
     <Layout.Base title={title} navSearch={true}>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
       <Container>
         <Row>
           <Col md={12}>
