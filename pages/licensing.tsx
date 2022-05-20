@@ -1,3 +1,4 @@
+import { InferGetStaticPropsType } from 'next';
 import { EnvelopeFill, LightbulbFill } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -7,8 +8,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import Layout from '../components/Layout'
 import Content from '../components/Content'
-import { Summary } from '../components/util';
+import { Numeric, Summary } from '../components/util';
 import Link from 'next/link';
+import { getDatasets } from '../lib/data';
 
 const TITLE = 'Licensing OpenSanctions';
 const SUMMARY = 'Our objective is to continually release high-quality '
@@ -16,7 +18,7 @@ const SUMMARY = 'Our objective is to continually release high-quality '
   + 'In order to make this sustainable, we\'re asking for-profit '
   + 'users to support the project and obtain a license.';
 
-export default function Licensing() {
+export default function Licensing({ sanctions_count, default_count }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout.Base title={TITLE} description={SUMMARY}>
       <Content.Menu title={TITLE}>
@@ -27,7 +29,9 @@ export default function Licensing() {
               <Card.Body>
                 <Card.Title>
                   Sanctions bulk data<br />
-                  <Badge bg="primary">$<span className="num">395</span>/mo</Badge>
+                  <Badge bg="primary">
+                    <span className="num"><Numeric value={sanctions_count} /></span> targets
+                  </Badge>
                 </Card.Title>
                 <Card.Text>
                   Consolidated sanctions and crime
@@ -56,7 +60,9 @@ export default function Licensing() {
               <Card.Body>
                 <Card.Title>
                   Sanctions and PEPs data<br />
-                  <Badge bg="light">$<span className="num">595</span>/mo</Badge>
+                  <Badge bg="light">
+                    <span className="num"><Numeric value={default_count} /></span> targets
+                  </Badge>
                 </Card.Title>
                 <Card.Text>
                   Consolidated sanctions and crime bulk data, plus politically
@@ -84,7 +90,9 @@ export default function Licensing() {
               <Card.Body>
                 <Card.Title>
                   Flat-rate API usage<br />
-                  <Badge bg="primary">$<span className="num">695</span>/mo</Badge>
+                  <Badge bg="primary">
+                    <span className="num">300,000</span> req/mo
+                  </Badge>
                 </Card.Title>
                 <Card.Text>
                   Service contract for the use of api.opensanctions.org to conduct automated
@@ -123,4 +131,17 @@ export default function Licensing() {
       </Content.Menu>
     </Layout.Base >
   )
+}
+
+
+export const getStaticProps = async () => {
+  const datasets = await getDatasets();
+  const sanctions = datasets.find(d => d.name === 'sanctions');
+  const default_ = datasets.find(d => d.name === 'default');
+  return {
+    props: {
+      sanctions_count: sanctions?.target_count || 25000,
+      default_count: default_?.target_count || 25000,
+    }
+  }
 }
