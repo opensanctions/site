@@ -22,6 +22,8 @@ export default function Contact() {
                 <Card.Title><EnvelopeFill className="bsIcon" /> E-mail</Card.Title>
                 <Card.Text>
                   Reach out to the core team to discuss the project.
+                  <br /><br />
+                  Or <a href="https://calendly.com/flindenberg/opensanctions-intro">book a call</a> directly!
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -62,6 +64,8 @@ export default function Contact() {
             Also check out the <Link href="/docs/">documentation</Link> and
             the <Link href="/docs/faq">frequently asked questions</Link> for
             detailed information regarding the data and project.
+          </p>
+          <p>
             And, of course, please consider communicating with us
             in <Link href="/licensing/">the sweetest language of all</Link>.
           </p>

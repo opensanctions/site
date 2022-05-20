@@ -86,6 +86,14 @@ th.narrow {
         }
     }
 
+    .card-body {
+        a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
+
     &.pricing {
         .card-title {
             text-align: center;
