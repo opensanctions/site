@@ -95,10 +95,6 @@ function DatasetItem({ dataset }: DatasetProps) {
               {dataset.publisher.name}
             </>
           )}
-          {/*
-          <Spacer />
-          <Numeric value={dataset.target_count} /> targets
-          */}
         </p>
       </Card.Body>
     </Card>

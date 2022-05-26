@@ -1,30 +1,23 @@
-import { useState, useEffect } from 'react';
 import { GetStaticPropsContext } from 'next'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
-import Tabs from 'react-bootstrap/Tabs';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Tooltip from 'react-bootstrap/Tooltip';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { Download, Search } from 'react-bootstrap-icons';
 
 import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails } from '../../lib/data'
-import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, LEVEL_ERROR, LEVEL_WARNING, IDatasetDetails } from '../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, Numeric } from '../../components/util'
+import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal } from '../../lib/types'
+import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
-import { IssuesList } from '../../components/Issue';
 
 import styles from '../../styles/Dataset.module.scss'
 import { LicenseInfo } from '../../components/Policy';
@@ -232,7 +225,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     const visibleSources = sources.filter((s) => s !== undefined && !s.hidden)
     props.sources = visibleSources as Array<ISource>
   }
-  if (isSource(dataset)) {
+  if (isSource(dataset) || isExternal(dataset)) {
     const collections = await Promise.all(dataset.collections.map((name) => getDatasetByName(name)))
     const visibleCollections = collections.filter((c) => isCollection(c) && !c.hidden)
     props.collections = visibleCollections as Array<ICollection>

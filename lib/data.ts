@@ -2,7 +2,7 @@
 // import { promises as fs } from 'fs';
 import queryString from 'query-string';
 import { IModelDatum } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity } from "./types";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal } from "./types";
 import { BASE_URL, API_TOKEN, API_URL } from "./constants";
 import { markdownToHtml } from './util';
 
@@ -17,7 +17,13 @@ index.datasets = index.datasets.map((raw: any) => {
   index.details[ds.name] = { description: markdown, targets, resources } as IDatasetDetails
   ds.link = `/datasets/${ds.name}/`
   ds.opensanctions_url = BASE_URL + ds.link
-  return ds.type === 'collection' ? ds as ICollection : ds as ISource
+  if (ds.type === 'collection') {
+    return ds as ICollection;
+  }
+  if (ds.type === 'external') {
+    return ds as IExternal;
+  }
+  return ds as ISource;
 })
 index.model = index.model as IModelDatum
 

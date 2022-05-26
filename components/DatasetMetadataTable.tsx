@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
 
-import { IDataset, ICollection, isSource, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types'
+import { IDataset, ICollection, isSource, isExternal, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types'
 import { FormattedDate, HelpLink, Numeric, Plural, Spacer, URLLink } from './util'
 import { wordList } from '../lib/util'
 
@@ -105,7 +105,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             </td>
           </tr>
         )}
-        {isSource(dataset) && !!dataset.url && (
+        {(isSource(dataset) || isExternal(dataset)) && !!dataset.url && (
           <tr>
             <th className={styles.tableHeader}>Information:</th>
             <td>
@@ -122,7 +122,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             </td>
           </tr>
         )}
-        {isSource(dataset) && !!collections?.length && (
+        {(isSource(dataset) || isExternal(dataset)) && !!collections?.length && (
           <tr>
             <th className={styles.tableHeader}>
               Collections<HelpLink href="/docs/faq/#collections" />:
@@ -137,7 +137,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             </td>
           </tr>
         )}
-        {isSource(dataset) && !!issues?.length && (
+        {(isSource(dataset) || isExternal(dataset)) && !!issues?.length && (
           <tr>
             <th className={styles.tableHeader}>Issues:</th>
             <td>

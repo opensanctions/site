@@ -106,11 +106,16 @@ export interface ISource extends IDatasetBase {
   collections: Array<string>
 }
 
+export interface IExternal extends IDatasetBase {
+  url?: string
+  collections: Array<string>
+}
+
 export interface ICollection extends IDatasetBase {
   sources: Array<string>
 }
 
-export type IDataset = ISource | ICollection
+export type IDataset = ISource | IExternal | ICollection
 
 export function isCollection(dataset?: IDataset): dataset is ICollection {
   return dataset?.type === 'collection';
@@ -118,6 +123,10 @@ export function isCollection(dataset?: IDataset): dataset is ICollection {
 
 export function isSource(dataset?: IDataset): dataset is ISource {
   return dataset?.type === 'source';
+}
+
+export function isExternal(dataset?: IDataset): dataset is IExternal {
+  return dataset?.type === 'external';
 }
 
 export interface IMatcherFeature {
@@ -193,6 +202,8 @@ export interface IStatement {
   schema: string
   dataset: string
   value: string
+  target: boolean
+  external: boolean
   first_seen: string
   last_seen: string
 }
