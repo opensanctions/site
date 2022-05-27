@@ -25,6 +25,9 @@ export function TypeValue({ type, value, plain = false, entity: Entity = EntityL
   if (type.name === 'url' && !plain) {
     return <URLLink url={value as string} />
   }
+  if (prop?.name == 'leiCode') {
+    return <Link href={`https://search.gleif.org/#/record/${value}`}>{value + ''}</Link>
+  }
   if (prop?.name === 'wikidataId') {
     return <Link href={`https://wikidata.org/wiki/${value}`}>{value + ''}</Link>
   }
