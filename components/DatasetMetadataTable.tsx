@@ -25,14 +25,16 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
   return (
     <Table responsive="md">
       <tbody>
-        <tr>
-          <th className={styles.tableHeader}>
-            Targets<HelpLink href="/reference/#targets" />:
-          </th>
-          <td>
-            <Numeric value={dataset.target_count} />
-          </td>
-        </tr>
+        {!isExternal(dataset) &&
+          <tr>
+            <th className={styles.tableHeader}>
+              Targets<HelpLink href="/reference/#targets" />:
+            </th>
+            <td>
+              <Numeric value={dataset.target_count} />
+            </td>
+          </tr>
+        }
         <tr>
           <th className={styles.tableHeader}>
             Entity types:
