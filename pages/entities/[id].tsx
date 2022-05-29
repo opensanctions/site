@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 
 import Layout from '../../components/Layout'
-import { ISource, isSource } from '../../lib/types';
+import { IDataset, IExternal, isExternal, ISource, isSource } from '../../lib/types';
 import { fetchIndex, fetchJsonUrl, getDatasets } from '../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
@@ -13,10 +13,10 @@ import { IEntityDatum, Model } from '../../lib/ftm';
 // import styles from '../styles/Search.module.scss'
 
 
-export default function Entity({ apiUrl, entityData, modelData, sources }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Entity({ apiUrl, entityData, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(modelData);
   const entity = model.getEntity(entityData);
-  const structured = getSchemaEntityPage(entity, sources);
+  const structured = getSchemaEntityPage(entity, datasets);
   return (
     <Layout.Base title={entity.caption} structured={structured}>
       <Container>
@@ -24,7 +24,7 @@ export default function Entity({ apiUrl, entityData, modelData, sources }: Infer
           {entity.caption}
           <JSONLink href={apiUrl} />
         </h1>
-        <EntityDisplay entity={entity} datasets={sources} />
+        <EntityDisplay entity={entity} datasets={datasets} />
       </Container>
     </Layout.Base >
   )
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { redirect: { destination: '/search/', permanent: false } };
   }
   const index = await fetchIndex();
-  const datasets = await getDatasets();
+  const allDatasets = await getDatasets();
   const apiUrl = `${API_URL}/entities/${entityId}`;
   const raw = await fetchJsonUrl(apiUrl);
   if (raw === undefined || raw === null || raw.id === undefined) {
@@ -47,18 +47,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (entity.id !== entityId) {
     return { redirect: { destination: `/entities/${entity.id}/`, permanent: true } };
   }
-  const sourceNames = entity !== null ? entity.datasets : [];
+  const datasetNames = entity !== null ? entity.datasets : [];
 
-  const sources = sourceNames
-    .map((name) => datasets.find((d) => d.name === name))
-    .filter((d) => d !== undefined)
-    .filter((d) => isSource(d)) as Array<ISource>
+  const datasets = datasetNames
+    .map((name) => allDatasets.find((d) => d.name === name))
+    .filter((d) => d !== undefined) as IDataset[];
 
   return {
     props: {
       entityId,
       apiUrl,
-      sources: sources,
+      datasets: datasets,
       entityData: entity,
       modelData: index.model
     },

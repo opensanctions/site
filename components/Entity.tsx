@@ -10,7 +10,7 @@ import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
 import { Entity } from '../lib/ftm'
-import { IDataset } from '../lib/types'
+import { IDataset, isExternal, isSource } from '../lib/types'
 import { PropertyValues } from './Property';
 import { FormattedDate, HelpLink, SpacedList, Summary } from './util';
 import Dataset from './Dataset';
@@ -236,6 +236,8 @@ export type EntityDisplayProps = {
 export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
   const properties = entity.getDisplayProperties();
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
+  const sources = datasets.filter(isSource);
+  const externals = datasets.filter(isExternal);
   return (
     <Row>
       <Col md={9} className="order-2">
@@ -258,9 +260,20 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
         )}
         <div className={styles.entityPageSection}>
           <h3>Data sources</h3>
-          {datasets.map((d) => (
+          {sources.map((d) => (
             <Dataset.Item key={d.name} dataset={d} />
           ))}
+          {externals.length > 0 && (
+            <>
+              <p>
+                The record has been enriched with data from the following
+                external databases:
+              </p>
+              {externals.map((d) => (
+                <Dataset.Item key={d.name} dataset={d} />
+              ))}
+            </>
+          )}
         </div>
         <div className={styles.entityPageSection}>
           <h3>About this page</h3>

@@ -76,64 +76,66 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
               <DatasetMetadataTable dataset={dataset} details={details} collections={collections} issues={issues} />
             </section>
 
-            <section>
-              <h3>
-                <a id="download"></a>
-                Bulk download
-              </h3>
-              <p>
-                Downloads contain the full set of entities contained in this dataset. You can fetch
-                a simplified tabular form, or detailed, structured data in JSON format. Updated files
-                will be provided once a day at the same location.
-              </p>
-              <Table className="vertical-center" size="sm">
-                <thead>
-                  <tr>
-                    <th className="numeric narrow"></th>
-                    <th>File name</th>
-                    <th>Export type</th>
-                    <th className="numeric">Size</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {details.resources.map((resource) =>
-                    <tr key={resource.path}>
-                      <td className="numeric narrow">
-                        <Button
-                          size="sm"
-                          variant="secondary"
-                          rel="nofollow"
-                          // @ts-expect-error
-                          download={true}
-                          href={resource.url}
-                        >
-                          <Download className="bsIcon" />
-                        </Button>
-                      </td>
-                      <td><a href={resource.url} download><code>{resource.path}</code></a></td>
-                      <td>{resource.title}<HelpLink href={`/docs/usage/#${resource.path}`} /></td>
-                      {/* <td>
+            {details.resources.length > 0 && (
+              <section>
+                <h3>
+                  <a id="download"></a>
+                  Bulk download
+                </h3>
+                <p>
+                  Downloads contain the full set of entities contained in this dataset. You can fetch
+                  a simplified tabular form, or detailed, structured data in JSON format. Updated files
+                  will be provided once a day at the same location.
+                </p>
+                <Table className="vertical-center" size="sm">
+                  <thead>
+                    <tr>
+                      <th className="numeric narrow"></th>
+                      <th>File name</th>
+                      <th>Export type</th>
+                      <th className="numeric">Size</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {details.resources.map((resource) =>
+                      <tr key={resource.path}>
+                        <td className="numeric narrow">
+                          <Button
+                            size="sm"
+                            variant="secondary"
+                            rel="nofollow"
+                            // @ts-expect-error
+                            download={true}
+                            href={resource.url}
+                          >
+                            <Download className="bsIcon" />
+                          </Button>
+                        </td>
+                        <td><a href={resource.url} download><code>{resource.path}</code></a></td>
+                        <td>{resource.title}<HelpLink href={`/docs/usage/#${resource.path}`} /></td>
+                        {/* <td>
                         <OverlayTrigger placement="bottom" overlay={<Tooltip>{resource.mime_type_label}</Tooltip>}>
                           <code>{resource.mime_type}</code>
                         </OverlayTrigger>
                       </td> */}
-                      <td className="numeric">
-                        <FileSize size={resource.size} />
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
-              <p>
-                Help: <Link href="/docs/usage">Using the data</Link>
-                <Spacer />
-                <Link href="/reference/">format reference</Link>
-                <Spacer />
-                <Link href="/docs/identifiers/">identifier use</Link>
-                <Spacer />
-                <Link href="/licensing/">commercial licensing</Link>
-              </p>
-            </section>
+                        <td className="numeric">
+                          <FileSize size={resource.size} />
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+                <p>
+                  Help: <Link href="/docs/usage">Using the data</Link>
+                  <Spacer />
+                  <Link href="/reference/">format reference</Link>
+                  <Spacer />
+                  <Link href="/docs/identifiers/">identifier use</Link>
+                  <Spacer />
+                  <Link href="/licensing/">commercial licensing</Link>
+                </p>
+              </section>
+            )}
 
             <section>
               <h3>
