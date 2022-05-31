@@ -122,10 +122,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
             </p>
           </Col>
           <Col md={8} className={styles.explainer}>
-            <Alert variant="warning">
-              <strong>NEW:</strong> Track the <Alert.Link href="/recent/sanctions">latest sanctions imposed by the US, Europe, Britain, etc...</Alert.Link>
-            </Alert>
-            <h4> Collections</h4>
+            <h4>Collections</h4>
             <p>
               <Link href="/docs/faq/#collections">Collections</Link> are custom datasets
               provided by OpenSanctions that combine data from <Link href="/datasets/#sources">
