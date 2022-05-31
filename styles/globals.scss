@@ -31,6 +31,10 @@ h5 {
     font-weight: 600;
     margin-top: 1em;
     font-size: 1.1em;
+
+    &.card-title {
+        margin-top: 0;
+    }
 }
 
 h1 {

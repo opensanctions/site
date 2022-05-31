@@ -65,7 +65,6 @@ function DatasetCard({ dataset }: DatasetProps) {
         <Card.Text>
           {dataset.summary}
         </Card.Text>
-        <Card.Link href={dataset.link}>Details</Card.Link>
       </Card.Body>
     </Card>
   )
