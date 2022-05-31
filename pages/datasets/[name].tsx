@@ -224,9 +224,13 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
           <Col sm={3}>
             <div className="position-sticky">
               <Nav navbarScroll className="flex-column">
-                <Nav.Link href="#overview">Overview</Nav.Link>
-                <Nav.Link href="#download">Download</Nav.Link>
-                <Nav.Link href="#api">API</Nav.Link>
+                {!isExternal(dataset) && (
+                  <>
+                    <Nav.Link href="#overview">Overview</Nav.Link>
+                    <Nav.Link href="#download">Download</Nav.Link>
+                    <Nav.Link href="#api">API</Nav.Link>
+                  </>
+                )}
                 {!!sources?.length && (
                   <Nav.Link href="#sources">Data sources</Nav.Link>
                 )}
