@@ -269,8 +269,9 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
                 <h5>External databases</h5>
               )}
               <p>
-                The record has been enriched with data from the following
-                external databases:
+                The record has
+                been <Link href="/docs/enrichment/">enriched with data</Link> from
+                the following external databases:
               </p>
               {externals.map((d) => (
                 <Dataset.Item key={d.name} dataset={d} />

@@ -9,7 +9,7 @@ import Dataset from '../../components/Dataset'
 import { INDEX_URL, COLLECTIONS } from '../../lib/constants';
 import { getDatasets } from '../../lib/data'
 import { getDataCatalog } from '../../lib/schema'
-import { ICollection, isCollection, isSource } from '../../lib/types';
+import { ICollection, isCollection, isExternal, isSource } from '../../lib/types';
 import { JSONLink } from '../../components/util';
 
 
@@ -17,7 +17,8 @@ export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeo
   const structured = getDataCatalog()
   const allCollections = datasets.filter(isCollection)
   const collections = COLLECTIONS.map(n => allCollections.find(c => c.name == n)) as Array<ICollection>
-  const sources = datasets.filter(isSource).filter((ds) => !ds.hidden)
+  const sources = datasets.filter(isSource)
+  const externals = datasets.filter(isExternal)
   return (
     <Layout.Base title="Datasets" structured={structured}>
       <Container>
@@ -69,15 +70,41 @@ export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeo
             ))}
           </Col>
         </Row>
+        <hr />
+        <h1>
+          <a id="externals" />
+          External databases
+        </h1>
+        <Row>
+          <Col md={3}>
+            <p>
+              <strong>External databases</strong> are used
+              to <Link href="/docs/enrichment/">enrich the data</Link> in
+              OpenSanctions with additional properties and entities linked to
+              entities of interest.
+            </p>
+            <p>
+              Entities from external sources are only included if there is a
+              confirmed match between an entity in the source data and the
+              external database.
+            </p>
+          </Col>
+          <Col md={9}>
+            {externals.map((d) => (
+              <Dataset.Item key={d.name} dataset={d} />
+            ))}
+          </Col>
+        </Row>
       </Container>
     </Layout.Base>
   )
 }
 
 export const getStaticProps = async () => {
+  const datasets = await getDatasets()
   return {
     props: {
-      datasets: await getDatasets()
+      datasets: datasets.filter((ds) => !ds.hidden)
     }
   }
 }

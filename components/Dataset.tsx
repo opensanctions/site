@@ -102,6 +102,8 @@ function DatasetItem({ dataset }: DatasetProps) {
           {isExternal(dataset) && (
             <>
               <Badge bg="light">External dataset</Badge>
+              <Spacer />
+              {dataset.publisher.name}
             </>
           )}
         </p>

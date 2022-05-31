@@ -4,7 +4,7 @@
 
 import { BASE_URL, LICENSE_URL, CLAIM, EMAIL, SITE } from './constants';
 import { Entity } from './ftm';
-import { IArticleInfo, IDataset, IDatasetDetails, IResource, ISourcePublisher, isSource } from './types';
+import { IArticleInfo, IDataset, IDatasetDetails, IResource, isExternal, IDatasetPublisher, isSource } from './types';
 
 
 export function getSchemaOpenSanctionsOrganization() {
@@ -57,7 +57,7 @@ export function getDataCatalog() {
   }
 }
 
-function getPublisherOrganization(publisher: ISourcePublisher) {
+function getPublisherOrganization(publisher: IDatasetPublisher) {
   return {
     "@context": "https://schema.org/",
     "@type": "Organization",
@@ -79,6 +79,17 @@ function getResourceDataDownload(resource: IResource) {
 }
 
 export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
+  if (isExternal(dataset)) {
+    return {
+      "@context": "https://schema.org/",
+      "@type": "Dataset",
+      "name": dataset.title,
+      "url": dataset.url,
+      "description": dataset.summary,
+      "creator": getPublisherOrganization(dataset.publisher),
+      "includedInDataCatalog": getDataCatalog(),
+    }
+  }
   let schema: any = {
     "@context": "https://schema.org/",
     "@type": "Dataset",

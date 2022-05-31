@@ -42,7 +42,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
           <td className="contains-inner-table">
             <Table size="sm" className="inner-table">
               <tbody>
-                {details.targets.schemata.map((ts) =>
+                {details.things.schemata.map((ts) =>
                   <tr key={ts.name}>
                     <td>
                       <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
@@ -59,43 +59,45 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             </Table>
           </td>
         </tr>
-        <tr>
-          <th className={styles.tableHeader}>
-            Coverage:
-          </th>
-          <td className="contains-inner-table">
-            <Table size="sm" className="inner-table">
-              <thead>
-                <tr>
-                  <td colSpan={2}>
-                    <Plural value={details.targets.countries.length} one="country" many="countries" />
-                    <HelpLink href={`/reference/#type.country`} />
-                    <Spacer />
-                    {coverageExpanded && (
-                      <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
-                    )}
-                    {!coverageExpanded && (
-                      <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(true) }} href='#'>Show overview...</a>
-                    )}
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                {coverageExpanded && details.targets.countries.map(c =>
-                  <tr key={c.code}>
-                    <td>
-                      <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
-                        {c.label}
-                      </a>
+        {details.things.countries.length > 0 && (
+          <tr>
+            <th className={styles.tableHeader}>
+              Coverage:
+            </th>
+            <td className="contains-inner-table">
+              <Table size="sm" className="inner-table">
+                <thead>
+                  <tr>
+                    <td colSpan={2}>
+                      <Plural value={details.things.countries.length} one="country" many="countries" />
+                      <HelpLink href={`/reference/#type.country`} />
+                      <Spacer />
+                      {coverageExpanded && (
+                        <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
+                      )}
+                      {!coverageExpanded && (
+                        <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(true) }} href='#'>Show overview...</a>
+                      )}
                     </td>
-                    <td className="numeric"><Numeric value={c.count} /></td>
                   </tr>
-                )}
-              </tbody>
-            </Table>
-          </td>
-        </tr>
-        {isSource(dataset) && (
+                </thead>
+                <tbody>
+                  {coverageExpanded && details.things.countries.map(c =>
+                    <tr key={c.code}>
+                      <td>
+                        <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
+                          {c.label}
+                        </a>
+                      </td>
+                      <td className="numeric"><Numeric value={c.count} /></td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            </td>
+          </tr>
+        )}
+        {(isSource(dataset) || isExternal(dataset)) && (
           <tr>
             <th className={styles.tableHeader}>Publisher:</th>
             <td>

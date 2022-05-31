@@ -12,9 +12,9 @@ import issuesJson from '../data/issues.json';
 const index = { ...indexJson } as unknown as IIndex;
 index.details = {};
 index.datasets = index.datasets.map((raw: any) => {
-  const { description, targets, resources, ...ds } = raw;
+  const { description, targets, things, resources, ...ds } = raw;
   const markdown = markdownToHtml(description)
-  index.details[ds.name] = { description: markdown, targets, resources } as IDatasetDetails
+  index.details[ds.name] = { description: markdown, targets, things, resources } as IDatasetDetails
   ds.link = `/datasets/${ds.name}/`
   ds.opensanctions_url = BASE_URL + ds.link
   if (ds.type === 'collection') {

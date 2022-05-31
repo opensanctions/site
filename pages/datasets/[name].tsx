@@ -57,22 +57,24 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 <a id="overview"></a>
                 Data overview
               </h3>
-              <Form className="d-flex" action="/search/">
-                <input type="hidden" name="scope" value={dataset.name} />
-                <InputGroup className={styles.searchBox} size="lg">
-                  <Form.Control
-                    type="search"
-                    name="q"
-                    autoFocus={true}
-                    placeholder={`Search in ${dataset.title}...`}
-                    aria-label="Search"
-                  />
-                  <Button variant="secondary" type="submit">
-                    <Search className="bsIcon" />{' '}
-                    Search
-                  </Button>
-                </InputGroup>
-              </Form>
+              {!isExternal(dataset) && (
+                <Form className="d-flex" action="/search/">
+                  <input type="hidden" name="scope" value={dataset.name} />
+                  <InputGroup className={styles.searchBox} size="lg">
+                    <Form.Control
+                      type="search"
+                      name="q"
+                      autoFocus={true}
+                      placeholder={`Search in ${dataset.title}...`}
+                      aria-label="Search"
+                    />
+                    <Button variant="secondary" type="submit">
+                      <Search className="bsIcon" />{' '}
+                      Search
+                    </Button>
+                  </InputGroup>
+                </Form>
+              )}
               <DatasetMetadataTable dataset={dataset} details={details} collections={collections} issues={issues} />
             </section>
 
@@ -137,47 +139,49 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
               </section>
             )}
 
-            <section>
-              <h3>
-                <a id="api"></a>
-                Using the API
-              </h3>
-              <p>
-                You can query the data in this dataset via the application programming
-                interface (API) endpoints below. Please <Link href="/docs/api/">read
-                  the introduction</Link> for documentation and terms of service.
+            {!isExternal(dataset) && (
+              <section>
+                <h3>
+                  <a id="api"></a>
+                  Using the API
+                </h3>
+                <p>
+                  You can query the data in this dataset via the application programming
+                  interface (API) endpoints below. Please <Link href="/docs/api/">read
+                    the introduction</Link> for documentation and terms of service.
 
-                See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
-              </p>
-              <Table className="vertical-center">
-                <tbody>
-                  <tr>
-                    <td width="40%">
-                      Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
-                    </td>
-                    <td width="60%">
-                      <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="40%">
-                      For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
-                    </td>
-                    <td width="60%">
-                      <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="40%">
-                      For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
-                    </td>
-                    <td width="60%">
-                      <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </section>
+                  See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
+                </p>
+                <Table className="vertical-center">
+                  <tbody>
+                    <tr>
+                      <td width="40%">
+                        Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
+                      </td>
+                      <td width="60%">
+                        <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="40%">
+                        For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
+                      </td>
+                      <td width="60%">
+                        <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="40%">
+                        For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
+                      </td>
+                      <td width="60%">
+                        <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </section>
+            )}
 
             {isCollection(dataset) && !!sources?.length && (
               <section>

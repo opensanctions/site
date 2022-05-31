@@ -42,27 +42,29 @@ export interface IIssueType {
   error: number
 }
 
-export interface ITargetCountry {
+export interface IAggregatedCountry {
   code: string
   count: number
   label: string
 }
 
-export interface ITargetSchema {
+export interface IAggregatedSchema {
   name: string
   count: number
   label: string
   plural: string
 }
 
-export interface ITargetStats {
-  countries: Array<ITargetCountry>
-  schemata: Array<ITargetSchema>
+export interface IAggregatedStats {
+  total: number
+  countries: Array<IAggregatedCountry>
+  schemata: Array<IAggregatedSchema>
 }
 
 export interface IDatasetDetails {
   description?: string
-  targets: ITargetStats
+  targets: IAggregatedStats
+  things: IAggregatedStats
   resources: Array<IResource>
 }
 
@@ -90,7 +92,7 @@ export interface ISourceData {
   model?: string
 }
 
-export interface ISourcePublisher {
+export interface IDatasetPublisher {
   url?: string
   name: string
   description: string
@@ -102,12 +104,13 @@ export interface ISourcePublisher {
 export interface ISource extends IDatasetBase {
   url?: string
   data: ISourceData
-  publisher: ISourcePublisher
+  publisher: IDatasetPublisher
   collections: Array<string>
 }
 
 export interface IExternal extends IDatasetBase {
   url?: string
+  publisher: IDatasetPublisher
   collections: Array<string>
 }
 
