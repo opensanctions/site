@@ -265,6 +265,9 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
           ))}
           {externals.length > 0 && (
             <>
+              {sources.length > 0 && (
+                <h5>External databases</h5>
+              )}
               <p>
                 The record has been enriched with data from the following
                 external databases:

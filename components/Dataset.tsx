@@ -2,9 +2,9 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Table from 'react-bootstrap/Table';
 import TextTruncate from 'react-text-truncate';
-import { FileEarmarkSpreadsheetFill, FolderFill } from 'react-bootstrap-icons';
+import { CloudFill, FolderFill, Server } from 'react-bootstrap-icons';
 
-import { IDataset, isCollection, ISource, isSource } from '../lib/types'
+import { IDataset, isCollection, isExternal, ISource, isSource } from '../lib/types'
 import { Numeric, NumericBadge, Spacer } from './util';
 import styles from '../styles/Dataset.module.scss'
 import Link from 'next/link';
@@ -27,7 +27,10 @@ function DatasetIcon({ dataset, ...props }: DatasetIconProps) {
   if (isCollection(dataset)) {
     return <FolderFill className="bsIcon" {...props} />
   }
-  return <FileEarmarkSpreadsheetFill className="bsIcon" {...props} />
+  if (isExternal(dataset)) {
+    return <CloudFill className="bsIcon" {...props} />
+  }
+  return <Server className="bsIcon" {...props} />
 }
 
 function DatasetLink({ dataset, ...props }: DatasetIconProps) {
@@ -75,10 +78,12 @@ function DatasetItem({ dataset }: DatasetProps) {
       <Card.Body>
         <a href={dataset.link} className={styles.itemHeader}>
           <DatasetIcon dataset={dataset} /> {dataset.title}
-          <NumericBadge value={dataset.target_count} className={styles.itemTargets} />
+          {!isExternal(dataset) && (
+            <NumericBadge value={dataset.target_count} className={styles.itemTargets} />
+          )}
         </a>
         <p className={styles.itemSummary}>
-          <TextTruncate line={1} text={dataset.summary} />
+          <TextTruncate line={1} text={dataset.summary} element="span" />
         </p>
         <p className={styles.itemDetails}>
           {isCollection(dataset) && (
@@ -93,6 +98,11 @@ function DatasetItem({ dataset }: DatasetProps) {
               <Badge bg="light">{dataset.publisher.country_label}</Badge>
               <Spacer />
               {dataset.publisher.name}
+            </>
+          )}
+          {isExternal(dataset) && (
+            <>
+              <Badge bg="light">External dataset</Badge>
             </>
           )}
         </p>
