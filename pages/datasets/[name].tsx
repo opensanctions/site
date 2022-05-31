@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
@@ -181,6 +182,28 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                   </tbody>
                 </Table>
               </section>
+            )}
+
+            {isExternal(dataset) && (
+              <Alert variant="secondary">
+                <Alert.Heading>About external databases</Alert.Heading>
+                <p>
+                  {dataset.title} is an external database that is used
+                  to <Link href="/docs/enrichment/">enrich the data</Link> in
+                  OpenSanctions with additional details and connections.
+                </p>
+                <p>
+                  This means that we have only included entities where there
+                  is a connection (e.g. to a sanctions target or a politician)
+                  and we are not reproducing the database in full.
+                </p>
+                <p>
+                  Data from {dataset.title} is included in the collections
+                  listed above. However, since the enrichment data only makes
+                  sense in conjunction with the entities it relates to, we
+                  are not offering it for bulk download separately.
+                </p>
+              </Alert>
             )}
 
             {isCollection(dataset) && !!sources?.length && (
