@@ -36,6 +36,23 @@
 .tableHeader {
     width: 15%;
     white-space: nowrap;
+    padding-left: 0 !important;
+}
+
+.downloadTable {
+    td {
+        vertical-align: middle;
+    }
+}
+
+.apiTable {
+
+    td,
+    th {
+        padding-left: 0;
+        padding-right: 0;
+        vertical-align: middle;
+    }
 }
 
 .noWrap {

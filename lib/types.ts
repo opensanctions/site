@@ -84,6 +84,7 @@ export interface IDatasetBase {
   issue_levels: IIssueType
   issues_url: string
   target_count: number
+  entity_count: number
 }
 
 export interface ISourceData {

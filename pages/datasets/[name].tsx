@@ -89,7 +89,7 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                   a simplified tabular form, or detailed, structured data in JSON format. Updated files
                   will be provided once a day at the same location.
                 </p>
-                <Table className="vertical-center" size="sm">
+                <Table className={styles.downloadTable} size="sm">
                   <thead>
                     <tr>
                       <th className="numeric narrow"></th>
@@ -152,7 +152,7 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
 
                   See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
                 </p>
-                <Table className="vertical-center">
+                <Table className={styles.apiTable}>
                   <tbody>
                     <tr>
                       <td width="40%">

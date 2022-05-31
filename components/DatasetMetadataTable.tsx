@@ -25,16 +25,40 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
   return (
     <Table responsive="md">
       <tbody>
-        {!isExternal(dataset) &&
-          <tr>
-            <th className={styles.tableHeader}>
-              Targets<HelpLink href="/reference/#targets" />:
-            </th>
-            <td>
-              <Numeric value={dataset.target_count} />
-            </td>
-          </tr>
-        }
+        <tr>
+          <th className={styles.tableHeader}>
+            Entity count:
+          </th>
+          <td>
+            {dataset.target_count > 0 && (
+              <>
+                <Plural
+                  value={dataset.target_count}
+                  one={"target entity"}
+                  many={"target entities"}
+                />
+                <HelpLink href="/reference/#targets" />
+                <Spacer />
+              </>
+            )}
+            {details.things.total > 0 && (
+              <>
+                <a href={`/search/?scope=${dataset.name}`}>
+                  <Plural value={details.things.total}
+                    one={"searchable entity"}
+                    many={"searchable entities"}
+                  />
+                </a>
+                <Spacer />
+              </>
+            )}
+            <Plural
+              value={dataset.entity_count}
+              one={"total"}
+              many={"total"}
+            />
+          </td>
+        </tr>
         <tr>
           <th className={styles.tableHeader}>
             Entity types:
