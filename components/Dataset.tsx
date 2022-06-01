@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import TextTruncate from 'react-text-truncate';
 import { CloudFill, FolderFill, Server } from 'react-bootstrap-icons';
 
-import { IDataset, isCollection, isExternal, ISource, isSource } from '../lib/types'
+import { IDataset, IExternal, isCollection, isExternal, ISource, isSource } from '../lib/types'
 import { Numeric, NumericBadge, Spacer } from './util';
 import styles from '../styles/Dataset.module.scss'
 import Link from 'next/link';
@@ -146,10 +146,41 @@ function SourcesTable({ sources }: SourcesTableProps) {
   )
 }
 
+type ExternalsTableProps = {
+  externals: Array<IExternal>
+}
+
+function ExternalsTable({ externals }: ExternalsTableProps) {
+  const externalsSorted = externals.sort((a, b) => b.entity_count - a.entity_count)
+  return (
+    <Table size="sm">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Publisher</th>
+        </tr>
+      </thead>
+      <tbody>
+        {externalsSorted.map(ext =>
+          <tr key={ext.name}>
+            <td>
+              <Link href={ext.link}>{ext.title}</Link>
+            </td>
+            <td>
+              {ext.publisher.name}
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </Table>
+  )
+}
+
 export default class Dataset {
   static Card = DatasetCard
   static Item = DatasetItem
   static SourcesTable = SourcesTable
+  static ExternalsTable = ExternalsTable
   static Icon = DatasetIcon
   static Link = DatasetLink
 }

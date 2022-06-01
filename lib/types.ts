@@ -117,6 +117,7 @@ export interface IExternal extends IDatasetBase {
 
 export interface ICollection extends IDatasetBase {
   sources: Array<string>
+  externals: Array<string>
 }
 
 export type IDataset = ISource | IExternal | ICollection

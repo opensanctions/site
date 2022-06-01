@@ -59,30 +59,32 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             />
           </td>
         </tr>
-        <tr>
-          <th className={styles.tableHeader}>
-            Entity types:
-          </th>
-          <td className="contains-inner-table">
-            <Table size="sm" className="inner-table">
-              <tbody>
-                {details.things.schemata.map((ts) =>
-                  <tr key={ts.name}>
-                    <td>
-                      <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
-                        <Plural one={ts.label} many={ts.plural} />
-                      </a>
-                      <HelpLink href={`/reference/#schema.${ts.name}`} />
-                    </td>
-                    <td className="numeric">
-                      <Numeric value={ts.count} />
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </Table>
-          </td>
-        </tr>
+        {details.things.schemata.length > 0 && (
+          <tr>
+            <th className={styles.tableHeader}>
+              Entity types:
+            </th>
+            <td className="contains-inner-table">
+              <Table size="sm" className="inner-table">
+                <tbody>
+                  {details.things.schemata.map((ts) =>
+                    <tr key={ts.name}>
+                      <td>
+                        <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
+                          <Plural one={ts.label} many={ts.plural} />
+                        </a>
+                        <HelpLink href={`/reference/#schema.${ts.name}`} />
+                      </td>
+                      <td className="numeric">
+                        <Numeric value={ts.count} />
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            </td>
+          </tr>
+        )}
         {details.things.countries.length > 0 && (
           <tr>
             <th className={styles.tableHeader}>

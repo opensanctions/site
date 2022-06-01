@@ -15,7 +15,7 @@ import { Download, Search } from 'react-bootstrap-icons';
 import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails } from '../../lib/data'
-import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal } from '../../lib/types'
+import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal, IExternal } from '../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
@@ -30,10 +30,11 @@ type DatasetScreenProps = {
   details: IDatasetDetails
   issues: Array<IIssue>
   sources?: Array<ISource>
+  externals?: Array<IExternal>
   collections?: Array<ICollection>
 }
 
-export default function DatasetScreen({ dataset, details, issues, sources, collections }: DatasetScreenProps) {
+export default function DatasetScreen({ dataset, details, issues, sources, externals, collections }: DatasetScreenProps) {
   const router = useRouter();
   const structured = getSchemaDataset(dataset, details);
   return (
@@ -220,6 +221,22 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 <Dataset.SourcesTable sources={sources} />
               </section>
             )}
+
+            {isCollection(dataset) && !!externals?.length && (
+              <section>
+                <h3>
+                  <a id="externals"></a>
+                  External databases
+                  <NumericBadge value={externals.length} />
+                </h3>
+                <p>
+                  {dataset.title} also includes <Link href="/docs/enrichment/">selected
+                    details and connections</Link> from the following
+                  external databases:
+                </p>
+                <Dataset.ExternalsTable externals={externals} />
+              </section>
+            )}
           </Col>
           <Col sm={3}>
             <div className="position-sticky">
@@ -233,6 +250,9 @@ export default function DatasetScreen({ dataset, details, issues, sources, colle
                 )}
                 {!!sources?.length && (
                   <Nav.Link href="#sources">Data sources</Nav.Link>
+                )}
+                {!!externals?.length && (
+                  <Nav.Link href="#externals">External databases</Nav.Link>
                 )}
               </Nav>
               <LicenseInfo />
@@ -251,17 +271,25 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   if (dataset === undefined || details === undefined) {
     return { redirect: { destination: '/', permanent: false } };
   }
+  const datasets = await getDatasets()
+  const visibleDatasets = datasets.filter((ds) => !ds.hidden);
   const issues = await getDatasetIssues(dataset)
   const props: DatasetScreenProps = { dataset, issues, details }
   if (isCollection(dataset)) {
-    const sources = await Promise.all(dataset.sources.map((name) => getDatasetByName(name)))
-    const visibleSources = sources.filter((s) => s !== undefined && !s.hidden)
-    props.sources = visibleSources as Array<ISource>
+    props.sources = dataset.sources
+      .map((name) => visibleDatasets.find((d) => d.name == name))
+      .filter((s) => s !== undefined)
+      .filter(isSource)
+    props.externals = dataset.externals
+      .map((name) => visibleDatasets.find((d) => d.name == name))
+      .filter((s) => s !== undefined)
+      .filter(isExternal)
   }
   if (isSource(dataset) || isExternal(dataset)) {
-    const collections = await Promise.all(dataset.collections.map((name) => getDatasetByName(name)))
-    const visibleCollections = collections.filter((c) => isCollection(c) && !c.hidden)
-    props.collections = visibleCollections as Array<ICollection>
+    props.collections = dataset.collections
+      .map((name) => visibleDatasets.find((d) => d.name == name))
+      .filter((s) => s !== undefined)
+      .filter(isCollection)
   }
   return { props }
 }
