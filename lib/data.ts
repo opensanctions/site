@@ -1,8 +1,8 @@
 // import { join } from 'path'
 // import { promises as fs } from 'fs';
 import queryString from 'query-string';
-import { IModelDatum } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal } from "./types";
+import { IEntityDatum, IModelDatum, Model } from "./ftm";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
 import { BASE_URL, API_TOKEN, API_URL } from "./constants";
 import { markdownToHtml } from './util';
 
@@ -87,4 +87,48 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
     .filter((stmt) => canonicalised.test(stmt.canonical_id))
     .map((stmt) => ({ id: stmt.canonical_id, lastmod: stmt.value }));
   return entities;
+}
+
+export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecentEntity>> {
+  const index = await fetchIndex();
+  const apiUrl = queryString.stringifyUrl({
+    'url': `${API_URL}/statements`,
+    'query': {
+      'limit': 25,
+      'dataset': dataset.name,
+      'target': true,
+      'prop': 'id',
+      'sort': 'first_seen:desc',
+    }
+  })
+  console.log('api', apiUrl);
+  const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+  if (statements === null) {
+    return [];
+  }
+  const promises = statements.results
+    .map(s => s.canonical_id)
+    .map(id => fetchJsonUrl(`${API_URL}/entities/${id}?nested=false`));
+  const responses = await Promise.all(promises) as IEntityDatum[]
+  const seen = [] as string[];
+  const model = new Model(index.model);
+  const results = statements.results.map((stmt) => {
+    if (seen.indexOf(stmt.canonical_id) !== -1) {
+      return undefined;
+    }
+    const data = responses.find((d) => d.id === stmt.canonical_id);
+    if (data === undefined) {
+      return undefined
+    }
+    const entity = model.getEntity(data)
+    const country = model.getType('country');
+    return {
+      id: entity.id,
+      caption: entity.caption,
+      schema: entity.schema.label,
+      countries: entity.getTypeValues(country).map((c) => country.getLabel(c as string)),
+      first_seen: stmt.first_seen,
+    } as IRecentEntity;
+  })
+  return results.filter(r => r !== undefined) as Array<IRecentEntity>;
 }

@@ -221,3 +221,11 @@ export interface ISitemapEntity {
   id: string
   lastmod: string
 }
+
+export interface IRecentEntity {
+  id: string
+  caption: string
+  first_seen: string
+  schema: string
+  countries: string[]
+}

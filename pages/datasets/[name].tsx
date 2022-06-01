@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Table from 'react-bootstrap/Table';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
+import Badge from 'react-bootstrap/Badge';
+import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
@@ -14,9 +15,9 @@ import { Download, Search } from 'react-bootstrap-icons';
 
 import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
-import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails } from '../../lib/data'
-import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal, IExternal } from '../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer } from '../../components/util'
+import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails, getRecentEntities } from '../../lib/data'
+import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal, IExternal, IRecentEntity } from '../../lib/types'
+import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
 
@@ -32,9 +33,10 @@ type DatasetScreenProps = {
   sources?: Array<ISource>
   externals?: Array<IExternal>
   collections?: Array<ICollection>
+  recents?: Array<IRecentEntity>
 }
 
-export default function DatasetScreen({ dataset, details, issues, sources, externals, collections }: DatasetScreenProps) {
+export default function DatasetScreen({ dataset, details, issues, sources, externals, collections, recents }: DatasetScreenProps) {
   const router = useRouter();
   const structured = getSchemaDataset(dataset, details);
   return (
@@ -237,6 +239,48 @@ export default function DatasetScreen({ dataset, details, issues, sources, exter
                 <Dataset.ExternalsTable externals={externals} />
               </section>
             )}
+
+            {!!recents?.length && (
+              <section>
+                <h3>
+                  <a id="recents"></a>
+                  Recent additions
+                </h3>
+                <p>
+                  The following targeted entities have been added to this data source most recently:
+                </p>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>Added</th>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Countries</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recents.map((r) =>
+                      <tr key={r.id}>
+                        <td>
+                          <FormattedDate date={r.first_seen} />
+                        </td>
+                        <td>
+                          <strong>
+                            <Link href={`/entities/${r.id}`}>{r.caption}</Link>
+                          </strong>
+                        </td>
+                        <td>
+                          <Badge bg="light">{r.schema}</Badge>
+                        </td>
+                        <td>
+                          <SpacedList values={r.countries} />
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </Table>
+              </section>
+            )}
           </Col>
           <Col sm={3}>
             <div className="position-sticky">
@@ -253,6 +297,9 @@ export default function DatasetScreen({ dataset, details, issues, sources, exter
                 )}
                 {!!externals?.length && (
                   <Nav.Link href="#externals">External databases</Nav.Link>
+                )}
+                {!!recents?.length && (
+                  <Nav.Link href="#recents">Recent additions</Nav.Link>
                 )}
               </Nav>
               <LicenseInfo />
@@ -290,6 +337,9 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       .map((name) => visibleDatasets.find((d) => d.name == name))
       .filter((s) => s !== undefined)
       .filter(isCollection)
+  }
+  if (isSource(dataset)) {
+    props.recents = await getRecentEntities(dataset)
   }
   return { props }
 }
