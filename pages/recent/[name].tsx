@@ -7,17 +7,17 @@ export default function DatasetRecent() {
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const params = context.params!
-  return { redirect: { destination: `/datasets/${params.name}/#recents`, permanent: false } };
-
+  return {
+    redirect: {
+      destination: `/datasets/${params.name}/#recents`,
+      permanent: false
+    }
+  };
 }
 
 export async function getStaticPaths() {
-  const datasets = await getDatasets()
-  const paths = datasets.map((dataset) => {
-    return { params: { name: dataset.name } }
-  })
   return {
-    paths,
+    paths: [],
     fallback: 'blocking'
   }
 }
