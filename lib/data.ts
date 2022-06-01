@@ -116,6 +116,7 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
     if (seen.indexOf(stmt.canonical_id) !== -1) {
       return undefined;
     }
+    seen.push(stmt.canonical_id);
     const data = responses.find((d) => d.id === stmt.canonical_id);
     if (data === undefined) {
       return undefined
