@@ -101,7 +101,6 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
       'sort': 'first_seen:desc',
     }
   })
-  console.log('api', apiUrl);
   const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
   if (statements === null) {
     return [];
@@ -110,14 +109,14 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
     .map(s => s.canonical_id)
     .map(id => fetchJsonUrl(`${API_URL}/entities/${id}?nested=false`));
   const responses = await Promise.all(promises) as IEntityDatum[]
-  const seen = [] as string[];
+  const seen = new Array<string>();
   const model = new Model(index.model);
   const results = statements.results.map((stmt) => {
     if (seen.indexOf(stmt.canonical_id) !== -1) {
       return undefined;
     }
     seen.push(stmt.canonical_id);
-    const data = responses.find((d) => d.id === stmt.canonical_id);
+    const data = responses.find((d) => d !== null && d.id === stmt.canonical_id);
     if (data === undefined) {
       return undefined
     }
