@@ -166,6 +166,18 @@ export class Schema {
     return !!item
   }
 
+  static getAllParents(schemata: Array<Schema>): Array<Schema> {
+    const parents = Array.from(schemata)
+    for (const schema of schemata) {
+      for (const parent of schema.getParents()) {
+        if (parents.indexOf(parent) === -1) {
+          parents.push(parent)
+        }
+      }
+    }
+    return parents;
+  }
+
   toString(): string {
     return this.name
   }

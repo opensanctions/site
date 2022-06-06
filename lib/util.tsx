@@ -43,15 +43,3 @@ export function ensureArray(value: string | string[] | null | undefined) {
 }
 
 export const swrFetcher = (url: string) => fetch(url).then(res => res.json())
-
-export function getAllParents(schemata: Array<Schema>): Array<Schema> {
-  const parents = Array.from(schemata)
-  for (const schema of schemata) {
-    for (const parent of schema.getParents()) {
-      if (parents.indexOf(parent) === -1) {
-        parents.push(parent)
-      }
-    }
-  }
-  return parents;
-}

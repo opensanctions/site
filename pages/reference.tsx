@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { InferGetStaticPropsType } from 'next'
 import { Model } from "../lib/ftm/model"
+import { Schema } from "../lib/ftm/schema"
 import Alert from 'react-bootstrap/Alert';
 
 import Layout from '../components/Layout'
@@ -10,13 +11,13 @@ import { Summary } from '../components/util'
 import { fetchIndex } from '../lib/data'
 import { SchemaReference, TypeReference } from '../components/Reference';
 import { INDEX_URL } from '../lib/constants';
-import { getAllParents } from '../lib/util';
+
 
 
 export default function Reference({ content, activeModel, schemata }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(activeModel)
   const usedSchemata = schemata.map(s => model.getSchema(s)).filter(s => s !== undefined)
-  const refSchemata = getAllParents(usedSchemata)
+  const refSchemata = Schema.getAllParents(usedSchemata)
 
   return (
     <Layout.Content content={content}>
