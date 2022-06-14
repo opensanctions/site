@@ -9,7 +9,7 @@ import { Summary } from '../components/util';
 import Link from 'next/link';
 import { LicenseInfo } from '../components/Policy';
 
-const TITLE = "OpenSanctions in the wild";
+const TITLE = "Showcase: OpenSanctions in the wild";
 const SUMMARY = "Our database and technology provide essential building blocks for investigative reporting, screening technology, and open source intelligence analysis. Below, we're collecting some of the public uses and cooperations we've been part of.";
 
 export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -24,66 +24,117 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
         </Row>
         <Row xs={1} md={3} className="g-4">
           <Col>
-            <Card>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/nazk_logo.png" />
               <Card.Body>
-                <h2>Russian Sanctions Tracker</h2>
-                <p>
+                <Card.Title>War &amp; Sanctions</Card.Title>
+                <Card.Text>
+                  Ukraine's <Link href="https://nazk.gov.ua/en/">National Agency on Corruption Prevention</Link> uses
+                  our linked-up data to track the adoption of Russia-related sanctions by other countries and
+                  drive efforts to advocate for additional inclusions.
+                </Card.Text>
+                <Card.Link>
+                  <Link href="https://sanctions.nazk.gov.ua/en/">
+                    Project page
+                  </Link>
+                </Card.Link>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/tracker.png" />
+              <Card.Body>
+                <Card.Title>Russian Sanctions Tracker</Card.Title>
+                <Card.Text>
                   Investigative outlets <Link href="https://correctiv.org/">CORRECT!V</Link> and <Link href="https://www.lighthousereports.nl/">Lighthouse Reports</Link> cooperated
-                  in early 2022 to <Link href="https://correctiv.org/en/latest-stories/2022/03/01/sanctions-tracker-live-monitoring-of-all-sanctions-against-russia/">track the scope of the Russia-related sanctions</Link> imposed by
+                  in early 2022 to track the scope of the Russia-related sanctions imposed by
                   the international community. Their analysis categorises
                   individual sanctions targets into oligarchs, politicians and
-                  others. <Link href="https://www.lighthousereports.nl/tagging-the-oligarchs/">Read more...</Link>
-                </p>
+                  others.
+                </Card.Text>
+                <Card.Link href="https://www.lighthousereports.nl/tagging-the-oligarchs/">
+                  Introduction
+                </Card.Link>
+                <Card.Link href="https://correctiv.org/en/latest-stories/2022/03/01/sanctions-tracker-live-monitoring-of-all-sanctions-against-russia/">
+                  Project page
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card bg="light">
               <Card.Body>
-                <h2>OpenScreening</h2>
-                <p>
-                  <Link href="https://resources.linkurious.com/openscreening">OpenScreening</Link> is a joint project with Linkurious. The interactive
-                  demo combines Linkurious powerful <Link href="https://linkurious.com/platform/">network analysis solution</Link> to uncover
-                  the hidden connections between sanctions targets, politicians and
+                <Card.Title>OpenScreening</Card.Title>
+                <Card.Text>
+                  OpenScreening is a joint project with Linkurious. The interactive demo combines
+                  Linkurious' powerful <Link href="https://linkurious.com/platform/">network analysis solution</Link> with
+                  our graph data to uncover the hidden connections between sanctions targets, politicians and
                   offshore companies.
-                </p>
+                </Card.Text>
+                <Card.Link href="https://resources.linkurious.com/openscreening">
+                  Use Linkurious
+                </Card.Link>
+                <Card.Link href="https://github.com/opensanctions/offshore-graph">
+                  Source code
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/blackdot.png" />
               <Card.Body>
-                <h2>Blackdot Videris</h2>
-                <p>
-                  Videris helps investigators and analysts to collect, analyse and visualise open source data. In
-                  their effort to make detailed sanctions and PEP information available to their users,
-                  Blackdot <Link href="https://blackdotsolutions.com/news/opensanctions-partnership/">has integrated OpenSanctions</Link> into
-                  their case development and network analysis platform.
-                </p>
+                <Card.Title>Blackdot Solutions Videris</Card.Title>
+                <Card.Text>
+                  Videris is a complete investigations and intelligence platform which allows
+                  investigators and analysts to collect, analyse and visualise open source data
+                  in one place. Blackdot has integrated OpenSanctions to allow users to quickly
+                  search, map and understand sanctioned entities and their networks.
+                </Card.Text>
+                <Card.Link href="https://blackdotsolutions.com/news/opensanctions-partnership/">
+                  Announcement
+                </Card.Link>
+                <Card.Link href="https://blackdotsolutions.com/blog/map-sanctioned-entities-with-videris/">
+                  Tutorial
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/truintel.png" />
               <Card.Body>
-                <h2>BlueAnvil TruIntel</h2>
-                <p>
-                  <Link href="https://www.blueanvil.com/truintel/">TruIntel</Link> is a power tool for understanding UK companies. It combines analysis of
+                <Card.Title>BlueAnvil Truintel</Card.Title>
+                <Card.Text>
+                  Truintel is a power tool for understanding UK companies. It combines analysis of
                   beneficial ownership, procurement data and PEP/sanctions screening.
-                </p>
+                </Card.Text>
+                <Card.Link href="https://www.blueanvil.com/truintel/">
+                  Product info
+                </Card.Link>
+                <Card.Link href="https://truintel.app/signup">
+                  Sign-up
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/declarator.png" />
               <Card.Body>
-                <h2>Declarator.org</h2>
-                <p>
-                  <Link href="http://declarator.org">Declarator.org</Link> is a project by TI Russia that tracks the
-                  asset declarations filed by officials. They <Link href="https://transparency.org.ru/en/projects/novosti/deklarator-teper-otobrazhaet-nalichie-persony-v-sankczionnyh-spiskah">use
-                    OpenSanctions to include information</Link> on which politicians are sanctioned by
-                  the international community.
-                </p>
+                <Card.Title>Declarator.org</Card.Title>
+                <Card.Text>
+                  Transparency International Russia tracks the asset declarations filed by
+                  officials. They use OpenSanctions to highlight which politicians and
+                  functionaries are subject to sanctions by the international community.
+                </Card.Text>
+                <Card.Link href="http://declarator.org">
+                  Project page
+                </Card.Link>
+                <Card.Link href="https://transparency.org.ru/en/projects/novosti/deklarator-teper-otobrazhaet-nalichie-persony-v-sankczionnyh-spiskah">
+                  Announcement
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
@@ -93,9 +144,6 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
           <Col md={8}>
             <h3>Other uses</h3>
             <ul>
-              <li>
-                Gridno/YouControl NGO and the Ukrainian National Agency on Corruption Prevention, <Link href="https://ruassets.com/">RuAssets</Link>
-              </li>
               <li>
                 Ontotext: <Link href="https://www.ontotext.com/knowledgehub/webinars/effective-sanctions/">Effective Sanctions Compliance with Ontotext</Link>
               </li>
@@ -113,7 +161,7 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
           </Col>
         </Row>
       </Container>
-    </Layout.Base>
+    </Layout.Base >
   )
 }
 
