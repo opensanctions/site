@@ -17,6 +17,7 @@ type NavbarSectionProps = {
 export default function NavbarSection({ navSearch }: NavbarSectionProps) {
   const activePath = useRouter().asPath;
   const inDataset = activePath.startsWith('/datasets/');
+  const inShowcase = activePath === '/showcase/';
   const inAbout = activePath === '/docs/about/';
   const inFaq = activePath === '/docs/faq/';
   return (
@@ -43,6 +44,9 @@ export default function NavbarSection({ navSearch }: NavbarSectionProps) {
           <Nav className="justify-content-end">
             <Link href="/datasets/" passHref>
               <Nav.Link className={styles.navItem} active={inDataset}>Datasets</Nav.Link>
+            </Link>
+            <Link href="/showcase/" passHref>
+              <Nav.Link className={styles.navItem} active={inShowcase}>Showcase</Nav.Link>
             </Link>
             <Link href="/docs/about/" passHref>
               <Nav.Link className={styles.navItem} active={inAbout}>About</Nav.Link>

@@ -14,7 +14,7 @@ const SUMMARY = "Our database and technology provide essential building blocks f
 
 export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout.Base title={TITLE}>
+    <Layout.Base title={TITLE} description={SUMMARY}>
       <Container>
         <Row>
           <Col>
@@ -73,7 +73,7 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
                   offshore companies.
                 </Card.Text>
                 <Card.Link href="https://resources.linkurious.com/openscreening">
-                  Use Linkurious
+                  Explore OpenScreening
                 </Card.Link>
                 <Card.Link href="https://github.com/opensanctions/offshore-graph">
                   Source code
@@ -114,7 +114,24 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
                   Product info
                 </Card.Link>
                 <Card.Link href="https://truintel.app/signup">
-                  Sign-up
+                  Sign up
+                </Card.Link>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/occrp.png" />
+              <Card.Body>
+                <Card.Title>OCCRP Aleph</Card.Title>
+                <Card.Text>
+                  Aleph uses sanctions and politicians lists as contrast material
+                  that helps to find evidence of illicit activity and corruption
+                  in large datasets, such as leaked documents or company ownership
+                  databases.
+                </Card.Text>
+                <Card.Link href="https://aleph.occrp.org.org">
+                  Search Aleph
                 </Card.Link>
               </Card.Body>
             </Card>
