@@ -11,7 +11,7 @@ import { fetchIndex } from '../lib/data'
 import { INDEX_URL } from '../lib/constants';
 
 
-export default function Reference({ content, matcher }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Matcher({ content, matcher }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout.Content content={content}>
       <Content.Menu title={content.title} jsonLink={INDEX_URL}>
