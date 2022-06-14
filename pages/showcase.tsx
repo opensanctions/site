@@ -32,7 +32,7 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
                   Ukraine's <Link href="https://nazk.gov.ua/en/">National Agency on Corruption
                     Prevention</Link> uses our linked-up data to track the adoption of
                   Russia-related sanctions by other countries and drive efforts to advocate
-                  for additional designations by foreign national authorities.
+                  for additional designations by national authorities across the world.
                 </Card.Text>
                 <Card.Link>
                   <Link href="https://sanctions.nazk.gov.ua/en/">
@@ -69,7 +69,7 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
               <Card.Body>
                 <Card.Title>OpenScreening</Card.Title>
                 <Card.Text>
-                  OpenScreening is a joint project with Linkurious. It offers free access to an interactive
+                  OpenScreening offers free access to an interactive
                   PEP &amp; Sanctions screening playground combining
                   Linkurious' <Link href="https://linkurious.com/platform/">powerful investigation
                     software</Link> with our graph data to uncover the hidden connections between
