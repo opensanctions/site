@@ -29,9 +29,10 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
               <Card.Body>
                 <Card.Title>War &amp; Sanctions</Card.Title>
                 <Card.Text>
-                  Ukraine's <Link href="https://nazk.gov.ua/en/">National Agency on Corruption Prevention</Link> uses
-                  our linked-up data to track the adoption of Russia-related sanctions by other countries and
-                  drive efforts to advocate for additional inclusions.
+                  Ukraine's <Link href="https://nazk.gov.ua/en/">National Agency on Corruption
+                    Prevention</Link> uses our linked-up data to track the adoption of
+                  Russia-related sanctions by other countries and drive efforts to advocate
+                  for additional designations by foreign national authorities.
                 </Card.Text>
                 <Card.Link>
                   <Link href="https://sanctions.nazk.gov.ua/en/">
@@ -47,7 +48,7 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
               <Card.Body>
                 <Card.Title>Russian Sanctions Tracker</Card.Title>
                 <Card.Text>
-                  Investigative outlets <Link href="https://correctiv.org/">CORRECT!V</Link> and <Link href="https://www.lighthousereports.nl/">Lighthouse Reports</Link> cooperated
+                  Non-profit investigative outlets <Link href="https://correctiv.org/">CORRECTIV</Link> and <Link href="https://www.lighthousereports.nl/">Lighthouse Reports</Link> cooperated
                   in early 2022 to track the scope of the Russia-related sanctions imposed by
                   the international community. Their analysis categorises
                   individual sanctions targets into oligarchs, politicians and
@@ -64,13 +65,15 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
           </Col>
           <Col>
             <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/openscreening.png" />
               <Card.Body>
                 <Card.Title>OpenScreening</Card.Title>
                 <Card.Text>
-                  OpenScreening is a joint project with Linkurious. The interactive demo combines
-                  Linkurious' powerful <Link href="https://linkurious.com/platform/">network analysis solution</Link> with
-                  our graph data to uncover the hidden connections between sanctions targets, politicians and
-                  offshore companies.
+                  OpenScreening is a joint project with Linkurious. It offers free access to an interactive
+                  PEP &amp; Sanctions screening playground combining
+                  Linkurious' <Link href="https://linkurious.com/platform/">powerful investigation
+                    software</Link> with our graph data to uncover the hidden connections between
+                  sanctions targets, politicians and offshore companies.
                 </Card.Text>
                 <Card.Link href="https://resources.linkurious.com/openscreening">
                   Explore OpenScreening
