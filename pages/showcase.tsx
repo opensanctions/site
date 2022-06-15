@@ -158,6 +158,23 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
               </Card.Body>
             </Card>
           </Col>
+          <Col>
+            <Card bg="light">
+              <Card.Img variant="top" src="/static/showcase/omnio.png" />
+              <Card.Body>
+                <Card.Title>OMNIO</Card.Title>
+                <Card.Text>
+                  OMNIO is a software that uses machine learning technology and
+                  compliance knowledge to automate financial crime compliance
+                  processes. In their Customer Monitoring, they use OpenSanctions
+                  to instantly check for sanctions, PEP, and negative media.
+                </Card.Text>
+                <Card.Link href="https://omniocompliance.com/product/customer-monitoring/">
+                  Product info
+                </Card.Link>
+              </Card.Body>
+            </Card>
+          </Col>
 
         </Row>
         <Row>
