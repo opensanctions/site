@@ -193,12 +193,10 @@ th.narrow {
     padding-bottom: 0.5em;
 }
 
-.clearfix {
-    &::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 // youtube embeds full-width:
