@@ -12,7 +12,7 @@ Running a sanctions or PEPs check is about more than just looking up a name on a
 <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/enrichment/prevezon2.png">
 <p class="img-caption">
     Tracking complex corporate networks is the bread and butter of financial crime
-    investigations. (US government graphic, US v. Prevezon)
+    investigations (Graphic: US v. Prevezon)
 </p>
 
 The US Office of Foreign Assets Control (OFAC), as well as some other authorities, have even made this a legal requirement: US sanctions targeted at a designated person or company apply not just to the entity itself, but also to all companies majority-owned or controlled by that entity. This rule, known as [the “shadow OFAC” provision](https://home.treasury.gov/system/files/126/licensing_guidance.pdf), has irrevocably married sanctions screening and beneficial ownership analysis.
