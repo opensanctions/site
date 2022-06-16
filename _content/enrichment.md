@@ -8,9 +8,9 @@ summary: >
 The motivation for data enrichment comes from the following user needs:
 
 * Can we import the network links of an entity in the [ICIJ Offshore Leaks](/datasets/offshoreleaks/) database that is also sanctioned?
-* Can we use geocoding to make the addresses given on sanctions list more precise?
-* Can we link every person on an international sanctions list to their Wikidata profile?
-* Can we make it easier for data users to connect datasets like OpenSanctions and OpenCorporates.com?
+* Can we use [geocoding](/datasets/nominatim/) to make the addresses given on sanctions list more precise?
+* Can we link every person on an international sanctions list to their [Wikidata profile](/datasets/wikidata/)?
+* Can we make it easier for data users to connect datasets like OpenSanctions and [OpenCorporates.com](/datasets/opencorporates/)?
 
 All of these scenarios require matching the [entities](/docs/entities/) in OpenSanctions against an external database and then importing fragments of it ad-hoc when a positive match was found.
 
@@ -18,6 +18,7 @@ In order to provide [granular provenance](/docs/statements/) for the information
 
 ### More information
 
+* Blog post: [Weaving a deeper sanctions web using data enrichment](/articles/2022-06-16-enrichment/)
 * [External databases](/datasets/#externals) that we currently source data from.
 * [Suggest a data source](/contact/) that contains relevant information (e.g. about beneficial ownership of companies or assets, other relationships of sanctioned entities) and is openly re-usable.
 * [nomenklatura](https://github.com/opensanctions/nomenklatura) is the custom-built data integration toolkit we use to enrich and cross-match our data. It can be used separately from OpenSanctions as an OSINT data management tool.
