@@ -181,6 +181,26 @@ th.narrow {
     margin-top: 0.4em;
 }
 
+.img-right {
+    float: right;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+}
+
+.img-left {
+    float: left;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+}
+
+.clearfix {
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
 // youtube embeds full-width:
 .video-container {
     overflow: hidden;
