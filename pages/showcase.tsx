@@ -75,7 +75,7 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
                     software</Link> with our graph data to uncover the hidden connections between
                   sanctions targets, politicians and offshore companies.
                 </Card.Text>
-                <Card.Link href="https://resources.linkurious.com/openscreening">
+                <Card.Link href="https://bit.ly/3bgXWlG">
                   Explore OpenScreening
                 </Card.Link>
                 <Card.Link href="https://github.com/opensanctions/offshore-graph">
