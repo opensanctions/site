@@ -34,10 +34,8 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
                   Russia-related sanctions by other countries and drive efforts to advocate
                   for additional designations by national authorities across the world.
                 </Card.Text>
-                <Card.Link>
-                  <Link href="https://sanctions.nazk.gov.ua/en/">
-                    Project page
-                  </Link>
+                <Card.Link href="https://sanctions.nazk.gov.ua/en/">
+                  Project page
                 </Card.Link>
               </Card.Body>
             </Card>
@@ -175,7 +173,6 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
               </Card.Body>
             </Card>
           </Col>
-
         </Row>
         <Row>
           <Col md={8}>

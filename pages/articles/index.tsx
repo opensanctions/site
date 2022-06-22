@@ -11,6 +11,7 @@ import { FormattedDate, Summary } from '../../components/util';
 import { ARTICLE_INDEX_SUMMARY } from '../../lib/constants';
 
 import styles from '../../styles/Article.module.scss';
+import Article from '../../components/Article';
 
 
 export default function ArticleIndex({ articles }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -24,21 +25,7 @@ export default function ArticleIndex({ articles }: InferGetStaticPropsType<typeo
         <Row>
           <Col md={8}>
             <ul className={styles.articleList}>
-              {articles.map((article) => (
-                <li key={article.slug}>
-                  <p className={styles.articleListTitle}>
-                    <span className={styles.articleListDate}>
-                      <FormattedDate date={article.date} />
-                      {': '}
-                    </span>
-                    <Link href={article.path}>{article.title}</Link>
-                  </p>
-                  <p className={styles.articleListSummary}>
-
-                    {article.summary}
-                  </p>
-                </li>
-              ))}
+              {articles.map((article) => <Article.Item article={article} />)}
             </ul>
           </Col>
           <Col md={4}>

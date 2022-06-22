@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { CalendarDateFill } from 'react-bootstrap-icons';
 import Nav from 'react-bootstrap/Nav';
 
@@ -5,6 +6,8 @@ import { IArticleInfo } from '../lib/types'
 import { FormattedDate, RoutedNavLink } from './util';
 
 import styles from '../styles/Article.module.scss';
+import Image from 'next/image';
+
 
 type ArticleProps = {
   article: IArticleInfo
@@ -43,7 +46,31 @@ function ArticleSidebar({ article }: ArticleProps) {
   )
 }
 
+function ArticleItem({ article }: ArticleProps) {
+  return (
+    <li key={article.slug}>
+      {article.image_url && (
+        <div className={styles.articleListImage}>
+          <Image src={article.image_url} width={200} height={100} />
+        </div>
+      )}
+      <p className={styles.articleListTitle}>
+        <span className={styles.articleListDate}>
+          <FormattedDate date={article.date} />
+          {': '}
+        </span>
+        <Link href={article.path}>{article.title}</Link>
+      </p>
+      <p className={styles.articleListSummary}>
+        {article.summary}
+      </p>
+      <div className="clearfix"></div>
+    </li>
+  )
+}
+
 
 export default class Article {
   static Sidebar = ArticleSidebar;
+  static Item = ArticleItem;
 }

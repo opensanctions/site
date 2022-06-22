@@ -30,7 +30,7 @@ export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeo
         <Row>
           <Col md={3}>
             <p>
-              <strong>Collections</strong> are custom datasets
+              <strong>Collections</strong> are datasets
               provided by OpenSanctions that combine data from
               many sources based on a topic.
               {' '}<Link href="/docs/faq/#collections">Learn more...</Link>

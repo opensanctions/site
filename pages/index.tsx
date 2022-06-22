@@ -4,12 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
-import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 import styles from '../styles/Home.module.scss'
+import articleStyles from '../styles/Article.module.scss'
 import Layout from '../components/Layout'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY } from '../lib/constants'
@@ -19,6 +19,7 @@ import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
 import { getArticles } from '../lib/content';
 import Dataset from '../components/Dataset';
+import Article from '../components/Article';
 
 
 export default function Home({ collections, sourceCount, articles }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -106,31 +107,39 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
             {' '}and <Link href="/docs/api/">integrate the technology</Link>.
           </Col>
         </Row>
-        <Row>
-          <Col md={4} className={styles.explainer}>
-            <h4>Project updates</h4>
+        <Row className={styles.explainer}>
+          <h2>Project news</h2>
+          <Col md={3}>
             <p>
               {ARTICLE_INDEX_SUMMARY}
             </p>
-            <ul>
-              {articles.map(a => (
-                <li key={a.slug}>{a.date}: <Link href={a.path}>{a.title}</Link></li>
-              ))}
+          </Col>
+          <Col md={9}>
+            <ul className={articleStyles.articleList}>
+              {articles.map((article) => <Article.Item article={article} />)}
             </ul>
             <p>
               See <Link href="/articles">all of our project updates</Link>...
             </p>
           </Col>
-          <Col md={8} className={styles.explainer}>
-            <h4>Collections</h4>
+        </Row>
+        <Row className={styles.explainer}>
+          <h2>Collections</h2>
+          <Col md={3}>
             <p>
-              <Link href="/docs/faq/#collections">Collections</Link> are custom datasets
+              <Link href="/docs/faq/#collections">Collections</Link> are datasets
               provided by OpenSanctions that combine data from <Link href="/datasets/#sources">
                 various data sources</Link> focussed on a topic.
             </p>
-            {sortedCollections.map(c => (
-              <Dataset.Item dataset={c} key={c.name} />
-            ))}
+          </Col>
+          <Col md={9}>
+            <Row>
+              {sortedCollections.map((d) => (
+                <Col sm={6} key={d.name}>
+                  <Dataset.Card dataset={d} key={d.name} />
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
       </Container>
@@ -147,7 +156,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     props: {
       collections,
       sourceCount: sources.length,
-      articles: articles.slice(0, 5)
+      articles: articles.slice(0, 3)
     }
   }
 }

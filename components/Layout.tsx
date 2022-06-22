@@ -21,12 +21,13 @@ function LayoutBase({ title, description, imageUrl, structured, navSearch, child
   const router = useRouter();
   const url = `${BASE_URL}${router.asPath}`;
   const navSearchDef = navSearch === undefined ? true : navSearch;
+  const fullTitle = `${title} - ${SITE}`
   return (
     <>
       <Head>
         {title && (
           <>
-            <title>{title} - {SITE}</title>
+            <title>{fullTitle}</title>
             <meta property="og:title" content={title} />
             <meta property="twitter:title" content={title} />
           </>
