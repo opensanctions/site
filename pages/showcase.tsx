@@ -143,10 +143,10 @@ export default function Showcase({ }: InferGetStaticPropsType<typeof getStaticPr
               <Card.Body>
                 <Card.Title>YouControl RuAssets</Card.Title>
                 <Card.Text>
-                  Operated by YouControl, RuAssets is an international tool for searching
-                  for Russian and Belarusian assets, and to seize the property of those
-                  responsible for the war. Sanctions and PEPs data is combined with
-                  company and property registries.
+                  RuAssets is an international tool for searching for Russian and
+                  Belarusian assets, and to seize the property of those responsible
+                  for the war in Ukraine. Sanctions and PEPs data is combined with
+                  a company and property registries.
                 </Card.Text>
                 <Card.Link href="https://ruassets.com/">
                   Information and sign-up
