@@ -9,11 +9,11 @@ summary: >
 
 As soon as you start dealing with [entity data](/docs/entities/), one question becomes ubiquitous: are two given entities the same? Checking if a customer of your business is on a sanctions list, or if a politician has undeclared offshore wealth - both tasks demand a technical answer to this problem.
 
-Integrating sanctions data from different sources raises the same challenge (*is the person sanctioned by country X the same as the one sanctioned by country Y?*). That's why, in order to [de-duplicate the OpenSanctions database](/articles/2021-11-11-deduplication/), we've made 160,000 (April 2022) manual judgements about entity pairs contained in our system.
+Integrating sanctions data from different sources raises the same challenge (*is the person sanctioned by country X the same as the one sanctioned by country Y?*). That's why, in order to [de-duplicate the OpenSanctions database](/articles/2021-11-11-deduplication/), we've made 330,000 (July 2022) manual judgements about entity pairs contained in our system.
 
 The dataset of pairwise judgements is a valuable resource for building our own [matching API](/docs/api/) and [its scoring](/matcher/). But as an open project, we're also sharing it for others who might want to develop their own technology. You can find the data here:
 
-* **[pairs.json](https://data.opensanctions.org/contrib/training/pairs.json)** (700MB+, line-based JSON, updated daily, [non-commercial use](/licensing/))
+* **[pairs.json](https://data.opensanctions.org/contrib/training/pairs.json)** (1100MB+, line-based JSON, updated daily, [non-commercial use](/licensing/))
 
 ## Using the pairs data
 
