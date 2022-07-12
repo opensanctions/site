@@ -63,7 +63,10 @@ export async function getIssues(): Promise<Array<IIssue>> {
 
 export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue>> {
   const issues = await getIssues()
-  return issues.filter(issue => issue.dataset === dataset?.name);
+  if (dataset === undefined) {
+    return []
+  }
+  return issues.filter(issue => issue.dataset === dataset.name);
 }
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {

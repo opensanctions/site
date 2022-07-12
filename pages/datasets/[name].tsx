@@ -1,6 +1,5 @@
 import { GetStaticPropsContext } from 'next'
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
@@ -37,7 +36,6 @@ type DatasetScreenProps = {
 }
 
 export default function DatasetScreen({ dataset, details, issues, sources, externals, collections, recents }: DatasetScreenProps) {
-  const router = useRouter();
   const structured = getSchemaDataset(dataset, details);
   return (
     <Layout.Base title={dataset.title} description={dataset.summary} structured={structured} navSearch={false}>
