@@ -116,7 +116,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
           </Col>
           <Col md={9}>
             <ul className={articleStyles.articleList}>
-              {articles.map((article) => <Article.Item article={article} />)}
+              {articles.map((article) => <Article.Item key={article.slug} article={article} />)}
             </ul>
             <p>
               See <Link href="/articles">all of our project updates</Link>...
