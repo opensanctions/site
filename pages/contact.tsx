@@ -68,6 +68,9 @@ export default function Contact() {
           <p>
             And, of course, please consider communicating with us
             in <Link href="/licensing/">the sweetest language of all</Link>.
+            You can also <Link href="https://book.stripe.com/28o1513OFca54nufZf">book
+              an hour of consulting time</Link> to discuss technical questions
+            and integration options with the maintainers.
           </p>
         </div>
       </Content.Menu>
