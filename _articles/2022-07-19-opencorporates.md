@@ -1,5 +1,5 @@
 ---
-title: Digging deeper into sanctioned companies using OpenCorporates
+title: Digging into sanctioned companies using OpenCorporates
 image_url: https://assets.pudo.org/opensanctions/images/opencorporates-home.png
 summary: |
     Both OpenSanctions and OpenCorporates provide powerful data building blocks for
