@@ -21,7 +21,7 @@ That’s why we’ve started an effort to create explicit links between the two 
     founder Chris Taggart.
 </p>
 
-What’s really interesting about these few thousand hyperlinks is that they give a hint to what we think will be an important next phase of open data: both projects are (very differently sized) tiles of a jigsaw tapestry of business transparency. OpenCorporates [blog post on the cooperation] does a great job of explaining that vision:
+What’s really interesting about these few thousand hyperlinks is that they give a hint to what we think will be an important next phase of open data: both projects are (very differently sized) tiles of a jigsaw tapestry of business transparency. OpenCorporates [blog post on the cooperation](https://blog.opencorporates.com/2022/07/19/opencorporates-identifiers-now-in-opensanctions-a-win-for-the-open-data-ecosystem/) does a great job of explaining that vision:
 
 > This joining of the dots between our databases is just the latest development in the evolution of an ecosystem of critical open datasets.
 >
@@ -31,5 +31,5 @@ What’s really interesting about these few thousand hyperlinks is that they giv
 >
 > “I believe we will see an infrastructure of building blocks of open data sources, including our sanctions data and OpenCorporates’ company data – as well as others like extractive resource data and property ownership data” Friedrich said. “These will be high quality and provenanced, and allow users to answer key questions like: ‘how closely am I linked to a certain company?’”
 
-Continue reading for the [full announcement on OpenCorporates blog].
+Continue reading for the [full announcement on OpenCorporates blog](https://blog.opencorporates.com/2022/07/19/opencorporates-identifiers-now-in-opensanctions-a-win-for-the-open-data-ecosystem/).
 
