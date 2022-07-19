@@ -1,6 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
+import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 
 import { IContent } from '../lib/types'
@@ -8,6 +9,7 @@ import { JSONLink, Markdown, RoutedNavLink, Summary } from './util';
 
 import styles from '../styles/Content.module.scss';
 import { LicenseInfo } from './Policy';
+import Link from 'next/link';
 
 type ContentProps = {
   content: IContent
@@ -101,6 +103,16 @@ function ContentPage({ content }: ContentProps) {
       <Summary summary={content.summary} />
       <div className={styles.page}>
         <ContentBody content={content} />
+        <Card>
+          <Card.Body>
+            <i>
+              <strong>Got more questions?</strong> Join the <Link href="https://bit.ly/osa-slack">Slack
+                chat</Link> to ask questions and get support. You can
+              also <Link href="https://book.stripe.com/28o1513OFca54nufZf">book an hour of consulting time</Link> to
+              discuss technical questions with the team.
+            </i>
+          </Card.Body>
+        </Card>
       </div>
     </ContentMenu>
   )
