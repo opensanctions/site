@@ -30,7 +30,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
   }
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (
-    <Layout.Base title="Persons of interest database" description={SUBCLAIM} structured={structured} navSearch={false}>
+    <Layout.Base title={CLAIM} description={SUBCLAIM} structured={structured} navSearch={false}>
       <div className={styles.claimBanner}>
         <Container>
           <Row>
@@ -40,7 +40,6 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
               </h1>
               <p className={styles.subClaim}>
                 {SUBCLAIM}
-                {' '}<a href="/docs/about/" className={styles.claimLink}>Learn more...</a>
               </p>
               <div>
                 <Form action="/search/">
@@ -49,16 +48,12 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
                       type="search"
                       name="q"
                       autoFocus={true}
-                      placeholder={`Search the open sanctions database...`}
+                      placeholder={`Search people and companies in our database...`}
                       aria-label="Search"
                     />
                     <Button variant="secondary" type="submit">
                       <Search className="bsIcon" />{' '}
                       Search
-                    </Button>
-                    <Button href="/datasets/" variant="dark" size="lg">
-                      <Download className="bsIcon" />{' '}
-                      Bulk data
                     </Button>
                   </InputGroup>
                 </Form>
@@ -72,6 +67,8 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
                 <Badge className={styles.statsBadge}>
                   <FormattedDate date={all.last_change} />
                 </Badge>
+                {SPACER}
+                <Link href="/datasets">get bulk data</Link>
               </p>
             </Col>
             <Col md={4} className="d-none d-md-block">
@@ -102,13 +99,12 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
           <Col md={4} className={styles.explainer}>
             <h4>Open source code and data</h4>
             OpenSanctions makes both its database and processing tools available
-            for free. It's easy to <Link href="/docs/usage/">use the material</Link>,
-            {' '}<Link href="/docs/contribute/">contribute to the project</Link>
+            for free. It's easy to <Link href="/docs/usage/">use the data</Link>
             {' '}and <Link href="/docs/api/">integrate the technology</Link>.
           </Col>
         </Row>
         <Row className={styles.explainer}>
-          <h2>Project news</h2>
+          <h2>News &amp; updates</h2>
           <Col md={3}>
             <p>
               {ARTICLE_INDEX_SUMMARY}

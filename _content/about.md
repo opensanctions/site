@@ -32,9 +32,7 @@ project.
 
 ### Funding 
 
-This project has received financial support from the German Federal Ministry for Education
-and Research (Bundesministerium für Bildung und Forschung, BMBF) under the grant identifier 
-``01IS21S48``. The full responsibility for the content of this publication remains with its 
+From September 2021 to Feburary 2022, this project received financial support from the German Federal Ministry for Education and Research (Bundesministerium für Bildung und Forschung, BMBF) under the grant identifier ``01IS21S48``. The full responsibility for the content of this publication remains with its 
 authors.
 
 <a href="https://www.softwaresysteme.pt-dlr.de/de/software-sprint.php">
