@@ -2,5 +2,11 @@
 
 .licenseBox {
     margin-top: 1em;
-    background-color: lighten($primary, 40%);
+    background-color: $blue-500;
+    color: white;
+
+    a {
+        color: white;
+        text-decoration: underline;
+    }
 }
