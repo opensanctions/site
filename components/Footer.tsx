@@ -16,7 +16,7 @@ export default class Footer extends React.Component {
           <Row>
             <Col md={3}>
               <img
-                src="/static/footer.png"
+                src="/static/ura/footerlogo.png"
                 alt="OpenSanctions project"
                 className={styles.logo}
               />

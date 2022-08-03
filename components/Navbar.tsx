@@ -21,22 +21,17 @@ export default function NavbarSection({ navSearch }: NavbarSectionProps) {
   const inAbout = activePath === '/docs/about/';
   const inFaq = activePath === '/docs/faq/';
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" className={styles.navBar}>
       <Container>
         <Link href="/" passHref>
           <Navbar.Brand href="#home">
             <img
-              src="/static/navlogo.webp"
-              width="30"
+              src="/static/ura/navlogo.png"
+              width="190"
               height="30"
               className="align-top"
-              alt="OpenSanctions logo"
+              alt="OpenSanctions"
             />
-          </Navbar.Brand>
-        </Link>
-        <Link href="/" passHref>
-          <Navbar.Brand className={styles.brand}>
-            OpenSanctions
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle />

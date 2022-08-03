@@ -10,7 +10,7 @@ export const SEARCH_DATASET = "default"
 export const RENDER_DATASET = "sanctions"
 export const SEARCH_SCHEMA = "Thing"
 export const CLAIM = "Find sanctions targets and persons of interest"
-export const SUBCLAIM = "OpenSanctions lets investigators find leads, helps companies manage risk and enables technologists to build data-driven products."
+export const SUBCLAIM = "OpenSanctions helps investigators find leads, allows companies to manage risk and enables technologists to build data-driven products."
 export const EMAIL = "info@opensanctions.org"
 export const ARTICLE_INDEX_SUMMARY = "Updates from the OpenSanctions project, including new features, technical deep dives, and analysis."
 

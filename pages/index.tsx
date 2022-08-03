@@ -72,13 +72,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
               </p>
             </Col>
             <Col md={4} className="d-none d-md-block">
-              <img
-                src="/static/home.webp"
-                width="272px"
-                height="282px"
-                alt="Welcome to OpenSanctions"
-                className={styles.logo}
-              />
+
             </Col>
           </Row>
         </Container>

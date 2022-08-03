@@ -6,7 +6,7 @@
 }
 
 .navSearchBox {
-    @include media-breakpoint-up(md) {      
+    @include media-breakpoint-up(md) {
         width: 20em !important;
     }
 }
@@ -31,7 +31,8 @@
 }
 
 .navItem {
-    margin-right: 1em;
-    // text-transform: uppercase;
-    font-weight: bolder;
+    font-family: $font-family-heading;
+    // font-size: 1.1em;
+    font-weight: 600;
+    color: $blue-500;
 }
