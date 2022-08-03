@@ -31,13 +31,11 @@ export default function ArticleScreen({ article }: ArticleScreenProps) {
             <Content.Body content={article} />
             <Card>
               <Card.Body>
-                <i>
-                  <strong>Like what we're writing about?</strong> Keep the conversation going! You
-                  can <Link href="https://twitter.com/open_sanctions">follow us on Twitter</Link> or
-                  join the <Link href="https://bit.ly/osa-slack">Slack chat</Link> to
-                  bring in your own ideas and questions. Or, check out the <Link href="/docs/">project
-                    documentation</Link> to learn more about OpenSanctions.
-                </i>
+                <strong>Like what we're writing about?</strong> Keep the conversation going! You
+                can <Link href="https://twitter.com/open_sanctions">follow us on Twitter</Link> or
+                join the <Link href="https://bit.ly/osa-slack">Slack chat</Link> to
+                bring in your own ideas and questions. Or, check out the <Link href="/docs/">project
+                  documentation</Link> to learn more about OpenSanctions.
               </Card.Body>
             </Card>
           </Col>

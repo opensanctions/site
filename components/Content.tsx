@@ -105,12 +105,10 @@ function ContentPage({ content }: ContentProps) {
         <ContentBody content={content} />
         <Card>
           <Card.Body>
-            <i>
-              <strong>Got more questions?</strong> Join the <Link href="https://bit.ly/osa-slack">Slack
-                chat</Link> to ask questions and get support. You can
-              also <Link href="https://book.stripe.com/28o1513OFca54nufZf">book an hour of consulting time</Link> to
-              discuss technical questions with the team.
-            </i>
+            <strong>Got more questions?</strong> Join the <Link href="https://bit.ly/osa-slack">Slack
+              chat</Link> to ask questions and get support. You can
+            also <Link href="https://book.stripe.com/28o1513OFca54nufZf">book an hour of consulting time</Link> to
+            discuss technical questions with the team.
           </Card.Body>
         </Card>
       </div>
