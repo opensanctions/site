@@ -26,7 +26,7 @@ export default function NavbarSection({ navSearch }: NavbarSectionProps) {
         <Link href="/" passHref>
           <Navbar.Brand href="#home">
             <img
-              src="/static/ura/navlogo.png"
+              src="/static/ura/logo_text.svg"
               width="190"
               height="30"
               className="align-top"
