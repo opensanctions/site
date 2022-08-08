@@ -65,6 +65,8 @@ $primary: $blue-600;
 $secondary: $green-400;
 $info: $green-400;
 $code-color: $red-600;
+$theme-blue-logo: $blue-500;
+$theme-blue-dark: $blue-600;
 
 @font-face {
     font-family: 'Inter var experimental';
@@ -92,3 +94,20 @@ $font-family-heading: 'Outfit', $font-family-sans-serif;
 $max-text-width: 60em;
 $default-font-size: 16px;
 $default-text-color: $gray-900;
+
+
+
+@mixin heading-font {
+    font-weight: 600;
+    font-family: $font-family-heading;
+    letter-spacing: 0.01rem;
+
+    a {
+        color: $theme-blue-logo;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -80,18 +80,18 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
       <Container>
         <Row>
           <Col md={4} className={styles.explainer}>
-            <h4>People and companies that matter</h4>
+            <h2>People and companies that matter</h2>
             Persons of interest data provides the key that helps analysts find evidence of
             corruption, money laundering and other criminal activity.
           </Col>
           <Col md={4} className={styles.explainer}>
-            <h4>Clean data and transparent process</h4>
+            <h2>Clean data and transparent process</h2>
             We consolidate data from a <Link href="/datasets/#sources">broad range of sources</Link> and take on the
             complex task of transforming it into a clean and <Link href="/reference/">well-understood
               dataset</Link>.
           </Col>
           <Col md={4} className={styles.explainer}>
-            <h4>Open source code and data</h4>
+            <h2>Open source code and data</h2>
             OpenSanctions makes both its database and processing tools available
             for free. It's easy to <Link href="/docs/usage/">use the data</Link>
             {' '}and <Link href="/docs/api/">integrate the technology</Link>.

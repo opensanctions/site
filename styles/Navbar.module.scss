@@ -1,9 +1,6 @@
 @import './variables.scss';
 @import "~bootstrap/scss/mixins/_breakpoints";
 
-.brand {
-    font-weight: bold;
-}
 
 .navSearchBox {
     @include media-breakpoint-up(md) {
@@ -11,28 +8,9 @@
     }
 }
 
-.sponsorCall {
-    color: white;
-    font-weight: bolder;
-    // text-transform: uppercase;
-    // background-color: $highlight;
-    // border: 1px solid $highlight;
-
-    &:hover {
-        // background-color: shift-color($highlight, $link-shade-percentage);
-        // border: 1px solid shift-color($highlight, $link-shade-percentage);
-        color: whitesmoke;
-    }
-}
-
-.sponsorIcon {
-    margin-right: 0.3em;
-    margin-top: -2px;
-}
-
 .navItem {
     font-family: $font-family-heading;
     // font-size: 1.1em;
     font-weight: 600;
-    color: $blue-500;
+    color: $theme-blue-logo;
 }

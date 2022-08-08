@@ -16,17 +16,7 @@
 }
 
 .cardTitle {
-    font-family: $font-family-heading;
-    font-weight: 600;
-
-    a {
-        // color: inherit !important;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
+    @include heading-font;
 }
 
 .publisherDescription {

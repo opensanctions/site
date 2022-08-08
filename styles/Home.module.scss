@@ -12,14 +12,10 @@
 }
 
 .claimBanner {
-    background-color: $primary;
+    background-color: $theme-blue-dark;
     color: white;
     padding-top: 3em;
     padding-bottom: 3em;
-
-    // background-image: url('/static/home.webp');
-    // background-repeat: no-repeat;
-    // background-size: 700%;
 }
 
 .claimLink {
@@ -31,9 +27,9 @@
 }
 
 .claim {
+    @include heading-font;
     color: white;
     font-size: 2em;
-    font-weight: 600;
     line-height: 1.5;
     margin-bottom: 1em;
 }
@@ -45,7 +41,7 @@
 }
 
 .explainer {
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 .stats {
