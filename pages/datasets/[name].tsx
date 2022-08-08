@@ -106,7 +106,7 @@ export default function DatasetScreen({ dataset, details, issues, sources, exter
                         <td className="numeric narrow">
                           <Button
                             size="sm"
-                            variant="secondary"
+                            variant="dark"
                             rel="nofollow"
                             // @ts-expect-error
                             download={true}

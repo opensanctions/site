@@ -49,7 +49,7 @@ type NumericBadgeProps = {
 }
 
 export function NumericBadge({ value, bg, className }: NumericBadgeProps) {
-  return <Badge bg={bg || 'secondary'} className={className}><Numeric value={value} /></Badge>;
+  return <Badge bg={bg || 'dark'} className={className}><Numeric value={value} /></Badge>;
 }
 
 type PluralProps = {
