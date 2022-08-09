@@ -1,0 +1,16 @@
+@import './variables.scss';
+
+.researchBar {
+    background-color: $theme-blue-bg-light;
+    padding-top: $spacer * 2.5;
+    padding-bottom: $spacer * 3;
+
+    h2 {
+        margin-top: 0;
+        color: $theme-blue-logo;
+    }
+
+    input[type=search] {
+        border: 0;
+    }
+}

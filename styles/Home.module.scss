@@ -40,6 +40,12 @@
     color: $gray-100;
 }
 
+.search {
+    input[type=search] {
+        border: 0;
+    }
+}
+
 .explainer {
     margin-top: 2em;
 }

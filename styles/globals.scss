@@ -86,6 +86,13 @@ th.narrow {
     color: $text-muted;
 }
 
+.btn {
+    &.btn-secondary {
+        color: $green-800;
+        font-weight: 700;
+    }
+}
+
 .card-group {
     margin-bottom: 1em;
 

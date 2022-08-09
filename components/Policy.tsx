@@ -7,8 +7,8 @@ export function LicenseInfo() {
   return (
     <Alert variant="light" className={styles.licenseBox}>
       OpenSanctions is <strong>free for non-commercial users.</strong> Business users
-      need to <Link href="/licensing">acquire a license</Link> to support the
-      continued development and operation of the project.
+      can <Link href="/licensing">acquire a data license</Link> to use the
+      dataset.
     </Alert>
   );
 }

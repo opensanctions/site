@@ -41,7 +41,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
               <p className={styles.subClaim}>
                 {SUBCLAIM}
               </p>
-              <div>
+              <div className={styles.search}>
                 <Form action="/search/">
                   <InputGroup size="lg" className="mb-6">
                     <Form.Control

@@ -295,8 +295,12 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
             </li>
           </ul>
           <LicenseInfo />
-          <hr />
-          Source data IDs<HelpLink href="/docs/identifiers/" />: <SpacedList values={entity.referents.map((r) => <code>{r}</code>)} />
+          {entity.referents.length > 0 && (
+            <>
+              <hr />
+              Source data IDs<HelpLink href="/docs/identifiers/" />: <SpacedList values={entity.referents.map((r) => <code>{r}</code>)} />
+            </>
+          )}
         </div>
       </Col>
       <Col md={3} className="order-1">
