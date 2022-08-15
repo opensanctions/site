@@ -13,9 +13,10 @@ import { ISearchAPIResponse } from '../lib/types';
 import { fetchIndex, fetchJsonUrl, getDatasets } from '../lib/data';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../components/Search';
-import styles from '../styles/Search.module.scss'
 import { API_URL, SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
 import { FormattedDate, JSONLink, ResponsePagination } from '../components/util';
+
+import styles from '../styles/Search.module.scss'
 
 const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
 
