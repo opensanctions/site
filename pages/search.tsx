@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Model } from '../lib/ftm/model';
 import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
@@ -21,13 +22,14 @@ const SUMMARY = "Provide a search term to search across sanctions lists and othe
 
 export default function Search({ modelData, apiUrl, query, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const model = new Model(modelData);
+  const router = useRouter();
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
 
   if (scope === undefined) {
     return (
-      <Layout.Base title="Failed to load">
-        <Research.Context>
+      <Layout.Base title="Failed to load" activeSection="research">
+        <Research.Context query={query}>
           <Container>
             <h2>Could not load search function.</h2>
           </Container>
@@ -38,8 +40,8 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
   const title = hasScope ? `Research in: ${scope.title}` : 'Research';
 
   return (
-    <Layout.Base title={title} description={SUMMARY}>
-      <Research.Context query={query} title={title}>
+    <Layout.Base title={title} description={SUMMARY} activeSection="research">
+      <Research.Context query={router.query} title={title}>
         <Container>
           <Row className={styles.searchMeta}>
             <Col md={8}>

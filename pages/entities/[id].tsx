@@ -19,7 +19,7 @@ export default function Entity({ apiUrl, entityData, modelData, datasets }: Infe
   const entity = model.getEntity(entityData);
   const structured = getSchemaEntityPage(entity, datasets);
   return (
-    <Layout.Base title={entity.caption} structured={structured}>
+    <Layout.Base title={entity.caption} structured={structured} activeSection="research">
       <Research.Context>
         <Container>
           <h1>

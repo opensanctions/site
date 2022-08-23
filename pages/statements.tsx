@@ -67,7 +67,7 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
 export default function Statements({ apiUrl, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   if (response === null) {
     return (
-      <Layout.Base title="Failed to load">
+      <Layout.Base title="Failed to load" activeSection="research">
         <Container>
           <h2>Could not load raw data viewer</h2>
         </Container>
@@ -84,7 +84,7 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
   }
 
   return (
-    <Layout.Base title={title}>
+    <Layout.Base title={title} activeSection="research">
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
@@ -99,7 +99,7 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
         </Row>
         <Row>
           <Col md={12}>
-            <Alert variant="primary">
+            <Alert variant="dark">
               This table shows statement-based, sourced records from our database. For more context,
               learn about <Alert.Link href="/docs/statements/">how OpenSanctions stores information</Alert.Link>.
             </Alert>

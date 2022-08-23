@@ -32,7 +32,8 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
     const idx = filters.indexOf(value);
     const newFilters = idx === -1 ? [...filters, value] : filters.filter((e) => e !== value);
     const param = newFilters.length ? newFilters : undefined;
-    router.push({ 'query': { ...router.query, [field]: param } })
+    const newQuery = { ...router.query, [field]: param };
+    router.push({ pathname: "/search/", query: newQuery });
   }
 
   return (

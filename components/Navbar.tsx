@@ -17,6 +17,7 @@ export default function NavbarSection({ activeSection }: NavbarSectionProps) {
   const inShowcase = activePath === '/showcase/' || activeSection === 'showcase';
   const inAbout = activePath === '/docs/about/' || activeSection === 'about';
   const inDocumentation = activeSection === 'documentation';
+  const inResearch = activeSection === 'research';
   return (
     <Navbar bg="light" expand="lg" className={styles.navBar}>
       <Container>
@@ -34,6 +35,9 @@ export default function NavbarSection({ activeSection }: NavbarSectionProps) {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="justify-content-end">
+            <Link href="/research/" passHref>
+              <Nav.Link className={styles.navItem} active={inResearch}>Research</Nav.Link>
+            </Link>
             <Link href="/datasets/" passHref>
               <Nav.Link className={styles.navItem} active={inDataset}>Datasets</Nav.Link>
             </Link>

@@ -12,7 +12,7 @@ const TITLE = "Warnings and errors from all datasets";
 
 export default function Issues({ issues }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout.Base title={TITLE} description={null} activeSection="documentation">
+    <Layout.Base title={TITLE} description={null} activeSection="datasets">
       <Content.Menu title={TITLE} jsonLink={ISSUES_URL} Menu={Menu.Documentation}>
         <Summary summary="Below is an overview of all parsing and processing issues that appeared while importing the data." />
         <IssuesList issues={issues} showDataset={true} />
