@@ -29,7 +29,7 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
   if (scope === undefined) {
     return (
       <Layout.Base title="Failed to load" activeSection="research">
-        <Research.Context query={query}>
+        <Research.Context query={router.query}>
           <Container>
             <h2>Could not load search function.</h2>
           </Container>
