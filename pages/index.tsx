@@ -30,7 +30,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
   }
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (
-    <Layout.Base title={CLAIM} description={SUBCLAIM} structured={structured} navSearch={false}>
+    <Layout.Base title={CLAIM} description={SUBCLAIM} structured={structured}>
       <div className={styles.claimBanner}>
         <Container>
           <Row>

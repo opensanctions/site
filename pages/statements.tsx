@@ -84,7 +84,7 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
   }
 
   return (
-    <Layout.Base title={title} navSearch={true}>
+    <Layout.Base title={title}>
       <Head>
         <meta name="robots" content="noindex" />
       </Head>

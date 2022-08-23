@@ -8,6 +8,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import Layout from '../components/Layout'
 import Content from '../components/Content'
+import Menu from '../components/Menu';
 import { Numeric, Summary } from '../components/util';
 import Link from 'next/link';
 import { getDatasets } from '../lib/data';
@@ -22,8 +23,8 @@ const SUMMARY = 'We provide a fully auditable, high-quality database for '
 
 export default function Licensing({ sanctions_count, default_count }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout.Base title={TITLE} description={SUMMARY}>
-      <Content.Menu title={TITLE}>
+    <Layout.Base title={TITLE} description={SUMMARY} activeSection="about">
+      <Content.Menu title={TITLE} Menu={Menu.About}>
         <Summary summary={SUMMARY} />
         <div className="text-body">
           <CardGroup className={styles.pricingPanel}>

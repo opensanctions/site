@@ -8,15 +8,15 @@ import Container from 'react-bootstrap/Container';
 import styles from '../styles/Navbar.module.scss';
 
 type NavbarSectionProps = {
-  navSearch: boolean
+  activeSection?: string
 }
 
-export default function NavbarSection({ navSearch }: NavbarSectionProps) {
+export default function NavbarSection({ activeSection }: NavbarSectionProps) {
   const activePath = useRouter().asPath;
-  const inDataset = activePath.startsWith('/datasets/');
-  const inShowcase = activePath === '/showcase/';
-  const inAbout = activePath === '/docs/about/';
-  const inFaq = activePath === '/docs/faq/';
+  const inDataset = activePath.startsWith('/datasets/') || activeSection === 'datasets';
+  const inShowcase = activePath === '/showcase/' || activeSection === 'showcase';
+  const inAbout = activePath === '/docs/about/' || activeSection === 'about';
+  const inDocumentation = activeSection === 'documentation';
   return (
     <Navbar bg="light" expand="lg" className={styles.navBar}>
       <Container>
@@ -40,11 +40,11 @@ export default function NavbarSection({ navSearch }: NavbarSectionProps) {
             <Link href="/showcase/" passHref>
               <Nav.Link className={styles.navItem} active={inShowcase}>Showcase</Nav.Link>
             </Link>
+            <Link href="/docs/usage/" passHref>
+              <Nav.Link className={styles.navItem} active={inDocumentation}>Documentation</Nav.Link>
+            </Link>
             <Link href="/docs/about/" passHref>
               <Nav.Link className={styles.navItem} active={inAbout}>About</Nav.Link>
-            </Link>
-            <Link href="/docs/faq/" passHref>
-              <Nav.Link className={styles.navItem} active={inFaq}>FAQ</Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>

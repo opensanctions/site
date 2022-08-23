@@ -1,5 +1,6 @@
 ---
 title: Frequently Asked Questions
+section: about
 summary: |
     We answer the most common questions about the OpenSanctions project, the dataset it
     produces and our content policies.

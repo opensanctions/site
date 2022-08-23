@@ -1,5 +1,6 @@
 ---
 title: About this project
+section: about
 summary:
     OpenSanctions is an international database of persons and companies of political, criminal, or economic interest. 
 ---

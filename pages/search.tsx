@@ -3,7 +3,6 @@ import { Model } from '../lib/ftm/model';
 import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container';
 
@@ -39,7 +38,7 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
   const title = hasScope ? `Research in: ${scope.title}` : 'Research';
 
   return (
-    <Layout.Base title={title} description={SUMMARY} navSearch={false}>
+    <Layout.Base title={title} description={SUMMARY}>
       <Research.Context query={query} title={title}>
         <Container>
           <Row className={styles.searchMeta}>
