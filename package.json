@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.182",
+    "@types/lodash": "^4.14.184",
     "bootstrap": "^5.2.0",
     "classnames": "^2.3.1",
     "filesize": "^9.0.11",
