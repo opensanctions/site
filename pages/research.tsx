@@ -23,8 +23,12 @@ export default function ResearchIntro({ response }: InferGetStaticPropsType<type
       <Research.Context title={TITLE}>
         <Container>
           <Row className={styles.researchIntro}>
-            <Col md={12}>
+            <Col md={3}>
+            </Col>
+            <Col md={6}>
               <h2>Browse and search sanctions data</h2>
+            </Col>
+            <Col md={3}>
             </Col>
           </Row>
           {response !== null && response.facets && response.total.value > 0 && (

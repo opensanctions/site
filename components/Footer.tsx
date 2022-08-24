@@ -82,6 +82,8 @@ export default class Footer extends React.Component {
                   Made with <HeartFill className={styles.love} /> in Berlin
                   {SPACER}
                   <Link href="/impressum/">Impressum</Link>
+                  {SPACER}
+                  <Link href="/docs/privacy/">Privacy policy</Link>
                 </p>
               </Row>
             </Col>

@@ -22,6 +22,12 @@ function AboutMenu() {
         <Nav.Item>
           <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
         </Nav.Item>
+        <Nav.Item>
+          <RoutedNavLink href="/impressum/">Impressum</RoutedNavLink>
+        </Nav.Item>
+        <Nav.Item>
+          <RoutedNavLink href="/docs/privacy/">Privacy Policy</RoutedNavLink>
+        </Nav.Item>
       </Nav>
       <LicenseInfo />
     </>
