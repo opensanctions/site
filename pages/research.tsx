@@ -23,12 +23,17 @@ export default function ResearchIntro({ response }: InferGetStaticPropsType<type
       <Research.Context title={TITLE}>
         <Container>
           <Row className={styles.researchIntro}>
-            <Col md={3}>
+            <Col md={2}>
             </Col>
-            <Col md={6}>
-              <h2>Browse and search sanctions data</h2>
+            <Col md={8}>
+              <h3>Browse and search sanctions data</h3>
+              <p>
+                Use the research tool to search the OpenSanctions dataset, including
+                sanctioned people and companies, policially exposed persons and
+                wanted criminals from around the world.
+              </p>
             </Col>
-            <Col md={3}>
+            <Col md={2}>
             </Col>
           </Row>
           {response !== null && response.facets && response.total.value > 0 && (
