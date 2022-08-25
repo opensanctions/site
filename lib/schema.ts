@@ -85,6 +85,7 @@ export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
       "@type": "Dataset",
       "name": dataset.title,
       "url": dataset.url,
+      "license": LICENSE_URL,
       "description": dataset.summary,
       "creator": getPublisherOrganization(dataset.publisher),
       "includedInDataCatalog": getDataCatalog(),
