@@ -1,5 +1,6 @@
 ---
 title: Commercial use FAQ
+section: about
 summary: |
     Below you will find answers to the most common questions asked by commercial
     partners who wish to license the dataset for business purposes.

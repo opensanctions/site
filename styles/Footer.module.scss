@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-$footer-fg: $gray-200;
+$footer-fg: $gray-100;
 
 .footer {
     margin-top: 2em;
@@ -40,12 +40,13 @@ $footer-fg: $gray-200;
 }
 
 .love {
-    color: $danger;
+    color: $red;
 }
 
 .copyright {
     font-size: 0.9em;
     margin-bottom: 0.2em;
+
     a {
         text-decoration: underline;
     }

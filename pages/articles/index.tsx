@@ -16,7 +16,7 @@ import Article from '../../components/Article';
 
 export default function ArticleIndex({ articles }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout.Base title="Articles" structured={undefined}>
+    <Layout.Base title="Articles" structured={undefined} activeSection="about">
       <Container>
         <h1>
           What's happening at OpenSanctions?

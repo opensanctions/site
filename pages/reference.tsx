@@ -11,6 +11,7 @@ import { Summary } from '../components/util'
 import { fetchIndex } from '../lib/data'
 import { SchemaReference, TypeReference } from '../components/Reference';
 import { INDEX_URL } from '../lib/constants';
+import Menu from '../components/Menu';
 
 
 
@@ -21,7 +22,7 @@ export default function Reference({ content, activeModel, schemata }: InferGetSt
 
   return (
     <Layout.Content content={content}>
-      <Content.Menu title={content.title} jsonLink={INDEX_URL}>
+      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={Menu.Documentation}>
         <Summary summary={content.summary} />
         <div>
           <Content.Body content={content} />

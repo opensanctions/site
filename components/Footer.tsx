@@ -16,9 +16,10 @@ export default class Footer extends React.Component {
           <Row>
             <Col md={3}>
               <img
-                src="/static/footer.png"
+                src="/static/ura/logo_footer.svg"
                 alt="OpenSanctions project"
                 className={styles.logo}
+                width="100%"
               />
             </Col>
             <Col md={9}>
@@ -81,6 +82,8 @@ export default class Footer extends React.Component {
                   Made with <HeartFill className={styles.love} /> in Berlin
                   {SPACER}
                   <Link href="/impressum/">Impressum</Link>
+                  {SPACER}
+                  <Link href="/docs/privacy/">Privacy policy</Link>
                 </p>
               </Row>
             </Col>

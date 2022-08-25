@@ -12,10 +12,10 @@
 }
 
 .claimBanner {
-    background-color: $primary;
+    background-color: $theme-blue-dark;
     color: white;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: 3em;
+    padding-bottom: 3em;
 }
 
 .claimLink {
@@ -27,9 +27,9 @@
 }
 
 .claim {
+    @include heading-font;
     color: white;
     font-size: 2em;
-    max-width: 20em;
     line-height: 1.5;
     margin-bottom: 1em;
 }
@@ -40,8 +40,14 @@
     color: $gray-100;
 }
 
+.search {
+    input[type=search] {
+        border: 0;
+    }
+}
+
 .explainer {
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 .stats {

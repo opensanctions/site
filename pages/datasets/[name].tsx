@@ -38,7 +38,7 @@ type DatasetScreenProps = {
 export default function DatasetScreen({ dataset, details, issues, sources, externals, collections, recents }: DatasetScreenProps) {
   const structured = getSchemaDataset(dataset, details);
   return (
-    <Layout.Base title={dataset.title} description={dataset.summary} structured={structured} navSearch={false}>
+    <Layout.Base title={dataset.title} description={dataset.summary} structured={structured}>
       <Container className={styles.datasetPage}>
         <JSONLink href={dataset.index_url} />
         <h1>
@@ -106,7 +106,7 @@ export default function DatasetScreen({ dataset, details, issues, sources, exter
                         <td className="numeric narrow">
                           <Button
                             size="sm"
-                            variant="secondary"
+                            variant="dark"
                             rel="nofollow"
                             // @ts-expect-error
                             download={true}

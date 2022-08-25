@@ -14,13 +14,12 @@ type LayoutBaseProps = {
   description?: string | null,
   imageUrl?: string | null,
   structured?: any,
-  navSearch?: boolean
+  activeSection?: string
 }
 
-function LayoutBase({ title, description, imageUrl, structured, navSearch, children }: React.PropsWithChildren<LayoutBaseProps>) {
+function LayoutBase({ title, description, imageUrl, structured, activeSection, children }: React.PropsWithChildren<LayoutBaseProps>) {
   const router = useRouter();
   const url = `${BASE_URL}${router.asPath}`;
-  const navSearchDef = navSearch === undefined ? true : navSearch;
   const fullTitle = `${title} - ${SITE}`
   return (
     <>
@@ -53,7 +52,7 @@ function LayoutBase({ title, description, imageUrl, structured, navSearch, child
         <meta property="og:url" content={url} />
       </Head>
       <div className={styles.page}>
-        <Navbar navSearch={navSearchDef} />
+        <Navbar activeSection={activeSection} />
         {children}
       </div>
       <Footer />
@@ -69,7 +68,7 @@ type LayoutContentProps = {
 
 function LayoutContent({ content, children }: React.PropsWithChildren<LayoutContentProps>) {
   return (
-    <LayoutBase title={content.title} description={content.summary} imageUrl={content.image_url}>
+    <LayoutBase title={content.title} description={content.summary} imageUrl={content.image_url} activeSection={content.section}>
       {children}
     </LayoutBase>
   )

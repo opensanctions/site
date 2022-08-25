@@ -8,28 +8,31 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import Layout from '../components/Layout'
 import Content from '../components/Content'
+import Menu from '../components/Menu';
 import { Numeric, Summary } from '../components/util';
 import Link from 'next/link';
 import { getDatasets } from '../lib/data';
 
+import styles from '../styles/Licensing.module.scss'
+
 const TITLE = 'Licensing OpenSanctions';
-const SUMMARY = 'Our objective is to continually release high-quality '
-  + 'persons of interest data as a resource for business and civil society. '
-  + 'In order to make this sustainable, we\'re asking for-profit '
-  + 'users to support the project and obtain a license.';
+const SUMMARY = 'We provide a fully auditable, high-quality database for '
+  + 'open source intelligence. This includes carefully cleaned and de-duplicated '
+  + 'entities that are subject to manual review. The use of this data for any '
+  + 'business purposes requires a licensing agreement.';
 
 export default function Licensing({ sanctions_count, default_count }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout.Base title={TITLE} description={SUMMARY}>
-      <Content.Menu title={TITLE}>
+    <Layout.Base title={TITLE} description={SUMMARY} activeSection="about">
+      <Content.Menu title={TITLE} Menu={Menu.About}>
         <Summary summary={SUMMARY} />
         <div className="text-body">
-          <CardGroup className="pricing">
-            <Card bg="secondary" text="white">
+          <CardGroup className={styles.pricingPanel}>
+            <Card className={styles.firstColumn} text="white">
               <Card.Body>
                 <Card.Title>
                   Sanctions bulk data<br />
-                  <Badge bg="primary">
+                  <Badge bg="light">
                     <span className="num"><Numeric value={sanctions_count} /></span> targets
                   </Badge>
                 </Card.Title>
@@ -46,17 +49,17 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
-                  <Button href="/contact/" variant="primary">
+                  <Button href="/contact/" variant="secondary">
                     <EnvelopeFill className="bsIcon" />
                     Contact us
                   </Button>
                 </ButtonGroup>
-                <div className="buy-now">
+                {/* <div className="buy-now">
                   Sound good? <Link href="https://buy.stripe.com/5kAdRNad3fmhg6ceV4">Subscribe now</Link>.
-                </div>
+                </div> */}
               </Card.Footer>
             </Card>
-            <Card bg="primary" text="white">
+            <Card className={styles.secondColumn} text="white">
               <Card.Body>
                 <Card.Title>
                   Sanctions and PEPs data<br />
@@ -81,16 +84,16 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                     Contact us
                   </Button>
                 </ButtonGroup>
-                <div className="buy-now">
+                {/* <div className="buy-now">
                   We've got a deal? <Link href="https://buy.stripe.com/14kfZV5WN8XT9HO28j">Subscribe now</Link>.
-                </div>
+                </div> */}
               </Card.Footer>
             </Card>
-            <Card bg="secondary" text="white">
+            <Card className={styles.thirdColumn} text="white">
               <Card.Body>
                 <Card.Title>
                   Flat-rate API usage<br />
-                  <Badge bg="primary">
+                  <Badge bg="light">
                     <span className="num">300,000</span> req/mo
                   </Badge>
                 </Card.Title>
@@ -106,14 +109,14 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
-                  <Button href="/contact/" variant="primary">
+                  <Button href="/contact/" variant="secondary">
                     <EnvelopeFill className="bsIcon" />
                     Contact us
                   </Button>
                 </ButtonGroup>
-                <div className="buy-now">
+                {/* <div className="buy-now">
                   In a hurry? <a href="https://buy.stripe.com/8wM151fxn6PL4nu7sF">Subscribe now</a>.
-                </div>
+                </div> */}
               </Card.Footer>
             </Card>
           </CardGroup>

@@ -1,25 +1,29 @@
 ---
 title: About this project
+section: about
 summary:
     OpenSanctions is an international database of persons and companies of political, criminal, or economic interest. 
 ---
 
-The project combines the sanctions lists, databases of politically exposed persons, and other information about persons in the public interest into a single, easy-to-use dataset. The code and methodology used to make it are distributed for free.
-
-This makes it easy to:
+The project combines the sanctions lists, databases of politically exposed persons, and other information about persons in the public interest into a single, easy-to-use dataset. This makes it easy to:
 
 * **Cross-check databases** for conflicts of interests and signs of illicit activity.
 * **Screen potential customers** and partners in international dealings.
 * **Track political conflicts** and compare national sanctions policies.
 * Integrate the sanctions and persons of interest graph into existing data products.
 
+### What makes OpenSanctions different?
+
+* **Comprehensive coverage**: we bring together data from [50+ data sources](/datasets/) and from around the world into a single dataset that combines sanctions, PEPs and crime-relared entities.
+* **Focus on data quality**: the dataset is carefully cleaned, including a human-in-the-loop process for [entity de-duplication across lists](/articles/2021-11-11-deduplication/), and thousands of hand-crafted *data patches* that structure identifying information like birth dates, countries, addresses or tax identifiers in a consistent way.
+* **Bulk data for everybody**: we make our raw data easy to access, enabling use cases that require access to the full archive (instead of an entity-by-entity API), and even empowering our customers to [self-host our API server](/docs/self-hosted/) inside their own infrastructure.
+* **Auditable and open source**: anyone can verify how OpenSanctions works by browsing the [source code](https://github.com/opensanctions), highlight issues, suggest changes, and propose improvements.
+
 ### The rationale
 
-Collecting persons of interest data is a labour intensive process: data users need to scrape data from [dozens of sources](/datasets/), then parse partial and sometimes incorrect information about nationalities, birth dates and identifiers. De-duplicating common entries across many data sources poses another time-consuming challenge.
+Collecting persons of interest data is a labour intensive process, including data cleaning and quality assurance. This creates unnecessary and duplicative work for all users of persons-of-interest data, whether they are fintech/regtech technologists, investigative journalists, academics or others.
 
-This creates unnecessary and duplicative work for all users of persons-of-interest data, whether they are fintech/regtech technologists, investigative journalists, academics or others.
-
-We believe that the solution to this is to establish a **data commons**, an open resource  that provides high-quality, up-to-date data, is open to feedback and set up to [provide a long-term solution](/licensing/) for data sourcing.
+We believe that the solution to this is to establish a **data commons**, an open resource that provides high-quality, up-to-date data, is open to feedback and set up to [provide a long-term solution](/licensing/) for data sourcing.
 
 ### Team
 
@@ -32,7 +36,7 @@ project.
 
 ### Funding 
 
-From September 2021 to Feburary 2022, this project received financial support from the German Federal Ministry for Education and Research (Bundesministerium für Bildung und Forschung, BMBF) under the grant identifier ``01IS21S48``. The full responsibility for the content of this publication remains with its 
+From September 2021 to Feburary 2022, the project received financial support from the German Federal Ministry for Education and Research (Bundesministerium für Bildung und Forschung, BMBF) under the grant identifier ``01IS21S48``. The full responsibility for the content of this publication remains with its 
 authors.
 
 <a href="https://www.softwaresysteme.pt-dlr.de/de/software-sprint.php">

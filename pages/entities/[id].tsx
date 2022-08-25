@@ -1,7 +1,8 @@
 import Container from 'react-bootstrap/Container';
 
-import Layout from '../../components/Layout'
-import { IDataset, IExternal, isExternal, ISource, isSource } from '../../lib/types';
+import Layout from '../../components/Layout';
+import Research from '../../components/Research';
+import { IDataset } from '../../lib/types';
 import { fetchIndex, fetchJsonUrl, getDatasets } from '../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
@@ -18,14 +19,16 @@ export default function Entity({ apiUrl, entityData, modelData, datasets }: Infe
   const entity = model.getEntity(entityData);
   const structured = getSchemaEntityPage(entity, datasets);
   return (
-    <Layout.Base title={entity.caption} structured={structured}>
-      <Container>
-        <h1>
-          {entity.caption}
-          <JSONLink href={apiUrl} />
-        </h1>
-        <EntityDisplay entity={entity} datasets={datasets} />
-      </Container>
+    <Layout.Base title={entity.caption} structured={structured} activeSection="research">
+      <Research.Context>
+        <Container>
+          <h1>
+            {entity.caption}
+            <JSONLink href={apiUrl} />
+          </h1>
+          <EntityDisplay entity={entity} datasets={datasets} />
+        </Container>
+      </Research.Context>
     </Layout.Base >
   )
 }

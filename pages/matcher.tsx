@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { InferGetStaticPropsType } from 'next'
-import { Model } from "../lib/ftm/model"
 import Table from 'react-bootstrap/Table';
 
 import Layout from '../components/Layout'
@@ -9,12 +8,13 @@ import { getContentBySlug } from '../lib/content'
 import { Summary } from '../components/util'
 import { fetchIndex } from '../lib/data'
 import { INDEX_URL } from '../lib/constants';
+import Menu from '../components/Menu';
 
 
 export default function Matcher({ content, matcher }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout.Content content={content}>
-      <Content.Menu title={content.title} jsonLink={INDEX_URL}>
+      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={Menu.Documentation}>
         <Summary summary={content.summary} />
         <div>
           <Content.Body content={content} />

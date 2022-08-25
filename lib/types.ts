@@ -6,6 +6,7 @@ export interface IContent {
   content: string
   title: string
   path: string
+  section: string
   image_url: string | null
   summary: string | null
 }
@@ -16,6 +17,7 @@ export interface IArticleInfo {
   date: string
   path: string
   url: string
+  section: string
   image_url: string | null
   draft: boolean
   summary: string | null
