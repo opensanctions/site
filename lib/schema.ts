@@ -80,16 +80,7 @@ function getResourceDataDownload(resource: IResource) {
 
 export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
   if (isExternal(dataset)) {
-    return {
-      "@context": "https://schema.org/",
-      "@type": "Dataset",
-      "name": dataset.title,
-      "url": dataset.url,
-      "license": LICENSE_URL,
-      "description": dataset.summary,
-      "creator": getPublisherOrganization(dataset.publisher),
-      "includedInDataCatalog": getDataCatalog(),
-    }
+    return undefined;
   }
   let schema: any = {
     "@context": "https://schema.org/",
@@ -139,7 +130,7 @@ export function getSchemaEntityPage(entity: Entity, datasets: Array<IDataset>) {
     "@type": "WebPage",
     "name": entity.caption,
     "maintainer": getSchemaOpenSanctionsOrganization(),
-    "isPartOf": datasets.map(d => getSchemaDataset(d).url),
+    "isPartOf": datasets.filter((d) => !!d).map(d => getSchemaDataset(d).url),
     "license": LICENSE_URL,
     "dateCreated": entity.first_seen,
     "dateModified": entity.getFirst('modifiedAt') || entity.last_seen,
