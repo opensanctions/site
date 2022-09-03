@@ -125,12 +125,13 @@ export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
 }
 
 export function getSchemaEntityPage(entity: Entity, datasets: Array<IDataset>) {
+  const schemaDatasets = datasets.map(d => getSchemaDataset(d)).filter(d => !!d)
   return {
     "@context": "https://schema.org/",
     "@type": "WebPage",
     "name": entity.caption,
     "maintainer": getSchemaOpenSanctionsOrganization(),
-    "isPartOf": datasets.filter((d) => !!d).map(d => getSchemaDataset(d).url),
+    "isPartOf": schemaDatasets.map(d => d.url),
     "license": LICENSE_URL,
     "dateCreated": entity.first_seen,
     "dateModified": entity.getFirst('modifiedAt') || entity.last_seen,
