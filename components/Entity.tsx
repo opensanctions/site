@@ -290,7 +290,7 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
               The entity was added <FormattedDate date={entity.first_seen} /> and last updated <FormattedDate date={entity.last_seen} />.
             </li>
             <li>
-              For experts: <Link href={`/statements/?canonical_id=${entity.id}`}>raw data
+              For experts: <Link rel="nofollow" href={`/statements/?canonical_id=${entity.id}`}>raw data
                 explorer</Link> with per-attribute information on data provenance.
             </li>
           </ul>
