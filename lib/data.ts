@@ -84,8 +84,8 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
   if (statements === null) {
     return []
   }
-  // const canonicalised = new RegExp('(^NK-.*|Q\\d*=)');
-  const canonicalised = new RegExp('^NK-.*');
+  const canonicalised = new RegExp('(^NK-.*|Q\\d*=)');
+  // const canonicalised = new RegExp('^NK-.*');
   const entities: Array<ISitemapEntity> = statements.results
     .filter((stmt) => canonicalised.test(stmt.canonical_id))
     .map((stmt) => ({ id: stmt.canonical_id, lastmod: stmt.value }));
