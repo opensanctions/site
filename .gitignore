@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.envrc
 
 public/sitemap.xml
 data/index.json

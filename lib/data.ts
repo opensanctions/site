@@ -28,7 +28,7 @@ index.datasets = index.datasets.map((raw: any) => {
 index.model = index.model as IModelDatum
 
 export async function fetchJsonUrl(url: string): Promise<any> {
-  const headers = { 'Authorization': `Token ${API_TOKEN}` }
+  const headers = { 'Authorization': `ApiKey ${API_TOKEN}` }
   const data = await fetch(url, { cache: "force-cache", headers });
   if (!data.ok) {
     // console.log('ERROR', data);
