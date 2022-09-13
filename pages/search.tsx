@@ -14,13 +14,13 @@ import { fetchIndex, fetchJsonUrl, getDatasets } from '../lib/data';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../components/Search';
 import { API_URL, SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
-import { FormattedDate, JSONLink, ResponsePagination } from '../components/util';
+import { FormattedDate, ResponsePagination } from '../components/util';
 
 import styles from '../styles/Search.module.scss'
 
 const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
 
-export default function Search({ modelData, apiUrl, query, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Search({ modelData, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const model = new Model(modelData);
   const router = useRouter();
   const hasScope = scopeName !== SEARCH_DATASET;
@@ -37,7 +37,7 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
       </Layout.Base >
     );
   }
-  const title = hasScope ? `Research in: ${scope.title}` : 'Research';
+  const title = hasScope ? `Search in: ${scope.title}` : 'Search OpenSanctions';
 
   return (
     <Layout.Base title={title} description={SUMMARY} activeSection="research">
@@ -48,7 +48,6 @@ export default function Search({ modelData, apiUrl, query, datasets, scopeName, 
               <SearchFilterTags scope={scope} model={model} datasets={datasets} />
             </Col>
             <Col md={4}>
-              <JSONLink href={apiUrl} />
               <p className={styles.searchNotice}>
                 Data current as of <FormattedDate date={scope.last_change} />
               </p>
@@ -120,9 +119,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const response = await fetchJsonUrl(apiUrl) as ISearchAPIResponse;
   return {
     props: {
-      query,
       response,
-      apiUrl,
       scopeName,
       datasets: datasets,
       modelData: index.model

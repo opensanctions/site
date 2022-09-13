@@ -6,15 +6,12 @@ import { IDataset } from '../../lib/types';
 import { fetchIndex, fetchJsonUrl, getDatasets } from '../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
-import { JSONLink } from '../../components/util';
 import { getSchemaEntityPage } from '../../lib/schema';
 import { EntityDisplay } from '../../components/Entity';
 import { IEntityDatum, Model } from '../../lib/ftm';
 
-// import styles from '../styles/Search.module.scss'
 
-
-export default function Entity({ apiUrl, entityData, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Entity({ entityData, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(modelData);
   const entity = model.getEntity(entityData);
   const structured = getSchemaEntityPage(entity, datasets);
@@ -24,7 +21,6 @@ export default function Entity({ apiUrl, entityData, modelData, datasets }: Infe
         <Container>
           <h1>
             {entity.caption}
-            <JSONLink href={apiUrl} />
           </h1>
           <EntityDisplay entity={entity} datasets={datasets} />
         </Container>
@@ -59,7 +55,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       entityId,
-      apiUrl,
       datasets: datasets,
       entityData: entity,
       modelData: index.model
