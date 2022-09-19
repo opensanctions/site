@@ -1,9 +1,10 @@
 // import { join } from 'path'
 // import { promises as fs } from 'fs';
 import queryString from 'query-string';
-import { IEntityDatum, IModelDatum, Model } from "./ftm";
+import { intersection } from 'lodash';
+import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
-import { BASE_URL, API_TOKEN, API_URL } from "./constants";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
@@ -134,4 +135,9 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
     } as IRecentEntity;
   })
   return results.filter(r => r !== undefined) as Array<IRecentEntity>;
+}
+
+export function isBlocked(entity: IEntityDatum | Entity): boolean {
+  const joined = intersection(entity.referents, BLOCKED_ENTITIES);
+  return joined.length > 0;
 }

@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 
-import { fetchIndex, fetchJsonUrl } from '../../../lib/data';
+import { fetchIndex, fetchJsonUrl, isBlocked } from '../../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../../lib/constants';
 import { IEntityDatum, Model } from '../../../lib/ftm';
@@ -41,6 +41,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const entity = raw as IEntityDatum;
   if (entity.id !== entityId) {
     return { redirect: { destination: `/entities/${entity.id}`, permanent: false } };
+  }
+  if (isBlocked(entity)) {
+    return { notFound: true }
   }
   return {
     props: {

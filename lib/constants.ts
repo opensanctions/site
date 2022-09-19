@@ -18,3 +18,5 @@ export const ARTICLE_INDEX_SUMMARY = "Updates from the OpenSanctions project, in
 export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];
 
 export const SPACER = " · ";
+
+export const BLOCKED_ENTITIES = ['ofac-9591'];

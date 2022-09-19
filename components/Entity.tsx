@@ -17,6 +17,7 @@ import Dataset from './Dataset';
 
 import styles from '../styles/Entity.module.scss'
 import { LicenseInfo } from './Policy';
+import { isBlocked } from '../lib/data';
 
 
 export type EntityRawLinkProps = {
@@ -41,6 +42,9 @@ export type EntityProps = {
 }
 
 export function EntityLink({ entity }: EntityProps) {
+  if (isBlocked(entity)) {
+    return <Link href={`/entities/${entity.id}/`}>[blocked entity]</Link>
+  }
   return <Link href={`/entities/${entity.id}/`}>{entity.caption}</Link>
 }
 

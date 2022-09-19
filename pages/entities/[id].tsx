@@ -1,9 +1,10 @@
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 
 import Layout from '../../components/Layout';
 import Research from '../../components/Research';
 import { IDataset } from '../../lib/types';
-import { fetchIndex, fetchJsonUrl, getDatasets } from '../../lib/data';
+import { fetchIndex, fetchJsonUrl, getDatasets, isBlocked } from '../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { API_URL } from '../../lib/constants';
 import { getSchemaEntityPage } from '../../lib/schema';
@@ -11,9 +12,28 @@ import { EntityDisplay } from '../../components/Entity';
 import { IEntityDatum, Model } from '../../lib/ftm';
 
 
-export default function Entity({ entityData, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Entity({ entityData, blocked, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
   const model = new Model(modelData);
   const entity = model.getEntity(entityData);
+  if (blocked) {
+    return (
+      <Layout.Base title="Blocked entity" activeSection="research">
+        <Research.Context>
+          <Container>
+            <br />
+            <Alert variant="warning">
+              <Alert.Heading>Blocked entity</Alert.Heading>
+              <p>
+                The entity with ID <code>{entityData.id}</code> has been removed from the
+                OpenSanctions website due to unusual legal circumstances. It is still
+                contained in the API and bulk data products to maintain list completeness.
+              </p>
+            </Alert>
+          </Container>
+        </Research.Context>
+      </Layout.Base>
+    );
+  }
   const structured = getSchemaEntityPage(entity, datasets);
   return (
     <Layout.Base title={entity.caption} structured={structured} activeSection="research">
@@ -25,7 +45,7 @@ export default function Entity({ entityData, modelData, datasets }: InferGetStat
           <EntityDisplay entity={entity} datasets={datasets} />
         </Container>
       </Research.Context>
-    </Layout.Base >
+    </Layout.Base>
   )
 }
 
@@ -55,6 +75,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       entityId,
+      blocked: isBlocked(entity),
       datasets: datasets,
       entityData: entity,
       modelData: index.model
