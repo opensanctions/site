@@ -1,5 +1,5 @@
 import queryString from 'query-string';
-import { GetServerSidePropsContext, GetStaticPropsContext, InferGetServerSidePropsType } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { fetchJsonUrl } from '../../lib/data';
 import { API_URL } from '../../lib/constants';
 
@@ -19,6 +19,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   if (!data.secret) {
     return { redirect: { destination: `/service/cancel/`, permanent: false } };
   }
-  const redirUrl = `/service/account/?secret=${data.secret}&first=true`;
+  const redirUrl = `/service/account/?secret=${data.secret}&welcome=true`;
   return { redirect: { destination: redirUrl, permanent: false } };
 }

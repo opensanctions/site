@@ -18,6 +18,6 @@ export default function Error() {
           material published on this site.
         </p>
       </Container>
-    </Layout.Base >
+    </Layout.Base>
   )
 }

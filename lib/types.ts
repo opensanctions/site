@@ -231,3 +231,35 @@ export interface IRecentEntity {
   schema: string
   countries: string[]
 }
+
+export interface IAccount {
+  name?: string
+  email?: string
+  secret: string
+  active: boolean
+  stripe_customer_id?: string
+  stripe_subscription_id?: string
+  created_at: string
+}
+
+export interface IRouteUsage {
+  route: string
+  count: number
+}
+
+export interface IDateUsage {
+  routes: IRouteUsage[]
+  date: string
+  total: number
+}
+
+export interface IAccountUsage {
+  dates: IDateUsage[]
+  days: number
+  total: number
+}
+
+export interface IAccountInfo {
+  account: IAccount
+  usage: IAccountUsage
+}

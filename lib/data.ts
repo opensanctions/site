@@ -29,7 +29,7 @@ index.datasets = index.datasets.map((raw: any) => {
 index.model = index.model as IModelDatum
 
 export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<any> {
-  const headers = { 'Authorization': `ApiKey ${API_TOKEN}` };
+  const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
   const data = await fetch(url, { headers });
   if (!data.ok) {
     // console.log('ERROR', data);
