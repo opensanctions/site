@@ -14,7 +14,7 @@ import Layout from '../components/Layout'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY } from '../lib/constants'
 import { getSchemaWebSite } from '../lib/schema';
-import { Download, Search } from 'react-bootstrap-icons';
+import { Search } from 'react-bootstrap-icons';
 import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
 import { getArticles } from '../lib/content';
