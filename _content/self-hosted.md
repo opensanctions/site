@@ -26,4 +26,13 @@ Hardware specifications: 2GB RAM, 1vCPU, 4GB hard drive. For improved performanc
 
 ### What support is available with the application?
 
-While the OpenSanctions team will have no visibility into your self-hosted service, we are happy to offer a consultation service to [discuss the use of the software](/contact/) and work out a deployment strategy for your use case.
+While the OpenSanctions team will have no visibility into your self-hosted service, we are happy to offer consultation services to [discuss the use of the software](/contact/) and work out a deployment strategy for your use case.
+
+### How do I get started?
+
+We recommend you take the following steps:
+
+1. Evaluate the deployment of [opensanctions/yente](https://github.com/opensanctions/yente) inside your infrastructure. The service will automatically import OpenSanctions data unless configured otherwise.
+2. Acquire a [bulk data license](/licensing) so that you're legally entitled to use the OpenSanctions dataset.
+3. Scale up: you can run as many instances of the API as you choose, and handle as many screening requests as you wish.
+
