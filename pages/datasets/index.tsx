@@ -59,8 +59,7 @@ export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeo
               or international organisations.
             </p>
             <p>
-              Can't find a data source you are looking for? Check the page
-              on <Link href="/docs/contribute/">contributing a data source</Link> to
+              Can't find a data source you are looking for? <Link href="/contact/">Contact us</Link> to
               learn about planned additions and how you can help.
             </p>
           </Col>

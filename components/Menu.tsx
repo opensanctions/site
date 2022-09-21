@@ -20,6 +20,9 @@ function AboutMenu() {
           <RoutedNavLink href="/docs/commercial-faq/">Commercial use FAQ</RoutedNavLink>
         </Nav.Item>
         <Nav.Item>
+          <RoutedNavLink href="/docs/criteria/">Data inclusion criteria</RoutedNavLink>
+        </Nav.Item>
+        <Nav.Item>
           <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
         </Nav.Item>
         <Nav.Item>
@@ -57,9 +60,6 @@ function DocumentationMenu() {
           </Nav.Item>
           <Nav.Item>
             <RoutedNavLink href="/docs/enrichment/">Data enrichment</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
-            <RoutedNavLink href="/docs/contribute/">Contribute a source</RoutedNavLink>
           </Nav.Item>
         </Nav.Item>
         <Nav.Item>

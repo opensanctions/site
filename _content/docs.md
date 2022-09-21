@@ -12,11 +12,10 @@ summary: |
 * [Data sources roadmap](https://bit.ly/osa-sources) (Google sheet)
 * [Using the data](/docs/usage/)
     * [Data dictionary](/reference/)
-* [Contributing a crawler](/docs/contribute/)
-    * [Technical documentation](https://docs.opensanctions.org/en/latest/) (readthedocs.org)
-    * [Installing the codebase](https://docs.opensanctions.org/en/latest/install.html) (readthedocs.org)
 * [GitHub repository](https://github.com/opensanctions/opensanctions)
     * [Issues](https://github.com/opensanctions/opensanctions/issues) and feature planning
+    * [Technical documentation](https://docs.opensanctions.org/en/latest/) (readthedocs.org)
+    * [Installing the codebase](https://docs.opensanctions.org/en/latest/install.html) (readthedocs.org)
 * [Data pipeline status](https://github.com/opensanctions/opensanctions/actions/workflows/production.yml) (GitHub Actions)
 * [Contact us](/contact/)
 

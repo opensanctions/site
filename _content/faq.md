@@ -13,7 +13,7 @@ OpenSanctions brings together sanctions lists, lists of [politically exposed per
 
 ### Does OpenSanctions contain only sanctions lists?
 
-No, we are just bad at naming things. The project includes sanctions lists, lists of politicians, ban lists used in government procurement, lists of known terrorists and other data sources relevant to journalistic research and due diligence. See our [inclusion criteria](/docs/contribute/#criteria) for details.
+No, we are just bad at naming things. The project includes sanctions lists, lists of politicians, ban lists used in government procurement, lists of known terrorists and other data sources relevant to journalistic research and due diligence. See our [inclusion criteria](/docs/criteria/) for details.
 
 
 ### Who is this for?
@@ -44,8 +44,7 @@ If you provide another API that uses the OpenSanctions data, we’d love to hear
 
 ### Can I contribute a new data source?
 
-Yes, we’re open to contributions. We're particularly keen to add sources that include information from criminal cases, and family and associates of politically exposed
-persons. [Learn more about contributing data...](/docs/contribute/)
+Yes, we’re open to contributions. We're particularly keen to add sources that include information from criminal cases, and family and associates of politically exposed persons. Please write a GitHub issue or join our team Slack in order to get started.
 
 
 ### Can I use this data for commercial purposes?
