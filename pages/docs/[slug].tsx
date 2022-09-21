@@ -26,6 +26,7 @@ export async function getStaticPaths() {
   const contents = await getContents()
   const paths = contents
     .filter((c) => c.path === `/docs/${c.slug}/`)
+    .filter((c) => c.path !== '/docs/api/')
     .map((c) => {
       return { params: { slug: c.slug } }
     })
