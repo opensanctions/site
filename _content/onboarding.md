@@ -7,22 +7,14 @@ summary: |
 
 ### Get to know the data
 
-Data licensing applies to the following collections by default: 
+The data extracts are published in [multiple formats](/docs/usage/) and in different
+slices:
 
-* [Sanctions-only data](/datasets/sanctions/) bulk downloads with data from 25+ sanctions lists.
 * [Full OpenSanctions data](/datasets/default/) bulk downloads with all data sources.
+* [Sanctions-only data](/datasets/sanctions/) bulk downloads with data from 30+ sanctions lists.
+* [PEPs data](/datasets/peps/) bulk downloads with 160,000+ politically exposed persons.
 
 As you start processing the data, we recommend you read the introduction to [entity data](/docs/entities/) and have a look at the [data dictionary](/reference/).
-
-### Get to know the API
-
-While our [API is documented](/docs/api/) publicly, we ask commercial users to add an authorization header that identifies them. Please add the following to all HTTP requests you send to `api.opensanctions.org`:
-
-```
-Authorization: Bearer <your@email.com>
-```
-
-This way, we know that traffic coming from you is legitimate and we will exempt you from rate limiting and IP blocking that we apply to anonymous traffic from time to time.
 
 ### Get to know us
 
