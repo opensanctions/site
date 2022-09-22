@@ -91,7 +91,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
             de-duplicated, and <Link href="/reference/">well-understood dataset</Link>.
           </Col>
           <Col md={4} className={styles.explainer}>
-            <h2>Data sources with global scope</h2>
+            <h2>Sources with global scope</h2>
             We integrate data from over sixty global sources, including official sanctions
             lists, data on politically exposed persons and entities of criminal interest.
           </Col>
