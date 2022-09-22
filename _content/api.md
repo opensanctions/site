@@ -1,7 +1,10 @@
 ---
-title: Programmatic data use via the API
+title: Using the OpenSanctions API
 summary: >
-    You can search our database using the API, or conduct batch entity matching to see if any people or companies are listed on a sanctions or PEPs list.
+    Our API provides an easy way to integrate OpenSanctions data into your workflow. You can
+    automatically search the database and conduct batch screening to identify people or
+    companies that are included on a sanctions list or linked to politically exposed persons
+    (PEPs).
 ---
 
 The [OpenSanctions API](https://api.opensanctions.org/) is an open source search appliance built to let users search and cross-reference sanctions, criminals and PEPs data.
@@ -15,19 +18,4 @@ The [OpenSanctions API](https://api.opensanctions.org/) is an open source search
 ***Important notice:** If you want to use the API as part of an application your are building, you should either [operate the service locally](/docs/self-hosted/), or [contact us](/contact/) to discuss a service agreement.*
 
 Running the API on your own premises will guarantee privacy and security, while ensuring your independence from OpenSanctions as a service provider.
-
-
-## Endpoints
-
-In its current iteration, the API includes the following endpoints:
-
-* [``/search``](https://api.opensanctions.org/#operation/search_search__dataset__get) enables conventional full-text search of the database, including the boolean operators and Lucene syntax available in ElasticSearch.
-
-* [``/match``](https://api.opensanctions.org/#operation/match_match__dataset__post) lets programmatic users submit a set of entity examples and search all of them at once. The results [will be scored](/matcher/) by considering all the supplied attributes (e.g. persons with nationality, birth dates, etc.), rather than search the name only. This endpoint should be used to implement know-your-customer (KYC) style list checks against a local set of records. Read the [tutorial on using the matching API](/articles/2022-02-01-matching-api/).
-
-* [``/reconcile``](https://api.opensanctions.org/#tag/Reconciliation) implements the [Reconciliation Service API](https://reconciliation-api.github.io/specs/latest/). This [can be used in conjunction with the OpenRefine desktop application](https://docs.openrefine.org/manual/reconciling) to match the rows in a spreadsheet against sanctions or PEPs lists. Read the [tutorial on using OpenRefine with OpenSanctions](/articles/2022-01-10-openrefine-reconciliation/).
-
-* [``/entities/<ID>``](https://api.opensanctions.org/#operation/fetch_entity_entities__entity_id__get) gives users direct access to all the data linked to a specific entity. This includes the local graph context of the entity, i.e. any entities linked to or from the given item.
-
-* [``/statements``](https://api.opensanctions.org/#operation/statements_statements_get) gives users direct access the raw data storage of OpenSanctions, which is a [statement-based data model](/docs/statements/). This can be used to determine which property values on a given entity stem from which data source, and when they were first included in that source.
 
