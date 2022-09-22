@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType } from 'next';
-import { EnvelopeFill, LightbulbFill } from 'react-bootstrap-icons';
+import { EnvelopeFill, LightbulbFill, Magic } from 'react-bootstrap-icons';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
@@ -43,6 +43,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                   third parties.
                 </Card.Text>
               </Card.Body>
+              {/* https://buy.stripe.com/8wMeVRgBrca54nu5kD */}
               <Card.Footer>
                 <ButtonGroup>
                   <Button href="/docs/commercial-faq/#tiers" variant="light">
@@ -92,26 +93,21 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
             <Card className={styles.thirdColumn} text="white">
               <Card.Body>
                 <Card.Title>
-                  Flat-rate API usage<br />
+                  OpenSanctions API<br />
                   <Badge bg="light">
-                    <span className="num">300,000</span> req/mo
+                    <span className="num">0.30 - 0.10</span> €/req
                   </Badge>
                 </Card.Title>
                 <Card.Text>
-                  Service contract for the use of api.opensanctions.org to conduct automated
-                  entity lookups and multi-attribute matching. Includes 300,000 requests per
-                  month.
+                  Easily integrate up-to-date sanctions and PEPs data into your screening
+                  or research processes with our powerful matching, search and graph APIs.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/#tiers" variant="light">
-                    <LightbulbFill className="bsIcon" />
-                    Learn more
-                  </Button>
-                  <Button href="/contact/" variant="secondary">
-                    <EnvelopeFill className="bsIcon" />
-                    Contact us
+                  <Button href="/docs/api/" variant="secondary">
+                    <Magic className="bsIcon" />
+                    Get started now
                   </Button>
                 </ButtonGroup>
                 {/* <div className="buy-now">

@@ -1,0 +1,63 @@
+@import './variables.scss';
+
+.apiOptionsPanel {
+    margin-bottom: $spacer;
+
+    :global {
+        .card-title {
+            // text-align: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-top: $spacer;
+            margin-bottom: $spacer * 2;
+
+        }
+
+        .card-footer {
+            // text-align: center;
+            border: $blue-400;
+            padding-top: $spacer * 1.5;
+            padding-bottom: $spacer * 1.5;
+
+            .bsIcon {
+                margin-right: 0.3em;
+            }
+        }
+    }
+
+}
+
+
+.firstColumn {
+    background-color: $blue-800;
+    border: $blue-900;
+}
+
+.secondColumn {
+    background-color: $blue-600;
+    border: $blue-700;
+}
+
+.pricingTable {
+    background-color: transparent;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    :global {
+
+        th,
+        td {
+            background-color: transparent !important;
+            border-bottom: 1px transparent;
+        }
+
+    }
+}
+
+.featureList {
+    padding-left: $spacer;
+
+    li {
+        padding-bottom: $spacer * 0.5;
+    }
+}
