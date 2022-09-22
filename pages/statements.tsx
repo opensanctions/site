@@ -99,7 +99,7 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
         </Row>
         <Row>
           <Col md={12}>
-            <Alert variant="dark">
+            <Alert variant="light">
               This table shows statement-based, sourced records from our database. For more context,
               learn about <Alert.Link href="/docs/statements/">how OpenSanctions stores information</Alert.Link>.
             </Alert>

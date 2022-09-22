@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert';
@@ -156,7 +157,7 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
               </p>
             </Alert>
           )}
-          <Table className={styles.accountInfo}>
+          <Table className={styles.accountInfo} responsive>
             <tbody>
               <tr>
                 <th>
@@ -233,22 +234,28 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
                   )}
                 </td>
               </tr>
-              <tr>
-                <th>
-                  Help
-                </th>
-                <td colSpan={3}>
-                  <Link href={apiUrl}>Documentation</Link>
-                  <Spacer />
-                  <Link href="/contact">Contact us</Link>
-                </td>
-              </tr>
             </tbody>
           </Table>
         </Col>
+        <Col md={3}>
+          <Nav className="flex-column justify-content-start" variant="pills">
+            <Nav.Item>
+              <Nav.Link active={true} href="#">Account and usage</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href={apiUrl}>API Documentation</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/reference">Data dictionary</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/contact">Contact support</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Col>
       </Row>
       <UsageTable usage={info.usage} />
-    </AccountContext>
+    </AccountContext >
   )
 }
 

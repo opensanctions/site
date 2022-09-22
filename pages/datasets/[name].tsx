@@ -26,6 +26,7 @@ import { API_URL } from '../../lib/constants';
 
 
 type DatasetScreenProps = {
+  apiUrl: string
   dataset: IDataset
   details: IDatasetDetails
   issues: Array<IIssue>
@@ -35,7 +36,7 @@ type DatasetScreenProps = {
   recents?: Array<IRecentEntity>
 }
 
-export default function DatasetScreen({ dataset, details, issues, sources, externals, collections, recents }: DatasetScreenProps) {
+export default function DatasetScreen({ apiUrl, dataset, details, issues, sources, externals, collections, recents }: DatasetScreenProps) {
   const structured = getSchemaDataset(dataset, details);
   return (
     <Layout.Base title={dataset.title} description={dataset.summary} structured={structured}>
@@ -151,33 +152,31 @@ export default function DatasetScreen({ dataset, details, issues, sources, exter
                   You can query the data in this dataset via the application programming
                   interface (API) endpoints below. Please <Link href="/docs/api/">read
                     the introduction</Link> for documentation and terms of service.
-
-                  See also: <Link href={`${API_URL}/openapi.json`}>OpenAPI Specification</Link> (JSON)
                 </p>
                 <Table className={styles.apiTable}>
                   <tbody>
                     <tr>
                       <td width="40%">
-                        Use the <Link href={`${API_URL}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
+                        Use the <Link href={`${apiUrl}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
                       </td>
                       <td width="60%">
-                        <Form.Control readOnly value={`${API_URL}/reconcile/${dataset.name}`} />
+                        <Form.Control readOnly value={`${apiUrl}/reconcile/${dataset.name}?api_key=YOUR_API_KEY`} />
                       </td>
                     </tr>
                     <tr>
                       <td width="40%">
-                        For <Link href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
+                        For <Link href={`${apiUrl}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
                       </td>
                       <td width="60%">
-                        <Form.Control readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe`} />
+                        <Form.Control readOnly value={`${apiUrl}/search/${dataset.name}?q=John+Doe&?api_key=YOUR_API_KEY`} />
                       </td>
                     </tr>
                     <tr>
                       <td width="40%">
-                        For <Link href={`${API_URL}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
+                        For <Link href={`${apiUrl}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
                       </td>
                       <td width="60%">
-                        <Form.Control readOnly value={`${API_URL}/match/${dataset.name}`} />
+                        <Form.Control readOnly value={`${apiUrl}/match/${dataset.name}?api_key=YOUR_API_KEY`} />
                       </td>
                     </tr>
                   </tbody>
@@ -319,7 +318,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const datasets = await getDatasets()
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
   const issues = await getDatasetIssues(dataset)
-  const props: DatasetScreenProps = { dataset, issues, details }
+  const props: DatasetScreenProps = { apiUrl: API_URL, dataset, issues, details }
   if (isCollection(dataset)) {
     props.sources = dataset.sources
       .map((name) => visibleDatasets.find((d) => d.name == name))
