@@ -65,3 +65,28 @@
     // background-color: white !important;
     background-color: shift-color($primary, $link-shade-percentage) !important;
 }
+
+.commercialBanner {
+    background-color: $blue-200;
+    margin-top: 3em;
+    padding-top: 2em;
+    padding-bottom: 3em;
+
+    :global {
+
+        h2,
+        p {
+            color: $blue-700;
+            margin-bottom: 1em;
+        }
+    }
+}
+
+// .commercialIcon {
+//     font-size: 7em;
+//     color: $blue-700;
+//     font-weight: 900;
+//     line-height: 1.5;
+//     height: 100%;
+//     vertical-align: middle;
+// }

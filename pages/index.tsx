@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
 import InputGroup from 'react-bootstrap/InputGroup';
 
@@ -14,7 +15,7 @@ import Layout from '../components/Layout'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY } from '../lib/constants'
 import { getSchemaWebSite } from '../lib/schema';
-import { Search } from 'react-bootstrap-icons';
+import { Search, Shop } from 'react-bootstrap-icons';
 import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
 import { getArticles } from '../lib/content';
@@ -86,17 +87,37 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
           </Col>
           <Col md={4} className={styles.explainer}>
             <h2>Clean data and transparent process</h2>
-            We consolidate data from a <Link href="/datasets/#sources">broad range of sources</Link> and take on the
-            complex task of transforming it into a clean and <Link href="/reference/">well-understood
-              dataset</Link>.
+            Our open source data pipeline takes on the complex task of building a clean,
+            de-duplicated, and <Link href="/reference/">well-understood dataset</Link>.
           </Col>
           <Col md={4} className={styles.explainer}>
-            <h2>Open source code and data</h2>
-            OpenSanctions makes both its database and processing tools available
-            for free. It's easy to <Link href="/docs/usage/">use the data</Link>
-            {' '}and <Link href="/docs/api/">integrate the technology</Link>.
+            <h2>Data sources with global scope</h2>
+            We integrate data from over sixty global sources, including official sanctions
+            lists, data on politically exposed persons and entities of criminal interest.
           </Col>
         </Row>
+      </Container>
+      <div className={styles.commercialBanner}>
+        <Container>
+          <h2>Use OpenSanctions to manage business risk</h2>
+          <Row>
+            <Col md={8}>
+              <p>
+                OpenSanctions is <strong>free for non-commercial users.</strong> Business
+                and commercial users must either acquire a data license to use the high-quality
+                dataset, or they can subscribe to our pay-as-you-go API service.
+              </p>
+            </Col>
+            <Col md={4}>
+              <ButtonGroup>
+                <Button size="lg" href="/docs/api/" variant="secondary">Use the API</Button>
+                <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>
+              </ButtonGroup>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Container>
         <Row className={styles.explainer}>
           <h2>News &amp; updates</h2>
           <Col md={3}>

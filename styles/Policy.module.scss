@@ -3,10 +3,13 @@
 .licenseBox {
     margin-top: 1em;
     background-color: $blue-600;
-    color: $white;
 
-    a {
+    p {
         color: $white;
-        text-decoration: underline;
     }
+
+    // a {
+    //     color: $white;
+    //     text-decoration: underline;
+    // }
 }

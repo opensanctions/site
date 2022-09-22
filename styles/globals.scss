@@ -87,9 +87,16 @@ th.narrow {
 }
 
 .btn {
+    font-weight: 700;
+    text-decoration: none;
+
     &.btn-secondary {
         color: $green-800;
-        font-weight: 700;
+
+        &:hover {
+            background-color: $green-500;
+            border-color: $green-500;
+        }
     }
 }
 
