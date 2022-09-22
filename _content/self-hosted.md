@@ -40,5 +40,3 @@ By default, the service will check for updated data every 30 minutes and downloa
 ### What support is available with the application?
 
 While the OpenSanctions team will have no visibility into your self-hosted service, we are happy to offer consultation services to [discuss the use of the software](/contact/) and work out a deployment strategy for your use case.
-
-* [Book a technical support session](https://book.stripe.com/28o1513OFca54nufZf)

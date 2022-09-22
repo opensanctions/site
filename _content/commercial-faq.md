@@ -6,7 +6,7 @@ summary: |
     partners who wish to license the dataset for business purposes.
 ---
 
-*Please also have a look at our [project-wide FAQ](/docs/faq/), which covers product-related questions (e.g. update frequency, project scope).*
+Please also have a look at our [project-wide FAQ](/docs/faq/), which covers product-related questions (e.g. update frequency, project scope).
 
 ### Why should I use OpenSanctions?
 
@@ -30,7 +30,7 @@ You can think of the tiers as concentric scopes of data and service:
 
 * **Sanctions bulk data** includes the [Consolidated Sanctioned Entities](/datasets/sanctions/) dataset, which combines targets from over 25 separate global sanctions lists. This tier also includes the [crime and warrants](/datasets/crime/) dataset. You can [use the data freely](#uses), for example, to run a [self-hosted API](/docs/self-hosted/).
 * **Sanctions and PEPs bulk data** expands the sanctions data offering with our dataset of [politically exposed persons](/datasets/peps/) (PEPs). We work with [Peppercat](/articles/2022-01-25-wikidata/) to build datasets of [world leaders](/datasets/wd_peppercat_world_leaders) and [legislators](/datasets/wd_peppercat_legislators), using Wikidata to cite details and family relations. The result is the OpenSanctions [Due Diligence List](/datasets/default/), ideal for use with the [self-hosted API](/docs/self-hosted/).
-* **Flat-rate API usage** includes a full bulk data license but also entitles users to use the [API service](/docs/api/) to query and match entities. 300,000 requests/month should allow most customers to run nightly KYC checks or use the API as a backend in business applications.
+* **OpenSanctions API** lets you use our [API service](/docs/api/) to query and match entities. You can use the service on a pay-as-you-go basis, or subscribe to a bulk license and host the matching software [on your own premises](/docs/self-hosted).
 
 The licensing cost for OpenSanctions amounts to about one engineering day per month. We think that with the level of data cleaning and de-duplication we provide, our comprehensive documentation and ever-growing collections of crawlers, this is a good deal.
 
@@ -50,7 +50,7 @@ We want people to use the data as **widely and flexibly as possible**. Commercia
 
 Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](https://calendly.com/flindenberg/opensanctions-intro) directly!)
 
-If you need no further convincing, you can also just enroll for a subscription of the [sanctions data](https://buy.stripe.com/5kAdRNad3fmhg6ceV4), [combined sanctions and PEPs data](https://buy.stripe.com/14kfZV5WN8XT9HO28j), or [purchase access to our API service](https://buy.stripe.com/8wM151fxn6PL4nu7sF).
+If you need no further convincing, you can also just [purchase access to our API service](/docs/api/).
 
 ### <a id="exemptions"></a> Who is exempted from commercial licensing?
 
@@ -68,7 +68,7 @@ Yes. We’re keen to support projects or products that have not gone to market y
 
 ### Do you offer usage-based licensing?
 
-Not typically. We prefer to keep things simple by using flat monthly pricing. If your own pricing structure does not allow you to make such a commitment, please [get in touch](/contact/) and we’ll find a solution.
+While our [API service](/docs/api/) is metered, we don't generally consider usage as a factor in how we price the bulk data service. If your own pricing structure for bulk data use is prohibitive for you, please [get in touch](/contact/) and we’ll find a solution.
 
 ### What data formats do you make available?
 

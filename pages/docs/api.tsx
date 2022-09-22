@@ -77,7 +77,7 @@ export default function Api({ apiUrl, content }: InferGetStaticPropsType<typeof 
               </ul>
             </Card.Body>
             <Card.Footer>
-              <Button href="/docs/self-hosted/" variant="dark">
+              <Button href="/docs/self-hosted/" variant="light">
                 <InfoSquareFill className="bsIcon" /> Learn more
               </Button>
             </Card.Footer>
