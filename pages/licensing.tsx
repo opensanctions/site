@@ -51,7 +51,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
               </Card.Body>
               <Card.Footer>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/#tiers" variant="light">
+                  <Button href="/docs/commercial-faq/" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
@@ -82,7 +82,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
               </Card.Body>
               <Card.Footer>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/#tiers" variant="light">
+                  <Button href="/docs/commercial-faq/" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>

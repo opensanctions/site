@@ -24,13 +24,15 @@ We **do things openly and transparently**. That’s why, besides making our [bul
 * **Our graph of entities** contains rich connectivity information, showing family, ownership and business ties between actors.
 * **Our [API service](/docs/api/)** allows you to search and perform precise matching of your own records against our database.
 
-### <a id="tiers"></a> What is included in each pricing tier?
+### What is included in each pricing tier?
 
-You can think of the tiers as concentric scopes of data and service:
+Our pricing is designed such that 
 
-* **Sanctions bulk data** includes the [Consolidated Sanctioned Entities](/datasets/sanctions/) dataset, which combines targets from over 25 separate global sanctions lists. This tier also includes the [crime and warrants](/datasets/crime/) dataset. You can [use the data freely](#uses), for example, to run a [self-hosted API](/docs/self-hosted/).
-* **Sanctions and PEPs bulk data** expands the sanctions data offering with our dataset of [politically exposed persons](/datasets/peps/) (PEPs). We work with [Peppercat](/articles/2022-01-25-wikidata/) to build datasets of [world leaders](/datasets/wd_peppercat_world_leaders) and [legislators](/datasets/wd_peppercat_legislators), using Wikidata to cite details and family relations. The result is the OpenSanctions [Due Diligence List](/datasets/default/), ideal for use with the [self-hosted API](/docs/self-hosted/).
+* **Internal use bulk data** includes the right to use the full datasert for any in-house purpose: screening your customers (for example, using our [self-hosted API](/docs/self-hosted/) software), powering your investigations, enriching an internal knowledge graph. This also includes the development of customer-facing applications in which significant value is added.
+* **External use bulk data** lets you use the OpenSanctions data as a building block in any external-facing products and services that are principally based on the data, and it can also include the re-sale of the data as part of your own data solutions.
 * **OpenSanctions API** lets you use our [API service](/docs/api/) to query and match entities. You can use the service on a pay-as-you-go basis, or subscribe to a bulk license and host the matching software [on your own premises](/docs/self-hosted).
+
+If you're unsure if your intended use case qualifies as **internal use**, please just [contact us](/contact/) so we can learn a bit about your needs and find a fair solution.
 
 The licensing cost for OpenSanctions amounts to about one engineering day per month. We think that with the level of data cleaning and de-duplication we provide, our comprehensive documentation and ever-growing collections of crawlers, this is a good deal.
 
@@ -42,15 +44,11 @@ It’s really up to you! Some of the use cases we have seen include:
 * Expanding anti-corruption and anti-money laundering investigations using open source intelligence and network analysis.
 * Complementing traditional offerings (Refinitiv, LexisNexis, DowJones) with higher-frequency checks. 
 
-### <a id="uses"></a> What uses are covered by commercial licenses?
-
-We want people to use the data as **widely and flexibly as possible**. Commercial license-holders can use the data for any purpose (in-house or in products) that build upon the data. We simply ask that you don’t distribute the data in a way that will directly compete with our bulk data offering (building KYC APIs is enouraged, of course!).
-
 ### How do I acquire a commercial license?
 
 Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](https://calendly.com/flindenberg/opensanctions-intro) directly!)
 
-If you need no further convincing, you can also just [purchase access to our API service](/docs/api/).
+If you need no further convincing, you can also just [purchase access to our API service](/docs/api/) or [internal use bulk data](https://buy.stripe.com/8wMeVRgBrca54nu5kD) subscription.
 
 ### <a id="exemptions"></a> Who is exempted from commercial licensing?
 
