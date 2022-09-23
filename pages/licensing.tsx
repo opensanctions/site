@@ -71,13 +71,13 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                 </Card.Title>
                 <Card.Text>
                   Use OpenSanctions to provide compliance solutions to third
-                  parties, or include our data in your own products.
+                  parties, or include our graph in your own data products.
                 </Card.Text>
                 <ul>
-                  <li>60+ datasets</li>
+                  <li>60+ data sources</li>
                   <li>standardised data format</li>
-                  <li>internal de-duplication</li>
-                  <li>entity relationship graph</li>
+                  <li>cross-list de-duplication</li>
+                  <li>relationship graph</li>
                 </ul>
               </Card.Body>
               <Card.Footer>
