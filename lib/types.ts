@@ -233,6 +233,7 @@ export interface IRecentEntity {
 }
 
 export interface IAccount {
+  key?: string
   name?: string
   email?: string
   secret: string

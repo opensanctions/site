@@ -16,7 +16,7 @@ import { fetchJsonUrl } from '../../lib/data';
 import { API_URL } from '../../lib/constants';
 import { IAccountInfo, IAccountUsage } from '../../lib/types';
 import { PropsWithChildren } from 'react';
-import { FormattedDate, Spacer, Summary } from '../../components/util';
+import { FormattedDate, Summary } from '../../components/util';
 
 
 import styles from '../../styles/Account.module.scss'
@@ -143,6 +143,7 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
     return <AccountLogin secret={secret} />;
   }
   const account = info.account;
+  const accountName = account.name || account.key;
   const portalUrl = `${apiUrl}/stripe/portal?api_key=${secret}`;
   return (
     <AccountContext>
@@ -201,8 +202,8 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
                   Name
                 </th>
                 <td>
-                  {account.name}
-                  {!account.name && (
+                  {accountName}
+                  {!accountName && (
                     <span className="text-muted">unknown</span>
                   )}
                 </td>

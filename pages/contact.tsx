@@ -26,7 +26,7 @@ export default function Contact() {
                 <Card.Text>
                   Reach out to the core team to discuss the project.
                   <br /><br />
-                  Or: <a href="https://calendly.com/flindenberg/opensanctions-intro">book a call directly</a>.
+                  Or: <a href="https://meetings-eu1.hubspot.com/douglas-arellanes">book a call directly</a>.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
