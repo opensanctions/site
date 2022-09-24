@@ -64,7 +64,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
             <Card className={styles.secondColumn} text="white">
               <Card.Body>
                 <Card.Title>
-                  External use bulk data<br />
+                  OEM bulk data<br />
                   <Badge bg="light">
                     <span className="num">custom</span>
                   </Badge>
@@ -77,7 +77,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                   <li>60+ data sources</li>
                   <li>standardised data format</li>
                   <li>cross-list de-duplication</li>
-                  <li>relationship graph</li>
+                  <li>complex relationship graph</li>
                 </ul>
               </Card.Body>
               <Card.Footer>
@@ -109,7 +109,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                   <li>pay-as-you-go pricing</li>
                   <li>search within the full dataset</li>
                   <li>easy-to-integrate list checking</li>
-                  <li>powerful matching logic</li>
+                  <li>powerful matching system</li>
                 </ul>
               </Card.Body>
               <Card.Footer>

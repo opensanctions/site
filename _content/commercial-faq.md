@@ -29,7 +29,7 @@ We **do things openly and transparently**. That’s why, besides making our [bul
 Our pricing is designed such that 
 
 * **Internal use bulk data** includes the right to use the full datasert for any in-house purpose: screening your customers (for example, using our [self-hosted API](/docs/self-hosted/) software), powering your investigations, enriching an internal knowledge graph. This also includes the development of customer-facing applications in which significant value is added.
-* **External use bulk data** lets you use the OpenSanctions data as a building block in any external-facing products and services that are principally based on the data, and it can also include the re-sale of the data as part of your own data solutions.
+* **OEM bulk data** lets you use the OpenSanctions data as a building block in any external-facing products and services that are principally based on the data, and it can also include the re-sale of the data as part of your own data solutions.
 * **OpenSanctions API** lets you use our [API service](/docs/api/) to query and match entities. You can use the service on a pay-as-you-go basis, or subscribe to a bulk license and host the matching software [on your own premises](/docs/self-hosted).
 
 If you're unsure if your intended use case qualifies as **internal use**, please just [contact us](/contact/) so we can learn a bit about your needs and find a fair solution.
