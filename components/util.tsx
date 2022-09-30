@@ -70,7 +70,7 @@ type FileSizeProps = {
 
 
 export function FileSize({ size }: FileSizeProps) {
-  return <span>{filesize(size, { round: 0, standard: 'jedec', locale: 'en-US' })}</span>
+  return <span>{filesize(size, { round: 0, standard: 'jedec', locale: 'en-US' }) as string}</span>
 }
 
 type MarkdownProps = {
