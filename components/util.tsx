@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import queryString from 'query-string';
 import { useRouter } from 'next/router';
-import filesize from 'filesize';
+import { filesize } from 'filesize';
 import Link from 'next/link'
 import Nav from 'react-bootstrap/Nav';
 import Badge from 'react-bootstrap/Badge';
