@@ -17,6 +17,7 @@ import Dataset from '../../components/Dataset';
 import { EntityFactsheet, EntitySchemaTable } from '../../components/Entity';
 
 import styles from '../../styles/Entity.module.scss'
+import { PropertyValues } from '../../components/Property';
 
 
 export default function EntityPage({ entityData, blocked, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -25,6 +26,7 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
   }
   const model = new Model(modelData);
   const entity = model.getEntity(entityData);
+  const topicsProp = entity.schema.getProperty('topics');
   const structured = getSchemaEntityPage(entity, datasets);
   const properties = entity.getDisplayProperties();
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
@@ -41,6 +43,12 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
                 <a id="factsheet"></a>
                 {entity.caption}
               </h1>
+              {topicsProp && (
+                <PropertyValues
+                  prop={topicsProp}
+                  values={entity.getProperty(topicsProp)}
+                />
+              )}
             </Col>
           </Row>
           <Row>
@@ -54,7 +62,6 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
                   ))}
                 </div>
               )}
-              { }
               <h2><a id="links"></a>Relationships</h2>
               {entityProperties.map((prop) =>
                 <div className={styles.entityPageSection} key={prop.qname}>
