@@ -38,6 +38,7 @@ export type EntityProps = {
   entity: Entity
   datasets?: Array<IDataset>
   showEmpty?: boolean
+  skip?: Array<string>
   via?: Property
 }
 
@@ -48,10 +49,12 @@ export function EntityLink({ entity }: EntityProps) {
   return <Link href={`/entities/${entity.id}/`}>{entity.caption}</Link>
 }
 
-export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: EntityProps) {
+export function EntityPropsTable({ entity, via, datasets, showEmpty = false, skip }: EntityProps) {
   const viaReverse = via?.getReverse();
   const props = entity.getDisplayProperties()
     .filter((p) => viaReverse === undefined || p.qname !== viaReverse.qname)
+    .filter((p) => p.getRange() === undefined)
+    .filter((p) => skip === undefined || skip.length === 0 || skip.indexOf(p.name) === -1)
     .filter((p) => showEmpty || entity.getProperty(p).length > 0)
 
   return (
@@ -65,6 +68,7 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
                 prop={prop}
                 values={entity.getProperty(prop)}
                 empty="not available"
+                limit={5}
                 entity={EntityLink}
               />
             </td>
@@ -245,6 +249,7 @@ export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
   return (
     <Row>
       <Col md={9} className="order-2">
+        <EntityPropsTable entity={entity} showEmpty skip={['notes', 'topics']} />
         {entity.hasProperty('notes') && (
           <div className={styles.entityPageSection}>
             {/* <h2>Notes</h2> */}

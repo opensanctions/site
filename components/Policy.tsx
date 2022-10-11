@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import styles from '../styles/Policy.module.scss';
+import Layout from './Layout';
+import Research from './Research';
+import { IEntityDatum } from '../lib/ftm';
 
 export function LicenseInfo() {
   return (
@@ -17,5 +21,29 @@ export function LicenseInfo() {
         <Button href="/licensing/" variant="light">License in bulk</Button>
       </ButtonGroup>
     </Alert>
+  );
+}
+
+interface BlockedEntityProps {
+  entity: IEntityDatum
+}
+
+export function BlockedEntity({ entity }: BlockedEntityProps) {
+  return (
+    <Layout.Base title="Blocked entity" activeSection="research">
+      <Research.Context>
+        <Container>
+          <br />
+          <Alert variant="warning">
+            <Alert.Heading>Blocked entity</Alert.Heading>
+            <p>
+              The entity with ID <code>{entity.id}</code> has been removed from the
+              OpenSanctions website due to unusual legal circumstances. It is still
+              contained in the API and bulk data products to maintain list completeness.
+            </p>
+          </Alert>
+        </Container>
+      </Research.Context>
+    </Layout.Base>
   );
 }
