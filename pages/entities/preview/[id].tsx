@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 
 import { Model } from '../../../lib/ftm';
-import { EntityLink, EntityRawLink } from '../../../components/Entity';
+import { EntityFactsheet, EntityLink, EntityRawLink } from '../../../components/Entity';
 import { SpacedList } from '../../../components/util';
 import { PropertyValues } from '../../../components/Property';
 import Dataset from '../../../components/Dataset';
@@ -28,35 +28,7 @@ export default function EntityPreview({ entityData, modelData, datasets }: Infer
       </Head>
       <Container fluid>
         <h3><a href={entityUrl}>{entity.caption}</a></h3>
-        <Table className={styles.previewTable} size="sm">
-          <tbody>
-            {props.map((prop) =>
-              <tr key={prop.qname}>
-                <th className={styles.cardProp}>{prop.label}</th>
-                <td>
-                  <PropertyValues
-                    prop={prop}
-                    values={entity.getProperty(prop)}
-                    empty="not available"
-                    limit={5}
-                    entity={EntityLink}
-                  />
-                </td>
-                <td className={styles.rawColumn}>
-                  <EntityRawLink entity={entity} prop={prop.name} />
-                </td>
-              </tr>
-            )}
-            {datasets !== undefined && datasets.length > 0 && (
-              <tr key="datasets">
-                <th className={styles.cardProp}>Data sources</th>
-                <td>
-                  <SpacedList values={entity.datasets.map((n) => datasets.find((d) => d.name === n)).map((d) => <Dataset.Link dataset={d} />)} />
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </Table>
+        <EntityFactsheet entity={entity} />
       </Container >
     </>
   )

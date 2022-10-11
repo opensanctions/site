@@ -48,12 +48,6 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
         <Row>
           <Col md={9}>
             <Summary summary={dataset.summary} />
-          </Col>
-          <Col md={3}>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={9}>
             <Markdown markdown={details.description} />
             <section>
               <h3>
@@ -280,7 +274,7 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
             )}
           </Col>
           <Col sm={3}>
-            <div className="position-sticky">
+            <div className="position-fixed">
               <Nav navbarScroll className="flex-column">
                 {!isExternal(dataset) && (
                   <>
