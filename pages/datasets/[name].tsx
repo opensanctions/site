@@ -274,27 +274,25 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
             )}
           </Col>
           <Col sm={3}>
-            <div className="position-fixed">
-              <Nav navbarScroll className="flex-column">
-                {!isExternal(dataset) && (
-                  <>
-                    <Nav.Link href="#overview">Overview</Nav.Link>
-                    <Nav.Link href="#download">Download</Nav.Link>
-                    <Nav.Link href="#api">API</Nav.Link>
-                  </>
-                )}
-                {!!sources?.length && (
-                  <Nav.Link href="#sources">Data sources</Nav.Link>
-                )}
-                {!!externals?.length && (
-                  <Nav.Link href="#externals">External databases</Nav.Link>
-                )}
-                {!!recents?.length && (
-                  <Nav.Link href="#recents">Recent additions</Nav.Link>
-                )}
-              </Nav>
-              <LicenseInfo />
-            </div>
+            <Nav navbarScroll className="flex-column">
+              {!isExternal(dataset) && (
+                <>
+                  <Nav.Link href="#overview">Overview</Nav.Link>
+                  <Nav.Link href="#download">Download</Nav.Link>
+                  <Nav.Link href="#api">API</Nav.Link>
+                </>
+              )}
+              {!!sources?.length && (
+                <Nav.Link href="#sources">Data sources</Nav.Link>
+              )}
+              {!!externals?.length && (
+                <Nav.Link href="#externals">External databases</Nav.Link>
+              )}
+              {!!recents?.length && (
+                <Nav.Link href="#recents">Recent additions</Nav.Link>
+              )}
+            </Nav>
+            <LicenseInfo />
           </Col>
         </Row>
       </Container>

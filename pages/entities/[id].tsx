@@ -11,7 +11,7 @@ import { fetchIndex, getEntity, getEntityDatasets, isBlocked } from '../../lib/d
 import { getSchemaEntityPage } from '../../lib/schema';
 import { Entity, Model } from '../../lib/ftm';
 import { BlockedEntity, LicenseInfo } from '../../components/Policy';
-import { isExternal, isSource } from '../../lib/types';
+import { IExternal, isExternal, ISource, isSource } from '../../lib/types';
 import { FormattedDate, HelpLink, SpacedList, Summary } from '../../components/util';
 import Dataset from '../../components/Dataset';
 import { EntityFactsheet, EntitySchemaTable } from '../../components/Entity';
@@ -30,8 +30,8 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
   const structured = getSchemaEntityPage(entity, datasets);
   const properties = entity.getDisplayProperties();
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
-  const sources = datasets.filter(isSource);
-  const externals = datasets.filter(isExternal);
+  const sources = datasets.filter(isSource) as ISource[];
+  const externals = datasets.filter(isExternal) as IExternal[];
   return (
     <Layout.Base title={entity.caption} structured={structured} activeSection="research">
       <Research.Context>
@@ -40,7 +40,6 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
             <Col md={3}></Col>
             <Col md={9}>
               <h1>
-                <a id="factsheet"></a>
                 {entity.caption}
               </h1>
               {topicsProp && (
@@ -53,6 +52,7 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
           </Row>
           <Row>
             <Col md={9} className="order-2">
+              <a id="factsheet"></a>
               <EntityFactsheet entity={entity} />
               {entity.hasProperty('notes') && (
                 <div className={styles.entityPageSection}>
@@ -108,7 +108,6 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
                       explorer</Link> with per-attribute information on data provenance.
                   </li>
                 </ul>
-                <LicenseInfo />
                 {entity.referents.length > 0 && (
                   <>
                     <hr />
@@ -118,19 +117,18 @@ export default function EntityPage({ entityData, blocked, modelData, datasets }:
               </div>
             </Col>
             <Col md={3} className="order-1">
-              <div className="position-fixed">
-                <Nav navbarScroll className="flex-column">
-                  <Nav.Link href="#factsheet">Factsheet</Nav.Link>
-                  <Nav.Link href="#notes">Description</Nav.Link>
-                  <Nav.Link href="#links">Relationships</Nav.Link>
-                  <Nav.Link href="#sources">Data sources</Nav.Link>
-                </Nav>
-              </div>
+              <Nav navbarScroll className="flex-column">
+                <Nav.Link href="#factsheet">Factsheet</Nav.Link>
+                <Nav.Link href="#notes">Description</Nav.Link>
+                <Nav.Link href="#links">Relationships</Nav.Link>
+                <Nav.Link href="#sources">Data sources</Nav.Link>
+              </Nav>
+              <LicenseInfo />
             </Col>
           </Row >
         </Container>
       </Research.Context>
-    </Layout.Base>
+    </Layout.Base >
   )
 }
 
