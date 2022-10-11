@@ -3,13 +3,11 @@ import Alert from 'react-bootstrap/Alert';
 
 import Layout from '../../components/Layout';
 import Research from '../../components/Research';
-import { IDataset } from '../../lib/types';
-import { fetchIndex, fetchJsonUrl, getDatasets, isBlocked } from '../../lib/data';
+import { fetchIndex, getEntity, getEntityDatasets, isBlocked } from '../../lib/data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { API_URL } from '../../lib/constants';
 import { getSchemaEntityPage } from '../../lib/schema';
 import { EntityDisplay } from '../../components/Entity';
-import { IEntityDatum, Model } from '../../lib/ftm';
+import { Model } from '../../lib/ftm';
 
 
 export default function Entity({ entityData, blocked, modelData, datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -52,31 +50,19 @@ export default function Entity({ entityData, blocked, modelData, datasets }: Inf
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const entityId = context.params?.id as (string | undefined);
-  if (entityId === undefined) {
-    return { redirect: { destination: '/search/', permanent: false } };
-  }
-  const index = await fetchIndex();
-  const allDatasets = await getDatasets();
-  const apiUrl = `${API_URL}/entities/${entityId}`;
-  const raw = await fetchJsonUrl(apiUrl);
-  if (raw === undefined || raw === null || raw.id === undefined) {
+  const entity = await getEntity(entityId);
+  if (entity === null) {
     return { notFound: true }
   }
-  const entity = raw as IEntityDatum;
+  const index = await fetchIndex();
   if (entity.id !== entityId) {
     return { redirect: { destination: `/entities/${entity.id}/`, permanent: true } };
   }
-  const datasetNames = entity !== null ? entity.datasets : [];
-
-  const datasets = datasetNames
-    .map((name) => allDatasets.find((d) => d.name === name))
-    .filter((d) => d !== undefined) as IDataset[];
-
   return {
     props: {
       entityId,
       blocked: isBlocked(entity),
-      datasets: datasets,
+      datasets: await getEntityDatasets(entity),
       entityData: entity,
       modelData: index.model
     },

@@ -17,6 +17,12 @@
     margin-bottom: 0;
 }
 
+.previewTable {
+    th {
+        padding-left: 0 !important;
+    }
+}
+
 .entityPageSection {
     margin-bottom: 2em;
 }
@@ -46,6 +52,7 @@
 .rawLink {
     font-size: 0.8em;
     text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }
