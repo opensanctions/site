@@ -26,7 +26,7 @@ export default function EntityPreview({ entityData, modelData, datasets }: Infer
         <title>{entity.caption}</title>
         <link rel="canonical" href={entityUrl} />
       </Head>
-      <Container>
+      <Container fluid>
         <h3><a href={entityUrl}>{entity.caption}</a></h3>
         <Table className={styles.previewTable} size="sm">
           <tbody>
