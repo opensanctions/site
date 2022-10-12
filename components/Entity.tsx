@@ -316,7 +316,8 @@ export function EntityTopics({ entity }: EntityTopicsProps) {
         {showPEP && (
           <>
             {entity.caption} is a <Link href="/docs/faq/#peps">politically exposed person</Link>.
-            They are a person of interest, but have not been found on international sanctions lists.
+            They are a <Link href="/docs/criteria/">person of interest</Link>, but have not been
+            found on international sanctions lists.
           </>
         )}
         {showRCA && (
