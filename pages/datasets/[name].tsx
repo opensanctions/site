@@ -16,7 +16,7 @@ import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails, getRecentEntities } from '../../lib/data'
 import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal, IExternal, IRecentEntity } from '../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList } from '../../components/util'
+import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
 
@@ -274,25 +274,27 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
             )}
           </Col>
           <Col sm={3}>
-            <Nav navbarScroll className="flex-column">
-              {!isExternal(dataset) && (
-                <>
-                  <Nav.Link href="#overview">Overview</Nav.Link>
-                  <Nav.Link href="#download">Download</Nav.Link>
-                  <Nav.Link href="#api">API</Nav.Link>
-                </>
-              )}
-              {!!sources?.length && (
-                <Nav.Link href="#sources">Data sources</Nav.Link>
-              )}
-              {!!externals?.length && (
-                <Nav.Link href="#externals">External databases</Nav.Link>
-              )}
-              {!!recents?.length && (
-                <Nav.Link href="#recents">Recent additions</Nav.Link>
-              )}
-            </Nav>
-            <LicenseInfo />
+            <Sticky>
+              <Nav className="flex-column">
+                {!isExternal(dataset) && (
+                  <>
+                    <Nav.Link href="#overview">Overview</Nav.Link>
+                    <Nav.Link href="#download">Download</Nav.Link>
+                    <Nav.Link href="#api">API</Nav.Link>
+                  </>
+                )}
+                {!!sources?.length && (
+                  <Nav.Link href="#sources">Data sources</Nav.Link>
+                )}
+                {!!externals?.length && (
+                  <Nav.Link href="#externals">External databases</Nav.Link>
+                )}
+                {!!recents?.length && (
+                  <Nav.Link href="#recents">Recent additions</Nav.Link>
+                )}
+              </Nav>
+              <LicenseInfo />
+            </Sticky>
           </Col>
         </Row>
       </Container>

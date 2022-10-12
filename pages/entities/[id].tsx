@@ -12,7 +12,7 @@ import { getSchemaEntityPage } from '../../lib/schema';
 import { Entity, IEntityDatum, IModelDatum, Model } from '../../lib/ftm';
 import { BlockedEntity, LicenseInfo } from '../../components/Policy';
 import { IDataset, isExternal, isSource, IStatement } from '../../lib/types';
-import { HelpLink, SpacedList } from '../../components/util';
+import { HelpLink, SpacedList, Sticky } from '../../components/util';
 import Dataset from '../../components/Dataset';
 import { EntityFactsheet, EntityNote, EntitySchemaTable, EntityTopics } from '../../components/Entity';
 
@@ -125,13 +125,15 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
               </div>
             </Col>
             <Col md={3} className="order-1">
-              <Nav navbarScroll className="flex-column">
-                <Nav.Link href="#factsheet">Factsheet</Nav.Link>
-                {notes.length > 0 && <Nav.Link href="#notes">Descriptions</Nav.Link>}
-                {entityProperties.length > 0 && <Nav.Link href="#links">Relationships</Nav.Link>}
-                <Nav.Link href="#sources">Data sources</Nav.Link>
-              </Nav>
-              <LicenseInfo />
+              <Sticky>
+                <Nav className="flex-column">
+                  <Nav.Link href="#factsheet">Factsheet</Nav.Link>
+                  {notes.length > 0 && <Nav.Link href="#notes">Descriptions</Nav.Link>}
+                  {entityProperties.length > 0 && <Nav.Link href="#links">Relationships</Nav.Link>}
+                  <Nav.Link href="#sources">Data sources</Nav.Link>
+                </Nav>
+                <LicenseInfo />
+              </Sticky>
             </Col>
           </Row >
         </Container>
