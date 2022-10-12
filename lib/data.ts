@@ -137,6 +137,17 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
   return results.filter(r => r !== undefined) as Array<IRecentEntity>;
 }
 
+export async function getStatements(query: any, limit: number = 100): Promise<IStatementAPIResponse | null> {
+  const apiUrl = queryString.stringifyUrl({
+    'url': `${API_URL}/statements`,
+    'query': {
+      ...query,
+      'limit': limit,
+    }
+  })
+  return await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+}
+
 export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
   if (entityId === undefined || entityId === null) {
     return null;

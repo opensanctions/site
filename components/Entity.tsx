@@ -104,7 +104,7 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
     .filter((p) => skip.indexOf(p.name) === -1)
 
   return (
-    <Table className={styles.factsheet} size="sm">
+    <Table className={styles.factsheet}>
       <tbody>
         <tr>
           <th className={styles.cardProp}>Type</th>

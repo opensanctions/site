@@ -16,7 +16,7 @@ import styles from '../styles/Statement.module.scss'
 import { API_URL } from '../lib/constants';
 import { FormattedDate, JSONLink } from '../components/util';
 import { AspectRatioFill, Link45deg } from 'react-bootstrap-icons';
-import { fetchJsonUrl } from '../lib/data';
+import { fetchJsonUrl, getStatements } from '../lib/data';
 
 type ExpandProps = {
   href: string
@@ -64,7 +64,7 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
 }
 
 
-export default function Statements({ apiUrl, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Statements({ response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   if (response === null) {
     return (
       <Layout.Base title="Failed to load" activeSection="research">
@@ -93,13 +93,12 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
           <Col md={12}>
             <h1>
               {title}
-              <JSONLink href={apiUrl} />
             </h1>
           </Col>
         </Row>
         <Row>
           <Col md={12}>
-            <Alert variant="light">
+            <Alert variant="secondary">
               This table shows statement-based, sourced records from our database. For more context,
               learn about <Alert.Link href="/docs/statements/">how OpenSanctions stores information</Alert.Link>.
             </Alert>
@@ -162,19 +161,10 @@ export default function Statements({ apiUrl, response }: InferGetServerSideProps
 
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const apiUrl = queryString.stringifyUrl({
-    'url': `${API_URL}/statements`,
-    'query': {
-      ...context.query,
-      'limit': 100,
-    }
-  })
-
-  const response = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+  const response = await getStatements(context.query);
   return {
     props: {
-      response,
-      apiUrl,
+      response
     }
   };
 }
