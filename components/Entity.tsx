@@ -16,6 +16,7 @@ import { FormattedDate, HelpLink, SpacedList, UnofficialBadge } from './util';
 import Dataset from './Dataset';
 
 import styles from '../styles/Entity.module.scss'
+import { compareDisplayProps } from '../lib/ftm/ordering';
 
 
 
@@ -59,6 +60,7 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
     .filter((p) => viaReverse === undefined || p.qname !== viaReverse.qname)
     .filter((p) => p.getRange() === undefined)
     .filter((p) => showEmpty || entity.getProperty(p).length > 0)
+    .sort(compareDisplayProps);
 
   return (
     <Table className={styles.cardTable} size="sm">
@@ -104,6 +106,7 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
   const props = entity.getDisplayProperties()
     .filter((p) => p.getRange() === undefined)
     .filter((p) => skip.indexOf(p.name) === -1)
+    .sort(compareDisplayProps);
 
   return (
     <Table className={styles.factsheet}>
