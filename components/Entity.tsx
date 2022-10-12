@@ -4,6 +4,7 @@ import queryString from 'query-string';
 import classNames from 'classnames';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
@@ -180,65 +181,67 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
   }
 
   return (
-    <Table bordered size="sm">
-      <thead>
-        <tr>
-          <th colSpan={featured.length + 1}>
-            <a id={`#rel.${prop.qname}`} />
-            {prop.label}
-            <HelpLink href={`/reference/#schema.${schema.name}`} />
-          </th>
-        </tr>
-        <tr>
-          <th style={{ width: 0 }}></th>
-          {featured.map((prop) => (
-            <th key={prop.name} className={styles.tableHeader}>{prop.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {entities.map((entity) => (
-          <React.Fragment key={entity.id}>
-            <tr key={entity.id}>
-              <td style={{ width: 0 }}>
-                <a onClick={(e) => toggleExpand(e, entity)} className={styles.expandButton}>
-                  <>
-                    {expanded === entity.id && (
-                      <CaretUpFill />
-                    )}
-                    {expanded !== entity.id && (
-                      <CaretDownFill />
-                    )}
-                  </>
-                </a>
-              </td>
-              {featured.map((prop) => (
-                <td key={prop.name} className={`type-${prop.type.name}`}>
-                  <PropertyValues
-                    prop={prop}
-                    values={entity.getProperty(prop)}
-                    empty="-"
-                    limit={4}
-                    entity={EntityLink}
+    <>
+      <a id={`rel.${prop.name}`} />
+      <Table bordered size="sm">
+        <thead>
+          <tr>
+            <th colSpan={featured.length + 1}>
+              {prop.label}
+              <HelpLink href={`/reference/#schema.${schema.name}`} />
+            </th>
+          </tr>
+          <tr>
+            <th style={{ width: 0 }}></th>
+            {featured.map((prop) => (
+              <th key={prop.name} className={styles.tableHeader}>{prop.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {entities.map((entity) => (
+            <React.Fragment key={entity.id}>
+              <tr key={entity.id}>
+                <td style={{ width: 0 }}>
+                  <a onClick={(e) => toggleExpand(e, entity)} className={styles.expandButton}>
+                    <>
+                      {expanded === entity.id && (
+                        <CaretUpFill />
+                      )}
+                      {expanded !== entity.id && (
+                        <CaretDownFill />
+                      )}
+                    </>
+                  </a>
+                </td>
+                {featured.map((prop) => (
+                  <td key={prop.name} className={`type-${prop.type.name}`}>
+                    <PropertyValues
+                      prop={prop}
+                      values={entity.getProperty(prop)}
+                      empty="-"
+                      limit={4}
+                      entity={EntityLink}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr key={`expand-${entity.id}`} className={classNames({ 'd-none': expanded !== entity.id })}>
+                <td></td>
+                <td colSpan={featured.length} className={styles.expandCell}>
+                  <EntityPropsTable
+                    entity={entity}
+                    datasets={datasets}
+                    via={prop}
+                    showEmpty={true}
                   />
                 </td>
-              ))}
-            </tr>
-            <tr key={`expand-${entity.id}`} className={classNames({ 'd-none': expanded !== entity.id })}>
-              <td></td>
-              <td colSpan={featured.length} className={styles.expandCell}>
-                <EntityPropsTable
-                  entity={entity}
-                  datasets={datasets}
-                  via={prop}
-                  showEmpty={true}
-                />
-              </td>
-            </tr>
-          </React.Fragment>
-        ))}
-      </tbody>
-    </Table >
+              </tr>
+            </React.Fragment>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }
 
@@ -270,5 +273,71 @@ export function EntityNote({ note, datasets }: EntityNoteProps) {
         <FormattedDate date={note.first_seen} />
       </figcaption>
     </figure>
+  );
+}
+
+interface EntityTopicsProps {
+  entity: Entity
+}
+
+
+export function EntityTopics({ entity }: EntityTopicsProps) {
+  const prop = entity.schema.getProperty('topics');
+  if (prop === undefined) {
+    return null;
+  }
+  const values = entity.getProperty(prop);
+  const isSanctioned = values.indexOf('sanction') !== -1;
+  const isPEP = values.indexOf('role.pep') !== -1;
+  const showPEP = !isSanctioned && isPEP;
+  const isRCA = values.indexOf('role.rca') !== -1;
+  const showRCA = (!isSanctioned && !isPEP && isRCA);
+  const isOther = (!isSanctioned && !isPEP && !isRCA);
+  const isPerson = entity.schema.isA("Person");
+  const showPersonOther = isOther && isPerson;
+  const showEntityOther = isOther && !isPerson;
+  return (
+    <div className={styles.topicsArea}>
+      {values.length > 0 && (
+        <div className={styles.topicsList}>
+          <PropertyValues prop={prop} values={values} />
+        </div>
+      )}
+      <div className={styles.topicsNarrative}>
+        {isSanctioned && (
+          <>
+            {entity.caption} is subject to international sanctions.
+            <> See <a href="#rel.sanctions">the individual program listings</a> below.</>
+            {isPEP && (
+              <> They are also a <Link href="/docs/faq/#peps">politically exposed person</Link>.</>
+            )}
+          </>
+        )}
+        {showPEP && (
+          <>
+            {entity.caption} is a <Link href="/docs/faq/#peps">politically exposed person</Link>.
+            They are a person of interest, but have not been found on international sanctions lists.
+          </>
+        )}
+        {showRCA && (
+          <>
+            {entity.caption} is a family member or associate of a <Link href="/docs/faq/#peps">politically exposed person</Link>.
+            They have not been found on international sanctions lists.
+          </>
+        )}
+        {showPersonOther && (
+          <>
+            {entity.caption} is a <Link href="/docs/criteria/">person of interest</Link>.
+            They have not been found on international sanctions lists.
+          </>
+        )}
+        {showEntityOther && (
+          <>
+            {entity.caption} is an <Link href="/docs/criteria/">entity of interest</Link>.
+            It has not been found on international sanctions lists.
+          </>
+        )}
+      </div>
+    </div >
   );
 }

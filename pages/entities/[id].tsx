@@ -14,7 +14,7 @@ import { BlockedEntity, LicenseInfo } from '../../components/Policy';
 import { IDataset, isExternal, isSource, IStatement } from '../../lib/types';
 import { HelpLink, SpacedList } from '../../components/util';
 import Dataset from '../../components/Dataset';
-import { EntityFactsheet, EntityNote, EntitySchemaTable } from '../../components/Entity';
+import { EntityFactsheet, EntityNote, EntitySchemaTable, EntityTopics } from '../../components/Entity';
 
 import styles from '../../styles/Entity.module.scss'
 import { PropertyValues } from '../../components/Property';
@@ -34,7 +34,6 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
   }
   const model = new Model(modelData);
   const entity = model.getEntity(entityData);
-  const topicsProp = entity.schema.getProperty('topics');
   const structured = getSchemaEntityPage(entity, datasets);
   const properties = entity.getDisplayProperties();
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
@@ -50,12 +49,7 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
               <h1>
                 {entity.caption}
               </h1>
-              {topicsProp && (
-                <PropertyValues
-                  prop={topicsProp}
-                  values={entity.getProperty(topicsProp)}
-                />
-              )}
+              <EntityTopics entity={entity} />
             </Col>
           </Row>
           <Row>

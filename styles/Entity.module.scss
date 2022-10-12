@@ -37,8 +37,27 @@
     }
 }
 
+.topicsArea {
+    margin-bottom: $spacer * 2;
+}
+
+.topicsList {
+    color: $text-light;
+    font-size: 1.2em;
+    margin-bottom: $spacer / 2;
+}
+
+.topicsNarrative {
+    color: $text-light;
+
+    a {
+        color: $text-light;
+        text-decoration: underline;
+    }
+}
+
 .entityPageSection {
-    margin-bottom: 2em;
+    margin-bottom: $spacer * 2;
 }
 
 .tableHeader {
