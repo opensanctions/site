@@ -111,7 +111,7 @@ export default function Statements({ response }: InferGetServerSidePropsType<typ
                   <th className={styles.colDataset} colSpan={2}>Source dataset</th>
                   <th className={styles.colEntity}>Source ID</th>
                   <th className={styles.colDate}>First seen</th>
-                  <th className={styles.colDate}>Last seen</th>
+                  {/* <th className={styles.colDate}>Last seen</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -144,9 +144,9 @@ export default function Statements({ response }: InferGetServerSidePropsType<typ
                     <td className={styles.colDate}>
                       <FormattedDate date={stmt.first_seen} />
                     </td>
-                    <td className={styles.colDate}>
+                    {/* <td className={styles.colDate}>
                       <FormattedDate date={stmt.last_seen} />
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

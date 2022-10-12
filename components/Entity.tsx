@@ -307,7 +307,7 @@ export function EntityTopics({ entity }: EntityTopicsProps) {
       <div className={styles.topicsNarrative}>
         {isSanctioned && (
           <>
-            {entity.caption} is subject to international sanctions.
+            {entity.caption} is subject to sanctions.
             <> See <a href="#rel.sanctions">the individual program listings</a> below.</>
             {isPEP && (
               <> They are also a <Link href="/docs/faq/#peps">politically exposed person</Link>.</>
