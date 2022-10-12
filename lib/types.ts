@@ -99,6 +99,7 @@ export interface IDatasetPublisher {
   url?: string
   name: string
   description: string
+  official: boolean
   country?: string
   country_label?: string
 }
