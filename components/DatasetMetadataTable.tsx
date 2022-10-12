@@ -3,7 +3,7 @@ import Badge from 'react-bootstrap/Badge'
 import Table from 'react-bootstrap/Table'
 
 import { IDataset, ICollection, isSource, isExternal, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types'
-import { FormattedDate, HelpLink, Numeric, Plural, Spacer, URLLink } from './util'
+import { FormattedDate, HelpLink, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util'
 import { wordList } from '../lib/util'
 
 import styles from '../styles/Dataset.module.scss'
@@ -130,6 +130,9 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
               <URLLink url={dataset.publisher.url} label={dataset.publisher.name} icon={false} />
               {dataset.publisher.country !== 'zz' && (
                 <> ({dataset.publisher.country_label})</>
+              )}
+              {!dataset.publisher.official && (
+                <>{' '} <UnofficialBadge /></>
               )}
               <p className={styles.publisherDescription}>{dataset.publisher.description}</p>
             </td>

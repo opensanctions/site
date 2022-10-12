@@ -12,9 +12,9 @@ import { getSchemaEntityPage } from '../../lib/schema';
 import { Entity, IEntityDatum, IModelDatum, Model } from '../../lib/ftm';
 import { BlockedEntity, LicenseInfo } from '../../components/Policy';
 import { IDataset, isExternal, isSource, IStatement } from '../../lib/types';
-import { FormattedDate, HelpLink, SpacedList } from '../../components/util';
+import { HelpLink, SpacedList } from '../../components/util';
 import Dataset from '../../components/Dataset';
-import { EntityFactsheet, EntitySchemaTable } from '../../components/Entity';
+import { EntityFactsheet, EntityNote, EntitySchemaTable } from '../../components/Entity';
 
 import styles from '../../styles/Entity.module.scss'
 import { PropertyValues } from '../../components/Property';
@@ -66,15 +66,7 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
                 <div className={styles.entityPageSection}>
                   <h2><a id="notes"></a>Descriptions</h2>
                   {notes.map((stmt) => (
-                    <figure key={stmt.id} className={styles.statementNote}>
-                      <blockquote>
-                        <p>{stmt.value}</p>
-                      </blockquote>
-                      <figcaption>—{' '}
-                        <Dataset.Link dataset={datasets.find((d) => d.name === stmt.dataset)} />
-                        {', '}<FormattedDate date={stmt.first_seen} />
-                      </figcaption>
-                    </figure>
+                    <EntityNote key={stmt.id} note={stmt} datasets={datasets} />
                   ))}
                 </div>
               )}

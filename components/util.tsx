@@ -121,6 +121,11 @@ export function Summary({ summary }: SummaryProps) {
 }
 
 
+export function UnofficialBadge() {
+  return <Badge bg="light">non-official source</Badge>;
+}
+
+
 function getHost(href: string): string {
   try {
     const url = new URL(href);

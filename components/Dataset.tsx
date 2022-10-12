@@ -5,7 +5,7 @@ import TextTruncate from 'react-text-truncate';
 import { CloudFill, FolderFill, Server } from 'react-bootstrap-icons';
 
 import { IDataset, IExternal, isCollection, isExternal, ISource, isSource } from '../lib/types'
-import { Numeric, NumericBadge, Spacer } from './util';
+import { Numeric, NumericBadge, Spacer, UnofficialBadge } from './util';
 import styles from '../styles/Dataset.module.scss'
 import Link from 'next/link';
 
@@ -57,7 +57,15 @@ function DatasetCard({ dataset }: DatasetProps) {
             <><Numeric value={dataset.sources.length} /> data sources</>
           )}
           {isSource(dataset) && (
-            <>{dataset.publisher.country_label}</>
+            <>
+              {dataset.publisher.country_label}
+              {!dataset.publisher.official && (
+                <>
+                  <Spacer />
+                  <UnofficialBadge />
+                </>
+              )}
+            </>
           )}
           <Spacer />
           <Numeric value={dataset.target_count} /> targets
@@ -92,18 +100,23 @@ function DatasetItem({ dataset }: DatasetProps) {
               <Numeric value={dataset.sources.length} /> data sources
             </>
           )}
-          {isSource(dataset) && (
+          {(isSource(dataset) || isExternal(dataset)) && (
             <>
+              {isExternal(dataset) && (
+                <>
+                  <Badge bg="light">External dataset</Badge>
+                  <Spacer />
+                </>
+              )}
               <Badge bg="light">{dataset.publisher.country_label}</Badge>
               <Spacer />
               {dataset.publisher.name}
-            </>
-          )}
-          {isExternal(dataset) && (
-            <>
-              <Badge bg="light">External dataset</Badge>
-              <Spacer />
-              {dataset.publisher.name}
+              {!dataset.publisher.official && (
+                <>
+                  <Spacer />
+                  <UnofficialBadge />
+                </>
+              )}
             </>
           )}
         </p>

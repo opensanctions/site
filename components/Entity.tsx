@@ -8,10 +8,10 @@ import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
 import { Entity } from '../lib/ftm';
-import { IDataset } from '../lib/types';
+import { IDataset, isCollection, IStatement } from '../lib/types';
 import { isBlocked } from '../lib/data';
 import { PropertyValues } from './Property';
-import { HelpLink, SpacedList } from './util';
+import { FormattedDate, HelpLink, SpacedList, UnofficialBadge } from './util';
 import Dataset from './Dataset';
 
 import styles from '../styles/Entity.module.scss'
@@ -239,5 +239,36 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
         ))}
       </tbody>
     </Table >
+  );
+}
+
+
+interface EntityNoteProps {
+  note: IStatement
+  datasets: IDataset[]
+}
+
+export function EntityNote({ note, datasets }: EntityNoteProps) {
+  const dataset = datasets.find(d => d.name == note.dataset);
+  return (
+    <figure key={note.id} className={styles.statementNote}>
+      <blockquote>
+        <p>{note.value}</p>
+      </blockquote>
+      <figcaption>—{' '}
+        {dataset !== undefined && (
+          <>
+            <Dataset.Link dataset={dataset} />
+            {!isCollection(dataset) && !dataset.publisher?.official && (
+              <>
+                {' '}<UnofficialBadge />
+              </>
+            )}
+            {', '}
+          </>
+        )}
+        <FormattedDate date={note.first_seen} />
+      </figcaption>
+    </figure>
   );
 }
