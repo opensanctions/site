@@ -4,7 +4,7 @@ import Badge from "react-bootstrap/Badge";
 
 import { Property, PropertyType, Entity, Value, Values } from "../lib/ftm";
 import { FormattedDate, SpacedList, URLLink } from "./util";
-import { EntityLink, EntityProps } from "./Entity";
+import { EntityLink, EntityPropsTableProps } from "./Entity";
 
 
 type TypeValueProps = {
@@ -12,7 +12,7 @@ type TypeValueProps = {
   value: Value
   plain?: boolean
   prop?: Property
-  entity?: ComponentType<EntityProps>
+  entity?: ComponentType<EntityPropsTableProps>
 }
 
 export function TypeValue({ type, value, plain = false, entity: Entity = EntityLink, prop }: TypeValueProps) {
@@ -57,7 +57,7 @@ type TypeValuesProps = {
   limit?: number
   prop?: Property
   empty?: string
-  entity?: ComponentType<EntityProps>
+  entity?: ComponentType<EntityPropsTableProps>
 }
 
 export function TypeValues({ type, values, entity, prop, limit, empty }: TypeValuesProps) {
@@ -80,7 +80,7 @@ export function TypeValues({ type, values, entity, prop, limit, empty }: TypeVal
 type PropertyValueProps = {
   prop: Property
   value: Value
-  entity?: ComponentType<EntityProps>
+  entity?: ComponentType<EntityLinkProps>
 }
 
 export function PropertyValue({ prop, value, entity }: PropertyValueProps) {
@@ -92,7 +92,7 @@ type PropertyValuesProps = {
   values: Values
   limit?: number
   empty?: string
-  entity?: ComponentType<EntityProps>
+  entity?: ComponentType<EntityLinkProps>
 }
 
 export function PropertyValues({ prop, values, entity, limit, empty }: PropertyValuesProps) {
