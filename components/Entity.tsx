@@ -19,7 +19,7 @@ import styles from '../styles/Entity.module.scss'
 
 
 
-export type EntityRawLinkProps = {
+export interface EntityRawLinkProps {
   entity: Entity
   prop: string
 }
@@ -32,12 +32,13 @@ export function EntityRawLink({ entity, prop }: EntityRawLinkProps) {
   return <a className={styles.rawLink} data-nosnippet rel="nofollow" href={`/statements/?${query}`}>[sources]</a>
 }
 
-
-export type EntityLinkProps = {
+export interface EntityDisplayProps {
   entity: Entity
+  via?: Property
 }
 
-export function EntityLink({ entity }: EntityLinkProps) {
+
+export function EntityLink({ entity }: EntityDisplayProps) {
   if (isBlocked(entity)) {
     return <Link href={`/entities/${entity.id}/`}>[blocked entity]</Link>
   }
@@ -45,7 +46,7 @@ export function EntityLink({ entity }: EntityLinkProps) {
 }
 
 
-export type EntityPropsTableProps = {
+export interface EntityPropsTableProps extends EntityDisplayProps {
   entity: Entity
   datasets?: Array<IDataset>
   showEmpty?: boolean
