@@ -27,9 +27,19 @@
 
 .spacer {
     font-weight: bolder;
-    color: $text-muted;
+    // color: $text-muted;
 }
 
 .formattedDate {
     white-space: nowrap;
+}
+
+.stickyParent {
+    height: 100%;
+    position: relative;
+}
+
+.stickyChild {
+    position: sticky;
+    top: $spacer * 2;
 }

@@ -17,8 +17,47 @@
     margin-bottom: 0;
 }
 
+.factsheet {
+    th {
+        padding-left: 0 !important;
+    }
+
+    margin-bottom: $spacer * 2;
+}
+
+.statementNote {
+    margin-top: $spacer * 2;
+
+    blockquote {
+        font-size: 1.1em;
+    }
+
+    figcaption {
+        color: $text-muted;
+    }
+}
+
+.topicsArea {
+    margin-bottom: $spacer * 2;
+}
+
+.topicsList {
+    color: $text-light;
+    font-size: 1.2em;
+    margin-bottom: $spacer / 2;
+}
+
+.topicsNarrative {
+    color: $text-light;
+
+    a {
+        color: $text-light;
+        text-decoration: underline;
+    }
+}
+
 .entityPageSection {
-    margin-bottom: 2em;
+    margin-bottom: $spacer * 2;
 }
 
 .tableHeader {
@@ -46,6 +85,7 @@
 .rawLink {
     font-size: 0.8em;
     text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }

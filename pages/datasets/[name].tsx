@@ -16,7 +16,7 @@ import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { getDatasets, getDatasetByName, getDatasetIssues, getDatasetDetails, getRecentEntities } from '../../lib/data'
 import { IDataset, IIssue, ICollection, ISource, isCollection, isSource, IDatasetDetails, isExternal, IExternal, IRecentEntity } from '../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList } from '../../components/util'
+import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../components/util'
 import DatasetMetadataTable from '../../components/DatasetMetadataTable'
 import { getSchemaDataset } from '../../lib/schema';
 
@@ -48,12 +48,6 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
         <Row>
           <Col md={9}>
             <Summary summary={dataset.summary} />
-          </Col>
-          <Col md={3}>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={9}>
             <Markdown markdown={details.description} />
             <section>
               <h3>
@@ -280,8 +274,8 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
             )}
           </Col>
           <Col sm={3}>
-            <div className="position-sticky">
-              <Nav navbarScroll className="flex-column">
+            <Sticky>
+              <Nav className="flex-column">
                 {!isExternal(dataset) && (
                   <>
                     <Nav.Link href="#overview">Overview</Nav.Link>
@@ -300,7 +294,7 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
                 )}
               </Nav>
               <LicenseInfo />
-            </div>
+            </Sticky>
           </Col>
         </Row>
       </Container>

@@ -2,25 +2,24 @@ import React, { useState } from 'react';
 import Link from 'next/link'
 import queryString from 'query-string';
 import classNames from 'classnames';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
-import { Entity } from '../lib/ftm'
-import { IDataset, isExternal, isSource } from '../lib/types'
+import { Entity } from '../lib/ftm';
+import { IDataset, isCollection, IStatement } from '../lib/types';
+import { isBlocked } from '../lib/data';
 import { PropertyValues } from './Property';
-import { FormattedDate, HelpLink, SpacedList, Summary } from './util';
+import { FormattedDate, HelpLink, SpacedList, UnofficialBadge } from './util';
 import Dataset from './Dataset';
 
 import styles from '../styles/Entity.module.scss'
-import { LicenseInfo } from './Policy';
-import { isBlocked } from '../lib/data';
 
 
-export type EntityRawLinkProps = {
+
+export interface EntityRawLinkProps {
   entity: Entity
   prop: string
 }
@@ -30,28 +29,35 @@ export function EntityRawLink({ entity, prop }: EntityRawLinkProps) {
     canonical_id: entity.id,
     prop: prop
   })
-  return <a className={styles.rawLink} data-nosnippet rel="nofollow" href={`/statements/?${query}`}>[raw]</a>
+  return <a className={styles.rawLink} data-nosnippet rel="nofollow" href={`/statements/?${query}`}>[sources]</a>
 }
 
-
-export type EntityProps = {
+export interface EntityDisplayProps {
   entity: Entity
-  datasets?: Array<IDataset>
-  showEmpty?: boolean
   via?: Property
 }
 
-export function EntityLink({ entity }: EntityProps) {
+
+export function EntityLink({ entity }: EntityDisplayProps) {
   if (isBlocked(entity)) {
     return <Link href={`/entities/${entity.id}/`}>[blocked entity]</Link>
   }
   return <Link href={`/entities/${entity.id}/`}>{entity.caption}</Link>
 }
 
-export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: EntityProps) {
+
+export interface EntityPropsTableProps extends EntityDisplayProps {
+  entity: Entity
+  datasets?: Array<IDataset>
+  showEmpty?: boolean
+  via?: Property
+}
+
+export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: EntityPropsTableProps) {
   const viaReverse = via?.getReverse();
   const props = entity.getDisplayProperties()
     .filter((p) => viaReverse === undefined || p.qname !== viaReverse.qname)
+    .filter((p) => p.getRange() === undefined)
     .filter((p) => showEmpty || entity.getProperty(p).length > 0)
 
   return (
@@ -65,6 +71,7 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
                 prop={prop}
                 values={entity.getProperty(prop)}
                 empty="not available"
+                limit={5}
                 entity={EntityLink}
               />
             </td>
@@ -87,7 +94,51 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
 }
 
 
-export function EntityCard({ entity, via, showEmpty = false }: EntityProps) {
+
+export type EntityFactsheetProps = {
+  entity: Entity
+}
+
+export function EntityFactsheet({ entity }: EntityFactsheetProps) {
+  const skip = ['notes', 'topics'];
+  const props = entity.getDisplayProperties()
+    .filter((p) => p.getRange() === undefined)
+    .filter((p) => skip.indexOf(p.name) === -1)
+
+  return (
+    <Table className={styles.factsheet}>
+      <tbody>
+        <tr>
+          <th className={styles.cardProp}>Type</th>
+          <td>{entity.schema.label}</td>
+          <td className={styles.rawColumn}>
+            <EntityRawLink entity={entity} prop="id" />
+          </td>
+        </tr>
+        {props.map((prop) =>
+          <tr key={prop.qname}>
+            <th className={styles.cardProp}>{prop.label}</th>
+            <td>
+              <PropertyValues
+                prop={prop}
+                values={entity.getProperty(prop)}
+                empty="not available"
+                limit={5}
+                entity={EntityLink}
+              />
+            </td>
+            <td className={styles.rawColumn}>
+              <EntityRawLink entity={entity} prop={prop.name} />
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </Table>
+  )
+}
+
+
+export function EntityCard({ entity, via, showEmpty = false }: EntityPropsTableProps) {
   return (
     <Card key={entity.id} className={styles.card}>
       <Card.Header>
@@ -131,185 +182,164 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
   }
 
   return (
-    <Table bordered size="sm">
-      <thead>
-        <tr>
-          <th colSpan={featured.length + 1}>
-            {prop.label}
-            <HelpLink href={`/reference/#schema.${schema.name}`} />
-          </th>
-        </tr>
-        <tr>
-          <th style={{ width: 0 }}></th>
-          {featured.map((prop) => (
-            <th key={prop.name} className={styles.tableHeader}>{prop.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {entities.map((entity) => (
-          <React.Fragment key={entity.id}>
-            <tr key={entity.id}>
-              <td style={{ width: 0 }}>
-                <a onClick={(e) => toggleExpand(e, entity)} className={styles.expandButton}>
-                  <>
-                    {expanded === entity.id && (
-                      <CaretUpFill />
-                    )}
-                    {expanded !== entity.id && (
-                      <CaretDownFill />
-                    )}
-                  </>
-                </a>
-              </td>
-              {featured.map((prop) => (
-                <td key={prop.name} className={`type-${prop.type.name}`}>
-                  <PropertyValues
-                    prop={prop}
-                    values={entity.getProperty(prop)}
-                    empty="-"
-                    limit={4}
-                    entity={EntityLink}
+    <>
+      <a id={`rel.${prop.name}`} />
+      <Table bordered size="sm">
+        <thead>
+          <tr>
+            <th colSpan={featured.length + 1}>
+              {prop.label}
+              <HelpLink href={`/reference/#schema.${schema.name}`} />
+            </th>
+          </tr>
+          <tr>
+            <th style={{ width: 0 }}></th>
+            {featured.map((prop) => (
+              <th key={prop.name} className={styles.tableHeader}>{prop.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {entities.map((entity) => (
+            <React.Fragment key={entity.id}>
+              <tr key={entity.id}>
+                <td style={{ width: 0 }}>
+                  <a onClick={(e) => toggleExpand(e, entity)} className={styles.expandButton}>
+                    <>
+                      {expanded === entity.id && (
+                        <CaretUpFill />
+                      )}
+                      {expanded !== entity.id && (
+                        <CaretDownFill />
+                      )}
+                    </>
+                  </a>
+                </td>
+                {featured.map((prop) => (
+                  <td key={prop.name} className={`type-${prop.type.name}`}>
+                    <PropertyValues
+                      prop={prop}
+                      values={entity.getProperty(prop)}
+                      empty="-"
+                      limit={4}
+                      entity={EntityLink}
+                    />
+                  </td>
+                ))}
+              </tr>
+              <tr key={`expand-${entity.id}`} className={classNames({ 'd-none': expanded !== entity.id })}>
+                <td></td>
+                <td colSpan={featured.length} className={styles.expandCell}>
+                  <EntityPropsTable
+                    entity={entity}
+                    datasets={datasets}
+                    via={prop}
+                    showEmpty={true}
                   />
                 </td>
-              ))}
-            </tr>
-            <tr key={`expand-${entity.id}`} className={classNames({ 'd-none': expanded !== entity.id })}>
-              <td></td>
-              <td colSpan={featured.length} className={styles.expandCell}>
-                <EntityPropsTable
-                  entity={entity}
-                  datasets={datasets}
-                  via={prop}
-                  showEmpty={true}
-                />
-              </td>
-            </tr>
-          </React.Fragment>
-        ))}
-      </tbody>
-    </Table >
-  );
-}
-
-
-export type EntitySidebarProps = {
-  entity: Entity,
-  rawLinks?: boolean
-}
-
-export function EntitySidebar({ entity, rawLinks = true }: EntitySidebarProps) {
-  const properties = entity.getDisplayProperties();
-  const sidebarProperties = properties.filter((p) => p.type.name !== 'entity' && p.name !== 'notes');
-  return (
-    <>
-      <p>
-        {rawLinks && (
-          <span className={styles.rawFloat}>
-            <EntityRawLink entity={entity} prop="id" />
-          </span>
-        )}
-        <strong>Type</strong><br />
-        <span>{entity.schema.label}</span>
-      </p>
-      {sidebarProperties.map((prop) =>
-        <p key={prop.name}>
-          <span className={styles.rawFloat}>
-            <EntityRawLink entity={entity} prop={prop.name} />
-          </span>
-          <strong>{prop.label}</strong><br />
-          <span>
-            <PropertyValues
-              prop={prop}
-              values={entity.getProperty(prop)}
-              limit={5}
-              empty="not available"
-            />
-          </span>
-        </p>
-      )}
+              </tr>
+            </React.Fragment>
+          ))}
+        </tbody>
+      </Table>
     </>
   );
 }
 
-export type EntityDisplayProps = {
-  entity: Entity,
-  datasets: Array<IDataset>
+
+interface EntityNoteProps {
+  note: IStatement
+  datasets: IDataset[]
 }
 
-export function EntityDisplay({ entity, datasets }: EntityDisplayProps) {
-  const properties = entity.getDisplayProperties();
-  const entityProperties = properties.filter((p) => p.type.name === 'entity');
-  const sources = datasets.filter(isSource);
-  const externals = datasets.filter(isExternal);
+export function EntityNote({ note, datasets }: EntityNoteProps) {
+  const dataset = datasets.find(d => d.name == note.dataset);
   return (
-    <Row>
-      <Col md={9} className="order-2">
-        {entity.hasProperty('notes') && (
-          <div className={styles.entityPageSection}>
-            {/* <h2>Notes</h2> */}
-            {entity.getStringProperty('notes').sort((a, b) => b.length - a.length).map((v, idx) => (
-              <Summary key={idx} summary={v as string} />
-            ))}
-          </div>
+    <figure key={note.id} className={styles.statementNote}>
+      <blockquote>
+        <p>{note.value}</p>
+      </blockquote>
+      <figcaption>—{' '}
+        {dataset !== undefined && (
+          <>
+            <Dataset.Link dataset={dataset} />
+            {!isCollection(dataset) && !dataset.publisher?.official && (
+              <>
+                {' '}<UnofficialBadge />
+              </>
+            )}
+            {', '}
+          </>
         )}
-        {entityProperties.map((prop) =>
-          <div className={styles.entityPageSection} key={prop.qname}>
-            <EntitySchemaTable
-              prop={prop}
-              entities={entity.getProperty(prop).map((v) => v as Entity)}
-              datasets={datasets}
-            />
-          </div>
+        <FormattedDate date={note.first_seen} />
+      </figcaption>
+    </figure>
+  );
+}
+
+interface EntityTopicsProps {
+  entity: Entity
+}
+
+
+export function EntityTopics({ entity }: EntityTopicsProps) {
+  const prop = entity.schema.getProperty('topics');
+  if (prop === undefined) {
+    return null;
+  }
+  const values = entity.getProperty(prop);
+  const isSanctioned = values.indexOf('sanction') !== -1;
+  const isPEP = values.indexOf('role.pep') !== -1;
+  const showPEP = !isSanctioned && isPEP;
+  const isRCA = values.indexOf('role.rca') !== -1;
+  const showRCA = (!isSanctioned && !isPEP && isRCA);
+  const isOther = (!isSanctioned && !isPEP && !isRCA);
+  const isPerson = entity.schema.isA("Person");
+  const showPersonOther = isOther && isPerson;
+  const showEntityOther = isOther && !isPerson;
+  return (
+    <div className={styles.topicsArea}>
+      {values.length > 0 && (
+        <div className={styles.topicsList}>
+          <PropertyValues prop={prop} values={values} />
+        </div>
+      )}
+      <div className={styles.topicsNarrative}>
+        {isSanctioned && (
+          <>
+            {entity.caption} is subject to sanctions.
+            <> See <a href="#rel.sanctions">the individual program listings</a> below.</>
+            {isPEP && (
+              <> They are also a <Link href="/docs/faq/#peps">politically exposed person</Link>.</>
+            )}
+          </>
         )}
-        <div className={styles.entityPageSection}>
-          <h3>Data sources</h3>
-          {sources.map((d) => (
-            <Dataset.Item key={d.name} dataset={d} />
-          ))}
-          {externals.length > 0 && (
-            <>
-              {sources.length > 0 && (
-                <h5>External databases</h5>
-              )}
-              <p>
-                The record has
-                been <Link href="/docs/enrichment/">enriched with data</Link> from
-                the following external databases:
-              </p>
-              {externals.map((d) => (
-                <Dataset.Item key={d.name} dataset={d} />
-              ))}
-            </>
-          )}
-        </div>
-        <div className={styles.entityPageSection}>
-          <h3>About this page</h3>
-          <ul>
-            <li>
-              This page describes an entity that is documented as part of the <Link href="/docs/about/">OpenSanctions
-                project</Link> in the public interest (<Link href="/docs/faq/">FAQ</Link>).
-            </li>
-            <li>
-              The entity was added <FormattedDate date={entity.first_seen} /> and last updated <FormattedDate date={entity.last_seen} />.
-            </li>
-            <li>
-              For experts: <Link rel="nofollow" href={`/statements/?canonical_id=${entity.id}`}>raw data
-                explorer</Link> with per-attribute information on data provenance.
-            </li>
-          </ul>
-          <LicenseInfo />
-          {entity.referents.length > 0 && (
-            <>
-              <hr />
-              Source data IDs<HelpLink href="/docs/identifiers/" />: <SpacedList values={entity.referents.map((r) => <code>{r}</code>)} />
-            </>
-          )}
-        </div>
-      </Col>
-      <Col md={3} className="order-1">
-        <EntitySidebar entity={entity} />
-      </Col>
-    </Row >
+        {showPEP && (
+          <>
+            {entity.caption} is a <Link href="/docs/faq/#peps">politically exposed person</Link>.
+            They are a <Link href="/docs/criteria/">person of interest</Link>, but have not been
+            found on international sanctions lists.
+          </>
+        )}
+        {showRCA && (
+          <>
+            {entity.caption} is a family member or associate of a <Link href="/docs/faq/#peps">politically exposed person</Link>.
+            They have not been found on international sanctions lists.
+          </>
+        )}
+        {showPersonOther && (
+          <>
+            {entity.caption} is a <Link href="/docs/criteria/">person of interest</Link>.
+            They have not been found on international sanctions lists.
+          </>
+        )}
+        {showEntityOther && (
+          <>
+            {entity.caption} is an <Link href="/docs/criteria/">entity of interest</Link>.
+            It has not been found on international sanctions lists.
+          </>
+        )}
+      </div>
+    </div >
   );
 }

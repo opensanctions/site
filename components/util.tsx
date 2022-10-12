@@ -121,6 +121,20 @@ export function Summary({ summary }: SummaryProps) {
 }
 
 
+export function UnofficialBadge() {
+  return <Badge bg="light">non-official source</Badge>;
+}
+
+export function Sticky({ children }: React.PropsWithChildren) {
+  return (
+    <div className={styles.stickyParent}>
+      <div className={styles.stickyChild}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
 function getHost(href: string): string {
   try {
     const url = new URL(href);

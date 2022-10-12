@@ -137,7 +137,38 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
   return results.filter(r => r !== undefined) as Array<IRecentEntity>;
 }
 
+export async function getStatements(query: any, limit: number = 100): Promise<IStatementAPIResponse | null> {
+  const apiUrl = queryString.stringifyUrl({
+    'url': `${API_URL}/statements`,
+    'query': {
+      ...query,
+      'limit': limit,
+    }
+  })
+  return await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+}
+
+export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
+  if (entityId === undefined || entityId === null) {
+    return null;
+  }
+  const raw = await fetchJsonUrl(`${API_URL}/entities/${entityId}`);
+  if (raw === undefined || raw === null || raw.id === undefined) {
+    return null
+  }
+  return raw as IEntityDatum;
+}
+
+export async function getEntityDatasets(entity: IEntityDatum | Entity): Promise<IDataset[]> {
+  const allDatasets = await getDatasets();
+  const datasetNames = entity !== null ? entity.datasets : [];
+  return datasetNames
+    .map((name) => allDatasets.find((d) => d.name === name))
+    .filter((d) => d !== undefined) as IDataset[];
+}
+
 export function isBlocked(entity: IEntityDatum | Entity): boolean {
   const joined = intersection(entity.referents, BLOCKED_ENTITIES);
   return joined.length > 0;
 }
+
