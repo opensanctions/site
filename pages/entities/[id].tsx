@@ -66,7 +66,7 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
                 <div className={styles.entityPageSection}>
                   <h2><a id="notes"></a>Descriptions</h2>
                   {notes.map((stmt) => (
-                    <figure key={stmt.id}>
+                    <figure key={stmt.id} className={styles.statementNote}>
                       <blockquote>
                         <p>{stmt.value}</p>
                       </blockquote>

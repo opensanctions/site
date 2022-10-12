@@ -25,6 +25,18 @@
     margin-bottom: $spacer * 2;
 }
 
+.statementNote {
+    margin-top: $spacer * 2;
+
+    blockquote {
+        font-size: 1.1em;
+    }
+
+    figcaption {
+        color: $text-muted;
+    }
+}
+
 .entityPageSection {
     margin-bottom: 2em;
 }
