@@ -112,6 +112,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     'query': {
       ...context.query,
       'limit': 25,
+      'fuzzy': 'false',
       'schema': schemaName
     }
   })
