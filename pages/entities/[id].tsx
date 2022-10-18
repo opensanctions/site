@@ -10,7 +10,7 @@ import Research from '../../components/Research';
 import { fetchIndex, getEntity, getEntityDatasets, getStatements, isBlocked } from '../../lib/data';
 import { getSchemaEntityPage } from '../../lib/schema';
 import { Entity, IEntityDatum, IModelDatum, Model } from '../../lib/ftm';
-import { BlockedEntity, LicenseInfo } from '../../components/Policy';
+import { BlockedEntity, EntityWarning, LicenseInfo } from '../../components/Policy';
 import { IDataset, isExternal, isSource, IStatement } from '../../lib/types';
 import { HelpLink, SpacedList, Sticky } from '../../components/util';
 import Dataset from '../../components/Dataset';
@@ -49,12 +49,13 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
               <h1>
                 {entity.caption}
               </h1>
+              <a id="factsheet"></a>
               <EntityTopics entity={entity} />
             </Col>
           </Row>
           <Row>
             <Col md={9} className="order-2">
-              <a id="factsheet"></a>
+              <EntityWarning entity={entity} />
               <EntityFactsheet entity={entity} />
               {notes.length > 0 && (
                 <div className={styles.entityPageSection}>

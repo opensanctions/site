@@ -7,7 +7,8 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import styles from '../styles/Policy.module.scss';
 import Layout from './Layout';
 import Research from './Research';
-import { IEntityDatum } from '../lib/ftm';
+import { Entity, IEntityDatum } from '../lib/ftm';
+import { ENTITY_WARNINGS } from '../lib/constants';
 
 export function LicenseInfo() {
   return (
@@ -45,5 +46,21 @@ export function BlockedEntity({ entity }: BlockedEntityProps) {
         </Container>
       </Research.Context>
     </Layout.Base>
+  );
+}
+
+interface EntityWarningProps {
+  entity: Entity
+}
+
+export function EntityWarning({ entity }: EntityWarningProps) {
+  const warning = ENTITY_WARNINGS[entity.id];
+  if (!warning) {
+    return null;
+  }
+  return (
+    <Alert variant="warning">
+      {warning}
+    </Alert>
   );
 }

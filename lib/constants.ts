@@ -20,3 +20,6 @@ export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];
 export const SPACER = " · ";
 
 export const BLOCKED_ENTITIES = ['ofac-9591'];
+export const ENTITY_WARNINGS: { [name: string]: string } = {
+  'Q4230633': 'The contents of this page have been modified in response to a legal threat on behalf of Mr. Kondrashev.'
+}
