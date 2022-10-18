@@ -26,10 +26,13 @@ function AboutMenu() {
           <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
         </Nav.Item>
         <Nav.Item>
-          <RoutedNavLink href="/impressum/">Impressum</RoutedNavLink>
+          <RoutedNavLink href="/docs/terms/">Terms of service</RoutedNavLink>
         </Nav.Item>
         <Nav.Item>
           <RoutedNavLink href="/docs/privacy/">Privacy Policy</RoutedNavLink>
+        </Nav.Item>
+        <Nav.Item>
+          <RoutedNavLink href="/impressum/">Impressum</RoutedNavLink>
         </Nav.Item>
       </Nav>
       <LicenseInfo />
