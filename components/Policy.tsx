@@ -59,7 +59,7 @@ export function EntityWarning({ entity }: EntityWarningProps) {
     return null;
   }
   return (
-    <Alert variant="warning">
+    <Alert variant="danger">
       {warning}
     </Alert>
   );

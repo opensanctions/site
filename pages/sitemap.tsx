@@ -12,7 +12,8 @@ export default function Sitemap({ }: InferGetStaticPropsType<typeof getStaticPro
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const datasets = await getDatasets()
+  const allDatasets = await getDatasets()
+  const datasets = allDatasets.filter((d) => !d.hidden)
   const articles = await getArticles()
   const contents = await getContents()
   const entities = await getSitemapEntities()
