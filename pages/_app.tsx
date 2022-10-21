@@ -36,6 +36,11 @@ export default function OpenSanctionsApp({ Component, pageProps }: AppProps) {
                 gtag('js', new Date());
                 gtag('config', '${gtag.GA_TRACKING_ID}', {
                   page_path: window.location.pathname,
+                  ad_storage: "denied",
+                  analytics_storage: "denied",
+                  functionality_storage: "denied",
+                  personalization_storage : "denied",
+                  security_storage : "denied",
                 });
               `,
         }}

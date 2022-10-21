@@ -1,0 +1,23 @@
+@import './variables.scss';
+
+.consentBox {
+    padding-top: 2 * $spacer;
+    padding-bottom: 1 * $spacer;
+    position: fixed;
+    display: block;
+    bottom: 0;
+    background-color: $gray-200;
+    width: 100%;
+    z-index: 40000000;
+    box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.2)
+}
+
+.consentButtons {
+    text-align: right;
+
+    :global {
+        .btn-light {
+            font-weight: normal;
+        }
+    }
+}
