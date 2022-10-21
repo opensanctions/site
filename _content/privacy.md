@@ -125,11 +125,13 @@ Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erh
 ### 9. COOKIES UND SONSTIGE TRACKINGTECHNOLOGIEN
 
 #### 9.1 Beschreibung der Verarbeitung
+
 Unsere Webseite verwendet Cookies. Bei Cookies handelt es sich um kleine Textdateien, die beim Besuch einer Webseite auf dem Endgerät des Nutzers gespeichert werden. Cookies enthalten Informationen, die die Wiedererkennung eines Endgeräts und ggf. bestimmte Funktionen einer Webseite ermöglichen. Wir unterscheiden zwischen eigenen Cookies und externen, sogenannten Drittanbieter-Cookies. Auf unserer Seite kommen sogenannte „Session Cookies“ und „Persistente Cookies“ zum Einsatz. „Session-Cookies“ werden automatisch gelöscht, wenn Sie Ihre Internetsitzung beenden und den Browser schließen. Persistente Cookies bleiben für einen längeren Zeitraum auf Ihrem Endgerät gespeichert. Neben Cookies verwenden wir auch andere Trackingtechno-logien, wie z.B. Pixel oder das sogenannte Fingerprinting. Sofern Cookies für den Betrieb unserer Seite technisch erforderlich sind, bedarf es dafür nicht Ihrer Einwilligung. Alle sonstigen, nicht technisch erforderlichen Cookies und Trackingtechnologien werden erst gesetzt, nachdem Sie in die Verwendung von Cookies/Trackingtechnologien über unser Consent-Tool aktiv eingewilligt haben.
 
 <!-- Zur Einholung und Dokumentation der Einwilligungen verwenden wir den  Dienst . Das Consent-Tool speichert Ihre Auswahl selbst in einem Cookie auf Ihrem Endgerät. Dadurch brauchen Sie bei einem Folgebesuch unserer Webseite nicht erneut eine Entscheidung über Cookies treffen. Welche Cookies auf unserer Webseite für welchen Zweck verwendet werden, wie lange diese auf Ihrem Endgerät gespeichert werden und welche Einwilligungen Sie ggf. bereits erklärt haben, können Sie den Einstel-lungen ihres Browsers entnehmen. -->
 
 #### 9.2 Zweck
+
 Wir setzen Cookies ein, um unsere Webseite nutzerfreundlicher zu gestalten und die in Ziffer 9.1 beschrieben Funktionen anzubieten.
 
 #### 9.3 Rechtsgrundlage
@@ -137,6 +139,7 @@ Wir setzen Cookies ein, um unsere Webseite nutzerfreundlicher zu gestalten und d
 Die Verarbeitung ist im Hinblick auf technisch erforderliche Cookies, sowie des Einsatzes des Consent-Tools zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSG-VO i.V.m. § 25 Abs. 2 TTDSG). Unser berechtigtes Interesse liegt in dem, in Ziffer 9.2 benannten Zweck. Bei der Verarbeitung im Hinblick auf alle sonstigen – also nicht technisch erforderlichen Cookies/Trackingtechnologien – besteht die Rechtsgrundlage in einer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO i.V.m. § 25 Abs. 1 TTDSG). Eine sol-che Einwilligung ist freiwillig.
 
 #### 9.4 Speicherdauer, Widerruf der Einwilligung
+
 Cookies werden automatisch mit dem Ende einer Sitzung bzw. mit Ablauf der angegebenen Speicherdauer gelöscht. Da Cookies auf Ihrem Endgerät gespeichert werden, haben Sie als Nutzer die volle Kontrolle über den Einsatz von Cookies. Durch eine Änderung der Einstellungen in Ihrem Internetbrowser können Sie die Übertragung von Cookies deaktivieren oder einschränken. Bereits gespeicherte Cookies können gelöscht werden. Dies kann auch automatisiert erfolgen. Werden Cookies für unsere Webseite deaktiviert, gelöscht oder eingeschränkt, kann es sein, dass einzelne Funktionen unserer Webseite nicht oder nur eingeschränkt genutzt werden können. Etwaig von Ihnen erteilte Einwilligungen zum Einsatz von Cookies können Sie jederzeit in den Einstellungen ihres Browsers mit Wirkung für die Zukunft widerrufen.
 
 ### 9.5 Empfänger
@@ -161,13 +164,33 @@ Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des 
 
 Die Daten werden von uns gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erfor-derlich sind. Dies ist für gewöhnlich der Fall, wenn die jeweilige Kommunikation mit Ihnen beendet ist. Beendet ist die Kommunikation dann, wenn sich aus den Umständen entnehmen lässt, dass Ihr Anliegen abschließend geklärt ist. Sofern gesetzliche Aufbewahrungsfristen einer Löschung entgegenstehen, erfolgt eine Löschung unverzüglich nach Ablauf der gesetzlichen Aufbewahrungsfrist.
 
-### 11. NEWSLETTER
+### 11. KUNDEN- UND KONTAKTVERWALTUNG
 
-OpenSanctions verwendet aktuell keinen E-Mail-Newsletter. Die notwendigen Datenschutzangaben werden ergänzt, sobald sich das ändert.
+#### 11.1 Beschreibung der Verarbeitung
 
-### 12. SOZIALE NETZWERKE
+Zur Verwaltung von Kundenanfragen, zum Verkaufs- und Vertragsmanagement verwenden wir die CRM-Suite HubSpot (bereitgestellt durch HubSpot, Inc., 25 First Street, Cambridge, MA 02141 USA, [Datenschutzbestimmungen](https://legal.hubspot.com/de/privacy-policy)). Die Daten werden auf den von HubSpot bereitgestellten europäischen Servern verwaltet. 
 
-#### 12.1 Beschreibung der Verarbeitung
+#### 11.2 Zweck
+
+Die von Ihnen übermittelten Daten werden ausschließlich zum Zwecke der Bearbeitung und Beantwortung Ihres Anliegens verwendet. Zur Analyse werden zudem statistische Informationen über Verkaufprozesse und relevante Anfragen erhoben.
+
+#### 11.3 Rechtsgrundlage
+
+Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 10.2 benannten Zweck. Sofern der Kontakt auf den Abschluss oder der Erfüllung eines Vertrages abzielt, so erfolgt die Datenverarbeitung zur Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).
+
+#### 11.4 Speicherdauer
+
+Die Daten werden von uns gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Dies ist für gewöhnlich der Fall, wenn die jeweilige Kommunikation mit Ihnen beendet ist. Beendet ist die Kommunikation dann, wenn sich aus den Umständen entnehmen lässt, dass Ihr Anliegen abschließend geklärt ist. Sofern gesetzliche Aufbewahrungsfristen einer Löschung entgegenstehen, erfolgt eine Löschung unverzüglich nach Ablauf der gesetzlichen Aufbewahrungsfrist.
+
+### 12. ZAHLUNGSABWICKLUNG
+
+Zur Abwicklung von Bezahlungen für kommerzielle Dienstleistungen (z.b. Daten-Abonnements, API-Entgelte, oder Einmalzahlungen) verwenden wir den Zahlungabwickler Stripe.com. Beim Abschluss eines solchen Zahlungsvorgangs werden Sie auf die Webseite von Stripe weitergelietet, für die weitergehende [Datenschutzbestimmungen](https://stripe.com/en-gb-de/privacy) gelten.
+
+Buchhalterische Informationen sowie Details zum Kundenstamm werden darüber hinaus auf dem Portal LexOffice.de verwaltet, betrieben durch die (Haufe Service Center GmbH, Munzinger Straße 9, 79111 Freiburg, [Datenschutzbestimmungen](https://www.lexoffice.de/datenschutz/)).
+
+### 13. SOZIALE NETZWERKE
+
+#### 13.1 Beschreibung der Verarbeitung
 
 Unsere Webseite verwendet keine sogenannten Social Media Plugins. Die auf unserer Webseite angezeigten Logos von Twitter und LinkedIn sind lediglich mit den entsprechenden Profilen unseres Unternehmens auf den Sozialen Netzwerken verlinkt. Eine Datenübermittlung an die Sozialen Netzwerke findet mit der Einbindung der Logos nicht statt. Wenn Sie eines der Logos anklicken, werden Sie lediglich auf die externe Webseite des jeweiligen Sozialen Netzwerks weitergeleitet.
 Eine Datenverarbeitung stellen jedoch unsere Profile innerhalb der Sozialen Netzwerke dar. Sofern Sie beim Besuch eines solchen Profils beim jeweiligen Sozialen Netzwerk eingeloggt sind, werden diese Informationen Ihrem dortigen Benutzerkonto zugeordnet. Wenn Sie mit unserem Profil interagieren, z.B. einen Beitrag kommentieren, „teilen“, „liken“ oder „retweeten“, werden auch diese Informationen in Ihrem Benutzerkonto gespei-chert. Ihre Interaktionen mit unserem Profil sind von uns im Regelfall auch einsehbar.
@@ -175,108 +198,108 @@ Eine Datenverarbeitung stellen jedoch unsere Profile innerhalb der Sozialen Netz
 Auf dem Sozialen Netzwerk LinkedIn haben wir über die sogenannte „Insights“-Funktion die Möglichkeit, statisti-sche Daten über die Nutzung unseres LinkedIn-Profils zu erhalten.
 Die Sozialen Netzwerke, mit denen Sie kommunizieren, speichern Ihre Daten unter Verwendung von Pseudony-men als Nutzungsprofile und verwenden sie für Werbezwecke und zur Marktforschung. So können Ihnen z.B. Werbeanzeigen innerhalb des Sozialen Netzwerkes und auf anderen Webseiten von Dritten angezeigt werden, die Ihren mutmaßlichen Interessen entsprechen. Zu diesem Zweck kommen im Regelfall Cookies zum Einsatz, die das Soziale Netzwerk auf Ihrem Endgerät ablegt. Ihnen steht gegen die Bildung dieser Nutzerprofile ein Wider-spruchsrecht zu, für dessen Ausübung Sie sich direkt an die Sozialen Netzwerke wenden müssen.
 
-#### 12.2 Zweck
+#### 13.2 Zweck
 
 Wir unterhalten Profile bei den vorgenannten Sozialen Netzwerken zum Zwecke der Öffentlichkeitsarbeit und Unternehmenskommunikation mit Kunden und Interessierten. Die Funktion „Insights“ von LinkedIn nutzen wir, um die Reichweite unserer Beiträge auf dem Sozialen Netzwerk auszuwerten und sie zukünftig für unsere Besu-cher ansprechender zu gestalten.
 
-#### 12.3 Rechtsgrundlage
+#### 13.3 Rechtsgrundlage
 
 Rechtsgrundlage für die Datenverarbeitung im Rahmen unserer Profile auf Sozialen Netzwerken ist die Wahrung unserer überwiegenden berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 12.3 benannten Zweck. Sofern Sie vom jeweiligen Betreiber eines Sozialen Netzwerkes um eine Einwilligung gebeten werden, besteht die Rechtsgrundlage in Art. 6 Abs. 1 lit. a DSGVO. Die Datenverarbeitung erfolgt im Hinblick auf unsere Präsenzen auf Twitter und LinkedIn,  LinkedIn im Übrigen auf Grundlage einer gemeinsame Verantwortlichkeit gemäß Art. 26 DSGVO. 
 
-#### 12.4 Empfänger und Übermittlung in Drittstaaten
+#### 13.4 Empfänger und Übermittlung in Drittstaaten
 
 Die jeweiligen Sozialen Netzwerke werden von den nachfolgend aufgeführten Unternehmen betrieben. Weitere Informationen zum Datenschutz im Hinblick auf unser Profil auf den Sozialen Netzwerken finden Sie in den ver-linkten Datenschutzbestimmungen.
 * Twitter: Twitter Inc., 1355 Market St, Suite 900, San Francisco, California 94103, USA; [Datenschutzbestimmungen](https://twitter.com/privacy).
 * LinkedIn: LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2, Irland; [Datenschutzbestimmungen](https://www.linkedin.com/legal/privacy-policytrk=homepage-basic_footer-privacy-policy). Die Datenschutzvereinbarung mit LinkedIn finden Sie unter www.linkedin.com/legal/l/dpa. Die Vereinbarung zur gemeinsamen Verantwortung ist auf legal.linkedin.com/pages-joint-controller-addendum einsehbar.
 Die Sozialen Netzwerke verarbeiten Ihre personenbezogenen Daten auch in den USA.
 
-### 13. GOOGLE ANALYTICS
-
-#### 13.1 Beschreibung der Verarbeitung
-
-Unsere Webseite verwendet „Google Analytics“, einen Webanalysedienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (nachfolgend „Google“ genannt). Google Analytics setzt Cookies ein (siehe Ziffer 7.), die eine Analyse Ihrer Nutzung unseres Angebotes ermöglichen. Wir verwenden Google Analy-tics in der angebotenen Version „Universal Analytics“, die diese Analyse geräteübergreifend durch Zuordnung der Daten zu einer pseudonymen User-ID erlaubt. Die durch die Cookies erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Wir verwenden Google Analytics jedoch ausschließlich mit einer IP-Anonymisierung. Dadurch wird Ihre IP-Adresse von Google innerhalb von Mit-gliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Die von Google Analytics erstellten Statisti-ken erfassen insbesondere wie viele Nutzer unsere Website besuchen, aus welchem Land bzw. Ort der Zugriff erfolgt, welche Unterseiten aufgerufen werden und über welche Links oder Suchbegriffe Besucher auf unsere Webseite gelangen. Die Nutzerbedingungen von Google Analytics finden Sie unter www.google.com/analytics/terms/de.html. Eine Übersicht zum Datenschutz bei Google Analytics ist unter www.google.com/intl/de/analytics/learn/privacy.html abrufbar. Die Datenschutzerklärung von Google lässt sich unter www.google.de/intl/de/policies/privacy einsehen.
-
-#### 13.2 Zweck
-
-Die Verarbeitung erfolgt, um die Nutzung unserer Webseite auswerten zu können. Die dadurch gewonnenen Informationen dienen der Verbesserung und bedarfsgerechten Gestaltung unseres Online-Auftritts.
-
-#### 13.3 Rechtsgrundlage
-
-Die Verarbeitung erfolgt auf Grundlage einer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Diese wird von uns über das Consent-Tool (siehe Ziffer 9.1) eingeholt. Eine solche Einwilligung ist freiwillig.
-
-#### 13.4 Speicherdauer und Widerspruchsrecht, Widerruf der Einwilligung
-
-Die Speicherdauer, sowie Ihre Kontroll- und Einstellungsmöglichkeiten bei Cookies haben wir in Ziffer 9.4 erläu-tert. Die von Ihnen erteilte Einwilligung im Hinblick auf Google Analytics können Sie jederzeit in den Einstellungen des Consent-Tools mit Wirkung für die Zukunft widerrufen. Alternativ können Sie der Datenverarbeitung durch Google Analytics jederzeit widersprechen, indem Sie das von Google unter tools.google.com/dlpage/gaoptout?hl=de angebotene Browser-Add-on herunterladen und installieren. Die mit Google Analytics verarbeiteten und gespeicherten Analysedaten werden von uns nach 14 Monaten automatisch gelöscht.
-
-#### 13.5 Empfänger und Übermittlung in Drittstaaten
-
-Google Analytics ist für uns laut der deutschen Datenschutzaufsichtsbehörden (Datenschutzkonferenz) in gemein-samer Verantwortlichkeit an der Datenverarbeitung tätig. Vor diesem Hintergrund haben wir auch die „Google Measurement Controller-Controller Data Protection Terms“ mit Google abgeschlossen. Google verarbeitet Ihre personenbezogenen Daten auch in den USA.
-
-### 14. CONTENT DELIVERY NETWORK (CDN)
+### 14. GOOGLE ANALYTICS
 
 #### 14.1 Beschreibung der Verarbeitung
 
-Unsere Webseite verwendet sogenannte Content Delivery Networks (CDN). CDNs bewirken, dass die Ladezeit gängiger JavaScript- und CSS-Bibliotheken, sowie Bild-Icons verkürzt wird, weil die Dateien von schnellen, stand-ortnahen oder wenig ausgelasteten Servern externer Dienstleister übertragen werden. Ein weiterer Vorteil im Vergleich zu einer lokalen Speicherung der JavaScript- und CSS-Bibliotheken, sowie Bild-Icons auf unserem Server besteht darin, dass die Dateien von den externen Dienstleistern auf regelmäßig Sicherheit überprüft und aktuell gehalten werden. Wir haben für die Umsetzung einiger Programmierfunktionen auf unserer Webseite JavaScript- und CSS-Bibliotheken des externen Dienstleisters  eingebunden. Wenn Sie unsere Webseite besuchen, wird eine Verbindung zu den Servern der genannten externen Dienste hergestellt und dabei die JavaScript- und CSS-Bibliothek, sowie Bild-Icons in unsere Webseite geladen. Hierdurch wird an die externen Dienstleister über-mittelt, welche Webseite Sie besucht haben. Ggf. wird auch Ihre IP-Adresse übertragen. Um die Ausführung von JavaScript insgesamt zu verhindern, können Sie in Ihrem Browser einen JavaScript-Blocker installieren. 
+Unsere Webseite verwendet „Google Analytics“, einen Webanalysedienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (nachfolgend „Google“ genannt). Google Analytics setzt Cookies ein (siehe Ziffer 7.), die eine Analyse Ihrer Nutzung unseres Angebotes ermöglichen. Wir verwenden Google Analy-tics in der angebotenen Version „Universal Analytics“, die diese Analyse geräteübergreifend durch Zuordnung der Daten zu einer pseudonymen User-ID erlaubt. Die durch die Cookies erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Wir verwenden Google Analytics jedoch ausschließlich mit einer IP-Anonymisierung. Dadurch wird Ihre IP-Adresse von Google innerhalb von Mit-gliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Die von Google Analytics erstellten Statisti-ken erfassen insbesondere wie viele Nutzer unsere Website besuchen, aus welchem Land bzw. Ort der Zugriff erfolgt, welche Unterseiten aufgerufen werden und über welche Links oder Suchbegriffe Besucher auf unsere Webseite gelangen. Die Nutzerbedingungen von Google Analytics finden Sie unter www.google.com/analytics/terms/de.html. Eine Übersicht zum Datenschutz bei Google Analytics ist unter www.google.com/intl/de/analytics/learn/privacy.html abrufbar. Die Datenschutzerklärung von Google lässt sich unter www.google.de/intl/de/policies/privacy einsehen.
 
 #### 14.2 Zweck
 
-Die Verarbeitung erfolgt, um die Ladezeit unserer Webseite verkürzen und JavaScript- und CSS-Bibliotheken, sowie Bild-Icons schnell und sicher einbinden zu können.
+Die Verarbeitung erfolgt, um die Nutzung unserer Webseite auswerten zu können. Die dadurch gewonnenen Informationen dienen der Verbesserung und bedarfsgerechten Gestaltung unseres Online-Auftritts.
 
 #### 14.3 Rechtsgrundlage
 
+Die Verarbeitung erfolgt auf Grundlage einer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Diese wird von uns über das Consent-Tool (siehe Ziffer 9.1) eingeholt. Eine solche Einwilligung ist freiwillig.
+
+#### 14.4 Speicherdauer und Widerspruchsrecht, Widerruf der Einwilligung
+
+Die Speicherdauer, sowie Ihre Kontroll- und Einstellungsmöglichkeiten bei Cookies haben wir in Ziffer 9.4 erläu-tert. Die von Ihnen erteilte Einwilligung im Hinblick auf Google Analytics können Sie jederzeit in den Einstellungen des Consent-Tools mit Wirkung für die Zukunft widerrufen. Alternativ können Sie der Datenverarbeitung durch Google Analytics jederzeit widersprechen, indem Sie das von Google unter tools.google.com/dlpage/gaoptout?hl=de angebotene Browser-Add-on herunterladen und installieren. Die mit Google Analytics verarbeiteten und gespeicherten Analysedaten werden von uns nach 14 Monaten automatisch gelöscht.
+
+#### 14.5 Empfänger und Übermittlung in Drittstaaten
+
+Google Analytics ist für uns laut der deutschen Datenschutzaufsichtsbehörden (Datenschutzkonferenz) in gemein-samer Verantwortlichkeit an der Datenverarbeitung tätig. Vor diesem Hintergrund haben wir auch die „Google Measurement Controller-Controller Data Protection Terms“ mit Google abgeschlossen. Google verarbeitet Ihre personenbezogenen Daten auch in den USA.
+
+### 15. CONTENT DELIVERY NETWORK (CDN)
+
+#### 15.1 Beschreibung der Verarbeitung
+
+Unsere Webseite verwendet sogenannte Content Delivery Networks (CDN). CDNs bewirken, dass die Ladezeit gängiger JavaScript- und CSS-Bibliotheken, sowie Bild-Icons verkürzt wird, weil die Dateien von schnellen, stand-ortnahen oder wenig ausgelasteten Servern externer Dienstleister übertragen werden. Ein weiterer Vorteil im Vergleich zu einer lokalen Speicherung der JavaScript- und CSS-Bibliotheken, sowie Bild-Icons auf unserem Server besteht darin, dass die Dateien von den externen Dienstleistern auf regelmäßig Sicherheit überprüft und aktuell gehalten werden. Wir haben für die Umsetzung einiger Programmierfunktionen auf unserer Webseite JavaScript- und CSS-Bibliotheken des externen Dienstleisters  eingebunden. Wenn Sie unsere Webseite besuchen, wird eine Verbindung zu den Servern der genannten externen Dienste hergestellt und dabei die JavaScript- und CSS-Bibliothek, sowie Bild-Icons in unsere Webseite geladen. Hierdurch wird an die externen Dienstleister über-mittelt, welche Webseite Sie besucht haben. Ggf. wird auch Ihre IP-Adresse übertragen. Um die Ausführung von JavaScript insgesamt zu verhindern, können Sie in Ihrem Browser einen JavaScript-Blocker installieren. 
+
+#### 15.2 Zweck
+
+Die Verarbeitung erfolgt, um die Ladezeit unserer Webseite verkürzen und JavaScript- und CSS-Bibliotheken, sowie Bild-Icons schnell und sicher einbinden zu können.
+
+#### 15.3 Rechtsgrundlage
+
 Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 14.2 benannten Zweck. 
 
-#### 14.4 Empfänger und Übermittlung in Drittstaaten 
+#### 15.4 Empfänger und Übermittlung in Drittstaaten 
 
 Durch die Einbindung der JavaScript- und CSS-Bibliotheken, sowie Bild-Icons werden Ihre Daten an eines der nach-folgenden CDNs übermittelt: Vercel CDN, betrieben von der Vercel, Inc.340 S Lemon Ave #4133 Walnut, CA 91789, USA
 
 ## V. Sicherheitsmaßnahmen 
 
-### 15. Sicherheitsmaßnahmen
+### 16. Sicherheitsmaßnahmen
 
 Um Ihre persönlichen Daten vor fremdem Zugriff zu schützen, haben wir unsere Webseite mit einem SSL- bzw. TLS-Zertifikat versehen. SSL steht für „Secure-Sockets-Layer“ und TLS für „Transport Layer Security“ und ver-schlüsselt die Kommunikation von Daten zwischen einer Webseite und dem Endgerät des Nutzers. Sie erkennen die aktive SSL- bzw. TLS-Verschlüsselung an einem kleinen Schloss-Logo, das ganz links in der Adresszeile des Browsers angezeigt wird.
 
 ## VI. Ihre Rechte 
 
-### 16. Betroffenenrechte
+### 17. Betroffenenrechte
 
 Im Hinblick auf die oben beschriebene Datenverarbeitung durch unser Unternehmen stehen Ihnen die folgenden Betroffenenrechte zu:
 
-#### 16.1 Auskunft (Art. 15 DSGVO)
+#### 17.1 Auskunft (Art. 15 DSGVO)
 
 Sie haben das Recht, von uns eine Bestätigung darüber zu verlangen, ob wir Sie betreffende personenbezogene Daten verarbeiten. Ist dies der Fall, so haben sie unter den in Art. 15 DSGVO genannten Voraussetzungen ein Recht auf Auskunft über diese personenbezogenen Daten und auf die in Art. 15 DSGVO im einzelnen aufgeführten Informationen.
 
-#### 16.2 Berichtigung (Art. 16 DSGVO)
+#### 17.2 Berichtigung (Art. 16 DSGVO)
 
 Sie haben das Recht, von uns unverzüglich die Berichtigung Sie betreffender unrichtiger personenbezogener Daten und ggf. die Vervollständigung unvollständiger personenbezogener Daten zu verlangen.
 
-#### 16.3 Löschung (Art. 17 DSGVO)
+#### 17.3 Löschung (Art. 17 DSGVO)
 
 Sie haben das Recht, von uns zu verlangen, dass Sie betreffende personenbezogene Daten unverzüglich gelöscht werden, sofern einer der in Art. 17 DSGVO im Einzelnen aufgeführten Gründe zutrifft, z. B. wenn Ihre Daten für die von uns verfolgten Zwecke nicht mehr benötigt werden.
 
-#### 16.4 Einschränkung der Datenverarbeitung (Art. 18 DSGVO)
+#### 17.4 Einschränkung der Datenverarbeitung (Art. 18 DSGVO)
 
 Sie haben das Recht, von uns die Einschränkung der Verarbeitung zu verlangen, wenn eine der in Art. 18 DSGVO aufgeführten Voraussetzungen gegeben ist, z. B. wenn Sie die Richtigkeit Ihrer personenbezogenen Daten be-streiten, wird die Datenverarbeitung für die Dauer eingeschränkt, die uns die Überprüfung der Richtigkeit Ihrer Daten ermöglicht.
 
-#### 16.5 Datenübertragbarkeit (Art. 20 DSGVO)
+#### 17.5 Datenübertragbarkeit (Art. 20 DSGVO)
 
 Sie haben das Recht, unter den in Art. 20 DSGVO aufgeführten Voraussetzungen, die Herausgabe der Sie betref-fenden Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu verlangen.
 
-#### 16.6 Widerruf von Einwilligungen (Art. 7 Abs. 3 DSGVO)
+#### 17.6 Widerruf von Einwilligungen (Art. 7 Abs. 3 DSGVO)
 
 Sie haben das Recht, bei einer Verarbeitung, die auf einer Einwilligung beruht, Ihre Einwilligung jederzeit zu widerrufen. Der Widerruf gilt ab dem Zeitpunkt seiner Geltendmachung. Er wirkt mit anderen Worten für die Zu-kunft. Die Verarbeitung wird durch den Widerruf der Einwilligung also nicht rückwirkend rechtswidrig.
 
-#### 16.7 Beschwerde (Art. 77 DSGVO)
+#### 17.7 Beschwerde (Art. 77 DSGVO)
 
 Wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt, haben Sie das Recht auf Beschwerde bei einer Aufsichtsbehörde. Sie können dieses Recht bei einer Aufsichtsbehörde in dem EU-Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes geltend machen.
 
-#### 16.8 Verbot automatisierter Entscheidungen/Profiling (Art. 22 DSGVO)
+#### 17.8 Verbot automatisierter Entscheidungen/Profiling (Art. 22 DSGVO)
 
 Entscheidungen, die für Sie rechtliche Folge nach sich ziehen oder Sie erheblich beeinträchtigen, dürfen nicht ausschließlich auf eine automatisierte Verarbeitung personenbezogener Daten – einschließlich eines Profiling – gestützt werden. Wir teilen Ihnen mit, dass wir im Hinblick auf Ihre personenbezogenen Daten keine automati-sierte Entscheidungsfindung einschließlich Profiling einsetzen.
 
-#### 16.9 Widerspruchsrecht (Art. 21 DSGVO)
+#### 17.9 Widerspruchsrecht (Art. 21 DSGVO)
 
 Wenn wir personenbezogene Daten von Ihnen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (zur Wahrung über-wiegender berechtigten Interessen) verarbeiten, haben Sie das Recht, unter den in Art. 21 DSGVO aufgeführten Voraussetzungen dagegen Widerspruch einzulegen. Dies gilt jedoch nur, soweit Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben. Nach einem Widerspruch verarbeiten wir Ihre personenbezogenen Daten nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen. Wir müssen die Verarbeitung ebenfalls nicht einstellen, wenn sie der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen dient. In jedem Fall – auch unabhängig von einer besonderen Situation – haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung Ihrer per-sonenbezogenen Daten für Direktwerbung einzulegen.
 
-**Stand: Juli 2022**
+**Stand: Oktober 2022**
 
