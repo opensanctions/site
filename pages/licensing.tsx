@@ -74,7 +74,7 @@ export default function Licensing({ sanctions_count, default_count }: InferGetSt
                   parties, or include our graph in your own data products.
                 </Card.Text>
                 <ul>
-                  <li>60+ data sources</li>
+                  <li>full set of data sources</li>
                   <li>standardised data format</li>
                   <li>cross-list de-duplication</li>
                   <li>complex relationship graph</li>
