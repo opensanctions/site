@@ -51,7 +51,7 @@ function ArticleItem({ article }: ArticleProps) {
     <li key={article.slug}>
       {article.image_url && (
         <div className={styles.articleListImage}>
-          <Image src={article.image_url} width={200} height={100} />
+          <Image src={article.image_url} width={200} height={100} alt={article.title} />
         </div>
       )}
       <p className={styles.articleListTitle}>

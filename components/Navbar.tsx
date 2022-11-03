@@ -22,7 +22,7 @@ export default function NavbarSection({ activeSection }: NavbarSectionProps) {
     <Navbar bg="light" expand="lg" className={styles.navBar}>
       <Container>
         <Link href="/" passHref>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <img
               src="/static/ura/logo_text.svg"
               width="190"
@@ -35,19 +35,19 @@ export default function NavbarSection({ activeSection }: NavbarSectionProps) {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="justify-content-end">
-            <Link href="/research/" passHref>
+            <Link href="/research/" passHref legacyBehavior>
               <Nav.Link className={styles.navItem} active={inResearch}>Research</Nav.Link>
             </Link>
-            <Link href="/datasets/" passHref>
+            <Link href="/datasets/" passHref legacyBehavior>
               <Nav.Link className={styles.navItem} active={inDataset}>Datasets</Nav.Link>
             </Link>
-            <Link href="/showcase/" passHref>
+            <Link href="/showcase/" passHref legacyBehavior>
               <Nav.Link className={styles.navItem} active={inShowcase}>Showcase</Nav.Link>
             </Link>
-            <Link href="/docs/usage/" passHref>
+            <Link href="/docs/usage/" passHref legacyBehavior>
               <Nav.Link className={styles.navItem} active={inDocumentation}>Documentation</Nav.Link>
             </Link>
-            <Link href="/docs/about/" passHref>
+            <Link href="/docs/about/" passHref legacyBehavior>
               <Nav.Link className={styles.navItem} active={inAbout}>About</Nav.Link>
             </Link>
           </Nav>

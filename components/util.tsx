@@ -22,7 +22,7 @@ type RoutedNavLinkProps = {
 export function RoutedNavLink({ href, children }: React.PropsWithChildren<RoutedNavLinkProps>) {
   const router = useRouter()
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref legacyBehavior>
       <Nav.Link active={router.asPath == href}>{children}</Nav.Link>
     </Link>
   )
