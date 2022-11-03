@@ -16,7 +16,7 @@ import { fetchJsonUrl } from '../../lib/data';
 import { API_URL } from '../../lib/constants';
 import { IAccountInfo, IAccountUsage } from '../../lib/types';
 import { PropsWithChildren } from 'react';
-import { FormattedDate, Summary } from '../../components/util';
+import { FormattedDate, Money, Summary } from '../../components/util';
 
 
 import styles from '../../styles/Account.module.scss'
@@ -54,7 +54,7 @@ function UsageTable({ usage }: UsageTableProps) {
             <tbody>
               {usage.dates.map((date) => <>
                 {date.routes.map((route, ridx) => (
-                  <tr>
+                  <tr key={ridx}>
                     {ridx == 0 && (
                       <td rowSpan={date.routes.length}>{date.date}</td>
                     )}
@@ -221,7 +221,7 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
                 <th>
                   Billing
                 </th>
-                <td colSpan={3}>
+                <td colSpan={info.charge_info ? 1 : 3}>
                   {account.stripe_customer_id && (
                     <>
                       <p>Your account is linked to a Stripe subscription.</p>
@@ -234,6 +234,30 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
                     <>Your account does not use automatic billing</>
                   )}
                 </td>
+                {info.charge_info !== undefined && (
+                  <>
+                    <th>
+                      Cost
+                    </th>
+                    <td>
+                      <>
+                        <div>
+                          {'Charges incurred: '}
+                          <Money value={info.charge_info.total / 100.0} currency={info.charge_info.currency} />
+                        </div>
+                        <div className="text-tiny">
+                          {'Billing period: '}
+                          <FormattedDate date={info.charge_info.start_date} />
+                          {' to '}
+                          <FormattedDate date={info.charge_info.end_date} />
+                        </div>
+                        <div className="text-tiny">
+                          Usage is reported/updated daily.
+                        </div>
+                      </>
+                    </td>
+                  </>
+                )}
               </tr>
             </tbody>
           </Table>

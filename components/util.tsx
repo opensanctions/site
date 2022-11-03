@@ -42,6 +42,17 @@ export function Numeric({ value }: NumericProps) {
   return <span>{fmt.format(value)}</span>;
 }
 
+type MoneyProps = {
+  value: number
+  currency: string
+}
+
+export function Money({ value, currency }: MoneyProps) {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+  const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() });
+  return <span>{fmt.format(value)}</span>;
+}
+
 type NumericBadgeProps = {
   value?: number | null
   bg?: string

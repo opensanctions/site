@@ -261,7 +261,16 @@ export interface IAccountUsage {
   total: number
 }
 
+export interface IChargeInfo {
+  total: number
+  total_excluding_tax: number
+  currency: string
+  start_date: string
+  end_date: string
+}
+
 export interface IAccountInfo {
   account: IAccount
   usage: IAccountUsage
+  charge_info?: IChargeInfo
 }

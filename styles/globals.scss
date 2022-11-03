@@ -140,6 +140,11 @@ th.narrow {
     }
 }
 
+.text-tiny {
+    font-size: 0.8em;
+    color: $text-muted;
+}
+
 .position-fixed {
     position: fixed;
     // overflow-y: scroll;
