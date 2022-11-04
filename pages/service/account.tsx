@@ -234,7 +234,7 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
                     <>Your account does not use automatic billing</>
                   )}
                 </td>
-                {info.charge_info !== undefined && (
+                {!!info.charge_info && (
                   <>
                     <th>
                       Cost
