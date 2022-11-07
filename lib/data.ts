@@ -168,6 +168,9 @@ export async function getEntityDatasets(entity: IEntityDatum | Entity): Promise<
 }
 
 export function isBlocked(entity: IEntityDatum | Entity): boolean {
+  if (BLOCKED_ENTITIES.indexOf(entity.id) !== -1) {
+    return true;
+  }
   const joined = intersection(entity.referents, BLOCKED_ENTITIES);
   return joined.length > 0;
 }
