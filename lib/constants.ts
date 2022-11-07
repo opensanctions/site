@@ -19,7 +19,7 @@ export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];
 
 export const SPACER = " · ";
 
-export const BLOCKED_ENTITIES = ['ofac-9591', 'gb-coh-ydbwjewipbc3ibij62kywaoyfm4'];
+export const BLOCKED_ENTITIES = ['ofac-9591', 'gb-coh-ydbwjewipbc3ibij62kywaoyfm4', 'addr-bf1f426e322e664bbc9f783fe0c277675c7c51cd'];
 export const ENTITY_WARNINGS: { [name: string]: string } = {
   'Q4230633': 'The contents of this page have been modified in response to a legal threat on behalf of Mr. Kondrashev.'
 }
