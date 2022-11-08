@@ -38,6 +38,20 @@ export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<
   return await data.json();
 }
 
+export async function fetchObject<T>(path: string, query: any = undefined, authz: boolean = true): Promise<T> {
+  const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
+  const apiUrl = queryString.stringifyUrl({
+    'url': `${API_URL}${path}`,
+    'query': query
+  })
+  const data = await fetch(apiUrl, { headers });
+  if (!data.ok) {
+    throw Error(`Backend error (${data.status})`);
+  }
+  return await data.json() as T;
+}
+
+
 export async function fetchIndex(): Promise<IIndex> {
   return index as IIndex
 }
@@ -71,20 +85,13 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
 }
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
-  const apiUrl = queryString.stringifyUrl({
-    'url': `${API_URL}/statements`,
-    'query': {
-      'limit': 1000,
-      'dataset': 'sanctions',
-      'target': true,
-      'prop': 'createdAt',
-      'sort': 'value:desc',
-    }
+  const statements = await fetchObject<IStatementAPIResponse>(`${API_URL}/statements`, {
+    'limit': 1000,
+    'dataset': 'sanctions',
+    'target': true,
+    'prop': 'createdAt',
+    'sort': 'value:desc',
   })
-  const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
-  if (statements === null) {
-    return []
-  }
   //const canonicalised = new RegExp('(^NK-.*|Q\\d*=)');
   // const canonicalised = new RegExp('^NK-.*');
   const entities: Array<ISitemapEntity> = statements.results
@@ -95,20 +102,13 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
 
 export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecentEntity>> {
   const index = await fetchIndex();
-  const apiUrl = queryString.stringifyUrl({
-    'url': `${API_URL}/statements`,
-    'query': {
-      'limit': 25,
-      'dataset': dataset.name,
-      'target': true,
-      'prop': 'id',
-      'sort': 'first_seen:desc',
-    }
+  const statements = await fetchObject<IStatementAPIResponse>(`${API_URL}/statements`, {
+    'limit': 25,
+    'dataset': dataset.name,
+    'target': true,
+    'prop': 'id',
+    'sort': 'first_seen:desc',
   })
-  const statements = await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
-  if (statements === null) {
-    return [];
-  }
   const promises = statements.results
     .map(s => s.canonical_id)
     .map(id => fetchJsonUrl(`${API_URL}/entities/${id}?nested=false`));
