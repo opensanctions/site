@@ -1,7 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Model } from '../lib/ftm/model';
-import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
@@ -10,10 +9,10 @@ import Container from 'react-bootstrap/Container';
 import Layout from '../components/Layout'
 import Research from '../components/Research';
 import { ISearchAPIResponse } from '../lib/types';
-import { fetchIndex, fetchJsonUrl, fetchObject, getDatasets } from '../lib/data';
+import { fetchIndex, fetchObject, getDatasets } from '../lib/data';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../components/Search';
-import { API_URL, SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
+import { SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
 import { FormattedDate, ResponsePagination } from '../components/util';
 
 import styles from '../styles/Search.module.scss'
@@ -107,18 +106,14 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const query = '' + (context.query.q || '');
   const scopeName = context.query.scope || SEARCH_DATASET;
   const schemaName = context.query.schema || SEARCH_SCHEMA;
-  const apiUrl = queryString.stringifyUrl({
-    'url': `${API_URL}/search/${scopeName}`,
-    'query': {
-      ...context.query,
-      'limit': 25,
-      'fuzzy': 'false',
-      'simple': 'true',
-      'schema': schemaName
-    }
-  })
-
-  const response = await fetchObject<ISearchAPIResponse>(apiUrl);
+  const params = {
+    ...context.query,
+    'limit': 25,
+    'fuzzy': 'false',
+    'simple': 'true',
+    'schema': schemaName
+  }
+  const response = await fetchObject<ISearchAPIResponse>(`/search/${scopeName}`, params);
   return {
     props: {
       response,

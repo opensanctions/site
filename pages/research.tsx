@@ -1,5 +1,4 @@
 import React from 'react';
-import queryString from 'query-string';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -7,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Layout from '../components/Layout'
 import Research from '../components/Research';
 import { ISearchAPIResponse } from '../lib/types';
-import { fetchJsonUrl, fetchObject } from '../lib/data';
+import { fetchObject } from '../lib/data';
 import { InferGetStaticPropsType } from 'next';
 import { SearchFacet } from '../components/Search';
 import { API_URL, SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
@@ -57,14 +56,11 @@ export default function ResearchIntro({ response }: InferGetStaticPropsType<type
 
 
 export async function getStaticProps() {
-  const apiUrl = queryString.stringifyUrl({
-    'url': `${API_URL}/search/${SEARCH_DATASET}`,
-    'query': {
-      'limit': 0,
-      'schema': SEARCH_SCHEMA
-    }
-  })
-  const response = await fetchObject<ISearchAPIResponse>(apiUrl);
+  const params = {
+    'limit': 0,
+    'schema': SEARCH_SCHEMA
+  };
+  const response = await fetchObject<ISearchAPIResponse>(`/search/${SEARCH_DATASET}`, params);
   return {
     props: {
       response
