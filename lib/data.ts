@@ -38,6 +38,14 @@ export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<
   return await data.json();
 }
 
+export async function fetchObjectMaybe<T>(path: string, query: any = undefined, authz: boolean = true): Promise<T | null> {
+  try {
+    return await fetchObject<T>(path, query, authz);
+  } catch {
+    return null;
+  }
+}
+
 export async function fetchObject<T>(path: string, query: any = undefined, authz: boolean = true): Promise<T> {
   const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
   const apiUrl = queryString.stringifyUrl({
@@ -46,7 +54,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   })
   const data = await fetch(apiUrl, { headers });
   if (!data.ok) {
-    throw Error(`Backend error (${data.status})`);
+    throw Error(`Backend error: ${data.text}`);
   }
   return await data.json() as T;
 }
@@ -111,7 +119,7 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
   })
   const promises = statements.results
     .map(s => s.canonical_id)
-    .map(id => fetchObject<IEntityDatum>(`/entities/${id}?nested=false`));
+    .map(id => fetchObjectMaybe<IEntityDatum>(`/entities/${id}?nested=false`));
   const responses = await Promise.all(promises)
   const seen = new Array<string>();
   const model = new Model(index.model);
@@ -121,7 +129,7 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
     }
     seen.push(stmt.canonical_id);
     const data = responses.find((d) => d !== null && d.id === stmt.canonical_id);
-    if (data === undefined) {
+    if (data === undefined || data === null) {
       return undefined
     }
     const entity = model.getEntity(data)
@@ -149,11 +157,11 @@ export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
   if (entityId === undefined || entityId === null) {
     return null;
   }
-  const raw = await fetchJsonUrl(`${API_URL}/entities/${entityId}`);
+  const raw = await fetchObjectMaybe<IEntityDatum>(`/entities/${entityId}`);
   if (raw === undefined || raw === null || raw.id === undefined) {
     return null
   }
-  return raw as IEntityDatum;
+  return raw;
 }
 
 export async function getEntityDatasets(entity: IEntityDatum | Entity): Promise<IDataset[]> {

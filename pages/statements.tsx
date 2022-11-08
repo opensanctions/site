@@ -9,14 +9,12 @@ import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container';
 
 import Layout from '../components/Layout'
-import { IStatementAPIResponse } from '../lib/types';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { ResponsePagination } from '../components/util';
 import styles from '../styles/Statement.module.scss'
-import { API_URL } from '../lib/constants';
-import { FormattedDate, JSONLink } from '../components/util';
+import { FormattedDate } from '../components/util';
 import { AspectRatioFill, Link45deg } from 'react-bootstrap-icons';
-import { fetchJsonUrl, getStatements } from '../lib/data';
+import { getStatements } from '../lib/data';
 
 type ExpandProps = {
   href: string

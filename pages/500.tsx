@@ -5,17 +5,17 @@ import Layout from '../components/Layout'
 
 import styles from '../styles/Error.module.scss'
 
-export default function NotFoundError() {
+export default function ServerError() {
   return (
-    <Layout.Base title="Page not found">
+    <Layout.Base title="Server error">
       <Container>
         <h1 className={styles.errorTitle}>
-          Page not found
+          Server error
         </h1>
         <p className={styles.errorSummary}>
-          The page you have requested cannot be found. Try visiting
-          the <Link href="/datasets/">dataset listing</Link> to explore all
-          material published on this site.
+          There was an error while running processing your request.
+          Please try again in a few moments, or <Link href="/contact/">contact us</Link>
+          to report the issue.§
         </p>
       </Container>
     </Layout.Base>

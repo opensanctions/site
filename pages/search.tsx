@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Layout from '../components/Layout'
 import Research from '../components/Research';
 import { ISearchAPIResponse } from '../lib/types';
-import { fetchIndex, fetchJsonUrl, getDatasets } from '../lib/data';
+import { fetchIndex, fetchJsonUrl, fetchObject, getDatasets } from '../lib/data';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../components/Search';
 import { API_URL, SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
@@ -118,7 +118,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
   })
 
-  const response = await fetchJsonUrl(apiUrl) as ISearchAPIResponse;
+  const response = await fetchObject<ISearchAPIResponse>(apiUrl);
   return {
     props: {
       response,
