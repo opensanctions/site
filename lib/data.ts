@@ -85,7 +85,7 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
 }
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
-  const statements = await fetchObject<IStatementAPIResponse>(`${API_URL}/statements`, {
+  const statements = await fetchObject<IStatementAPIResponse>(`/statements`, {
     'limit': 1000,
     'dataset': 'sanctions',
     'target': true,
@@ -102,7 +102,7 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
 
 export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecentEntity>> {
   const index = await fetchIndex();
-  const statements = await fetchObject<IStatementAPIResponse>(`${API_URL}/statements`, {
+  const statements = await fetchObject<IStatementAPIResponse>(`/statements`, {
     'limit': 25,
     'dataset': dataset.name,
     'target': true,
@@ -111,8 +111,8 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
   })
   const promises = statements.results
     .map(s => s.canonical_id)
-    .map(id => fetchJsonUrl(`${API_URL}/entities/${id}?nested=false`));
-  const responses = await Promise.all(promises) as IEntityDatum[]
+    .map(id => fetchObject<IEntityDatum>(`/entities/${id}?nested=false`));
+  const responses = await Promise.all(promises)
   const seen = new Array<string>();
   const model = new Model(index.model);
   const results = statements.results.map((stmt) => {
@@ -138,14 +138,11 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
 }
 
 export async function getStatements(query: any, limit: number = 100): Promise<IStatementAPIResponse | null> {
-  const apiUrl = queryString.stringifyUrl({
-    'url': `${API_URL}/statements`,
-    'query': {
-      ...query,
-      'limit': limit,
-    }
-  })
-  return await fetchJsonUrl(apiUrl) as IStatementAPIResponse;
+  const params = {
+    ...query,
+    'limit': limit,
+  };
+  return await fetchObject<IStatementAPIResponse>(`/statements`, params);
 }
 
 export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
