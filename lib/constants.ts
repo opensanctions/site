@@ -22,7 +22,9 @@ export const SPACER = " · ";
 export const BLOCKED_ENTITIES = [
   'ofac-9591',
   'gb-coh-ydbwjewipbc3ibij62kywaoyfm4',
-  'addr-bf1f426e322e664bbc9f783fe0c277675c7c51cd'
+  'addr-bf1f426e322e664bbc9f783fe0c277675c7c51cd',
+  'gb-coh-uiboqdf8mfm6bnau27gi0qspgla',
+  'addr-049628bc181af349e9c3b677c654322a920eecb6',
 ];
 export const ENTITY_WARNINGS: { [name: string]: string } = {
   'Q4230633': 'The contents of this page have been modified in response to a legal threat on behalf of Mr. Kondrashev.'
