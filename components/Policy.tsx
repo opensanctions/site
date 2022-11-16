@@ -38,8 +38,7 @@ export function BlockedEntity({ entity }: BlockedEntityProps) {
             <Alert.Heading>Blocked entity</Alert.Heading>
             <p>
               The entity with ID <code>{entity.id}</code> has been removed from the
-              OpenSanctions website due to unusual legal circumstances. It is still
-              contained in the API and bulk data products to maintain list completeness.
+              OpenSanctions website due to unusual legal circumstances.
             </p>
           </Alert>
         </Container>
