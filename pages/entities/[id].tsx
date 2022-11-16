@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 
 import Layout from '../../components/Layout';
 import Research from '../../components/Research';
-import { fetchIndex, getEntity, getEntityDatasets, getStatements, isBlocked } from '../../lib/data';
+import { fetchIndex, getEntity, getEntityDatasets, getStatements, isBlocked, isIndexRelevant } from '../../lib/data';
 import { getSchemaEntityPage } from '../../lib/schema';
 import { Entity, IEntityDatum, IModelDatum, Model } from '../../lib/ftm';
 import { BlockedEntity, EntityWarning, LicenseInfo } from '../../components/Policy';
@@ -17,7 +18,7 @@ import Dataset from '../../components/Dataset';
 import { EntityFactsheet, EntityNote, EntitySchemaTable, EntityTopics } from '../../components/Entity';
 
 import styles from '../../styles/Entity.module.scss'
-import { PropertyValues } from '../../components/Property';
+
 
 interface EntityPageProps {
   entityData: IEntityDatum
@@ -41,6 +42,11 @@ export default function EntityPage({ entityData, blocked, modelData, datasets, n
   const externals = datasets.filter(isExternal);
   return (
     <Layout.Base title={entity.caption} structured={structured} activeSection="research">
+      {!isIndexRelevant(entity) && (
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+      )}
       <Research.Context>
         <Container>
           <Row>

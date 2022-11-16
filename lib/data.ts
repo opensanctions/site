@@ -180,3 +180,14 @@ export function isBlocked(entity: IEntityDatum | Entity): boolean {
   return joined.length > 0;
 }
 
+export function isIndexRelevant(entity: Entity): boolean {
+  if (isBlocked(entity)) {
+    return false;
+  }
+  const topics = entity.getProperty('topics');
+  if (topics.indexOf("sanction") !== -1) {
+    return true;
+  }
+  return false;
+}
+
