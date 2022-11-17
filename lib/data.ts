@@ -94,11 +94,12 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
   const statements = await fetchObject<IStatementAPIResponse>(`/statements`, {
-    'limit': 1000,
+    'limit': 2000,
     'dataset': 'sanctions',
     'target': true,
-    'prop': 'createdAt',
-    'sort': 'value:desc',
+    'prop': 'topics',
+    'value': 'sanction',
+    'sort': 'first_seen:desc',
   })
   //const canonicalised = new RegExp('(^NK-.*|Q\\d*=)');
   // const canonicalised = new RegExp('^NK-.*');
