@@ -10,7 +10,7 @@ import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
 import { Entity } from '../lib/ftm';
 import { IDataset, isCollection, IStatement } from '../lib/types';
-import { isBlocked } from '../lib/data';
+import { isBlocked, isIndexRelevant } from '../lib/data';
 import { PropertyValues } from './Property';
 import { FormattedDate, HelpLink, SpacedList, UnofficialBadge } from './util';
 import Dataset from './Dataset';
@@ -38,12 +38,12 @@ export interface EntityDisplayProps {
   via?: Property
 }
 
-
 export function EntityLink({ entity }: EntityDisplayProps) {
+  const rel = isIndexRelevant(entity) ? '' : 'nofollow'
   if (isBlocked(entity)) {
-    return <Link href={`/entities/${entity.id}/`}>[blocked entity]</Link>
+    return <Link href={`/entities/${entity.id}/`} rel={rel}>[blocked entity]</Link>
   }
-  return <Link href={`/entities/${entity.id}/`}>{entity.caption}</Link>
+  return <Link href={`/entities/${entity.id}/`} rel={rel}>{entity.caption}</Link>
 }
 
 
