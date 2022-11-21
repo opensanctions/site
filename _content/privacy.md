@@ -6,300 +6,308 @@ summary: |
     and what rights the subjects of our data processing have.
 ---
 
-## I. Einleitung und Begriffe
+## I. Introduction and terms
 
-### 1. ALLGEMEIN
+### 1. GENERAL
 
-OpenSanctions betreibt eine Plattform, die die wichtigsten Sanktionslisten, sowie Datenbanken über politisch exponierte Personen und Personen von öffentlichem Interesse in einem einzigen, leicht zu nutzenden Datensatz zusammenführt. Die Daten und der zu ihrer Erstellung verwendete Code werden kostenlos zur Verfügung gestellt. Die Nutzung für unkommerzielle insb. für journalistische Zwecke bedarf keines weiteren Vertrages und ist ebenfalls kostenlos möglich. Hingegen bedarf die kommerzielle Nutzung durch Unternehmen im Rahmen ihres Geschäftsbetriebes (sei es unternehmensintern oder in einem Produkt) des Abschlusses eines kostenpflichtigen Lizenzvertrages. Mit dem Betrieb von OpenSanctions und der Webseite mit der URL https://www.opensanctions.org (im Folgenden „Webseite“ genannt) verarbeiten wir personenbezogene Daten. Diese werden von uns vertraulich behandelt und nach den geltenden Gesetzen – insbesondere der Datenschutzgrundverordnung (DSGVO), des Bundesdatenschutzgesetzes (BDSG) und des Telekommunikation-Telemedien-Datenschutzgesetz (TTDSG) – verarbeitet.
+OpenSanctions operates a platform that brings together the most relevant sanctions lists, as well as databases on politically exposed persons and persons of public interest, into a single, easy-to-use dataset. The data and the code used to create it are provided for public download. The use for non-commercial purposes, especially for journalistic purposes, does not require any further contract and is also possible free of charge. On the other hand, commercial use by companies within the scope of their business operations (either internally or in a product) requires the conclusion of a license agreement for which a fee is charged. By operating OpenSanctions and the website with the URL https://www.opensanctions.org (hereinafter referred to as the "Website"), we process personal data. These are treated carefully by us and processed in accordance with the applicable laws - in particular the German Data Protection Regulation (GDPR), the German Federal Data Protection Act (BDSG) and the Telecommunications Telemedia Data Protection Act (TTDSG).
 
-Mit diesen Datenschutzbestimmungen wollen wir Sie darüber informieren, welche personenbezogenen Daten wir von Ihnen erheben, zu welchen Zwecken und auf welcher Rechtsgrundlage wir sie verwenden und gegebenenfalls wem wir sie offenlegen. Darüber hinaus werden wir Ihnen erklären, welche Rechte Ihnen zur Wahrung und Durchsetzung Ihres Datenschutzes zustehen.
+With these data protection provisions, we want to inform you about what personal data we collect from you, for what purposes and on what legal basis we use it and, if applicable, to whom we disclose it. In addition, we will explain to you what rights you have to protect and enforce your data privacy.
 
-### 2. BEGRIFFE
+### 2. TERMS
 
-Unsere Datenschutzbestimmungen enthalten Fachbegriffe, die in der DSGVO und dem BDSG stehen. Zu Ihrem besseren Verständnis wollen wir diese Begriffe in einfachen Worten vorab erklären:
+Our privacy policy contains technical terms that are in the GDPR and the BDSG. For your better understanding, we would like to explain these terms in simple terms in advance:
 
-#### 2.1 Personenbezogene Daten 
+#### 2.1 Personal data 
 
-„Personenbezogene Daten“ sind alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen (Art. 4 Nr. 1 DSGVO). Angaben einer identifizierten Person können z. B. der Name oder die E-Mail-Adresse sein. Personenbezogen sind aber auch Daten, bei denen die Identität nicht unmittelbar ersichtlich ist, sich aber ermitteln lässt, indem man eigene oder fremde Informationen kombiniert und so erfährt um wen es sich handelt. Eine Person wird z. B. über die Angabe Ihrer Anschrift oder Bankverbindung, Ihres Geburtsdatums oder Benutzernamens, Ihrer IP-Adressen und/oder Standortdaten identifizierbar. Relevant sind hier alle Informationen, die in irgendeiner Weise einen Rückschluss auf eine Person zulassen.
+"Personal data" is any information relating to an identified or identifiable individual (Art. 4 No. 1 GDPR). Information of an identified person can be, for example, the name or the email address. However, personal data is also data for which the identity is not immediately apparent, but can be determined by combining one's own information or that of others and thus finding out who it is. A person can be identified, for example, by providing your address or bank details, date of birth or user name, IP addresses and/or location data. Relevant here is all information that in any way allows a conclusion to be drawn about a person.
 
-#### 2.2 Verarbeitung
+#### 2.2 Processing
 
-Unter einer „Verarbeitung“ versteht Art. 4 Nr. 2 DSGVO jeden Vorgang im Zusammenhang mit personenbezogenen Daten. Dies betrifft insbesondere das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung, Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung von personenbezogenen Daten.
+Article 4 No. 2 GDPR understands a "processing" to be any operation in connection with personal data. This applies in particular to the collection, recording, organization, arrangement, storage, adaptation or alteration, retrieval, consultation, use, disclosure, transmission, dissemination or other form of making available, alignment or combination, restriction, erasure or destruction of personal data.
 
-## II. Verantwortlicher und Datenschutzbeauftragter 
+## II. Person responsible and data protection officer 
 
-### 3. VERANTWORTLICHER
+### 3. RESPONSIBLE
 
-Verantwortlich für die Datenverarbeitung ist:<br/>
-Unternehmen: OpenSanctions / Friedrich Lindenberg („wir“)<br/>
-Anschrift: Schonensche Str. 43, 13189 Berlin<br/>
+Responsible for data processing is:<br/>
+Company: OpenSanctions / Friedrich Lindenberg („wir“)<br/>
+Address: Schonensche Str. 43, 13189 Berlin<br/>
 E-Mail: info@opensanctions.org<br/>
 
-### 4. DATENSCHUTZBEAUFTRAGTER
+### 4. DATA PROTECTION OFFICER
 
-Unser Unternehmen ist nicht zur Bestellung eines betrieblichen Datenschutzbeauftragten verpflichtet. Für Fragen und Anliegen zum Datenschutz auf unserer Webseite und in unserem  können Sie sich über die vorgenannten Kontaktdaten an uns wenden.
+Our company is not obliged to appoint a company data protection officer. For questions and concerns regarding data protection on our website and in our you can contact us via the aforementioned contact details.
 
-## III. Verarbeitungsrahmen 
+## III. Processing Framework 
 
-### 5. VERARBEITUNGSRAHMEN: BETRIEB VON OPENSANCTIONS (VERTRAG & WEBSEITE)
+### 5. PROCESSING FRAMEWORK: OPERATION OF OPENSANCTIONS (CONTRACT & WEBSITE).
 
-Im Rahmen des Betriebs von OpenSanctions und der dazugehörigen Webseite verarbeiten wir die nachfolgend im Abschnitt IV. im Einzelnen aufgeführten personenbezogenen Daten. Dabei unterscheiden wir zwischen Webseitenbesuchern bzw. Kunden einerseits, die das Angebot von OpenSanctions nutzen (nachfolgend „Nutzer“ genannt) und Personen andererseits, deren Daten sich in der Datenbank von OpenSanctions wiederfinden (nachfolgend „Personen im OpenSanctions-Datensatz“ genannt). 
+In the course of operating OpenSanctions and the associated website, we process the personal data listed in detail below in Section IV. In doing so, we distinguish between website visitors or customers, on the one hand, who use the OpenSanctions offering (hereinafter referred to as "Users") and individuals, on the other hand, whose data is reflected in the OpenSanctions database (hereinafter referred to as "Individuals in the OpenSanctions Database"). 
 
-Wir verarbeiten nur Daten von Nutzern, die diese aktiv auf der Webseite angeben (z.B. beim Vertragsschlus oder durch das Ausfüllen von Formularen) oder die sie bei der Nutzung unseres Angebotes automatisch zur Verfügung stellen. Nutzerdaten werden ausschließlich von uns verarbeitet und grundsätzlich nicht an Dritte verkauft, verlie-hen oder weitergegeben.
+We only process data of users that they actively provide on the website (e.g. when concluding a contract or by filling out forms) or that they automatically provide when using our offer. User data is processed exclusively by us and is not sold, lent or passed on to third parties.
 
-Die Daten von Personen im OpenSanctions-Datensatz haben wir nicht selbst erhoben. Diese stammen aus offiziellen staatlichen, suprastaatlichen oder internationalen öffentlichen Quellen. Diese Quellen sind im Einzelnen hier aufgeführt: https://www.opensanctions.org/datasets/. Sie sind für die Öffentlichkeit auf unserer Webseite einsehbar und durchsuchbar, sie können heruntergeladen und gem. unserer Nutzungsbedingungen verwendet werden.
+We have not collected the data of persons in the OpenSanctions data set ourselves. They originate from official governmental, suprastate or international public sources. These sources are listed in detail here: https://www.opensanctions.org/datasets/. They are viewable and searchable by the public on our website, and can be downloaded and used in accordance with our [Terms of Use](/docs/terms/).
 
-Sofern wir uns bei der Verarbeitung von personenbezogenen Daten der Hilfe externer Dienstleister bedienen, erfolgt dies im Rahmen einer sogenannten Auftragsverarbeitung, bei der wir als Auftraggeber unseren Auftragnehmern gegenüber weisungsbefugt sind. Zum Betrieb unserer Webseite setzen wir für das Hosting einen externen Dienstleister ein. Wir hosten unsere Webseite beim externen Anbieter Vercel, Inc. (Anschrift: 340 S Lemon Ave #4133 Walnut, CA 91789, USA, https://vercel.com/) im Rechenzentrumsstandort Global, edge runtime in Frankfurt a.M. Deutschland. Sollten bei einzelnen, der in Abschnitt IV. aufgeführten Verarbeitungen weitere externe Dienstleister zum Einsatz kommen, werden sie dort benannt.
+If we use the help of external service providers for the processing of personal data, this is done within the framework of so-called commissioned processing, in which we as the client are authorized to issue instructions to our contractors. To operate our website, we use an external service provider for hosting. We host our website with the external provider Vercel, Inc. (address: 340 S Lemon Ave #4133 Walnut, CA 91789, USA, https://vercel.com/) at the data center location Global, edge runtime in Frankfurt a.M. Germany. If further external service providers are used for individual processing operations listed in section IV, they will be named there.
 
-Eine Datenübermittlung in Drittstaaten findet durch uns im Übrigen nicht statt und ist auch nicht geplant. Über Ausnahmen von diesem Grundsatz werden wir in den nachfolgend dargestellten Verarbeitungen informieren. Eine etwaige Datenübermittlung in Drittstaaten erfolgt dann auf Grundlage der sogenannten EU-Standardvertragsklauseln. 
+We do not transfer data to third countries and do not plan to do so. We will provide information about exceptions to this principle in the processing operations described below. Any data transfer to third countries will then take place on the basis of the so-called EU standard contractual clauses. 
 
-## IV. Die Verarbeitung im Einzelnen 
+## IV. Processing in detail 
 
-### 6. OPENSANCTIONS DATENBANK
+### 6. OPENSANCTIONS DATABASE
 
-#### 6.1 Beschreibung der Verarbeitung
-Die zentrale Dienstleistung von OpenSanctions besteht darin, die die wichtigsten Sanktionslisten, sowie Datenbanken über politisch exponierte Personen und Personen von öffentlichem Interesse in einem einzigen, leicht zu nutzenden Datensatz zusammenzuführen und auf der Plattform zu veröffentlichen. 
-Die Daten von Personen im OpenSanctions-Datensatz werden nicht durch uns erhoben. Diese stammen von offiziellen staatlichen, suprastaatlichen oder internationalen Stellen. Diese Behörden und Organisationen haben die Datensätze erstellt und veröffentlicht. Sie enthalten sowohl Daten zu juristischen, als auch zu natürlichen Personen. Durch uns erfolgt lediglich eine Nachnutzung im Rahmen unseres Portals. Die auf OpenSanctions einbezogene Quellen sind im Einzelnen hier aufgeführt: https://www.opensanctions.org/datasets/. Die Daten der verschiedenen Quellen werden von uns in einer Datenbank zusammengeführt, konsolidiert und etwa um Duplikate bereinigt. Sie sind für die Öffentlichkeit auf unserer Webseite einsehbar und durchsuchbar, können heruntergeladen und gem. unserer Nutzungsbedingungen verwendet werden. Wir verarbeiten die folgenden Angaben Personen im OpenSanctions-Datensatz: Vorname, Name und ggf. Titel, Anschrift, Reisepassnummer, Staatsangehörigkeit, Datenquelle, Sanktionsbehörde. Hintergrundtext. OpenSanctions vergibt zudem für jeden Eintrag eine ID-Nummer und gibt die Quelle(n) an, aus denen ein Datensatz stammt. 
-Den OpenSanctions-Datensatz hosten wir in der Google Cloud (Unternehmen: Google Cloud EMEA Limited, Anschrift: Velasco, Clanwilliam Place, Dublin 2, Ireland, https://cloud.google.com/) im Rechenzentrumsstandort Frankfurt. Bei einem Besuch unserer Webseite findet kein Datenaustausch zwischen dem Endgerät des Nutzers und der Google Cloud statt. Vielmehr greift unsere Webseite auf die Datenbank zurück und generiert daraus statische Webseiten. Diese werden den Nutzern von den verwendeten Servern unseres Hostingdienstleisters Vercel ausgeliefert.
+#### 6.1 Description of processing
 
-#### 6.2 Zweck
+The core service of OpenSanctions is to bring together the most relevant sanctions lists, as well as databases on politically exposed persons and persons of public interest, into a single, easy-to-use dataset and publish them on the platform. 
 
-Die Verarbeitung erfolgt, um der Öffentlichkeit eine zentrale nutzerfreundliche Plattform für internationale Sanktionen, politisch exponierte Personen bzw. Personen von öffentlichem Interesse bereitstellen zu können. Dies soll zum einen für Transparenz in einem Bereich schaffen, der aufgrund einer Vielzahl von unterschiedlichen Sanktionslisten und sonstigen Datenquellen für die Zivilgesellschaft unübersichtlich und schwer zugänglich ist. Darüber hinaus fördert OpenSanctions die Einhaltung und Kontrolle von Sanktionen und erleichtert die Koruptionsbekämpfung. Für Journalist:innen dient die Plattform als Recherchewerkzeug. Unternehmen steht sie als Hilfsmittel zur Sanktionskontrolle/Sanktionslistenprüfung und damit zur Einhaltung gesetzlicher Vorgaben, etwa der Außenwirtschaft, Ausfuhrkontrolle oder der Geldwäscheprävention.
+The data of individuals in the OpenSanctions dataset are not collected by us. They come from official government, suprastate, or international agencies. These agencies and organizations have created and published the datasets. They contain data on legal entities as well as on natural persons. We only use the data within the framework of our portal. The sources included on OpenSanctions are listed in detail here: https://www.opensanctions.org/datasets/. The data from the various sources are combined by us in a database, consolidated and, for example, cleansed of duplicates. They are viewable and searchable by the public on our website, can be downloaded and used according to our terms of use. We process the following information individuals in the OpenSanctions record: first name, last name and, if applicable, title, address, passport number, nationality, data source, sanctioning authority. Background Text. OpenSanctions also assigns an ID number for each record and specifies the source(s) from which a record originated. 
 
-#### 6.3 Rechtsgrundlage
+We host the OpenSanctions dataset in the Google Cloud (Company: Google Cloud EMEA Limited, address: Velasco, Clanwilliam Place, Dublin 2, Ireland, https://cloud.google.com/) in the Frankfurt data center location. When visiting our website, no data exchange takes place between the user's terminal device and the Google Cloud. Rather, our website accesses the database and generates static web pages from it. These are delivered to the users by the servers used by our hosting service provider Vercel.
 
-Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 6.2 benannten Zweck. Im Hinblick auf die journalistischen Zwecke als Recherchehilfsmittel berufen wir uns zudem auf das Medienprivileg aus Art. 85 DSGVO i.V.m. § 19 Berliner Datenschutzgesetz (BlnDSG).
+#### 6.2 Purpose
 
-#### 6.4 Speicherdauer und abweichende Betroffenenrechte
+The processing is done in order to provide the public with a central user-friendly platform for international sanctions, politically exposed persons or persons of public interest. Additionally, our project is intended to create transparency in an area that is confusing and difficult for civil society to access due to a multitude of different sanctions lists and other data sources. Furthermore, OpenSanctions promotes compliance and control of sanctions and facilitates the fight against corruption. For journalists, the platform serves as a research tool. For companies, it serves as a tool for sanctions control/sanctions list checks and thus for compliance with legal requirements, such as foreign trade, export control or money laundering prevention.
 
-Die Daten von Personen im OpenSanctions-Datensatz werden solange auf OpenSanctions veröffentlicht, wie sie sich in der entsprechenden veröffentlichten Quelle befinden. Sofern eine Person etwa von einer Sanktionsliste gelöscht worden ist, wird sie auch im Zuge des regelmäßigen Abgleichs von OpenSanctions mit diesen Drittquellen aus der OpenSanctions-Datenbank entfernt.
+#### 6.3 Legal basis
 
-Abweichend von Ziffer 16 dieser Datenschutzbestimmungen bitten wir Personen im OpenSanctions-Datensatz insbesondere Ansprüche auf Berichtigung oder Löschung unmittelbar bei den offiziellen staatlichen, suprastaatlichen oder internationalen Stellen geltend zu machen, die die entsprechenden Listen führen. Weitere Informationen und Kontaktmöglichkeiten hinsichtlich der jeweiligen listenführenden Stellen [finden Sie hier](/docs/delisting/).
+Processing is necessary to protect the overriding legitimate interests of the controller (Art. 6(1)(f) GDPR). Our legitimate interest is the purposed named in 6.2. With regard to the journalistic purposes as a research aid, we also invoke the media privilege from Art. 85 GDPR in conjunction with. §19 of the Berlin Data Protection Act (BlnDSG).
 
-#### 6.5 Empfänger und Übermittlung in Drittstaaten
+#### 6.4 Storage period and deviating data subject rights
 
-Durch die Veröffentlichung im Internet sind die Daten weltweit zugänglich und können von jedermann unbeschränkt (d.h. insbesondere von beliebigen Dritten weltweit) angeschaut, abgerufen und verwendet werden. Die Datensätze lassen sich zudem mit Suchmaschinen auffinden. Die Daten können nicht nur von Nutzern von OpenSanctions heruntergeladen werden. Wir weisen darauf hin, dass im Internet verfügbare Daten von Dritten problemlos kopiert und weiterverbreitet werden können.
+The data of individuals in the OpenSanctions data set will be published on OpenSanctions for as long as they are in the corresponding published source. If an individual has been removed from a sanctions list, for example, he or she will also be removed from the OpenSanctions database in the course of OpenSanctions' regular reconciliation with these third-party sources.
 
-### 7. VERTRAG
+Notwithstanding Section 16 of this Privacy Policy, we specifically ask individuals in the OpenSanctions dataset to submit claims for correction or deletion directly to the official governmental, supra-governmental or international bodies that maintain the relevant lists. Further information and contact options regarding the respective listing bodies [can be found here](/docs/delisting/).
 
-#### 7.1 Beschreibung der Verarbeitung
+#### 6.5 Recipients and transfer to third countries
 
-Im Rahmen des Abschlusses und der Erfüllung des Vertrages zur kommerziellen Nutzung von OpenSanctions durch Unternehmen im Rahmen ihres Geschäftsbetriebes verarbeiten wir personenbezogene Daten unserer Vertragspartner. Dabei handelt es sich regelmäßig um die nachfolgenden Daten: Unternehmen, Anschrift, Bankverbindung, sowie von unseren Ansprechpartnern Anrede, Vor- und Nachname, E-Mail-Adresse, Telefonnummer (Festnetz und/oder Mobil).
+With its publication on the Internet, the data is accessible worldwide and can be viewed, accessed and used by anyone without restriction (i.e. in particular by any third party worldwide). The data records can also be found using search engines. The data can be downloaded not only by users of OpenSanctions. We would like to point out that data available on the internet can be easily copied and redistributed by third parties.
 
-#### 7.2 Zweck
+### 7. CONTRACT
 
-Die Datenverarbeitung erfolgt zur ordnungsgemäßen Erfüllung und Abwicklung des Nutzungsvertrages. Darüber hinaus benötigen wir die Daten zu Ihrer Identifikation als Vertragspartner, zur Korrespondenz mit Ihnen, zur Abrechnung unserer Leistungen, zur Abwicklung von evtl. vorliegenden Haftungsansprüchen sowie der Geltendmachung etwaiger Ansprüche gegen Sie. 
+#### 7.1 Description of processing
 
-#### 7.3 Rechtsgrundlage
+In the course of concluding and fulfilling the contract for the commercial use of OpenSanctions by companies in the course of their business operations, we process personal data of our contractual partners. This regularly involves the following data: Company, address, bank details, as well as for our contact persons: salutation, first and last name, e-mail address, telephone number (landline and/or mobile).
 
-Die Datenverarbeitung ist zum Abschluss und zur Abwicklung des Vertrages nach Art. 6 Abs. 1 S. 1 lit. b DSGVO erforderlich. Ohne die in Ziffer 7.1 genannten Daten sind uns eine Bearbeitung Ihres Antrages sowie die Erfüllung von Verpflichtungen aus dem Vertrag nicht möglich. 
+#### 7.2 Purpose
 
-#### 7.4 Speicherdauer
+The data processing is carried out for the proper fulfillment and processing of the user contract. In addition, we require the data for your identification as a contractual partner, for correspondence with you, for the billing of our services, for the settlement of any existing liability claims and the assertion of any claims against you. 
 
-Die Daten werden von uns gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr benötigt werden. Die im Rahmen des Vertragsschlusses und dessen Abwicklung von uns erhobenen und verarbeiteten personenbezogenen Daten werden bis zum Ablauf der gesetzlichen Aufbewahrungspflicht gespeichert und danach gelöscht, es sei denn, dass wir nach Artikel 6 Abs. 1 S. 1 lit. c DSGVO aufgrund von steuer- und handelsrechtlichen Aufbewahrungs- und Dokumentationspflichten (aus HGB, StGB oder AO) zu einer längeren Speicherung verpflichtet sind oder Sie in eine darüberhinausgehende Speicherung nach Art. 6 Abs. 1 S. 1 lit. a DSGVO eingewilligt haben.
+#### 7.3 Legal basis
 
-#### 7.5 Empfänger 
-Personenbezogene Daten von Ihnen werden wir grundsätzlich nicht an Dritte weitergeben. Eine Datenübermittlung erfolgt jedoch ggf. im Rahmen unserer Buchhaltung an unser externes Steuerbüro. 
+The data processing is necessary for the conclusion and execution of the contract according to Art. 6 para. 1 p. 1 lit. b GDPR. Without the data mentioned in section 7.1, we are unable to process your application and fulfill obligations arising from the contract. 
 
-### 8. BEREITSTELLUNG DER WEBSEITE UND SERVER-LOGFILES
+#### 7.4 Storage period
 
-#### 8.1 Beschreibung der Verarbeitung
-Bei jedem Aufruf der Webseite erfassen wir automatisch Informationen, die Ihr Browser an unseren Server übermittelt. Dabei handelt es sich um die folgenden Daten:
+We delete the data as soon as they are no longer required to achieve the purpose for which they were collected. The personal data collected and processed by us in the context of the conclusion of the contract and its execution will be stored until the expiry of the legal obligation to retain data and then deleted, unless we are obliged to store it for a longer period in accordance with Article 6 (1) sentence 1 lit. c GDPR due to tax and commercial law retention and documentation obligations (from HGB, StGB or AO) or you have consented to storage beyond this in accordance with Article 6 (1) sentence 1 lit. a GDPR.
 
-* IP-Adresse
-* die auf der Website aufgerufenen Unterseiten
-* das Datum und die Uhrzeit des Aufrufs der Website
-* Land und Ort aus dem ein Nutzer die Website besucht hat
+#### 7.5 Recipients
 
-Diese werden auch in den sogenannten Logfiles unseres Systems gespeichert. Die vorübergehende Speicherung Ihrer IP-Adresse durch das System ist notwendig, um unsere Webseite an das Endgerät eines Nutzers ausliefern zu können. Hierfür muss die IP-Adresse des Nutzers für die Dauer der Sitzung gespeichert bleiben.  Die IP-Adresse wird in den Logfiles ausschließlich gekürzt um die letzten drei Stellen erfasst.
+As a matter of principle, we will not pass on your personal data to third parties. However, data may be transferred to our external tax office in the context of our accounting. 
 
-#### 8.2 Zweck
-Die Verarbeitung erfolgt, um den Aufruf der Webseite zu ermöglichen, sowie deren Stabilität und Sicherheit zu gewährleisten. Darüber hinaus dient die Verarbeitung der statistischen Auswertung und Verbesserung unseres Online-Angebotes.
+### 8. PROVISION OF THE WEBSITE AND SERVER LOGFILES
 
-#### 8.3 Rechtsgrundlage
-Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 8.2 benannten Zweck.
+#### 8.1 Description of processing
+Each time you visit the website, we automatically collect information that your browser transmits to our server. This is the following data:
 
-#### 8.4 Speicherdauer
-Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Im Falle der Erfassung der Daten zur Bereitstellung der Website ist dies der Fall, wenn die jeweilige Sitzung beendet ist. Eine Löschung der Logfiles erfolgt [nach 90 Tagen](https://vercel.com/legal/privacy-policy#customers).
+* IP address
+* the subpages called up on the website
+* the date and time the website was accessed
+* the country and location from which a user visited the website.
 
-### 9. COOKIES UND SONSTIGE TRACKINGTECHNOLOGIEN
+These are also stored in the so-called log files of our system. The temporary storage of your IP address by the system is necessary in order to deliver our website to a user's terminal device. For this purpose, the user's IP address must remain stored for the duration of the session.  The IP address is only recorded in the log files shortened by the last three digits.
 
-#### 9.1 Beschreibung der Verarbeitung
+#### 8.2 Purpose
 
-Unsere Webseite verwendet Cookies. Bei Cookies handelt es sich um kleine Textdateien, die beim Besuch einer Webseite auf dem Endgerät des Nutzers gespeichert werden. Cookies enthalten Informationen, die die Wiedererkennung eines Endgeräts und ggf. bestimmte Funktionen einer Webseite ermöglichen. Wir unterscheiden zwischen eigenen Cookies und externen, sogenannten Drittanbieter-Cookies. Auf unserer Seite kommen sogenannte „Session Cookies“ und „Persistente Cookies“ zum Einsatz. „Session-Cookies“ werden automatisch gelöscht, wenn Sie Ihre Internetsitzung beenden und den Browser schließen. Persistente Cookies bleiben für einen längeren Zeitraum auf Ihrem Endgerät gespeichert. Neben Cookies verwenden wir auch andere Trackingtechnologien, wie z.B. Pixel oder das sogenannte Fingerprinting. Sofern Cookies für den Betrieb unserer Seite technisch erforderlich sind, bedarf es dafür nicht Ihrer Einwilligung. Alle sonstigen, nicht technisch erforderlichen Cookies und Trackingtechnologien werden erst gesetzt, nachdem Sie in die Verwendung von Cookies/Trackingtechnologien über unser Consent-Tool aktiv eingewilligt haben.
+The processing is carried out to enable the website to be called up and to ensure its stability and security. In addition, the processing serves the statistical evaluation and improvement of our online offer.
 
-Zur Einholung und Dokumentation der Einwilligungen verwenden wir ein selbst entwickeltes Tool. Das Consent-Tool speichert Ihre Auswahl selbst in einem Cookie auf Ihrem Endgerät. Dadurch brauchen Sie bei einem Folgebesuch unserer Webseite nicht erneut eine Entscheidung über Cookies treffen. Welche Cookies auf unserer Webseite für welchen Zweck verwendet werden, wie lange diese auf Ihrem Endgerät gespeichert werden und welche Einwilligungen Sie ggf. bereits erklärt haben, können Sie den Einstellungen ihres Browsers entnehmen.
+#### 8.3 Legal basis
 
-#### 9.2 Zweck
+The processing is necessary to protect the overriding legitimate interests of the controller (Art. 6 para. 1 lit. f GDPR). Our legitimate interest lies in the purpose named in section 8.2.
 
-Wir setzen Cookies ein, um unsere Webseite nutzerfreundlicher zu gestalten und die in Ziffer 9.1 beschrieben Funktionen anzubieten.
+#### 8.4 Storage period
 
-#### 9.3 Rechtsgrundlage
+The data is deleted as soon as it is no longer required to achieve the purpose for which it was collected. In the case of the collection of data for the provision of the website, this is the case when the respective session has ended. Deletion of the log files takes place [after 90 days](https://vercel.com/legal/privacy-policy#customers).
 
-Die Verarbeitung ist im Hinblick auf technisch erforderliche Cookies, sowie des Einsatzes des Consent-Tools zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO i.V.m. § 25 Abs. 2 TTDSG). Unser berechtigtes Interesse liegt in dem, in Ziffer 9.2 benannten Zweck. Bei der Verarbeitung im Hinblick auf alle sonstigen – also nicht technisch erforderlichen Cookies/Trackingtechnologien – besteht die Rechtsgrundlage in einer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO i.V.m. § 25 Abs. 1 TTDSG). Eine solche Einwilligung ist freiwillig.
+### 9. COOKIES AND OTHER TRACKING TECHNOLOGIES
 
-#### 9.4 Speicherdauer, Widerruf der Einwilligung
+#### 9.1 Description of processing
 
-Cookies werden automatisch mit dem Ende einer Sitzung bzw. mit Ablauf der angegebenen Speicherdauer gelöscht. Da Cookies auf Ihrem Endgerät gespeichert werden, haben Sie als Nutzer die volle Kontrolle über den Einsatz von Cookies. Durch eine Änderung der Einstellungen in Ihrem Internetbrowser können Sie die Übertragung von Cookies deaktivieren oder einschränken. Bereits gespeicherte Cookies können gelöscht werden. Dies kann auch automatisiert erfolgen. Werden Cookies für unsere Webseite deaktiviert, gelöscht oder eingeschränkt, kann es sein, dass einzelne Funktionen unserer Webseite nicht oder nur eingeschränkt genutzt werden können. Etwaig von Ihnen erteilte Einwilligungen zum Einsatz von Cookies können Sie jederzeit in den Einstellungen ihres Browsers mit Wirkung für die Zukunft widerrufen.
+Our website uses cookies. Cookies are small text files that are stored on the user's terminal device when visiting a website. Cookies contain information that enables the recognition of a terminal device and possibly certain functions of a website. We distinguish between our own cookies and external, so-called third-party cookies. So-called "session cookies" and "persistent cookies" are used on our site. "Session cookies" are automatically deleted when you end your Internet session and close the browser. Persistent cookies remain stored on your terminal device for a longer period of time. In addition to cookies, we also use other tracking technologies, such as pixels or so-called fingerprinting. If cookies are technically necessary for the operation of our site, your consent is not required for this. All other cookies and tracking technologies that are not technically necessary are only set after you have actively consented to the use of cookies/tracking technologies via our Consent Tool.
 
-### 9.5 Empfänger
+We use a tool we developed ourselves to obtain and document consent. The Consent Tool itself stores your selection in a cookie on your terminal device. This means that you do not need to make a decision about cookies again on a subsequent visit to our website. You can find out which cookies are used on our website for which purpose, how long they are stored on your end device and which consents you may have already declared in the settings of your browser.
 
-Beim Einsatz von Drittcookies werden ggf. Daten an die entsprechenden Anbieter dieser Drittdienste übermittelt. Hier erfolgt unter Umständen auch eine Übermittlung in Drittstaaten außerhalb der Europäischen Union bzw. des Europäischen Wirtschaftsraumes. Über die Empfänger von Daten, sowie eine Drittstaatenübermittlung informieren wir in den Einstellungen des Consent-Tools bzw. in dem entsprechenden Passus zu dem Drittdienst in diesen Datenschutzbestimmungen. 
+#### 9.2 Purpose
 
-### 10. KONTAKTAUFNAHME PER E-MAIL
+We use cookies to make our website more user-friendly and to offer the functions described in section 9.1.
 
-#### 10.1 Beschreibung der Verarbeitung
+#### 9.3 Legal basis
 
-Sie können auch über die auf der Webseite angegebenen E-Mail-Adressen Kontakt mit uns aufnehmen. Zur Kontaktaufnahme können Sie uns über die auf der Webseite angegebene E-Mail-Adresse anschreiben. In diesem Fall werden die mit der E-Mail übermittelten personenbezogenen Daten durch uns verarbeitet.
+The processing is necessary with regard to technically required cookies, as well as the use of the Consent Tool to protect the overriding legitimate interests of the responsible party (Art. 6 para. 1 lit. f GDPR in conjunction with § 25 para. 2 TTDSG). Our legitimate interest lies in the purpose named in section 9.2. For processing with regard to all other - i.e. non-technically necessary cookies/tracking technologies - the legal basis is consent (Art. 6 para. 1 lit. a GDPR in conjunction with § 25 para. 1 TTDSG). Such consent is voluntary.
 
-#### 10.2 Zweck
+#### 9.4 Storage period, revocation of consent
 
-Die mit und in Ihrer E-Mail übermittelten Daten werden ausschließlich zum Zwecke der Bearbeitung und Beantwortung Ihres Anliegens verwendet.
+Cookies are automatically deleted at the end of a session or at the end of the specified storage period. Since cookies are stored on your terminal device, you as the user have full control over the use of cookies. By changing the settings in your Internet browser, you can disable or restrict the transfer of cookies. Cookies that have already been stored can be deleted. This can also be done automatically. If cookies are deactivated, deleted or restricted for our website, it may be that individual functions of our website cannot be used or can only be used to a limited extent. You can revoke any consent you may have given for the use of cookies at any time in the settings of your browser with effect for the future.
 
-#### 10.3 Rechtsgrundlage
+### 9.5 Recipients
 
-Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 10.2 benannten Zweck. Sofern der E-Mail-Kontakt auf den Abschluss oder der Erfüllung eines Vertrages abzielt, so erfolgt die Datenverarbeitung zur Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).
+When third-party cookies are used, data may be transmitted to the corresponding providers of these third-party services. Here, a transfer to third countries outside the European Union or the European Economic Area may also occur. We provide information about the recipients of data and the transfer to third countries in the settings of the Consent Tool or in the corresponding passage for the third-party service in this Privacy Policy. 
 
-#### 10.4 Speicherdauer
+### 10. CONTACT BY E-MAIL
 
-Die Daten werden von uns gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Dies ist für gewöhnlich der Fall, wenn die jeweilige Kommunikation mit Ihnen beendet ist. Beendet ist die Kommunikation dann, wenn sich aus den Umständen entnehmen lässt, dass Ihr Anliegen abschließend geklärt ist. Sofern gesetzliche Aufbewahrungsfristen einer Löschung entgegenstehen, erfolgt eine Löschung unverzüglich nach Ablauf der gesetzlichen Aufbewahrungsfrist.
+#### 10.1 Description of the processing
 
-### 11. KUNDEN- UND KONTAKTVERWALTUNG
+You can also contact us via the e-mail addresses provided on the website. To contact us, you can write to us using the e-mail address provided on the website. In this case, the personal data transmitted with the e-mail will be processed by us.
 
-#### 11.1 Beschreibung der Verarbeitung
+#### 10.2 Purpose
 
-Zur Verwaltung von Kundenanfragen, zum Verkaufs- und Vertragsmanagement verwenden wir die CRM-Suite HubSpot (bereitgestellt durch HubSpot, Inc., 25 First Street, Cambridge, MA 02141 USA, [Datenschutzbestimmungen](https://legal.hubspot.com/de/privacy-policy)). Die Daten werden auf den von HubSpot bereitgestellten europäischen Servern verwaltet. 
+The data transmitted with and in your e-mail will be used exclusively for the purpose of processing and responding to your request.
 
-#### 11.2 Zweck
+#### 10.3 Legal basis
 
-Die von Ihnen übermittelten Daten werden ausschließlich zum Zwecke der Bearbeitung und Beantwortung Ihres Anliegens verwendet. Zur Analyse werden zudem statistische Informationen über Verkaufprozesse und relevante Anfragen erhoben.
+The processing is necessary to protect the overriding legitimate interests of the controller (Art. 6 para. 1 lit. f GDPR). Our legitimate interest lies in the purpose named in section 10.2. If the e-mail contact is aimed at the conclusion or fulfillment of a contract, the data processing is carried out for the fulfillment of the contract (Art. 6 para. 1 lit. b GDPR).
 
-#### 11.3 Rechtsgrundlage
+#### 10.4 Storage period
 
-Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 10.2 benannten Zweck. Sofern der Kontakt auf den Abschluss oder der Erfüllung eines Vertrages abzielt, so erfolgt die Datenverarbeitung zur Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO).
+We delete the data as soon as it is no longer required to achieve the purpose for which it was collected. This is usually the case when the respective communication with you has ended. The communication is terminated when it can be inferred from the circumstances that your concern has been conclusively clarified. If legal retention periods prevent deletion, the data will be deleted immediately after the expiry of the legal retention period.
 
-#### 11.4 Speicherdauer
+### 11. CUSTOMER AND CONTACT MANAGEMENT
 
-Die Daten werden von uns gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Dies ist für gewöhnlich der Fall, wenn die jeweilige Kommunikation mit Ihnen beendet ist. Beendet ist die Kommunikation dann, wenn sich aus den Umständen entnehmen lässt, dass Ihr Anliegen abschließend geklärt ist. Sofern gesetzliche Aufbewahrungsfristen einer Löschung entgegenstehen, erfolgt eine Löschung unverzüglich nach Ablauf der gesetzlichen Aufbewahrungsfrist.
+#### 11.1 Description of processing
 
-### 12. ZAHLUNGSABWICKLUNG
+To manage customer inquiries, sales and contract management, we use the CRM suite HubSpot (provided by HubSpot, Inc., 25 First Street, Cambridge, MA 02141 USA, [Privacy Policy](https://legal.hubspot.com/de/privacy-policy)). The data is managed on European servers provided by HubSpot. 
 
-Zur Abwicklung von Bezahlungen für kommerzielle Dienstleistungen (z.b. Daten-Abonnements, API-Entgelte, oder Einmalzahlungen) verwenden wir den Zahlungabwickler Stripe.com. Beim Abschluss eines solchen Zahlungsvorgangs werden Sie auf die Webseite von Stripe weitergelietet, für die weitergehende [Datenschutzbestimmungen](https://stripe.com/en-gb-de/privacy) gelten.
+#### 11.2 Purpose
 
-Buchhalterische Informationen sowie Details zum Kundenstamm werden darüber hinaus auf dem Portal LexOffice.de verwaltet, betrieben durch die (Haufe Service Center GmbH, Munzinger Straße 9, 79111 Freiburg, [Datenschutzbestimmungen](https://www.lexoffice.de/datenschutz/)).
+The data you submit will be used solely for the purpose of processing and responding to your request. Statistical information on sales processes and relevant inquiries is also collected for analysis purposes.
 
-### 13. SOZIALE NETZWERKE
+#### 11.3 Legal basis
 
-#### 13.1 Beschreibung der Verarbeitung
+The processing is necessary to protect the overriding legitimate interests of the controller (Art. 6 (1) f GDPR). Our legitimate interest lies in the purpose named in section 10.2. If the contact is aimed at the conclusion or fulfillment of a contract, the data processing is carried out for the fulfillment of the contract (Art. 6 para. 1 lit. b GDPR).
 
-Unsere Webseite verwendet keine sogenannten Social Media Plugins. Die auf unserer Webseite angezeigten Logos von Twitter und LinkedIn sind lediglich mit den entsprechenden Profilen unseres Unternehmens auf den Sozialen Netzwerken verlinkt. Eine Datenübermittlung an die Sozialen Netzwerke findet mit der Einbindung der Logos nicht statt. Wenn Sie eines der Logos anklicken, werden Sie lediglich auf die externe Webseite des jeweiligen Sozialen Netzwerks weitergeleitet.
-Eine Datenverarbeitung stellen jedoch unsere Profile innerhalb der Sozialen Netzwerke dar. Sofern Sie beim Besuch eines solchen Profils beim jeweiligen Sozialen Netzwerk eingeloggt sind, werden diese Informationen Ihrem dortigen Benutzerkonto zugeordnet. Wenn Sie mit unserem Profil interagieren, z.B. einen Beitrag kommentieren, „teilen“, „liken“ oder „retweeten“, werden auch diese Informationen in Ihrem Benutzerkonto gespeichert. Ihre Interaktionen mit unserem Profil sind von uns im Regelfall auch einsehbar.
+#### 11.4 Storage period
 
-Auf dem Sozialen Netzwerk LinkedIn haben wir über die sogenannte „Insights“-Funktion die Möglichkeit, statistische Daten über die Nutzung unseres LinkedIn-Profils zu erhalten.
-Die Sozialen Netzwerke, mit denen Sie kommunizieren, speichern Ihre Daten unter Verwendung von Pseudonymen als Nutzungsprofile und verwenden sie für Werbezwecke und zur Marktforschung. So können Ihnen z.B. Werbeanzeigen innerhalb des Sozialen Netzwerkes und auf anderen Webseiten von Dritten angezeigt werden, die Ihren mutmaßlichen Interessen entsprechen. Zu diesem Zweck kommen im Regelfall Cookies zum Einsatz, die das Soziale Netzwerk auf Ihrem Endgerät ablegt. Ihnen steht gegen die Bildung dieser Nutzerprofile ein Widerspruchsrecht zu, für dessen Ausübung Sie sich direkt an die Sozialen Netzwerke wenden müssen.
+We delete the data as soon as it is no longer required to achieve the purpose for which it was collected. This is usually the case when the respective communication with you has ended. The communication is terminated when it can be inferred from the circumstances that your concern has been conclusively clarified. If legal retention periods prevent deletion, the data will be deleted immediately after the expiry of the legal retention period.
 
-#### 13.2 Zweck
+### 12. PAYMENT PROCESSING
 
-Wir unterhalten Profile bei den vorgenannten Sozialen Netzwerken zum Zwecke der Öffentlichkeitsarbeit und Unternehmenskommunikation mit Kunden und Interessierten. Die Funktion „Insights“ von LinkedIn nutzen wir, um die Reichweite unserer Beiträge auf dem Sozialen Netzwerk auszuwerten und sie zukünftig für unsere Besucher ansprechender zu gestalten.
+To process payments for commercial services (e.g., data subscriptions, API fees, or one-time payments), we use the payment processor Stripe.com. Upon completion of such payment transaction, you will be redirected to Stripe's website, which is subject to further [Privacy Policy](https://stripe.com/en-gb-de/privacy).
 
-#### 13.3 Rechtsgrundlage
+Accounting information and details of the customer base are also managed on the portal LexOffice.de, operated by (Haufe Service Center GmbH, Munzinger Straße 9, 79111 Freiburg, Germany, [privacy policy](https://www.lexoffice.de/datenschutz/)).
 
-Rechtsgrundlage für die Datenverarbeitung im Rahmen unserer Profile auf Sozialen Netzwerken ist die Wahrung unserer überwiegenden berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 12.3 benannten Zweck. Sofern Sie vom jeweiligen Betreiber eines Sozialen Netzwerkes um eine Einwilligung gebeten werden, besteht die Rechtsgrundlage in Art. 6 Abs. 1 lit. a DSGVO. Die Datenverarbeitung erfolgt im Hinblick auf unsere Präsenzen auf Twitter und LinkedIn,  LinkedIn im Übrigen auf Grundlage einer gemeinsame Verantwortlichkeit gemäß Art. 26 DSGVO. 
+### 13. SOCIAL NETWORKS
 
-#### 13.4 Empfänger und Übermittlung in Drittstaaten
+#### 13.1 Description of processing
 
-Die jeweiligen Sozialen Netzwerke werden von den nachfolgend aufgeführten Unternehmen betrieben. Weitere Informationen zum Datenschutz im Hinblick auf unser Profil auf den Sozialen Netzwerken finden Sie in den verlinkten Datenschutzbestimmungen.
-* Twitter: Twitter Inc., 1355 Market St, Suite 900, San Francisco, California 94103, USA; [Datenschutzbestimmungen](https://twitter.com/privacy).
-* LinkedIn: LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2, Irland; [Datenschutzbestimmungen](https://www.linkedin.com/legal/privacy-policytrk=homepage-basic_footer-privacy-policy). Die Datenschutzvereinbarung mit LinkedIn finden Sie unter www.linkedin.com/legal/l/dpa. Die Vereinbarung zur gemeinsamen Verantwortung ist auf legal.linkedin.com/pages-joint-controller-addendum einsehbar.
-Die Sozialen Netzwerke verarbeiten Ihre personenbezogenen Daten auch in den USA.
+Our website does not use any so-called social media plugins. The Twitter and LinkedIn logos displayed on our website are merely linked to the corresponding profiles of our company on the social networks. A data transfer to the social networks does not take place with the integration of the logos. If you click on one of the logos, you will only be redirected to the external website of the respective social network.
+However, our profiles within the social networks do constitute data processing. If you are logged in to the respective social network when you visit such a profile, this information will be assigned to your user account there. If you interact with our profile, e.g. comment, "share", "like" or "retweet" a post, this information will also be stored in your user account. As a rule, your interactions with our profile can also be viewed by us.
+
+On the social network LinkedIn, we have the possibility to obtain statistical data about the use of our LinkedIn profile via the so-called "Insights" function.
+The social networks with which you communicate store your data using pseudonyms as usage profiles and use them for advertising purposes and market research. For example, you may be shown advertisements within the social network and on other third-party websites that match your presumed interests. For this purpose, cookies are usually used, which the social network stores on your terminal device. You have the right to object to the creation of these user profiles, for the exercise of which you must contact the social networks directly.
+
+#### 13.2 Purpose
+
+We maintain profiles on the aforementioned social networks for the purpose of public relations and corporate communication with customers and interested parties. We use the "Insights" function of LinkedIn to evaluate the reach of our posts on the social network and to make them more appealing to our visitors in the future.
+
+#### 13.3 Legal basis
+
+The legal basis for data processing in the context of our profiles on social networks is the protection of our overriding legitimate interests (Art. 6 (1) lit. f GDPR). Our legitimate interest lies in the purpose named in section 12.3. If you are asked for consent by the respective operator of a social network, the legal basis is Art. 6 (1) lit. a GDPR. The data processing is carried out with regard to our presences on Twitter and LinkedIn, LinkedIn otherwise on the basis of joint responsibility pursuant to Art. 26 GDPR. 
+
+#### 13.4 Recipients and transfer to third countries.
+
+The respective social networks are operated by the companies listed below. For further information on data protection with regard to our profile on the social networks, please refer to the linked data protection provisions.
+* Twitter: Twitter Inc, 1355 Market St, Suite 900, San Francisco, California 94103, USA; [privacy policy](https://twitter.com/privacy).
+* LinkedIn: LinkedIn Ireland Unlimited Company, Wilton Place, Dublin 2, Ireland; [privacy policy](https://www.linkedin.com/legal/privacy-policytrk=homepage-basic_footer-privacy-policy). The privacy agreement with LinkedIn can be found at www.linkedin.com/legal/l/dpa. The shared responsibility agreement can be viewed at legal.linkedin.com/pages-joint-controller-addendum.
+
+The social networks also process your personal data in the USA.
 
 ### 14. GOOGLE ANALYTICS
 
-#### 14.1 Beschreibung der Verarbeitung
+#### 14.1 Description of processing
 
-Unsere Webseite verwendet „Google Analytics“, einen Webanalysedienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (nachfolgend „Google“ genannt). Google Analytics setzt Cookies ein (siehe Ziffer 7.), die eine Analyse Ihrer Nutzung unseres Angebotes ermöglichen. Wir verwenden Google Analytics in der angebotenen Version „Universal Analytics“, die diese Analyse geräteübergreifend durch Zuordnung der Daten zu einer pseudonymen User-ID erlaubt. Die durch die Cookies erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Wir verwenden Google Analytics jedoch ausschließlich mit einer IP-Anonymisierung. Dadurch wird Ihre IP-Adresse von Google innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Die von Google Analytics erstellten Statistiken erfassen insbesondere wie viele Nutzer unsere Website besuchen, aus welchem Land bzw. Ort der Zugriff erfolgt, welche Unterseiten aufgerufen werden und über welche Links oder Suchbegriffe Besucher auf unsere Webseite gelangen. Die Nutzerbedingungen von Google Analytics finden Sie unter www.google.com/analytics/terms/de.html. Eine Übersicht zum Datenschutz bei Google Analytics ist unter www.google.com/intl/de/analytics/learn/privacy.html abrufbar. Die Datenschutzerklärung von Google lässt sich unter www.google.de/intl/de/policies/privacy einsehen.
+Our website uses "Google Analytics", a web analytics service provided by Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (hereinafter referred to as "Google"). Google Analytics uses cookies (see item 7.), which allow an analysis of your use of our offer. We use Google Analytics in the offered version "Universal Analytics", which allows this analysis across devices by assigning the data to a pseudonymous user ID. The information generated by the cookies is usually transferred to a Google server in the USA and stored there. However, we use Google Analytics exclusively with IP anonymization. This means that your IP address is shortened beforehand by Google within member states of the European Union or in other contracting states of the Agreement on the European Economic Area. Only in exceptional cases will the full IP address be transmitted to a Google server in the USA and shortened there. The IP address transmitted by your browser as part of Google Analytics will not be merged with other Google data. The statistics generated by Google Analytics record in particular how many users visit our website, from which country or location the access takes place, which sub-pages are called up and via which links or search terms visitors reach our website. The user conditions of Google Analytics can be found at www.google.com/analytics/terms/de.html. An overview of data protection at Google Analytics is available at www.google.com/intl/de/analytics/learn/privacy.html. Google's privacy policy can be viewed at www.google.de/intl/de/policies/privacy.
 
-#### 14.2 Zweck
+#### 14.2 Purpose
 
-Die Verarbeitung erfolgt, um die Nutzung unserer Webseite auswerten zu können. Die dadurch gewonnenen Informationen dienen der Verbesserung und bedarfsgerechten Gestaltung unseres Online-Auftritts.
+The processing takes place in order to be able to evaluate the use of our website. The information thus obtained is used to improve our online presence and to design it in line with requirements.
 
-#### 14.3 Rechtsgrundlage
+#### 14.3 Legal basis
 
-Die Verarbeitung erfolgt auf Grundlage einer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Diese wird von uns über das Consent-Tool (siehe Ziffer 9.1) eingeholt. Eine solche Einwilligung ist freiwillig.
+The processing is based on consent pursuant to Art. 6 (1) lit. a GDPR. This is obtained by us via the Consent Tool (see Section 9.1). Such consent is voluntary.
 
-#### 14.4 Speicherdauer und Widerspruchsrecht, Widerruf der Einwilligung
+#### 14.4 Storage period and right of objection, revocation of consent
 
-Die Speicherdauer, sowie Ihre Kontroll- und Einstellungsmöglichkeiten bei Cookies haben wir in Ziffer 9.4 erläutert. Die von Ihnen erteilte Einwilligung im Hinblick auf Google Analytics können Sie jederzeit in den Einstellungen des Consent-Tools mit Wirkung für die Zukunft widerrufen. Alternativ können Sie der Datenverarbeitung durch Google Analytics jederzeit widersprechen, indem Sie das von Google unter tools.google.com/dlpage/gaoptout?hl=de angebotene Browser-Add-on herunterladen und installieren. Die mit Google Analytics verarbeiteten und gespeicherten Analysedaten werden von uns nach 14 Monaten automatisch gelöscht.
+We have explained the storage period, as well as your control and setting options for cookies in section 9.4. You can revoke the consent you have given with regard to Google Analytics at any time in the settings of the consent tool with effect for the future. Alternatively, you can object to data processing by Google Analytics at any time by downloading and installing the browser add-on offered by Google at tools.google.com/dlpage/gaoptout?hl=en. The analysis data processed and stored with Google Analytics will be automatically deleted by us after 14 months.
 
-#### 14.5 Empfänger und Übermittlung in Drittstaaten
+#### 14.5 Recipients and transmission to third countries
 
-Google Analytics ist für uns laut der deutschen Datenschutzaufsichtsbehörden (Datenschutzkonferenz) in gemeinsamer Verantwortlichkeit an der Datenverarbeitung tätig. Vor diesem Hintergrund haben wir auch die „Google Measurement Controller-Controller Data Protection Terms“ mit Google abgeschlossen. Google verarbeitet Ihre personenbezogenen Daten auch in den USA.
+According to the German data protection supervisory authorities (Data Protection Conference), Google Analytics is jointly responsible for data processing on our behalf. Against this background, we have also concluded the "Google Measurement Controller-Controller Data Protection Terms" with Google. Google also processes your personal data in the USA.
 
 ### 15. CONTENT DELIVERY NETWORK (CDN)
 
-#### 15.1 Beschreibung der Verarbeitung
+#### 15.1 Description of processing
 
-Unsere Webseite verwendet sogenannte Content Delivery Networks (CDN). CDNs bewirken, dass die Ladezeit gängiger JavaScript- und CSS-Bibliotheken, sowie Bild-Icons verkürzt wird, weil die Dateien von schnellen, standortnahen oder wenig ausgelasteten Servern externer Dienstleister übertragen werden. Ein weiterer Vorteil im Vergleich zu einer lokalen Speicherung der JavaScript- und CSS-Bibliotheken, sowie Bild-Icons auf unserem Server besteht darin, dass die Dateien von den externen Dienstleistern auf regelmäßig Sicherheit überprüft und aktuell gehalten werden. Wir haben für die Umsetzung einiger Programmierfunktionen auf unserer Webseite JavaScript- und CSS-Bibliotheken des externen Dienstleisters  eingebunden. Wenn Sie unsere Webseite besuchen, wird eine Verbindung zu den Servern der genannten externen Dienste hergestellt und dabei die JavaScript- und CSS-Bibliothek, sowie Bild-Icons in unsere Webseite geladen. Hierdurch wird an die externen Dienstleister übermittelt, welche Webseite Sie besucht haben. Ggf. wird auch Ihre IP-Adresse übertragen. Um die Ausführung von JavaScript insgesamt zu verhindern, können Sie in Ihrem Browser einen JavaScript-Blocker installieren. 
+Our website uses so-called content delivery networks (CDN). CDNs have the effect of shortening the loading time of common JavaScript and CSS libraries, as well as image icons, because the files are transferred from fast, near-site or underutilized servers of external service providers. Another advantage compared to local storage of JavaScript and CSS libraries, as well as image icons on our server is that the files are regularly checked for security and kept up-to-date by the external service providers. We have included JavaScript and CSS libraries from the external service provider to implement some programming functions on our website. When you visit our website, a connection is established to the servers of the aforementioned external services and the JavaScript and CSS library, as well as image icons, are loaded into our website in the process. This transmits to the external service providers which website you have visited. Your IP address may also be transmitted. To prevent the execution of JavaScript altogether, you can install a JavaScript blocker in your browser. 
 
-#### 15.2 Zweck
+#### 15.2 Purpose
 
-Die Verarbeitung erfolgt, um die Ladezeit unserer Webseite verkürzen und JavaScript- und CSS-Bibliotheken, sowie Bild-Icons schnell und sicher einbinden zu können.
+The processing takes place in order to shorten the loading time of our website and to be able to integrate JavaScript and CSS libraries, as well as image icons quickly and securely.
 
-#### 15.3 Rechtsgrundlage
+#### 15.3 Legal basis
 
-Die Verarbeitung ist zur Wahrung der überwiegenden berechtigten Interessen des Verantwortlichen erforderlich (Art. 6 Abs. 1 lit. f DSGVO). Unser berechtigtes Interesse liegt in dem, in Ziffer 14.2 benannten Zweck. 
+The processing is necessary to protect the overriding legitimate interests of the controller (Art. 6 (1) (f) GDPR). Our legitimate interest lies in the purpose named in section 14.2. 
 
-#### 15.4 Empfänger und Übermittlung in Drittstaaten 
+#### 15.4 Recipients and transfer to third countries 
 
-Durch die Einbindung der JavaScript- und CSS-Bibliotheken, sowie Bild-Icons werden Ihre Daten an eines der nachfolgenden CDNs übermittelt: Vercel CDN, betrieben von der Vercel, Inc.340 S Lemon Ave #4133 Walnut, CA 91789, USA
+By integrating the JavaScript and CSS libraries, as well as image icons, your data will be transmitted to one of the following CDNs: Vercel CDN, operated by Vercel, Inc.340 S Lemon Ave #4133 Walnut, CA 91789, USA.
 
-## V. Sicherheitsmaßnahmen 
+## V. Security measures 
 
-### 16. Sicherheitsmaßnahmen
+### 16. Security measures
 
-Um Ihre persönlichen Daten vor fremdem Zugriff zu schützen, haben wir unsere Webseite mit einem SSL- bzw. TLS-Zertifikat versehen. SSL steht für „Secure-Sockets-Layer“ und TLS für „Transport Layer Security“ und verschlüsselt die Kommunikation von Daten zwischen einer Webseite und dem Endgerät des Nutzers. Sie erkennen die aktive SSL- bzw. TLS-Verschlüsselung an einem kleinen Schloss-Logo, das ganz links in der Adresszeile des Browsers angezeigt wird.
+To protect your personal data from unauthorized access, we have provided our website with an SSL or TLS certificate. SSL stands for "Secure Sockets Layer" and TLS for "Transport Layer Security" and encrypts the communication of data between a website and the user's terminal device. You can recognize active SSL or TLS encryption by a small lock logo displayed on the far left of the browser's address bar.
 
-## VI. Ihre Rechte 
+## VI. Your rights 
 
-### 17. Betroffenenrechte
+### 17. Data subject rights
 
-Im Hinblick auf die oben beschriebene Datenverarbeitung durch unser Unternehmen stehen Ihnen die folgenden Betroffenenrechte zu:
+With regard to the data processing by our company described above, you are entitled to the following data subject rights:
 
-#### 17.1 Auskunft (Art. 15 DSGVO)
+#### 17.1 Information (Art. 15 GDPR).
 
-Sie haben das Recht, von uns eine Bestätigung darüber zu verlangen, ob wir Sie betreffende personenbezogene Daten verarbeiten. Ist dies der Fall, so haben sie unter den in Art. 15 DSGVO genannten Voraussetzungen ein Recht auf Auskunft über diese personenbezogenen Daten und auf die in Art. 15 DSGVO im einzelnen aufgeführten Informationen.
+You have the right to request confirmation from us as to whether we are processing personal data relating to you. If this is the case, they have a right to information about this personal data and to the information listed in detail in Art. 15 GDPR under the conditions set out in Art. 15 GDPR.
 
-#### 17.2 Berichtigung (Art. 16 DSGVO)
+#### 17.2 Correction (Art. 16 GDPR).
 
-Sie haben das Recht, von uns unverzüglich die Berichtigung Sie betreffender unrichtiger personenbezogener Daten und ggf. die Vervollständigung unvollständiger personenbezogener Daten zu verlangen.
+You have the right to request from us without undue delay the rectification of any inaccurate personal data concerning you and, where applicable, the completion of any incomplete personal data.
 
-#### 17.3 Löschung (Art. 17 DSGVO)
+#### 17.3 Deletion (Art. 17 GDPR).
 
-Sie haben das Recht, von uns zu verlangen, dass Sie betreffende personenbezogene Daten unverzüglich gelöscht werden, sofern einer der in Art. 17 DSGVO im Einzelnen aufgeführten Gründe zutrifft, z. B. wenn Ihre Daten für die von uns verfolgten Zwecke nicht mehr benötigt werden.
+You have the right to request that we delete personal data concerning you without undue delay, provided that one of the reasons listed in detail in Art. 17 GDPR applies, e.g. if your data is no longer required for the purposes we pursue.
 
-#### 17.4 Einschränkung der Datenverarbeitung (Art. 18 DSGVO)
+#### 17.4 Restriction of data processing (Art. 18 GDPR).
 
-Sie haben das Recht, von uns die Einschränkung der Verarbeitung zu verlangen, wenn eine der in Art. 18 DSGVO aufgeführten Voraussetzungen gegeben ist, z. B. wenn Sie die Richtigkeit Ihrer personenbezogenen Daten bestreiten, wird die Datenverarbeitung für die Dauer eingeschränkt, die uns die Überprüfung der Richtigkeit Ihrer Daten ermöglicht.
+You have the right to request us to restrict processing if one of the conditions listed in Art. 18 GDPR applies, e.g. if you dispute the accuracy of your personal data, data processing will be restricted for the period of time that allows us to verify the accuracy of your data.
 
-#### 17.5 Datenübertragbarkeit (Art. 20 DSGVO)
+#### 17.5 Data portability (Art. 20 GDPR).
 
-Sie haben das Recht, unter den in Art. 20 DSGVO aufgeführten Voraussetzungen, die Herausgabe der Sie betreffenden Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu verlangen.
+You have the right, under the conditions set out in Art. 20 GDPR, to request that we hand over the data concerning you in a structured, common and machine-readable format.
 
-#### 17.6 Widerruf von Einwilligungen (Art. 7 Abs. 3 DSGVO)
+#### 17.6 Withdrawal of consent (Art. 7 (3) GDPR).
 
-Sie haben das Recht, bei einer Verarbeitung, die auf einer Einwilligung beruht, Ihre Einwilligung jederzeit zu widerrufen. Der Widerruf gilt ab dem Zeitpunkt seiner Geltendmachung. Er wirkt mit anderen Worten für die Zukunft. Die Verarbeitung wird durch den Widerruf der Einwilligung also nicht rückwirkend rechtswidrig.
+You have the right to revoke your consent at any time in the case of processing based on consent. The revocation applies from the time it is asserted. In other words, it has effect for the future. The processing therefore does not become unlawful retroactively as a result of the revocation of consent.
 
-#### 17.7 Beschwerde (Art. 77 DSGVO)
+#### 17.7 Complaint (Art. 77 GDPR).
 
-Wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die DSGVO verstößt, haben Sie das Recht auf Beschwerde bei einer Aufsichtsbehörde. Sie können dieses Recht bei einer Aufsichtsbehörde in dem EU-Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes geltend machen.
+If you believe that the processing of personal data concerning you violates the GDPR, you have the right to lodge a complaint with a supervisory authority. You may exercise this right at a supervisory authority in the EU member state of your place of residence, place of work or place of the alleged infringement.
 
-#### 17.8 Verbot automatisierter Entscheidungen/Profiling (Art. 22 DSGVO)
+#### 17.8 Prohibition of automated decisions/profiling (Art. 22 GDPR).
 
-Entscheidungen, die für Sie rechtliche Folge nach sich ziehen oder Sie erheblich beeinträchtigen, dürfen nicht ausschließlich auf eine automatisierte Verarbeitung personenbezogener Daten – einschließlich eines Profiling – gestützt werden. Wir teilen Ihnen mit, dass wir im Hinblick auf Ihre personenbezogenen Daten keine automatisierte Entscheidungsfindung einschließlich Profiling einsetzen.
+Decisions which have legal effects concerning you or which significantly affect you must not be based solely on automated processing of personal data - including profiling. We inform you that we do not use automated decision-making, including profiling, with regard to your personal data.
 
-#### 17.9 Widerspruchsrecht (Art. 21 DSGVO)
+#### 17.9 Right to object (Art. 21 GDPR).
 
-Wenn wir personenbezogene Daten von Ihnen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (zur Wahrung überwiegender berechtigten Interessen) verarbeiten, haben Sie das Recht, unter den in Art. 21 DSGVO aufgeführten Voraussetzungen dagegen Widerspruch einzulegen. Dies gilt jedoch nur, soweit Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben. Nach einem Widerspruch verarbeiten wir Ihre personenbezogenen Daten nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen. Wir müssen die Verarbeitung ebenfalls nicht einstellen, wenn sie der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen dient. In jedem Fall – auch unabhängig von einer besonderen Situation – haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten für Direktwerbung einzulegen.
+If we process personal data of yours on the basis of Art. 6(1)(f) GDPR (to protect overriding legitimate interests), you have the right to object to this under the conditions set out in Art. 21 GDPR. However, this only applies insofar as there are reasons arising from your particular situation. After an objection, we will no longer process your personal data unless we can demonstrate compelling legitimate grounds for processing that override your interests, rights and freedoms. We also do not have to stop processing if it serves the assertion, exercise or defense of legal claims. In any case - also regardless of a specific situation - you have the right to object at any time to the processing of your personal data for direct marketing.
 
-**Stand: Oktober 2022**
+**Revised: November 2022**
 
