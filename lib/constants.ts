@@ -26,6 +26,8 @@ export const BLOCKED_ENTITIES = [
   'gb-coh-uiboqdf8mfm6bnau27gi0qspgla',
   'addr-049628bc181af349e9c3b677c654322a920eecb6',
   'Q1045488',
+  'rupep-person-6658',
+  'rupep-person-6659',
 ];
 export const ENTITY_WARNINGS: { [name: string]: string } = {
   'Q4230633': 'The contents of this page have been modified in response to a legal threat on behalf of Mr. Kondrashev.'
