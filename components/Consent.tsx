@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import * as gtag from '../lib/gtag'
 import Row from 'react-bootstrap/Row';
