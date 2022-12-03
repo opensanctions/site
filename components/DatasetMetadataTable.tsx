@@ -1,14 +1,13 @@
-import Link from 'next/link'
-import Badge from 'react-bootstrap/Badge'
-import Table from 'react-bootstrap/Table'
+import { useState } from 'react';
+import Link from 'next/link';
+import Badge from 'react-bootstrap/Badge';
+import Table from 'react-bootstrap/Table';
 
-import { IDataset, ICollection, isSource, isExternal, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types'
-import { FormattedDate, HelpLink, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util'
-import { wordList } from '../lib/util'
+import { IDataset, ICollection, isSource, isExternal, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types';
+import { FormattedDate, HelpLink, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util';
+import { wordList } from '../lib/util';
 
-import styles from '../styles/Dataset.module.scss'
-import { useState } from 'react'
-
+import styles from '../styles/Dataset.module.scss';
 
 
 type DatasetScreenProps = {

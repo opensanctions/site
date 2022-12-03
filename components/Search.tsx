@@ -1,8 +1,9 @@
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { Model } from '../lib/ftm/model';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import Badge from "react-bootstrap/Badge";
+import queryString from "query-string";
 
 import { IEntityDatum, Values } from '../lib/ftm';
 import { IDataset, ISearchFacet } from "../lib/types";
@@ -13,6 +14,7 @@ import { TypeValue, TypeValues } from './Property';
 import { ensureArray } from '../lib/util';
 
 import styles from '../styles/Search.module.scss'
+import Link from 'next/link';
 
 
 
@@ -22,18 +24,19 @@ type SearchFacetProps = {
 }
 
 export function SearchFacet({ field, facet }: SearchFacetProps) {
-  const router = useRouter();
-  const filters = ensureArray(router.query[field]);
+  const params = useSearchParams();
+  const oldQuery = Object.fromEntries(params.entries())
+  const filters = ensureArray(params.getAll(field));
   if (!facet.values.length) {
     return null;
   }
 
-  const toggleFiltered = (value: string) => {
+  const filteredUrl = (value: string) => {
     const idx = filters.indexOf(value);
     const newFilters = idx === -1 ? [...filters, value] : filters.filter((e) => e !== value);
     const param = newFilters.length ? newFilters : undefined;
-    const newQuery = { ...router.query, [field]: param };
-    router.push({ pathname: "/search/", query: newQuery });
+    const newQuery = { ...oldQuery, [field]: param };
+    return queryString.stringifyUrl({ url: '/search', query: newQuery });
   }
 
   return (
@@ -43,7 +46,8 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
         {facet.values.map((value) => (
           <ListGroup.Item key={value.name}
             active={filters.indexOf(value.name) !== -1}
-            onClick={(e) => toggleFiltered(value.name)}
+            as={"a"}
+            href={filteredUrl(value.name)}
             className={styles.facetListItem}
           >
             <NumericBadge value={value.count} bg="light" className={styles.facetCount} />
@@ -62,15 +66,17 @@ type SearchFilterTagsProps = {
 }
 
 export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsProps) {
-  const router = useRouter();
+  const params = useSearchParams();
+  const oldQuery = Object.fromEntries(params.entries())
 
-  const unfilter = (field: string, value: string) => {
-    const values = ensureArray(router.query[field]).filter((v) => v !== value);
-    router.push({ 'query': { ...router.query, [field]: values } })
+  const unfilterUrl = (field: string, value: string) => {
+    const values = ensureArray(params.get(field)).filter((v) => v !== value);
+    const newQuery = { ...oldQuery, [field]: values }
+    return queryString.stringifyUrl({ url: '/search', query: newQuery });
   }
   const filters = [];
-  const schema = router.query.schema;
-  if (schema !== undefined && schema !== SEARCH_SCHEMA) {
+  const schema = params.get('schema');
+  if (schema !== null && schema !== SEARCH_SCHEMA) {
     filters.push({
       'field': 'schema',
       'value': schema as string,
@@ -84,7 +90,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
       'label': scope.title
     })
   }
-  const countries = ensureArray(router.query.countries);
+  const countries = ensureArray(params.getAll('countries'));
   const countryType = model.getType('country');
   for (let country of countries) {
     if (country.trim().length) {
@@ -96,7 +102,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
     }
   }
 
-  const topics = ensureArray(router.query.topics);
+  const topics = ensureArray(params.getAll('topics'));
   const topicType = model.getType('topic');
   for (let topic of topics) {
     if (topic.trim().length) {
@@ -108,7 +114,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
     }
   }
 
-  const datasetNames = ensureArray(router.query.datasets);
+  const datasetNames = ensureArray(params.getAll('datasets'));
   for (let dataset of datasetNames) {
     const ds = datasets.find((d) => d.name == dataset)
     if (ds !== undefined) {
@@ -129,12 +135,11 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
       <Badge bg="light">Filtered:</Badge>{' '}
       {filters.map((spec) =>
         <span key={`${spec.field}:${spec.value}`}>
-          <Badge
-            onClick={(e) => unfilter(spec.field, spec.value)}
-            className={styles.tagsButton}
-          >
-            {spec.label}
-          </Badge>
+          <Link href={unfilterUrl(spec.field, spec.value)}>
+            <Badge className={styles.tagsButton}>
+              {spec.label}
+            </Badge>
+          </Link>
           {' '}
         </span>
       )}

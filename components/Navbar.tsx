@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
@@ -12,7 +12,7 @@ type NavbarSectionProps = {
 }
 
 export default function NavbarSection({ activeSection }: NavbarSectionProps) {
-  const activePath = useRouter().asPath;
+  const activePath = usePathname() || '/';
   const inDataset = activePath.startsWith('/datasets/') || activeSection === 'datasets';
   const inShowcase = activePath === '/showcase/' || activeSection === 'showcase';
   const inAbout = activePath === '/docs/about/' || activeSection === 'about';

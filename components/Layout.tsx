@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -19,8 +19,8 @@ type LayoutBaseProps = {
 }
 
 function LayoutBase({ title, description, imageUrl, structured, activeSection, children }: React.PropsWithChildren<LayoutBaseProps>) {
-  const router = useRouter();
-  const url = `${BASE_URL}${router.asPath}`;
+  const path = usePathname();
+  const url = `${BASE_URL}${path}`;
   const fullTitle = `${title} - ${SITE}`
   return (
     <>

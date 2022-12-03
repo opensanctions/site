@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import queryString from 'query-string';
-import { useRouter } from 'next/router';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { filesize } from 'filesize';
 import Link from 'next/link'
 import Nav from 'react-bootstrap/Nav';
@@ -20,10 +20,10 @@ type RoutedNavLinkProps = {
 
 
 export function RoutedNavLink({ href, children }: React.PropsWithChildren<RoutedNavLinkProps>) {
-  const router = useRouter()
+  const path = usePathname();
   return (
     <Link href={href} passHref legacyBehavior>
-      <Nav.Link active={router.asPath == href}>{children}</Nav.Link>
+      <Nav.Link active={path == href}>{children}</Nav.Link>
     </Link>
   )
 }
@@ -247,21 +247,23 @@ type ResponsePaginationProps = {
 }
 
 export function ResponsePagination({ response }: ResponsePaginationProps) {
+  const params = useSearchParams();
+  const oldQuery = Object.fromEntries(params.entries())
+
   if (response.total.value === 0) {
     return null;
   }
-  const router = useRouter();
   const nextOffset = response.offset + response.limit;
   const upper = Math.min(response.total.value, nextOffset);
   const hasPrev = response.offset > 0;
   const hasNext = response.total.value > nextOffset;
 
   const prevLink = queryString.stringify({
-    ...router.query,
+    ...oldQuery,
     offset: Math.max(0, response.offset - response.limit)
   })
   const nextLink = queryString.stringify({
-    ...router.query,
+    ...oldQuery,
     offset: response.offset + response.limit
   })
   const relationText = response.total.relation == 'gte' ? 'more than ' : '';

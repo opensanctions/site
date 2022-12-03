@@ -4,20 +4,18 @@ import queryString from 'query-string';
 import classNames from 'classnames';
 import Card from 'react-bootstrap/Card';
 import Table from 'react-bootstrap/Table';
-import Alert from 'react-bootstrap/Alert';
 import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
 import { Entity } from '../lib/ftm';
+import { compareDisplayProps } from '../lib/ftm/ordering';
 import { IDataset, isCollection, IStatement } from '../lib/types';
 import { isBlocked, isIndexRelevant } from '../lib/data';
 import { PropertyValues } from './Property';
 import { FormattedDate, HelpLink, SpacedList, UnofficialBadge } from './util';
 import Dataset from './Dataset';
 
-import styles from '../styles/Entity.module.scss'
-import { compareDisplayProps } from '../lib/ftm/ordering';
-
+import styles from '../styles/Entity.module.scss';
 
 
 export interface EntityRawLinkProps {

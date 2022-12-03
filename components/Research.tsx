@@ -1,4 +1,4 @@
-import { ParsedUrlQuery } from 'querystring';
+import { useSearchParams } from 'next/navigation';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -8,16 +8,16 @@ import styles from '../styles/Research.module.scss';
 import { ensureArray } from '../lib/util';
 
 
+
 type ResearchProps = {
   title?: string
-  query?: ParsedUrlQuery
+  query?: { [k: string]: string }
 }
-
 
 function ResearchContext({ title, query, children }: React.PropsWithChildren<ResearchProps>) {
   const activeTitle = !!title ? title : 'Research tool';
-  const activeQuery = query === undefined ? {} : query;
-  const queryText = activeQuery.q || '';
+  const activeQuery = query ? query : {};
+  const queryText = activeQuery['q'] || '';
   const otherQuery = { ...activeQuery };
   delete otherQuery['q'];
   delete otherQuery['offset'];

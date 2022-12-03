@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { Model } from '../lib/ftm/model';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -21,14 +21,15 @@ const SUMMARY = "Provide a search term to search across sanctions lists and othe
 
 export default function Search({ modelData, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const model = new Model(modelData);
-  const router = useRouter();
+  const params = useSearchParams();
+  const activeQuery = Object.fromEntries(params.entries())
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
 
   if (scope === undefined) {
     return (
       <Layout.Base title="Failed to load" activeSection="research">
-        <Research.Context query={router.query}>
+        <Research.Context query={activeQuery}>
           <Container>
             <h2>Could not load search function.</h2>
           </Container>
@@ -40,7 +41,7 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
 
   return (
     <Layout.Base title={title} description={SUMMARY} activeSection="research">
-      <Research.Context query={router.query} title={title}>
+      <Research.Context query={activeQuery} title={title}>
         <Container>
           <Row className={styles.searchMeta}>
             <Col md={8}>
@@ -103,7 +104,6 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const index = await fetchIndex();
   const datasets = await getDatasets();
-  const query = '' + (context.query.q || '');
   const scopeName = context.query.scope || SEARCH_DATASET;
   const schemaName = context.query.schema || SEARCH_SCHEMA;
   const params = {
