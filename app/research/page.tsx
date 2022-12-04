@@ -13,7 +13,7 @@ import { TITLE } from "./common";
 import styles from '../../styles/Research.module.scss'
 
 
-export default async function ResearchIntro({ searchParams }: PageProps) {
+export default async function Page({ searchParams }: PageProps) {
   const params = {
     'limit': 0,
     'schema': SEARCH_SCHEMA

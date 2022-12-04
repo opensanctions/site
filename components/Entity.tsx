@@ -1,13 +1,9 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link'
 import queryString from 'query-string';
-import classNames from 'classnames';
 import { Property } from '../lib/ftm/property';
-import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
-import { Card, CardHeader, Table } from "./wrapped";
+import { Table } from "./wrapped";
 import { Entity } from '../lib/ftm';
 import { compareDisplayProps } from '../lib/ftm/ordering';
 import { IDataset, isCollection, IStatement } from '../lib/types';
@@ -17,6 +13,7 @@ import { FormattedDate, HelpLink, SpacedList, UnofficialBadge } from './util';
 import Dataset from './Dataset';
 
 import styles from '../styles/Entity.module.scss';
+import { DetailPopup } from './utils/DetailPopup';
 
 
 export interface EntityRawLinkProps {
@@ -57,7 +54,7 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
   const viaReverse = via?.getReverse();
   const props = entity.getDisplayProperties()
     .filter((p) => viaReverse === undefined || p.qname !== viaReverse.qname)
-    .filter((p) => p.getRange() === undefined)
+    // .filter((p) => p.getRange() === undefined)
     .filter((p) => showEmpty || entity.getProperty(p).length > 0)
     .sort(compareDisplayProps);
 
@@ -84,7 +81,7 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
         {datasets !== undefined && datasets.length > 0 && (
           <tr key="datasets">
             <th className={styles.cardProp}>Data sources</th>
-            <td>
+            <td colSpan={2}>
               <SpacedList values={entity.datasets.map((n) => datasets.find((d) => d.name === n)).map((d) => <Dataset.Link dataset={d} />)} />
             </td>
           </tr>
@@ -140,17 +137,6 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
 }
 
 
-export function EntityCard({ entity, via, showEmpty = false }: EntityPropsTableProps) {
-  return (
-    <Card key={entity.id} className={styles.card}>
-      <CardHeader>
-        <strong>{entity.schema.label}</strong>
-      </CardHeader>
-      <EntityPropsTable entity={entity} via={via} showEmpty={showEmpty} />
-    </Card>
-  );
-}
-
 export type EntitySchemaTableProps = {
   entities: Array<Entity>,
   datasets?: Array<IDataset>,
@@ -163,7 +149,6 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
   if (schema === undefined || reverse === undefined) {
     return null;
   }
-  const [expanded, setExpanded] = useState('none');
   let featuredNames = schema.featured;
   ['startDate', 'endDate'].forEach((p) => {
     if (schema.isA('Interval') && featuredNames.indexOf(p) === -1) {
@@ -178,11 +163,6 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
     .map((n) => schema.getProperty(n))
     .filter(Property.isProperty);
 
-  const toggleExpand = function (e: React.MouseEvent<HTMLAnchorElement>, entity: Entity) {
-    e.preventDefault();
-    setExpanded(expanded === entity.id ? 'none' : entity.id);
-  }
-
   return (
     <>
       <a id={`rel.${prop.name}`} />
@@ -195,28 +175,16 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
             </th>
           </tr>
           <tr>
-            <th style={{ width: 0 }}></th>
             {featured.map((prop) => (
               <th key={prop.name} className={styles.tableHeader}>{prop.label}</th>
             ))}
+            <th style={{ width: 0 }}></th>
           </tr>
         </thead>
         <tbody>
           {entities.map((entity) => (
             <React.Fragment key={entity.id}>
               <tr key={entity.id}>
-                <td style={{ width: 0 }}>
-                  <a onClick={(e) => toggleExpand(e, entity)} className={styles.expandButton}>
-                    <>
-                      {expanded === entity.id && (
-                        <CaretUpFill />
-                      )}
-                      {expanded !== entity.id && (
-                        <CaretDownFill />
-                      )}
-                    </>
-                  </a>
-                </td>
                 {featured.map((prop) => (
                   <td key={prop.name} className={`type-${prop.type.name}`}>
                     <PropertyValues
@@ -228,16 +196,15 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
                     />
                   </td>
                 ))}
-              </tr>
-              <tr key={`expand-${entity.id}`} className={classNames({ 'd-none': expanded !== entity.id })}>
-                <td></td>
-                <td colSpan={featured.length} className={styles.expandCell}>
-                  <EntityPropsTable
-                    entity={entity}
-                    datasets={datasets}
-                    via={prop}
-                    showEmpty={true}
-                  />
+                <td style={{ width: 0 }}>
+                  <DetailPopup title={entity.caption}>
+                    <EntityPropsTable
+                      entity={entity}
+                      datasets={datasets}
+                      showEmpty={true}
+                      via={prop}
+                    />
+                  </DetailPopup>
                 </td>
               </tr>
             </React.Fragment>
