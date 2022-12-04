@@ -2,8 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import { usePathname } from 'next/navigation';
 
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from './layout/Navigation';
+import Footer from './layout/Footer';
 
 import styles from '../styles/Layout.module.scss';
 import { IContent } from '../lib/types';

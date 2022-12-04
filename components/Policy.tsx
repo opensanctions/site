@@ -1,13 +1,11 @@
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-import styles from '../styles/Policy.module.scss';
 import Layout from './Layout';
 import Research from './Research';
+import { Alert, ButtonGroup, Button, Container } from './wrapped';
 import { Entity, IEntityDatum } from '../lib/ftm';
 import { ENTITY_WARNINGS } from '../lib/constants';
+
+import styles from '../styles/Policy.module.scss';
 
 export function LicenseInfo() {
   return (

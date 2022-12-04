@@ -1,17 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
+import { NavbarBrand, NavbarToggle, NavbarCollapse, Navbar, Nav, NavLink, Container } from '../wrapped';
 
-import styles from '../styles/Navbar.module.scss';
+import styles from '../../styles/Navigation.module.scss';
 
 type NavbarSectionProps = {
   activeSection?: string
 }
 
-export default function NavbarSection({ activeSection }: NavbarSectionProps) {
+export default function Navigation({ activeSection }: NavbarSectionProps) {
   const activePath = usePathname() || '/';
   const inDataset = activePath.startsWith('/datasets/') || activeSection === 'datasets';
   const inShowcase = activePath === '/showcase/' || activeSection === 'showcase';
@@ -22,7 +20,7 @@ export default function NavbarSection({ activeSection }: NavbarSectionProps) {
     <Navbar bg="light" expand="lg" className={styles.navBar}>
       <Container>
         <Link href="/" passHref>
-          <Navbar.Brand>
+          <NavbarBrand>
             <img
               src="/static/ura/logo_text.svg"
               width="190"
@@ -30,28 +28,28 @@ export default function NavbarSection({ activeSection }: NavbarSectionProps) {
               className="align-top"
               alt="OpenSanctions"
             />
-          </Navbar.Brand>
+          </NavbarBrand>
         </Link>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
+        <NavbarToggle />
+        <NavbarCollapse className="justify-content-end">
           <Nav className="justify-content-end">
             <Link href="/research/" passHref legacyBehavior>
-              <Nav.Link className={styles.navItem} active={inResearch}>Research</Nav.Link>
+              <NavLink className={styles.navItem} active={inResearch}>Research</NavLink>
             </Link>
             <Link href="/datasets/" passHref legacyBehavior>
-              <Nav.Link className={styles.navItem} active={inDataset}>Datasets</Nav.Link>
+              <NavLink className={styles.navItem} active={inDataset}>Datasets</NavLink>
             </Link>
             <Link href="/showcase/" passHref legacyBehavior>
-              <Nav.Link className={styles.navItem} active={inShowcase}>Showcase</Nav.Link>
+              <NavLink className={styles.navItem} active={inShowcase}>Showcase</NavLink>
             </Link>
             <Link href="/docs/usage/" passHref legacyBehavior>
-              <Nav.Link className={styles.navItem} active={inDocumentation}>Documentation</Nav.Link>
+              <NavLink className={styles.navItem} active={inDocumentation}>Documentation</NavLink>
             </Link>
             <Link href="/docs/about/" passHref legacyBehavior>
-              <Nav.Link className={styles.navItem} active={inAbout}>About</Nav.Link>
+              <NavLink className={styles.navItem} active={inAbout}>About</NavLink>
             </Link>
           </Nav>
-        </Navbar.Collapse>
+        </NavbarCollapse>
       </Container>
     </Navbar >
   )
