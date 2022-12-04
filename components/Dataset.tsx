@@ -106,8 +106,12 @@ function DatasetItem({ dataset }: DatasetProps) {
                   <Spacer />
                 </>
               )}
-              <Badge bg="light">{dataset.publisher.country_label}</Badge>
-              <Spacer />
+              {dataset.publisher.country_label && (
+                <>
+                  <Badge bg="light">{dataset.publisher.country_label}</Badge>
+                  <Spacer />
+                </>
+              )}
               {dataset.publisher.name}
               {!dataset.publisher.official && (
                 <>

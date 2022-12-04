@@ -2,7 +2,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import Layout from '../../components/Layout'
 import Content from '../../components/Content'
-import { getContentBySlug, getContents, getStaticContentProps } from '../../lib/content'
+import { getContentBySlug, getContents } from '../../lib/content'
 
 export default function DocsContent({ content }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
