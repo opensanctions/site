@@ -1,10 +1,9 @@
 import React from 'react';
 import Link from 'next/link'
 import queryString from 'query-string';
-import { Property } from '../lib/ftm/property';
 
 import { Table } from "./wrapped";
-import { Entity } from '../lib/ftm';
+import { Entity, Property } from '../lib/ftm';
 import { compareDisplayProps } from '../lib/ftm/ordering';
 import { IDataset, isCollection, IStatement } from '../lib/types';
 import { isBlocked, isIndexRelevant } from '../lib/data';

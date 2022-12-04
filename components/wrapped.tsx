@@ -16,7 +16,7 @@ import Table from "react-bootstrap/Table";
 import InputGroup from "react-bootstrap/InputGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Pagination from "react-bootstrap/Pagination";
-
+import TextTruncate from 'react-text-truncate';
 
 
 export const NavbarBrand = Navbar.Brand;
@@ -38,6 +38,7 @@ export const PaginationPrev = Pagination.Prev;
 export const PaginationNext = Pagination.Next;
 export const PaginationItem = Pagination.Item;
 export const AlertLink = Alert.Link;
+export const AlertHeading = Alert.Heading;
 export {
   Navbar,
   Nav,
@@ -54,5 +55,6 @@ export {
   Pagination,
   Table,
   Form,
-  Badge
+  Badge,
+  TextTruncate
 };

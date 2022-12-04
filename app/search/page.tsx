@@ -1,28 +1,38 @@
 import React from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Model } from '../lib/ftm/model';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Alert from 'react-bootstrap/Alert';
-import Container from 'react-bootstrap/Container';
+import { Model } from '../../lib/ftm/model';
 
-import Layout from '../components/Layout'
-import Research from '../components/Research';
-import { ISearchAPIResponse } from '../lib/types';
-import { fetchIndex, fetchObject, getDatasets } from '../lib/data';
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../components/Search';
-import { SEARCH_DATASET, SEARCH_SCHEMA } from '../lib/constants';
-import { FormattedDate, ResponsePagination } from '../components/util';
+import Layout from '../../components/Layout'
+import Research from '../../components/Research';
+import { ISearchAPIResponse } from '../../lib/types';
+import { Container, Row, Col, Alert, AlertHeading } from '../../components/wrapped';
+import { fetchIndex, fetchObject, getDatasets } from '../../lib/data';
+import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../../components/Search';
+import { SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
+import { FormattedDate, ResponsePagination } from '../../components/util';
 
-import styles from '../styles/Search.module.scss'
+import { PageProps } from '../../components/utils/PageProps';
+import LayoutFrame from '../../components/layout/LayoutFrame';
 
-const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
+import styles from '../../styles/Search.module.scss';
 
-export default function Search({ modelData, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const model = new Model(modelData);
-  const params = useSearchParams();
-  const searchParams = Object.fromEntries(params.entries())
+
+export default async function Search({ searchParams }: PageProps) {
+  const index = await fetchIndex();
+  const datasets = await getDatasets();
+  if (searchParams === undefined) {
+    return null;
+  }
+  const scopeName = searchParams['scope'] || SEARCH_DATASET;
+  const schemaName = searchParams['schema'] || SEARCH_SCHEMA;
+  const params = {
+    ...searchParams,
+    'limit': 25,
+    'fuzzy': 'false',
+    'simple': 'true',
+    'schema': schemaName
+  }
+  const response = await fetchObject<ISearchAPIResponse>(`/search/${scopeName}`, params);
+  const model = new Model(index.model);
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
 
@@ -37,15 +47,16 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
       </Layout.Base >
     );
   }
+
   const title = hasScope ? `Search in: ${scope.title}` : 'Search OpenSanctions';
 
   return (
-    <Layout.Base title={title} description={SUMMARY} activeSection="research">
+    <LayoutFrame activeSection="research">
       <Research.Context query={searchParams} title={title}>
         <Container>
           <Row className={styles.searchMeta}>
             <Col md={8}>
-              <SearchFilterTags scope={scope} model={model} datasets={datasets} />
+              <SearchFilterTags scope={scope} model={model} datasets={datasets} searchParams={searchParams} />
             </Col>
             <Col md={4}>
               <p className={styles.searchNotice}>
@@ -57,7 +68,7 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
             <Col md={8}>
               {response === null && (
                 <Alert variant="warning">
-                  <Alert.Heading>Search failed.</Alert.Heading>
+                  <AlertHeading>Search failed.</AlertHeading>
                   <p>
                     You may have entered an invalid search term, or our system
                     is not working as expected.
@@ -68,7 +79,7 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
                 <>
                   {response.total.value === 0 && (
                     <Alert variant="warning">
-                      <Alert.Heading> No matching entities were found.</Alert.Heading>
+                      <AlertHeading> No matching entities were found.</AlertHeading>
                       <p>
                         Try searching a partial name, or use a different spelling.
                       </p>
@@ -96,30 +107,6 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
           </Row>
         </Container>
       </Research.Context>
-    </Layout.Base >
+    </LayoutFrame>
   )
-}
-
-
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const index = await fetchIndex();
-  const datasets = await getDatasets();
-  const scopeName = context.query.scope || SEARCH_DATASET;
-  const schemaName = context.query.schema || SEARCH_SCHEMA;
-  const params = {
-    ...context.query,
-    'limit': 25,
-    'fuzzy': 'false',
-    'simple': 'true',
-    'schema': schemaName
-  }
-  const response = await fetchObject<ISearchAPIResponse>(`/search/${scopeName}`, params);
-  return {
-    props: {
-      response,
-      scopeName,
-      datasets: datasets,
-      modelData: index.model
-    }
-  };
 }
