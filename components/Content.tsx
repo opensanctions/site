@@ -1,8 +1,4 @@
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
-
+import { Row, Col, Card, CardBody, Container } from './wrapped';
 import { IContent } from '../lib/types'
 import { JSONLink, Markdown, Summary } from './util';
 
@@ -60,12 +56,12 @@ function ContentContext({ content, children }: ContentFrameProps) {
       <div className={styles.page}>
         {children}
         <Card>
-          <Card.Body>
+          <CardBody>
             <strong>Got more questions?</strong> Join the <Link href="https://bit.ly/osa-slack">Slack
               chat</Link> to ask questions and get support. You can
             also <Link href="https://book.stripe.com/28o1513OFca54nufZf">book an hour of consulting time</Link> to
             discuss technical questions with the team.
-          </Card.Body>
+          </CardBody>
         </Card>
       </div>
     </ContentMenu>

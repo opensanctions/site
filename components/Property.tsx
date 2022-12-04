@@ -1,7 +1,7 @@
 import { ComponentType, useState } from 'react';
 import Link from 'next/link'
-import Badge from "react-bootstrap/Badge";
 
+import { Badge } from "./wrapped";
 import { Property, PropertyType, Entity, Value, Values } from "../lib/ftm";
 import { FormattedDate, SpacedList, URLLink } from "./util";
 import { EntityLink, EntityDisplayProps } from "./Entity";

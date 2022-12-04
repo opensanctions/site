@@ -1,15 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+
 import * as gtag from '../lib/gtag'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Container from 'react-bootstrap/Container';
+import { Row, Col, Container, ButtonGroup, Button } from "./wrapped";
 
 import styles from '../styles/Consent.module.scss';
-import Link from 'next/link';
 
 
 export function CookieConsent() {

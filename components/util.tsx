@@ -1,18 +1,16 @@
+import Link from 'next/link'
 import React, { ReactNode } from 'react';
 import queryString from 'query-string';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { filesize } from 'filesize';
-import Link from 'next/link'
-import Nav from 'react-bootstrap/Nav';
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
-import Pagination from 'react-bootstrap/Pagination';
 import { FileEarmarkCodeFill, Link45deg, QuestionCircleFill } from 'react-bootstrap-icons';
 
-import styles from '../styles/util.module.scss';
+import { Badge, Button, NavLink, Pagination, PaginationItem, PaginationNext, PaginationPrev, Spinner } from "./wrapped";
 import { SPACER } from '../lib/constants';
 import { IPaginatedResponse } from '../lib/types';
+
+import styles from '../styles/util.module.scss';
+
 
 type RoutedNavLinkProps = {
   href: string
@@ -23,7 +21,7 @@ export function RoutedNavLink({ href, children }: React.PropsWithChildren<Routed
   const path = usePathname();
   return (
     <Link href={href} passHref legacyBehavior>
-      <Nav.Link active={path == href}>{children}</Nav.Link>
+      <NavLink active={path == href}>{children}</NavLink>
     </Link>
   )
 }
@@ -270,11 +268,11 @@ export function ResponsePagination({ response }: ResponsePaginationProps) {
 
   return (
     <Pagination>
-      <Pagination.Prev disabled={!hasPrev} href={`?${prevLink}`} />
-      <Pagination.Item disabled>
+      <PaginationPrev disabled={!hasPrev} href={`?${prevLink}`} />
+      <PaginationItem disabled>
         {response.offset + 1} - {upper} of {relationText} {response.total.value}
-      </Pagination.Item>
-      <Pagination.Next disabled={!hasNext} href={`?${nextLink}`} />
+      </PaginationItem>
+      <PaginationNext disabled={!hasNext} href={`?${nextLink}`} />
     </Pagination>
   );
 }

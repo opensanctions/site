@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { CalendarDateFill } from 'react-bootstrap-icons';
-import Nav from 'react-bootstrap/Nav';
 
+import { Nav, NavItem } from './wrapped';
 import { IArticleInfo } from '../lib/types'
 import { FormattedDate, RoutedNavLink } from './util';
 
@@ -26,21 +26,21 @@ function ArticleSidebar({ article }: ArticleProps) {
         targets and persons of interest.
       </p>
       <Nav className="flex-column justify-content-start" variant="pills">
-        <Nav.Item>
+        <NavItem>
           <RoutedNavLink href="/docs/about/">About OpenSanctions</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/faq/">FAQ</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/datasets/">Datasets</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/sponsor/">Sponsor the project</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
-        </Nav.Item>
+        </NavItem>
       </Nav>
     </>
   )

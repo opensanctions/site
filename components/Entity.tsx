@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Link from 'next/link'
 import queryString from 'query-string';
 import classNames from 'classnames';
-import Card from 'react-bootstrap/Card';
-import Table from 'react-bootstrap/Table';
 import { Property } from '../lib/ftm/property';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 
+import { Card, CardHeader, Table } from "./wrapped";
 import { Entity } from '../lib/ftm';
 import { compareDisplayProps } from '../lib/ftm/ordering';
 import { IDataset, isCollection, IStatement } from '../lib/types';
@@ -142,9 +141,9 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
 export function EntityCard({ entity, via, showEmpty = false }: EntityPropsTableProps) {
   return (
     <Card key={entity.id} className={styles.card}>
-      <Card.Header>
+      <CardHeader>
         <strong>{entity.schema.label}</strong>
-      </Card.Header>
+      </CardHeader>
       <EntityPropsTable entity={entity} via={via} showEmpty={showEmpty} />
     </Card>
   );

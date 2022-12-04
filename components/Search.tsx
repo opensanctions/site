@@ -1,10 +1,9 @@
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Model } from '../lib/ftm/model';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
-import Badge from "react-bootstrap/Badge";
 import queryString from "query-string";
 
+import { Card, CardHeader, ListGroup, ListGroupItem, Badge } from './wrapped';
 import { IEntityDatum, Values } from '../lib/ftm';
 import { IDataset, ISearchFacet } from "../lib/types";
 import { NumericBadge, Spacer } from "./util";
@@ -14,8 +13,6 @@ import { TypeValue, TypeValues } from './Property';
 import { ensureArray } from '../lib/util';
 
 import styles from '../styles/Search.module.scss'
-import Link from 'next/link';
-
 
 
 type SearchFacetProps = {
@@ -41,10 +38,10 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
 
   return (
     <Card className={styles.facet}>
-      <Card.Header className={styles.facetHeader}>{facet.label}</Card.Header>
+      <CardHeader className={styles.facetHeader}>{facet.label}</CardHeader>
       <ListGroup variant="flush">
         {facet.values.map((value) => (
-          <ListGroup.Item key={value.name}
+          <ListGroupItem key={value.name}
             active={filters.indexOf(value.name) !== -1}
             as={"a"}
             href={filteredUrl(value.name)}
@@ -52,7 +49,7 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
           >
             <NumericBadge value={value.count} bg="light" className={styles.facetCount} />
             <span className={styles.facetLabel}>{value.label}</span>
-          </ListGroup.Item>
+          </ListGroupItem>
         ))}
       </ListGroup>
     </Card>

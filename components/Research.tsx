@@ -1,12 +1,7 @@
-import { useSearchParams } from 'next/navigation';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Container from 'react-bootstrap/Container';
+import { ensureArray } from '../lib/util';
+import { Container, Form, FormControl, InputGroup, Button } from './wrapped';
 
 import styles from '../styles/Research.module.scss';
-import { ensureArray } from '../lib/util';
-
 
 
 type ResearchProps = {
@@ -26,9 +21,9 @@ function ResearchContext({ title, query, children }: React.PropsWithChildren<Res
       <div className={styles.researchBar}>
         <Container>
           <h2>{activeTitle}</h2>
-          <Form className="d-flex" action="/search">
+          <form className="d-flex" action="/search">
             <InputGroup>
-              <Form.Control
+              <FormControl
                 type="search"
                 name="q"
                 defaultValue={queryText}
@@ -41,7 +36,7 @@ function ResearchContext({ title, query, children }: React.PropsWithChildren<Res
                 <input key={field + ':' + value} type="hidden" name={field + ''} value={value} />
               ))}
             </InputGroup>
-          </Form>
+          </form>
         </Container>
       </div >
       {children}

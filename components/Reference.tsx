@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 import { Property } from "../lib/ftm/property";
 import { PropertyType } from "../lib/ftm/type";
 import { Schema } from "../lib/ftm/schema";
-import Link from "next/link";
-import Table from 'react-bootstrap/Table';
+
+import { Table } from "./wrapped";
 import { wordList } from "../lib/util";
 import { Spacer } from "./util";
 
