@@ -22,14 +22,14 @@ const SUMMARY = "Provide a search term to search across sanctions lists and othe
 export default function Search({ modelData, datasets, scopeName, response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const model = new Model(modelData);
   const params = useSearchParams();
-  const activeQuery = Object.fromEntries(params.entries())
+  const searchParams = Object.fromEntries(params.entries())
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
 
   if (scope === undefined) {
     return (
       <Layout.Base title="Failed to load" activeSection="research">
-        <Research.Context query={activeQuery}>
+        <Research.Context query={searchParams}>
           <Container>
             <h2>Could not load search function.</h2>
           </Container>
@@ -41,7 +41,7 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
 
   return (
     <Layout.Base title={title} description={SUMMARY} activeSection="research">
-      <Research.Context query={activeQuery} title={title}>
+      <Research.Context query={searchParams} title={title}>
         <Container>
           <Row className={styles.searchMeta}>
             <Col md={8}>
@@ -80,16 +80,16 @@ export default function Search({ modelData, datasets, scopeName, response }: Inf
                       <SearchResultEntity key={r.id} data={r} model={model} />
                     ))}
                   </ul>
-                  <ResponsePagination response={response} />
+                  <ResponsePagination response={response} searchParams={searchParams} />
                 </>
               )}
             </Col>
             <Col md={4}>
               {response !== null && response.facets && response.total.value > 0 && (
                 <>
-                  <SearchFacet field="topics" facet={response.facets.topics} />
-                  <SearchFacet field="datasets" facet={response.facets.datasets} />
-                  <SearchFacet field="countries" facet={response.facets.countries} />
+                  <SearchFacet field="topics" facet={response.facets.topics} searchParams={searchParams} />
+                  <SearchFacet field="datasets" facet={response.facets.datasets} searchParams={searchParams} />
+                  <SearchFacet field="countries" facet={response.facets.countries} searchParams={searchParams} />
                 </>
               )}
             </Col>

@@ -1,12 +1,13 @@
 import { ensureArray } from '../lib/util';
-import { Container, Form, FormControl, InputGroup, Button } from './wrapped';
+import { Container, FormControl, InputGroup, Button } from './wrapped';
+import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/Research.module.scss';
 
 
 type ResearchProps = {
   title?: string
-  query?: { [k: string]: string }
+  query?: ServerSearchParams
 }
 
 function ResearchContext({ title, query, children }: React.PropsWithChildren<ResearchProps>) {

@@ -11,19 +11,20 @@ import { SEARCH_DATASET, SEARCH_SCHEMA } from "../lib/constants";
 import { EntityLink } from './Entity';
 import { TypeValue, TypeValues } from './Property';
 import { ensureArray } from '../lib/util';
+import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/Search.module.scss'
+
 
 
 type SearchFacetProps = {
   field: string
   facet: ISearchFacet
+  searchParams: ServerSearchParams
 }
 
-export function SearchFacet({ field, facet }: SearchFacetProps) {
-  const params = useSearchParams();
-  const oldQuery = Object.fromEntries(params.entries())
-  const filters = ensureArray(params.getAll(field));
+export function SearchFacet({ field, facet, searchParams }: SearchFacetProps) {
+  const filters = ensureArray(searchParams[field]);
   if (!facet.values.length) {
     return null;
   }
@@ -32,7 +33,7 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
     const idx = filters.indexOf(value);
     const newFilters = idx === -1 ? [...filters, value] : filters.filter((e) => e !== value);
     const param = newFilters.length ? newFilters : undefined;
-    const newQuery = { ...oldQuery, [field]: param };
+    const newQuery = { ...searchParams, [field]: param };
     return queryString.stringifyUrl({ url: '/search', query: newQuery });
   }
 

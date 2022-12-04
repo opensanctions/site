@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import React, { ReactNode } from 'react';
 import queryString from 'query-string';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { filesize } from 'filesize';
 import { FileEarmarkCodeFill, Link45deg, QuestionCircleFill } from 'react-bootstrap-icons';
 
 import { Badge, Button, NavLink, Pagination, PaginationItem, PaginationNext, PaginationPrev, Spinner } from "./wrapped";
 import { SPACER } from '../lib/constants';
 import { IPaginatedResponse } from '../lib/types';
+import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/util.module.scss';
 
@@ -242,12 +243,10 @@ export function Spacer() {
 
 type ResponsePaginationProps = {
   response: IPaginatedResponse
+  searchParams: ServerSearchParams
 }
 
-export function ResponsePagination({ response }: ResponsePaginationProps) {
-  const params = useSearchParams();
-  const oldQuery = Object.fromEntries(params.entries())
-
+export function ResponsePagination({ response, searchParams }: ResponsePaginationProps) {
   if (response.total.value === 0) {
     return null;
   }
@@ -257,11 +256,11 @@ export function ResponsePagination({ response }: ResponsePaginationProps) {
   const hasNext = response.total.value > nextOffset;
 
   const prevLink = queryString.stringify({
-    ...oldQuery,
+    ...searchParams,
     offset: Math.max(0, response.offset - response.limit)
   })
   const nextLink = queryString.stringify({
-    ...oldQuery,
+    ...searchParams,
     offset: response.offset + response.limit
   })
   const relationText = response.total.relation == 'gte' ? 'more than ' : '';
