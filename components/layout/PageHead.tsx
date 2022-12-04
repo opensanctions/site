@@ -6,9 +6,10 @@ type HeadTagsProps = {
   description?: string
   structured?: any,
   imageUrl?: string | null,
+  noIndex?: boolean
 }
 
-export default function PageHead({ title, description, structured, imageUrl }: HeadTagsProps) {
+export default function PageHead({ title, description, structured, imageUrl, noIndex }: HeadTagsProps) {
   const path = usePathname();
   const url = `${BASE_URL}${path}`;
   return (
@@ -32,6 +33,9 @@ export default function PageHead({ title, description, structured, imageUrl }: H
           <meta property="og:description" content={description.trim()} />
           <meta name="description" content={description.trim()} />
         </>
+      )}
+      {noIndex && (
+        <meta name="robots" content="noindex" />
       )}
       {structured && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ '__html': JSON.stringify(structured) }} />

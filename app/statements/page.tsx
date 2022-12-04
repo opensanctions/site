@@ -1,20 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import queryString from 'query-string';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Table from 'react-bootstrap/Table';
-import Alert from 'react-bootstrap/Alert';
-import Container from 'react-bootstrap/Container';
 
-import Layout from '../components/Layout'
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import { ResponsePagination } from '../components/util';
-import styles from '../styles/Statement.module.scss'
-import { FormattedDate } from '../components/util';
+import { ResponsePagination } from '../../components/util';
+import { FormattedDate } from '../../components/util';
 import { AspectRatioFill, Link45deg } from 'react-bootstrap-icons';
-import { getStatements } from '../lib/data';
+import { getStatements } from '../../lib/data';
+import { PageProps } from '../../components/utils/PageProps';
+import { TITLE } from './common';
+import LayoutFrame from '../../components/layout/LayoutFrame';
+import { Container, Row, Col, Table, Alert, AlertLink } from '../../components/wrapped';
+
+import styles from '../../styles/Statement.module.scss'
+
 
 type ExpandProps = {
   href: string
@@ -62,17 +60,17 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
 }
 
 
-export default function Statements({ response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  if (response === null) {
+export default async function Page({ searchParams }: PageProps) {
+  const response = await getStatements(searchParams);
+  if (response === null || searchParams === undefined) {
     return (
-      <Layout.Base title="Failed to load" activeSection="research">
+      <LayoutFrame activeSection="research">
         <Container>
           <h2>Could not load raw data viewer</h2>
         </Container>
-      </Layout.Base >
+      </LayoutFrame>
     );
   }
-  const title = 'Raw data explorer';
 
   const filterQuery = (args: any) => {
     const newQuery = queryString.stringify({
@@ -82,15 +80,12 @@ export default function Statements({ response }: InferGetServerSidePropsType<typ
   }
 
   return (
-    <Layout.Base title={title} activeSection="research">
-      <Head>
-        <meta name="robots" content="noindex" />
-      </Head>
+    <LayoutFrame activeSection="research">
       <Container>
         <Row>
           <Col md={12}>
             <h1>
-              {title}
+              {TITLE}
             </h1>
           </Col>
         </Row>
@@ -98,7 +93,7 @@ export default function Statements({ response }: InferGetServerSidePropsType<typ
           <Col md={12}>
             <Alert variant="secondary">
               This table shows statement-based, sourced records from our database. For more context,
-              learn about <Alert.Link href="/docs/statements/">how OpenSanctions stores information</Alert.Link>.
+              learn about <AlertLink href="/docs/statements/">how OpenSanctions stores information</AlertLink>.
             </Alert>
             <Table bordered size="sm">
               <thead>
@@ -142,27 +137,14 @@ export default function Statements({ response }: InferGetServerSidePropsType<typ
                     <td className={styles.colDate}>
                       <FormattedDate date={stmt.first_seen} />
                     </td>
-                    {/* <td className={styles.colDate}>
-                      <FormattedDate date={stmt.last_seen} />
-                    </td> */}
                   </tr>
                 ))}
               </tbody>
             </Table>
-            <ResponsePagination response={response} />
+            <ResponsePagination response={response} searchParams={searchParams} />
           </Col>
         </Row>
       </Container>
-    </Layout.Base >
+    </LayoutFrame >
   )
-}
-
-
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const response = await getStatements(context.query);
-  return {
-    props: {
-      response
-    }
-  };
 }

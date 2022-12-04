@@ -37,6 +37,7 @@ export const FormControl = Form.Control;
 export const PaginationPrev = Pagination.Prev;
 export const PaginationNext = Pagination.Next;
 export const PaginationItem = Pagination.Item;
+export const AlertLink = Alert.Link;
 export {
   Navbar,
   Nav,

@@ -4,4 +4,3 @@ import { SUMMARY, TITLE } from "./common";
 export default function Head() {
   return <PageHead title={TITLE} description={SUMMARY} />;
 }
-
