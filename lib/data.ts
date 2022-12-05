@@ -8,7 +8,6 @@ import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL } from "./co
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
-import issuesJson from '../data/issues.json';
 
 const index = { ...indexJson } as unknown as IIndex;
 index.details = {};
