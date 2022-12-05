@@ -64,6 +64,11 @@ export async function fetchIndex(): Promise<IIndex> {
   return index as IIndex
 }
 
+export async function getModel(): Promise<Model> {
+  const index = await fetchIndex();
+  return new Model(index.model);
+}
+
 export async function getDatasets(): Promise<Array<IDataset>> {
   const index = await fetchIndex()
   return index.datasets
@@ -154,7 +159,7 @@ export async function getStatements(query: any, limit: number = 100): Promise<IS
   return await fetchObject<IStatementAPIResponse>(`/statements`, params);
 }
 
-export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
+export async function getEntityData(entityId: any): Promise<IEntityDatum | null> {
   if (entityId === undefined || entityId === null) {
     return null;
   }
@@ -165,10 +170,18 @@ export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
   return raw;
 }
 
-export async function getEntityDatasets(entity: IEntityDatum | Entity): Promise<IDataset[]> {
+export async function getEntity(entityId: string) {
+  const entityData = await getEntityData(entityId);
+  if (entityData === null) {
+    return null;
+  }
+  const model = await getModel();
+  return model.getEntity(entityData);
+}
+
+export async function getEntityDatasets(entity: Entity) {
   const allDatasets = await getDatasets();
-  const datasetNames = entity !== null ? entity.datasets : [];
-  return datasetNames
+  return entity.datasets
     .map((name) => allDatasets.find((d) => d.name === name))
     .filter((d) => d !== undefined) as IDataset[];
 }

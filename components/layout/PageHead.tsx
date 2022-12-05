@@ -1,4 +1,5 @@
 import { usePathname } from "next/navigation";
+import Script from "next/script";
 import { BASE_URL, SITE } from "../../lib/constants";
 
 type HeadTagsProps = {
@@ -38,7 +39,7 @@ export default function PageHead({ title, description, structured, imageUrl, noI
         <meta name="robots" content="noindex" />
       )}
       {structured && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ '__html': JSON.stringify(structured) }} />
+        <Script type="application/ld+json" dangerouslySetInnerHTML={{ '__html': JSON.stringify(structured) }} />
       )}
       <meta property="og:image" content={(!!imageUrl) ? imageUrl : "/static/card.jpg"} />
       <meta name="og:site" content={SITE} />

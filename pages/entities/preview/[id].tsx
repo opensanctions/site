@@ -8,7 +8,7 @@ import { EntityFactsheet, EntityLink, EntityRawLink } from '../../../components/
 import { SpacedList } from '../../../components/util';
 import { PropertyValues } from '../../../components/Property';
 import Dataset from '../../../components/Dataset';
-import { fetchIndex, getEntity, getEntityDatasets, isBlocked } from '../../../lib/data';
+import { fetchIndex, getEntityData, getEntityDatasets, isBlocked } from '../../../lib/data';
 
 import styles from '../../../styles/Entity.module.scss'
 
@@ -37,7 +37,7 @@ export default function EntityPreview({ entityData, modelData, datasets }: Infer
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const entityId = context.params?.id as (string | undefined);
-  const entity = await getEntity(entityId);
+  const entity = await getEntityData(entityId);
   if (entity === null) {
     return { notFound: true }
   }
@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       entityData: entity,
-      datasets: await getEntityDatasets(entity),
+      datasets: await getEntityDataDatasets(entity),
       modelData: index.model
     },
     revalidate: 3600
