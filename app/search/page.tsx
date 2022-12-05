@@ -15,6 +15,7 @@ import LayoutFrame from '../../components/layout/LayoutFrame';
 
 import styles from '../../styles/Search.module.scss';
 
+export const dynamic = 'force-dynamic';
 
 export default async function Search({ searchParams }: PageProps) {
   const index = await fetchIndex();

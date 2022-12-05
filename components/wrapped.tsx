@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from "react-bootstrap/Badge";
 import Form from "react-bootstrap/Form";
@@ -43,6 +44,7 @@ export {
   Navbar,
   Nav,
   Card,
+  CardGroup,
   Row,
   Col,
   Container,
