@@ -1,7 +1,7 @@
 // import { join } from 'path'
 // import { promises as fs } from 'fs';
 import queryString from 'query-string';
-import { intersection } from 'lodash';
+import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES } from "./constants";
@@ -52,7 +52,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
     'url': `${API_URL}${path}`,
     'query': query
   })
-  const data = await fetch(apiUrl, { headers });
+  const data = await fetch(apiUrl, { headers, cache: 'force-cache', next: { revalidate: 3600 } });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }
@@ -186,7 +186,7 @@ export async function getEntityDatasets(entity: Entity) {
     .filter((d) => d !== undefined) as IDataset[];
 }
 
-export function isBlocked(entity: IEntityDatum | Entity): boolean {
+export function isBlocked(entity: Entity): boolean {
   if (BLOCKED_ENTITIES.indexOf(entity.id) !== -1) {
     return true;
   }

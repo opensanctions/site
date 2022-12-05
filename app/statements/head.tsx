@@ -1,5 +1,6 @@
 import PageHead from "../../components/layout/PageHead";
+import { TITLE } from "./common";
 
 export default function Head() {
-  return <PageHead title="Raw data explorer" noIndex />;
+  return <PageHead title={TITLE} noIndex />;
 }
