@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES } from "./constants";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
@@ -85,7 +85,12 @@ export async function getDatasetDetails(name: string): Promise<IDatasetDetails |
 }
 
 export async function getIssues(): Promise<Array<IIssue>> {
-  const index = { ...issuesJson } as unknown as IIssueIndex;
+  const data = await fetch(ISSUES_URL, { cache: 'force-cache' });
+  if (!data.ok) {
+    throw Error(`Backend error: ${data.text}`);
+  }
+  const jsonData = await data.json()
+  const index = jsonData as IIssueIndex;
   return index.issues
 }
 

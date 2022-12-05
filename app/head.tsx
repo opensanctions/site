@@ -1,7 +1,9 @@
-import { CLAIM } from "../lib/constants";
+import { CLAIM, SUBCLAIM } from "../lib/constants";
 import PageHead from "../components/layout/PageHead";
+import { getSchemaWebSite } from "../lib/schema";
 
 export default function Head() {
-  return <PageHead title={`OpenSanctions: ${CLAIM}`} />;
+  const structured = getSchemaWebSite();
+  return <PageHead title={`OpenSanctions: ${CLAIM}`} description={SUBCLAIM} structured={structured} />;
 }
 

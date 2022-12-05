@@ -1,37 +1,31 @@
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Container from 'react-bootstrap/Container';
-import InputGroup from 'react-bootstrap/InputGroup';
 
-import styles from '../styles/Home.module.scss'
 import articleStyles from '../styles/Article.module.scss'
-import Layout from '../components/Layout'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY } from '../lib/constants'
-import { getSchemaWebSite } from '../lib/schema';
 import { Search } from 'react-bootstrap-icons';
 import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
 import { getArticles } from '../lib/content';
 import Dataset from '../components/Dataset';
 import Article from '../components/Article';
+import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, InputGroup } from '../components/wrapped';
+import LayoutFrame from '../components/layout/LayoutFrame';
 
+import styles from '../styles/Home.module.scss'
 
-export default function Home({ collections, sourceCount, articles }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const structured = getSchemaWebSite()
+export default async function Page() {
+  const articles = await getArticles()
+  const datasets = await getDatasets()
+  const collections = datasets.filter(isCollection)
+  const sources = datasets.filter(isSource)
   const all = collections.find((c) => c.name === 'all');
   if (all === undefined) {
     return null;
   }
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (
-    <Layout.Base title={CLAIM} description={SUBCLAIM} structured={structured}>
+    <LayoutFrame>
       <div className={styles.claimBanner}>
         <Container>
           <Row>
@@ -45,7 +39,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
               <div className={styles.search}>
                 <Form action="/search/">
                   <InputGroup size="lg" className="mb-6">
-                    <Form.Control
+                    <FormControl
                       type="search"
                       name="q"
                       autoFocus={true}
@@ -62,7 +56,7 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
               <p className={styles.stats}>
                 <NumericBadge value={all.target_count} className={styles.statsBadge} /> targets
                 {SPACER}
-                <NumericBadge value={sourceCount} className={styles.statsBadge} /> data sources
+                <NumericBadge value={sources.length} className={styles.statsBadge} /> data sources
                 {SPACER}
                 updated{' '}
                 <Badge className={styles.statsBadge}>
@@ -154,20 +148,6 @@ export default function Home({ collections, sourceCount, articles }: InferGetSta
           </Col>
         </Row>
       </Container>
-    </Layout.Base >
+    </LayoutFrame>
   )
-}
-
-export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const articles = await getArticles()
-  const datasets = await getDatasets()
-  const collections = datasets.filter(isCollection)
-  const sources = datasets.filter(isSource)
-  return {
-    props: {
-      collections,
-      sourceCount: sources.length,
-      articles: articles.slice(0, 3)
-    }
-  }
 }
