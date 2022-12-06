@@ -1,27 +1,27 @@
 import Link from 'next/link';
-import { InferGetStaticPropsType } from 'next'
-import { Model } from "../lib/ftm/model"
-import { Schema } from "../lib/ftm/schema"
-import Alert from 'react-bootstrap/Alert';
+import { Schema } from "../../lib/ftm/schema"
 
-import Layout from '../components/Layout'
-import Content from '../components/Content'
-import { getContentBySlug } from '../lib/content'
-import { Summary } from '../components/util'
-import { fetchIndex } from '../lib/data'
-import { SchemaReference, TypeReference } from '../components/Reference';
-import { INDEX_URL } from '../lib/constants';
-import Menu from '../components/Menu';
+import Content from '../../components/Content'
+import { getContentBySlug } from '../../lib/content'
+import { Alert } from '../../components/wrapped'
+import { Summary } from '../../components/util'
+import { fetchIndex, getModel } from '../../lib/data'
+import { SchemaReference, TypeReference } from '../../components/Reference';
+import { INDEX_URL } from '../../lib/constants';
+import Menu from '../../components/Menu';
+import LayoutFrame from '../../components/layout/LayoutFrame';
 
 
 
-export default function Reference({ content, activeModel, schemata }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const model = new Model(activeModel)
-  const usedSchemata = schemata.map(s => model.getSchema(s)).filter(s => s !== undefined)
+export default async function Page() {
+  const index = await fetchIndex();
+  const model = await getModel();
+  const content = await getContentBySlug('reference');
+  const usedSchemata = index.schemata.map(s => model.getSchema(s)).filter(s => s !== undefined)
   const refSchemata = Schema.getAllParents(usedSchemata)
 
   return (
-    <Layout.Content content={content}>
+    <LayoutFrame activeSection={content.section}>
       <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={Menu.Documentation}>
         <Summary summary={content.summary} />
         <div>
@@ -66,7 +66,7 @@ export default function Reference({ content, activeModel, schemata }: InferGetSt
         <ul>
           {usedSchemata.map(schema => (
             <li key={schema.name}>
-              <code><Link href={`#schema.${schema.name}`}>{schema.name}</Link></code>
+              <code><Link href={`/reference/#schema.${schema.name}`}>{schema.name}</Link></code>
             </li>
           ))}
         </ul>
@@ -112,17 +112,6 @@ export default function Reference({ content, activeModel, schemata }: InferGetSt
           mental health impact of being angry at tables on the internet.
         </TypeReference>
       </Content.Menu>
-    </Layout.Content >
+    </LayoutFrame>
   )
-}
-
-export async function getStaticProps() {
-  const index = await fetchIndex()
-  return {
-    props: {
-      content: await getContentBySlug('reference'),
-      schemata: index.schemata,
-      activeModel: index.model,
-    }
-  }
 }

@@ -1,32 +1,27 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import CardGroup from 'react-bootstrap/CardGroup';
-
-import Layout from '../../components/Layout';
-import Content from '../../components/Content';
-import { getContentBySlug } from '../../lib/content';
-
-import styles from '../../styles/API.module.scss';
-import { CreditCard2BackFill, InfoSquareFill } from 'react-bootstrap-icons';
-import { API_URL } from '../../lib/constants';
 import Link from 'next/link';
 
-export default function Api({ apiUrl, content }: InferGetStaticPropsType<typeof getStaticProps>) {
+import Content from '../../../components/Content';
+import { Row, Col, Card, CardBody, CardTitle, CardText, CardFooter, Table, Button, CardGroup } from '../../../components/wrapped';
+import { getContentBySlug } from '../../../lib/content';
+import { CreditCard2BackFill, InfoSquareFill } from 'react-bootstrap-icons';
+import { API_URL } from '../../../lib/constants';
+import LayoutFrame from '../../../components/layout/LayoutFrame';
+
+import styles from '../../../styles/API.module.scss';
+
+export default async function Page() {
+  const content = await getContentBySlug('api');
   return (
-    <Layout.Content content={content}>
+    <LayoutFrame activeSection={content.section}>
       <Content.Context content={content}>
         <CardGroup className={styles.apiOptionsPanel}>
           <Card className={styles.firstColumn} text="white">
-            <Card.Body>
-              <Card.Title>OpenSanctions API service</Card.Title>
-              <Card.Text>
+            <CardBody>
+              <CardTitle>OpenSanctions API service</CardTitle>
+              <CardText>
                 Easily integrate up-to-date sanctions and PEPs data
                 into your screening or research processes.
-              </Card.Text>
+              </CardText>
               <ul className={styles.featureList}>
                 <li>Powerful API for entity matching and search</li>
                 <li>30 sanctions lists, 160,000+ PEPs, 11 crime lists</li>
@@ -54,20 +49,20 @@ export default function Api({ apiUrl, content }: InferGetStaticPropsType<typeof 
                   </tr>
                 </tbody>
               </Table>
-            </Card.Body>
-            <Card.Footer>
-              <Button href={`${apiUrl}/stripe/subscribe`} variant="secondary">
+            </CardBody>
+            <CardFooter>
+              <Button href={`${API_URL}/stripe/subscribe`} variant="secondary">
                 <CreditCard2BackFill className="bsIcon" /> Sign up now
               </Button>
-            </Card.Footer>
+            </CardFooter>
           </Card>
           <Card className={styles.secondColumn} text="white">
-            <Card.Body>
-              <Card.Title>On-premises solution</Card.Title>
-              <Card.Text>
+            <CardBody>
+              <CardTitle>On-premises solution</CardTitle>
+              <CardText>
                 Run our API software on your own infrastructure to be in
                 control of scaling and protect data privacy.
-              </Card.Text>
+              </CardText>
               <ul className={styles.featureList}>
                 <li>Use our open source matching software</li>
                 <li>Pay for a single <Link href="/licensing/">bulk data license</Link> to use our data</li>
@@ -75,19 +70,19 @@ export default function Api({ apiUrl, content }: InferGetStaticPropsType<typeof 
                 <li>Include additional, in-house datasets in matcher</li>
                 <li>Customer data remains entirely on your systems</li>
               </ul>
-            </Card.Body>
-            <Card.Footer>
+            </CardBody>
+            <CardFooter>
               <Button href="/docs/self-hosted/" variant="light">
                 <InfoSquareFill className="bsIcon" /> Learn more
               </Button>
-            </Card.Footer>
+            </CardFooter>
           </Card>
         </CardGroup>
         <Row>
           <Col md={4}>
             <h5>Service guidance</h5>
             <ul>
-              <li><Link href={apiUrl}>Service (API) documentation</Link></li>
+              <li><Link href={API_URL}>Service (API) documentation</Link></li>
               <li><Link href="/service/account/">Account and usage dashboard</Link></li>
               <li>Tutorial: <Link href="/articles/2022-02-01-matching-api/">Using the matching API</Link></li>
             </ul>
@@ -109,16 +104,7 @@ export default function Api({ apiUrl, content }: InferGetStaticPropsType<typeof 
             </ul>
           </Col>
         </Row>
-      </Content.Context >
-    </Layout.Content >
+      </Content.Context>
+    </LayoutFrame>
   )
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  return {
-    props: {
-      apiUrl: API_URL,
-      content: await getContentBySlug('api')
-    }
-  }
 }

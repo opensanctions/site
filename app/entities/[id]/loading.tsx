@@ -8,7 +8,7 @@ import LayoutFrame from '../../../components/layout/LayoutFrame';
 export default async function LoadingPage() {
   return (
     <LayoutFrame activeSection="research">
-      <Research.Context>
+      <Research.Context isLoading>
         <Container>
           <SectionSpinner />
         </Container>

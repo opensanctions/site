@@ -1,22 +1,21 @@
-import { InferGetStaticPropsType } from 'next'
 import Link from 'next/link';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
 
-import Layout from '../../components/Layout'
 import { getArticles } from '../../lib/content'
 import { Github, Slack, Twitter } from 'react-bootstrap-icons';
-import { FormattedDate, Summary } from '../../components/util';
+import { Row, Col, Container } from '../../components/wrapped';
+import { Summary } from '../../components/util';
 import { ARTICLE_INDEX_SUMMARY } from '../../lib/constants';
 
-import styles from '../../styles/Article.module.scss';
 import Article from '../../components/Article';
+import LayoutFrame from '../../components/layout/LayoutFrame';
+
+import styles from '../../styles/Article.module.scss';
 
 
-export default function ArticleIndex({ articles }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default async function Page() {
+  const articles = await getArticles();
   return (
-    <Layout.Base title="Articles" structured={undefined} activeSection="about">
+    <LayoutFrame activeSection="about">
       <Container>
         <h1>
           What's happening at OpenSanctions?
@@ -50,14 +49,6 @@ export default function ArticleIndex({ articles }: InferGetStaticPropsType<typeo
           </Col>
         </Row>
       </Container>
-    </Layout.Base >
+    </LayoutFrame>
   )
-}
-
-export const getStaticProps = async () => {
-  return {
-    props: {
-      articles: await getArticles()
-    }
-  }
 }

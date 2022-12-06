@@ -1,19 +1,20 @@
 import Link from 'next/link';
-import { InferGetStaticPropsType } from 'next'
-import Table from 'react-bootstrap/Table';
 
-import Layout from '../components/Layout'
-import Content from '../components/Content'
-import { getContentBySlug } from '../lib/content'
-import { Summary } from '../components/util'
-import { fetchIndex } from '../lib/data'
-import { INDEX_URL } from '../lib/constants';
-import Menu from '../components/Menu';
+import { Table } from '../../components/wrapped'
+import Content from '../../components/Content'
+import { getContentBySlug } from '../../lib/content'
+import { Summary } from '../../components/util'
+import { fetchIndex } from '../../lib/data'
+import { INDEX_URL } from '../../lib/constants';
+import Menu from '../../components/Menu';
+import LayoutFrame from '../../components/layout/LayoutFrame';
 
 
-export default function Matcher({ content, matcher }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default async function Page() {
+  const index = await fetchIndex();
+  const content = await getContentBySlug('matcher');
   return (
-    <Layout.Content content={content}>
+    <LayoutFrame activeSection={content.section}>
       <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={Menu.Documentation}>
         <Summary summary={content.summary} />
         <div>
@@ -29,7 +30,7 @@ export default function Matcher({ content, matcher }: InferGetStaticPropsType<ty
             </tr>
           </thead>
           <tbody>
-            {Object.entries(matcher).map(([name, feature]) => (
+            {Object.entries(index.matcher).map(([name, feature]) => (
               <tr>
                 <td><code><Link href={feature.url}>{name}</Link></code></td>
                 <td className="numeric">{feature.coefficient.toFixed(3)}</td>
@@ -39,16 +40,6 @@ export default function Matcher({ content, matcher }: InferGetStaticPropsType<ty
           </tbody>
         </Table>
       </Content.Menu>
-    </Layout.Content >
+    </LayoutFrame>
   )
-}
-
-export async function getStaticProps() {
-  const index = await fetchIndex()
-  return {
-    props: {
-      content: await getContentBySlug('matcher'),
-      matcher: index.matcher,
-    }
-  }
 }

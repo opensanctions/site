@@ -5,6 +5,7 @@ import { JSONLink, Markdown, Summary } from './util';
 import styles from '../styles/Content.module.scss';
 import Link from 'next/link';
 import Menu from './Menu';
+import PageHead from './layout/PageHead';
 
 type ContentProps = {
   content: IContent
@@ -76,9 +77,25 @@ function ContentPage({ content }: ContentProps) {
   );
 }
 
+type ContentHeadProps = {
+  content: IContent
+  structured?: any
+}
+
+
+function ContentHead({ content, structured }: ContentHeadProps) {
+  return <PageHead
+    title={content.title}
+    description={content.summary || undefined}
+    imageUrl={content.image_url}
+    structured={structured}
+  />
+}
+
 export default class Content {
   static Body = ContentBody;
   static Page = ContentPage;
   static Menu = ContentMenu;
+  static Head = ContentHead;
   static Context = ContentContext;
 }

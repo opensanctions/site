@@ -62,21 +62,6 @@ function LayoutBase({ title, description, imageUrl, structured, activeSection, c
   )
 }
 
-
-type LayoutContentProps = {
-  content: IContent
-}
-
-
-function LayoutContent({ content, children }: React.PropsWithChildren<LayoutContentProps>) {
-  return (
-    <LayoutBase title={content.title} description={content.summary} imageUrl={content.image_url} activeSection={content.section}>
-      {children}
-    </LayoutBase>
-  )
-}
-
 export default class Layout {
   static Base = LayoutBase;
-  static Content = LayoutContent;
 }
