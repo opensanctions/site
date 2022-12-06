@@ -1,4 +1,5 @@
-import Nav from 'react-bootstrap/Nav';
+
+import { Nav, NavItem } from "./wrapped";
 import { RoutedNavLink } from './util';
 
 import { LicenseInfo } from './Policy';
@@ -7,33 +8,33 @@ function AboutMenu() {
   return (
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
-        <Nav.Item>
+        <NavItem>
           <RoutedNavLink href="/docs/about/">About OpenSanctions</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/faq/">Frequently asked questions</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/licensing/">Licensing the data</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/commercial-faq/">Commercial use FAQ</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/criteria/">Data inclusion criteria</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/terms/">Terms of service</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/privacy/">Privacy Policy</RoutedNavLink>
-        </Nav.Item>
-        <Nav.Item>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/impressum/">Impressum</RoutedNavLink>
-        </Nav.Item>
+        </NavItem>
       </Nav>
       <LicenseInfo />
     </>
@@ -44,36 +45,36 @@ function DocumentationMenu() {
   return (
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
-        <Nav.Item>
+        <NavItem>
           <RoutedNavLink href="/docs/usage/">Using the data</RoutedNavLink>
-          <Nav.Item>
+          <NavItem>
             <RoutedNavLink href="/docs/entities/">Entity structure</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/reference/">Data dictionary</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/docs/identifiers/">Identifiers and de-duplication</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/docs/pairs/">Matcher training data</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/docs/statements/">Statement-based data</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/docs/enrichment/">Data enrichment</RoutedNavLink>
-          </Nav.Item>
-        </Nav.Item>
-        <Nav.Item>
+          </NavItem>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/api/">Using the API</RoutedNavLink>
-          <Nav.Item>
+          <NavItem>
             <RoutedNavLink href="/matcher/">How we score matches</RoutedNavLink>
-          </Nav.Item>
-          <Nav.Item>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/docs/self-hosted/">Self-hosted API</RoutedNavLink>
-          </Nav.Item>
-        </Nav.Item>
+          </NavItem>
+        </NavItem>
       </Nav>
       <LicenseInfo />
     </>

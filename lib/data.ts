@@ -1,22 +1,20 @@
 // import { join } from 'path'
 // import { promises as fs } from 'fs';
 import queryString from 'query-string';
-import { intersection } from 'lodash';
+import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES } from "./constants";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
-import issuesJson from '../data/issues.json';
 
 const index = { ...indexJson } as unknown as IIndex;
-index.details = {};
 index.datasets = index.datasets.map((raw: any) => {
-  const { description, targets, things, resources, ...ds } = raw;
-  const markdown = markdownToHtml(description)
-  index.details[ds.name] = { description: markdown, targets, things, resources } as IDatasetDetails
-  ds.link = `/datasets/${ds.name}/`
+  const ds = {
+    ...raw,
+    link: `/datasets/${raw.name}/`
+  };
   ds.opensanctions_url = BASE_URL + ds.link
   if (ds.type === 'collection') {
     return ds as ICollection;
@@ -52,7 +50,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
     'url': `${API_URL}${path}`,
     'query': query
   })
-  const data = await fetch(apiUrl, { headers });
+  const data = await fetch(apiUrl, { headers, cache: 'force-cache', next: { revalidate: 3600 } });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }
@@ -62,6 +60,11 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
 
 export async function fetchIndex(): Promise<IIndex> {
   return index as IIndex
+}
+
+export async function getModel(): Promise<Model> {
+  const index = await fetchIndex();
+  return new Model(index.model);
 }
 
 export async function getDatasets(): Promise<Array<IDataset>> {
@@ -74,13 +77,13 @@ export async function getDatasetByName(name: string): Promise<IDataset | undefin
   return datasets.find((dataset) => dataset.name === name)
 }
 
-export async function getDatasetDetails(name: string): Promise<IDatasetDetails | undefined> {
-  const index = await fetchIndex()
-  return index.details[name];
-}
-
 export async function getIssues(): Promise<Array<IIssue>> {
-  const index = { ...issuesJson } as unknown as IIssueIndex;
+  const data = await fetch(ISSUES_URL, { cache: 'force-cache' });
+  if (!data.ok) {
+    throw Error(`Backend error: ${data.text}`);
+  }
+  const jsonData = await data.json()
+  const index = jsonData as IIssueIndex;
   return index.issues
 }
 
@@ -154,7 +157,7 @@ export async function getStatements(query: any, limit: number = 100): Promise<IS
   return await fetchObject<IStatementAPIResponse>(`/statements`, params);
 }
 
-export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
+export async function getEntityData(entityId: any): Promise<IEntityDatum | null> {
   if (entityId === undefined || entityId === null) {
     return null;
   }
@@ -165,15 +168,23 @@ export async function getEntity(entityId: any): Promise<IEntityDatum | null> {
   return raw;
 }
 
-export async function getEntityDatasets(entity: IEntityDatum | Entity): Promise<IDataset[]> {
+export async function getEntity(entityId: string) {
+  const entityData = await getEntityData(entityId);
+  if (entityData === null) {
+    return null;
+  }
+  const model = await getModel();
+  return model.getEntity(entityData);
+}
+
+export async function getEntityDatasets(entity: Entity) {
   const allDatasets = await getDatasets();
-  const datasetNames = entity !== null ? entity.datasets : [];
-  return datasetNames
+  return entity.datasets
     .map((name) => allDatasets.find((d) => d.name === name))
     .filter((d) => d !== undefined) as IDataset[];
 }
 
-export function isBlocked(entity: IEntityDatum | Entity): boolean {
+export function isBlocked(entity: Entity): boolean {
   if (BLOCKED_ENTITIES.indexOf(entity.id) !== -1) {
     return true;
   }

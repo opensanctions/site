@@ -1,13 +1,11 @@
-import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
-import Table from 'react-bootstrap/Table';
-import TextTruncate from 'react-text-truncate';
 import { CloudFill, FolderFill, Server } from 'react-bootstrap-icons';
 
-import { IDataset, IExternal, isCollection, isExternal, ISource, isSource } from '../lib/types'
+import { Badge, Table, Card, CardBody, CardTitle, CardSubtitle, CardText, TextTruncate } from "./wrapped";
+import { IDataset, IExternal, isCollection, isExternal, ISource, isSource } from '../lib/types';
 import { Numeric, NumericBadge, Spacer, UnofficialBadge } from './util';
-import styles from '../styles/Dataset.module.scss'
 import Link from 'next/link';
+
+import styles from '../styles/Dataset.module.scss';
 
 
 type DatasetProps = {
@@ -48,11 +46,11 @@ function DatasetLink({ dataset, ...props }: DatasetIconProps) {
 function DatasetCard({ dataset }: DatasetProps) {
   return (
     <Card key={dataset.name} className={styles.card}>
-      <Card.Body>
-        <Card.Title className={styles.cardTitle}>
+      <CardBody>
+        <CardTitle className={styles.cardTitle}>
           <DatasetLink dataset={dataset} />
-        </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
+        </CardTitle>
+        <CardSubtitle className="mb-2 text-muted">
           {isCollection(dataset) && (
             <><Numeric value={dataset.sources.length} /> data sources</>
           )}
@@ -69,11 +67,11 @@ function DatasetCard({ dataset }: DatasetProps) {
           )}
           <Spacer />
           <Numeric value={dataset.target_count} /> targets
-        </Card.Subtitle>
-        <Card.Text>
+        </CardSubtitle>
+        <CardText>
           {dataset.summary}
-        </Card.Text>
-      </Card.Body>
+        </CardText>
+      </CardBody>
     </Card>
   )
 }
@@ -82,7 +80,7 @@ function DatasetCard({ dataset }: DatasetProps) {
 function DatasetItem({ dataset }: DatasetProps) {
   return (
     <Card key={dataset.name} className={styles.item}>
-      <Card.Body>
+      <CardBody>
         <a href={dataset.link} className={styles.itemHeader}>
           <DatasetIcon dataset={dataset} /> {dataset.title}
           {!isExternal(dataset) && (
@@ -108,8 +106,12 @@ function DatasetItem({ dataset }: DatasetProps) {
                   <Spacer />
                 </>
               )}
-              <Badge bg="light">{dataset.publisher.country_label}</Badge>
-              <Spacer />
+              {dataset.publisher.country_label && (
+                <>
+                  <Badge bg="light">{dataset.publisher.country_label}</Badge>
+                  <Spacer />
+                </>
+              )}
               {dataset.publisher.name}
               {!dataset.publisher.official && (
                 <>
@@ -120,7 +122,7 @@ function DatasetItem({ dataset }: DatasetProps) {
             </>
           )}
         </p>
-      </Card.Body>
+      </CardBody>
     </Card>
   )
 }

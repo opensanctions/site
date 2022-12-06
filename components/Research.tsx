@@ -1,21 +1,18 @@
-import { useSearchParams } from 'next/navigation';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Container from 'react-bootstrap/Container';
+import { ensureArray } from '../lib/util';
+import { Container, FormControl, InputGroup, Button } from './wrapped';
+import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/Research.module.scss';
-import { ensureArray } from '../lib/util';
-
 
 
 type ResearchProps = {
   title?: string
-  query?: { [k: string]: string }
+  query?: ServerSearchParams
+  isLoading?: boolean
 }
 
-function ResearchContext({ title, query, children }: React.PropsWithChildren<ResearchProps>) {
-  const activeTitle = !!title ? title : 'Research tool';
+function ResearchContext({ title, query, children, isLoading }: React.PropsWithChildren<ResearchProps>) {
+  const activeTitle = !!title ? title : 'Search OpenSanctions';
   const activeQuery = query ? query : {};
   const queryText = activeQuery['q'] || '';
   const otherQuery = { ...activeQuery };
@@ -26,22 +23,23 @@ function ResearchContext({ title, query, children }: React.PropsWithChildren<Res
       <div className={styles.researchBar}>
         <Container>
           <h2>{activeTitle}</h2>
-          <Form className="d-flex" action="/search">
+          <form className="d-flex" action="/search">
             <InputGroup>
-              <Form.Control
+              <FormControl
                 type="search"
                 name="q"
                 defaultValue={queryText}
                 placeholder="Search people, companies and other entities of interest..."
                 className={styles.navSearchBox}
+                disabled={isLoading}
                 aria-label="Search"
               />
-              <Button variant="secondary" type="submit">Search</Button>
+              <Button variant="secondary" type="submit" disabled={isLoading}>Search</Button>
               {Object.entries(otherQuery).map(([field, values]) => ensureArray(values).map(value =>
                 <input key={field + ':' + value} type="hidden" name={field + ''} value={value} />
               ))}
             </InputGroup>
-          </Form>
+          </form>
         </Container>
       </div >
       {children}

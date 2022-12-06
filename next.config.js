@@ -1,4 +1,9 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ['react-bootstrap']
+  },
   trailingSlash: true,
   images: {
     domains: ['assets.pudo.org'],
@@ -12,4 +17,6 @@ module.exports = {
       },
     ]
   },
-}
+};
+
+module.exports = nextConfig

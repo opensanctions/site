@@ -1,10 +1,11 @@
-import { ComponentType, useState } from 'react';
+import { ComponentType } from 'react';
 import Link from 'next/link'
-import Badge from "react-bootstrap/Badge";
 
+import { Badge } from "./wrapped";
 import { Property, PropertyType, Entity, Value, Values } from "../lib/ftm";
 import { FormattedDate, SpacedList, URLLink } from "./util";
 import { EntityLink, EntityDisplayProps } from "./Entity";
+import { ExpandList } from './utils/ExpandList';
 
 
 type TypeValueProps = {
@@ -61,18 +62,21 @@ type TypeValuesProps = {
 }
 
 export function TypeValues({ type, values, entity, prop, limit, empty }: TypeValuesProps) {
-  const [expanded, setExpanded] = useState(false);
   const elems = values.sort().map((v) => <TypeValue type={type} value={v} entity={entity} prop={prop} />)
   if (elems.length === 0 && empty) {
     return <span className="text-muted">{empty}</span>
   }
-  if (limit !== undefined && limit < elems.length && !expanded) {
+  if (limit !== undefined && limit < elems.length) {
     const shortElems = elems.slice(0, limit);
     const moreCount = elems.length - limit;
-    const toggleMore = (
-      <a onClick={(e) => { e.preventDefault(); setExpanded(true) }} href="#">{`${moreCount} more...`}</a>
-    )
-    return <SpacedList values={[...shortElems, toggleMore]} />
+    const moreText = <>{`${moreCount} more...`}</>
+    return (
+      <ExpandList
+        short={<SpacedList values={shortElems} />}
+        full={<SpacedList values={elems} />}
+        moreText={moreText}
+      />
+    );
   }
   return <SpacedList values={elems} />
 }

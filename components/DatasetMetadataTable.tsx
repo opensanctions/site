@@ -1,26 +1,23 @@
-import { useState } from 'react';
 import Link from 'next/link';
-import Badge from 'react-bootstrap/Badge';
-import Table from 'react-bootstrap/Table';
 
-import { IDataset, ICollection, isSource, isExternal, IDatasetDetails, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types';
+import { Badge, Table } from "./wrapped";
+import { IDataset, ICollection, isSource, isExternal, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types';
 import { FormattedDate, HelpLink, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util';
 import { wordList } from '../lib/util';
 
 import styles from '../styles/Dataset.module.scss';
+import DatasetCountryListing from './DatasetCountryListing';
 
 
 type DatasetScreenProps = {
   dataset: IDataset
-  details: IDatasetDetails
   issues: Array<IIssue>
   collections?: Array<ICollection>
 }
 
-export default function DatasetMetadataTable({ dataset, details, collections, issues }: DatasetScreenProps) {
+export default function DatasetMetadataTable({ dataset, collections, issues }: DatasetScreenProps) {
   const errors = issues.filter((i) => i.level === LEVEL_ERROR);
   const warnings = issues.filter((i) => i.level === LEVEL_WARNING);
-  const [coverageExpanded, setCoverageExpanded] = useState(false);
   return (
     <Table responsive="md">
       <tbody>
@@ -40,10 +37,10 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
                 <Spacer />
               </>
             )}
-            {details.things.total > 0 && (
+            {dataset.things.total > 0 && (
               <>
                 <a href={`/search/?scope=${dataset.name}`}>
-                  <Plural value={details.things.total}
+                  <Plural value={dataset.things.total}
                     one={"searchable entity"}
                     many={"searchable entities"}
                   />
@@ -58,7 +55,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             />
           </td>
         </tr>
-        {details.things.schemata.length > 0 && (
+        {dataset.things.schemata.length > 0 && (
           <tr>
             <th className={styles.tableHeader}>
               Entity types:
@@ -66,7 +63,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             <td className="contains-inner-table">
               <Table size="sm" className="inner-table">
                 <tbody>
-                  {details.things.schemata.map((ts) =>
+                  {dataset.things.schemata.map((ts) =>
                     <tr key={ts.name}>
                       <td>
                         <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
@@ -84,41 +81,13 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             </td>
           </tr>
         )}
-        {details.things.countries.length > 0 && (
+        {dataset.things.countries.length > 0 && (
           <tr>
             <th className={styles.tableHeader}>
               Coverage:
             </th>
             <td className="contains-inner-table">
-              <Table size="sm" className="inner-table">
-                <thead>
-                  <tr>
-                    <td colSpan={2}>
-                      <Plural value={details.things.countries.length} one="country" many="countries" />
-                      <HelpLink href={`/reference/#type.country`} />
-                      <Spacer />
-                      {coverageExpanded && (
-                        <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
-                      )}
-                      {!coverageExpanded && (
-                        <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(true) }} href='#'>Show overview...</a>
-                      )}
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {coverageExpanded && details.things.countries.map(c =>
-                    <tr key={c.code}>
-                      <td>
-                        <a href={`/search/?scope=${dataset.name}&countries=${c.code}`}>
-                          {c.label}
-                        </a>
-                      </td>
-                      <td className="numeric"><Numeric value={c.count} /></td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
+              <DatasetCountryListing countries={dataset.things.countries} datasetName={dataset.name} />
             </td>
           </tr>
         )}
@@ -127,7 +96,7 @@ export default function DatasetMetadataTable({ dataset, details, collections, is
             <th className={styles.tableHeader}>Publisher:</th>
             <td>
               <URLLink url={dataset.publisher.url} label={dataset.publisher.name} icon={false} />
-              {dataset.publisher.country !== 'zz' && (
+              {!!dataset.publisher.country && (
                 <> ({dataset.publisher.country_label})</>
               )}
               {!dataset.publisher.official && (

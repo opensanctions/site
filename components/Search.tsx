@@ -1,10 +1,8 @@
-import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { Model } from '../lib/ftm/model';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
-import Badge from "react-bootstrap/Badge";
 import queryString from "query-string";
 
+import { Card, CardHeader, ListGroup, ListGroupItem, Badge } from './wrapped';
 import { IEntityDatum, Values } from '../lib/ftm';
 import { IDataset, ISearchFacet } from "../lib/types";
 import { NumericBadge, Spacer } from "./util";
@@ -12,21 +10,20 @@ import { SEARCH_DATASET, SEARCH_SCHEMA } from "../lib/constants";
 import { EntityLink } from './Entity';
 import { TypeValue, TypeValues } from './Property';
 import { ensureArray } from '../lib/util';
+import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/Search.module.scss'
-import Link from 'next/link';
 
 
 
 type SearchFacetProps = {
   field: string
   facet: ISearchFacet
+  searchParams: ServerSearchParams
 }
 
-export function SearchFacet({ field, facet }: SearchFacetProps) {
-  const params = useSearchParams();
-  const oldQuery = Object.fromEntries(params.entries())
-  const filters = ensureArray(params.getAll(field));
+export function SearchFacet({ field, facet, searchParams }: SearchFacetProps) {
+  const filters = ensureArray(searchParams[field]);
   if (!facet.values.length) {
     return null;
   }
@@ -35,16 +32,16 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
     const idx = filters.indexOf(value);
     const newFilters = idx === -1 ? [...filters, value] : filters.filter((e) => e !== value);
     const param = newFilters.length ? newFilters : undefined;
-    const newQuery = { ...oldQuery, [field]: param };
+    const newQuery = { ...searchParams, [field]: param };
     return queryString.stringifyUrl({ url: '/search', query: newQuery });
   }
 
   return (
     <Card className={styles.facet}>
-      <Card.Header className={styles.facetHeader}>{facet.label}</Card.Header>
+      <CardHeader className={styles.facetHeader}>{facet.label}</CardHeader>
       <ListGroup variant="flush">
         {facet.values.map((value) => (
-          <ListGroup.Item key={value.name}
+          <ListGroupItem key={value.name}
             active={filters.indexOf(value.name) !== -1}
             as={"a"}
             href={filteredUrl(value.name)}
@@ -52,7 +49,7 @@ export function SearchFacet({ field, facet }: SearchFacetProps) {
           >
             <NumericBadge value={value.count} bg="light" className={styles.facetCount} />
             <span className={styles.facetLabel}>{value.label}</span>
-          </ListGroup.Item>
+          </ListGroupItem>
         ))}
       </ListGroup>
     </Card>
@@ -63,20 +60,18 @@ type SearchFilterTagsProps = {
   model: Model
   scope: IDataset
   datasets: Array<IDataset>
+  searchParams: ServerSearchParams
 }
 
-export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsProps) {
-  const params = useSearchParams();
-  const oldQuery = Object.fromEntries(params.entries())
-
+export function SearchFilterTags({ scope, model, datasets, searchParams }: SearchFilterTagsProps) {
   const unfilterUrl = (field: string, value: string) => {
-    const values = ensureArray(params.get(field)).filter((v) => v !== value);
-    const newQuery = { ...oldQuery, [field]: values }
+    const values = ensureArray(searchParams[field]).filter((v) => v !== value);
+    const newQuery = { ...searchParams, [field]: values }
     return queryString.stringifyUrl({ url: '/search', query: newQuery });
   }
   const filters = [];
-  const schema = params.get('schema');
-  if (schema !== null && schema !== SEARCH_SCHEMA) {
+  const schema = searchParams['schema'];
+  if (schema !== null && schema !== undefined && schema !== SEARCH_SCHEMA) {
     filters.push({
       'field': 'schema',
       'value': schema as string,
@@ -90,7 +85,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
       'label': scope.title
     })
   }
-  const countries = ensureArray(params.getAll('countries'));
+  const countries = ensureArray(searchParams['countries']);
   const countryType = model.getType('country');
   for (let country of countries) {
     if (country.trim().length) {
@@ -102,7 +97,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
     }
   }
 
-  const topics = ensureArray(params.getAll('topics'));
+  const topics = ensureArray(searchParams['topics']);
   const topicType = model.getType('topic');
   for (let topic of topics) {
     if (topic.trim().length) {
@@ -114,7 +109,7 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
     }
   }
 
-  const datasetNames = ensureArray(params.getAll('datasets'));
+  const datasetNames = ensureArray(searchParams['datasets']);
   for (let dataset of datasetNames) {
     const ds = datasets.find((d) => d.name == dataset)
     if (ds !== undefined) {
@@ -129,17 +124,16 @@ export function SearchFilterTags({ scope, model, datasets }: SearchFilterTagsPro
   if (filters.length === 0) {
     return null;
   }
-
   return (
     <p className={styles.tagsSection}>
       <Badge bg="light">Filtered:</Badge>{' '}
       {filters.map((spec) =>
         <span key={`${spec.field}:${spec.value}`}>
-          <Link href={unfilterUrl(spec.field, spec.value)}>
+          <a href={unfilterUrl(spec.field, spec.value)}>
             <Badge className={styles.tagsButton}>
               {spec.label}
             </Badge>
-          </Link>
+          </a>
           {' '}
         </span>
       )}

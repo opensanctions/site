@@ -63,13 +63,6 @@ export interface IAggregatedStats {
   schemata: Array<IAggregatedSchema>
 }
 
-export interface IDatasetDetails {
-  description?: string
-  targets: IAggregatedStats
-  things: IAggregatedStats
-  resources: Array<IResource>
-}
-
 
 export interface IDatasetBase {
   name: string
@@ -87,6 +80,10 @@ export interface IDatasetBase {
   issues_url: string
   target_count: number
   entity_count: number
+  description?: string
+  targets: IAggregatedStats
+  things: IAggregatedStats
+  resources: Array<IResource>
 }
 
 export interface ISourceData {
@@ -169,7 +166,6 @@ export interface IIndex {
   issues_url: string
   schemata: Array<string>
   datasets: Array<IDataset>
-  details: { [key: string]: IDatasetDetails }
   matcher: { [key: string]: IMatcherFeature }
 }
 

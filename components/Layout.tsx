@@ -2,13 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { usePathname } from 'next/navigation';
 
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from './layout/Navigation';
+import Footer from './layout/Footer';
+import AnalyticsManager from './Analytics';
+import { BASE_URL, SITE } from '../lib/constants';
 
 import styles from '../styles/Layout.module.scss';
-import { IContent } from '../lib/types';
-import { BASE_URL, SITE } from '../lib/constants';
-import { CookieConsent } from './Consent';
+
 
 type LayoutBaseProps = {
   title?: string,
@@ -55,28 +55,13 @@ function LayoutBase({ title, description, imageUrl, structured, activeSection, c
       <div className={styles.page}>
         <Navbar activeSection={activeSection} />
         {children}
-        <CookieConsent />
+        <AnalyticsManager />
       </div>
       <Footer />
     </>
   )
 }
 
-
-type LayoutContentProps = {
-  content: IContent
-}
-
-
-function LayoutContent({ content, children }: React.PropsWithChildren<LayoutContentProps>) {
-  return (
-    <LayoutBase title={content.title} description={content.summary} imageUrl={content.image_url} activeSection={content.section}>
-      {children}
-    </LayoutBase>
-  )
-}
-
 export default class Layout {
   static Base = LayoutBase;
-  static Content = LayoutContent;
 }

@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import Badge from "react-bootstrap/Badge";
-import Table from "react-bootstrap/Table";
-import Card from "react-bootstrap/Card";
 
-import styles from '../styles/Issue.module.scss'
+import { Badge, Table, Card, CardHeader, CardBody, CardFooter } from "./wrapped";
 import { IIssue } from "../lib/types";
 import { FormattedDate, Spacer } from "./util";
+
+import styles from '../styles/Issue.module.scss'
+
 
 type IssueProps = {
   issue: IIssue
@@ -35,8 +35,8 @@ function IssueCard({ issue, showDataset }: IssueProps) {
     <><code>Issue #{issue.id} [{datasetLink}]: {issue.module}</code></>
   return (
     <Card key={issue.id} className={styles.issueCard} border={accentColor}>
-      <Card.Header className={styles.issueHeader}>{headerContent}</Card.Header>
-      <Card.Body>{issue.message}</Card.Body>
+      <CardHeader className={styles.issueHeader}>{headerContent}</CardHeader>
+      <CardBody>{issue.message}</CardBody>
       <Table bordered>
         <tbody>
           {Object.keys(issue.data).map((key) => (
@@ -51,11 +51,11 @@ function IssueCard({ issue, showDataset }: IssueProps) {
           ))}
         </tbody>
       </Table>
-      <Card.Footer className={styles.issueFooter}>
+      <CardFooter className={styles.issueFooter}>
         <Badge bg={accentColor}>{issue.level}</Badge>
         <Spacer />
         <FormattedDate date={issue.timestamp} />
-      </Card.Footer>
+      </CardFooter>
     </Card>
   )
 }
