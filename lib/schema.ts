@@ -4,7 +4,7 @@
 
 import { BASE_URL, LICENSE_URL, CLAIM, EMAIL, SITE } from './constants';
 import { Entity } from './ftm';
-import { IArticleInfo, IDataset, IDatasetDetails, IResource, isExternal, IDatasetPublisher, isSource } from './types';
+import { IArticleInfo, IDataset, IResource, isExternal, IDatasetPublisher, isSource } from './types';
 
 
 export function getSchemaOpenSanctionsOrganization() {
@@ -78,7 +78,7 @@ function getResourceDataDownload(resource: IResource) {
   }
 }
 
-export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
+export function getSchemaDataset(dataset: IDataset) {
   if (isExternal(dataset)) {
     return undefined;
   }
@@ -94,12 +94,7 @@ export function getSchemaDataset(dataset: IDataset, details?: IDatasetDetails) {
     "isAccessibleForFree": true,
     "dateModified": dataset.last_change,
     "potentialAction": getSchemaActions(),
-  }
-  if (details !== undefined) {
-    schema = {
-      ...schema,
-      "distribution": details.resources.map((r) => getResourceDataDownload(r))
-    }
+    "distribution": dataset.resources.map((r) => getResourceDataDownload(r))
   }
   if (isSource(dataset)) {
     schema = {

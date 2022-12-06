@@ -3,19 +3,18 @@
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IDatasetDetails, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
 
 const index = { ...indexJson } as unknown as IIndex;
-index.details = {};
 index.datasets = index.datasets.map((raw: any) => {
-  const { description, targets, things, resources, ...ds } = raw;
-  const markdown = markdownToHtml(description)
-  index.details[ds.name] = { description: markdown, targets, things, resources } as IDatasetDetails
-  ds.link = `/datasets/${ds.name}/`
+  const ds = {
+    ...raw,
+    link: `/datasets/${raw.name}/`
+  };
   ds.opensanctions_url = BASE_URL + ds.link
   if (ds.type === 'collection') {
     return ds as ICollection;
@@ -76,11 +75,6 @@ export async function getDatasets(): Promise<Array<IDataset>> {
 export async function getDatasetByName(name: string): Promise<IDataset | undefined> {
   const datasets = await getDatasets()
   return datasets.find((dataset) => dataset.name === name)
-}
-
-export async function getDatasetDetails(name: string): Promise<IDatasetDetails | undefined> {
-  const index = await fetchIndex()
-  return index.details[name];
 }
 
 export async function getIssues(): Promise<Array<IIssue>> {

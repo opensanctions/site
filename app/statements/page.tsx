@@ -13,6 +13,7 @@ import { Container, Row, Col, Table, Alert, AlertLink } from '../../components/w
 
 import styles from '../../styles/Statement.module.scss'
 
+export const revalidate = 0;
 
 type ExpandProps = {
   href: string

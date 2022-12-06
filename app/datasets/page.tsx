@@ -1,26 +1,23 @@
-import { InferGetStaticPropsType } from 'next'
-import Link from 'next/link'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import Link from 'next/link';
 
-import Layout from '../../components/Layout'
 import Dataset from '../../components/Dataset'
 import { INDEX_URL, COLLECTIONS } from '../../lib/constants';
 import { getDatasets } from '../../lib/data'
-import { getDataCatalog } from '../../lib/schema'
 import { ICollection, isCollection, isExternal, isSource } from '../../lib/types';
 import { JSONLink } from '../../components/util';
+import { Row, Col, Container } from '../../components/wrapped';
+import LayoutFrame from '../../components/layout/LayoutFrame';
 
 
-export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const structured = getDataCatalog()
+export default async function Page() {
+  const allDatasets = await getDatasets()
+  const datasets = allDatasets.filter((d) => !d.hidden);
   const allCollections = datasets.filter(isCollection)
   const collections = COLLECTIONS.map(n => allCollections.find(c => c.name == n)) as Array<ICollection>
   const sources = datasets.filter(isSource)
   const externals = datasets.filter(isExternal)
   return (
-    <Layout.Base title="Datasets" structured={structured}>
+    <LayoutFrame activeSection="datasets">
       <Container>
         <h1>
           <a id="collections" />
@@ -95,15 +92,6 @@ export default function DatasetIndex({ datasets }: InferGetStaticPropsType<typeo
           </Col>
         </Row>
       </Container>
-    </Layout.Base>
+    </LayoutFrame>
   )
-}
-
-export const getStaticProps = async () => {
-  const datasets = await getDatasets()
-  return {
-    props: {
-      datasets: datasets.filter((ds) => !ds.hidden)
-    }
-  }
 }
