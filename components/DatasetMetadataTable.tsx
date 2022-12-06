@@ -96,7 +96,7 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
             <th className={styles.tableHeader}>Publisher:</th>
             <td>
               <URLLink url={dataset.publisher.url} label={dataset.publisher.name} icon={false} />
-              {dataset.publisher.country !== 'zz' && (
+              {!!dataset.publisher.country && (
                 <> ({dataset.publisher.country_label})</>
               )}
               {!dataset.publisher.official && (

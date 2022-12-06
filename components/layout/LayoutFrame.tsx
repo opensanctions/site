@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Navigation from './Navigation';
+import AnalyticsManager from '../Analytics';
 import Footer from './Footer';
-import { CookieConsent } from '../Consent';
+
 import styles from '../../styles/Layout.module.scss';
 
 type LayoutFrameProps = {
@@ -15,7 +16,7 @@ export default function LayoutFrame({ activeSection, children }: React.PropsWith
       <div className={styles.page}>
         <Navigation activeSection={activeSection} />
         {children}
-        {/* <CookieConsent /> */}
+        <AnalyticsManager />
       </div>
       <Footer />
     </>

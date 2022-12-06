@@ -4,11 +4,11 @@ import { usePathname } from 'next/navigation';
 
 import Navbar from './layout/Navigation';
 import Footer from './layout/Footer';
+import AnalyticsManager from './Analytics';
+import { BASE_URL, SITE } from '../lib/constants';
 
 import styles from '../styles/Layout.module.scss';
-import { IContent } from '../lib/types';
-import { BASE_URL, SITE } from '../lib/constants';
-import { CookieConsent } from './Consent';
+
 
 type LayoutBaseProps = {
   title?: string,
@@ -55,7 +55,7 @@ function LayoutBase({ title, description, imageUrl, structured, activeSection, c
       <div className={styles.page}>
         <Navbar activeSection={activeSection} />
         {children}
-        <CookieConsent />
+        <AnalyticsManager />
       </div>
       <Footer />
     </>
