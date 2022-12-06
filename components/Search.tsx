@@ -129,11 +129,11 @@ export function SearchFilterTags({ scope, model, datasets, searchParams }: Searc
       <Badge bg="light">Filtered:</Badge>{' '}
       {filters.map((spec) =>
         <span key={`${spec.field}:${spec.value}`}>
-          <Link href={unfilterUrl(spec.field, spec.value)}>
+          <a href={unfilterUrl(spec.field, spec.value)}>
             <Badge className={styles.tagsButton}>
               {spec.label}
             </Badge>
-          </Link>
+          </a>
           {' '}
         </span>
       )}

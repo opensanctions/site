@@ -151,7 +151,7 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
                   <tbody>
                     <tr>
                       <td width="40%">
-                        Use the <Link href={`${apiUrl}/#tag/Reconciliation`}>Reconciliation API</Link> in <Link href="https://openrefine.org/">OpenRefine</Link>:
+                        Use the <a href={`${apiUrl}/#tag/Reconciliation`}>Reconciliation API</a> in <Link href="https://openrefine.org/">OpenRefine</Link>:
                       </td>
                       <td width="60%">
                         <Form.Control readOnly value={`${apiUrl}/reconcile/${dataset.name}?api_key=YOUR_API_KEY`} />
@@ -159,7 +159,7 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
                     </tr>
                     <tr>
                       <td width="40%">
-                        For <Link href={`${apiUrl}/#operation/search_search__dataset__get`}>full-text search</Link>, use the <code>/search</code> endpoint:
+                        For <a href={`${apiUrl}/#operation/search_search__dataset__get`}>full-text search</a>, use the <code>/search</code> endpoint:
                       </td>
                       <td width="60%">
                         <Form.Control readOnly value={`${apiUrl}/search/${dataset.name}?q=John+Doe&?api_key=YOUR_API_KEY`} />
@@ -167,7 +167,7 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
                     </tr>
                     <tr>
                       <td width="40%">
-                        For <Link href={`${apiUrl}/#operation/match_match__dataset__post`}>entity matching</Link>, use the <code>/match</code> endpoint:
+                        For <a href={`${apiUrl}/#operation/match_match__dataset__post`}>entity matching</a>, use the <code>/match</code> endpoint:
                       </td>
                       <td width="60%">
                         <Form.Control readOnly value={`${apiUrl}/match/${dataset.name}?api_key=YOUR_API_KEY`} />
@@ -208,7 +208,7 @@ export default function DatasetScreen({ apiUrl, dataset, details, issues, source
                   <NumericBadge value={sources.length} />
                 </h3>
                 <p>
-                  {dataset.title} is a <Link href="/docs/faq/#collections">collection dataset</Link> which
+                  {dataset.title} is a <a href="/docs/faq/#collections">collection dataset</a> which
                   bundles together entities from the following data sources:
                 </p>
                 <Dataset.SourcesTable sources={sources} />

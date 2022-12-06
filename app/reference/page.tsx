@@ -66,7 +66,7 @@ export default async function Page() {
         <ul>
           {usedSchemata.map(schema => (
             <li key={schema.name}>
-              <code><Link href={`/reference/#schema.${schema.name}`}>{schema.name}</Link></code>
+              <code><a href={`/reference/#schema.${schema.name}`}>{schema.name}</a></code>
             </li>
           ))}
         </ul>

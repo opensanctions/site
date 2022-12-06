@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { Property } from "../lib/ftm/property";
 import { PropertyType } from "../lib/ftm/type";
 import { Schema } from "../lib/ftm/schema";
@@ -15,7 +13,6 @@ type TypeReferenceProps = {
 
 export function TypeReference({ type, children }: React.PropsWithChildren<TypeReferenceProps>) {
   const values = Array.from(type.values.entries())
-
   return (
     <>
       <h3><a id={`type.${type.name}`} />{type.plural}</h3>
@@ -51,10 +48,10 @@ type PropTypeLinkProps = {
 function PropTypeLink({ prop }: PropTypeLinkProps) {
   const range = prop.getRange()
   if (range !== undefined) {
-    return <code><Link href={`#schema.${range.name}`}>{range.name}</Link></code>
+    return <code><a href={`#schema.${range.name}`}>{range.name}</a></code>
   }
   if (['country', 'topic', 'date'].indexOf(prop.type.name) !== -1) {
-    return <code><Link href={`#type.${prop.type.name}`}>{prop.type.name}</Link></code>
+    return <code><a href={`#type.${prop.type.name}`}>{prop.type.name}</a></code>
   }
   return <code>{prop.type.name}</code>;
 }
@@ -72,7 +69,7 @@ function PropInverseLink({ prop }: PropInverseLinkProps) {
   return (
     <code>
       see{' '}
-      <Link href={`#prop.${reverse.qname}`}>{reverse.qname}</Link>
+      <a href={`#prop.${reverse.qname}`}>{reverse.qname}</a>
       {' '}(inverse)
     </code>
   )
@@ -92,10 +89,10 @@ export function SchemaReference({ schema, schemata }: SchemaReferenceProps) {
       return range === undefined || -1 !== schemata.indexOf(range)
     })
   const parents = schema.getParents()
-    .map(s => <Link href={`#schema.${s.name}`}>{s.name}</Link>)
+    .map(s => <a href={`#schema.${s.name}`}>{s.name}</a>)
   const children = schema.getChildren()
     .filter(s => schemata.indexOf(s) !== -1)
-    .map(s => <Link href={`#schema.${s.name}`}>{s.name}</Link>)
+    .map(s => <a href={`#schema.${s.name}`}>{s.name}</a>)
   return (
     <>
       <h4><a id={`schema.${schema.name}`} /><code>{schema.name}</code> - {schema.plural}</h4>

@@ -82,25 +82,25 @@ export default async function Page() {
           <Col md={4}>
             <h5>Service guidance</h5>
             <ul>
-              <li><Link href={API_URL}>Service (API) documentation</Link></li>
-              <li><Link href="/service/account/">Account and usage dashboard</Link></li>
-              <li>Tutorial: <Link href="/articles/2022-02-01-matching-api/">Using the matching API</Link></li>
+              <li><a href={API_URL}>Service (API) documentation</a></li>
+              <li><a href="/service/account/">Account and usage dashboard</a></li>
+              <li>Tutorial: <a href="/articles/2022-02-01-matching-api/">Using the matching API</a></li>
             </ul>
           </Col>
           <Col md={4}>
             <h5>Data coverage</h5>
             <ul>
-              <li><Link href="/datasets/#sources">Dataset overview</Link></li>
-              <li><Link href="/reference/">Data dictionary</Link></li>
-              <li><Link href="/research/">Explore the data</Link></li>
+              <li><a href="/datasets/#sources">Dataset overview</a></li>
+              <li><a href="/reference/">Data dictionary</a></li>
+              <li><a href="/research/">Explore the data</a></li>
             </ul>
           </Col>
           <Col md={4}>
             <h5>Commercial information</h5>
             <ul>
-              <li><Link href="/docs/commercial-faq/">Commercial use FAQ</Link></li>
-              <li><Link href="/docs/terms/">Terms of service</Link></li>
-              <li><Link href="/docs/privacy/">Privacy policy</Link></li>
+              <li><a href="/docs/commercial-faq/">Commercial use FAQ</a></li>
+              <li><a href="/docs/terms/">Terms of service</a></li>
+              <li><a href="/docs/privacy/">Privacy policy</a></li>
             </ul>
           </Col>
         </Row>
