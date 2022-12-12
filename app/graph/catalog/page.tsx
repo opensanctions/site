@@ -41,6 +41,26 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                             </td>
                         </tr>
                     )}
+                    {!!dataset.publisher && (
+                        <tr>
+                            <th className={styles.datasetCardTableHeader}>
+                                Publisher:
+                            </th>
+                            <td>
+                                {dataset.publisher.url && (
+                                    <Link href={dataset.publisher.url}>
+                                        {dataset.publisher.name}
+                                    </Link>
+                                )}
+                                {!dataset.publisher.url && (
+                                    <>{dataset.publisher.name}</>
+                                )}
+                                {!!dataset.publisher.country_label && (
+                                    <> ({dataset.publisher.country_label})</>
+                                )}
+                            </td>
+                        </tr>
+                    )}
                     {!!dataset.coverage && (
                         <tr>
                             <th className={styles.datasetCardTableHeader}>
@@ -64,21 +84,13 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                     )}
                     <tr>
                         <th className={styles.datasetCardTableHeader}>
-                            Updated at:
-                        </th>
-                        <td>
-                            <FormattedDate date={dataset.updated_at} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th className={styles.datasetCardTableHeader}>
                             Downloads:
                         </th>
                         <td>
                             <ul className={styles.resourceList}>
                                 {dataset.resources.map((resource) =>
                                     <li key={resource.name}>
-                                        <a href={resource.url} download>
+                                        <a href={resource.url} download={resource.name}>
                                             {resource.name}
                                         </a>
                                         {': '}
@@ -86,6 +98,15 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                                     </li>
                                 )}
                             </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th className={styles.datasetCardTableHeader}>
+                            Last updated:
+                        </th>
+                        <td>
+                            <FormattedDate date={dataset.updated_at} />
+                            {` (v. ${dataset.version}) `}
                         </td>
                     </tr>
                 </tbody>
@@ -110,11 +131,34 @@ export default async function Page() {
                     </Col>
                 </Row>
                 <Row>
-                    {catalog.datasets.map((dataset) =>
-                        <Col sm={6} key={dataset.name}>
-                            <GraphDatasetCard dataset={dataset} />
-                        </Col>
-                    )}
+                    <Col md={4}>
+                        <h4>What is this?</h4>
+                        <p>
+                            The data published on this site is converted from their respective source
+                            formats
+                            to <Link href="/docs/entities/">FollowTheMoney entity format</Link> by
+                            OpenSanctions in order to enable <Link href="/docs/enrichment/">
+                                data enrichment
+                            </Link>. We are publishing the full datasets here
+                            for third parties to use. Please <Link href="/contact/">contact us</Link> about
+                            a special <Link href="/licensing/">license contract</Link> if you plan to
+                            rely on the data for business uses.
+                        </p>
+                        <h4>How can I use the data?</h4>
+                        <p>
+                            <Link href="/docs/entities/">FollowTheMoney entities</Link> describe investigative
+                            atoms like people, companies or their relationships. In order to use this data, it
+                            can be queried as an API using the yente tool, or processed into Neo4J property
+                            graph data and queried there for analytical purposes.
+                        </p>
+                    </Col>
+                    <Col md={8}>
+                        {catalog.datasets.map((dataset) =>
+                            <div key={dataset.name}>
+                                <GraphDatasetCard dataset={dataset} />
+                            </div>
+                        )}
+                    </Col>
                 </Row>
             </Container >
         </LayoutFrame >

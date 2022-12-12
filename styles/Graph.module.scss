@@ -14,13 +14,13 @@
 }
 
 .datasetCardTableHeader {
-    font-weight: normal;
+    // font-weight: normal;
     color: $text-muted;
     width: 25%;
 }
 
 .resourceList {
-    list-style-type: square;
+    list-style-type: none;
     margin-bottom: 0;
-    padding-left: 1em;
+    padding-left: 0em;
 }

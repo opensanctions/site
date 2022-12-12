@@ -135,6 +135,7 @@ export interface INKDataset extends INKDatasetBase {
   updated_at: string
   version: string
   children: Array<string>
+  publisher?: IDatasetPublisher
   coverage?: IDatasetCoverage
 }
 
