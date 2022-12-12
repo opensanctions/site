@@ -3,8 +3,8 @@
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL } from "./constants";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog } from "./types";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL } from "./constants";
 import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
@@ -34,6 +34,14 @@ export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<
     return null;
   }
   return await data.json();
+}
+
+export async function fetchUrl<T>(url: string): Promise<T> {
+  const data = await fetch(url, { cache: 'force-cache', next: { revalidate: 3600 } });
+  if (!data.ok) {
+    throw Error(`Backend error: ${data.text}`);
+  }
+  return await data.json() as T;
 }
 
 export async function fetchObjectMaybe<T>(path: string, query: any = undefined, authz: boolean = true): Promise<T | null> {
@@ -78,12 +86,7 @@ export async function getDatasetByName(name: string): Promise<IDataset | undefin
 }
 
 export async function getIssues(): Promise<Array<IIssue>> {
-  const data = await fetch(ISSUES_URL, { cache: 'force-cache' });
-  if (!data.ok) {
-    throw Error(`Backend error: ${data.text}`);
-  }
-  const jsonData = await data.json()
-  const index = jsonData as IIssueIndex;
+  const index = await fetchUrl<IIssueIndex>(ISSUES_URL);
   return index.issues
 }
 
@@ -203,3 +206,6 @@ export function isIndexRelevant(entity: Entity): boolean {
   return false;
 }
 
+export async function getGraphCatalog(): Promise<INKDataCatalog> {
+  return await fetchUrl<INKDataCatalog>(GRAPH_CATALOG_URL);
+}

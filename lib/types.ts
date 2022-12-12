@@ -29,6 +29,7 @@ export interface IArticle extends IArticleInfo {
 
 export interface IResource {
   url: string
+  name: string
   path: string
   sha1: string
   timestamp: string
@@ -63,15 +64,20 @@ export interface IAggregatedStats {
   schemata: Array<IAggregatedSchema>
 }
 
-
-export interface IDatasetBase {
+export interface INKDatasetBase {
   name: string
   type: string
   title: string
-  hidden: boolean
   link: string
-  opensanctions_url: string
   summary: string
+  description?: string
+  resources: Array<IResource>
+}
+
+
+export interface IDatasetBase extends INKDatasetBase {
+  hidden: boolean
+  opensanctions_url: string
   index_url: string
   last_change: string
   last_export: string
@@ -80,10 +86,8 @@ export interface IDatasetBase {
   issues_url: string
   target_count: number
   entity_count: number
-  description?: string
   targets: IAggregatedStats
   things: IAggregatedStats
-  resources: Array<IResource>
 }
 
 export interface ISourceData {
@@ -101,6 +105,11 @@ export interface IDatasetPublisher {
   country_label?: string
 }
 
+export interface IDatasetCoverage {
+  start: string
+  end: string
+  countries: string[]
+}
 
 export interface ISource extends IDatasetBase {
   url?: string
@@ -121,6 +130,17 @@ export interface ICollection extends IDatasetBase {
 }
 
 export type IDataset = ISource | IExternal | ICollection
+
+export interface INKDataset extends INKDatasetBase {
+  updated_at: string
+  version: string
+  children: Array<string>
+  coverage?: IDatasetCoverage
+}
+
+export interface INKDataCatalog {
+  datasets: Array<INKDataset>
+}
 
 export function isCollection(dataset?: IDataset): dataset is ICollection {
   return dataset?.type === 'collection';

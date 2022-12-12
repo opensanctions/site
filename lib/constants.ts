@@ -14,6 +14,7 @@ export const SUBCLAIM = "OpenSanctions helps investigators find leads, allows co
 export const EMAIL = "info@opensanctions.org"
 export const ARTICLE_INDEX_SUMMARY = "Updates from the OpenSanctions project, including new features, technical deep dives, and analysis."
 export const GA_TRACKING_ID = 'G-YRZENQXNNR';
+export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.json"
 
 // fake up a semantic ordering of collections
 export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];
