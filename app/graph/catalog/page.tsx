@@ -82,7 +82,7 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                             </td>
                         </tr>
                     )}
-                    {(dataset.resources && dataset.resources.length) && (
+                    {(dataset.resources && dataset.resources.length > 0) && (
                         <tr>
                             <th className={styles.datasetCardTableHeader}>
                                 Downloads:
@@ -102,7 +102,7 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                             </td>
                         </tr>
                     )}
-                    {(dataset.children && dataset.children.length) && (
+                    {(dataset.children && dataset.children.length > 0) && (
                         <tr>
                             <th className={styles.datasetCardTableHeader}>
                                 Datasets:
