@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 import { Container, Row, Col, Button, Card, CardBody, CardTitle, CardText, CardFooter, CardGroup, CardHeader, Table } from '../../../components/wrapped'
-import { FormattedDate, JSONLink, Spacer, Summary } from '../../../components/util';
+import { FormattedDate, JSONLink, SpacedList, Spacer, Summary } from '../../../components/util';
 import { SUMMARY, TITLE } from './common';
 import { GRAPH_CATALOG_URL } from '../../../lib/constants';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
@@ -82,24 +82,38 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                             </td>
                         </tr>
                     )}
-                    <tr>
-                        <th className={styles.datasetCardTableHeader}>
-                            Downloads:
-                        </th>
-                        <td>
-                            <ul className={styles.resourceList}>
-                                {dataset.resources.map((resource) =>
-                                    <li key={resource.name}>
-                                        <a href={resource.url} download={resource.name}>
-                                            {resource.name}
-                                        </a>
-                                        {': '}
-                                        {resource.mime_type_label}
-                                    </li>
-                                )}
-                            </ul>
-                        </td>
-                    </tr>
+                    {(dataset.resources && dataset.resources.length) && (
+                        <tr>
+                            <th className={styles.datasetCardTableHeader}>
+                                Downloads:
+                            </th>
+                            <td>
+                                <ul className={styles.resourceList}>
+                                    {dataset.resources.map((resource) =>
+                                        <li key={resource.name}>
+                                            <a href={resource.url} download={resource.name}>
+                                                {resource.name}
+                                            </a>
+                                            {': '}
+                                            {resource.mime_type_label}
+                                        </li>
+                                    )}
+                                </ul>
+                            </td>
+                        </tr>
+                    )}
+                    {(dataset.children && dataset.children.length) && (
+                        <tr>
+                            <th className={styles.datasetCardTableHeader}>
+                                Datasets:
+                            </th>
+                            <td>
+                                <SpacedList values={dataset.children.map((child) =>
+                                    <code>{child}</code>
+                                )} />
+                            </td>
+                        </tr>
+                    )}
                     <tr>
                         <th className={styles.datasetCardTableHeader}>
                             Last updated:
