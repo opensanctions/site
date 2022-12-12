@@ -120,7 +120,6 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                         </th>
                         <td>
                             <FormattedDate date={dataset.updated_at} />
-                            {` (v. ${dataset.version}) `}
                         </td>
                     </tr>
                 </tbody>
