@@ -1,9 +1,22 @@
+@import './variables.scss';
+
+
 .datasetCard {
     margin-bottom: 1em;
 }
 
 .datasetCardTable {
     margin-bottom: -1px;
+}
+
+.datasetCardHeader {
+    @include heading-font;
+}
+
+.datasetCardTableHeader {
+    font-weight: normal;
+    color: $text-muted;
+    width: 25%;
 }
 
 .resourceList {

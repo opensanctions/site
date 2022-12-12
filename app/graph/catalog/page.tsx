@@ -18,20 +18,24 @@ type GraphDatasetCardProps = {
 function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
     return (
         <Card key={dataset.name} className={styles.datasetCard}>
-            <CardHeader>
+            <CardHeader className={styles.datasetCardHeader}>
                 {dataset.title}
             </CardHeader>
             <Table className={styles.datasetCardTable}>
                 <tbody>
                     <tr>
-                        <th>Name:</th>
+                        <th className={styles.datasetCardTableHeader}>
+                            Name:
+                        </th>
                         <td>
                             <code>{dataset.name}</code>
                         </td>
                     </tr>
                     {!!dataset.summary && (
                         <tr>
-                            <th>Summary:</th>
+                            <th className={styles.datasetCardTableHeader}>
+                                Summary:
+                            </th>
                             <td>
                                 {dataset.summary}
                             </td>
@@ -39,7 +43,9 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                     )}
                     {!!dataset.coverage && (
                         <tr>
-                            <th>Coverage:</th>
+                            <th className={styles.datasetCardTableHeader}>
+                                Coverage:
+                            </th>
                             <td>
                                 {dataset.coverage.start && (
                                     <>
@@ -57,13 +63,17 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                         </tr>
                     )}
                     <tr>
-                        <th>Updated at:</th>
+                        <th className={styles.datasetCardTableHeader}>
+                            Updated at:
+                        </th>
                         <td>
                             <FormattedDate date={dataset.updated_at} />
                         </td>
                     </tr>
                     <tr>
-                        <th>Downloads:</th>
+                        <th className={styles.datasetCardTableHeader}>
+                            Downloads:
+                        </th>
                         <td>
                             <ul className={styles.resourceList}>
                                 {dataset.resources.map((resource) =>
@@ -71,8 +81,8 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                                         <a href={resource.url} download>
                                             {resource.name}
                                         </a>
-                                        <Spacer />
-                                        <code>{resource.mime_type}</code>
+                                        {': '}
+                                        {resource.mime_type_label}
                                     </li>
                                 )}
                             </ul>
@@ -80,7 +90,7 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
                     </tr>
                 </tbody>
             </Table>
-        </Card>
+        </Card >
     );
 }
 
