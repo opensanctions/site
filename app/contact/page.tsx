@@ -9,6 +9,7 @@ import { SUMMARY, TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
 import styles from '../../styles/Contact.module.scss'
+import { MEETING_LINK } from '../../lib/constants';
 
 
 export default async function Contact() {
@@ -24,7 +25,7 @@ export default async function Contact() {
                 <CardText>
                   Reach out to the core team to discuss the project.
                   <br /><br />
-                  Or: <a href="https://meetings-eu1.hubspot.com/douglas-arellanes">book a call directly</a>.
+                  Or: <a href={MEETING_LINK}>book a call directly</a>.
                 </CardText>
               </CardBody>
               <CardFooter>
