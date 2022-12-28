@@ -37,7 +37,7 @@ export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<
 }
 
 export async function fetchUrl<T>(url: string): Promise<T> {
-  const data = await fetch(url, { cache: 'force-cache', next: { revalidate: 3600 } });
+  const data = await fetch(url, { cache: 'force-cache', next: { revalidate: 84600 } });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }
@@ -58,7 +58,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
     'url': `${API_URL}${path}`,
     'query': query
   })
-  const data = await fetch(apiUrl, { headers, cache: 'force-cache', next: { revalidate: 3600 } });
+  const data = await fetch(apiUrl, { headers, cache: 'force-cache', next: { revalidate: 84600 } });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }
@@ -184,7 +184,7 @@ export async function getEntityDatasets(entity: Entity) {
   const allDatasets = await getDatasets();
   return entity.datasets
     .map((name) => allDatasets.find((d) => d.name === name))
-    .filter((d) => d !== undefined) as IDataset[];
+    .filter((d) => d !== undefined && !d.hidden) as IDataset[];
 }
 
 export function isBlocked(entity: Entity): boolean {
