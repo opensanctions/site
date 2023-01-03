@@ -116,9 +116,9 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
 }
 
 export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecentEntity>> {
-  const index = await fetchIndex();
+  const model = await getModel();
   const statements = await fetchObject<IStatementAPIResponse>(`/statements`, {
-    'limit': 25,
+    'limit': 10,
     'dataset': dataset.name,
     'target': true,
     'prop': 'id',
@@ -129,7 +129,6 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
     .map(id => fetchObjectMaybe<IEntityDatum>(`/entities/${id}?nested=false`));
   const responses = await Promise.all(promises)
   const seen = new Array<string>();
-  const model = new Model(index.model);
   const results = statements.results.map((stmt) => {
     if (seen.indexOf(stmt.canonical_id) !== -1) {
       return undefined;
