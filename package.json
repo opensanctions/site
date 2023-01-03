@@ -31,7 +31,7 @@
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "sass": "^1.57.1",
-    "supports-color": "^9.3.0",
+    "supports-color": "^9.3.1",
     "swr": "^2.0.0",
     "unified": "^10.1.2",
     "uuid": "^9.0.0"
