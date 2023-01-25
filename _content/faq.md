@@ -42,6 +42,13 @@ The core goal of OpenSanctions is providing high-quality bulk data access to its
 If you provide another API that uses the OpenSanctions data, we’d love to hear about it and link to it from this site. Please take note of the [commercial licensing](/licensing/) rules if you do so.
 
 
+### Does OpenSanctions use the same identifiers as Wikidata?
+
+Nicely spotted, yes! OpenSanctions uses Wikidata QIDs for all humans which we've been able to match between both databases. This makes it easy to link up additional data from Wikidata, or other databases which utilise the same identification scheme.
+
+While OpenSanctions does match persons against [Wikidata](/datasets/wikidata/), we don't do the same for other legal entities like companies or organizations. Wikidata talks about corporation as social constructs ("X is a large Russian oil company"), while sanctions apply to these entities in their most strict legal sense, where one corporation is often composed of hundreds or thousands of indidivual entities. Instead of Wikidata, we're matching company records only to other company-centric databases like [OpenCorporates](/datasets/opencorporates/).
+
+
 ### Can I contribute a new data source?
 
 Yes, we’re open to contributions. We're particularly keen to add sources that include information from criminal cases, and family and associates of politically exposed persons. Please write a GitHub issue or join our team Slack in order to get started.
