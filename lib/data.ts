@@ -8,6 +8,8 @@ import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATAL
 
 import indexJson from '../data/index.json';
 
+const cacheConfig = { next: { revalidate: 84600 } };
+
 const index = { ...indexJson } as unknown as IIndex;
 index.datasets = index.datasets.map((raw: any) => {
   const ds = {
@@ -27,7 +29,7 @@ index.model = index.model as IModelDatum
 
 export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<any> {
   const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
-  const data = await fetch(url, { cache: 'force-cache', headers });
+  const data = await fetch(url, { headers, ...cacheConfig });
   if (!data.ok) {
     // console.log('ERROR', data);
     return null;
@@ -36,7 +38,7 @@ export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<
 }
 
 export async function fetchUrl<T>(url: string): Promise<T> {
-  const data = await fetch(url, { cache: 'force-cache' });
+  const data = await fetch(url, { ...cacheConfig });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }
@@ -57,7 +59,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
     'url': `${API_URL}${path}`,
     'query': query
   })
-  const data = await fetch(apiUrl, { headers, cache: 'force-cache' });
+  const data = await fetch(apiUrl, { headers, ...cacheConfig });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }

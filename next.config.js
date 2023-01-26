@@ -4,6 +4,7 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ['react-bootstrap']
   },
+  staticPageGenerationTimeout: 360,
   trailingSlash: true,
   images: {
     domains: ['assets.pudo.org'],
