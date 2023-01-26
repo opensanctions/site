@@ -5,7 +5,6 @@ import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL } from "./constants";
-import { markdownToHtml } from './util';
 
 import indexJson from '../data/index.json';
 
@@ -28,7 +27,7 @@ index.model = index.model as IModelDatum
 
 export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<any> {
   const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
-  const data = await fetch(url, { headers });
+  const data = await fetch(url, { cache: 'force-cache', headers });
   if (!data.ok) {
     // console.log('ERROR', data);
     return null;
@@ -37,7 +36,7 @@ export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<
 }
 
 export async function fetchUrl<T>(url: string): Promise<T> {
-  const data = await fetch(url, { cache: 'force-cache', next: { revalidate: 84600 } });
+  const data = await fetch(url, { cache: 'force-cache' });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }
@@ -58,7 +57,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
     'url': `${API_URL}${path}`,
     'query': query
   })
-  const data = await fetch(apiUrl, { headers, cache: 'force-cache', next: { revalidate: 84600 } });
+  const data = await fetch(apiUrl, { headers, cache: 'force-cache' });
   if (!data.ok) {
     throw Error(`Backend error: ${data.text}`);
   }

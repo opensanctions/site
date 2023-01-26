@@ -4,18 +4,18 @@ import { CaretRightFill, EnvelopeFill, Slack, Twitter } from 'react-bootstrap-ic
 import { Button, Card, CardBody, CardTitle, CardText, CardFooter, CardGroup } from '../../components/wrapped'
 import Content from '../../components/Content'
 import { Summary } from '../../components/util';
-import Menu from '../../components/Menu';
 import { SUMMARY, TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
+import { MEETING_LINK } from '../../lib/constants';
+import { AboutMenu } from '../../components/Menu';
 
 import styles from '../../styles/Contact.module.scss'
-import { MEETING_LINK } from '../../lib/constants';
 
 
 export default async function Contact() {
   return (
     <LayoutFrame activeSection="about">
-      <Content.Menu title={TITLE} Menu={Menu.About}>
+      <Content.Menu title={TITLE} Menu={AboutMenu} path="/contact">
         <Summary summary={SUMMARY} />
         <div className="text-body">
           <CardGroup className={styles.contactPanel}>

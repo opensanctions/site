@@ -8,7 +8,7 @@ import { Summary } from '../../components/util'
 import { fetchIndex, getModel } from '../../lib/data'
 import { SchemaReference, TypeReference } from '../../components/Reference';
 import { INDEX_URL } from '../../lib/constants';
-import Menu from '../../components/Menu';
+import { DocumentationMenu } from '../../components/Menu';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
 
@@ -22,7 +22,7 @@ export default async function Page() {
 
   return (
     <LayoutFrame activeSection={content.section}>
-      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={Menu.Documentation}>
+      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={DocumentationMenu} path="/reference">
         <Summary summary={content.summary} />
         <div>
           <Content.Body content={content} />

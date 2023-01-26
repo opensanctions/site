@@ -2,18 +2,19 @@ import Link from 'next/link';
 import { CreditCard2BackFill, EnvelopeFill, LightbulbFill, Magic } from 'react-bootstrap-icons';
 
 import Content from '../../components/Content'
-import Menu from '../../components/Menu';
 import { Button, Card, CardBody, CardTitle, CardText, CardFooter, Badge, CardGroup, ButtonGroup } from '../../components/wrapped';
 import { Numeric, Summary } from '../../components/util';
 import LayoutFrame from '../../components/layout/LayoutFrame';
+import { AboutMenu } from '../../components/Menu';
 import { SUMMARY, TITLE } from './common';
 
 import styles from '../../styles/Licensing.module.scss'
 
+
 export default function Page() {
   return (
     <LayoutFrame activeSection="about">
-      <Content.Menu title={TITLE} Menu={Menu.About}>
+      <Content.Menu title={TITLE} path="/licensing" Menu={AboutMenu}>
         <Summary summary={SUMMARY} />
         <div className="text-body">
           <CardGroup className={styles.pricingPanel}>

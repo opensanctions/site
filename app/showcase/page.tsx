@@ -1,5 +1,3 @@
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-
 import { Container, Row, Col, Card, CardTitle, CardImg, CardBody, CardText, CardLink } from '../../components/wrapped';
 import { Summary } from '../../components/util';
 import Link from 'next/link';

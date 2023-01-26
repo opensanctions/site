@@ -6,7 +6,7 @@ import { getContentBySlug } from '../../lib/content'
 import { Summary } from '../../components/util'
 import { fetchIndex } from '../../lib/data'
 import { INDEX_URL } from '../../lib/constants';
-import Menu from '../../components/Menu';
+import { DocumentationMenu } from '../../components/Menu';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
 
@@ -15,7 +15,7 @@ export default async function Page() {
   const content = await getContentBySlug('matcher');
   return (
     <LayoutFrame activeSection={content.section}>
-      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={Menu.Documentation}>
+      <Content.Menu title={content.title} jsonLink={INDEX_URL} path="/matcher" Menu={DocumentationMenu}>
         <Summary summary={content.summary} />
         <div>
           <Content.Body content={content} />
