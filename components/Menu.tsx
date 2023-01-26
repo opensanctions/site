@@ -4,12 +4,12 @@ import { RoutedNavLink } from './util';
 
 import { LicenseInfo } from './Policy';
 
-type MenuProps = {
+export type MenuProps = {
   path: string
 }
 
 
-function AboutMenu({ path }: MenuProps) {
+export function AboutMenu({ path }: MenuProps) {
   return (
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
@@ -38,7 +38,7 @@ function AboutMenu({ path }: MenuProps) {
           <RoutedNavLink href="/docs/privacy/" current={path}>Privacy Policy</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/impressum/">Impressum</RoutedNavLink>
+          <RoutedNavLink href="/impressum/" current={path}>Impressum</RoutedNavLink>
         </NavItem>
       </Nav>
       <LicenseInfo />
@@ -46,7 +46,7 @@ function AboutMenu({ path }: MenuProps) {
   );
 }
 
-function DocumentationMenu({ path }: MenuProps) {
+export function DocumentationMenu({ path }: MenuProps) {
   return (
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
@@ -72,21 +72,16 @@ function DocumentationMenu({ path }: MenuProps) {
           </NavItem>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/api/">Using the API</RoutedNavLink>
+          <RoutedNavLink href="/docs/api/" current={path}>Using the API</RoutedNavLink>
           <NavItem>
-            <RoutedNavLink href="/matcher/">How we score matches</RoutedNavLink>
+            <RoutedNavLink href="/matcher/" current={path}>How we score matches</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/self-hosted/">Self-hosted API</RoutedNavLink>
+            <RoutedNavLink href="/docs/self-hosted/" current={path}>Self-hosted API</RoutedNavLink>
           </NavItem>
         </NavItem>
       </Nav>
       <LicenseInfo />
     </>
   );
-}
-
-export default class Menu {
-  static Documentation = DocumentationMenu;
-  static About = AboutMenu;
 }

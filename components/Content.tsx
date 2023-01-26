@@ -4,7 +4,7 @@ import { JSONLink, Markdown, Summary } from './util';
 
 import styles from '../styles/Content.module.scss';
 import Link from 'next/link';
-import Menu from './Menu';
+import { AboutMenu, DocumentationMenu, MenuProps } from './Menu';
 import PageHead from './layout/PageHead';
 
 type ContentProps = {
@@ -24,7 +24,7 @@ type ContentMenuProps = {
   title: string
   path: string
   jsonLink?: string
-  Menu: React.ComponentType
+  Menu: React.ComponentType<MenuProps>
 }
 
 function ContentMenu({ title, path, children, jsonLink, Menu }: React.PropsWithChildren<ContentMenuProps>) {
@@ -51,7 +51,7 @@ function ContentMenu({ title, path, children, jsonLink, Menu }: React.PropsWithC
 }
 
 function ContentContext({ content, children }: ContentFrameProps) {
-  const MenuComponent = content.section === "about" ? Menu.About : Menu.Documentation;
+  const MenuComponent = content.section === "about" ? AboutMenu : DocumentationMenu;
   return (
     <ContentMenu title={content.title} path={content.path} Menu={MenuComponent}>
       <Summary summary={content.summary} />
