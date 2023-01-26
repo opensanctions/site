@@ -26,7 +26,7 @@ export async function getContentBySlug(slug: string): Promise<IContent> {
     title: data.title,
     path: data.path || `/docs/${realSlug}/`,
     content: markdownToHtml(content),
-    section: data.section || "documentation",
+    section: data.section || "docs",
     image_url: data.image_url || null,
     summary: data.summary || null,
   }

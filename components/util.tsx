@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import React, { ReactNode } from 'react';
 import queryString from 'query-string';
-import { usePathname } from 'next/navigation';
 import { filesize } from 'filesize';
 import { FileEarmarkCodeFill, Link45deg, QuestionCircleFill } from 'react-bootstrap-icons';
 
@@ -15,14 +14,14 @@ import styles from '../styles/util.module.scss';
 
 type RoutedNavLinkProps = {
   href: string
+  current: string
 }
 
 
-export function RoutedNavLink({ href, children }: React.PropsWithChildren<RoutedNavLinkProps>) {
-  const path = usePathname();
+export function RoutedNavLink({ href, current, children }: React.PropsWithChildren<RoutedNavLinkProps>) {
   return (
     <Link href={href} passHref legacyBehavior>
-      <NavLink active={path == href}>{children}</NavLink>
+      <NavLink active={current == href}>{children}</NavLink>
     </Link>
   )
 }

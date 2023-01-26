@@ -4,33 +4,38 @@ import { RoutedNavLink } from './util';
 
 import { LicenseInfo } from './Policy';
 
-function AboutMenu() {
+type MenuProps = {
+  path: string
+}
+
+
+function AboutMenu({ path }: MenuProps) {
   return (
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
         <NavItem>
-          <RoutedNavLink href="/docs/about/">About OpenSanctions</RoutedNavLink>
+          <RoutedNavLink href="/docs/about/" current={path}>About OpenSanctions</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/faq/">Frequently asked questions</RoutedNavLink>
+          <RoutedNavLink href="/docs/faq/" current={path}>Frequently asked questions</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/licensing/">Licensing the data</RoutedNavLink>
+          <RoutedNavLink href="/licensing/" current={path}>Licensing the data</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/commercial-faq/">Commercial use FAQ</RoutedNavLink>
+          <RoutedNavLink href="/docs/commercial-faq/" current={path}>Commercial use FAQ</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/criteria/">Data inclusion criteria</RoutedNavLink>
+          <RoutedNavLink href="/docs/criteria/" current={path}>Data inclusion criteria</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
+          <RoutedNavLink href="/contact/" current={path}>Contact us</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/terms/">Terms of service</RoutedNavLink>
+          <RoutedNavLink href="/docs/terms/" current={path}>Terms of service</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/privacy/">Privacy Policy</RoutedNavLink>
+          <RoutedNavLink href="/docs/privacy/" current={path}>Privacy Policy</RoutedNavLink>
         </NavItem>
         <NavItem>
           <RoutedNavLink href="/impressum/">Impressum</RoutedNavLink>
@@ -41,29 +46,29 @@ function AboutMenu() {
   );
 }
 
-function DocumentationMenu() {
+function DocumentationMenu({ path }: MenuProps) {
   return (
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
         <NavItem>
-          <RoutedNavLink href="/docs/usage/">Using the data</RoutedNavLink>
+          <RoutedNavLink href="/docs/usage/" current={path}>Using the data</RoutedNavLink>
           <NavItem>
-            <RoutedNavLink href="/docs/entities/">Entity structure</RoutedNavLink>
+            <RoutedNavLink href="/docs/entities/" current={path}>Entity structure</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/reference/">Data dictionary</RoutedNavLink>
+            <RoutedNavLink href="/reference/" current={path}>Data dictionary</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/identifiers/">Identifiers and de-duplication</RoutedNavLink>
+            <RoutedNavLink href="/docs/identifiers/" current={path}>Identifiers and de-duplication</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/pairs/">Matcher training data</RoutedNavLink>
+            <RoutedNavLink href="/docs/pairs/" current={path}>Matcher training data</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/statements/">Statement-based data</RoutedNavLink>
+            <RoutedNavLink href="/docs/statements/" current={path}>Statement-based data</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/enrichment/">Data enrichment</RoutedNavLink>
+            <RoutedNavLink href="/docs/enrichment/" current={path}>Data enrichment</RoutedNavLink>
           </NavItem>
         </NavItem>
         <NavItem>

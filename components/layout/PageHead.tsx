@@ -1,6 +1,5 @@
-import { usePathname } from "next/navigation";
 import Script from "next/script";
-import { BASE_URL, SITE } from "../../lib/constants";
+import { SITE } from "../../lib/constants";
 
 type HeadTagsProps = {
   title: string
@@ -11,8 +10,6 @@ type HeadTagsProps = {
 }
 
 export default function PageHead({ title, description, structured, imageUrl, noIndex }: HeadTagsProps) {
-  const path = usePathname();
-  const url = `${BASE_URL}${path}`;
   return (
     <>
       {title && (
@@ -43,7 +40,6 @@ export default function PageHead({ title, description, structured, imageUrl, noI
       )}
       <meta property="og:image" content={(!!imageUrl) ? imageUrl : "/static/card.jpg"} />
       <meta name="og:site" content={SITE} />
-      <meta property="og:url" content={url} />
     </>
   )
 }

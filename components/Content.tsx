@@ -22,11 +22,12 @@ function ContentBody({ content }: ContentProps) {
 
 type ContentMenuProps = {
   title: string
+  path: string
   jsonLink?: string
   Menu: React.ComponentType
 }
 
-function ContentMenu({ title, children, jsonLink, Menu }: React.PropsWithChildren<ContentMenuProps>) {
+function ContentMenu({ title, path, children, jsonLink, Menu }: React.PropsWithChildren<ContentMenuProps>) {
   return (
     <Container>
       <Row>
@@ -42,7 +43,7 @@ function ContentMenu({ title, children, jsonLink, Menu }: React.PropsWithChildre
           {children}
         </Col>
         <Col md={3}>
-          <Menu />
+          <Menu path={path} />
         </Col>
       </Row>
     </Container>
@@ -52,7 +53,7 @@ function ContentMenu({ title, children, jsonLink, Menu }: React.PropsWithChildre
 function ContentContext({ content, children }: ContentFrameProps) {
   const MenuComponent = content.section === "about" ? Menu.About : Menu.Documentation;
   return (
-    <ContentMenu title={content.title} Menu={MenuComponent}>
+    <ContentMenu title={content.title} path={content.path} Menu={MenuComponent}>
       <Summary summary={content.summary} />
       <div className={styles.page}>
         {children}

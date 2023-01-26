@@ -27,19 +27,19 @@ function ArticleSidebar({ article }: ArticleProps) {
       </p>
       <Nav className="flex-column justify-content-start" variant="pills">
         <NavItem>
-          <RoutedNavLink href="/docs/about/">About OpenSanctions</RoutedNavLink>
+          <RoutedNavLink href="/docs/about/" current={article.path}>About OpenSanctions</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/faq/">FAQ</RoutedNavLink>
+          <RoutedNavLink href="/docs/faq/" current={article.path}>FAQ</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/datasets/">Datasets</RoutedNavLink>
+          <RoutedNavLink href="/datasets/" current={article.path}>Datasets</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/sponsor/">Sponsor the project</RoutedNavLink>
+          <RoutedNavLink href="/sponsor/" current={article.path}>Sponsor the project</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/contact/">Contact us</RoutedNavLink>
+          <RoutedNavLink href="/contact/" current={article.path}>Contact us</RoutedNavLink>
         </NavItem>
       </Nav>
     </>

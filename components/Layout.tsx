@@ -1,11 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import { usePathname } from 'next/navigation';
 
 import Navbar from './layout/Navigation';
 import Footer from './layout/Footer';
 import AnalyticsManager from './Analytics';
-import { BASE_URL, SITE } from '../lib/constants';
+import { SITE } from '../lib/constants';
 
 import styles from '../styles/Layout.module.scss';
 
@@ -19,8 +18,6 @@ type LayoutBaseProps = {
 }
 
 function LayoutBase({ title, description, imageUrl, structured, activeSection, children }: React.PropsWithChildren<LayoutBaseProps>) {
-  const path = usePathname();
-  const url = `${BASE_URL}${path}`;
   const fullTitle = `${title} - ${SITE}`
   return (
     <>
@@ -50,7 +47,6 @@ function LayoutBase({ title, description, imageUrl, structured, activeSection, c
         )}
         <meta property="og:image" content={(!!imageUrl) ? imageUrl : "/static/card.jpg"} />
         <meta name="og:site" content={SITE} />
-        <meta property="og:url" content={url} />
       </Head>
       <div className={styles.page}>
         <Navbar activeSection={activeSection} />
