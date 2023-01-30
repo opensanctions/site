@@ -22,7 +22,7 @@ type ExpandProps = {
 function Expand({ href }: ExpandProps) {
   return (
     <td className={styles.colExpand}>
-      <a href={href}><AspectRatioFill size={14} /></a>
+      <Link href={href}><AspectRatioFill size={14} /></Link>
     </td>
   )
 
@@ -39,7 +39,7 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
     const newQuery = queryString.stringify({
       ...args
     });
-    return `?${newQuery}`;
+    return `/statements/?${newQuery}`;
   }
 
   if (propType === 'url') {
@@ -77,7 +77,7 @@ export default async function Page({ searchParams }: PageProps) {
     const newQuery = queryString.stringify({
       ...args
     });
-    return `?${newQuery}`;
+    return `/statements/?${newQuery}`;
   }
 
   return (
