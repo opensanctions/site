@@ -160,7 +160,7 @@ export default async function Page({ params }: DatasetPageProps) {
                         For <a href={`${API_URL}/#operation/search_search__dataset__get`}>full-text search</a>, use the <code>/search</code> endpoint:
                       </td>
                       <td width="60%">
-                        <FormControl readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe&?api_key=YOUR_API_KEY`} />
+                        <FormControl readOnly value={`${API_URL}/search/${dataset.name}?q=John+Doe&api_key=YOUR_API_KEY`} />
                       </td>
                     </tr>
                     <tr>
