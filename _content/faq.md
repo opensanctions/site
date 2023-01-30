@@ -30,7 +30,7 @@ Our preferred sources are official datasets published by governments and other a
 
 ### <a id="updates"></a> How frequently is OpenSanctions updated?
 
-Most data sources are updated daily and published in the early morning (CET). You can inspect the [public data pipeline](https://github.com/opensanctions/opensanctions/actions/workflows/production.yml) and see a list of any errors or warnings [each dataset](/datasets/) has generated. 
+Most data sources are updated daily and refreshed data extracts are published several times a day. You can see a list of any [errors or warnings each dataset](/issues/) has generated. 
 
 For data sources that require screen scraping rather than publishing structured data, a HTTP response cache with a maximum age of ten days is used to avoid running into rate limiting errors.
 
