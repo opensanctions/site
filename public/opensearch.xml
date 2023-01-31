@@ -2,7 +2,7 @@
 	<ShortName>OpenSanctions</ShortName>
 	<Description></Description>
 	<InputEncoding>UTF-8</InputEncoding>
-	<Image width="16" height="16" type="image/x-icon">https://www.opensanctions.org/public/favicon.ico</Image>
+	<Image width="16" height="16" type="image/x-icon">https://www.opensanctions.org/favicon.ico</Image>
 	<Url type="text/html" template="https://www.opensanctions.org/search/">
 		<Param name="q" value="{searchTerms}"/>
 	</Url>
