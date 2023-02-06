@@ -1,4 +1,4 @@
 
 export interface EntityPageProps {
-  params: { id: string }
+  params: { entityId: string }
 }

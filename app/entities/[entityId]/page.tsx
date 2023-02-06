@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { notFound, redirect } from 'next/navigation';
 
 import Research from '../../../components/Research';
 import { Row, Col, Nav, NavLink, Container } from '../../../components/wrapped';
@@ -9,20 +10,18 @@ import { isExternal, isSource } from '../../../lib/types';
 import { HelpLink, SpacedList, Sticky } from '../../../components/util';
 import Dataset from '../../../components/Dataset';
 import { EntityFactsheet, EntityNote, EntitySchemaTable, EntityTopics } from '../../../components/Entity';
-
-import { notFound, redirect } from 'next/navigation';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
-import { EntityPageProps } from './common';
+import { EntityPageProps } from '../common';
 
 import styles from '../../../styles/Entity.module.scss'
 
 
 export default async function EntityPage({ params }: EntityPageProps) {
-  const entity = await getEntity(params.id);
+  const entity = await getEntity(params.entityId);
   if (entity === null) {
     notFound();
   }
-  if (entity.id !== params.id) {
+  if (entity.id !== params.entityId) {
     redirect(`/entities/${entity.id}/`);
   }
   const notesResp = await getStatements({ canonical_id: entity.id, prop: 'notes' });

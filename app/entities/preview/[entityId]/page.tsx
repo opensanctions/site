@@ -2,16 +2,16 @@ import { Container } from '../../../../components/wrapped';
 import { EntityFactsheet } from '../../../../components/Entity';
 import { getEntity, isBlocked } from '../../../../lib/data';
 
-import { EntityPageProps } from '../../[id]/common';
+import { EntityPageProps } from '../../common';
 import { notFound, redirect } from 'next/navigation';
 
 
 export default async function Page({ params }: EntityPageProps) {
-  const entity = await getEntity(params.id);
+  const entity = await getEntity(params.entityId);
   if (entity === null || isBlocked(entity)) {
     notFound()
   }
-  if (entity.id !== params.id) {
+  if (entity.id !== params.entityId) {
     redirect(`/entities/preview/${entity.id}/`)
   }
   const entityUrl = `/entities/${entity.id}/`;
