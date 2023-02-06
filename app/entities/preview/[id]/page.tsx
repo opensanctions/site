@@ -1,12 +1,7 @@
 import { Container } from '../../../../components/wrapped';
-import { Model } from '../../../../lib/ftm';
-import { EntityFactsheet, EntityLink, EntityRawLink } from '../../../../components/Entity';
-import { SpacedList } from '../../../../components/util';
-import { PropertyValues } from '../../../../components/Property';
-import Dataset from '../../../../components/Dataset';
-import { fetchIndex, getEntity, getEntityData, getEntityDatasets, isBlocked } from '../../../../lib/data';
+import { EntityFactsheet } from '../../../../components/Entity';
+import { getEntity, isBlocked } from '../../../../lib/data';
 
-import styles from '../../../../styles/Entity.module.scss'
 import { EntityPageProps } from '../../[id]/common';
 import { notFound, redirect } from 'next/navigation';
 
