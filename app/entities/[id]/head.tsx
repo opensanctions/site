@@ -1,8 +1,7 @@
-import { getSchemaEntityPage } from '../../../lib/schema';
 import PageHead from "../../../components/layout/PageHead";
 import { EntityPageProps } from "./common";
+import { getSchemaEntityPage } from '../../../lib/schema';
 import { getEntity, getEntityDatasets, isBlocked, isIndexRelevant } from '../../../lib/data';
-
 
 export default async function Head({ params }: EntityPageProps) {
   const entity = await getEntity(params.id);
