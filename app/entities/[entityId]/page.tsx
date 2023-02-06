@@ -11,10 +11,12 @@ import { HelpLink, SpacedList, Sticky } from '../../../components/util';
 import Dataset from '../../../components/Dataset';
 import { EntityFactsheet, EntityNote, EntitySchemaTable, EntityTopics } from '../../../components/Entity';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
+import { REVALIDATE_BASE } from '../../../lib/constants';
 import { EntityPageProps } from '../common';
 
 import styles from '../../../styles/Entity.module.scss'
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function EntityPage({ params }: EntityPageProps) {
   const entity = await getEntity(params.entityId);

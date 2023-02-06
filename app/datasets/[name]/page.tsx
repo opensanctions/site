@@ -9,13 +9,14 @@ import { isCollection, isSource, isExternal } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
 import { LicenseInfo } from '../../../components/Policy';
-import { API_URL } from '../../../lib/constants';
+import { API_URL, REVALIDATE_BASE } from '../../../lib/constants';
 import { DatasetPageProps } from './common';
 
 import styles from '../../../styles/Dataset.module.scss'
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 import { markdownToHtml } from '../../../lib/util';
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page({ params }: DatasetPageProps) {
   const dataset = await getDatasetByName(params.name);

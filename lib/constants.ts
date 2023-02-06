@@ -15,6 +15,7 @@ export const EMAIL = "info@opensanctions.org"
 export const ARTICLE_INDEX_SUMMARY = "Updates from the OpenSanctions project, including new features, technical deep dives, and analysis."
 export const GA_TRACKING_ID = 'G-YRZENQXNNR';
 export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.json"
+export const REVALIDATE_BASE = 84600;
 
 export const MEETING_LINK = "https://meetings-eu1.hubspot.com/douglas-arellanes"
 // export const MEETING_LINK = "https://calendly.com/flindenberg/opensanctions-intro"

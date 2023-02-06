@@ -4,11 +4,11 @@ import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL } from "./constants";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE } from "./constants";
 
 import indexJson from '../data/index.json';
 
-const cacheConfig = { next: { revalidate: 84600 } };
+const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
 
 const index = { ...indexJson } as unknown as IIndex;
 index.datasets = index.datasets.map((raw: any) => {
