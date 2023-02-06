@@ -1,7 +1,6 @@
 import React from 'react';
 import { Model } from '../../lib/ftm/model';
 
-import Layout from '../../components/Layout'
 import Research from '../../components/Research';
 import { ISearchAPIResponse } from '../../lib/types';
 import { Container, Row, Col, Alert, AlertHeading } from '../../components/wrapped';
@@ -39,13 +38,13 @@ export default async function Search({ searchParams }: PageProps) {
 
   if (scope === undefined) {
     return (
-      <Layout.Base title="Failed to load" activeSection="research">
+      <LayoutFrame activeSection="research">
         <Research.Context query={searchParams}>
           <Container>
             <h2>Could not load search function.</h2>
           </Container>
         </Research.Context>
-      </Layout.Base >
+      </LayoutFrame>
     );
   }
 

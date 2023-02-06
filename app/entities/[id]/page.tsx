@@ -20,10 +20,10 @@ import styles from '../../../styles/Entity.module.scss'
 export default async function EntityPage({ params }: EntityPageProps) {
   const entity = await getEntity(params.id);
   if (entity === null) {
-    notFound()
+    return notFound();
   }
   if (entity.id !== params.id) {
-    redirect(`/entities/${entity.id}/`)
+    return redirect(`/entities/${entity.id}/`);
   }
   const notesResp = await getStatements({ canonical_id: entity.id, prop: 'notes' });
   const notesRaw = notesResp === null ? [] : notesResp?.results;

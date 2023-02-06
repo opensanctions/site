@@ -20,9 +20,6 @@ export default async function Page() {
   const collections = datasets.filter(isCollection)
   const sources = datasets.filter(isSource)
   const all = collections.find((c) => c.name === 'all');
-  if (all === undefined) {
-    return <LayoutFrame />;
-  }
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (
     <LayoutFrame>
@@ -53,21 +50,22 @@ export default async function Page() {
                   </InputGroup>
                 </Form>
               </div>
-              <p className={styles.stats}>
-                <NumericBadge value={all.target_count} className={styles.statsBadge} /> targets
-                {SPACER}
-                <NumericBadge value={sources.length} className={styles.statsBadge} /> data sources
-                {SPACER}
-                updated{' '}
-                <Badge className={styles.statsBadge}>
-                  <FormattedDate date={all.last_change} />
-                </Badge>
-                {SPACER}
-                <Link href="/datasets">get bulk data</Link>
-              </p>
+              {all && (
+                <p className={styles.stats}>
+                  <NumericBadge value={all.target_count} className={styles.statsBadge} /> targets
+                  {SPACER}
+                  <NumericBadge value={sources.length} className={styles.statsBadge} /> data sources
+                  {SPACER}
+                  updated{' '}
+                  <Badge className={styles.statsBadge}>
+                    <FormattedDate date={all.last_change} />
+                  </Badge>
+                  {SPACER}
+                  <Link href="/datasets">get bulk data</Link>
+                </p>
+              )}
             </Col>
             <Col md={4} className="d-none d-md-block">
-
             </Col>
           </Row>
         </Container>

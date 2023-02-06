@@ -59,7 +59,7 @@ export default function AnalyticsManager() {
   }
 
   if (consent !== 'ask') {
-    return null;
+    return <></>;
   }
 
   return (
