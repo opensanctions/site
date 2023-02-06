@@ -18,7 +18,6 @@ import styles from '../../../styles/Entity.module.scss'
 
 
 export default async function EntityPage({ params }: EntityPageProps) {
-  console.log("LOG", params);
   const entity = await getEntity(params.id);
   if (entity === null) {
     notFound();
@@ -37,6 +36,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
   const datasets = await getEntityDatasets(entity);
   const sources = datasets.filter(isSource);
   const externals = datasets.filter(isExternal);
+  console.log("ENTITY", entity.id, entity.caption, entity.schema.label);
   return (
     <LayoutFrame activeSection="research">
       <Research.Context>
