@@ -5,14 +5,13 @@ import { getEntity, getEntityDatasets, isBlocked, isIndexRelevant } from '../../
 
 
 export default async function Head({ params }: EntityPageProps) {
-  return <PageHead title="Entity" />;
-  // const entity = await getEntity(params.id);
-  // if (entity === null) {
-  //   return <PageHead title="Entity not found" />;
-  // }
-  // const datasets = await getEntityDatasets(entity);
-  // const structured = getSchemaEntityPage(entity, datasets);
-  // const noIndex = !isIndexRelevant(entity);
-  // const title = isBlocked(entity) ? 'Blocked entity' : entity.caption;
-  // return <PageHead title={title} noIndex={noIndex} structured={structured} />;
+  const entity = await getEntity(params.id);
+  if (entity === null) {
+    return <PageHead title="Entity not found" />;
+  }
+  const datasets = await getEntityDatasets(entity);
+  const structured = getSchemaEntityPage(entity, datasets);
+  const noIndex = !isIndexRelevant(entity);
+  const title = isBlocked(entity) ? 'Blocked entity' : entity.caption;
+  return <PageHead title={title} noIndex={noIndex} structured={structured} />;
 }
