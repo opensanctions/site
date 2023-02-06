@@ -19,7 +19,7 @@ export default function Page() {
         <Row xs={1} md={3} className="g-4">
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/nazk_logo.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/nazk_logo.png" />
               <CardBody>
                 <CardTitle>War &amp; Sanctions</CardTitle>
                 <CardText>
@@ -36,7 +36,7 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/tracker.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/tracker.png" />
               <CardBody>
                 <CardTitle>Russian Sanctions Tracker</CardTitle>
                 <CardText>
@@ -57,7 +57,7 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/openscreening.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/openscreening.png" />
               <CardBody>
                 <CardTitle>OpenScreening</CardTitle>
                 <CardText>
@@ -78,7 +78,24 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/blackdot.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/maltego.png" />
+              <CardBody>
+                <CardTitle>Maltego Transform Hub</CardTitle>
+                <CardText>
+                  Maltego is an open source intelligence and graphical link analysis tool for
+                  gathering and connecting information for investigative tasks. Maltego is used
+                  by a broad range of users, ranging from security professionals
+                  to forensic investigators, investigative journalists, and researchers.
+                </CardText>
+                <CardLink href="https://www.maltego.com/transform-hub/opensanctions/">
+                  Transform Hub
+                </CardLink>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col>
+            <Card bg="light">
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/blackdot.png" />
               <CardBody>
                 <CardTitle>Blackdot Solutions Videris</CardTitle>
                 <CardText>
@@ -98,25 +115,7 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/truintel.png" />
-              <CardBody>
-                <CardTitle>BlueAnvil Truintel</CardTitle>
-                <CardText>
-                  Truintel is a power tool for understanding UK companies. It combines analysis of
-                  beneficial ownership, procurement data and PEP/sanctions screening.
-                </CardText>
-                <CardLink href="https://www.blueanvil.com/truintel/">
-                  Product info
-                </CardLink>
-                <CardLink href="https://truintel.app/signup">
-                  Sign up
-                </CardLink>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col>
-            <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/occrp.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/occrp.png" />
               <CardBody>
                 <CardTitle>OCCRP Aleph</CardTitle>
                 <CardText>
@@ -133,7 +132,7 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/ruassets.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/ruassets.png" />
               <CardBody>
                 <CardTitle>YouControl RuAssets</CardTitle>
                 <CardText>
@@ -150,7 +149,7 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/declarator.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/declarator.png" />
               <CardBody>
                 <CardTitle>Declarator.org</CardTitle>
                 <CardText>
@@ -169,7 +168,7 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
-              <CardImg variant="top" src="/static/showcase/omnio.png" />
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/omnio.png" />
               <CardBody>
                 <CardTitle>OMNIO</CardTitle>
                 <CardText>
