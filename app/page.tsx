@@ -21,7 +21,7 @@ export default async function Page() {
   const sources = datasets.filter(isSource)
   const all = collections.find((c) => c.name === 'all');
   if (all === undefined) {
-    return null;
+    return <LayoutFrame />;
   }
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (

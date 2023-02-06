@@ -21,7 +21,7 @@ export default async function Search({ searchParams }: PageProps) {
   const index = await fetchIndex();
   const datasets = await getDatasets();
   if (searchParams === undefined) {
-    return null;
+    return <LayoutFrame activeSection="research" />;
   }
   const scopeName = searchParams['scope'] || SEARCH_DATASET;
   const schemaName = searchParams['schema'] || SEARCH_SCHEMA;

@@ -7,7 +7,7 @@ import { getEntity, getEntityDatasets, isBlocked, isIndexRelevant } from '../../
 export default async function Head({ params }: EntityPageProps) {
   const entity = await getEntity(params.id);
   if (entity == null) {
-    return null;
+    return <PageHead title="Loading..." />;
   }
   const datasets = await getEntityDatasets(entity);
   const structured = getSchemaEntityPage(entity, datasets);

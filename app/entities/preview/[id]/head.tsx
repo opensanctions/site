@@ -6,7 +6,7 @@ import { EntityPageProps } from '../../[id]/common';
 export default async function Head({ params }: EntityPageProps) {
   const entity = await getEntity(params.id);
   if (entity == null) {
-    return null;
+    return <PageHead title="Loading..." />;
   }
   const noIndex = !isIndexRelevant(entity);
   const title = isBlocked(entity) ? 'Blocked entity' : entity.caption;
