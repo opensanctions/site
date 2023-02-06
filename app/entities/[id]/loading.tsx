@@ -7,13 +7,12 @@ import LayoutFrame from '../../../components/layout/LayoutFrame';
 
 export default async function LoadingPage() {
   return (
-    <>under maintenance</>
-    // <LayoutFrame activeSection="research">
-    //   <Research.Context isLoading>
-    //     <Container>
-    //       <SectionSpinner />
-    //     </Container>
-    //   </Research.Context>
-    // </LayoutFrame>
+    <LayoutFrame activeSection="research">
+      <Research.Context isLoading>
+        <Container>
+          <SectionSpinner />
+        </Container>
+      </Research.Context>
+    </LayoutFrame>
   )
 }
