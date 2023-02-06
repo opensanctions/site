@@ -27,8 +27,8 @@ To avoid needing a supercomputer, it's common in entity resolution to use a stra
 
 Tuning OpenSanctions' blocking mechanism has been a challenging task: the system now considers term frequencies in scoring possible candidates, handles text transliteration into the latin alphabet, and it is tolerant against spelling variations thanks to its ability to compare character fragments (so-called ngrams) in names.
 
-<a href="https://assets.pudo.org/opensanctions/images/blocking.png">
-    <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/blocking.png">
+<a href="https://assets.opensanctions.org/images/articles/blocking.png">
+    <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/blocking.png">
 </a>
 
 At the end of this step, we are left with a ranked set of pairwise matching candidates: *Company X on the French sanctions list looks a whole lot like Company Y on the UK list - someone should check that out.*
@@ -37,8 +37,8 @@ At the end of this step, we are left with a ranked set of pairwise matching cand
 
 With thousands of scored pairs in hand, its time to make some decisions: do two given records refer to the same logical entity? Given OpenSanctions requirement for a high level of precision, we chose a radical approach to this: manual de-duplication.
 
-<a href="https://assets.pudo.org/opensanctions/images/matching2.png">
-    <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/matching2.png">
+<a href="https://assets.opensanctions.org/images/articles/matching2.png">
+    <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/matching2.png">
 </a>
 
 Using the brilliant [textual](https://github.com/willmcgugan/textual) framework, we developed a text-based user interface that would present the details of two entities side-by-side and allow the user to decide if both are a match. While most of the time the presented information is detailed enough for an analyst to make this judgement, in some cases we opted to conduct further research on the web to verify that, for example, certain members of the government of Venezuela are subject to US sanctions.
@@ -57,8 +57,8 @@ Resulting from entity resolution is a graph of entity IDs, reflecting the positi
 
 Next, we need to apply these merges to the data itself and combine the source entities into a new, combined form. This is where the unusual data model used by OpenSanctions comes into play: the [system stores all entities as a set of statements](/docs/statements/). Each statement describes one value for a [property of the entity](/docs/entities/). For example: the entity `ofac-20601` has the property `name` with value `PAK, Han Se` according to the dataset `us_trade_csl` on `2021-10-03`.
 
-<a href="https://assets.pudo.org/opensanctions/images/statements2.png">
-    <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/statements2.png">
+<a href="https://assets.opensanctions.org/images/articles/statements2.png">
+    <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/statements2.png">
 </a>
 
 In order to export data into [formats like CSV or JSON](/docs/usage/), these statements get read from the database and assembled into entities. This creates the necessary flexibility to export combined entities without modifying or destroying any of the original data - keeping the option to reverse a merge decision at a moment's notice.

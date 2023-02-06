@@ -1,6 +1,6 @@
 ---
 title: "Using graph analytics to find evidence of corruption"
-image_url: https://assets.pudo.org/opensanctions/images/webinar.png
+image_url: https://assets.opensanctions.org/images/articles/webinar.png
 summary: |
     In cooperation with Linkurious, we worked to develop a network graph view
     of the OpenSanctions data and demo how it can be used in anti-corruption
@@ -8,7 +8,7 @@ summary: |
 ---
 
 <a href="https://www.bigmarker.com/linkurious/Finding-evidence-of-corruption-and-money-laundering-with-open-data">
-    <img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/webinar.png">
+    <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/webinar.png">
 </a><br/><br/>
 
 During [the webinar](https://www.bigmarker.com/linkurious/Finding-evidence-of-corruption-and-money-laundering-with-open-data), we demonstrated the powerful combination of the [Linkurious](https://linkurious.com) graph analytics platform and the OpenSanctions entity graph of sanctions and politically exposed persons.

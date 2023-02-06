@@ -1,6 +1,6 @@
 ---
 title: "Weaving a deeper sanctions web using data enrichment"
-image_url: https://assets.pudo.org/opensanctions/images/enrichment/prevezon2.png
+image_url: https://assets.opensanctions.org/images/articles/enrichment/prevezon2.png
 summary: |
     We're adding linked data from the GLEIF company database and the ICIJ 
     OffshoreLeaks to enrich the corporate targets in our system with relevant 
@@ -9,7 +9,7 @@ summary: |
 
 Running a sanctions or PEPs check is about more than just looking up a name on a government list. To truly understand if a company or person is affected by sanctions and poses a risk, analysts also need to consider their network - entities they are affiliated with, companies they own, even personal relationships. 
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/enrichment/prevezon2.png">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/enrichment/prevezon2.png">
 <p class="img-caption">
     Tracking complex corporate networks is the bread and butter of financial crime
     investigations (Graphic: US v. Prevezon)
@@ -21,7 +21,7 @@ That’s why, as the OpenSanctions dataset matures, building a deeper and richer
 
 ## Linking to the leaks 
 
-<img class="img-left" src="https://assets.pudo.org/opensanctions/images/enrichment/ol_ayad2.png">Our first target for this enrichment is the [ICIJ Offshore Leaks database](/datasets/offshoreleaks). It is the published version of the data underlying multiple cross-border reporting projects, including the Panama Papers, Pandora Papers and Bahamas Leaks.
+<img class="img-left" src="https://assets.opensanctions.org/images/articles/enrichment/ol_ayad2.png">Our first target for this enrichment is the [ICIJ Offshore Leaks database](/datasets/offshoreleaks). It is the published version of the data underlying multiple cross-border reporting projects, including the Panama Papers, Pandora Papers and Bahamas Leaks.
 
 It lists the previously hidden beneficial owners of hundreds of thousands of companies. By intersecting it with our sanctions database, we can pull in subsidiaries, parent companies, and hidden assets. Up until now, we’ve [linked up 102 sanctioned entities present in the Offshore Leaks](/search/?scope=offshoreleaks&topics=sanction), and imported 227 additional companies and people that are in some way related to those.
 
@@ -29,7 +29,7 @@ It lists the previously hidden beneficial owners of hundreds of thousands of com
 
 ## Legal Entity Identifiers
 
-<img class="img-right" src="https://assets.pudo.org/opensanctions/images/enrichment/gleif-logo.png"> While Offshore Leaks will help us find the owner of mysterious offshore companies, the [Global Legal Entity Identifier Foundation](https://gleif.org/) (GLEIF) offers a very different source of context: a [global database of corporations that have been issued an international company code](/datasets/gleif/) (LEI). These identifiers have been assigned to many banks and companies that issue securities. They also provide some ownership information for each company with a LEI, providing us helpful context especially for the Russian banks that have been the target of recent sanctions. In total, we’ve [matched up 148 companies to GLEIF’s database](/search/?scope=gleif&topics=sanction) so far, bringing in over 480 additional relationships.
+<img class="img-right" src="https://assets.opensanctions.org/images/articles/enrichment/gleif-logo.png"> While Offshore Leaks will help us find the owner of mysterious offshore companies, the [Global Legal Entity Identifier Foundation](https://gleif.org/) (GLEIF) offers a very different source of context: a [global database of corporations that have been issued an international company code](/datasets/gleif/) (LEI). These identifiers have been assigned to many banks and companies that issue securities. They also provide some ownership information for each company with a LEI, providing us helpful context especially for the Russian banks that have been the target of recent sanctions. In total, we’ve [matched up 148 companies to GLEIF’s database](/search/?scope=gleif&topics=sanction) so far, bringing in over 480 additional relationships.
 
 ## Get the Offshore Leaks and GLEIF data in full
 

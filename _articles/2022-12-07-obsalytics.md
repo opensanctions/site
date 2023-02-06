@@ -1,6 +1,6 @@
 ---
 title: "Understanding interrelationships in the ‘Security State’ in the Middle East"
-image_url: https://assets.pudo.org/opensanctions/images/syria-wedding.jpg
+image_url: https://assets.opensanctions.org/images/articles/syria-wedding.jpg
 summary: |
     Canadian data scientist and activist Wael Alalwani wants to map relationships between members of what he calls the ‘Security State’ - business elites, political actors, army generals and others. 
 draft: false
@@ -10,7 +10,7 @@ The small team at [Obsalytics](https://obsalytics.org/), the nonprofit social en
 
 “I believe that if you can understand the structure of the networks, you can start to make changes,” Alalwani explains.
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/syria-wedding.jpg">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/syria-wedding.jpg">
 <p class="img-caption">
     Publicly available reports of social events, such as weddings and funerals, have proven useful to Obsalytics researchers mapping relationships in the Middle East. (Photo by <a href="https://www.flickr.com/photos/akocman/">Alessandra Kocman</a>)
 </p>
@@ -27,7 +27,7 @@ Alalwani takes care to explain that Obsalytics’ graph of secondary sanctions i
 
 “So far it has not been imposed on anyone, although it came into effect in 2021,” Alalwani explains. “It’s different from standard sanctions, which are imposed by a presidential executive order from the USA. They could be removed by presidential pardon, so it’s easy to impose sanctions and take them away. Secondary sanctions are imposed by OFAC based on Congressional legislation, unlike primary sanctions that are based on executive orders. Hence, taking them away takes a vote, which can take ages. It’s not as ad hoc. That’s why they were very reluctant to impose them. It was a stick they were waving to keep people away from the Syrian regime.”
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/obsalytics-team.png">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/obsalytics-team.png">
 <p class="img-caption">
     The team at Obsalytics maps relationships inside Syrian politics using publicly available data.
 </p>

@@ -1,13 +1,13 @@
 ---
 title: "Self-hosted and extensible: the OpenSanctions API"
-image_url: https://assets.pudo.org/opensanctions/images/servers.png
+image_url: https://assets.opensanctions.org/images/articles/servers.png
 summary: |
     In this post, we’ll explain how you can use our open source components to build a customized sanctions and PEPs matching service - on your own premises, with your own data, with complete privacy and meeting your own requirements.
 ---
 
 As we talk to the organizations that use OpenSanctions, the more we learn about the multitude of ways in which people use our data and service as building blocks in their own solutions: investigative tools, know-your-customer (KYC) workflows or even building complex knowledge graphs.
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/servers.png">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/servers.png">
 <p class="img-caption"><a href="https://flickr.com/photos/kewl/39044661591">credit</a></p>
 
 One such building block is [yente](https://github.com/opensanctions/yente/blob/main/README.md), the [OpenSanctions API service](https://api.opensanctions.org/). While the API provides all the data you see when browsing and [searching](https://www.opensanctions.org/search/) the OpenSanctions website, it's core function is entity matching: given a list of details about persons or companies, such as customers or investigation targets, the tool will score each against the OpenSanctions database and flag the ones likely to be sanctioned or politically exposed.
@@ -16,7 +16,7 @@ What sets yente apart from similar matching APIs is that it is fully open-source
 
 Imagine, for example, that you worked in a regulated industry and are building a KYC workflow. Doing so may require you to adopt specific matching rules, or to screen for a local dataset of high-risk entities that is not included in OpenSanctions. Or, you may wish to screen entities against a completely different dataset (like the ICIJ Offshore Leaks database).
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/selfhosted.png" style="width: 40%; float: right; padding-left: 1em;">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/selfhosted.png" style="width: 40%; float: right; padding-left: 1em;">
 
 ### Bring your own data
 

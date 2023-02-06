@@ -1,13 +1,13 @@
 ---
 title: Digging into sanctioned companies using OpenCorporates
-image_url: https://assets.pudo.org/opensanctions/images/opencorporates-home.png
+image_url: https://assets.opensanctions.org/images/articles/opencorporates-home.png
 summary: |
     Both OpenSanctions and OpenCorporates provide powerful data building blocks for
     compliance. By linking our databases up, we make it easier to track assets or
     assess exposure.
 ---
 
-<!--img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/opencorporates-home.png" -->
+<!--img class="img-fluid" src="https://assets.opensanctions.org/images/articles/opencorporates-home.png" -->
 
 The clue is in the name: We’ve modeled OpenSanctions after [OpenCorporates](https://opencorporates.com/), the open database of companies, in some important ways. That inspiration is not limited to making sanctions lists publicly searchable and viewable, but also includes putting a focus on clear data provenance, and using commercial licensing as a means to create a sustainable open data resource.
 
@@ -15,7 +15,7 @@ So it’s only natural that our projects should aim to complement each other. Th
 
 That’s why we’ve started an effort to create explicit links between the two databases. Over [1,500 companies are now linked up](/datasets/opencorporates/), thanks to the easy-to-use [OpenCorporates API](https://api.opencorporates.com/) and our [data enrichment framework](/docs/enrichment/). Take German energy policy wunderkind Nord Stream 2, for example: its [OpenSanctions profile](/entities/NK-csg2VfZAwP6ot77KuPiPkk/) now links to the company’s corporate details and records. 
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/taggart.png">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/taggart.png">
 <p class="img-caption">
     There’s a photo of the exact moment I first saw a demo of OpenCorporates in 2011, presented by 
     founder Chris Taggart.

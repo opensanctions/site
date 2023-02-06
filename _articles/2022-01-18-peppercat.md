@@ -1,6 +1,6 @@
 ---
 title: The CIA lost track of who runs the UK, so I picked up the slack
-image_url: https://assets.pudo.org/opensanctions/images/peppercat-cia.png
+image_url: https://assets.opensanctions.org/images/articles/peppercat-cia.png
 summary: |
     A guest post from Tony Bowden about his efforts to build an open source dataset
     of world leaders inside of Wikidata, the structured-data version of Wikipedia.
@@ -10,7 +10,7 @@ When I started building [EveryPolitician](http://everypolitician.org), back in 2
 
 The main source people tend to use for this data is the [CIA World Leaders directory](https://www.cia.gov/resources/world-leaders/) ([OpenSanctions dataset](https://www.opensanctions.org/datasets/us_cia_world_leaders/)). This covers approximately 200 governments around the world, and claims to be published weekly. But it has a lot of problems.
 
-<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-cia.png">
+<img class="img-fluid article-image" src="https://assets.opensanctions.org/images/articles/peppercat-cia.png">
 
 It's not as up to date as "published weekly" implies. It frequently lags far behind even full changes of government, never mind reshuffles or single member changes. In some cases it can be many years out of date.
 
@@ -56,13 +56,13 @@ Unfortunately Wikidata's single-item-based view, coupled with inconsistent model
 
 So, to make it more likely that someone with much better local knowledge than me can spot obvious errors or omissions (given that even official sites are often out of date), I've also built a simple site, [Peppercat.org](https://peppercat.org), to show everything in a consistent format.
 
-<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-home.png">
+<img class="img-fluid article-image" src="https://assets.opensanctions.org/images/articles/peppercat-home.png">
 
 Currently this has Minister-level data, plus a sprinkling of other key positions (Attorney General, Head of the Military, Governor of the Central Bank, etc.) for over 150 places, and I'm trying to add another one new one every day.
 
 But it’s starting to get progressively harder for me to find good source lists for many of the places currently missing. This is where I could really do with some help.
 
-<img class="img-fluid article-image" src="https://assets.pudo.org/opensanctions/images/peppercat-coverage.png">
+<img class="img-fluid article-image" src="https://assets.opensanctions.org/images/articles/peppercat-coverage.png">
 
 It’s usually not _too_ hard to find sources with lists of government Ministers at a single point of time (e.g. when a Cabinet was initially appointed, or there was a reshuffle). But it’s much better if there’s an official list that gets updated when there are changes.
 

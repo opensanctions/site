@@ -1,13 +1,13 @@
 ---
 title: "What is next for OpenSanctions?"
-image_url: https://assets.pudo.org/opensanctions/images/cuba-sanctions.jpeg
+image_url: https://assets.opensanctions.org/images/articles/cuba-sanctions.jpeg
 summary: |
     Since its launch last September, OpenSanctions has nearly doubled its scope to 204,000 persons and entities of interest from across 43 data sources. 
 ---
 
 In this post, we want to take a step back from current events and address another question: As our initial [PrototypeFund grant wraps up](https://demoweek.prototypefund.de/projects/23-open-sanctions.html), it’s time to set this project on a new trajectory.
 
-<img class="img-fluid" src="https://assets.pudo.org/opensanctions/images/cuba-sanctions.jpeg">
+<img class="img-fluid" src="https://assets.opensanctions.org/images/articles/cuba-sanctions.jpeg">
 <p class="img-caption">OFAC sanctions before they adopted the world's most over-engineered XML format.</p>
 
 Following the [introduction of business licenses](/articles/2021-12-10-sustainability/) for our datasets in December, we’ve seen an incredibly encouraging reaction from companies across the fintech and open source intelligence sectors. The notion that due diligence data can be better if it is made more open and more transparent seems to have struck a nerve.
