@@ -5,6 +5,7 @@ import { getEntity, getEntityDatasets, isBlocked, isIndexRelevant } from '../../
 
 
 export default async function Head({ params }: EntityPageProps) {
+  return <PageHead title="Entity" />;
   const entity = await getEntity(params.id);
   if (entity === null) {
     return <PageHead title="Entity not found" />;

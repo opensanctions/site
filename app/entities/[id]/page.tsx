@@ -36,7 +36,6 @@ export default async function EntityPage({ params }: EntityPageProps) {
   const datasets = await getEntityDatasets(entity);
   const sources = datasets.filter(isSource);
   const externals = datasets.filter(isExternal);
-  console.log("ENTITY", entity.id, entity.caption, entity.schema.label);
   return (
     <LayoutFrame activeSection="research">
       <Research.Context>
