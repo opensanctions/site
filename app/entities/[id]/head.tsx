@@ -15,4 +15,3 @@ export default async function Head({ params }: EntityPageProps) {
   const title = isBlocked(entity) ? 'Blocked entity' : entity.caption;
   return <PageHead title={title} noIndex={noIndex} structured={structured} />;
 }
-
