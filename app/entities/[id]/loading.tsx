@@ -7,7 +7,7 @@ import LayoutFrame from '../../../components/layout/LayoutFrame';
 
 export default async function LoadingPage() {
   return (
-    <p>Under maintenance</p>
+    <>under maintenance</>
     // <LayoutFrame activeSection="research">
     //   <Research.Context isLoading>
     //     <Container>
