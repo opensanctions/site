@@ -50,7 +50,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
               <EntityTopics entity={entity} />
             </Col>
           </Row>
-          {/* <Row>
+          <Row>
             <Col md={9} className="order-2">
               <EntityWarning entity={entity} />
               <EntityFactsheet entity={entity} />
@@ -119,7 +119,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
                 <LicenseInfo />
               </Sticky>
             </Col>
-          </Row> */}
+          </Row>
         </Container>
       </Research.Context>
     </LayoutFrame>
