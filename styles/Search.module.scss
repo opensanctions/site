@@ -46,10 +46,16 @@
 // search facets
 .facet {
     margin-bottom: 1em;
+    border-radius: 0;
+    border: 0px solid $blue-300;
 }
 
 .facetHeader {
     font-weight: bold;
+    color: $blue-600;
+    background-color: $blue-200;
+    border-radius: 0 !important;
+    border-bottom: 0;
 }
 
 .facetCount {
