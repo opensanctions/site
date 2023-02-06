@@ -74,14 +74,14 @@ $theme-blue-bg-light: $blue-200;
     font-weight: 100 900;
     font-display: swap;
     font-style: oblique 0deg 10deg;
-    src: url("/static/fonts/Inter.var.woff2?v=3.19") format("woff2");
+    src: url("https://assets.opensanctions.org/fonts/Inter.var.woff2?v=3.19") format("woff2");
 }
 
 @font-face {
     font-family: 'Outfit';
     font-weight: 100 900;
     font-display: swap;
-    src: url("/static/fonts/Outfit.var.ttf") format("truetype");
+    src: url("https://assets.opensanctions.org/fonts/Outfit.var.ttf") format("truetype");
 }
 
 $font-family-sans-serif: 'Inter var experimental', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;

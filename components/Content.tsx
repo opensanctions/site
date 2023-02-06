@@ -1,11 +1,13 @@
+import Link from 'next/link';
+
 import { Row, Col, Card, CardBody, Container } from './wrapped';
 import { IContent } from '../lib/types'
 import { JSONLink, Markdown, Summary } from './util';
-
-import styles from '../styles/Content.module.scss';
-import Link from 'next/link';
 import { AboutMenu, DocumentationMenu, MenuProps } from './Menu';
 import PageHead from './layout/PageHead';
+
+import styles from '../styles/Content.module.scss';
+
 
 type ContentProps = {
   content: IContent

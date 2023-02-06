@@ -13,7 +13,7 @@ export default function Footer() {
         <Row>
           <Col md={3}>
             <img
-              src="/static/ura/logo_footer.svg"
+              src="https://assets.opensanctions.org/images/ura/logo_footer.svg"
               alt="OpenSanctions project"
               className={styles.logo}
               width="100%"

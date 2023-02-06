@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Model } from '../lib/ftm/model';
 import queryString from "query-string";
 

@@ -7,7 +7,7 @@ const nextConfig = {
   staticPageGenerationTimeout: 360,
   trailingSlash: true,
   images: {
-    domains: ['assets.pudo.org'],
+    domains: ['assets.pudo.org', 'assets.opensanctions.org'],
   },
   async redirects() {
     return [

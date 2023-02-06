@@ -15,7 +15,7 @@ export default function Navigation({ activeSection }: NavbarSectionProps) {
         <Link href="/" passHref>
           <NavbarBrand>
             <img
-              src="/static/ura/logo_text.svg"
+              src="https://assets.opensanctions.org/images/ura/logo_text.svg"
               width="190"
               height="30"
               className="align-top"

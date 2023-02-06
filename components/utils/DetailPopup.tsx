@@ -2,7 +2,6 @@
 
 import Modal from 'react-bootstrap/Modal';
 import { MouseEvent, ReactNode, useState } from "react";
-import { SPACER } from "../../lib/constants";
 import { ArrowUpRightCircleFill } from 'react-bootstrap-icons';
 
 type DetailPopupProps = {

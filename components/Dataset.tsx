@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import { CloudFill, FolderFill, Server } from 'react-bootstrap-icons';
 
 import { Badge, Table, Card, CardBody, CardTitle, CardSubtitle, CardText, TextTruncate } from "./wrapped";
 import { IDataset, IExternal, isCollection, isExternal, ISource, isSource } from '../lib/types';
 import { Numeric, NumericBadge, Spacer, UnofficialBadge } from './util';
-import Link from 'next/link';
 
 import styles from '../styles/Dataset.module.scss';
 
