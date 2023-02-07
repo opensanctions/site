@@ -22,6 +22,7 @@ export default function PageHead({ title, description, structured, imageUrl, noI
       <link rel="apple-touch-icon" sizes="180x180" href="https://assets.opensanctions.org/images/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="https://assets.opensanctions.org/images/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="https://assets.opensanctions.org/images/favicon-16x16.png" />
+      <link rel="search" type="application/opensearchdescription+xml" title="OpenSanctions" href="/opensearch.xml" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@open_sanctions" />
