@@ -43,7 +43,7 @@ export default async function Page() {
           address they are linked to.
         </p>
         <p className="text-body">
-          The data model used by OpenSanctions is <Link href="https://followthemoney.readthedocs.io/en/latest/index.html">FollowTheMoney</Link>,
+          The data model used by OpenSanctions is <Link href="https://followthemoney.tech">FollowTheMoney</Link>,
           an ontology used in anti-corruption data analysis - in particular by the <Link href="https://docs.alephdata.org/">Aleph data platform</Link>.
           Only a subset of the entity types defined in FtM are used by OpenSanctions.
         </p>

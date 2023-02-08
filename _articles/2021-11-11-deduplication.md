@@ -67,7 +67,7 @@ The ability to mix and match statements from multiple sources allows OpenSanctio
 
 ## A re-usable toolkit: nomenklatura 
 
-Much of the functionality needed to deduplicate OpenSanctions sources fits as a natural extension on top of [FollowTheMoney](https://followthemoney.readthedocs.io/en/latest/index.html) (FtM), the data ontology used by the project. Indexing and blocking entities, the interactive de-duplication user interface, and the code for resolving entity IDs after they have been merged are all independent from OpenSanctions core business.
+Much of the functionality needed to deduplicate OpenSanctions sources fits as a natural extension on top of [FollowTheMoney](https://followthemoney.tech) (FtM), the data ontology used by the project. Indexing and blocking entities, the interactive de-duplication user interface, and the code for resolving entity IDs after they have been merged are all independent from OpenSanctions core business.
 
 That's why we're releasing the entity resolution technology described here as a re-usable open source toolkit, [nomenklatura](https://github.com/pudo/nomenklatura). Nomenklatura is installable from Python's package index and depends only on FtM. It can be used as a command-line tool or Python library and provides easy deduplication and data integration functionality for any FollowTheMoney dataset. Check out the [README](https://github.com/pudo/nomenklatura/blob/master/README.md) for a walk-through of the tool.
 

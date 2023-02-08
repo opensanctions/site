@@ -64,7 +64,7 @@ right encoding.
 
 ### <a id="entities.ftm.json"></a><a id="targets.nested.json"></a> JSON/FollowTheMoney-based formats
 
-We offer two JSON-based export formats that are both based on [the FollowTheMoney](https://followthemoney.readthedocs.io/en/latest/index.html) (FtM). They are a close representation of the [internal data structure](/reference/) of OpenSanctions. The *nested JSON* format should be the preferred import method for software-based data consumers.
+We offer two JSON-based export formats that are both based on [the FollowTheMoney](https://followthemoney.tech) (FtM). They are a close representation of the [internal data structure](/reference/) of OpenSanctions. The *nested JSON* format should be the preferred import method for software-based data consumers.
 
 You can get [a basic overview of the entity data structure](/docs/entities/), and browse the [data dictionary](/reference/) to see details regarding the properties used by OpenSanctions.
 

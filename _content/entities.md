@@ -6,7 +6,7 @@ summary: |
 ---
 
 
-[FollowTheMoney (FtM)](https://followthemoney.rtfd.org) defines a simple data model for storing complex object graphs. You will need to understand three concepts: *entities*,
+[FollowTheMoney (FtM)](https://followthemoney.tech) defines a simple data model for storing complex object graphs. You will need to understand three concepts: *entities*,
 *entity references*, and *entity streams*.
 
 ## Entities
@@ -68,4 +68,4 @@ This is addressed by making interstitial entities. In the example above, an [Own
 
 Many tools in the FtM ecosystem use streams of entities to transfer or store information. Entity streams are simply sequences of entity objects that have been serialised to JSON as single lines without any indentation, each entity separated by a newline.
 
-Entity streams are read and produced by virtually every part of the [FollowTheMoney command-line](https://docs.alephdata.org/developers/followthemoney/ftm), OpenSanctions, and the Aleph platform. When stored to disk as a file, the extensions `.ftm` or `.ijson` should be used.
+Entity streams are read and produced by virtually every part of the [FollowTheMoney command-line](https://followthemoney.tech/docs/cli/), OpenSanctions, and the Aleph platform. When stored to disk as a file, the extensions `.ftm` or `.ijson` should be used.
