@@ -9,7 +9,7 @@ import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getGraphCatalog } from '../../lib/data';
 import { INKDataset } from '../../lib/types';
 
-import styles from '../../../styles/Graph.module.scss'
+import styles from '../../styles/Graph.module.scss'
 
 export const revalidate = 3600;
 
