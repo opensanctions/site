@@ -4,13 +4,14 @@ import { getArticles } from '../../lib/content'
 import { Github, Slack, Twitter } from 'react-bootstrap-icons';
 import { Row, Col, Container } from '../../components/wrapped';
 import { Summary } from '../../components/util';
-import { ARTICLE_INDEX_SUMMARY } from '../../lib/constants';
+import { ARTICLE_INDEX_SUMMARY, REVALIDATE_BASE } from '../../lib/constants';
 
 import Article from '../../components/Article';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
 import styles from '../../styles/Article.module.scss';
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page() {
   const articles = await getArticles();

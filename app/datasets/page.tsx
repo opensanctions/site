@@ -1,13 +1,14 @@
 import Link from 'next/link';
 
 import Dataset from '../../components/Dataset'
-import { INDEX_URL, COLLECTIONS } from '../../lib/constants';
+import { INDEX_URL, COLLECTIONS, REVALIDATE_BASE } from '../../lib/constants';
 import { getDatasets } from '../../lib/data'
 import { ICollection, isCollection, isExternal, isSource } from '../../lib/types';
 import { JSONLink } from '../../components/util';
 import { Row, Col, Container } from '../../components/wrapped';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page() {
   const allDatasets = await getDatasets()

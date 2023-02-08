@@ -1,4 +1,3 @@
-import { GetStaticPropsContext } from 'next'
 import Link from 'next/link';
 
 import { Row, Col, Container, Card, CardBody } from '../../../components/wrapped'
@@ -8,7 +7,9 @@ import Content from '../../../components/Content';
 import Article from '../../../components/Article';
 import { ArticlePageProps } from './common';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
+import { REVALIDATE_BASE } from '../../../lib/constants';
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page({ params }: ArticlePageProps) {
   const article = await getArticleBySlug(params.slug)

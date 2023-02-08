@@ -6,11 +6,12 @@ import Content from '../../components/Content'
 import { Summary } from '../../components/util';
 import { SUMMARY, TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
-import { MEETING_LINK } from '../../lib/constants';
+import { MEETING_LINK, REVALIDATE_BASE } from '../../lib/constants';
 import { AboutMenu } from '../../components/Menu';
 
 import styles from '../../styles/Contact.module.scss'
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Contact() {
   return (
