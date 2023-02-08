@@ -1,13 +1,13 @@
 
 import Link from 'next/link';
 
-import { Container, Row, Col, Button, Card, CardBody, CardTitle, CardText, CardFooter, CardGroup, CardHeader, Table } from '../../../components/wrapped'
-import { FormattedDate, JSONLink, SpacedList, Spacer, Summary } from '../../../components/util';
+import { Container, Row, Col, Card, CardHeader, Table } from '../../components/wrapped'
+import { FormattedDate, JSONLink, SpacedList, Summary } from '../../components/util';
 import { SUMMARY, TITLE } from './common';
-import { GRAPH_CATALOG_URL } from '../../../lib/constants';
-import LayoutFrame from '../../../components/layout/LayoutFrame';
-import { getGraphCatalog } from '../../../lib/data';
-import { INKDataset } from '../../../lib/types';
+import { GRAPH_CATALOG_URL } from '../../lib/constants';
+import LayoutFrame from '../../components/layout/LayoutFrame';
+import { getGraphCatalog } from '../../lib/data';
+import { INKDataset } from '../../lib/types';
 
 import styles from '../../../styles/Graph.module.scss'
 
