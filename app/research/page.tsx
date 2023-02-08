@@ -5,13 +5,14 @@ import { ISearchAPIResponse } from '../../lib/types';
 import { fetchObject } from '../../lib/data';
 import { SearchFacet } from '../../components/Search';
 import LayoutFrame from '../../components/layout/LayoutFrame';
-import { SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
+import { REVALIDATE_BASE, SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
 import { Container, Row, Col } from '../../components/wrapped';
 import { PageProps } from '../../components/utils/PageProps';
 import { TITLE } from "./common";
 
 import styles from '../../styles/Research.module.scss'
 
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page({ searchParams }: PageProps) {
   const params = {

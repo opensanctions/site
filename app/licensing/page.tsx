@@ -6,10 +6,13 @@ import { Button, Card, CardBody, CardTitle, CardText, CardFooter, Badge, CardGro
 import { Numeric, Summary } from '../../components/util';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { AboutMenu } from '../../components/Menu';
+import { REVALIDATE_BASE } from '../../lib/constants';
 import { SUMMARY, TITLE } from './common';
 
 import styles from '../../styles/Licensing.module.scss'
 
+
+export const revalidate = REVALIDATE_BASE;
 
 export default function Page() {
   return (

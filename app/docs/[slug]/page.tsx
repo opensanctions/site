@@ -2,6 +2,9 @@ import Content from '../../../components/Content'
 import { getContentBySlug, getContents } from '../../../lib/content'
 import { ContentPageProps } from './common'
 import LayoutFrame from '../../../components/layout/LayoutFrame'
+import { REVALIDATE_BASE } from '../../../lib/constants';
+
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page({ params }: ContentPageProps) {
   const content = await getContentBySlug(params.slug)

@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import articleStyles from '../styles/Article.module.scss'
 import { getDatasets } from '../lib/data'
-import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY } from '../lib/constants'
+import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY, REVALIDATE_BASE } from '../lib/constants'
 import { Search } from 'react-bootstrap-icons';
 import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
@@ -13,6 +13,8 @@ import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, Inp
 import LayoutFrame from '../components/layout/LayoutFrame';
 
 import styles from '../styles/Home.module.scss'
+
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page() {
   const articles = await getArticles()

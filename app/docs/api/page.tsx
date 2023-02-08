@@ -4,10 +4,12 @@ import Content from '../../../components/Content';
 import { Row, Col, Card, CardBody, CardTitle, CardText, CardFooter, Table, Button, CardGroup } from '../../../components/wrapped';
 import { getContentBySlug } from '../../../lib/content';
 import { CreditCard2BackFill, InfoSquareFill } from 'react-bootstrap-icons';
-import { API_URL } from '../../../lib/constants';
+import { API_URL, REVALIDATE_BASE } from '../../../lib/constants';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 
 import styles from '../../../styles/API.module.scss';
+
+export const revalidate = REVALIDATE_BASE;
 
 export default async function Page() {
   const content = await getContentBySlug('api');

@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { LicenseInfo } from '../../components/Policy';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { SUMMARY, TITLE } from './common';
+import { REVALIDATE_BASE } from '../../lib/constants';
 
+export const revalidate = REVALIDATE_BASE;
 
 export default function Page() {
   return (
