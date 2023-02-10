@@ -210,16 +210,18 @@ export default async function Page() {
             <h4>How frequently are datasets updated?</h4>
             <p>
               We update most sources once a week. This doesn't apply to data sources which - by their nature - do
-              not change on a regular basis (e.g. the ICIJ OffshoreLeaks database). It also excludes the Russian
-              company database: since the Duma has passed laws which allow sanctioned companies to hide their
-              information in the database, we're using a static version dated 2022-01-01 as the last safe point
-              of reference for Russia.
+              not change on a regular basis (e.g. the ICIJ OffshoreLeaks database).
+            </p>
+            <p>
+              Updates also exclude the Russian company database: since the Duma has passed laws which allow
+              sanctioned companies to hide their information in the registry, we're using a static version
+              dated 1. Jan 2022 as the last safe point of reference for Russia.
             </p>
             <h4>I want to use this!</h4>
             <p>
               Brilliant, come talk to us! The OpenSanctions dataset is free to use for
-              non-commercial purposes, including users from academia and journalists. If you’re
-              interested in <Link href="/licensing/">licensing</Link> it for commercial
+              non-commercial purposes, including users from academia, activists and journalists. If you're
+              interested in <Link href="/licensing/">licensing</Link> the data for commercial
               purposes, please <Link href="/contact/">contact us</Link>.
             </p>
           </Col>
