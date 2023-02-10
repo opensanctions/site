@@ -160,12 +160,12 @@ export default async function Page() {
             <p>
               <Link href="https://www.openownership.org/en/publication-categories/briefings/">Beneficial ownership data</Link> is
               used by businesses that want to understand if they're dealing with risky
-              counterparties, and by investigators who want to
-              understand who is behind a particular company.
+              counterparties, and investigators who want to understand who is behind a
+              particular company.
             </p>
             <h4>How can I use the data?</h4>
             <p>
-              Here's some ways you can use OpenSanctions KYB data:
+              OpenSanctions KYB data is a building block, not an end-user product. Here's some ways you can use it:
             </p>
             <ul>
               <li>
@@ -191,14 +191,14 @@ export default async function Page() {
               <Link href="/contact/">Contact us</Link> about a <Link href="/licensing/">data license</Link> if
               you plan to rely on the data for commercial use.
             </p>
-            <h4>How is this different from the OpenSanctions core dataset?</h4>
+            <h4>How is this different from the default dataset?</h4>
             <p>
-              OpenSanctions publishes entities that are <Link href="/docs/criteria">directly or indirectly associated with
-                some risk indication</Link>. This obviously doesn't apply to the vast majority of companies.
+              Our <Link href="/datasets/default/">OpenSanctions default dataset</Link> collects entities that are <Link href="/docs/criteria">directly or indirectly associated with
+                some risk indication</Link>. This doesn't apply to the vast majority of companies.
             </p>
             <p>
               The KYB datasets represent full company databases, irrespective of risk indications. Some
-              company records from these datasets will be added to OpenSanctions core via <Link href="/docs/enrichment/">
+              company records from these datasets are routinely added to OpenSanctions core via <Link href="/docs/enrichment/">
                 data enrichment
               </Link>.
             </p>
@@ -206,6 +206,21 @@ export default async function Page() {
               Unlike the OpenSanctions core data, the KYB datasets are not de-duplicated. This means that if a
               source registry publishes multiple records that describe a single person or company, they will be
               reproduced in this data as-is.
+            </p>
+            <h4>How frequently are datasets updated?</h4>
+            <p>
+              We update most sources once a week. This doesn't apply to data sources which - by their nature - do
+              not change on a regular basis (e.g. the ICIJ OffshoreLeaks database). It also excludes the Russian
+              company database: since the Duma has passed laws which allow sanctioned companies to hide their
+              information in the database, we're using a static version dated 2022-01-01 as the last safe point
+              of reference for Russia.
+            </p>
+            <h4>I want to use this!</h4>
+            <p>
+              Brilliant, come talk to us! The OpenSanctions dataset is free to use for
+              non-commercial purposes, including users from academia and journalists. If you’re
+              interested in <Link href="/licensing/">licensing</Link> it for commercial
+              purposes, please <Link href="/contact/">contact us</Link>.
             </p>
           </Col>
           <Col md={6}>
