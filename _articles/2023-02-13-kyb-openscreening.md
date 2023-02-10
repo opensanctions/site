@@ -7,8 +7,8 @@ summary: |
 draft: false
 ---
 
-How can you see previously hidden relationships between 25M beneficial owners,
-26M companies, politicians, sanctions targets and networks of companies? One tool,
+How can you see previously hidden relationships between 25 million beneficial owners,
+26 million companies, politicians, sanctions targets and networks of companies? One tool,
 [OpenScreening](https://resources.linkurious.com/openscreening), seeks to do just that by combining technology and data on millions of beneficial owners worldwide from three leading organizations: [Open Ownership](https://www.openownership.org), [Linkurious](https://linkurious.com) and OpenSanctions.
 
 <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/budapest.png">
@@ -20,7 +20,7 @@ The proof-of-concept [OpenScreening tool](https://resources.linkurious.com/opens
 
 The OpenScreening tool is powered by a new data product called [OpenSanctions KYB](/kyb/). KYB stands for ‘know your business.’ Just as KYC means ‘know your customer,’ It is becoming increasingly important for companies to know as much as possible about the counter-parties they’re doing business with; that business may be on a sanctions list, or they may have a beneficial owner who is under sanctions.
 
-[OpenSanctions KYB](/kyb/) brings together our open data on sanctions, PEPs and other sources with the beneficial ownership data of one of [Open Ownership](https://openownership.org), the leading advocacy organization working to make company information public. In OpenSanctions KYB, we expand Open Ownership’s data archive on more than 9.5 million beneficial owners and 8.7 million companies with additional data from several corporate registries and beneficial ownership databases that have been imported by the OpenSanctions team.
+[OpenSanctions KYB](/kyb/) brings together our open data on sanctions, PEPs and other sources with the beneficial ownership data of one of [Open Ownership](https://openownership.org), the leading advocacy organization working to make company information public. In OpenSanctions KYB, we expand Open Ownership’s data archive on more than 9.7 million beneficial owners and 8.8 million companies with additional data from several corporate registries and beneficial ownership databases that have been imported by the OpenSanctions team.
 
 OpenSanctions has long championed the use of structured data for financial information. This is one of the main reasons we are developing and promoting the [Follow the Money](https://followthemoney.tech) open data model for anti-corruption investigations. Follow the Money (FtM) made it far easier to combine our dataset with Open Ownership’s for this project, and our long-term vision is for a number of open data providers to make more powerful products powered by FtM.
 
