@@ -1,4 +1,4 @@
 
 export interface ContentPageProps {
-  params: { slug: string }
+  params: { slug: string[] }
 }

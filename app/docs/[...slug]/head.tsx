@@ -3,6 +3,6 @@ import { getContentBySlug } from "../../../lib/content";
 import { ContentPageProps } from "./common";
 
 export default async function Head({ params }: ContentPageProps) {
-  const content = await getContentBySlug(params.slug);
+  const content = await getContentBySlug(params.slug.join('/'));
   return <Content.Head content={content} />;
 }

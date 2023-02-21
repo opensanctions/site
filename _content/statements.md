@@ -31,7 +31,7 @@ As a database schema, this results in a table with the following columns:
 * ``target`` (is target): a boolean to indicate if the entity to which this statement belong is a target - a designated sanctioned entity - in the data source. Some entities, like addresses, or family members, are included but not targets in their own right.
 * ``canonical_id`` (deduplicated ID): the entity identifier as resulting from [our de-duplication process](/articles/2021-11-11-deduplication/). If no de-duplication has been performed, this is the same as ``entity_id``. If the entity has been merged with others inside the same database, it will receive an ID starting with ``NK-`` (short for nomenklatura). If the entity has been [de-referenced against Wikidata](/articles/2022-01-25-wikidata/), the Wikidata item ID (like ``Q7747``) will override any ``NK-`` IDs.
 
-### Accessing the statements data
+### <a id="download"></a> Accessing the statements data
 
 **On the web site:** If you'd like to play with how this looks in practice, you can use the **[raw data explorer](/statements)** to browse and filter the statement data. You can add extra query parameters like `schema`, `entity_id`, `canonical_id`, `prop`, etc. in your browser's URL bar.
 

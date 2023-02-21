@@ -1,6 +1,6 @@
 import { join } from 'path'
 import matter from 'gray-matter'
-import { promises } from 'fs';
+import { promises, constants } from 'fs';
 import { IContent, IArticleInfo, IArticle } from "./types";
 import { BASE_URL } from './constants';
 import { markdownToHtml } from './util';
@@ -18,13 +18,21 @@ export async function readContent(path: string): Promise<any> {
 
 
 export async function getContentBySlug(slug: string): Promise<IContent> {
-  const realSlug = slug.replace(/\.md$/, '')
-  const path = join(contentDirectory, `${realSlug}.md`)
+  const dirPath = join(contentDirectory, slug);
+  let path = join(contentDirectory, `${slug}.md`)
+  try {
+    const dirStat = await promises.stat(dirPath);
+    if (dirStat.isDirectory()) {
+      path = join(contentDirectory, slug, 'index.md');
+    }
+  } catch {
+    // noop
+  }
   const { data, content } = await readContent(path)
   return {
-    slug: realSlug,
+    slug: slug,
     title: data.title,
-    path: data.path || `/docs/${realSlug}/`,
+    path: data.path || `/docs/${slug}/`,
     content: markdownToHtml(content),
     section: data.section || "docs",
     image_url: data.image_url || null,
@@ -32,8 +40,30 @@ export async function getContentBySlug(slug: string): Promise<IContent> {
   }
 }
 
+
+async function traverseContents(path: string): Promise<string[]> {
+  const files: string[] = [];
+  const entries = await promises.readdir(path);
+  for (let file of entries) {
+    const entryPath = join(path, file);
+    const stat = await promises.stat(entryPath);
+    if (stat.isFile()) {
+      const fileName = file === 'index.md' ? '' : file.replace(/\.md$/, '');
+      files.push(fileName);
+    }
+    if (stat.isDirectory()) {
+      const subFiles = await traverseContents(entryPath);
+      for (let sub of subFiles) {
+        files.push(join(file, sub))
+      }
+    }
+  }
+  return files
+}
+
+
 export async function getContents(): Promise<Array<IContent>> {
-  const files = await promises.readdir(contentDirectory);
+  const files = await traverseContents(contentDirectory);
   const contents = await Promise.all(files.map((path) => getContentBySlug(path)))
   return contents;
 }
