@@ -25,7 +25,9 @@ Entities are often expressed as snippets of JSON, with three standard fields: a 
 }
 ```
 
-What properties can be set for an entity is determined by it's schema. For example, a  [Person](/reference/#schema.Person) has a `nationality`, while a [Company](/reference/#schema,Company) allows for setting a `jurisdiction`. Both properties, however, have the same *property type*, [country](/reference/#type.country). You can see a full listing of the available schemata and their properties in the [data dictionary](/reference/).
+What properties can be set for an entity is determined by it's schema. For example, a [Person](/reference/#schema.Person) has a `nationality`, while a [Company](/reference/#schema,Company) allows for setting a `jurisdiction`. Both properties, however, have the same *property type*, [country](/reference/#type.country). You can see a full listing of the available schemata and their properties in the [data dictionary](/reference/).
+
+Some of the metadata in the root object (``datasets``, ``referents``, ``first_seen``, ``last_seen``) are not part of the original FollowTheMoney model, but extensions developed for OpenSanctions.
 
 
 ## References

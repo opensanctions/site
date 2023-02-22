@@ -2,20 +2,21 @@
 title: Documentation
 path: /docs/
 summary: |
-    Adopting OpenSanctions should be as simple as possible. Below you can
-    find technical documentation that helps you use the data and contribute
-    to the project.
+    OpenSanctions provides high-quality data building blocks. The documentation will guide you through how to access the data via API or bulk data, and how to interpret the structure of the material itself.
 ---
 
-* Introduction: [about the project](/docs/about/)
-* [Frequently asked questions](/docs/faq/)
-* [Data sources roadmap](https://bit.ly/osa-sources) (Google sheet)
-* [Using the data](/docs/usage/)
-    * [Data dictionary](/reference/)
-* [GitHub repository](https://github.com/opensanctions/opensanctions)
-    * [Issues](https://github.com/opensanctions/opensanctions/issues) and feature planning
-    * [Technical documentation](https://docs.opensanctions.org/en/latest/) (readthedocs.org)
-    * [Installing the codebase](https://docs.opensanctions.org/en/latest/install.html) (readthedocs.org)
-* [Data pipeline status](https://github.com/opensanctions/opensanctions/actions/workflows/production.yml) (GitHub Actions)
-* [Contact us](/contact/)
+### Get the data
 
+* [Using the bulk data](/docs/bulk/): download JSON, CSV or plain text dumps.
+* [Using the API](/docs/api/): search and match entity information.
+
+## Understand the data
+
+* [Data dictionary](/reference/): understand the entity types we use and their properties.
+* [Identifiers and de-duplication](/docs/identifiers/): understand how OpenSanctions integrates data from many sources.
+* [Frequently asked questions](/docs/faq/)
+
+## Work with us
+
+* [Data sources roadmap](https://bit.ly/osa-sources) (Google sheet)
+* [Contact us](/contact/)

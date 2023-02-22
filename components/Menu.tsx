@@ -51,7 +51,7 @@ export function DocumentationMenu({ path }: MenuProps) {
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
         <NavItem>
-          <RoutedNavLink href="/docs/usage/" current={path}>Using the bulk data</RoutedNavLink>
+          <RoutedNavLink href="/docs/bulk/" current={path}>Using the bulk data</RoutedNavLink>
           <NavItem>
             <RoutedNavLink href="/docs/entities/" current={path}>Entity structure</RoutedNavLink>
           </NavItem>

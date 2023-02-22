@@ -1,6 +1,6 @@
 import { join } from 'path'
 import matter from 'gray-matter'
-import { promises, constants } from 'fs';
+import { promises } from 'fs';
 import { IContent, IArticleInfo, IArticle } from "./types";
 import { BASE_URL } from './constants';
 import { markdownToHtml } from './util';
