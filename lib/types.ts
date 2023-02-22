@@ -6,6 +6,8 @@ export interface IContent {
   content: string
   title: string
   path: string
+  menu_path: string
+  redirect?: string
   section: string
   image_url: string | null
   summary: string | null

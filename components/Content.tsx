@@ -55,7 +55,7 @@ function ContentMenu({ title, path, children, jsonLink, Menu }: React.PropsWithC
 function ContentContext({ content, children }: ContentFrameProps) {
   const MenuComponent = content.section === "about" ? AboutMenu : DocumentationMenu;
   return (
-    <ContentMenu title={content.title} path={content.path} Menu={MenuComponent}>
+    <ContentMenu title={content.title} path={content.menu_path} Menu={MenuComponent}>
       <Summary summary={content.summary} />
       <div className={styles.page}>
         {children}
@@ -89,6 +89,7 @@ type ContentHeadProps = {
 function ContentHead({ content, structured }: ContentHeadProps) {
   return <PageHead
     title={content.title}
+    noIndex={content.redirect !== undefined}
     description={content.summary || undefined}
     imageUrl={content.image_url}
     structured={structured}

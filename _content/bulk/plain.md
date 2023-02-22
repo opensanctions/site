@@ -1,5 +1,6 @@
 ---
 title: Plain text name list
+menu_path: /docs/bulk/
 summary: |
     This data format simply lists all the names of people, companies and vessels in a text file.
 ---

@@ -1,5 +1,6 @@
 ---
 title: FollowTheMoney-based JSON format
+menu_path: /docs/bulk/
 summary: |
     The JSON entity format published by OpenSanctions describes entities and their
     relationships in detail.

@@ -1,5 +1,6 @@
 ---
 title: Simplified CSV (comma-separated values) table
+menu_path: /docs/bulk/
 summary: |
     CSV exports of the source data are intended to be used for high-level analysis or the
     import into legacy systems.

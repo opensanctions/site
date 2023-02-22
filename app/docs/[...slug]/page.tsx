@@ -3,11 +3,15 @@ import { getContentBySlug, getContents } from '../../../lib/content'
 import { ContentPageProps } from './common'
 import LayoutFrame from '../../../components/layout/LayoutFrame'
 import { REVALIDATE_BASE } from '../../../lib/constants';
+import { redirect } from 'next/navigation';
 
 export const revalidate = REVALIDATE_BASE;
 
 export default async function Page({ params }: ContentPageProps) {
   const content = await getContentBySlug(params.slug.join('/'))
+  if (content.redirect) {
+    redirect(content.redirect)
+  }
   return (
     <LayoutFrame activeSection={content.section}>
       <Content.Page content={content} />

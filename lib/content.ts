@@ -29,14 +29,17 @@ export async function getContentBySlug(slug: string): Promise<IContent> {
     // noop
   }
   const { data, content } = await readContent(path)
+  const urlPath = data.path || `/docs/${slug}/`;
   return {
     slug: slug,
     title: data.title,
-    path: data.path || `/docs/${slug}/`,
+    path: urlPath,
+    menu_path: data.menu_path || urlPath,
     content: markdownToHtml(content),
     section: data.section || "docs",
     image_url: data.image_url || null,
     summary: data.summary || null,
+    redirect: data.redirect || undefined,
   }
 }
 
