@@ -1,4 +1,4 @@
-import PageHead from "../../../components/layout/PageHead";
+import PageHead from "../../components/layout/PageHead";
 import { SUMMARY } from "./common";
 
 export default function Head() {

@@ -3,18 +3,14 @@
 import queryString from 'query-string';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { FormEvent, useState } from 'react';
-import { IModelDatum, Model, Property, Values } from '../../lib/ftm';
-import { IMatchAPIResponse, IMatchedEntityDatum } from '../../lib/types';
-import { asString } from '../../lib/util';
-import { Container, Col, Row, Form, FormGroup, FormLabel, Table, FormSelect, Button } from '../wrapped';
-
+import { IModelDatum, Model, Property } from '../../lib/ftm';
+import { Col, Row, Form, FormGroup, FormLabel, FormSelect, Button } from '../wrapped';
 
 
 export type DatasetOption = {
   name: string
   title: string
 }
-
 
 function getPlaceholder(prop: Property) {
   if (prop.type.name === 'name') {

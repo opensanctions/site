@@ -1,15 +1,16 @@
-import { PageProps } from '../../../components/utils/PageProps';
-import { fetchIndex, getDatasets, getModel, postMatch } from '../../../lib/data';
-import { Col, Container, Row, Table } from '../../../components/wrapped';
-import LayoutFrame from '../../../components/layout/LayoutFrame';
-import { isExternal } from '../../../lib/types';
-import { asString, ensureArray } from '../../../lib/util';
-
-import styles from '../../../styles/Research.module.scss';
-import MatcherForm from '../../../components/matcher/MatcherForm';
-import MatcherResult from '../../../components/matcher/MatcherResult';
-import { SEARCH_DATASET } from '../../../lib/constants';
 import Link from 'next/link';
+
+import { PageProps } from '../../components/utils/PageProps';
+import { fetchIndex, getDatasets, getModel, postMatch } from '../../lib/data';
+import { Col, Container, Row, Table } from '../../components/wrapped';
+import LayoutFrame from '../../components/layout/LayoutFrame';
+import { isExternal } from '../../lib/types';
+import { asString, ensureArray } from '../../lib/util';
+import MatcherForm from '../../components/matcher/MatcherForm';
+import MatcherResult from '../../components/matcher/MatcherResult';
+import { SEARCH_DATASET } from '../../lib/constants';
+
+import styles from '../../styles/Research.module.scss';
 
 export const revalidate = 0;
 
@@ -32,6 +33,7 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
     }
   }
   const query = { schema: schema, properties: properties };
+  const hasQuery = Object.keys(properties).length > 0;
   const response = await postMatch(query, dataset);
 
   return (
@@ -52,13 +54,14 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
             </Col>
             <Col md={6} className={styles.advancedExplainer}>
               <p>
-                Advanced search will consider multiple criteria and try to match
-                them with an entity in our database.
+                Advanced search will consider multiple criteria and match
+                them against the entities in our database.
               </p>
               <ul>
-                <li>Choose the entity type <strong>Legal entity</strong> to match people, organizations and
+                <li>Choose the entity type "Legal entity" to match people, organizations and
                   companies at the same time.</li>
                 <li>Press the icon next to a result score to see an explanation for the score.</li>
+                <li>All searches use fuzzy matching and transliteration.</li>
                 <li>The matcher will return a maximum of five results.</li>
               </ul>
               <p>
@@ -71,12 +74,12 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
         </Container>
       </div >
       <Container>
-        {response.total.value === 0 && (
+        {response.total.value === 0 && hasQuery && (
           <h2>No results.</h2>
         )}
         {response.total.value > 0 && (
           <>
-            <Table>
+            <Table className={styles.advancedResults}>
               <thead>
                 <tr>
                   <th>Entity</th>

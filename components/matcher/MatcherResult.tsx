@@ -3,7 +3,7 @@ import { Model, Values } from "../../lib/ftm";
 import { IMatchedEntityDatum, IMatcherFeature } from "../../lib/types";
 import { EntityLink } from "../Entity";
 import { TypeValues } from "../Property";
-import { Numeric, Spacer } from "../util";
+import { Numeric } from "../util";
 import { DetailPopup } from "../utils/DetailPopup";
 import { Badge, Table } from '../wrapped';
 
