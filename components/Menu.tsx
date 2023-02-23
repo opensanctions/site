@@ -51,7 +51,7 @@ export function DocumentationMenu({ path }: MenuProps) {
     <>
       <Nav className="flex-column justify-content-start" variant="pills">
         <NavItem>
-          <RoutedNavLink href="/docs/usage/" current={path}>Using the data</RoutedNavLink>
+          <RoutedNavLink href="/docs/bulk/" current={path}>Using the bulk data</RoutedNavLink>
           <NavItem>
             <RoutedNavLink href="/docs/entities/" current={path}>Entity structure</RoutedNavLink>
           </NavItem>
@@ -74,10 +74,10 @@ export function DocumentationMenu({ path }: MenuProps) {
         <NavItem>
           <RoutedNavLink href="/docs/api/" current={path}>Using the API</RoutedNavLink>
           <NavItem>
-            <RoutedNavLink href="/matcher/" current={path}>How we score matches</RoutedNavLink>
+            <RoutedNavLink href="/docs/self-hosted/" current={path}>Self-hosted API</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/self-hosted/" current={path}>Self-hosted API</RoutedNavLink>
+            <RoutedNavLink href="/matcher/" current={path}>How we score matches</RoutedNavLink>
           </NavItem>
         </NavItem>
       </Nav>

@@ -12,6 +12,7 @@ import { ensureArray } from '../lib/util';
 import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/Search.module.scss'
+import Link from 'next/link';
 
 
 
@@ -32,7 +33,7 @@ export function SearchFacet({ field, facet, searchParams }: SearchFacetProps) {
     const newFilters = idx === -1 ? [...filters, value] : filters.filter((e) => e !== value);
     const param = newFilters.length ? newFilters : undefined;
     const newQuery = { ...searchParams, [field]: param };
-    return queryString.stringifyUrl({ url: '/search', query: newQuery });
+    return queryString.stringifyUrl({ url: '/search/', query: newQuery });
   }
 
   return (
@@ -42,7 +43,7 @@ export function SearchFacet({ field, facet, searchParams }: SearchFacetProps) {
         {facet.values.map((value) => (
           <ListGroupItem key={value.name}
             active={filters.indexOf(value.name) !== -1}
-            as={"a"}
+            as={Link}
             href={filteredUrl(value.name)}
             className={styles.facetListItem}
           >
@@ -66,7 +67,7 @@ export function SearchFilterTags({ scope, model, datasets, searchParams }: Searc
   const unfilterUrl = (field: string, value: string) => {
     const values = ensureArray(searchParams[field]).filter((v) => v !== value);
     const newQuery = { ...searchParams, [field]: values }
-    return queryString.stringifyUrl({ url: '/search', query: newQuery });
+    return queryString.stringifyUrl({ url: '/search/', query: newQuery });
   }
   const filters = [];
   const schema = searchParams['schema'];

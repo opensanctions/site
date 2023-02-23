@@ -29,14 +29,19 @@ export function RoutedNavLink({ href, current, children }: React.PropsWithChildr
 
 type NumericProps = {
   value?: number | null
+  digits?: number
 }
 
-export function Numeric({ value }: NumericProps) {
+export function Numeric({ value, digits }: NumericProps) {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
   if (value === undefined || value === null) {
     return null;
   }
-  const fmt = new Intl.NumberFormat('en-US');
+  const options = {
+    maximumSignificantDigits: digits,
+    minimumSignificantDigits: digits
+  } as Intl.NumberFormatOptions;
+  const fmt = new Intl.NumberFormat('en-US', options);
   return <span>{fmt.format(value)}</span>;
 }
 

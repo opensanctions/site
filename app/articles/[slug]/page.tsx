@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Row, Col, Container, Card, CardBody } from '../../../components/wrapped'
-import { Summary } from '../../../components/util'
+import { Markdown, Summary } from '../../../components/util'
 import { getArticleBySlug, getArticles } from '../../../lib/content';
 import Content from '../../../components/Content';
 import Article from '../../../components/Article';
@@ -20,7 +20,7 @@ export default async function Page({ params }: ArticlePageProps) {
         <Row>
           <Col md={8}>
             <Summary summary={article.summary} />
-            <Content.Body content={article} />
+            <Markdown markdown={article.content} />
             <Card>
               <CardBody>
                 <strong>Like what we're writing about?</strong> Keep the conversation going! You

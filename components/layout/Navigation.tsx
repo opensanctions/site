@@ -35,7 +35,7 @@ export default function Navigation({ activeSection }: NavbarSectionProps) {
             <Link href="/showcase/" passHref legacyBehavior>
               <NavLink className={styles.navItem} active={activeSection === 'showcase'}>Showcase</NavLink>
             </Link>
-            <Link href="/docs/usage/" passHref legacyBehavior>
+            <Link href="/docs/" passHref legacyBehavior>
               <NavLink className={styles.navItem} active={activeSection === 'docs'}>Documentation</NavLink>
             </Link>
             <Link href="/docs/about/" passHref legacyBehavior>

@@ -1,26 +1,29 @@
 import { IEntityDatum, IModelDatum } from "./ftm";
 
 
-export interface IContent {
+export interface IContentBase {
   slug: string
-  content: string
   title: string
-  path: string
-  section: string
   image_url: string | null
   summary: string | null
+  no_index: boolean
 }
 
-export interface IArticleInfo {
-  slug: string
-  title: string
+
+export interface IContent extends IContentBase {
+  content: string
+  path: string
+  menu_path: string
+  redirect?: string
+  section: string
+}
+
+export interface IArticleInfo extends IContentBase {
   date: string
   path: string
   url: string
   section: string
-  image_url: string | null
   draft: boolean
-  summary: string | null
 }
 
 export interface IArticle extends IArticleInfo {
@@ -215,6 +218,22 @@ export interface IPaginatedResponse {
 export interface ISearchAPIResponse extends IPaginatedResponse {
   results: Array<IEntityDatum>
   facets: { [prop: string]: ISearchFacet }
+}
+
+export interface IMatchedEntityDatum extends IEntityDatum {
+  features: { [key: string]: number }
+  score: number
+  match: boolean
+}
+
+export interface IMatchAPIResponse {
+  results: Array<IMatchedEntityDatum>
+  total: IResponseTotal
+}
+
+export interface IMatchQuery {
+  schema: string
+  properties: { [prop: string]: string[] }
 }
 
 

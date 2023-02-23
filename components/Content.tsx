@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Row, Col, Card, CardBody, Container } from './wrapped';
-import { IContent } from '../lib/types'
+import { IContent, IContentBase } from '../lib/types'
 import { JSONLink, Markdown, Summary } from './util';
 import { AboutMenu, DocumentationMenu, MenuProps } from './Menu';
 import PageHead from './layout/PageHead';
@@ -55,7 +55,7 @@ function ContentMenu({ title, path, children, jsonLink, Menu }: React.PropsWithC
 function ContentContext({ content, children }: ContentFrameProps) {
   const MenuComponent = content.section === "about" ? AboutMenu : DocumentationMenu;
   return (
-    <ContentMenu title={content.title} path={content.path} Menu={MenuComponent}>
+    <ContentMenu title={content.title} path={content.menu_path} Menu={MenuComponent}>
       <Summary summary={content.summary} />
       <div className={styles.page}>
         {children}
@@ -81,7 +81,7 @@ function ContentPage({ content }: ContentProps) {
 }
 
 type ContentHeadProps = {
-  content: IContent
+  content: IContentBase
   structured?: any
 }
 
@@ -89,6 +89,7 @@ type ContentHeadProps = {
 function ContentHead({ content, structured }: ContentHeadProps) {
   return <PageHead
     title={content.title}
+    noIndex={content.no_index}
     description={content.summary || undefined}
     imageUrl={content.image_url}
     structured={structured}

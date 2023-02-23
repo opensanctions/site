@@ -34,6 +34,7 @@ function ResearchContext({ title, query, children, isLoading }: React.PropsWithC
                 disabled={isLoading}
                 aria-label="Search"
               />
+              <Button variant="light" href="/advancedsearch" disabled={isLoading}>Advanced</Button>
               <Button variant="secondary" type="submit" disabled={isLoading}>Search</Button>
               {Object.entries(otherQuery).map(([field, values]) => ensureArray(values).map(value =>
                 <input key={field + ':' + value} type="hidden" name={field + ''} value={value} />
