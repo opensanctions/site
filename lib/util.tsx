@@ -6,7 +6,6 @@ import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import rehypeHighlight from 'rehype-highlight'
-import { Schema } from './ftm/schema'
 
 
 export function markdownToHtml(markdown: string): string {
@@ -40,6 +39,22 @@ export function ensureArray(value: string | string[] | null | undefined) {
     return [];
   }
   return castArray(value);
+}
+
+export function asString(value: any): string | undefined {
+  if (!Array.isArray(value)) {
+    value = [value];
+  }
+  for (let item of value) {
+    if (item !== null && item !== undefined) {
+      item = item + ''
+      item = item.trim()
+      if (item.length > 0) {
+        return item;
+      }
+    }
+  }
+  return undefined;
 }
 
 export const swrFetcher = (url: string) => fetch(url).then(res => res.json())

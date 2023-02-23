@@ -25,7 +25,9 @@ Entities are often expressed as snippets of JSON, with three standard fields: a 
 }
 ```
 
-What properties can be set for an entity is determined by it's schema. For example, a  [Person](/reference/#schema.Person) has a `nationality`, while a [Company](/reference/#schema,Company) allows for setting a `jurisdiction`. Both properties, however, have the same *property type*, [country](/reference/#type.country). You can see a full listing of the available schemata and their properties in the [data dictionary](/reference/).
+What properties can be set for an entity is determined by it's schema. For example, a [Person](/reference/#schema.Person) has a `nationality`, while a [Company](/reference/#schema,Company) allows for setting a `jurisdiction`. Both properties, however, have the same *property type*, [country](/reference/#type.country). You can see a full listing of the available schemata and their properties in the [data dictionary](/reference/).
+
+Some of the metadata in the root object (``datasets``, ``referents``, ``first_seen``, ``last_seen``) are not part of the original FollowTheMoney model, but extensions developed for OpenSanctions.
 
 
 ## References
@@ -69,3 +71,14 @@ This is addressed by making interstitial entities. In the example above, an [Own
 Many tools in the FtM ecosystem use streams of entities to transfer or store information. Entity streams are simply sequences of entity objects that have been serialised to JSON as single lines without any indentation, each entity separated by a newline.
 
 Entity streams are read and produced by virtually every part of the [FollowTheMoney command-line](https://followthemoney.tech/docs/cli/), OpenSanctions, and the Aleph platform. When stored to disk as a file, the extensions `.ftm` or `.ijson` should be used.
+
+
+## Tools for working with FtM data
+
+Some further documentation regarding FtM tooling:
+
+* [Converting FtM entities to a Neo4J property graph](https://docs.alephdata.org/developers/followthemoney/ftm#exporting-data-to-a-network-graph)
+* [Converting an FtM file to a Gephi file (GEXF)](https://docs.alephdata.org/developers/followthemoney/ftm#gexf-for-gephi-sigma-js)
+* [Converting to RDF/Linked Data](https://docs.alephdata.org/developers/followthemoney/ftm#exporting-entities-to-rdf-linked-data)
+* [Command-line Aleph import](https://docs.alephdata.org/developers/alephclient#writing-a-stream-of-entities-to-a-collection) (you can also import the *FollowTheMoney entities* (``entities.ftm.json``) data into Aleph by
+uploading the file to an investigation)

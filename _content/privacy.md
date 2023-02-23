@@ -30,14 +30,11 @@ Article 4 No. 2 GDPR understands a "processing" to be any operation in connectio
 
 ### 3. RESPONSIBLE
 
-Responsible for data processing is:<br/>
-Company: OpenSanctions / Friedrich Lindenberg („wir“)<br/>
-Address: Schonensche Str. 43, 13189 Berlin<br/>
-E-Mail: info@opensanctions.org<br/>
+Responsible for data processing is: OpenSanctions Datenbanken GmbH (see [Impressum](/impressum/)).
 
 ### 4. DATA PROTECTION OFFICER
 
-Our company is not obliged to appoint a company data protection officer. For questions and concerns regarding data protection on our website and in our you can contact us via the aforementioned contact details.
+Our company is not obliged to appoint a company data protection officer. For questions and concerns regarding data protection on our website and in our you can [contact us](/contact/) via the aforementioned contact details.
 
 ## III. Processing Framework 
 
