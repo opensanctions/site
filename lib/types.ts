@@ -219,6 +219,17 @@ export interface ISearchAPIResponse extends IPaginatedResponse {
   facets: { [prop: string]: ISearchFacet }
 }
 
+export interface IMatchedEntityDatum extends IEntityDatum {
+  features: { [key: string]: number }
+  score: number
+  match: boolean
+}
+
+export interface IMatchAPIResponse {
+  results: Array<IMatchedEntityDatum>
+  total: IResponseTotal
+}
+
 
 export interface IStatement {
   id: string

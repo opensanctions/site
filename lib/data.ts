@@ -66,6 +66,23 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   return await data.json() as T;
 }
 
+export async function postMatch(query: any, dataset: string = 'default'): Promise<any> {
+  const headers = {
+    'Authorization': `ApiKey ${API_TOKEN}`,
+    'Content-Type': 'application/json',
+  }
+  const body = JSON.stringify({ queries: { ui: query } })
+  const options = { headers: headers, body: body, method: 'POST' };
+  const resp = await fetch(`${API_URL}/match/${dataset}`, options)
+  if (!resp.ok) {
+    console.log(resp);
+    console.log(body);
+    throw Error(`Backend error: ${resp.text}`);
+  }
+  const data = await resp.json()
+  return data['responses']['ui'];
+}
+
 
 export async function fetchIndex(): Promise<IIndex> {
   return index as IIndex
