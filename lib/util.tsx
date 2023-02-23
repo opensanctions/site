@@ -41,4 +41,20 @@ export function ensureArray(value: string | string[] | null | undefined) {
   return castArray(value);
 }
 
+export function asString(value: any): string | undefined {
+  if (!Array.isArray(value)) {
+    value = [value];
+  }
+  for (let item of value) {
+    if (item !== null && item !== undefined) {
+      item = item + ''
+      item = item.trim()
+      if (item.length > 0) {
+        return item;
+      }
+    }
+  }
+  return undefined;
+}
+
 export const swrFetcher = (url: string) => fetch(url).then(res => res.json())

@@ -230,6 +230,11 @@ export interface IMatchAPIResponse {
   total: IResponseTotal
 }
 
+export interface IMatchQuery {
+  schema: string
+  properties: { [prop: string]: string[] }
+}
+
 
 export interface IStatement {
   id: string

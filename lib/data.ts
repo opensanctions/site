@@ -3,7 +3,7 @@
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, IModelDatum, Model } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog } from "./types";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE } from "./constants";
 
 import indexJson from '../data/index.json';
@@ -66,21 +66,22 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   return await data.json() as T;
 }
 
-export async function postMatch(query: any, dataset: string = 'default'): Promise<any> {
+export async function postMatch(query: IMatchQuery, dataset: string = 'default'): Promise<IMatchAPIResponse> {
   const headers = {
     'Authorization': `ApiKey ${API_TOKEN}`,
     'Content-Type': 'application/json',
+  }
+  if (Object.keys(query.properties).length === 0) {
+    return { total: { value: 0, relation: 'eq' }, results: [] }
   }
   const body = JSON.stringify({ queries: { ui: query } })
   const options = { headers: headers, body: body, method: 'POST' };
   const resp = await fetch(`${API_URL}/match/${dataset}`, options)
   if (!resp.ok) {
-    console.log(resp);
-    console.log(body);
     throw Error(`Backend error: ${resp.text}`);
   }
   const data = await resp.json()
-  return data['responses']['ui'];
+  return data['responses']['ui'] as IMatchAPIResponse;
 }
 
 

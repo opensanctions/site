@@ -37,7 +37,10 @@ export function Numeric({ value, digits }: NumericProps) {
   if (value === undefined || value === null) {
     return null;
   }
-  const options = { maximumSignificantDigits: digits } as Intl.NumberFormatOptions;
+  const options = {
+    maximumSignificantDigits: digits,
+    minimumSignificantDigits: digits
+  } as Intl.NumberFormatOptions;
   const fmt = new Intl.NumberFormat('en-US', options);
   return <span>{fmt.format(value)}</span>;
 }
