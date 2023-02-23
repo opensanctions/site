@@ -66,8 +66,9 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
               </ul>
               <p>
                 This search uses the <Link href="https://api.opensanctions.org"><code>/match</code></Link> API
-                function which we also recommend to implement bulk screening. When <Link href="/docs/api">using the API</Link>,
-                you can include additional search criteria such as addresses.
+                function which we also recommend to use when implementing bulk screening.
+                When <Link href="/docs/api">querying the API</Link>, you can include additional
+                search criteria such as addresses.
               </p>
             </Col>
           </Row>
