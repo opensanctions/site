@@ -1,28 +1,29 @@
 import { IEntityDatum, IModelDatum } from "./ftm";
 
 
-export interface IContent {
+export interface IContentBase {
   slug: string
-  content: string
   title: string
+  image_url: string | null
+  summary: string | null
+  no_index: boolean
+}
+
+
+export interface IContent extends IContentBase {
+  content: string
   path: string
   menu_path: string
   redirect?: string
   section: string
-  image_url: string | null
-  summary: string | null
 }
 
-export interface IArticleInfo {
-  slug: string
-  title: string
+export interface IArticleInfo extends IContentBase {
   date: string
   path: string
   url: string
   section: string
-  image_url: string | null
   draft: boolean
-  summary: string | null
 }
 
 export interface IArticle extends IArticleInfo {
