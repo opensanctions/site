@@ -15,6 +15,7 @@ export const revalidate = REVALIDATE_BASE;
 
 export default async function Page() {
   const articles = await getArticles();
+  const publishedArticles = articles.filter((a) => !a.draft);
   return (
     <LayoutFrame activeSection="about">
       <Container>
@@ -25,7 +26,7 @@ export default async function Page() {
         <Row>
           <Col md={8}>
             <ul className={styles.articleList}>
-              {articles.map((article) => <Article.Item article={article} />)}
+              {publishedArticles.map((article) => <Article.Item article={article} />)}
             </ul>
           </Col>
           <Col md={4}>

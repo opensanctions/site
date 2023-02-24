@@ -7,6 +7,7 @@ import { FormattedDate, RoutedNavLink } from './util';
 
 import styles from '../styles/Article.module.scss';
 import Image from 'next/image';
+import { LicenseInfo } from './Policy';
 
 
 type ArticleProps = {
@@ -30,18 +31,19 @@ function ArticleSidebar({ article }: ArticleProps) {
           <RoutedNavLink href="/docs/about/" current={article.path}>About OpenSanctions</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/faq/" current={article.path}>FAQ</RoutedNavLink>
+          <RoutedNavLink href="/search/" current={article.path}>Search data database</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/datasets/" current={article.path}>Datasets</RoutedNavLink>
+          <RoutedNavLink href="/datasets/" current={article.path}>Explore our datasets</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/sponsor/" current={article.path}>Sponsor the project</RoutedNavLink>
+          <RoutedNavLink href="/docs/bulk/" current={article.path}>Use our bulk data</RoutedNavLink>
         </NavItem>
         <NavItem>
           <RoutedNavLink href="/contact/" current={article.path}>Contact us</RoutedNavLink>
         </NavItem>
       </Nav>
+      <LicenseInfo />
     </>
   )
 }

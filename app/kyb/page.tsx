@@ -21,6 +21,7 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
   return (
     <Card key={dataset.name} className={styles.datasetCard}>
       <CardHeader className={styles.datasetCardHeader}>
+        <a id={`dataset.${dataset.name}`} />
         {dataset.title}
       </CardHeader>
       <Table className={styles.datasetCardTable}>
@@ -146,28 +147,85 @@ export default async function Page() {
           </Col>
         </Row>
         <Row>
-          <Col md={4}>
+          <Col md={6}>
             <h4>What is this?</h4>
             <p>
-              The data published on this site is converted from their respective source
-              formats
-              to <Link href="/docs/entities/">FollowTheMoney entity format</Link> by
-              OpenSanctions in order to enable <Link href="/docs/enrichment/">
-                data enrichment
-              </Link>. We are publishing the full datasets here
-              for third parties to use. Please <Link href="/contact/">contact us</Link> about
-              a special <Link href="/licensing/">license contract</Link> if you plan to
-              rely on the data for business uses.
+              The datasets provide information regarding the <strong>control and ownership of
+                companies</strong> in various jurisdictions.
+              They are collected from public sources, and are published here in a
+              cleaned and transformed structure, using
+              the <Link href="/docs/entities/">FollowTheMoney entity format</Link>.
+            </p>
+            <h4>What is it useful for?</h4>
+            <p>
+              <Link href="https://www.openownership.org/en/publication-categories/briefings/">Beneficial ownership data</Link> is
+              used by businesses that want to understand if they're dealing with risky
+              counterparties, and investigators who want to understand who is behind a
+              particular company.
             </p>
             <h4>How can I use the data?</h4>
             <p>
-              <Link href="/docs/entities/">FollowTheMoney entities</Link> describe investigative
-              atoms like people, companies or their relationships. In order to use this data, it
-              can be queried as an API using the yente tool, or processed into Neo4J property
-              graph data and queried there for analytical purposes.
+              OpenSanctions KYB data is a building block, not an end-user product. Here's some ways you can use it:
+            </p>
+            <ul>
+              <li>
+                <strong><Link href="https://resources.linkurious.com/openscreening">OpenScreening</Link></strong>:
+                We've worked with <Link href="https://linkurious.com/">Linkurious</Link> and
+                {' '}<Link href="https://openownership.org/">OpenOwnership</Link> to publish a
+                demo application where you can interactively browse and analyse the combined
+                OpenSanctions and KYB datasets.
+              </li>
+              <li>
+                <strong><Link href="https://api.graph.opensanctions.org">OpenSanctions KYB API</Link></strong>:
+                Use our search and matching API if you want to integrate the datasets into a screening process
+                or other application.
+              </li>
+              <li>
+                <strong>Bulk data downloads</strong>:
+                Fetch the full datasets for download on this page. They can be
+                processed using the <Link href="https://followthemoney.tech">FollowTheMoney</Link> suite
+                of tools for the command-line, Python and TypeScript.
+              </li>
+            </ul>
+            <p>
+              <Link href="/contact/">Contact us</Link> about a <Link href="/licensing/">data license</Link> if
+              you plan to rely on the data for commercial use.
+            </p>
+            <h4>How is this different from the default dataset?</h4>
+            <p>
+              Our <Link href="/datasets/default/">OpenSanctions default dataset</Link> collects entities that are <Link href="/docs/criteria">directly or indirectly associated with
+                some risk indication</Link>. This doesn't apply to the vast majority of companies.
+            </p>
+            <p>
+              The KYB datasets represent full company databases, irrespective of risk indications. Some
+              company records from these datasets are routinely added to OpenSanctions core via <Link href="/docs/enrichment/">
+                data enrichment
+              </Link>.
+            </p>
+            <p>
+              Unlike the OpenSanctions core data, the KYB datasets are not de-duplicated. This means that if a
+              source registry publishes multiple records that describe a single person or company, they will be
+              reproduced in this data as-is.
+            </p>
+            <h4>How frequently are datasets updated?</h4>
+            <p>
+              We update most sources once a week. This doesn't apply to data sources which - by their nature - do
+              not change on a regular basis (e.g. the ICIJ OffshoreLeaks database).
+            </p>
+            <p>
+              Updates also exclude the Russian company database: since the Duma has passed laws which allow
+              sanctioned companies to hide their information in the registry, we're using a static version
+              dated 1. Jan 2022 as the last safe point of reference for Russia.
+            </p>
+            <h4>I want to use this!</h4>
+            <p>
+              Brilliant, come talk to us! The OpenSanctions dataset is free to use for
+              non-commercial purposes, including users from academia, activists and journalists. If you're
+              interested in <Link href="/licensing/">licensing</Link> the data for commercial
+              purposes, please <Link href="/contact/">contact us</Link>.
             </p>
           </Col>
-          <Col md={8}>
+          <Col md={6}>
             {catalog.datasets.map((dataset) =>
               <div key={dataset.name}>
                 <GraphDatasetCard dataset={dataset} />
