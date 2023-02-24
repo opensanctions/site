@@ -18,6 +18,7 @@ export const revalidate = REVALIDATE_BASE;
 
 export default async function Page() {
   const articles = await getArticles()
+  const publishedArticles = articles.filter((a) => !a.draft);
   const datasets = await getDatasets()
   const collections = datasets.filter(isCollection)
   const sources = datasets.filter(isSource)
@@ -121,7 +122,7 @@ export default async function Page() {
           </Col>
           <Col md={9}>
             <ul className={articleStyles.articleList}>
-              {articles.map((article) => <Article.Item key={article.slug} article={article} />)}
+              {publishedArticles.map((article) => <Article.Item key={article.slug} article={article} />)}
             </ul>
             <p>
               See <Link href="/articles">all of our project updates</Link>...
