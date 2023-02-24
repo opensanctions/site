@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -6,8 +8,11 @@ const nextConfig = {
   },
   staticPageGenerationTimeout: 360,
   trailingSlash: true,
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
   images: {
-    domains: ['assets.pudo.org', 'assets.opensanctions.org'],
+    domains: ['assets.opensanctions.org'],
   },
   async redirects() {
     return [
