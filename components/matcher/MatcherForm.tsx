@@ -47,7 +47,8 @@ export default function MatcherForm({ datasets, modelData, schemata, schema, dat
     .filter((s) => s.matchable);
   const schemaObj = model.getSchema(schema);
   const featured = schemaObj.getFeaturedProperties();
-  const [values, setValues] = useState(Object.fromEntries(searchParams));
+  const params = searchParams?.entries() || [];
+  const [values, setValues] = useState(Object.fromEntries(params));
 
   const setDataset = async (dataset: string) => {
     router.replace(queryString.stringifyUrl({
