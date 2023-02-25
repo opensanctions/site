@@ -40,8 +40,8 @@ From September 2021 to Feburary 2022, the project received financial support fro
 authors.
 
 <a href="https://www.softwaresysteme.pt-dlr.de/de/software-sprint.php">
-    <img src="/static/logo-bmbf.svg" width="200px" />
+    <img src="https://assets.opensanctions.org/images/logo-bmbf.svg" width="200px" />
 </a>
 <a href="https://prototypefund.de/">
-    <img src="/static/logo-ptf.svg" width="200px" />
+    <img src="https://assets.opensanctions.org/images/logo-ptf.svg" width="200px" />
 </a>
