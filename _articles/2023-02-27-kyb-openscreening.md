@@ -2,8 +2,7 @@
 title: "Expanding OpenScreening, powered by OpenSanctions KYB"
 image_url: https://assets.opensanctions.org/images/articles/dimitri.png
 summary: |
-    Analyze and explore the relationships between beneficial owners, sanctions and 
-    politicians with OpenScreening, powered by OpenSanctions KYB data.
+    Analyze and explore the relationships between beneficial owners, sanctions and politicians with OpenScreening, powered by OpenSanctions KYB data.
 # draft: true
 ---
 
