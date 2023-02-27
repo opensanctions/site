@@ -131,12 +131,7 @@ export class Entity {
    * Get the designated label for the given entity.
    */
   getCaption(): string {
-    for (const property of this.schema.caption) {
-      for (const value of this.getProperty(property)) {
-        return value as string
-      }
-    }
-    return this.schema.label
+    return this.caption;
   }
 
   /**
