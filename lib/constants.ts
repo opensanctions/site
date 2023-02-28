@@ -36,5 +36,6 @@ export const BLOCKED_ENTITIES = [
   'rupep-person-6659',
 ];
 export const ENTITY_WARNINGS: { [name: string]: string } = {
-  'Q4230633': 'The contents of this page have been modified in response to a legal threat on behalf of Mr. Kondrashev.'
+  'Q4230633': 'The contents of this page have been modified in response to a legal threat on behalf of Mr. Kondrashev.',
+  'ru-inn-770402098952': 'Mr. Chubar resigned from the Management Board of the Credit Bank of Moscow on 10. June 2022 (cf. https://mkb.ru/en/news/56243). The information on this page is outdated, reflecting the pre-war state of the Russian companies\' registry.'
 }
