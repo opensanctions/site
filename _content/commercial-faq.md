@@ -46,7 +46,7 @@ It’s really up to you! Some of the use cases we have seen include:
 
 ### How do I acquire a commercial license?
 
-Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](https://calendly.com/flindenberg/opensanctions-intro) directly!)
+Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](https://meetings-eu1.hubspot.com/douglas-arellanes) directly!)
 
 If you need no further convincing, you can also just [purchase access to our API service](/docs/api/) or [internal use bulk data](https://buy.stripe.com/8wMeVRgBrca54nu5kD) subscription.
 
