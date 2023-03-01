@@ -14,7 +14,7 @@ OpenSanctions builds and publishes a high-quality, up-to-date dataset of entitie
 
 We build the **raw materials innovative services need**. By making this data a readily accessible commodity, we help businesses to reduce their exposure to risk and startups to develop cutting-edge technology and services.
 
-We **do things openly and transparently**. That’s why, besides making our [bulk data easily accessible](/docs/usage/), [publishing our code](https://github.com/opensanctions/opensanctions) and [details about our algorithms](/matcher/), we also invite commercial partners to [self-host our API for enhanced privacy and performance](/docs/self-hosted/).
+We **do things openly and transparently**. That’s why, besides making our [bulk data easily accessible](/docs/bulk/), [publishing our code](https://github.com/opensanctions/opensanctions) and [details about our algorithms](/matcher/), we also invite commercial partners to [self-host our API for enhanced privacy and performance](/docs/self-hosted/).
 
 ### What is the value-add from OpenSanctions?
 
@@ -70,7 +70,7 @@ While our [API service](/docs/api/) is metered, we don't generally consider usag
 
 ### What data formats do you make available?
 
-OpenSanctions internally uses a rich data model called FollowTheMoney to store its data. For developers, we recommend using the [JSON-based data exports](/docs/usage/#entities.ftm.json), while analysts are encouraged to explore the simplified [CSV format](/docs/usage/#targets.simple.csv) we provide exports in.
+OpenSanctions internally uses a rich data model called FollowTheMoney to store its data. For developers, we recommend using the [JSON-based data exports](/docs/bulk/json/), while analysts are encouraged to explore the simplified [CSV format](/docs/bulk/csv/) we provide exports in.
 
 We’re keen to consider additional export formats that our partners might find useful. Please [contact us](/contact/) to share your requirements and discuss an implementation strategy.
 

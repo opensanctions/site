@@ -7,7 +7,7 @@ summary: |
 
 ### Get to know the data
 
-The data extracts are published in [multiple formats](/docs/usage/) and in different
+The data extracts are published in [multiple formats](/docs/bulk/) and in different
 slices:
 
 * [Full OpenSanctions data](/datasets/default/) bulk downloads with all data sources.

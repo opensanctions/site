@@ -130,7 +130,7 @@ export default async function Page({ params }: DatasetPageProps) {
                             <code>{resource.path}</code>
                           </a>
                         </td>
-                        <td>{resource.title}<HelpLink href={`/docs/usage/#${resource.path}`} /></td>
+                        <td>{resource.title}</td>
                         <td className="numeric">
                           <FileSize size={resource.size} />
                         </td>
@@ -139,7 +139,7 @@ export default async function Page({ params }: DatasetPageProps) {
                   </tbody>
                 </Table>
                 <p>
-                  Help: <Link href="/docs/usage">Using the data</Link>
+                  Help: <Link href="/docs/bulk/">Using the data</Link>
                   <Spacer />
                   <Link href="/reference/">format reference</Link>
                   <Spacer />

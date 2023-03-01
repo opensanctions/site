@@ -61,7 +61,7 @@ Next, we need to apply these merges to the data itself and combine the source en
     <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/statements2.png">
 </a>
 
-In order to export data into [formats like CSV or JSON](/docs/usage/), these statements get read from the database and assembled into entities. This creates the necessary flexibility to export combined entities without modifying or destroying any of the original data - keeping the option to reverse a merge decision at a moment's notice.
+In order to export data into [formats like CSV or JSON](/docs/bulk/), these statements get read from the database and assembled into entities. This creates the necessary flexibility to export combined entities without modifying or destroying any of the original data - keeping the option to reverse a merge decision at a moment's notice.
 
 The ability to mix and match statements from multiple sources allows OpenSanctions to export different versions of each entity. For example, a sanctions target from the US list will be exported as [part of that dataset](/datasets/us_ofac_sdn/) with only the properties published by the US government. However, the entity would be merged up with properties from all other sanctions data in the version published as part of the [Consolidated Sanctioned Entities](/datasets/sanctions/) collection, and it might even be further enhanced with facts from Wikidata in the even broader [Due Diligence](/datasets/default/) collection.
 
