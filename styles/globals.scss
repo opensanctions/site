@@ -177,6 +177,17 @@ th.narrow {
     padding-bottom: 0.5em;
 }
 
+.img-fluid {
+    width: 95%;
+    height: auto;
+}
+
+.img-shadow {
+    @extend .shadow;
+    margin-bottom: 2em;
+    margin-top: 0.5em;
+}
+
 .clearfix::after {
     content: "";
     clear: both;
