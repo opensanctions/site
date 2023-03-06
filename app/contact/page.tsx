@@ -6,7 +6,7 @@ import Content from '../../components/Content'
 import { Summary } from '../../components/util';
 import { SUMMARY, TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
-import { MEETING_LINK, REVALIDATE_BASE } from '../../lib/constants';
+import { REVALIDATE_BASE } from '../../lib/constants';
 import { AboutMenu } from '../../components/Menu';
 
 import styles from '../../styles/Contact.module.scss'
@@ -26,7 +26,7 @@ export default async function Contact() {
                 <CardText>
                   Reach out to the core team to discuss the project.
                   <br /><br />
-                  Or: <a href={MEETING_LINK}>book a call directly</a>.
+                  Or: <Link href="/meeting/">book a call directly</Link>.
                 </CardText>
               </CardBody>
               <CardFooter>
@@ -44,7 +44,7 @@ export default async function Contact() {
                 </CardText>
               </CardBody>
               <CardFooter>
-                <Button href="https://bit.ly/osa-slack" variant="secondary">
+                <Button href="/slack/" variant="secondary">
                   <CaretRightFill className="bsIcon" /> OpenSanctions Slack
                 </Button>
               </CardFooter>

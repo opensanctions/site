@@ -38,9 +38,9 @@ export default async function Page() {
                 <Link href="https://twitter.com/open_sanctions">Twitter</Link>
               </li>
               <li>
-                <Link href="https://bit.ly/osa-slack"><Slack /></Link>
+                <Link href="/slack/"><Slack /></Link>
                 {' '}
-                <Link href="https://bit.ly/osa-slack">Slack chat</Link>
+                <Link href="/slack/">Slack chat</Link>
               </li>
               <li>
                 <Link href="https://github.com/opensanctions/opensanctions"><Github /></Link>
