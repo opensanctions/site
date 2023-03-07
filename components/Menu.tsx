@@ -80,6 +80,9 @@ export function DocumentationMenu({ path }: MenuProps) {
             <RoutedNavLink href="/matcher/" current={path}>How we score matches</RoutedNavLink>
           </NavItem>
         </NavItem>
+        <NavItem>
+          <RoutedNavLink href="/docs/opensource/" current={path}>Open source</RoutedNavLink>
+        </NavItem>
       </Nav>
       <LicenseInfo />
     </>
