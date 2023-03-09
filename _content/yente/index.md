@@ -20,6 +20,7 @@ While `yente` is the open source core code base for the [OpenSanctions API](http
 * [Adding custom datasets](/docs/yente/datasets/)
 * [Troubleshooting](/docs/yente/trouble/)
 * [GitHub repository](https://github.com/opensanctions/yente)
+* [Report an issue](https://github.com/opensanctions/yente/issues/new)
 
 ## Using the API
 
