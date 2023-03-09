@@ -3,7 +3,6 @@ import { getContentBySlug, getContents } from '../../../lib/content'
 import { ContentPageProps } from './common'
 import LayoutFrame from '../../../components/layout/LayoutFrame'
 import { REVALIDATE_BASE } from '../../../lib/constants';
-import { redirect } from 'next/navigation';
 
 export const revalidate = REVALIDATE_BASE;
 
