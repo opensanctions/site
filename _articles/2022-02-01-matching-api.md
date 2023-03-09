@@ -4,7 +4,7 @@ summary: |
     Know-Your-Customer (KYC) checks are a different challenge to normal text searches: your query is supposed to describe a person or company in some detail to allow the OpenSanctions API to check if that entity (or a similar one) is flagged.
 ---
 
-OpenSanctions open source API server, [yente](https://github.com/opensanctions/yente), is a powerful way to query and access the entities in our database. [Business license holders](/licensing) can use it both online and as an on-premises deployment to match a set of customer records against international sanctions and politicians lists.
+OpenSanctions open source API server, [yente](/docs/yente/), is a powerful way to query and access the entities in our database. [Business license holders](/licensing) can use it both online and as an on-premises deployment to match a set of customer records against international sanctions and politicians lists.
 
 The most basic way to do those bulk searches might be running simple text queries against the `/search` endpoint - but this will lead to imprecise and incomplete results. Instead, this how-to will show you how to use the `/match` endpoint to get more precise matches using *query-by-example* to do multi-attribute lookups.
 

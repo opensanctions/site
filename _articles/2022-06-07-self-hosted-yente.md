@@ -10,7 +10,7 @@ As we talk to the organizations that use OpenSanctions, the more we learn about 
 <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/servers.png">
 <p class="img-caption"><a href="https://flickr.com/photos/kewl/39044661591">credit</a></p>
 
-One such building block is [yente](https://github.com/opensanctions/yente/blob/main/README.md), the [OpenSanctions API service](https://api.opensanctions.org/). While the API provides all the data you see when browsing and [searching](https://www.opensanctions.org/search/) the OpenSanctions website, it's core function is entity matching: given a list of details about persons or companies, such as customers or investigation targets, the tool will score each against the OpenSanctions database and flag the ones likely to be sanctioned or politically exposed.
+One such building block is [yente](/docs/yente/), the [OpenSanctions API service](https://api.opensanctions.org/). While the API provides all the data you see when browsing and [searching](https://www.opensanctions.org/search/) the OpenSanctions website, it's core function is entity matching: given a list of details about persons or companies, such as customers or investigation targets, the tool will score each against the OpenSanctions database and flag the ones likely to be sanctioned or politically exposed.
 
 What sets yente apart from similar matching APIs is that it is fully open-source. This  means that you can not only [download the software and run it inside of your own infrastructure](https://www.opensanctions.org/docs/self-hosted/), and you can even change and extend it to perfectly fit your business needs.
 

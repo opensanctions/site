@@ -8,7 +8,7 @@ summary: |
 
 The OpenSanctions Default dataset includes a wide variety of information on entities that are under sanctions, are politically exposed people (PEPs), or are on criminal wanted lists. We currently compile 65 data sources and 283,590 targets.
 
-That can be a lot to get through with only a simple search interface. And it’s why we have added a set of advanced screening options to our search. These options take advantage of the power of our [matching API](/articles/2022-02-01-matching-api/), which is the same one we use in our [software-as-a-service API](/docs/api/) and in our open source [yente software](https://github.com/opensanctions/yente).
+That can be a lot to get through with only a simple search interface. And it’s why we have added a set of advanced screening options to our search. These options take advantage of the power of our [matching API](/articles/2022-02-01-matching-api/), which is the same one we use in our [software-as-a-service API](/docs/api/) and in our open source [yente software](/docs/yente).
 
 <img class="img-fluid img-shadow" src="https://assets.opensanctions.org/images/articles/advanced-search-button.png">
 

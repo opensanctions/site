@@ -82,6 +82,9 @@ export function DocumentationMenu({ path }: MenuProps) {
         </NavItem>
         <NavItem>
           <RoutedNavLink href="/docs/opensource/" current={path}>Open source</RoutedNavLink>
+          <NavItem>
+            <RoutedNavLink href="/docs/yente/" current={path}>yente</RoutedNavLink>
+          </NavItem>
         </NavItem>
       </Nav>
       <LicenseInfo />
