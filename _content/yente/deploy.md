@@ -5,7 +5,7 @@ summary:
     yente is an open source data match-making API. It provides functions search, retrieve or match FollowTheMoney entities, including people, companies or vessels that are subject to international sanctions. 
 ---
 
-**yente:** [Intro](/docs/yente) · **Deploy** · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · [Troubleshooting](/docs/yente/trouble/)
+**yente:** [Intro](/docs/yente) · **Deploy** · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · [FAQ](/docs/yente/faq/)
 
 
 In order to deploy `yente` on your own servers, we recommend you use `docker-compose` (or another Docker orchestration tool) to pull and run the pre-built containers. For example, you can download the `docker-compose.yml` in the repository and use it to boot an instance of the system:

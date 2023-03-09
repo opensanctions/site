@@ -1,13 +1,13 @@
 ---
-title: Troubleshooting yente
+title: Frequent questions about yente
 menu_path: /docs/yente/
 summary:
     Common issues experienced while deploying and operating yente.
 ---
 
-**yente:** [Intro](/docs/yente) · [Deploy](/docs/yente/deploy/) · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · **Troubleshooting**
+**yente:** [Intro](/docs/yente) · [Deploy](/docs/yente/deploy/) · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · **FAQ**
 
-### HTTP requests return `index_not_found_exception` 
+### All my HTTP requests return `index_not_found_exception`, what's wrong?
 
 This probably means that the initial index-building (described above) never completed. Check the following: 
 
@@ -17,3 +17,6 @@ This probably means that the initial index-building (described above) never comp
 
 While debugging this issue, you can use `http://yente-service:8000/updatez?token=UPDATE_TOKEN&force=true` to trigger a forced re-index of the data at any time. The `UPDATE_TOKEN` is a secret token you can define in the environment of the `yente` pod using the `YENTE_UPDATE_TOKEN` variable.
 
+### Why is it called yente?
+
+https://www.youtube.com/watch?v=jVGNdB6iEeA
