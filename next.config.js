@@ -21,6 +21,21 @@ const nextConfig = {
         destination: '/licensing/#sponsor',
         permanent: false,
       },
+      {
+        source: '/docs/usage/',
+        destination: '/docs/',
+        permanent: false,
+      },
+      {
+        source: '/slack/',
+        destination: 'https://join.slack.com/t/opensanctions/shared_invite/zt-xwnzvht1-9jPnHUwfCzW_Yw9MAG6vTA',
+        permanent: false,
+      },
+      {
+        source: '/meeting/',
+        destination: 'https://meetings-eu1.hubspot.com/douglas-arellanes',
+        permanent: false,
+      }
     ]
   },
 };

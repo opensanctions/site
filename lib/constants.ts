@@ -17,9 +17,6 @@ export const GA_TRACKING_ID = 'G-YRZENQXNNR';
 export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.json"
 export const REVALIDATE_BASE = 84600;
 
-export const MEETING_LINK = "https://meetings-eu1.hubspot.com/douglas-arellanes"
-// export const MEETING_LINK = "https://calendly.com/flindenberg/opensanctions-intro"
-
 // fake up a semantic ordering of collections
 export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];
 

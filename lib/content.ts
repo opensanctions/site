@@ -40,7 +40,6 @@ export async function getContentBySlug(slug: string): Promise<IContent> {
     section: data.section || "docs",
     image_url: data.image_url || null,
     summary: data.summary || null,
-    redirect: data.redirect || undefined,
   }
 }
 

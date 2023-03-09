@@ -14,7 +14,6 @@ export interface IContent extends IContentBase {
   content: string
   path: string
   menu_path: string
-  redirect?: string
   section: string
 }
 

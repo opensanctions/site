@@ -9,9 +9,6 @@ export const revalidate = REVALIDATE_BASE;
 
 export default async function Page({ params }: ContentPageProps) {
   const content = await getContentBySlug(params.slug.join('/'))
-  if (content.redirect) {
-    redirect(content.redirect)
-  }
   return (
     <LayoutFrame activeSection={content.section}>
       <Content.Page content={content} />
