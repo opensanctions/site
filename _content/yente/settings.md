@@ -5,7 +5,7 @@ summary:
     The yente service is built to require a minimum of configuration, but several environment variables can be used to define the ElasticSearch instance to use, and to define a custom data manifest.
 ---
 
-**yente:** [Intro](/docs/yente) · [Deploy](/docs/yente/deploy/) · **Settings** · [Custom datasets](/docs/yente/datasets/) · [FAQ](/docs/yente/faq/)
+**yente:** [Intro](/docs/yente) · [Deployment](/docs/yente/deploy/) · **Settings** · [Custom datasets](/docs/yente/datasets/) · [FAQ](/docs/yente/faq/)
 
 The API server has a few operations-related settings, which are passed as environment variables. The settings include:
 

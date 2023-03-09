@@ -5,7 +5,7 @@ summary:
     Common issues experienced while deploying and operating yente.
 ---
 
-**yente:** [Intro](/docs/yente) · [Deploy](/docs/yente/deploy/) · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · **FAQ**
+**yente:** [Intro](/docs/yente) · [Deployment](/docs/yente/deploy/) · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · **FAQ**
 
 ### All my HTTP requests return `index_not_found_exception`, what's wrong?
 
@@ -19,4 +19,4 @@ While debugging this issue, you can use `http://yente-service:8000/updatez?token
 
 ### Why is it called yente?
 
-https://www.youtube.com/watch?v=jVGNdB6iEeA
+yente [makes you a match](https://www.youtube.com/watch?v=jVGNdB6iEeA).

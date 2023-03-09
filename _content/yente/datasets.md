@@ -5,7 +5,7 @@ summary:
     The yente API server is typically used to query OpenSanctions data, but it can also be used as a general purpose data matching API for other datasets about companies, people, property and so on.
 ---
 
-**yente:** [Intro](/docs/yente) · [Deploy](/docs/yente/deploy/) · [Settings](/docs/yente/settings/) · **Custom datasets** · [FAQ](/docs/yente/faq/)
+**yente:** [Intro](/docs/yente) · [Deployment](/docs/yente/deploy/) · [Settings](/docs/yente/settings/) · **Custom datasets** · [FAQ](/docs/yente/faq/)
 
 The default configuration of `yente` will index and expose the datasets published by OpenSanctions every time they change. By adding a *manifest file*, you can change this behaviour in several ways:
 
