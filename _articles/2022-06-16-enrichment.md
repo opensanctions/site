@@ -21,7 +21,7 @@ That’s why, as the OpenSanctions dataset matures, building a deeper and richer
 
 ## Linking to the leaks 
 
-<img class="img-left" src="https://assets.opensanctions.org/images/articles/enrichment/ol_ayad2.png">Our first target for this enrichment is the [ICIJ Offshore Leaks database](/datasets/offshoreleaks). It is the published version of the data underlying multiple cross-border reporting projects, including the Panama Papers, Pandora Papers and Bahamas Leaks.
+<img class="img-left" src="https://assets.opensanctions.org/images/articles/enrichment/ol_ayad2.png">Our first target for this enrichment is the [ICIJ Offshore Leaks database](/datasets/icij_offshoreleaks). It is the published version of the data underlying multiple cross-border reporting projects, including the Panama Papers, Pandora Papers and Bahamas Leaks.
 
 It lists the previously hidden beneficial owners of hundreds of thousands of companies. By intersecting it with our sanctions database, we can pull in subsidiaries, parent companies, and hidden assets. Up until now, we’ve [linked up 102 sanctioned entities present in the Offshore Leaks](/search/?scope=offshoreleaks&topics=sanction), and imported 227 additional companies and people that are in some way related to those.
 
