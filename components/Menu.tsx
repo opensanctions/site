@@ -72,7 +72,7 @@ export function DocumentationMenu({ path }: MenuProps) {
           </NavItem>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/api/" current={path}>Using the API</RoutedNavLink>
+          <RoutedNavLink href="/api/" current={path}>Using the API</RoutedNavLink>
           <NavItem>
             <RoutedNavLink href="/docs/self-hosted/" current={path}>Self-hosted API</RoutedNavLink>
           </NavItem>

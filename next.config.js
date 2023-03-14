@@ -27,6 +27,11 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/docs/api/',
+        destination: '/api/',
+        permanent: false,
+      },
+      {
         source: '/slack/',
         destination: 'https://join.slack.com/t/opensanctions/shared_invite/zt-xwnzvht1-9jPnHUwfCzW_Yw9MAG6vTA',
         permanent: false,
