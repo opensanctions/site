@@ -37,7 +37,7 @@ For data sources that require screen scraping rather than publishing structured 
 
 ### <a id="api"></a> Is there an API for matching entity lists against OpenSanctions?
 
-The core goal of OpenSanctions is providing high-quality bulk data access to its users. Besides doing so, but we also maintain an [OpenSanctions API](/docs/api/) that makes it easy to search the data or to match the sanctions data against a list of customers or suspects.
+The core goal of OpenSanctions is providing high-quality bulk data access to its users. Besides doing so, but we also maintain an [OpenSanctions API](/api/) that makes it easy to search the data or to match the sanctions data against a list of customers or suspects.
 
 If you provide another API that uses the OpenSanctions data, we’d love to hear about it and link to it from this site. Please take note of the [commercial licensing](/licensing/) rules if you do so.
 
