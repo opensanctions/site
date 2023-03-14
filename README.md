@@ -1,5 +1,7 @@
 OpenSanctions.org home page.
 
+Running this requires access to the OpenSanctions hosted API, not just yente.
+
 ## Getting Started
 
 First, run the development server:
