@@ -8,7 +8,7 @@ summary: |
 
 The OpenSanctions Default dataset includes a wide variety of information on entities that are under sanctions, are politically exposed people (PEPs), or are on criminal wanted lists. We currently compile 65 data sources and 283,590 targets.
 
-That can be a lot to get through with only a simple search interface. And it’s why we have added a set of advanced screening options to our search. These options take advantage of the power of our [matching API](/articles/2022-02-01-matching-api/), which is the same one we use in our [software-as-a-service API](/docs/api/) and in our open source [yente software](/docs/yente).
+That can be a lot to get through with only a simple search interface. And it’s why we have added a set of advanced screening options to our search. These options take advantage of the power of our [matching API](/articles/2022-02-01-matching-api/), which is the same one we use in our [software-as-a-service API](/api/) and in our open source [yente software](/docs/yente).
 
 <img class="img-fluid img-shadow" src="https://assets.opensanctions.org/images/articles/advanced-search-button.png">
 
@@ -32,6 +32,6 @@ In addition, if you’re looking for an organisation on a specific list (what we
 
 ## Matching entities using the OpenSanctions API
 
-OpenSanctions’ Advanced Screening search is also a way to explore the [matching API](/articles/2022-02-01-matching-api/) that can help users conduct more efficient and effective due diligence by [using our API](/docs/api/). By screening against a range of watchlists and using features such as name variations and criteria like corporate identifiers, incorporation dates, businesses can reduce the number of false positives and identify potential risks more quickly. This can help them save time and money, better manage their risks, and comply with regulations aimed at preventing financial crimes.
+OpenSanctions’ Advanced Screening search is also a way to explore the [matching API](/articles/2022-02-01-matching-api/) that can help users conduct more efficient and effective due diligence by [using our API](/api/). By screening against a range of watchlists and using features such as name variations and criteria like corporate identifiers, incorporation dates, businesses can reduce the number of false positives and identify potential risks more quickly. This can help them save time and money, better manage their risks, and comply with regulations aimed at preventing financial crimes.
 
 The Advanced Search available on the OpenSanctions website for individual searches. [OpenSanctions data is available for commercial use](/licensing/). Organizations interested in using OpenSanctions on a commercial basis can purchase either a bulk rate license, which allows you to host a copy of the OpenSanctions Default dataset on your own premises, or to set up an account to use our Software-as-a-Service API for larger-scale searches. [Feel free to get in touch](/contact/) with any additional questions.

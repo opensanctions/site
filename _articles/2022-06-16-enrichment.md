@@ -33,7 +33,7 @@ It lists the previously hidden beneficial owners of hundreds of thousands of com
 
 ## Get the Offshore Leaks and GLEIF data in full
 
-One more thing. The mechanism we use for cross-referencing our database with these external sources is our own [matching API service](/docs/api/). We’ve essentially converted the full datasets for Offshore Leaks and GLEIF to the [FollowTheMoney data format](/docs/entities/) used by OpenSanctions. Which - you guessed it - means those files are also openly available for those who would like to use the full datasets:
+One more thing. The mechanism we use for cross-referencing our database with these external sources is our own [matching API service](/api/). We’ve essentially converted the full datasets for Offshore Leaks and GLEIF to the [FollowTheMoney data format](/docs/entities/) used by OpenSanctions. Which - you guessed it - means those files are also openly available for those who would like to use the full datasets:
 
 * GLEIF: [Source code](https://github.com/opensanctions/gleif), [JSON export](https://data.opensanctions.org/contrib/gleif/gleif.json) (754MB) 
 * ICIJ OffshoreLeaks: [Source code](https://github.com/opensanctions/icij-offshoreleaks), [JSON export](https://data.opensanctions.org/contrib/icij-offshoreleaks/full-oldb.json) (1.2GB)
