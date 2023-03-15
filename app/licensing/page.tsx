@@ -48,8 +48,9 @@ export default function Page() {
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
-                  <Button href="https://buy.stripe.com/8wMeVRgBrca54nu5kD" variant="secondary">
-                    <CreditCard2BackFill className="bsIcon" /> Subscribe
+                  <Button href="/contact/" variant="secondary">
+                    <EnvelopeFill className="bsIcon" />
+                    Contact us
                   </Button>
                 </ButtonGroup>
               </CardFooter>
@@ -67,7 +68,7 @@ export default function Page() {
                   parties, or include our graph in your own data products.
                 </CardText>
                 <ul>
-                  <li>full set of data sources</li>
+                  <li>65+ data sources</li>
                   <li>standardised data format</li>
                   <li>cross-list de-duplication</li>
                   <li>complex relationship graph</li>
@@ -107,7 +108,7 @@ export default function Page() {
               </CardBody>
               <CardFooter>
                 <ButtonGroup>
-                  <Button href="/docs/api/" variant="secondary">
+                  <Button href="/api/" variant="secondary">
                     <Magic className="bsIcon" />
                     Get started now
                   </Button>
