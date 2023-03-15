@@ -15,7 +15,7 @@ export function LicenseInfo() {
         must acquire a data license to use the dataset.
       </p>
       <ButtonGroup>
-        <Button href="/docs/api/" variant="secondary">Use the API</Button>
+        <Button href="/api/" variant="secondary">Use the API</Button>
         <Button href="/licensing/" variant="light">License in bulk</Button>
       </ButtonGroup>
     </Alert>

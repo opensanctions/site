@@ -35,7 +35,7 @@ For this reason, and others (e.g. abuse, spam, etc), we may have to forbid use o
 
 ### Use of the OpenSanctions API
 
-The [OpenSanctions API](/docs/api/) may be used either with an API key. Use of the OpenSanctions API with an API key allows a greater number of requests in a given period (e.g. hour, day). Use of the OpenSanctions API without an API key is designed to allow the data to be used in widgets and other client-side applications, or for the development stage of applications that are not yet ready to launch, and is intended for light usage only.
+The [OpenSanctions API](/api/) may be used either with an API key. Use of the OpenSanctions API with an API key allows a greater number of requests in a given period (e.g. hour, day). Use of the OpenSanctions API without an API key is designed to allow the data to be used in widgets and other client-side applications, or for the development stage of applications that are not yet ready to launch, and is intended for light usage only.
 
 API keys are available in two ways: on a donated basis to anyone legitimately working on a project that will contribute back to the open-data community or otherwise works to meet a non-commercial goal (“unmetered API keys”), and for a fee under our API terms (“subscription API keys”), for example for use in commercial or proprietary applications. We may also choose to grant trial API keys for evaluation and integration of the service.
 

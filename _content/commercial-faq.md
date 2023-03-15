@@ -22,7 +22,7 @@ We **do things openly and transparently**. That’s why, besides making our [bul
 * **[Entity deduplication](/articles/2021-11-11-deduplication/)** avoids redundant matches and contextualizes entities across data sources to build comprehensive profiles.
 * **Meticulous data cleaning** creates a [coherent data structure](/reference/) with well-defined field names, formats, and country codes. Entity names are stored in multiple alphabets.
 * **Our graph of entities** contains rich connectivity information, showing family, ownership and business ties between actors.
-* **Our [API service](/docs/api/)** allows you to search and perform precise matching of your own records against our database.
+* **Our [API service](/api/)** allows you to search and perform precise matching of your own records against our database.
 
 ### What is included in each pricing tier?
 
@@ -30,7 +30,7 @@ Our pricing is designed such that
 
 * **Internal use bulk data** includes the right to use the full datasert for any in-house purpose: screening your customers (for example, using our [self-hosted API](/docs/self-hosted/) software), powering your investigations, enriching an internal knowledge graph. This also includes the development of customer-facing applications in which significant value is added.
 * **OEM bulk data** lets you use the OpenSanctions data as a building block in any external-facing products and services that are principally based on the data, and it can also include the re-sale of the data as part of your own data solutions.
-* **OpenSanctions API** lets you use our [API service](/docs/api/) to query and match entities. You can use the service on a pay-as-you-go basis, or subscribe to a bulk license and host the matching software [on your own premises](/docs/self-hosted).
+* **OpenSanctions API** lets you use our [API service](/api/) to query and match entities. You can use the service on a pay-as-you-go basis, or subscribe to a bulk license and host the matching software [on your own premises](/docs/self-hosted).
 
 If you're unsure if your intended use case qualifies as **internal use**, please just [contact us](/contact/) so we can learn a bit about your needs and find a fair solution.
 
@@ -48,7 +48,7 @@ It’s really up to you! Some of the use cases we have seen include:
 
 Please contact us at **info@opensanctions.org** to set up a brief call with our team. (You can also [sneak into the calendar](/meeting/) directly!)
 
-If you need no further convincing, you can also just [purchase access to our API service](/docs/api/) or [internal use bulk data](https://buy.stripe.com/8wMeVRgBrca54nu5kD) subscription.
+If you need no further convincing, you can also just [purchase access to our API service](/api/) or [internal use bulk data](https://buy.stripe.com/8wMeVRgBrca54nu5kD) subscription.
 
 ### <a id="exemptions"></a> Who is exempted from commercial licensing?
 
@@ -66,7 +66,7 @@ Yes. We’re keen to support projects or products that have not gone to market y
 
 ### Do you offer usage-based licensing?
 
-While our [API service](/docs/api/) is metered, we don't generally consider usage as a factor in how we price the bulk data service. If your own pricing structure for bulk data use is prohibitive for you, please [get in touch](/contact/) and we’ll find a solution.
+While our [API service](/api/) is metered, we don't generally consider usage as a factor in how we price the bulk data service. If your own pricing structure for bulk data use is prohibitive for you, please [get in touch](/contact/) and we’ll find a solution.
 
 ### What data formats do you make available?
 

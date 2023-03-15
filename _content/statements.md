@@ -14,7 +14,7 @@ The OpenSanctions database is designed to meet the following design objectives:
 
 In order to meet these goals, the system uses a statement-based database design. To illustrate this, think of a claim like this one: *the US sanctions list, as of the most recent update, claims that entity ``ofac-12345`` has the property ``name`` set to the value `John Doe`*.
 
-All information in the system is stored using this way, including links between different entites. When exports are generated, the system will do so by grouping all the statements that pertain to a particular entity and combining them into the desired format. The [forms of the data](/docs/bulk/) we publish, including the JSON format returned by the [API](/docs/api/), are simplified/aggregated for easier use. If you're trying to use the data in a way that does not require granular provenance, use these more common export formats.
+All information in the system is stored using this way, including links between different entites. When exports are generated, the system will do so by grouping all the statements that pertain to a particular entity and combining them into the desired format. The [forms of the data](/docs/bulk/) we publish, including the JSON format returned by the [API](/api/), are simplified/aggregated for easier use. If you're trying to use the data in a way that does not require granular provenance, use these more common export formats.
 
 ### Model implementation
 

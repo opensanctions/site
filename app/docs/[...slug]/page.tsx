@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   const contents = await getContents()
   const slugs = contents
     .filter((c) => c.path === `/docs/${c.slug}/`)
-    .filter((c) => c.path !== '/docs/api/')
+    .filter((c) => c.path !== '/api/')
     .map((c) => ({ slug: c.slug.split('/') }))
   // console.log("SLUGS", slugs)
   return slugs;

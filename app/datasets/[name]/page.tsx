@@ -158,7 +158,7 @@ export default async function Page({ params }: DatasetPageProps) {
                 </h3>
                 <p>
                   You can query the data in this dataset via the application programming
-                  interface (API) endpoints below. Please <Link href="/docs/api/">read
+                  interface (API) endpoints below. Please <Link href="/api/">read
                     the introduction</Link> for documentation and terms of service.
                 </p>
                 <Table className={styles.apiTable}>

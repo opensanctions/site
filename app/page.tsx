@@ -105,7 +105,7 @@ export default async function Page() {
             </Col>
             <Col md={4}>
               <ButtonGroup>
-                <Button size="lg" href="/docs/api/" variant="secondary">Use the API</Button>
+                <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
                 <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>
               </ButtonGroup>
             </Col>

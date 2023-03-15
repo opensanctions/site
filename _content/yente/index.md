@@ -13,7 +13,7 @@ While `yente` is the open source core code base for the [OpenSanctions API](http
 
 ## Using the software
 
-**Note:** this documentation is only relevant to users who plan to [self-host](/docs/self-hosted/) the API. [Click here](/docs/api/) if you'd prefer to use our hosted API service.
+**Note:** this documentation is only relevant to users who plan to [self-host](/docs/self-hosted/) the API. [Click here](/api/) if you'd prefer to use our hosted API service.
 
 * [Deploy yente in your infrastructure](/docs/yente/deploy/)
 * [Settings and configuration](/docs/yente/settings/)

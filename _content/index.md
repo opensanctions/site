@@ -8,7 +8,7 @@ summary: |
 ### Get the data
 
 * [Using the bulk data](/docs/bulk/): download JSON, CSV or plain text dumps.
-* [Using the API](/docs/api/): search entities and implement bulk screening.
+* [Using the API](/api/): search entities and implement bulk screening.
 
 ## Understand the data
 

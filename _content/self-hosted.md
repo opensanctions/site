@@ -8,7 +8,7 @@ summary: |
 
 <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/selfhosted.png" style="width: 40%; float: right; padding-left: 1em;">
 
-The idea is simple: in addition to offering the [hosted OpenSanctions API](/docs/api/), we've made it easy to run the system by yourself. The API server application, [yente](/docs/yente/), is simple to install and will update itself with the latest OpenSanctions data in regular intervals.
+The idea is simple: in addition to offering the [hosted OpenSanctions API](/api/), we've made it easy to run the system by yourself. The API server application, [yente](/docs/yente/), is simple to install and will update itself with the latest OpenSanctions data in regular intervals.
 
 ### What are the benefits of self-hosting?
 
