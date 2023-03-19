@@ -10,7 +10,7 @@ export const revalidate = REVALIDATE_BASE;
 
 export default function Page() {
   return (
-    <LayoutFrame>
+    <LayoutFrame activeSection='showcase'>
       <Container>
         <Row>
           <Col>
