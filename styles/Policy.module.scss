@@ -1,15 +1,15 @@
 @import './variables.scss';
 
 .licenseBox {
-    margin-top: 1em;
-    background-color: $blue-600;
+    :global {
+        .alert {
+            margin-top: 1em;
+            background-color: $blue-600;
 
-    p {
-        color: $white;
+            p {
+                color: $white;
+            }
+
+        }
     }
-
-    // a {
-    //     color: $white;
-    //     text-decoration: underline;
-    // }
 }

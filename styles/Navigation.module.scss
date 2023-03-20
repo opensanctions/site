@@ -1,13 +1,6 @@
 @import './variables.scss';
+@import "~bootstrap/scss/_navbar";
 @import "~bootstrap/scss/mixins/_breakpoints";
-
-.navBar {
-    // &.bg-light {
-    //     background-color: $white  !important;
-    // }
-
-    background-color: $white  !important;
-}
 
 .navSearchBox {
     @include media-breakpoint-up(md) {
@@ -16,13 +9,13 @@
 }
 
 .navItem {
+    @extend .nav-link;
     font-family: $font-family-heading;
-
     padding-left: $spacer * 2 !important;
     //padding-right: $spacer * 1 !important;
 
-    // margin-top: -0.5 * $spacer;
-    // margin-bottom: -0.5 * $spacer;
+    margin-top: 0.5 * $spacer;
+    margin-bottom: 0.5 * $spacer;
 
     // font-size: 1.1em;
     font-weight: 600;

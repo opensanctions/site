@@ -19,8 +19,8 @@ export default async function Contact() {
       <Content.Menu title={TITLE} Menu={AboutMenu} path="/contact">
         <Summary summary={SUMMARY} />
         <div className="text-body">
-          <CardGroup className={styles.contactPanel}>
-            <Card className={styles.firstColumn} text="white">
+          <CardGroup className="themed-card-group">
+            <Card className="themed-card-dark">
               <CardBody>
                 <CardTitle><EnvelopeFill className="bsIcon" /> E-mail</CardTitle>
                 <CardText>
@@ -35,7 +35,7 @@ export default async function Contact() {
                 </Button>
               </CardFooter>
             </Card>
-            <Card className={styles.secondColumn} text="white">
+            <Card className="themed-card-medium">
               <CardBody>
                 <CardTitle><Slack /> Slack chat</CardTitle>
                 <CardText>
@@ -49,7 +49,7 @@ export default async function Contact() {
                 </Button>
               </CardFooter>
             </Card>
-            <Card className={styles.thirdColumn} text="white">
+            <Card className="themed-card-light">
               <CardBody>
                 <CardTitle><Twitter /> Twitter</CardTitle>
                 <CardText>

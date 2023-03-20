@@ -9,16 +9,18 @@ import LayoutFrame from './layout/LayoutFrame';
 
 export function LicenseInfo() {
   return (
-    <Alert variant="light" className={styles.licenseBox}>
-      <p>
-        OpenSanctions is <strong>free for non-commercial users.</strong> Businesses
-        must acquire a data license to use the dataset.
-      </p>
-      <ButtonGroup>
-        <Button href="/api/" variant="secondary">Use the API</Button>
-        <Button href="/licensing/" variant="light">License in bulk</Button>
-      </ButtonGroup>
-    </Alert>
+    <div className={styles.licenseBox}>
+      <Alert variant="light">
+        <p>
+          OpenSanctions is <strong>free for non-commercial users.</strong> Businesses
+          must acquire a data license to use the dataset.
+        </p>
+        <ButtonGroup>
+          <Button href="/api/" variant="secondary">Use the API</Button>
+          <Button href="/licensing/" variant="light">License in bulk</Button>
+        </ButtonGroup>
+      </Alert>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.pricingPanel {
+.offer {
     :global {
         .card-title {
             text-align: center;
@@ -11,7 +11,7 @@
 
         .badge {
             margin-top: $spacer;
-            margin-bottom: $spacer;
+            // margin-bottom: $spacer;
 
             .num {
                 font-size: 1.4em;
@@ -20,30 +20,8 @@
 
         .card-footer {
             text-align: center;
-            border: $blue-400;
-            padding-top: $spacer * 1.5;
-            padding-bottom: $spacer * 1.5;
-
-            .bsIcon {
-                margin-right: 0.3em;
-            }
         }
     }
 
-}
 
-
-.firstColumn {
-    background-color: $blue-400;
-    border: $blue-500;
-}
-
-.secondColumn {
-    background-color: $blue-600;
-    border: $blue-700;
-}
-
-.thirdColumn {
-    background-color: $blue-800;
-    border: $blue-900;
 }

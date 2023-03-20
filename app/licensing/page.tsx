@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { CreditCard2BackFill, EnvelopeFill, LightbulbFill, Magic } from 'react-bootstrap-icons';
+import classNames from 'classnames';
+import { EnvelopeFill, LightbulbFill, Magic } from 'react-bootstrap-icons';
 
 import Content from '../../components/Content'
 import { Button, Card, CardBody, CardTitle, CardText, CardFooter, Badge, CardGroup, ButtonGroup } from '../../components/wrapped';
@@ -20,8 +21,8 @@ export default function Page() {
       <Content.Menu title={TITLE} path="/licensing" Menu={AboutMenu}>
         <Summary summary={SUMMARY} />
         <div className="text-body">
-          <CardGroup className={styles.pricingPanel}>
-            <Card className={styles.firstColumn} text="white">
+          <CardGroup className="themed-card-group">
+            <Card className={classNames(styles.offer, "themed-card-light")}>
               <CardBody>
                 <CardTitle>
                   Internal use bulk data<br />
@@ -55,7 +56,7 @@ export default function Page() {
                 </ButtonGroup>
               </CardFooter>
             </Card>
-            <Card className={styles.secondColumn} text="white">
+            <Card className={classNames(styles.offer, "themed-card-medium")}>
               <CardBody>
                 <CardTitle>
                   OEM bulk data<br />
@@ -87,7 +88,7 @@ export default function Page() {
                 </ButtonGroup>
               </CardFooter>
             </Card>
-            <Card className={styles.thirdColumn} text="white">
+            <Card className={classNames(styles.offer, "themed-card-dark")}>
               <CardBody>
                 <CardTitle>
                   OpenSanctions API<br />
@@ -133,6 +134,6 @@ export default function Page() {
           </p>
         </div>
       </Content.Menu>
-    </LayoutFrame>
+    </LayoutFrame >
   )
 }

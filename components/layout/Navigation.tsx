@@ -1,8 +1,22 @@
 import React from 'react';
+import classNames from 'classnames';
 import Link from 'next/link';
-import { NavbarBrand, NavbarToggle, NavbarCollapse, Navbar, Nav, NavLink, Container } from '../wrapped';
+import { NavbarBrand, NavbarToggle, NavbarCollapse, Navbar, Nav, Container } from '../wrapped';
 
 import styles from '../../styles/Navigation.module.scss';
+
+type NavLinkProps = {
+  active: boolean
+  href: string
+  children?: React.ReactNode
+}
+
+
+function NavLink({ active, href, children }: NavLinkProps) {
+  const clazz = classNames(styles.navItem, { 'active': active });
+  return <Link className={clazz} href={href}>{children}</Link>
+}
+
 
 type NavbarSectionProps = {
   activeSection?: string
@@ -10,7 +24,7 @@ type NavbarSectionProps = {
 
 export default function Navigation({ activeSection }: NavbarSectionProps) {
   return (
-    <Navbar bg="light" expand="lg" className={styles.navBar}>
+    <Navbar expand="lg">
       <Container>
         <Link href="/" passHref>
           <NavbarBrand>
@@ -26,21 +40,11 @@ export default function Navigation({ activeSection }: NavbarSectionProps) {
         <NavbarToggle />
         <NavbarCollapse className="justify-content-end">
           <Nav className="justify-content-end">
-            <Link href="/research/" passHref legacyBehavior>
-              <NavLink className={styles.navItem} active={activeSection === 'research'}>Research</NavLink>
-            </Link>
-            <Link href="/datasets/" passHref legacyBehavior>
-              <NavLink className={styles.navItem} active={activeSection === 'datasets'}>Datasets</NavLink>
-            </Link>
-            <Link href="/showcase/" passHref legacyBehavior>
-              <NavLink className={styles.navItem} active={activeSection === 'showcase'}>Showcase</NavLink>
-            </Link>
-            <Link href="/docs/" passHref legacyBehavior>
-              <NavLink className={styles.navItem} active={activeSection === 'docs'}>Documentation</NavLink>
-            </Link>
-            <Link href="/docs/about/" passHref legacyBehavior>
-              <NavLink className={styles.navItem} active={activeSection === 'about'}>About</NavLink>
-            </Link>
+            <NavLink href="/research/" active={activeSection === 'research'}>Research</NavLink>
+            <NavLink href="/datasets/" active={activeSection === 'datasets'}>Datasets</NavLink>
+            <NavLink href="/showcase/" active={activeSection === 'showcase'}>Showcase</NavLink>
+            <NavLink href="/docs/" active={activeSection === 'docs'}>Documentation</NavLink>
+            <NavLink href="/docs/about/" active={activeSection === 'about'}>About</NavLink>
           </Nav>
         </NavbarCollapse>
       </Container>
