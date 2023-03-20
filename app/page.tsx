@@ -55,12 +55,12 @@ export default async function Page() {
               </div>
               {all && (
                 <p className={styles.stats}>
-                  <NumericBadge value={all.target_count} className={styles.statsBadge} /> targets
+                  <NumericBadge value={all.target_count} /> targets
                   {SPACER}
-                  <NumericBadge value={sources.length} className={styles.statsBadge} /> data sources
+                  <NumericBadge value={sources.length} /> data sources
                   {SPACER}
                   updated{' '}
-                  <Badge className={styles.statsBadge}>
+                  <Badge>
                     <FormattedDate date={all.last_change} />
                   </Badge>
                   {SPACER}

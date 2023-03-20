@@ -47,9 +47,9 @@ function DatasetCard({ dataset }: DatasetProps) {
   return (
     <Card key={dataset.name} className={styles.card}>
       <CardBody>
-        <CardTitle className={styles.cardTitle}>
+        <h5 className={styles.cardTitle}>
           <DatasetLink dataset={dataset} />
-        </CardTitle>
+        </h5>
         <CardSubtitle className="mb-2 text-muted">
           {isCollection(dataset) && (
             <><Numeric value={dataset.sources.length} /> data sources</>

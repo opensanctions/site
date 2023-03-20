@@ -16,8 +16,8 @@ export default async function Page() {
   return (
     <LayoutFrame activeSection={content.section}>
       <Content.Context content={content}>
-        <CardGroup className={styles.apiOptionsPanel}>
-          <Card className={styles.firstColumn} text="white">
+        <CardGroup className="themed-card-group">
+          <Card className="themed-card-dark">
             <CardBody>
               <CardTitle>OpenSanctions API service</CardTitle>
               <CardText>
@@ -58,7 +58,7 @@ export default async function Page() {
               </Button>
             </CardFooter>
           </Card>
-          <Card className={styles.secondColumn} text="white">
+          <Card className="themed-card-medium">
             <CardBody>
               <CardTitle>On-premises solution</CardTitle>
               <CardText>

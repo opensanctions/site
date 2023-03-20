@@ -17,6 +17,8 @@
 
 .cardTitle {
     @include heading-font;
+    margin-top: 0;
+    font-size: 1.2em;
 }
 
 .publisherDescription {

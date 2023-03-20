@@ -47,7 +47,7 @@
 }
 
 .explainer {
-    margin-top: 2em;
+    margin-top: 2em !important;
 }
 
 .stats {
@@ -57,13 +57,13 @@
         color: white;
         text-decoration: underline;
     }
-}
 
-.statsBadge {
-    // color: $gray-700;
-    color: white;
-    // background-color: white !important;
-    background-color: shift-color($primary, $link-shade-percentage) !important;
+    :global {
+        .badge {
+            color: white;
+            background-color: shift-color($primary, $link-shade-percentage) !important;
+        }
+    }
 }
 
 .commercialBanner {

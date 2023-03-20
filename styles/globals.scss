@@ -122,6 +122,46 @@ th.narrow {
     }
 }
 
+.themed-card-group {
+    margin-bottom: 2 * $spacer;
+
+    .card {
+        color: white;
+    }
+
+    .themed-card-dark.card {
+        background-color: $blue-800;
+        border: $blue-900;
+    }
+
+    .themed-card-medium.card {
+        background-color: $blue-600;
+        border: $blue-700;
+    }
+
+    .themed-card-light.card {
+        background-color: $blue-400;
+        border: $blue-500;
+    }
+
+    .card-title {
+        font-weight: 700;
+        font-size: 1.2em;
+        margin-top: $spacer;
+        margin-bottom: $spacer * 2;
+    }
+
+    .card-footer {
+        border: $blue-400;
+        padding-top: $spacer * 1.5;
+        padding-bottom: $spacer * 1.5;
+
+        .bsIcon {
+            margin-right: 0.3em;
+        }
+    }
+}
+
 
 .bsIcon {
     // color: red !important;
