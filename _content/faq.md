@@ -65,7 +65,7 @@ Politically exposed persons (PEP) is a term from the banking industry to describ
 who have been entrusted with a prominent public function. This might include a members of
 cabinets, parliaments, senior public servants or people that run state-owned companies.
 
-The concept [is important](https://www.fatf-gafi.org/media/fatf/documents/recommendations/guidance-pep-rec12-22.pdf) because PEPs and members of their family should be the subject of enhanced public scrutiny. This is also mandated by financial crime laws in many countries.
+The concept [is important](https://www.fatf-gafi.org/content/dam/fatf/documents/recommendations/Guidance-PEP-Rec12-22.pdf) because PEPs and members of their family should be the subject of enhanced public scrutiny. This is also mandated by financial crime laws in many countries.
 
 OpenSanctions includes a [PEPs collection](/datasets/peps/) that combines lists of
 politicians from multiple origins.
