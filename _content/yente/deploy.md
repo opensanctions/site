@@ -7,6 +7,13 @@ summary:
 
 **yente:** [Intro](/docs/yente) · **Deployment** · [Settings](/docs/yente/settings/) · [Custom datasets](/docs/yente/datasets/) · [FAQ](/docs/yente/faq/)
 
+## Requirements
+
+Running `yente` requires a server that can run host the main screening application (a lightweight Python application) and the ElasticSearch backend used to store and query entity information. In total, we anticipate 500 MB memory per Python service, and 4-6GB of memory for the ElasticSearch index. Running ElasticSearch on SSD-backed hard drives will produce a significant performance gain.
+
+While it is possible to operate `yente` outside of Docker, we strongly encourage the use of containers as a simple means of dependency management and deployment. 
+
+## Using docker-compose
 
 In order to deploy `yente` on your own servers, we recommend you use `docker-compose` (or another Docker orchestration tool) to pull and run the pre-built containers. For example, you can download the `docker-compose.yml` in the repository and use it to boot an instance of the system:
 
