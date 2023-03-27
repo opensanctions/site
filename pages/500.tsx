@@ -14,8 +14,8 @@ export default function ServerError() {
         </h1>
         <p className={styles.errorSummary}>
           There was an error while running processing your request.
-          Please try again in a few moments, or <Link href="/contact/">contact us</Link>
-          to report the issue.§
+          Please try again in a few moments,
+          or <Link href="/contact/">contact us</Link> to report the issue.
         </p>
       </Container>
     </Layout.Base>
