@@ -51,7 +51,7 @@ datasets:
   # scope defined upstream in OpenSanctions:
   - name: offshoreleaks
     title: ICIJ OffshoreLeaks
-    url: https://data.opensanctions.org/graph/icij_offshoreleaks/entities.ftm.json
+    entities_url: https://data.opensanctions.org/graph/icij_offshoreleaks/entities.ftm.json
     # children:
     #   - all
     #   - offshore
