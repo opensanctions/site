@@ -11,12 +11,11 @@ summary: |
 
 OpenSanctions.org is operated by (Impressum nach § 5 TMG, ebenso verantwortlich für den Inhalt nach § 55 Abs. 2 RStV):<br/>
 
-<pre>Friedrich Lindenberg
-c/o OnionSpace
-Aufgang 4
-Gottschedstraße 4
-13357 Berlin
-USt-IdNr/VAT DE344342340</pre>
+<pre>OpenSanctions Datenbanken GmbH
+Schonensche Str. 43, 13189 Berlin
+Registered: AG Berlin (Charlottenburg), HRB 251172
+Managing Director: Friedrich Lindenberg
+USt.-IDNr: (neu)</pre>
 
 See the [contact page](/contact/) for information on how to reach us.
 

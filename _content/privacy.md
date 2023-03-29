@@ -30,7 +30,7 @@ Article 4 No. 2 GDPR understands a "processing" to be any operation in connectio
 
 ### 3. RESPONSIBLE
 
-Responsible for data processing is: OpenSanctions Datenbanken GmbH (see [Impressum](/impressum/)).
+Responsible for data processing is: [OpenSanctions Datenbanken GmbH](/impressum/)).
 
 ### 4. DATA PROTECTION OFFICER
 
