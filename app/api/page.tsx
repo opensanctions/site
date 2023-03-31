@@ -100,7 +100,7 @@ export default async function Page() {
           <Col md={4}>
             <h5>Commercial information</h5>
             <ul>
-              <li><a href="/docs/commercial-faq/">Commercial use FAQ</a></li>
+              <li><a href="/docs/commercial/faq/">Commercial use FAQ</a></li>
               <li><a href="/docs/terms/">Terms of service</a></li>
               <li><a href="/docs/privacy/">Privacy policy</a></li>
             </ul>

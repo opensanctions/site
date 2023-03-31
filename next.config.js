@@ -27,6 +27,11 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/docs/commercial-faq/',
+        destination: '/docs/commercial/faq/',
+        permanent: false,
+      },
+      {
         source: '/docs/api/',
         destination: '/api/',
         permanent: false,

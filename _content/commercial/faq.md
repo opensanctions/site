@@ -91,7 +91,9 @@ OpenSanctions is based in Germany. We may be required to apply 19% VAT on invoic
 
 ### What are the terms for using the service and bulk data?
 
-We have a [standard service agreement](https://docs.google.com/document/d/1uLEXJOH-27WENEiDAUlcfbAClkT3Ul08Y6kR1h6V4WE/edit) that covers the use of the OpenSanctions service.
+We have a [standard service agreement](https://docs.google.com/document/d/1uLEXJOH-27WENEiDAUlcfbAClkT3Ul08Y6kR1h6V4WE/edit) that covers the use of the OpenSanctions service. 
+
+Please also have a look at our [policy on customised service agreements](/docs/commercial/redlines/) (red-lining).
 
 ### <a id="redlines"></a> Can we change the proposed service agreement?
 
@@ -101,7 +103,7 @@ To make this possible, we rely on the cooperation of our prospective business pa
 
 With that in mind, here are our asks:
 
-* Our [service agreement](https://docs.google.com/document/d/1uLEXJOH-27WENEiDAUlcfbAClkT3Ul08Y6kR1h6V4WE/edit) has been reviewed and approved by Fortune 500 companies. If you can sign it as-is, please do so. Please don’t make it a point of pride to alter the proposed terms.
+* Our [service agreement](https://docs.google.com/document/d/1uLEXJOH-27WENEiDAUlcfbAClkT3Ul08Y6kR1h6V4WE/edit) has been reviewed and accepted by Fortune 500 companies. If you can sign it as-is, please do so. Please don’t make it a point of pride to alter the proposed terms.
 * If you need to change the agreement, we’ll consider our relationship an OEM use of the data. Internal-use terms are fully standardised.
 * All legal negotiations have to be conducted in writing so that we can consult outside counsel.
 * Don’t change the jurisdiction. We’re based in Germany, a jurisdiction that puts significant regulatory and liability-related responsibilities on us. You’re in great hands.

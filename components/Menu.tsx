@@ -23,7 +23,7 @@ export function AboutMenu({ path }: MenuProps) {
           <RoutedNavLink href="/licensing/" current={path}>Licensing the data</RoutedNavLink>
         </NavItem>
         <NavItem>
-          <RoutedNavLink href="/docs/commercial-faq/" current={path}>Commercial use FAQ</RoutedNavLink>
+          <RoutedNavLink href="/docs/commercial/faq/" current={path}>Commercial use FAQ</RoutedNavLink>
         </NavItem>
         <NavItem>
           <RoutedNavLink href="/docs/criteria/" current={path}>Data inclusion criteria</RoutedNavLink>

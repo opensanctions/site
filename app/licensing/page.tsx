@@ -45,7 +45,7 @@ export default function Page() {
               </CardBody>
               <CardFooter>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/" variant="light">
+                  <Button href="/docs/commercial/faq/" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
@@ -77,7 +77,7 @@ export default function Page() {
               </CardBody>
               <CardFooter>
                 <ButtonGroup>
-                  <Button href="/docs/commercial-faq/" variant="light">
+                  <Button href="/docs/commercial/faq/" variant="light">
                     <LightbulbFill className="bsIcon" />
                     Learn more
                   </Button>
@@ -122,7 +122,7 @@ export default function Page() {
           </CardGroup>
           <p>
             <strong>Not ideal for you?</strong> OpenSanctions
-            provides <strong><Link href="/docs/commercial-faq/#exemptions">licensing exemptions
+            provides <strong><Link href="/docs/commercial/faq/#exemptions">licensing exemptions
               for journalists and activists</Link></strong>. We are also happy to provide
             {' '}<strong>discounts for startups</strong>, and those building new products. Beyond that,
             we're committed to make this data available to everyone. If the licensing is
@@ -130,7 +130,7 @@ export default function Page() {
             we'll fix it.
           </p>
           <p>
-            <strong>Got more questions?</strong> Check out the <Link href="/docs/commercial-faq/">Commercial use FAQ</Link>
+            <strong>Got more questions?</strong> Check out the <Link href="/docs/commercial/faq/">Commercial use FAQ</Link>
           </p>
         </div>
       </Content.Menu>
