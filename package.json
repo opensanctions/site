@@ -41,6 +41,6 @@
     "@types/node": "^18.15.3",
     "@types/react": "^18.0.28",
     "@types/react-text-truncate": "^0.14.1",
-    "typescript": "5.0.2"
+    "typescript": "5.0.3"
   }
 }
