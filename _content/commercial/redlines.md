@@ -1,5 +1,5 @@
 ---
-title: Commercial use FAQ
+title: Customising the service agreement
 section: about
 menu_path: /docs/commercial/faq/
 summary: |
