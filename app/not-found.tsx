@@ -1,13 +1,11 @@
-import Link from 'next/link'
-import Container from 'react-bootstrap/Container';
-
-import Layout from '../components/Layout'
-
+import Link from 'next/link';
+import LayoutFrame from '../components/layout/LayoutFrame'
+import { Container } from '../components/wrapped';
 import styles from '../styles/Error.module.scss'
 
-export default function NotFoundError() {
+export default function NotFound() {
   return (
-    <Layout.Base title="Page not found">
+    <LayoutFrame>
       <Container>
         <h1 className={styles.errorTitle}>
           Page not found
@@ -18,6 +16,6 @@ export default function NotFoundError() {
           material published on this site.
         </p>
       </Container>
-    </Layout.Base>
+    </LayoutFrame>
   )
 }
