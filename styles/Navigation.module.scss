@@ -2,9 +2,22 @@
 @import "~bootstrap/scss/_navbar";
 @import "~bootstrap/scss/mixins/_breakpoints";
 
+.navBar {
+    @media print {
+        // margin-top: 3em;
+        margin-bottom: 1em;
+    }
+}
+
 .navSearchBox {
     @include media-breakpoint-up(md) {
         width: 20em !important;
+    }
+}
+
+.navToggle {
+    @media print {
+        display: none;
     }
 }
 

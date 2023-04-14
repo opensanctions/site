@@ -37,22 +37,24 @@ export function SearchFacet({ field, facet, searchParams }: SearchFacetProps) {
   }
 
   return (
-    <Card className={styles.facet}>
-      <CardHeader className={styles.facetHeader}>{facet.label}</CardHeader>
-      <ListGroup variant="flush">
-        {facet.values.map((value) => (
-          <ListGroupItem key={value.name}
-            active={filters.indexOf(value.name) !== -1}
-            as={Link}
-            href={filteredUrl(value.name)}
-            className={styles.facetListItem}
-          >
-            <NumericBadge value={value.count} bg="light" className={styles.facetCount} />
-            <span className={styles.facetLabel}>{value.label}</span>
-          </ListGroupItem>
-        ))}
-      </ListGroup>
-    </Card>
+    <div className={styles.facet}>
+      <Card>
+        <CardHeader>{facet.label}</CardHeader>
+        <ListGroup variant="flush">
+          {facet.values.map((value) => (
+            <ListGroupItem key={value.name}
+              active={filters.indexOf(value.name) !== -1}
+              as={Link}
+              href={filteredUrl(value.name)}
+              className={styles.facetListItem}
+            >
+              <NumericBadge value={value.count} bg="light" className={styles.facetCount} />
+              <span className={styles.facetLabel}>{value.label}</span>
+            </ListGroupItem>
+          ))}
+        </ListGroup>
+      </Card>
+    </div>
   );
 }
 

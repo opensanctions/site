@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ensureArray } from '../lib/util';
 import { Container, FormControl, InputGroup, Button } from './wrapped';
 import { ServerSearchParams } from './utils/PageProps';
@@ -9,9 +10,10 @@ type ResearchProps = {
   title?: string
   query?: ServerSearchParams
   isLoading?: boolean
+  hidePrint?: boolean
 }
 
-function ResearchContext({ title, query, children, isLoading }: React.PropsWithChildren<ResearchProps>) {
+function ResearchContext({ title, query, children, isLoading, hidePrint }: React.PropsWithChildren<ResearchProps>) {
   const activeTitle = !!title ? title : 'Search OpenSanctions';
   const activeQuery = query ? query : {};
   const queryText = activeQuery['q'] || '';
@@ -20,7 +22,7 @@ function ResearchContext({ title, query, children, isLoading }: React.PropsWithC
   delete otherQuery['offset'];
   return (
     <>
-      <div className={styles.researchBar}>
+      <div className={classNames(styles.researchBar, { "d-print-none": !!hidePrint })}>
         <Container>
           <h2>{activeTitle}</h2>
           <form className="d-flex" action="/search">
@@ -34,8 +36,8 @@ function ResearchContext({ title, query, children, isLoading }: React.PropsWithC
                 disabled={isLoading}
                 aria-label="Search"
               />
-              <Button variant="light" href="/advancedsearch" disabled={isLoading}>Advanced</Button>
-              <Button variant="secondary" type="submit" disabled={isLoading}>Search</Button>
+              <Button variant="light" className="d-print-none" href="/advancedsearch" disabled={isLoading}>Advanced</Button>
+              <Button variant="secondary" className="d-print-none" type="submit" disabled={isLoading}>Search</Button>
               {Object.entries(otherQuery).map(([field, values]) => ensureArray(values).map(value =>
                 <input key={field + ':' + value} type="hidden" name={field + ''} value={value} />
               ))}

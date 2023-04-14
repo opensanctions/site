@@ -1,11 +1,10 @@
-
 import Research from './Research';
+import LayoutFrame from './layout/LayoutFrame';
 import { Alert, ButtonGroup, Button, Container } from './wrapped';
 import { Entity } from '../lib/ftm';
 import { ENTITY_WARNINGS } from '../lib/constants';
 
 import styles from '../styles/Policy.module.scss';
-import LayoutFrame from './layout/LayoutFrame';
 
 export function LicenseInfo() {
   return (
@@ -15,7 +14,7 @@ export function LicenseInfo() {
           OpenSanctions is <strong>free for non-commercial users.</strong> Businesses
           must acquire a data license to use the dataset.
         </p>
-        <ButtonGroup>
+        <ButtonGroup className="d-print-none">
           <Button href="/api/" variant="secondary">Use the API</Button>
           <Button href="/licensing/" variant="light">License in bulk</Button>
         </ButtonGroup>

@@ -86,7 +86,7 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
             </tr>
           )}
           {(dataset.resources && dataset.resources.length > 0) && (
-            <tr>
+            <tr className="d-print-none">
               <th className={styles.datasetCardTableHeader}>
                 Downloads:
               </th>
@@ -148,7 +148,7 @@ export default async function Page() {
         </Row>
         <Row>
           <Col md={6}>
-            <h4>What is this?</h4>
+            <h3>What is this?</h3>
             <p>
               The datasets provide information regarding the <strong>control and ownership of
                 companies</strong> in various jurisdictions.
@@ -156,14 +156,14 @@ export default async function Page() {
               cleaned and transformed structure, using
               the <Link href="/docs/entities/">FollowTheMoney entity format</Link>.
             </p>
-            <h4>What is it useful for?</h4>
+            <h3>What is it useful for?</h3>
             <p>
               <Link href="https://www.openownership.org/en/publication-categories/briefings/">Beneficial ownership data</Link> is
               used by businesses that want to understand if they're dealing with risky
               counterparties, and investigators who want to understand who is behind a
               particular company.
             </p>
-            <h4>How can I use the data?</h4>
+            <h3>How can I use the data?</h3>
             <p>
               OpenSanctions KYB data is a building block, not an end-user product. Here's some ways you can use it:
             </p>
@@ -191,7 +191,7 @@ export default async function Page() {
               <Link href="/contact/">Contact us</Link> about a <Link href="/licensing/">data license</Link> if
               you plan to rely on the data for commercial use.
             </p>
-            <h4>How is this different from the default dataset?</h4>
+            <h3>How is this different from the default dataset?</h3>
             <p>
               Our <Link href="/datasets/default/">OpenSanctions default dataset</Link> collects entities that are <Link href="/docs/criteria">directly or indirectly associated with
                 some risk indication</Link>. This doesn't apply to the vast majority of companies.
@@ -207,7 +207,7 @@ export default async function Page() {
               source registry publishes multiple records that describe a single person or company, they will be
               reproduced in this data as-is.
             </p>
-            <h4>How frequently are datasets updated?</h4>
+            <h3>How frequently are datasets updated?</h3>
             <p>
               We update most sources once a week. This doesn't apply to data sources which - by their nature - do
               not change on a regular basis (e.g. the ICIJ OffshoreLeaks database).
@@ -217,7 +217,7 @@ export default async function Page() {
               sanctioned companies to hide their information in the registry, we're using a static version
               dated 1. Jan 2022 as the last safe point of reference for Russia.
             </p>
-            <h4>I want to use this!</h4>
+            <h3>I want to use this!</h3>
             <p>
               Brilliant, come talk to us! The OpenSanctions dataset is free to use for
               non-commercial purposes, including users from academia, activists and journalists. If you're
@@ -226,6 +226,7 @@ export default async function Page() {
             </p>
           </Col>
           <Col md={6}>
+            <h3>Available datasets</h3>
             {catalog.datasets.map((dataset) =>
               <div key={dataset.name}>
                 <GraphDatasetCard dataset={dataset} />

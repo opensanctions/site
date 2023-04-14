@@ -64,7 +64,7 @@ export default async function Page({ params }: DatasetPageProps) {
                 Data overview
               </h3>
               {!isExternal(dataset) && (
-                <Form className="d-flex" action="/search/">
+                <Form className="d-flex d-print-none" action="/search/">
                   <input type="hidden" name="scope" value={dataset.name} />
                   <InputGroup className={styles.searchBox} size="lg">
                     <FormControl
@@ -289,7 +289,7 @@ export default async function Page({ params }: DatasetPageProps) {
           </Col>
           <Col sm={3}>
             <Sticky>
-              <Nav className="flex-column">
+              <Nav className="flex-column d-print-none">
                 {!isExternal(dataset) && (
                   <>
                     <NavLink href="#overview">Overview</NavLink>

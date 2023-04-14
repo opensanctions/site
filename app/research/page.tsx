@@ -22,7 +22,7 @@ export default async function Page({ searchParams }: PageProps) {
   const response = await fetchObject<ISearchAPIResponse>(`/search/${SEARCH_DATASET}`, params);
   return (
     <LayoutFrame activeSection="research">
-      <Research.Context title={TITLE}>
+      <Research.Context title={TITLE} hidePrint>
         <Container>
           <Row className={styles.researchIntro}>
             <Col md={2}>

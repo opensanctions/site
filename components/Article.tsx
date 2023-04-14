@@ -26,7 +26,7 @@ function ArticleSidebar({ article }: ArticleProps) {
         This article is part of OpenSanctions, the open database of sanctions
         targets and persons of interest.
       </p>
-      <Nav className="flex-column justify-content-start" variant="pills">
+      <Nav className="flex-column justify-content-start d-print-none" variant="pills">
         <NavItem>
           <RoutedNavLink href="/docs/about/" current={article.path}>About OpenSanctions</RoutedNavLink>
         </NavItem>

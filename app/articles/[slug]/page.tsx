@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { Row, Col, Container, Card, CardBody } from '../../../components/wrapped'
 import { Markdown, Summary } from '../../../components/util'
 import { getArticleBySlug, getArticles } from '../../../lib/content';
-import Content from '../../../components/Content';
 import Article from '../../../components/Article';
 import { ArticlePageProps } from './common';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE } from '../../../lib/constants';
+
+import styles from '../../../styles/Article.module.scss'
 
 export const revalidate = REVALIDATE_BASE;
 
@@ -20,8 +21,10 @@ export default async function Page({ params }: ArticlePageProps) {
         <Row>
           <Col md={8}>
             <Summary summary={article.summary} />
-            <Markdown markdown={article.content} />
-            <Card>
+            <div className={styles.articleBody}>
+              <Markdown markdown={article.content} />
+            </div>
+            <Card className="d-print-none">
               <CardBody>
                 <strong>Like what we're writing about?</strong> Keep the conversation going! You
                 can <Link href="https://twitter.com/open_sanctions">follow us on Twitter</Link> or
@@ -31,7 +34,7 @@ export default async function Page({ params }: ArticlePageProps) {
               </CardBody>
             </Card>
           </Col>
-          <Col md={4} className="d-print-none">
+          <Col md={4}>
             <Article.Sidebar article={article} />
           </Col>
         </Row>

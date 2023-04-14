@@ -2,7 +2,10 @@
 
 .sideText {
     color: $text-muted;
-    padding-left: 1rem;
+
+    @media screen {
+        padding-left: 1rem;
+    }
 }
 
 
@@ -13,6 +16,7 @@
 
     li {
         margin-bottom: 1em;
+        break-inside: avoid;
     }
 
     p {
@@ -42,4 +46,8 @@
 .articleListSummary {
     // color: $text-muted;
     line-height: 1.5;
+}
+
+.articleBody {
+    margin-bottom: 1em;
 }

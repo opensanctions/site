@@ -44,8 +44,8 @@ export default async function Page() {
             </Row>
           </Col>
         </Row>
-        <hr />
-        <h1>
+        <hr className="d-print-none" />
+        <h1 className="new-page">
           <a id="sources" />
           Data sources
         </h1>
@@ -67,8 +67,8 @@ export default async function Page() {
             ))}
           </Col>
         </Row>
-        <hr />
-        <h1>
+        <hr className="d-print-none" />
+        <h1 className="new-page">
           <a id="externals" />
           External databases
         </h1>

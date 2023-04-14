@@ -24,7 +24,7 @@ type NavbarSectionProps = {
 
 export default function Navigation({ activeSection }: NavbarSectionProps) {
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className={styles.navBar}>
       <Container>
         <Link href="/" passHref>
           <NavbarBrand>
@@ -37,7 +37,7 @@ export default function Navigation({ activeSection }: NavbarSectionProps) {
             />
           </NavbarBrand>
         </Link>
-        <NavbarToggle />
+        <NavbarToggle className={styles.navToggle} />
         <NavbarCollapse className="justify-content-end">
           <Nav className="justify-content-end">
             <NavLink href="/research/" active={activeSection === 'research'}>Research</NavLink>

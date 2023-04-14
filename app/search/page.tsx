@@ -13,6 +13,7 @@ import { PageProps } from '../../components/utils/PageProps';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
 import styles from '../../styles/Search.module.scss';
+import { LicenseInfo } from '../../components/Policy';
 
 export const revalidate = 0;
 
@@ -103,6 +104,7 @@ export default async function Search({ searchParams }: PageProps) {
                   <SearchFacet field="countries" facet={response.facets.countries} searchParams={searchParams} />
                 </>
               )}
+              <LicenseInfo />
             </Col>
           </Row>
         </Container>

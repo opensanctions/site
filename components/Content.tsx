@@ -59,7 +59,7 @@ function ContentContext({ content, children }: ContentFrameProps) {
       <Summary summary={content.summary} />
       <div className={styles.page}>
         {children}
-        <Card>
+        <Card className="d-print-none">
           <CardBody>
             <strong>Got more questions?</strong> Join the <Link href="https://bit.ly/osa-slack">Slack
               chat</Link> to ask questions and get support. You can

@@ -37,7 +37,7 @@ export default async function Page() {
                 {SUBCLAIM}
               </p>
               <div className={styles.search}>
-                <Form action="/search/">
+                <Form action="/search/" className="d-print-none">
                   <InputGroup size="lg" className="mb-6">
                     <FormControl
                       type="search"
@@ -103,7 +103,7 @@ export default async function Page() {
                 dataset, or they can subscribe to our pay-as-you-go API service.
               </p>
             </Col>
-            <Col md={4}>
+            <Col md={4} className="d-print-none">
               <ButtonGroup>
                 <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
                 <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>

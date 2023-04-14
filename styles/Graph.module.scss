@@ -3,10 +3,11 @@
 
 .datasetCard {
     margin-bottom: 1em;
+    break-inside: avoid;
 }
 
 .datasetCardTable {
-    margin-bottom: -1px;
+    margin-bottom: -1px !important;
 }
 
 .datasetCardHeader {

@@ -39,7 +39,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
   const externals = datasets.filter(isExternal);
   return (
     <LayoutFrame activeSection="research">
-      <Research.Context>
+      <Research.Context hidePrint>
         <Container>
           <Row>
             <Col md={3}></Col>
@@ -111,7 +111,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
             </Col>
             <Col md={3} className="order-1">
               <Sticky>
-                <Nav className="flex-column">
+                <Nav className="flex-column d-print-none">
                   <NavLink href="#factsheet">Factsheet</NavLink>
                   {notes.length > 0 && <NavLink href="#notes">Descriptions</NavLink>}
                   {entityProperties.length > 0 && <NavLink href="#links">Relationships</NavLink>}

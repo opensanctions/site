@@ -12,7 +12,7 @@ export type MenuProps = {
 export function AboutMenu({ path }: MenuProps) {
   return (
     <>
-      <Nav className="flex-column justify-content-start" variant="pills">
+      <Nav className="flex-column justify-content-start d-print-none" variant="pills">
         <NavItem>
           <RoutedNavLink href="/docs/about/" current={path}>About OpenSanctions</RoutedNavLink>
         </NavItem>
@@ -49,7 +49,7 @@ export function AboutMenu({ path }: MenuProps) {
 export function DocumentationMenu({ path }: MenuProps) {
   return (
     <>
-      <Nav className="flex-column justify-content-start" variant="pills">
+      <Nav className="flex-column justify-content-start d-print-none" variant="pills">
         <NavItem>
           <RoutedNavLink href="/docs/bulk/" current={path}>Using the bulk data</RoutedNavLink>
           <NavItem>

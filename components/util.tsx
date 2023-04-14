@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import queryString from 'query-string';
 import { filesize } from 'filesize';
@@ -191,7 +192,7 @@ type HelpLinkProps = {
 
 export function HelpLink({ href, size = 10 }: HelpLinkProps) {
   return (
-    <a href={href} className={styles.helpLink}>
+    <a href={href} className={classNames("d-print-none", styles.helpLink)}>
       <sup><QuestionCircleFill size={size} /></sup>
     </a>
   )
@@ -203,7 +204,7 @@ export function JSONLink({ href }: HelpLinkProps) {
     <Button
       variant="outline-dark"
       size="sm"
-      className={styles.jsonLink}
+      className={classNames("d-print-none", styles.jsonLink)}
       href={href}
       type={"application/json" as unknown as undefined}  // fuck that's hacky 
     >
