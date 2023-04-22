@@ -7,16 +7,23 @@ import { FormattedDate } from '../../components/util';
 import { AspectRatioFill, Link45deg } from 'react-bootstrap-icons';
 import { getStatements } from '../../lib/data';
 import { PageProps } from '../../components/utils/PageProps';
-import { TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { Container, Row, Col, Table, Alert, AlertLink } from '../../components/wrapped';
 
 import styles from '../../styles/Statement.module.scss'
+import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = 0;
+export const TITLE = "Raw data explorer";
 
 type ExpandProps = {
   href: string
+}
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: TITLE
+  })
 }
 
 function Expand({ href }: ExpandProps) {

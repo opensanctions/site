@@ -11,8 +11,18 @@ import MatcherResult from '../../components/matcher/MatcherResult';
 import { SEARCH_DATASET } from '../../lib/constants';
 
 import styles from '../../styles/Research.module.scss';
+import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = 0;
+export const SUMMARY = "Screen people and companies using our multi-property matching tool.";
+
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: "Advanced screening search",
+    description: SUMMARY
+  })
+}
 
 export default async function AdvancedSearch({ searchParams }: PageProps) {
   const index = await fetchIndex();

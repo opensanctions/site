@@ -3,15 +3,24 @@ import Link from 'next/link';
 
 import { Container, Row, Col, Card, CardHeader, Table } from '../../components/wrapped'
 import { FormattedDate, JSONLink, SpacedList, Summary } from '../../components/util';
-import { SUMMARY, TITLE } from './common';
-import { GRAPH_CATALOG_URL } from '../../lib/constants';
+import { GRAPH_CATALOG_URL, REVALIDATE_BASE } from '../../lib/constants';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getGraphCatalog } from '../../lib/data';
 import { INKDataset } from '../../lib/types';
 
 import styles from '../../styles/Graph.module.scss'
+import { getGenerateMetadata } from '../../lib/meta';
 
-export const revalidate = 3600;
+export const revalidate = REVALIDATE_BASE;
+export const TITLE = "Know-your-business datasets";
+export const SUMMARY = "OpenSanctions KYB is a group of datasets related to corporate ownership and control. They are published in a well-defined data format and can be used to build complex knowledge graphs and analytical applications.";
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: TITLE,
+    description: SUMMARY
+  })
+}
 
 type GraphDatasetCardProps = {
   dataset: INKDataset

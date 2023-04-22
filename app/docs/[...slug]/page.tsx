@@ -1,10 +1,20 @@
 import Content from '../../../components/Content'
 import { getContentBySlug, getContents } from '../../../lib/content'
-import { ContentPageProps } from './common'
 import LayoutFrame from '../../../components/layout/LayoutFrame'
 import { REVALIDATE_BASE } from '../../../lib/constants';
+import { getContentMetadata } from '../../../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
+
+interface ContentPageProps {
+  params: { slug: string[] }
+}
+
+export async function generateMetadata({ params }: ContentPageProps) {
+  const content = await getContentBySlug(params.slug.join('/'));
+  return getContentMetadata(content);
+}
+
 
 export default async function Page({ params }: ContentPageProps) {
   const content = await getContentBySlug(params.slug.join('/'))

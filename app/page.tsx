@@ -11,10 +11,20 @@ import Dataset from '../components/Dataset';
 import Article from '../components/Article';
 import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, InputGroup } from '../components/wrapped';
 import LayoutFrame from '../components/layout/LayoutFrame';
+import { getSchemaWebSite } from "../lib/schema";
 
 import styles from '../styles/Home.module.scss'
+import StructuredData from '../components/utils/StructuredData';
+import { getGenerateMetadata } from '../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: `OpenSanctions: ${CLAIM}`,
+    description: SUBCLAIM
+  })
+}
 
 export default async function Page() {
   const articles = await getArticles()
@@ -26,6 +36,7 @@ export default async function Page() {
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (
     <LayoutFrame>
+      <StructuredData data={getSchemaWebSite()} />
       <div className={styles.claimBanner}>
         <Container>
           <Row>

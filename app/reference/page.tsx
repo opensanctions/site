@@ -10,7 +10,13 @@ import { SchemaReference, TypeReference } from '../../components/Reference';
 import { INDEX_URL } from '../../lib/constants';
 import { DocumentationMenu } from '../../components/Menu';
 import LayoutFrame from '../../components/layout/LayoutFrame';
+import { getContentMetadata } from '../../lib/meta';
 
+
+export async function generateMetadata() {
+  const content = await getContentBySlug('reference');
+  return getContentMetadata(content);
+}
 
 
 export default async function Page() {

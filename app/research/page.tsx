@@ -8,11 +8,20 @@ import LayoutFrame from '../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE, SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
 import { Container, Row, Col } from '../../components/wrapped';
 import { PageProps } from '../../components/utils/PageProps';
-import { TITLE } from "./common";
 
 import styles from '../../styles/Research.module.scss'
+import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
+export const TITLE = "Research tool"
+export const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: TITLE,
+    description: SUMMARY
+  })
+}
 
 export default async function Page({ searchParams }: PageProps) {
   const params = {

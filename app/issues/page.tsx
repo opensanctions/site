@@ -5,10 +5,17 @@ import { Summary } from '../../components/util';
 import { ISSUES_URL } from '../../lib/constants';
 import { getIssues } from '../../lib/data';
 import { DocumentationMenu } from '../../components/Menu';
-import { TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
+import { getGenerateMetadata } from '../../lib/meta';
 
 
+export const TITLE = "Warnings and errors from all datasets";
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: TITLE
+  })
+}
 
 export default async function Page() {
   const issues = await getIssues();

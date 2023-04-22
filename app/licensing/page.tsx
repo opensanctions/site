@@ -8,12 +8,24 @@ import { Numeric, Summary } from '../../components/util';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { AboutMenu } from '../../components/Menu';
 import { REVALIDATE_BASE } from '../../lib/constants';
-import { SUMMARY, TITLE } from './common';
+import { getGenerateMetadata } from '../../lib/meta';
 
 import styles from '../../styles/Licensing.module.scss'
 
-
 export const revalidate = REVALIDATE_BASE;
+export const TITLE = 'Licensing OpenSanctions';
+export const SUMMARY = 'We provide a fully auditable, high-quality database for '
+  + 'open source intelligence. This includes carefully cleaned and de-duplicated '
+  + 'entities that are subject to manual review. The use of this data for any '
+  + 'business purposes requires a licensing agreement.';
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: TITLE,
+    description: SUMMARY
+  })
+}
+
 
 export default function Page() {
   return (

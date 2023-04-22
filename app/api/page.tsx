@@ -6,10 +6,19 @@ import { getContentBySlug } from '../../lib/content';
 import { CreditCard2BackFill, InfoSquareFill } from 'react-bootstrap-icons';
 import { API_URL, REVALIDATE_BASE } from '../../lib/constants';
 import LayoutFrame from '../../components/layout/LayoutFrame';
+import { getContentMetadata } from '../../lib/meta';
 
 import styles from '../../styles/API.module.scss';
 
+
 export const revalidate = REVALIDATE_BASE;
+
+
+export async function generateMetadata() {
+  const content = await getContentBySlug('api/index');
+  return getContentMetadata(content);
+}
+
 
 export default async function Page() {
   const content = await getContentBySlug('api/index');

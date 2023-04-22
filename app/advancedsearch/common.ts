@@ -1,1 +1,0 @@
-export const SUMMARY = "Screen people and companies using our multi-property matching tool.";
