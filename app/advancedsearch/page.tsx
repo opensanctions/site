@@ -14,7 +14,7 @@ import styles from '../../styles/Research.module.scss';
 import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = 0;
-export const SUMMARY = "Screen people and companies using our multi-property matching tool.";
+const SUMMARY = "Screen people and companies using our multi-property matching tool.";
 
 
 export async function generateMetadata() {

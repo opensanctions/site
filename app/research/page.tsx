@@ -7,14 +7,13 @@ import { SearchFacet } from '../../components/Search';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE, SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
 import { Container, Row, Col } from '../../components/wrapped';
-import { PageProps } from '../../components/utils/PageProps';
 
 import styles from '../../styles/Research.module.scss'
 import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
-export const TITLE = "Research tool"
-export const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
+const TITLE = "Research tool"
+const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
 
 export async function generateMetadata() {
   return getGenerateMetadata({
@@ -23,7 +22,7 @@ export async function generateMetadata() {
   })
 }
 
-export default async function Page({ searchParams }: PageProps) {
+export default async function Page() {
   const params = {
     'limit': 0,
     'schema': SEARCH_SCHEMA
@@ -47,19 +46,17 @@ export default async function Page({ searchParams }: PageProps) {
             <Col md={2}>
             </Col>
           </Row>
-          {searchParams !== undefined && (
-            <Row>
-              <Col md={4}>
-                <SearchFacet field="topics" facet={response.facets.topics} searchParams={searchParams} />
-              </Col>
-              <Col md={4}>
-                <SearchFacet field="datasets" facet={response.facets.datasets} searchParams={searchParams} />
-              </Col>
-              <Col md={4}>
-                <SearchFacet field="countries" facet={response.facets.countries} searchParams={searchParams} />
-              </Col>
-            </Row>
-          )}
+          <Row>
+            <Col md={4}>
+              <SearchFacet field="topics" facet={response.facets.topics} searchParams={{}} />
+            </Col>
+            <Col md={4}>
+              <SearchFacet field="datasets" facet={response.facets.datasets} searchParams={{}} />
+            </Col>
+            <Col md={4}>
+              <SearchFacet field="countries" facet={response.facets.countries} searchParams={{}} />
+            </Col>
+          </Row>
         </Container>
       </Research.Context >
     </LayoutFrame >

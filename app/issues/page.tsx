@@ -9,7 +9,7 @@ import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = 3600 * 3;
-export const TITLE = "Warnings and errors from all datasets";
+const TITLE = "Warnings and errors from all datasets";
 
 export async function generateMetadata() {
   return getGenerateMetadata({

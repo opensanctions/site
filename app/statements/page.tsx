@@ -14,7 +14,7 @@ import styles from '../../styles/Statement.module.scss'
 import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = 0;
-export const TITLE = "Raw data explorer";
+const TITLE = "Raw data explorer";
 
 type ExpandProps = {
   href: string

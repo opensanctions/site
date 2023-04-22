@@ -17,7 +17,7 @@ import LayoutFrame from '../../components/layout/LayoutFrame';
 import styles from '../../styles/Search.module.scss';
 
 export const revalidate = 0;
-export const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
+const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
 
 
 export async function generateMetadata() {
