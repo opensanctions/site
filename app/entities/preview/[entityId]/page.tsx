@@ -2,8 +2,12 @@ import { Container } from '../../../../components/wrapped';
 import { EntityFactsheet } from '../../../../components/Entity';
 import { getEntity, isBlocked } from '../../../../lib/data';
 
-import { EntityPageProps } from '../../common';
+import { EntityPageProps, generateEntityMetadata } from '../../common';
 import { notFound, redirect } from 'next/navigation';
+
+export async function generateMetadata({ params }: EntityPageProps) {
+  return generateEntityMetadata({ params: params });
+}
 
 
 export default async function Page({ params }: EntityPageProps) {

@@ -4,14 +4,24 @@ import { CaretRightFill, EnvelopeFill, Slack, Twitter } from 'react-bootstrap-ic
 import { Button, Card, CardBody, CardTitle, CardText, CardFooter, CardGroup } from '../../components/wrapped'
 import Content from '../../components/Content'
 import { Summary } from '../../components/util';
-import { SUMMARY, TITLE } from './common';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE } from '../../lib/constants';
 import { AboutMenu } from '../../components/Menu';
 
-import styles from '../../styles/Contact.module.scss'
+import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
+export const TITLE = "Contact the team";
+export const SUMMARY = "OpenSanctions exists to start a conversation. We're keen to get in touch with anyone who is interested in using the data, giving us feedback, or supporting to the project.";
+
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: TITLE,
+    description: SUMMARY
+  })
+}
+
 
 export default async function Contact() {
   return (

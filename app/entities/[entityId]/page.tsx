@@ -12,11 +12,17 @@ import Dataset from '../../../components/Dataset';
 import { EntityFactsheet, EntityNote, EntitySchemaTable, EntityTopics } from '../../../components/Entity';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE } from '../../../lib/constants';
-import { EntityPageProps } from '../common';
+import { EntityPageProps, generateEntityMetadata } from '../common';
 
 import styles from '../../../styles/Entity.module.scss'
+import { getSchemaEntityPage } from '../../../lib/schema';
+import StructuredData from '../../../components/utils/StructuredData';
 
 export const revalidate = REVALIDATE_BASE;
+
+export async function generateMetadata({ params }: EntityPageProps) {
+  return generateEntityMetadata({ params: params });
+}
 
 export default async function EntityPage({ params }: EntityPageProps) {
   const entity = await getEntity(params.entityId);
@@ -32,13 +38,15 @@ export default async function EntityPage({ params }: EntityPageProps) {
   if (isBlocked(entity)) {
     return <BlockedEntity entity={entity} />
   }
+  const datasets = await getEntityDatasets(entity);
+  const structured = getSchemaEntityPage(entity, datasets);
   const properties = entity.getDisplayProperties();
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
-  const datasets = await getEntityDatasets(entity);
   const sources = datasets.filter(isSource);
   const externals = datasets.filter(isExternal);
   return (
     <LayoutFrame activeSection="research">
+      <StructuredData data={structured} />
       <Research.Context hidePrint>
         <Container>
           <Row>

@@ -10,13 +10,35 @@ import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, 
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
 import { LicenseInfo } from '../../../components/Policy';
 import { API_URL, REVALIDATE_BASE } from '../../../lib/constants';
-import { DatasetPageProps } from './common';
 
 import styles from '../../../styles/Dataset.module.scss'
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 import { markdownToHtml } from '../../../lib/util';
+import { getGenerateMetadata } from '../../../lib/meta';
+import StructuredData from '../../../components/utils/StructuredData';
+import { getSchemaDataset } from '../../../lib/schema';
+
+interface DatasetPageProps {
+  params: { name: string }
+}
 
 export const revalidate = REVALIDATE_BASE;
+
+
+export async function generateMetadata({ params }: DatasetPageProps) {
+  const dataset = await getDatasetByName(params.name);
+  if (dataset === undefined) {
+    return getGenerateMetadata({
+      title: `Dataset not found`
+    })
+  }
+  return getGenerateMetadata({
+    title: dataset.title,
+    description: dataset.summary,
+    noIndex: dataset.hidden
+  })
+}
+
 
 export default async function Page({ params }: DatasetPageProps) {
   const dataset = await getDatasetByName(params.name);
@@ -49,6 +71,7 @@ export default async function Page({ params }: DatasetPageProps) {
 
   return (
     <LayoutFrame>
+      <StructuredData data={getSchemaDataset(dataset)} />
       <Container className={styles.datasetPage}>
         <JSONLink href={dataset.index_url} />
         <h1>

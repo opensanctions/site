@@ -2,13 +2,13 @@
 import Content from '../../components/Content';
 import { IssuesList } from '../../components/Issue';
 import { Summary } from '../../components/util';
-import { ISSUES_URL } from '../../lib/constants';
+import { ISSUES_URL, REVALIDATE_BASE } from '../../lib/constants';
 import { getIssues } from '../../lib/data';
 import { DocumentationMenu } from '../../components/Menu';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getGenerateMetadata } from '../../lib/meta';
 
-
+export const revalidate = 3600 * 3;
 export const TITLE = "Warnings and errors from all datasets";
 
 export async function generateMetadata() {

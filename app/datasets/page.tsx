@@ -7,8 +7,19 @@ import { ICollection, isCollection, isExternal, isSource } from '../../lib/types
 import { JSONLink } from '../../components/util';
 import { Row, Col, Container } from '../../components/wrapped';
 import LayoutFrame from '../../components/layout/LayoutFrame';
+import { getDataCatalog } from '../../lib/schema';
+import StructuredData from '../../components/utils/StructuredData';
+import { getGenerateMetadata } from '../../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
+
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: `Datasets`
+  })
+}
+
 
 export default async function Page() {
   const allDatasets = await getDatasets()
@@ -19,6 +30,7 @@ export default async function Page() {
   const externals = datasets.filter(isExternal)
   return (
     <LayoutFrame activeSection="datasets">
+      <StructuredData data={getDataCatalog()} />
       <Container>
         <h1>
           <a id="collections" />

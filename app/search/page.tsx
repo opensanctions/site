@@ -8,14 +8,25 @@ import { fetchIndex, fetchObject, getDatasets } from '../../lib/data';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../../components/Search';
 import { SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
 import { FormattedDate, ResponsePagination } from '../../components/util';
+import { LicenseInfo } from '../../components/Policy';
+import { getGenerateMetadata } from '../../lib/meta';
 
 import { PageProps } from '../../components/utils/PageProps';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 
 import styles from '../../styles/Search.module.scss';
-import { LicenseInfo } from '../../components/Policy';
 
 export const revalidate = 0;
+export const SUMMARY = "Provide a search term to search across sanctions lists and other persons of interest.";
+
+
+export async function generateMetadata() {
+  return getGenerateMetadata({
+    title: `Search`,
+    description: SUMMARY
+  })
+}
+
 
 export default async function Search({ searchParams }: PageProps) {
   const index = await fetchIndex();

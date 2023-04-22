@@ -4,18 +4,31 @@ import { Row, Col, Container, Card, CardBody } from '../../../components/wrapped
 import { Markdown, Summary } from '../../../components/util'
 import { getArticleBySlug, getArticles } from '../../../lib/content';
 import Article from '../../../components/Article';
-import { ArticlePageProps } from './common';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE } from '../../../lib/constants';
 
 import styles from '../../../styles/Article.module.scss'
+import { getContentMetadata } from '../../../lib/meta';
+import { getSchemaArticle } from '../../../lib/schema';
+import StructuredData from '../../../components/utils/StructuredData';
 
 export const revalidate = REVALIDATE_BASE;
+
+interface ArticlePageProps {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: ArticlePageProps) {
+  const content = await getArticleBySlug(params.slug);
+  return getContentMetadata(content);
+}
+
 
 export default async function Page({ params }: ArticlePageProps) {
   const article = await getArticleBySlug(params.slug)
   return (
     <LayoutFrame activeSection="about" >
+      <StructuredData data={getSchemaArticle(article)} />
       <Container>
         <h1>{article.title}</h1>
         <Row>
