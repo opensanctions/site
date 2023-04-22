@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { IContentBase } from "./types"
+import { THEME_COLOR } from "./constants"
 
 
 type MetaProps = {
@@ -33,7 +34,7 @@ export function getGenerateMetadata({ title, description, imageUrl, noIndex }: M
     robots: {
       index: !noIndex
     },
-    themeColor: '#2563eb',
+    themeColor: THEME_COLOR,
   }
   return meta;
 }
