@@ -3,6 +3,7 @@ import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
 import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE, INDEX_URL } from "./constants";
+// import 'server-only';
 
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
 
@@ -66,7 +67,7 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
 
 
 export async function fetchIndex(): Promise<IIndex> {
-  const index = await fetchJsonUrl<IIndex>(INDEX_URL);
+  const index = await fetchJsonUrl<IIndex>(INDEX_URL, false);
   if (index === null) {
     throw Error("Cannot fetch index file!")
   }
@@ -88,7 +89,10 @@ export async function fetchIndex(): Promise<IIndex> {
 }
 
 export async function getModel(): Promise<Model> {
-  const index = await fetchIndex();
+  const index = await fetchJsonUrl<IIndex>(INDEX_URL, false);
+  if (index === null) {
+    throw Error("Cannot fetch index file!")
+  }
   return new Model(index.model);
 }
 

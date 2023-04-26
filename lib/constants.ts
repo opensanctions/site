@@ -15,7 +15,7 @@ export const EMAIL = "info@opensanctions.org"
 export const ARTICLE_INDEX_SUMMARY = "Updates from the OpenSanctions project, including new features, technical deep dives, and analysis."
 export const GA_TRACKING_ID = 'G-YRZENQXNNR';
 export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.json"
-export const REVALIDATE_BASE = 3600 * 10;
+export const REVALIDATE_BASE = 60 * 60 * 10;
 export const THEME_COLOR = '#2563eb';
 
 // fake up a semantic ordering of collections
