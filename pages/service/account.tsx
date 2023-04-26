@@ -294,8 +294,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
       'url': `${API_URL}/account`,
       'query': { 'api_key': secret }
     })
-    const data = await fetchJsonUrl(apiUrl, false);
-    info = data as IAccountInfo | null;
+    info = await fetchJsonUrl<IAccountInfo>(apiUrl, false);
   }
   return {
     props: {

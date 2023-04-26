@@ -7,6 +7,9 @@ export default function CheckoutSession() {
   return null;
 }
 
+interface ISessionResponse {
+  secret: string
+}
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const apiUrl = queryString.stringifyUrl({
@@ -15,8 +18,8 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
       ...context.query,
     }
   })
-  const data = await fetchJsonUrl(apiUrl, false);
-  if (!data.secret) {
+  const data = await fetchJsonUrl<ISessionResponse>(apiUrl, false);
+  if (data === null || !data.secret) {
     return { redirect: { destination: `/service/cancel/`, permanent: false } };
   }
   const redirUrl = `/service/account/?secret=${data.secret}&welcome=true`;

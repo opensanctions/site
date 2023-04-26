@@ -7,14 +7,14 @@ import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATAL
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
 
 
-export async function fetchJsonUrl(url: string, authz: boolean = true): Promise<any> {
+export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promise<T | null> {
   const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
   const data = await fetch(url, { headers, ...cacheConfig });
   if (!data.ok) {
     // console.log('ERROR', data);
     return null;
   }
-  return await data.json();
+  return await data.json() as T;
 }
 
 export async function fetchUrl<T>(url: string): Promise<T> {
@@ -66,11 +66,10 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
 
 
 export async function fetchIndex(): Promise<IIndex> {
-  const data = await fetch(INDEX_URL, { ...cacheConfig });
-  if (!data.ok) {
+  const index = await fetchJsonUrl<IIndex>(INDEX_URL);
+  if (index === null) {
     throw Error("Cannot fetch index file!")
   }
-  const index = await data.json() as IIndex;
   index.datasets = index.datasets.map((raw: any) => {
     const ds = {
       ...raw,
