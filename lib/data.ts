@@ -6,11 +6,12 @@ import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATAL
 // import 'server-only';
 
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
+const cache = {};
 
 
 export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promise<T | null> {
   const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
-  const data = await fetch(url, { headers, ...cacheConfig });
+  const data = await fetch(url, { headers, cache: "force-cache" });
   if (!data.ok) {
     // console.log('ERROR', data);
     return null;
