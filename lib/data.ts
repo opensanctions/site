@@ -5,15 +5,15 @@ import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatement
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE, INDEX_URL } from "./constants";
 // import 'server-only';
 
+import indexJson from '../data/index.json';
+
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
-const cache = {};
 
 
 export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promise<T | null> {
   const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
-  const data = await fetch(url, { headers, cache: "force-cache" });
+  const data = await fetch(url, { headers });
   if (!data.ok) {
-    // console.log('ERROR', data);
     return null;
   }
   return await data.json() as T;
@@ -68,10 +68,12 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
 
 
 export async function fetchIndex(): Promise<IIndex> {
-  const index = await fetchJsonUrl<IIndex>(INDEX_URL, false);
-  if (index === null) {
-    throw Error("Cannot fetch index file!")
-  }
+  const index = { ...indexJson } as unknown as IIndex;
+  // const data = await fetch(INDEX_URL, { cache: "force-cache" });
+  // if (!data.ok) {
+  //   throw Error("Cannot fetch index file!")
+  // }
+  // const index = await data.json() as IIndex;
   index.datasets = index.datasets.map((raw: any) => {
     const ds = {
       ...raw,
@@ -90,10 +92,7 @@ export async function fetchIndex(): Promise<IIndex> {
 }
 
 export async function getModel(): Promise<Model> {
-  const index = await fetchJsonUrl<IIndex>(INDEX_URL, false);
-  if (index === null) {
-    throw Error("Cannot fetch index file!")
-  }
+  const index = await fetchIndex()
   return new Model(index.model);
 }
 
