@@ -68,12 +68,12 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
 
 
 export async function fetchIndex(): Promise<IIndex> {
-  const index = { ...indexJson } as unknown as IIndex;
-  // const data = await fetch(INDEX_URL, { cache: "force-cache" });
-  // if (!data.ok) {
-  //   throw Error("Cannot fetch index file!")
-  // }
-  // const index = await data.json() as IIndex;
+  // const index = { ...indexJson } as unknown as IIndex;
+  const data = await fetch(INDEX_URL, { ...cacheConfig });
+  if (!data.ok) {
+    throw Error("Cannot fetch index file!")
+  }
+  const index = await data.json() as IIndex;
   index.datasets = index.datasets.map((raw: any) => {
     const ds = {
       ...raw,
