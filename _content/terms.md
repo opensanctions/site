@@ -7,7 +7,7 @@ summary: |
 <!-- 
 The goal of the OpenSanctions website, its API, and associated websites (“OpenSanctions”) is to improve access to and quality and understanding of data about individuals and companies under sanctions, as well as politically exposed persons, under a license that encourages reuse. In short, we want you to use our data, for a public purpose, for journalism, for academic research, for other great open data websites and services, and also commercially. -->
 
-We are strong champions of open data, and of business models that support and encourage open data. OpenSanctions is published by Friedrich Lindenberg, a sole proprietor registered in Berlin, Germany, and trading under the VAT ID DE344342340 (“we”, “us”, “our”). These are the terms on which we make the OpenSanctions website available to you. We have tried to put them in plain language as far as possible, but unfortunately a certain amount of legalese is necessary.
+We are strong champions of open data, and of business models that support and encourage open data. OpenSanctions is published by OpenSanctions Datenbanken GmbH, a company registered in Berlin, Germany, AG Charlottenburg HRB 251172 B (“we”, “us”, “our”). These are the terms on which we make the OpenSanctions website available to you. We have tried to put them in plain language as far as possible, but unfortunately a certain amount of legalese is necessary.
 
 We offer access to our website, database search, bulk data download and API, and also paid-for access to our API. If you have agreed to a paid-for contract for use of bulk data or our API, these terms and conditions supplement that contract and, in cases of conflict, the paid-for contract will take precedence.
 
