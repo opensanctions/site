@@ -220,9 +220,19 @@ export function isIndexRelevant(entity: Entity): boolean {
     return false;
   }
   const topics = entity.getProperty('topics');
+  // all sanctioned entities
   if (topics.indexOf("sanction") !== -1) {
     return true;
   }
+  // no crime-related entities
+  if (topics.indexOf("crime") !== -1) {
+    return false;
+  }
+  // non-human things are more OK re privacy
+  if (['Company', 'Organization', 'Vessel', 'Airplane'].indexOf(entity.schema.name) !== -1) {
+    return true;
+  }
+  // default: no
   return false;
 }
 
