@@ -2,7 +2,7 @@ import '../styles/globals.scss'
 
 export const metadata = {
   title: {
-    template: '%s | OpenSanctions',
+    template: '%s - OpenSanctions',
     default: 'OpenSanctions'
   },
 }
