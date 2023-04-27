@@ -3,7 +3,7 @@ import Link from 'next/link'
 import queryString from 'query-string';
 
 import { Table } from "./wrapped";
-import { Entity, Property } from '../lib/ftm';
+import { Entity, Property, Schema } from '../lib/ftm';
 import { compareDisplayProps } from '../lib/ftm/ordering';
 import { IDataset, isCollection, IStatement } from '../lib/types';
 import { isBlocked, isIndexRelevant } from '../lib/data';
@@ -33,12 +33,13 @@ export interface EntityDisplayProps {
   via?: Property
 }
 
-export function EntityLink({ entity }: EntityDisplayProps) {
+export function EntityLink({ entity, children }: React.PropsWithChildren<EntityDisplayProps>) {
   const rel = isIndexRelevant(entity) ? '' : 'nofollow'
   if (isBlocked(entity)) {
     return <Link href={`/entities/${entity.id}/`} rel={rel}>[blocked entity]</Link>
   }
-  return <Link href={`/entities/${entity.id}/`} rel={rel}>{entity.caption}</Link>
+  const content = children || entity.caption;
+  return <Link href={`/entities/${entity.id}/`} rel={rel}>{content}</Link>
 }
 
 
@@ -135,6 +136,29 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
   )
 }
 
+export type FeaturedValuesProps = {
+  entity: Entity,
+  schema: Schema,
+  prop: Property
+}
+
+function FeaturedValues({ entity, schema, prop }: FeaturedValuesProps) {
+  const values = <PropertyValues
+    prop={prop}
+    values={entity.getProperty(prop)}
+    empty="-"
+    limit={4}
+    entity={EntityLink}
+  />;
+  if (prop.type.name === 'entity') {
+    return values;
+  }
+  if (schema.isA('Thing') && schema.caption.indexOf(prop.name) !== -1) {
+    return <EntityLink entity={entity}>{values}</EntityLink>;
+  }
+  return values;
+}
+
 
 export type EntitySchemaTableProps = {
   entities: Array<Entity>,
@@ -186,13 +210,7 @@ export function EntitySchemaTable({ entities, datasets, prop }: EntitySchemaTabl
               <tr key={entity.id}>
                 {featured.map((prop) => (
                   <td key={prop.name} className={`type-${prop.type.name}`}>
-                    <PropertyValues
-                      prop={prop}
-                      values={entity.getProperty(prop)}
-                      empty="-"
-                      limit={4}
-                      entity={EntityLink}
-                    />
+                    <FeaturedValues prop={prop} entity={entity} schema={schema} />
                   </td>
                 ))}
                 <td style={{ width: 0 }}>
