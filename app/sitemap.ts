@@ -7,14 +7,16 @@ const PAGES = ['/', '/contact/', '/datasets/', '/docs/']
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
+  const date = now.toISOString().substr(0, 10);
   const baseMap = PAGES.map(url => ({
     url: `${BASE_URL}/${url}`,
-    lastModified: new Date()
+    lastModified: date
   }));
   const contents = await getContents()
   const contentMap = contents.map((c) => ({
     url: `${BASE_URL}${c.path}`,
-    lastModified: new Date()
+    lastModified: date
   }))
   const allDatasets = await getDatasets()
   const datasets = allDatasets.filter((d) => !d.hidden)
