@@ -8,7 +8,7 @@ const PAGES = ['/', '/contact/', '/datasets/', '/docs/']
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  const date = now.toISOString().substr(0, 10);
+  const date = now.toISOString().substring(0, 10);
   const baseMap = PAGES.map(url => ({
     url: `${BASE_URL}/${url}`,
     lastModified: date
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entities = await getSitemapEntities()
   const entityMap = entities.map((e) => ({
     url: `${BASE_URL}/entities/${e.id}/`,
-    lastModified: e.lastmod
+    lastModified: e.lastmod.substring(0, 10)
   }))
   const articles = await getArticles()
   const articleMap = articles.map((a) => ({
