@@ -5,34 +5,40 @@ import { BASE_URL } from '../lib/constants';
 
 const PAGES = ['/', '/contact/', '/datasets/', '/docs/']
 
+function dateTruncate(date: string | null | undefined) {
+  if (date === null || date === undefined) {
+    const now = new Date();
+    date = now.toISOString()
+  }
+  return date.substring(0, 10)
+}
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
-  const date = now.toISOString().substring(0, 10);
   const baseMap = PAGES.map(url => ({
     url: `${BASE_URL}/${url}`,
-    lastModified: date
+    lastModified: dateTruncate(null)
   }));
   const contents = await getContents()
   const contentMap = contents.map((c) => ({
     url: `${BASE_URL}${c.path}`,
-    lastModified: date
+    lastModified: dateTruncate(null)
   }))
   const allDatasets = await getDatasets()
   const datasets = allDatasets.filter((d) => !d.hidden)
   const datasetMap = datasets.map((d) => ({
     url: `${BASE_URL}/datasets/${d.name}/`,
-    lastModified: d.last_change.substring(0, 10)
+    lastModified: dateTruncate(d.last_change)
   }))
   const entities = await getSitemapEntities()
   const entityMap = entities.map((e) => ({
     url: `${BASE_URL}/entities/${e.id}/`,
-    lastModified: e.lastmod.substring(0, 10)
+    lastModified: dateTruncate(e.lastmod)
   }))
   const articles = await getArticles()
   const articleMap = articles.map((a) => ({
     url: `${BASE_URL}${a.path}`,
-    lastModified: a.date
+    lastModified: dateTruncate(a.date)
   }))
   return [...baseMap, ...articleMap, ...contentMap, ...datasetMap, ...entityMap];
 }
