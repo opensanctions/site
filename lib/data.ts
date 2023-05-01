@@ -224,6 +224,10 @@ export function isIndexRelevant(entity: Entity): boolean {
   if (topics.indexOf("sanction") !== -1) {
     return true;
   }
+  // all interpol entities
+  if (entity.datasets.indexOf("interpol_red_notices") !== -1) {
+    return true;
+  }
   // no crime-related entities
   if (topics.indexOf("crime") !== -1) {
     return false;
