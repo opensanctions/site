@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const datasets = allDatasets.filter((d) => !d.hidden)
   const datasetMap = datasets.map((d) => ({
     url: `${BASE_URL}/datasets/${d.name}/`,
-    lastModified: d.last_change
+    lastModified: d.last_change.substring(0, 10)
   }))
   const entities = await getSitemapEntities()
   const entityMap = entities.map((e) => ({
