@@ -23,10 +23,13 @@ npm install
 ```
 
 ### Running the app locally
-1- First, run the development server:
+1- Set up environment variables (they're listed in `/lib/constants.ts`).
+To make a search on your local website, you need to set an `API_TOKEN` var and assign it your API key. This is the only env var to set up if you plan to use the Opensanctions production API (https://api.opensanctions.org).
+
+2- Run the development server:
 
 ```bash
 npm run dev
 ```
 
-2- Open [http://localhost:3000](http://localhost:3000) in your browser to see the website.
+3- Open [http://localhost:3000](http://localhost:3000) in your browser to see the website.
