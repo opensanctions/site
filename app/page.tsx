@@ -3,7 +3,7 @@ import Link from 'next/link'
 import articleStyles from '../styles/Article.module.scss'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY, REVALIDATE_BASE } from '../lib/constants'
-import { Search } from 'react-bootstrap-icons';
+import { Search, CreditCard2BackFill } from 'react-bootstrap-icons';
 import { FormattedDate, NumericBadge } from '../components/util';
 import { ICollection, isCollection, isSource } from '../lib/types';
 import { getArticles } from '../lib/content';
@@ -115,6 +115,10 @@ export default async function Page() {
               </p>
             </Col>
             <Col md={4} className="d-print-none">
+              <Button size="lg" href="/login/" variant="secondary">
+                  <CreditCard2BackFill className="bsIcon" /> Sign up now
+              </Button>
+              <br /> <br />
               <ButtonGroup>
                 <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
                 <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>
