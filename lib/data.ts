@@ -22,7 +22,7 @@ export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promi
 export async function fetchUrl<T>(url: string): Promise<T> {
   const data = await fetch(url, { ...cacheConfig });
   if (!data.ok) {
-    throw Error(`Backend error: ${data.text}`);
+    throw Error(`Backend error: ${data.statusText}`);
   }
   return await data.json() as T;
 }
@@ -43,7 +43,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   })
   const data = await fetch(apiUrl, { headers, ...cacheConfig });
   if (!data.ok) {
-    throw Error(`Backend error: ${data.text}`);
+    throw Error(`Backend error: ${data.statusText}`);
   }
   return await data.json() as T;
 }
@@ -60,7 +60,7 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
   const options = { headers: headers, body: body, method: 'POST' };
   const resp = await fetch(`${API_URL}/match/${dataset}`, options)
   if (!resp.ok) {
-    throw Error(`Backend error: ${resp.text}`);
+    throw Error(`Backend error: ${resp.statusText}`);
   }
   const data = await resp.json()
   return data['responses']['ui'] as IMatchAPIResponse;
