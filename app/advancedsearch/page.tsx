@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { PageProps } from '../../components/utils/PageProps';
-import { fetchIndex, getDatasets, getModel, postMatch } from '../../lib/data';
+import { fetchIndex, getAlgorithms, getDatasets, getModel, postMatch } from '../../lib/data';
 import { Col, Container, Row, Table } from '../../components/wrapped';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { isExternal } from '../../lib/types';
@@ -27,8 +27,10 @@ export async function generateMetadata() {
 export default async function AdvancedSearch({ searchParams }: PageProps) {
   const index = await fetchIndex();
   const model = await getModel();
+  const algorithms = await getAlgorithms();
   const params = searchParams ? searchParams : {};
   const schema = asString(params['schema']) || 'Person';
+  const algorithm = asString(params['algorithm']) || 'regression-v2';
   const dataset = asString(params['dataset']) || SEARCH_DATASET;
   const allDatasets = await getDatasets()
   const datasets = allDatasets
@@ -44,7 +46,11 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
   }
   const query = { schema: schema, properties: properties };
   const hasQuery = Object.keys(properties).length > 0;
-  const response = await postMatch(query, dataset);
+  const response = await postMatch(query, dataset, algorithm);
+  const selectedAlgorithm = algorithms.algorithms.find((a) => a.name === algorithm);
+  if (!selectedAlgorithm) {
+    throw new Error(`Algorithm ${algorithm} not found`);
+  }
 
   return (
     <LayoutFrame activeSection="research">
@@ -56,6 +62,8 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
               <MatcherForm
                 datasets={datasets}
                 dataset={dataset}
+                algorithms={algorithms.algorithms}
+                algorithm={algorithm}
                 modelData={index.model}
                 schemata={index.schemata}
                 schema={schema}
@@ -70,12 +78,13 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
               <ul>
                 <li>Choose the entity type "Legal entity" to match people, organizations and
                   companies at the same time.</li>
+                <li><Link href="/docs/api/scoring">Learn more</Link> about how we compute result scores.
+                  All searches use fuzzy matching and transliteration. </li>
                 <li>Press the icon next to a result score to see an explanation for the score.</li>
-                <li>All searches use fuzzy matching and transliteration.</li>
                 <li>The matcher will return a maximum of five results.</li>
               </ul>
               <p>
-                This search uses the <Link href="https://api.opensanctions.org"><code>/match</code></Link> API
+                This search uses the <Link href="/docs/api/matching/"><code>/match</code></Link> API
                 function which we also recommend to use when implementing bulk screening.
                 When <Link href="/api">querying the API</Link>, you can include additional
                 search criteria such as addresses.
@@ -99,7 +108,9 @@ export default async function AdvancedSearch({ searchParams }: PageProps) {
                 </tr>
               </thead>
               <tbody>
-                {response.results.map((e) => <MatcherResult model={model} result={e} matcher={index.matcher} key={e.id} />)}
+                {response.results.map((e) =>
+                  <MatcherResult model={model} result={e} algorithm={selectedAlgorithm} key={e.id} />
+                )}
               </tbody>
             </Table>
           </>

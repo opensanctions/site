@@ -48,7 +48,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   return await data.json() as T;
 }
 
-export async function postMatch(query: IMatchQuery, dataset: string = 'default'): Promise<IMatchAPIResponse> {
+export async function postMatch(query: IMatchQuery, dataset: string, algorithm: string): Promise<IMatchAPIResponse> {
   const headers = {
     'Authorization': `ApiKey ${API_TOKEN}`,
     'Content-Type': 'application/json',
@@ -56,11 +56,18 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
   if (Object.keys(query.properties).length === 0) {
     return { total: { value: 0, relation: 'eq' }, results: [] }
   }
-  const body = JSON.stringify({ queries: { ui: query } })
-  const options = { headers: headers, body: body, method: 'POST' };
-  const resp = await fetch(`${API_URL}/match/${dataset}`, options)
+  const options = {
+    headers: headers,
+    body: JSON.stringify({ queries: { ui: query } }),
+    method: 'POST',
+  };
+  const url = queryString.stringifyUrl({
+    'url': `${API_URL}/match/${dataset}`,
+    'query': { algorithm: algorithm }
+  })
+  const resp = await fetch(url, options)
   if (!resp.ok) {
-    throw Error(`Backend error: ${resp.text}`);
+    throw Error(`Backend error: ${resp.statusText}`);
   }
   const data = await resp.json()
   return data['responses']['ui'] as IMatchAPIResponse;

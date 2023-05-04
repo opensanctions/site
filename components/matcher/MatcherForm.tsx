@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { IModelDatum, Model, Property } from '../../lib/ftm';
 import { Col, Row, Form, FormGroup, FormLabel, FormSelect, Button } from '../wrapped';
+import { IAlgorithm } from '../../lib/types';
 
 
 export type DatasetOption = {
@@ -31,13 +32,15 @@ function getPlaceholder(prop: Property) {
 type MatcherProps = {
   datasets: DatasetOption[]
   modelData: IModelDatum
+  algorithms: IAlgorithm[]
   schemata: string[]
   schema: string
+  algorithm: string
   dataset: string
   isLoading: boolean
 }
 
-export default function MatcherForm({ datasets, modelData, schemata, schema, dataset, isLoading }: MatcherProps) {
+export default function MatcherForm({ datasets, modelData, algorithms, schemata, schema, algorithm, dataset, isLoading }: MatcherProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname() || '/search/advanced/';
   const router = useRouter();
@@ -54,6 +57,13 @@ export default function MatcherForm({ datasets, modelData, schemata, schema, dat
     router.replace(queryString.stringifyUrl({
       url: pathname,
       query: { ...values, dataset: dataset }
+    }));
+  }
+
+  const setAlgorithm = async (algorithm: string) => {
+    router.replace(queryString.stringifyUrl({
+      url: pathname,
+      query: { ...values, algorithm: algorithm }
     }));
   }
 
@@ -92,6 +102,16 @@ export default function MatcherForm({ datasets, modelData, schemata, schema, dat
         <Col sm={8}>
           <FormSelect value={schema} onChange={(e) => setSchema(e.target.value)} disabled={isLoading}>
             {schemaOptions.map((s) => <option key={s.name} value={s.name}>{s.label}</option>)}
+          </FormSelect>
+        </Col>
+      </FormGroup>
+      <FormGroup as={Row} className="mb-3">
+        <FormLabel column sm={4}>
+          Scoring method:
+        </FormLabel>
+        <Col sm={8}>
+          <FormSelect value={algorithm} onChange={(e) => setAlgorithm(e.target.value)} disabled={isLoading}>
+            {algorithms.map((s) => <option key={s.name} value={s.name}>{s.name}</option>)}
           </FormSelect>
         </Col>
       </FormGroup>
