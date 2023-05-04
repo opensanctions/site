@@ -23,8 +23,8 @@ The idea is simple: in addition to offering the [hosted OpenSanctions API](/api/
 We recommend you take the following steps:
 
 1. Evaluate the [deployment options](/docs/yente/deploy/) for your infrastructure. The service will automatically import OpenSanctions data unless [configured otherwise](/docs/yente/datasets/).
-2. Try out the service by building a simple API client (Tutorial: [Using the matching API to do KYC-style checks](/articles/2022-02-01-matching-api/))
-3. Acquire a [bulk data license](/licensing) so that you're legally entitled to use the OpenSanctions dataset.
+2. Try out the service by building a simple API client (Tutorial: [Using the matching API to build a screening process](/docs/api/matching/))
+3. Acquire a [bulk data license](/licensing/) so that you're legally entitled to use the OpenSanctions dataset.
 4. Scale up: you can run as many instances of the API as you choose, and handle as many screening requests as you wish.
 
 ### What are the server requirements?

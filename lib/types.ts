@@ -163,6 +163,16 @@ export interface IMatcherFeature {
   url: string
 }
 
+export interface IAlgorithm {
+  name: string
+  description?: string
+  features: { [key: string]: IMatcherFeature }
+}
+
+export interface IAlgorithmResponse {
+  algorithms: IAlgorithm[]
+}
+
 export const LEVEL_ERROR = 'error'
 export const LEVEL_WARNING = 'warning'
 
