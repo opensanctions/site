@@ -115,6 +115,7 @@ export default function MatcherForm({ datasets, modelData, algorithms, schemata,
           </FormSelect>
         </Col>
       </FormGroup>
+      <hr />
       {featured.map((prop) => (
         <FormGroup as={Row} className="mb-3" key={prop.name}>
           <FormLabel column sm={4}>
