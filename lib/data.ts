@@ -22,7 +22,7 @@ export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promi
 export async function fetchUrl<T>(url: string): Promise<T> {
   const data = await fetch(url, { ...cacheConfig });
   if (!data.ok) {
-    throw Error(`Backend error: ${data.text}`);
+    throw Error(`Backend error: ${data.statusText}`);
   }
   return await data.json() as T;
 }
@@ -43,7 +43,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   })
   const data = await fetch(apiUrl, { headers, ...cacheConfig });
   if (!data.ok) {
-    throw Error(`Backend error: ${data.text}`);
+    throw Error(`Backend error: ${data.statusText}`);
   }
   return await data.json() as T;
 }
