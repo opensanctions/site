@@ -21,9 +21,9 @@ The API supports several scoring mechanisms ("algorithms") that can be used to c
 * `regression-v1` and `regression-v2` are scoring systems based on logistic regression based on a wide set of features. They provide good results in particular if you can include multiple attributes to describe the entities you are screening for: dates of birth, nationalities, addresses, tax identifiers. Both models will produce high match scores only for multi-attribute matches, e.g. when a query shares the name and birth date or identification number of an entry in the database.
     * Please note: `regression-v2` produces signficantly lower score values than `regression-v1`. You may want to set the `threshold` parameter for matches to `0.5` when using it.
 
-* `ofac-249` is a name-only scoring system that attempts to emulate the [OFAC Sanctions Search](https://sanctionssearch.ofac.treas.gov/) web tool. This can be useful for regulatory purposes, or when you only know the names of the entities you need to screen.
+* `name-based` is a name-only scoring system that combines the Jaro-Winkler and Soundex name comparison techniques to aggressively match entities by name. The algorithm attempts to loosely emulate the [OFAC Sanctions Search](https://sanctionssearch.ofac.treas.gov/) web tool. This can be useful for regulatory purposes, or when you only know the names of the entities you need to screen.
 
-* `ofac-249-qualified` provides a marginal improvement over `ofac-249` by computing the same score and then penalizing matches where the birth date or nationality is different for people, or where different registration numbers/tax identifiers are used for companies.
+* `name-qualified` provides a marginal improvement over `name-based` by computing the same score and then penalizing matches where the birth date or nationality is different for people, or where different registration numbers/tax identifiers are used for companies.
 
 ## Further reading
 
