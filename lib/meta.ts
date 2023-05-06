@@ -11,7 +11,7 @@ type MetaProps = {
 }
 
 export function getGenerateMetadata({ title, description, imageUrl, noIndex }: MetaProps): Metadata {
-  const imageDefaultUrl = !!imageUrl ? imageUrl : "https://assets.opensanctions.org/images/card.jpg";
+  const imageDefaultUrl = !!imageUrl ? imageUrl : "https://assets.opensanctions.org/images/ura/claim.png";
   // FIXME: <link rel="search" type="application/opensearchdescription+xml" title="OpenSanctions" href="/opensearch.xml" />
   const meta: Metadata = {
     title: title,
