@@ -14,13 +14,13 @@ Once you have obtained an API key, you must include it with each request sent to
 For the header option, please include the key into your request like this:
 
 ```
-Authorization: ApiKey xxxxxxxxxxxxxxxxxxxxxxxx
+    Authorization: ApiKey xxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 When using the query parameter, you can simply append it to the request URL:
 
 ```
-https://api.opensanctions.org/search/default?q=test&api_key=xxxxxxxxxx
+    https://api.opensanctions.org/search/default?q=test&api_key=xxxxxxxxxx
 ```
 
 ### Python example

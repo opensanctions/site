@@ -77,7 +77,13 @@ export function DocumentationMenu({ path }: MenuProps) {
             <RoutedNavLink href="/docs/self-hosted/" current={path}>Self-hosted API</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/matcher/" current={path}>How we score matches</RoutedNavLink>
+            <RoutedNavLink href="/docs/api/matching/" current={path}>Using the matching API</RoutedNavLink>
+          </NavItem>
+          <NavItem>
+            <RoutedNavLink href="/docs/api/scoring/" current={path}>Scoring algorithms</RoutedNavLink>
+          </NavItem>
+          <NavItem>
+            <RoutedNavLink href="/docs/api/authentication/" current={path}>Authentication</RoutedNavLink>
           </NavItem>
         </NavItem>
         <NavItem>
