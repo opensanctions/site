@@ -39,7 +39,7 @@
   "devDependencies": {
     "@types/gtag.js": "^0.0.12",
     "@types/node": "^20.0.0",
-    "@types/react": "^18.2.5",
+    "@types/react": "^18.2.6",
     "@types/react-text-truncate": "^0.14.1",
     "typescript": "5.0.4"
   }
