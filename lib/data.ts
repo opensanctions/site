@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery } from "./types";
+import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE, INDEX_URL } from "./constants";
 // import 'server-only';
 
@@ -48,7 +48,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
   return await data.json() as T;
 }
 
-export async function postMatch(query: IMatchQuery, dataset: string = 'default'): Promise<IMatchAPIResponse> {
+export async function postMatch(query: IMatchQuery, dataset: string, algorithm: string): Promise<IMatchAPIResponse> {
   const headers = {
     'Authorization': `ApiKey ${API_TOKEN}`,
     'Content-Type': 'application/json',
@@ -56,9 +56,16 @@ export async function postMatch(query: IMatchQuery, dataset: string = 'default')
   if (Object.keys(query.properties).length === 0) {
     return { total: { value: 0, relation: 'eq' }, results: [] }
   }
-  const body = JSON.stringify({ queries: { ui: query } })
-  const options = { headers: headers, body: body, method: 'POST' };
-  const resp = await fetch(`${API_URL}/match/${dataset}`, options)
+  const options = {
+    headers: headers,
+    body: JSON.stringify({ queries: { ui: query } }),
+    method: 'POST',
+  };
+  const url = queryString.stringifyUrl({
+    'url': `${API_URL}/match/${dataset}`,
+    'query': { algorithm: algorithm }
+  })
+  const resp = await fetch(url, options)
   if (!resp.ok) {
     throw Error(`Backend error: ${resp.statusText}`);
   }
@@ -109,6 +116,10 @@ export async function getDatasetByName(name: string): Promise<IDataset | undefin
 export async function getIssues(): Promise<Array<IIssue>> {
   const index = await fetchUrl<IIssueIndex>(ISSUES_URL);
   return index.issues
+}
+
+export async function getAlgorithms(): Promise<IAlgorithmResponse> {
+  return await fetchObject<IAlgorithmResponse>(`/algorithms`);
 }
 
 export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue>> {

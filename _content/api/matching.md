@@ -1,12 +1,10 @@
 ---
-title: "How-to: Using the matching API to do KYC-style checks"
+title: "Using the matching API to build a screening process"
 summary: |
-    Know-Your-Customer (KYC) checks are a different challenge to normal text searches: your query is supposed to describe a person or company in some detail to allow the OpenSanctions API to check if that entity (or a similar one) is flagged.
+    Screening checks are a different challenge to normal text searches: your query is supposed to describe a person or company in some detail to allow the OpenSanctions API to check if that entity (or a similar one) is flagged.
 ---
 
-**An updated version of [this tutorial is located here](/docs/api/matching/).**
-
-OpenSanctions open source API server, [yente](/docs/yente/), is a powerful way to query and access the entities in our database. [Business license holders](/licensing) can use it both online and as an on-premises deployment to match a set of customer records against international sanctions and politicians lists.
+OpenSanctions open source API server, [yente](/docs/yente/), is a powerful way to query and access the entities in our database. [Data license holders](/licensing/) can use it both online and as an [on-premises deployment](/docs/self-hosted/) to match a set of customer records against international sanctions and politicians lists.
 
 The most basic way to do those bulk searches might be running simple text queries against the `/search` endpoint - but this will lead to imprecise and incomplete results. Instead, this how-to will show you how to use the `/match` endpoint to get more precise matches using *query-by-example* to do multi-attribute lookups.
 
@@ -14,7 +12,7 @@ The most basic way to do those bulk searches might be running simple text querie
 
 Let's say, for example, that you have a customers dataset that specifies the name, birth date, nationality and perhaps a national ID number for each person you want to check. 
 
-The first step would then be to implement a piece of code formats each of these entries conform with the [entity format](/docs/entities/) used by OpenSanctions, assigning each of the columns in your source data to one of the fields specified in the [data dictionary](/reference) (This, of course, works not just for [people](/reference/#schema.Person), but also [companies](/reference/#schema.Company), [vessels](/reference/#schema.Vessel), even [crypto wallets](/reference/#schema.CryptoWallet)).
+The first step would then be to implement a piece of code formats each of these entries conform with the [entity format](/docs/entities/) used by OpenSanctions, assigning each of the columns in your source data to one of the fields specified in the [data dictionary](/reference/) (This, of course, works not just for [people](/reference/#schema.Person), but also [companies](/reference/#schema.Company), [vessels](/reference/#schema.Vessel), even [crypto wallets](/reference/#schema.CryptoWallet)).
 
 Here's an example entity in JSON format:
 
@@ -24,7 +22,7 @@ Here's an example entity in JSON format:
     "properties": {
         "name": ["Arkadiii Romanovich Rotenberg", "Ротенберг Аркадий"],
         "birthDate": ["1951"],
-        "nationality": "Russia",
+        "nationality": ["Russia"],
     }
 }
 ```
@@ -55,12 +53,21 @@ In order to avoid the overhead of sending thousands upon thousands of HTTP reque
 
 Below is an example Python script that demonstrates how to use the matching API. Note that when running this for your own data, you'll need to add a data source, and a place to store the highest-scoring matches for analyst review.
 
+**Note:** This example uses [authentication](/docs/api/authentication/) to access the hosted OpenSanctions API. If you're running the [yente](/docs/self-hosted/) application, you can remove the API key header.
+
 ```python
 import requests
 from pprint import pprint
 
 # The OpenSanctions service API. This endpoint will only do sanctions checks.
 URL = "https://api.opensanctions.org/match/sanctions"
+
+# Read an environment variable to get the API key:
+API_KEY = os.environ.get("OPENSANCTIONS_API_KEY")
+
+# Create an HTTP session which manages connections and defines shared header configuration:
+session = requests.Session()
+session.headers['Authorization'] = f"ApiKey {API_KEY}"
 
 # A query for a person with a specific name and birth date. Note multiple names given 
 # in different alphabets:
@@ -86,7 +93,7 @@ EXAMPLE_2 = {
 BATCH = {"queries": {"q1": EXAMPLE_1, "q2": EXAMPLE_2}}
 
 # Send the batch off to the API and raise an exception for a non-OK response code.
-response = requests.post(URL, json=BATCH)
+response = session.post(URL, json=BATCH)
 response.raise_for_status()
 
 responses = response.json().get("responses")
@@ -111,14 +118,6 @@ for result in example_2_response['results']:
 
 If one of your queries returns a result, this is not immediately cause for alarm: the database for politically exposed persons in particular contains many individuals with common names, and matches will be fairly frequent. Instead, you should set up a process for human review.
 
-In terms of analysis, it's helpful to look at the [`topics`](/reference/#type.topic) property for entities: it will often indicate the relevance of an entity (whether it is sanctioned, a politician or just an associate). You can also view the OpenSanctions entity page (`https://opensanctions.org/entities/<id>`) for each result to see their documented connections to other items (connection/graph data is also available via the `/entities/<id>` API endpoint!).
+You may want to review the documentation for the [different scoring algorithms](/docs/api/scoring/) supported by the API to get a better understanding of the semantics of the score values returned.
 
-### Give us feedback!
-
-As you implement this, please also take the time to [get in touch](/contact/) and give us some feedback. While this service is stable, there is room for many improvements that we are aware of. In particular, we're trying to understand:
-
-* What additional information should be returned by the API to help you decide the level of relevance of a specific result to your query? Should we include a heuristics-based boolean `match: true` field, even if it is not perfect?
-
-* What fields are in your customer data that cannot be matched in OpenSanctions yet? What is your experience with doing searches across different alphabets - does the support need to be more expansive, or produce fewer results?
-
-Thank you for reading and trying it out!
+In terms of analysis, it's helpful to look at the [`topics`](/reference/#type.topic) property for entities: it will often indicate the relevance of an entity (whether it is sanctioned - `sanction`, a politician - `role.pep` - or just an associate - `role.rca`). You can also view the OpenSanctions entity page (`https://opensanctions.org/entities/<id>`) for each result to see their documented connections to other items (connection/graph data is also available via the `/entities/<id>` API endpoint!).

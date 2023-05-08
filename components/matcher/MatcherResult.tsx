@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Model, Values } from "../../lib/ftm";
-import { IMatchedEntityDatum, IMatcherFeature } from "../../lib/types";
+import { IAlgorithm, IMatchedEntityDatum, IMatcherFeature } from "../../lib/types";
 import { EntityLink } from "../Entity";
 import { TypeValues } from "../Property";
 import { Numeric } from "../util";
@@ -10,10 +10,10 @@ import { Badge, Table } from '../wrapped';
 type MatcherResultProps = {
   model: Model
   result: IMatchedEntityDatum
-  matcher: { [key: string]: IMatcherFeature }
+  algorithm: IAlgorithm
 }
 
-export default function MatcherResult({ model, result, matcher }: MatcherResultProps) {
+export default function MatcherResult({ model, result, algorithm }: MatcherResultProps) {
   const entity = model.getEntity(result);
   const topicType = model.getType('topic');
   const topics = entity.getTypeValues(topicType) as Values;
@@ -55,10 +55,10 @@ export default function MatcherResult({ model, result, matcher }: MatcherResultP
                     <Numeric value={score} digits={2} />
                   </td>
                   <td>
-                    <Link href={matcher[feat].url}><code>{feat}</code></Link>
+                    <Link href={algorithm.features[feat].url}><code>{feat}</code></Link>
                   </td>
                   <td>
-                    {matcher[feat].description}
+                    {algorithm.features[feat].description}
                   </td>
                 </tr>
               ))}
