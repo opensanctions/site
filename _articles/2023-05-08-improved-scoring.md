@@ -9,7 +9,7 @@ The OpenSanctions API - both the easy-to-use [hosted service](/api/) and the [se
 
 Until now, this [matching API](/docs/api/matching/) has used a simple statistical model to assign a match score to each result it has returned. With the [new release](https://github.com/opensanctions/yente/releases) of `yente 3.4`, we've made that mechanism more flexible: clients can now select one of [a set of supported algorithms](/docs/api/scoring/) to optimise the behaviour of the API for their use case.
 
-With the new release, we've added three new scoring systems to augment the existing model (now called `regression-v1`):
+With the new release, we've added three new scoring systems to augment the existing model (now called `regression-v1`, it is used as the default if no other algorithm is specified):
 
 * `regression-v2` is a new statistical model for matching people and companies. Unlike `regression-v1` it uses pronunciation-based (phonetic/soundex) comparison for entity names, and it has reduced the impact of birthdates as a decision criterion. The new model will generally produce much lower scores for results, so you may want to reduce your matching `threshold` parameter in the API to `0.5` or `0.6`.
 
