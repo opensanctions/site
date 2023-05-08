@@ -70,6 +70,9 @@ export function DocumentationMenu({ path }: MenuProps) {
           <NavItem>
             <RoutedNavLink href="/docs/enrichment/" current={path}>Data enrichment</RoutedNavLink>
           </NavItem>
+          <NavItem>
+            <RoutedNavLink href="/docs/bulk/faq/" current={path}>Frequently asked questions</RoutedNavLink>
+          </NavItem>
         </NavItem>
         <NavItem>
           <RoutedNavLink href="/api/" current={path}>Using the API</RoutedNavLink>
@@ -84,6 +87,9 @@ export function DocumentationMenu({ path }: MenuProps) {
           </NavItem>
           <NavItem>
             <RoutedNavLink href="/docs/api/authentication/" current={path}>Authentication</RoutedNavLink>
+          </NavItem>
+          <NavItem>
+            <RoutedNavLink href="/docs/api/faq/" current={path}>Frequently asked questions</RoutedNavLink>
           </NavItem>
         </NavItem>
         <NavItem>
