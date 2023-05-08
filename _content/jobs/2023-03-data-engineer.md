@@ -5,6 +5,8 @@ summary: |
     We're looking for a data engineer with customer-facing responsibilities.
 ---
 
+**Update 2023-05-08: Applications for this job are now closed. Please feel free to still send us your CV if you're interested in OpenSanctions and want to be considered for future openings.**
+
 OpenSanctions helps to keep people and companies accountable for their political and economic actions. We build a database that tracks a wide range of entities in the public interest: sanctioned companies, politicians, fraudsters and criminals. Originally built to support anti-corruption journalists, OpenSanctions has also become a powerful tool used for customer screening, legal compliance and in-depth investigative analysis. 
 
 We take pride in providing a high quality dataset to the public and to our subscribers. Based on an open source data pipeline and providing public search for everybody, we bring transparency and a (relative) lack of bullshit to the compliance/sanctions world.

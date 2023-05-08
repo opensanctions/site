@@ -6,7 +6,7 @@ summary: >
 
 ### <a id="updates"></a> How frequently is OpenSanctions updated?
 
-Most data sources are updated daily and refreshed data extracts are published several times a day (currently ca. every five hours). You can see a list of any [errors or warnings each dataset](/issues/) has generated. 
+Most data sources are updated daily and refreshed data extracts are published several times a day (currently ca. every five hours). You can see a list of any [errors or warnings each dataset](/issues/) has generated.
 
 For data sources that require screen scraping rather than publishing structured data, a HTTP response cache with a maximum age of ten days is used to avoid running into rate limiting errors.
 
