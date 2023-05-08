@@ -7,6 +7,8 @@ summary: |
 
 The OpenSanctions API - both the easy-to-use [hosted service](/api/) and the [self-hosted option](/docs/self-hosted/) - provides an easy way to submit a set of entity descriptions (e.g. a list of customers, business counterparties, or subjects of an investigation) and check their presence on a [sanctions](/datasets/sanctions/) or [PEPs list](/datasets/peps/).
 
+<img class="img-fluid article-image img-shadow" src="https://assets.opensanctions.org/images/articles/gazprombank.png">
+
 Until now, this [matching API](/docs/api/matching/) has used a simple statistical model to assign a match score to each result it has returned. With the [new release](https://github.com/opensanctions/yente/releases) of `yente 3.4`, we've made that mechanism more flexible: clients can now select one of [a set of supported algorithms](/docs/api/scoring/) to optimise the behaviour of the API for their use case.
 
 With the new release, we've added three new scoring systems to augment the existing model (now called `regression-v1`, it is used as the default if no other algorithm is specified):
