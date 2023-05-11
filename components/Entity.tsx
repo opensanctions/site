@@ -34,10 +34,10 @@ export interface EntityDisplayProps {
 }
 
 export function EntityLink({ entity, children }: React.PropsWithChildren<EntityDisplayProps>) {
-  const rel = isIndexRelevant(entity) ? '' : 'nofollow'
   if (isBlocked(entity)) {
-    return <Link href={`/entities/${entity.id}/`} rel={rel}>[blocked entity]</Link>
+    return <Link href={`/entities/${entity.id}/`} rel='nofollow'>[blocked entity]</Link>
   }
+  const rel = isIndexRelevant(entity) ? '' : 'nofollow';
   const content = children || entity.caption;
   return <Link href={`/entities/${entity.id}/`} rel={rel}>{content}</Link>
 }
