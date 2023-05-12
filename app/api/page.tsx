@@ -7,6 +7,7 @@ import { CreditCard2BackFill, InfoSquareFill } from 'react-bootstrap-icons';
 import { API_URL, REVALIDATE_BASE } from '../../lib/constants';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getContentMetadata } from '../../lib/meta';
+import { signIn, signOut, useSession } from "next-auth/react"
 
 import styles from '../../styles/API.module.scss';
 
@@ -62,9 +63,18 @@ export default async function Page() {
               </Table>
             </CardBody>
             <CardFooter>
-              <Button href={`${API_URL}/stripe/subscribe`} variant="secondary">
-                <CreditCard2BackFill className="bsIcon" /> Sign up now
-              </Button>
+              {!session && (
+                <Button size="lg" variant="secondary"
+                  href={`/api/auth/signin`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    signIn()
+                  }}
+                >
+                  <CreditCard2BackFill className="bsIcon" /> Sign up now
+                </Button>
+                <br />
+               )}
             </CardFooter>
           </Card>
           <Card className="themed-card-medium">
