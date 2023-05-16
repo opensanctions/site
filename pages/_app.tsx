@@ -1,22 +1,14 @@
 import type { AppProps } from 'next/app'
-import type { Session } from 'next-auth'
-
 import { SSRProvider } from '@react-aria/ssr';
-import { SessionProvider } from 'next-auth/react'
 
 import '../styles/globals.scss'
 import Analytics from '../components/Analytics';
 
-export default function OpenSanctionsApp({ 
-  Component,
-  pageProps: { session, ...pageProps }, 
-}: AppProps<{ session: Session }>) {
+export default function OpenSanctionsApp({ Component, pageProps }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <SSRProvider>
-        <Analytics />
+    <SSRProvider>
+      <Analytics />
         <Component {...pageProps} />
-      </SSRProvider>
-    </SessionProvider>
+    </SSRProvider>
   );
 }
