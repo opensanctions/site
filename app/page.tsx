@@ -11,10 +11,11 @@ import Dataset from '../components/Dataset';
 import Article from '../components/Article';
 import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, InputGroup } from '../components/wrapped';
 import LayoutFrame from '../components/layout/LayoutFrame';
-import { getSchemaWebSite } from "../lib/schema";
-import { signIn, useSession } from "next-auth/react"
+import { getSchemaWebSite } from '../lib/schema';
+import { getServerSession } from 'next-auth/next';
+/* import { authOptions } from './api/auth/[...nextauth]'; */
 
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 import StructuredData from '../components/utils/StructuredData';
 import { getGenerateMetadata } from '../lib/meta';
 
@@ -28,7 +29,7 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  const { data: session } = useSession();
+  /* const session = await getServerSession(req, res, authOptions) */
   const articles = await getArticles()
   const publishedArticles = articles.filter((a) => !a.draft);
   const datasets = await getDatasets()
@@ -120,20 +121,16 @@ export default async function Page() {
               </p>
             </Col>
             <Col md={4} className="d-print-none">
-              {!session && (
+              {/* !session && ( */
               <>
                 <Button size="lg" variant="secondary"
                   href={`/api/auth/signin`}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    signIn()
-                  }}
                 >
                   <CreditCard2BackFill className="bsIcon" /> Sign up now
                 </Button>
                 <br />
               </>
-              )}
+              /* ) */}
               <ButtonGroup>
                 <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
                 <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>
