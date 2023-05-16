@@ -4,10 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
+import Link from 'next/link';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 
 import Layout from '../../components/Layout'
 import { PropsWithChildren } from 'react';
 import { API_URL } from '../../lib/constants';
+import { Summary } from '../../components/util';
 
 import styles from '../../styles/Account.module.scss'
 import { ClipboardPlusFill } from 'react-bootstrap-icons';
@@ -43,6 +47,7 @@ export default function Account() {
 
   if (status === "authenticated") {
     return (
+    <>
       <AccountContext>
         <Row>
           <Col md={9}>
@@ -70,7 +75,7 @@ export default function Account() {
                     API
                   </th>
                   <td>
-                    <Link href={apiUrl}>{apiUrl}</Link>
+                    <Link href={API_URL}>{API_URL}</Link>
                   </td>
                 </tr>
                 <tr>
@@ -102,7 +107,7 @@ export default function Account() {
                 <Nav.Link active={true} href="#">Account and usage</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href={apiUrl}>API Documentation</Nav.Link>
+                <Nav.Link href={API_URL}>API Documentation</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/reference">Data dictionary</Nav.Link>
@@ -114,14 +119,14 @@ export default function Account() {
           </Col>
         </Row>
       </AccountContext >
-      <>
-        <p>Signed in as {userEmail}</p>
-        <Button variant="outline-secondary"
-          onClick={() => signOut()}
-        >
-          Sign out
-        </Button>
-      </>
+      <br/>
+      <p>Signed in as {userEmail}</p>
+      <Button variant="outline-secondary"
+        onClick={() => signOut()}
+      >
+        Sign out
+      </Button>
+    </>
     )
   }
 

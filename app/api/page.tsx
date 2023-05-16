@@ -7,7 +7,7 @@ import { CreditCard2BackFill, InfoSquareFill } from 'react-bootstrap-icons';
 import { API_URL, REVALIDATE_BASE } from '../../lib/constants';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getContentMetadata } from '../../lib/meta';
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 
 import styles from '../../styles/API.module.scss';
 
@@ -22,8 +22,10 @@ export async function generateMetadata() {
 
 
 export default async function Page() {
+  const { data: session } = useSession();
   const content = await getContentBySlug('api/index');
   return (
+  <>
     <LayoutFrame activeSection={content.section}>
       <Content.Context content={content}>
         <CardGroup className="themed-card-group">
@@ -64,6 +66,7 @@ export default async function Page() {
             </CardBody>
             <CardFooter>
               {!session && (
+              <>
                 <Button size="lg" variant="secondary"
                   href={`/api/auth/signin`}
                   onClick={(e) => {
@@ -74,6 +77,7 @@ export default async function Page() {
                   <CreditCard2BackFill className="bsIcon" /> Sign up now
                 </Button>
                 <br />
+              </>
                )}
             </CardFooter>
           </Card>
@@ -127,5 +131,6 @@ export default async function Page() {
         </Row>
       </Content.Context>
     </LayoutFrame>
+  </>
   )
 }

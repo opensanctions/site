@@ -12,7 +12,7 @@ import Article from '../components/Article';
 import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, InputGroup } from '../components/wrapped';
 import LayoutFrame from '../components/layout/LayoutFrame';
 import { getSchemaWebSite } from "../lib/schema";
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 
 import styles from '../styles/Home.module.scss'
 import StructuredData from '../components/utils/StructuredData';
@@ -28,6 +28,7 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
+  const { data: session } = useSession();
   const articles = await getArticles()
   const publishedArticles = articles.filter((a) => !a.draft);
   const datasets = await getDatasets()
@@ -36,6 +37,7 @@ export default async function Page() {
   const all = collections.find((c) => c.name === 'all');
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
   return (
+  <>
     <LayoutFrame>
       <StructuredData data={getSchemaWebSite()} />
       <div className={styles.claimBanner}>
@@ -66,6 +68,7 @@ export default async function Page() {
                 </Form>
               </div>
               {all && (
+              <>
                 <p className={styles.stats}>
                   <NumericBadge value={all.target_count} /> targets
                   {SPACER}
@@ -78,6 +81,7 @@ export default async function Page() {
                   {SPACER}
                   <Link href="/datasets">get bulk data</Link>
                 </p>
+              </>
               )}
             </Col>
             <Col md={4} className="d-none d-md-block">
@@ -117,6 +121,7 @@ export default async function Page() {
             </Col>
             <Col md={4} className="d-print-none">
               {!session && (
+              <>
                 <Button size="lg" variant="secondary"
                   href={`/api/auth/signin`}
                   onClick={(e) => {
@@ -127,7 +132,8 @@ export default async function Page() {
                   <CreditCard2BackFill className="bsIcon" /> Sign up now
                 </Button>
                 <br />
-               )}
+              </>
+              )}
               <ButtonGroup>
                 <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
                 <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>
@@ -165,14 +171,17 @@ export default async function Page() {
           <Col md={9}>
             <Row>
               {sortedCollections.map((d) => (
+              <>
                 <Col sm={6} key={d.name}>
                   <Dataset.Card dataset={d} key={d.name} />
                 </Col>
+              </>
               ))}
             </Row>
           </Col>
         </Row>
       </Container>
     </LayoutFrame>
+  </>
   )
 }
