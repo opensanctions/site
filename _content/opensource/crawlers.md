@@ -147,7 +147,7 @@ def crawl(context):
     context.emit(entity, target=True)
 ```
 
-The entity object is based on the entity proxy in FollowTheMoney, so we suggest you also check out the [FtM documentation](https://followthemoney.tech/api/) on entity construction. Some additional utility methods are added in the entity class in OpenSanctions.
+The entity object is based on the entity proxy in FollowTheMoney, so we suggest you also check out the [FtM documentation](https://followthemoney.tech/docs/api/) on entity construction. Some additional utility methods are added in the entity class in OpenSanctions.
 
 ## Checklist
 
