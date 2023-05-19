@@ -13,7 +13,7 @@ import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, Inp
 import LayoutFrame from '../components/layout/LayoutFrame';
 import { getSchemaWebSite } from '../lib/schema';
 import { getServerSession } from 'next-auth/next';
-/* import { authOptions } from './api/auth/[...nextauth]'; */
+import { authOptions } from '../lib/auth';
 
 import styles from '../styles/Home.module.scss';
 import StructuredData from '../components/utils/StructuredData';
@@ -29,7 +29,7 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  /* const session = await getServerSession(req, res, authOptions) */
+  const session = await getServerSession(authOptions)
   const articles = await getArticles()
   const publishedArticles = articles.filter((a) => !a.draft);
   const datasets = await getDatasets()
@@ -121,7 +121,7 @@ export default async function Page() {
               </p>
             </Col>
             <Col md={4} className="d-print-none">
-              {/* !session && ( */
+              { !session && ( 
               <>
                 <Button size="lg" variant="secondary"
                   href={`/api/auth/signin`}
@@ -130,7 +130,7 @@ export default async function Page() {
                 </Button>
                 <br />
               </>
-              /* ) */}
+              )}
               <ButtonGroup>
                 <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
                 <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>

@@ -1,4 +1,5 @@
 import '../styles/globals.scss'
+import { NextAuthProvider } from "./providers";
 
 export const metadata = {
   title: {
@@ -12,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head></head>
       <body>
-        <>{children}</>
+        <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>
   );
