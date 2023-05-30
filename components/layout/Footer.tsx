@@ -56,9 +56,9 @@ export default function Footer() {
                   <strong>Keep in touch</strong>
                   <ul>
                     <li>
-                      <Link href="https://bit.ly/osa-slack"><Slack /></Link>
+                      <Link href="/slack/"><Slack /></Link>
                       {' '}
-                      <Link href="https://bit.ly/osa-slack">Slack chat</Link>
+                      <Link href="/slack/">Slack chat</Link>
                     </li>
                     <li>
                       <Link href="https://twitter.com/open_sanctions"><Twitter /></Link>
