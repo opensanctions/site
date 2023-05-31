@@ -15,7 +15,8 @@ OpenSanctions.org is operated by (Impressum nach § 5 TMG, ebenso verantwortlich
 Schonensche Str. 43, 13189 Berlin
 Registered: AG Berlin (Charlottenburg), HRB 251172B
 Managing Director: Friedrich Lindenberg
-USt.-IDNr: DE360360789</pre>
+USt.-IDNr: DE360360789
+LEI: <a href="https://search.gleif.org/#/record/1595VL9OPPQ5THEK2X30">1595VL9OPPQ5THEK2X30</a></pre>
 
 See the [contact page](/contact/) for information on how to reach us.
 
