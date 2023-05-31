@@ -37,6 +37,21 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/entities/',
+        destination: '/research/',
+        permanent: false,
+      },
+      {
+        source: '/recent/:page',
+        destination: '/datasets/:page',
+        permanent: false,
+      },
+      {
+        source: '/datasets/offshoreleaks/',
+        destination: '/datasets/icij_offshoreleaks/',
+        permanent: false,
+      },
+      {
         source: '/slack/',
         destination: 'https://join.slack.com/t/opensanctions/shared_invite/zt-xwnzvht1-9jPnHUwfCzW_Yw9MAG6vTA',
         permanent: false,
