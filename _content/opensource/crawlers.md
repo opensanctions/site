@@ -173,7 +173,7 @@ When contributing a new data source, or some other change, make sure of the foll
 
 The following are some patterns that have proved useful:
 
-## Detect unhandled data
+### Detect unhandled data
 
 If a variable number of fields can extracted automatically (e.g. from a list or table):
 
@@ -181,7 +181,7 @@ If a variable number of fields can extracted automatically (e.g. from a list or 
 * `pop()` them when adding them to entities.
 * Log warnings if there are unhandled fields remaining in the `dict` so that we notice and improve the crawler.
 
-## Capture useful free text in its original language
+### Capture useful free text in its original language
 
 Useful fields like the reason someone is sanctioned should be captured regardless
 of the language it is written in. Don't worry about translating fields where arbitrary
@@ -193,7 +193,7 @@ reason = data.pop("expunerea-succinta-a-temeiului-de-includere-in-lista-a-operat
 sanction.add("reason", reason, lang="ro")
 ```
 
-## Generating consistent unique identifiers
+### Generating consistent unique identifiers
 
 Make sure entity IDs are unique within the source. e.g. avoid using only the name of
 the entity because there might eventually be two persons or two companies with the same
