@@ -130,9 +130,11 @@ def crawl(context):
     # Create an entity object to which other information can be assigned: 
     entity = context.make("Person")
 
-    # Each entity needs a unique ID. In OpenSanctions, this is often derived
-    # from the ID of a source database, or a string:
-    entity.make_slug('Joseph Biden')
+    # Each entity needs an ID which is unique within the source database, and
+    # ideally consistent over time.
+    # In OpenSanctions, this is often derived from its ID in the source database,
+    # or a string with the above properties. See patterns below.
+    entity.id = context.make_id('Joseph Biden')
 
     # Assign some property values:
     entity.add('name', 'Joseph Robinette Biden Jr.')
@@ -163,5 +165,46 @@ When contributing a new data source, or some other change, make sure of the foll
   data in an improvised way.
 * Include verbose logging in your crawler. Make sure that new fields or enum values
   introduced upstream (e.g. a new country code or sanction program) will cause a warning
-  to be emitted.
+  to be emitted. [Warnings](/issues) are checked regularly to identify when a crawler needs attention.
+  Info and lower level logs are useful for debugging with the `-v` flag.
 * Bonus points: your Python code is linted and formatted with ``black``.
+
+## Patterns
+
+The following are some patterns that have proved useful:
+
+### Detect unhandled data
+
+If a variable number of fields can extracted automatically (e.g. from a list or table):
+
+* Capture them in a `dict`.
+* `pop()` them when adding them to entities.
+* Log warnings if there are unhandled fields remaining in the `dict` so that we notice and improve the crawler.
+
+### Capture useful free text in its original language
+
+Useful fields like the reason someone is sanctioned should be captured regardless
+of the language it is written in. Don't worry about translating fields where arbitrary
+text would be written. If the language is known, include the language code
+in the `lang` parameter to `Entity.add()`. e.g.
+
+```python
+reason = data.pop("expunerea-succinta-a-temeiului-de-includere-in-lista-a-operatorului-economic")
+sanction.add("reason", reason, lang="ro")
+```
+
+### Generating consistent unique identifiers
+
+Make sure entity IDs are unique within the source. e.g. avoid using only the name of
+the entity because there might eventually be two persons or two companies with the same
+name. [It is preferable](/docs/identifiers) to have to manually relate two Follow the
+Money entities for the same real world entity. 
+
+Good values to use as identifiers are
+
+* an ID in the source dataset, e.g. a sanction number, company registration number,
+  personal identity number
+* some combination of consistent attributes, e.g. a person's name and normalised 
+  date of birth in a dataset that holds a relatively small proportion of the population
+* a combination of identifiers for the entities related by another entity, e.g. an 
+  owner and a company, in the form `ownership.id = context.make_id(owner.id, "owns", company.id)`
