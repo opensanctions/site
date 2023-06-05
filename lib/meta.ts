@@ -14,6 +14,7 @@ export function getGenerateMetadata({ title, description, imageUrl, noIndex }: M
   const imageDefaultUrl = !!imageUrl ? imageUrl : "https://assets.opensanctions.org/images/ura/claim.png";
   // FIXME: <link rel="search" type="application/opensearchdescription+xml" title="OpenSanctions" href="/opensearch.xml" />
   const meta: Metadata = {
+    metadataBase: new URL('https://www.opensanctions.org'),
     title: title,
     description: description,
     applicationName: 'OpenSanctions.org',
