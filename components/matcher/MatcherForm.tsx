@@ -18,13 +18,13 @@ function getPlaceholder(prop: Property) {
     return 'entity name';
   }
   if (prop.type.name === 'date') {
-    return 'format 1984-02-18 or 1984 (year only)'
+    return 'eg. 1984-02-18 or 1984 (year only)'
   }
   if (prop.type.name === 'country') {
     return 'country name (Russia) or code (RU)'
   }
   if (prop.type.name === 'identifier') {
-    return 'like 743587867'
+    return 'eg. 743587867'
   }
   return prop.description || prop.label;
 }
@@ -48,38 +48,28 @@ export default function MatcherForm({ datasets, modelData, algorithms, schemata,
   const schemaOptions = schemata
     .map((s) => model.getSchema(s))
     .filter((s) => s.matchable);
-  const schemaObj = model.getSchema(schema);
-  const featured = schemaObj.getFeaturedProperties();
   const params = searchParams?.entries() || [];
-  const [values, setValues] = useState(Object.fromEntries(params));
-
-  const setDataset = async (dataset: string) => {
-    router.replace(queryString.stringifyUrl({
-      url: pathname,
-      query: { ...values, dataset: dataset }
-    }));
-  }
-
-  const setAlgorithm = async (algorithm: string) => {
-    router.replace(queryString.stringifyUrl({
-      url: pathname,
-      query: { ...values, algorithm: algorithm }
-    }));
-  }
-
-  const setSchema = async (schema: string) => {
-    router.replace(queryString.stringifyUrl({
-      url: pathname,
-      query: { dataset: dataset, schema: schema }
-    }));
-    setValues({});
-  }
+  const [values, setValues] = useState<{ [key: string]: string }>({
+    ...Object.fromEntries(params),
+    dataset,
+    schema,
+    algorithm
+  });
+  const featured = model.getSchema(values.schema).getFeaturedProperties();
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const queryParams: { [key: string]: string } = {
+      dataset: values.dataset,
+      schema: values.schema,
+      algorithm: values.algorithm,
+    }
+    for (let prop of featured) {
+      queryParams[prop.name] = values[prop.name];
+    }
     router.push(queryString.stringifyUrl({
       url: pathname,
-      query: { ...values, dataset: dataset, schema: schema }
+      query: queryParams
     }));
   }
 
@@ -90,7 +80,7 @@ export default function MatcherForm({ datasets, modelData, algorithms, schemata,
           Dataset scope:
         </FormLabel>
         <Col sm={8}>
-          <FormSelect value={dataset} onChange={(e) => setDataset(e.target.value)} disabled={isLoading}>
+          <FormSelect value={values.dataset} onChange={(e) => setValues({ ...values, dataset: e.target.value })} disabled={isLoading}>
             {datasets.map((d) => <option key={d.name} value={d.name}>{d.title}</option>)}
           </FormSelect>
         </Col>
@@ -100,7 +90,7 @@ export default function MatcherForm({ datasets, modelData, algorithms, schemata,
           Entity type:
         </FormLabel>
         <Col sm={8}>
-          <FormSelect value={schema} onChange={(e) => setSchema(e.target.value)} disabled={isLoading}>
+          <FormSelect value={values.schema} onChange={(e) => setValues({ ...values, schema: e.target.value })} disabled={isLoading}>
             {schemaOptions.map((s) => <option key={s.name} value={s.name}>{s.label}</option>)}
           </FormSelect>
         </Col>
@@ -110,7 +100,7 @@ export default function MatcherForm({ datasets, modelData, algorithms, schemata,
           Scoring method:
         </FormLabel>
         <Col sm={8}>
-          <FormSelect value={algorithm} onChange={(e) => setAlgorithm(e.target.value)} disabled={isLoading}>
+          <FormSelect value={values.algorithm} onChange={(e) => setValues({ ...values, algorithm: e.target.value })} disabled={isLoading}>
             {algorithms.map((s) => <option key={s.name} value={s.name}>{s.name}</option>)}
           </FormSelect>
         </Col>
@@ -130,12 +120,13 @@ export default function MatcherForm({ datasets, modelData, algorithms, schemata,
             />
           </Col>
         </FormGroup>
-      ))}
+      ))
+      }
       <FormGroup as={Row} className="mb-3">
         <Col sm={{ span: 8, offset: 4 }}>
           <Button type="submit" disabled={isLoading}>Match</Button>
         </Col>
       </FormGroup>
-    </Form>
+    </Form >
   )
 }
