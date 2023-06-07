@@ -1,30 +1,17 @@
-import Link from 'next/link';
-import queryString from 'query-string';
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
-import Alert from 'react-bootstrap/Alert';
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import { Row, Col, Alert, Table, Form, FormGroup, FormControl, FormLabel, Button, Badge, Nav, NavItem, NavLink } from "./wrapped";
 
-import Layout from '../../components/Layout'
-import { fetchJsonUrl } from '../../lib/data';
-import { API_URL } from '../../lib/constants';
-import { IAccountInfo, IAccountUsage } from '../../lib/types';
-import { PropsWithChildren } from 'react';
-import { FormattedDate, Money, Summary } from '../../components/util';
+import { IAccountInfo, IAccountUsage } from "../lib/types"
+import Link from "next/link";
 
+import styles from '../styles/Account.module.scss'
+import { ClipboardPlusFill } from "react-bootstrap-icons";
+import { API_TOKEN, API_URL } from "../lib/constants";
+import { FormattedDate, Money } from "./util";
 
-import styles from '../../styles/Account.module.scss'
-import { ClipboardPlusFill } from 'react-bootstrap-icons';
-
-const TITLE = 'API account and usage information';
-const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
+export const TITLE = 'API account and usage information';
+export const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
   + "and review their metered service usage."
+
 
 type UsageTableProps = {
   usage: IAccountUsage
@@ -74,79 +61,18 @@ function UsageTable({ usage }: UsageTableProps) {
   )
 }
 
-function AccountContext({ children }: PropsWithChildren) {
-  return (
-    <Layout.Base title={TITLE} description={SUMMARY}>
-      <Container>
-        <h1>{TITLE}</h1>
-        <Row>
-          <Col md={9}>
-            <Summary summary={SUMMARY} />
-          </Col>
-        </Row>
-        <>{children}</>
-      </Container>
-    </Layout.Base>
-  );
+type AccountInfoProps = {
+  info: IAccountInfo
+  welcome: boolean
+  secret: string | string[]
 }
 
-type AccountLoginProps = {
-  secret?: string | null
-}
-
-function AccountLogin({ secret }: AccountLoginProps) {
-  const failed = (secret !== null);
-  return (
-    <AccountContext>
-      <Row>
-        <Col md={9}>
-          <Form>
-            {failed && (
-              <Alert variant="danger">
-                <strong>Authentication failed.</strong> The API key you entered
-                does not belong to an active account.
-              </Alert>
-            )}
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>
-                API Key
-              </Form.Label>
-              <Col sm={10}>
-                <Form.Control
-                  name="secret"
-                  defaultValue={secret || ""}
-                  placeholder="Please enter your API credential to view account info..."
-                  aria-label="API key"
-                />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit">Sign in</Button>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3">
-              <Col sm={{ span: 10, offset: 2 }} className="text-muted">
-                Don't know your API key?
-                Please <Link href="/contact">contact us</Link> to get access.
-              </Col>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
-    </AccountContext>
-  );
-}
-
-export default function Account({ apiUrl, secret, info, welcome }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  if (info === null) {
-    return <AccountLogin secret={secret} />;
-  }
+export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
   const account = info.account;
   const accountName = account.name || account.key;
-  const portalUrl = `${apiUrl}/stripe/portal?api_key=${secret}`;
+  const portalUrl = `${API_URL}/stripe/portal?api_key=${secret}`;
   return (
-    <AccountContext>
+    <>
       <Row>
         <Col md={9}>
           {welcome && (
@@ -166,16 +92,15 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
                 </th>
                 <td>
                   <code>{account.secret}</code>
-                  <span className={styles.copySecret} onClick={() => { navigator.clipboard.writeText(account.secret) }}>
+                  {/* <span className={styles.copySecret} onClick={() => { navigator.clipboard.writeText(account.secret) }}>
                     <ClipboardPlusFill />
-                  </span>
-
+                  </span> */}
                 </td>
                 <th>
                   API
                 </th>
                 <td>
-                  <Link href={apiUrl}>{apiUrl}</Link>
+                  <Link href={API_URL}>{API_URL}</Link>
                 </td>
               </tr>
               <tr>
@@ -264,44 +189,69 @@ export default function Account({ apiUrl, secret, info, welcome }: InferGetServe
         </Col>
         <Col md={3}>
           <Nav className="flex-column justify-content-start" variant="pills">
-            <Nav.Item>
-              <Nav.Link active={true} href="#">Account and usage</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href={apiUrl}>API Documentation</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/reference">Data dictionary</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/contact">Contact support</Nav.Link>
-            </Nav.Item>
+            <NavItem>
+              <NavLink active={true} href="#">Account and usage</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href={API_URL}>API Documentation</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/reference">Data dictionary</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/contact">Contact support</NavLink>
+            </NavItem>
           </Nav>
         </Col>
       </Row>
       <UsageTable usage={info.usage} />
-    </AccountContext >
+    </>
   )
 }
 
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const secret = (context.query.secret || null) as string | null;
+type AccountLoginProps = {
+  secret?: string | string[] | null
+}
 
-  let info = null;
-  if (secret !== undefined) {
-    const apiUrl = queryString.stringifyUrl({
-      'url': `${API_URL}/account`,
-      'query': { 'api_key': secret }
-    })
-    info = await fetchJsonUrl<IAccountInfo>(apiUrl, false);
-  }
-  return {
-    props: {
-      secret,
-      info,
-      apiUrl: API_URL,
-      welcome: !!context.query.welcome,
-    },
-  }
+export function AccountLogin({ secret }: AccountLoginProps) {
+  const failed = !!secret;
+  return (
+    <Row>
+      <Col md={9}>
+        <Form>
+          {failed && (
+            <Alert variant="danger">
+              <strong>Authentication failed.</strong> The API key you entered
+              does not belong to an active account.
+            </Alert>
+          )}
+          <FormGroup as={Row} className="mb-3">
+            <FormLabel column sm={2}>
+              API Key
+            </FormLabel>
+            <Col sm={10}>
+              <FormControl
+                name="secret"
+                defaultValue={secret || ""}
+                placeholder="Please enter your API credential to view account info..."
+                aria-label="API key"
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup as={Row} className="mb-3">
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Button type="submit">Sign in</Button>
+            </Col>
+          </FormGroup>
+          <FormGroup as={Row} className="mb-3">
+            <Col sm={{ span: 10, offset: 2 }} className="text-muted">
+              Don't know your API key?
+              Please <Link href="/contact">contact us</Link> to get access.
+            </Col>
+          </FormGroup>
+        </Form>
+      </Col>
+    </Row>
+  );
 }
