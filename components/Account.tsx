@@ -1,11 +1,10 @@
-import { Row, Col, Alert, Table, Form, FormGroup, FormControl, FormLabel, Button, Badge, Nav, NavItem, NavLink } from "./wrapped";
+import { Row, Col, Alert, AlertHeading, Table, Form, FormGroup, FormControl, FormLabel, Button, Badge, Nav, NavItem, NavLink } from "./wrapped";
 
 import { IAccountInfo, IAccountUsage } from "../lib/types"
 import Link from "next/link";
 
 import styles from '../styles/Account.module.scss'
-import { ClipboardPlusFill } from "react-bootstrap-icons";
-import { API_TOKEN, API_URL } from "../lib/constants";
+import { API_URL } from "../lib/constants";
 import { FormattedDate, Money } from "./util";
 import { ClipboardCopy } from "./utils/ClipboardCopy";
 
@@ -78,7 +77,7 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
         <Col md={9}>
           {welcome && (
             <Alert variant="success">
-              <Alert.Heading>Welcome to OpenSanctions!</Alert.Heading>
+              <AlertHeading>Welcome to OpenSanctions!</AlertHeading>
               <p>
                 You've successfully subscribed to the OpenSanctions API. Use the credentials
                 below to start querying and exploring the system.

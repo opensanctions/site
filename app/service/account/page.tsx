@@ -22,7 +22,7 @@ export async function generateMetadata() {
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  const welcome = (searchParams && !!searchParams['welcome']) || false;
+  const welcome = searchParams ? !!searchParams['welcome'] : false;
   const secret = searchParams ? searchParams['secret'] : undefined;
 
   let info = null;
