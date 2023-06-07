@@ -7,6 +7,7 @@ import styles from '../styles/Account.module.scss'
 import { ClipboardPlusFill } from "react-bootstrap-icons";
 import { API_TOKEN, API_URL } from "../lib/constants";
 import { FormattedDate, Money } from "./util";
+import { ClipboardCopy } from "./utils/ClipboardCopy";
 
 export const TITLE = 'API account and usage information';
 export const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
@@ -92,9 +93,7 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
                 </th>
                 <td>
                   <code>{account.secret}</code>
-                  {/* <span className={styles.copySecret} onClick={() => { navigator.clipboard.writeText(account.secret) }}>
-                    <ClipboardPlusFill />
-                  </span> */}
+                  <ClipboardCopy text={account.secret} />
                 </td>
                 <th>
                   API
