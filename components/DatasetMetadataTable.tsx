@@ -163,7 +163,7 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
           </tr>
         )}
         <tr>
-          <th className={styles.tableHeader}>Last changed<HelpLink href="/docs/faq/#updates" />:</th>
+          <th className={styles.tableHeader}>Last changed<HelpLink href="/docs/bulk/faq/#updates" />:</th>
           <td><FormattedDate date={dataset.last_change} /></td>
         </tr>
       </tbody>
