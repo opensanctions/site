@@ -17,6 +17,7 @@ export default async function Page() {
                         <p className={styles.subClaim}>
                             Preventative screening where you can have insight into the data you're working with.
                         </p>
+                        <p><a href="#get-the-data"><Button variant="light">Get the data now</Button></a></p>
 
                     </Row>
                 </Container>
@@ -37,7 +38,7 @@ export default async function Page() {
                     </Col>
                 </Row>
                 <Row>
-                    <section>
+                    <section style={{marginTop: "2em"}}>
                         <h2>Who are Politically Exposed Persons? Who needs this?</h2>
                         <p>PEPs are people in positions of power. Being classified as a PEP doesn't imply you've done anything wrong. ... Lorem ipsum dolor blah...</p>
                         <p>The reason someone is included in the dataset is indicated in the data.
@@ -71,7 +72,7 @@ export default async function Page() {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="/datasets/wd_peps/">Wikidata Politically Exposed Persons</a><br/>
+                                        <a href="/datasets/wd_peps/">Wikidata Politically Exposed Persons</a>
                                         <span class="badge bg-light">non-official source</span>
                                     </td>
                                     <td>2023-06-08</td>
@@ -86,6 +87,8 @@ export default async function Page() {
                                 <tr>
                                     <td>
                                         <a href="/datasets/everypolitician/">Every Politician</a>
+                                        <span class="badge bg-light">non-official source</span>
+                                    </td>
                                     </td>
                                     <td>2022-04-23</td>
                                     <td>
@@ -99,6 +102,8 @@ export default async function Page() {
                                 <tr>
                                     <td>
                                         <a href="/datasets/ru_rupep/">RuPEP Public Database of PEPs in Russia and Belarus</a>
+                                        <span class="badge bg-light">non-official source</span>
+                                    </td>
                                     </td>
                                     <td>2023-05-11</td>
                                     <td>
@@ -147,6 +152,8 @@ export default async function Page() {
                                 <tr>
                                     <td>
                                         <a href="/datasets/md_rise_profiles/">RISE Moldova People of interest</a>
+                                        <span class="badge bg-light">non-official source</span>
+                                    </td>
                                     </td>
                                     <td>2023-06-07</td>
                                     <td>
@@ -160,21 +167,57 @@ export default async function Page() {
                         </table>
                     </section>`}} />
                     <section>
-                        <p>The <a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> 
-                         dataset is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects. 
-                         OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
-                         administrators for changes. Note however that this data is only as up to date as the community-contributed
-                         updates. In future, OpenSanctions hopes to support more active maintenance of the data in Wikidata, and by extension
-                         this dataset.
-                        <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
-                        <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician project</a> 
-                        by mySociety was shut down in June 2019. While it contains a significant foundation of data for national 
-                        and sub-national legislatures in 233 countries and territories, it is becoming less representative over 
-                        time and will be removed or replaced in time. <a href="https://www.opensanctions.org/datasets/everypolitician/">Read more...</a></p>
+                        <p>The <a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> data
+                            is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects.
+                            OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
+                            administrators for changes. Note however that this data is only as up to date as the community-contributed
+                            updates. In future, OpenSanctions hopes to support more active maintenance of the data in Wikidata, and by extension
+                            this dataset. <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
+                        <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician project</a> by
+                            mySociety was shut down in June 2019. While it contains a significant foundation of data for national
+                            and sub-national legislatures in 233 countries and territories, it is becoming less representative over
+                            time and will be removed or replaced in time. <a href="https://www.opensanctions.org/datasets/everypolitician/">Read more...</a></p>
                         <p>The RUPEP dataset is ...</p>
                     </section>
                 </Row>
+                <Row>
+                    <section>
+                        <h2>How do we measure the quality of this PEP data?</h2>
+                        <p>Currently we only know when our source datasets last changed, and how many entities have been extracted.</p>
+                        <p>In the near future we would like to generate and publish:
+                            <ul>
+                                <li>How many out of the total posts in a jurisdiction are included.</li>
+                                <li>Which posts are included, and which are not.</li>
+                                <li>...</li>
+                            </ul>
+                            In the longer term, we would like to establish quality metrics, e.g. identifying what proportion of
+                            positions are out of date via random spot-checks.
+                        </p>
+                    </section>
+                </Row>
             </Container>
+
+            <div className={styles.commercialBanner} id="get-the-data">
+                <Container>
+                    <h2>Use OpenSanctions to manage business risk</h2>
+                    <Row>
+                        <Col md={8}>
+                            <p>The PEP dataset is available for commercial licensing as part of the OpenSanctions Default dataset bulk data license and SaaS API.</p>
+                            <p>
+                                OpenSanctions is <strong>free for non-commercial users.</strong> Business
+                                and commercial users must either acquire a data license to use the
+                                dataset, or they can subscribe to our pay-as-you-go API service.
+                            </p>
+                        </Col>
+                        <Col md={4} className="d-print-none">
+                            <ButtonGroup>
+                                <Button size="lg" href="/api/" variant="secondary">Use the API</Button>
+                                <Button size="lg" href="/licensing/" variant="light">License bulk data</Button>
+                            </ButtonGroup>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         </LayoutFrame>
     )
 }
