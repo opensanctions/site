@@ -12,10 +12,10 @@ export default async function Page() {
                     <Row>
 
                         <h1 className={styles.claim}>
-                            Screen against industry leading PEP data
+                            Screen against well-understood PEP data
                         </h1>
                         <p className={styles.subClaim}>
-                            Preventative screening linked with the entire OpenSanctions dataset of risk-relevant persons and organizations
+                            Preventative screening where you can have insight into the data you're working with.
                         </p>
 
                     </Row>
@@ -37,7 +37,20 @@ export default async function Page() {
                     </Col>
                 </Row>
                 <Row>
-                    <div dangerouslySetInnerHTML={{__html: `
+                    <section>
+                        <h2>Who are Politically Exposed Persons? Who needs this?</h2>
+                        <p>PEPs are people in positions of power. Being classified as a PEP doesn't imply you've done anything wrong. ... Lorem ipsum dolor blah...</p>
+                        <p>The reason someone is included in the dataset is indicated in the data.
+                            Known PEPs are annotated with the <code>role.pep</code> <a href="https://www.opensanctions.org/reference/#type.topic">topic</a>,
+                            while their known close associates would be annotated with the <code>role.rca</code> topic.
+                            Persons who do not meet the general requirements for being considered PEPs but are maintained
+                            on lists for closer scrutiny by investigative organisations are annotated with the <code>poi</code> topic.
+                            In contrast, officially sanctioned entities will be annotated with the <code>sanctioned</code> topic.</p>
+                    </section>
+                </Row>
+                <Row>
+                    <div dangerouslySetInnerHTML={{
+                        __html: `
                     <section>
                         <h3>
                             <a id="sources">
@@ -58,7 +71,8 @@ export default async function Page() {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="/datasets/wd_peps/">Wikidata Politically Exposed Persons</a>
+                                        <a href="/datasets/wd_peps/">Wikidata Politically Exposed Persons</a><br/>
+                                        <span class="badge bg-light">non-official source</span>
                                     </td>
                                     <td>2023-06-08</td>
                                     <td>
@@ -145,6 +159,20 @@ export default async function Page() {
                             </tbody>
                         </table>
                     </section>`}} />
+                    <section>
+                        <p>The <a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> 
+                         dataset is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects. 
+                         OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
+                         administrators for changes. Note however that this data is only as up to date as the community-contributed
+                         updates. In future, OpenSanctions hopes to support more active maintenance of the data in Wikidata, and by extension
+                         this dataset.
+                        <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
+                        <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician project</a> 
+                        by mySociety was shut down in June 2019. While it contains a significant foundation of data for national 
+                        and sub-national legislatures in 233 countries and territories, it is becoming less representative over 
+                        time and will be removed or replaced in time. <a href="https://www.opensanctions.org/datasets/everypolitician/">Read more...</a></p>
+                        <p>The RUPEP dataset is ...</p>
+                    </section>
                 </Row>
             </Container>
         </LayoutFrame>
