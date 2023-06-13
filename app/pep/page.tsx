@@ -63,12 +63,12 @@ export default async function Page() {
           <Row>
 
             <h1 className={styles.claim}>
-              Screen against well-understood PEP data
+              Find Politically Exposed Persons (PEP) worldwide
             </h1>
             <p className={styles.subClaim}>
-              Preventative screening where you can have insight into the data you're working with.
+              Screen against PEP data compiled from an assortment of continually updated sources
             </p>
-            <p><a href="#get-the-data"><Button variant="light">Get the data now</Button></a></p>
+            <p><a href="#get-the-data"><Button variant="light">Get the data</Button></a></p>
 
           </Row>
         </Container>
@@ -76,28 +76,67 @@ export default async function Page() {
       <Container>
         <Row>
           <Col md={4} className={styles.explainer}>
-            <h2>Data source transparency</h2>
-            The OpenSanctions PEPs dataset packages publicly available PEP data in a consistent structured format. <a href="#sources">Read more about our data PEP sources</a> and how they are maintained.
+            <h2>Data Source Compiling</h2>
+            The OpenSanctions PEPs dataset packages publicly available PEP data
+            from various sources in a consistent structured format.
+            <a href="#sources">Read more about our data PEP sources</a> and how
+            they are maintained.
           </Col>
           <Col md={4} className={styles.explainer}>
-            <h2>Inclusion methodology</h2>
-            We currently take the conservative approach of maintaining PEPs 5 years after they leave any relevant posts. We are working towards expanding that within <a href="https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Peps-r12-r22.html">FATF-GATF guidelines</a>
+            <h2>Feature box 2</h2>
+            ...feature blurb 2...
           </Col>
           <Col md={4} className={styles.explainer}>
             <h2>Data quality transparency</h2>
-            We are continually improving the transparent evaluation of our data quality, sharing the methodology openly and building on feedback from data users.
+            PEP datasets are not as complete as other lists and are mostly
+            maintained and updated by volunteers. Our aim is to transparently
+            and continuously improve our data quality while also understanding
+            its limitations.
           </Col>
         </Row>
         <Row>
           <section style={{ marginTop: "2em" }}>
             <h2>Who are Politically Exposed Persons? Who needs this?</h2>
-            <p>PEPs are people in positions of power. Being classified as a PEP doesn't imply you've done anything wrong. ... Lorem ipsum dolor blah...</p>
-            <p>The reason someone is included in the dataset is indicated in the data.
-              Known PEPs are annotated with the <code>role.pep</code> <a href="https://www.opensanctions.org/reference/#type.topic">topic</a>,
-              while their known close associates would be annotated with the <code>role.rca</code> topic.
-              Persons who do not meet the general requirements for being considered PEPs but are maintained
-              on lists for closer scrutiny by investigative organisations are annotated with the <code>poi</code> topic.
-              In contrast, officially sanctioned entities will be annotated with the <code>sanctioned</code> topic.</p>
+            <p>Politically exposed persons (PEP) is a term from the banking
+              industry to describe individuals who have been entrusted with a
+              prominent public function. This might include members of cabinets,
+              parliaments, senior public servants or people that run state-owned
+              companies.</p>
+            <p>Being classified as a PEP in no way implies you have done anything
+              wrong. However, the concept is important because PEPs and members of
+              their families should be the subject of enhanced public scrutiny.
+              This is also mandated by financial crime laws in many countries.</p>
+            <p>The reason someone is included in the dataset is indicated in the data
+              via the <a href="https://www.opensanctions.org/reference/#type.topic">
+                topic</a> property:</p>
+
+            <Table size="sm">
+              <thead>
+                <tr>
+                  <th>Topic</th>
+                  <th className="w-75">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>role.pep</code></td>
+                  <td>Politically-exposed persons</td>
+                </tr>
+                <tr>
+                  <td><code>role.rca</code></td>
+                  <td>Relatives and close associates</td>
+                </tr>
+                <tr>
+                  <td><code>poi</code></td>
+                  <td>Persons who do not meet the general requirements for being considered PEPs but are maintained
+                    on lists for closer scrutiny by investigative organisations</td>
+                </tr>
+                <tr>
+                  <td><code>sanctioned</code></td>
+                  <td>Officially sanctioned entities</td>
+                </tr>
+              </tbody>
+            </Table>
           </section>
         </Row>
         <Row>
