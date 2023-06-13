@@ -158,16 +158,15 @@ export default async function Page() {
 
             <SourcesTable sources={sources} />
 
-            <p>Official sources are generally state departments and inter-governmental 
+            <p>Official sources are generally government departments and inter-governmental 
               agencies. Non-official sources are generally community, civil-society
               or journalistic organisations.</p>
 
             <p><a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> data
               is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects.
               OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
-              administrators for changes. Note however that this data is only as up to date as the community-contributed
-              updates. In future, OpenSanctions hopes to support more active maintenance of the data in Wikidata, and by extension
-              this dataset. <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
+              administrators for changes. Note, however, that as a volunteer-run organization, there is no guarantee of
+              how up-to-date the information is. <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
 
             <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician</a> project
               by mySociety contains a significant foundation of data for national
