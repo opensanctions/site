@@ -48,6 +48,9 @@ function SourcesTable({ sources }: SourcesTableProps) {
 
 export default async function Page() {
   const dataset = await getDatasetByName("peps");
+  if (dataset === undefined) {
+    throw "PEP dataset not found on PEP page";
+  }
   const datasets = await getDatasets();
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
 
@@ -78,8 +81,8 @@ export default async function Page() {
           <Col md={4} className={styles.explainer}>
             <h2>Data Source Compiling</h2>
             The OpenSanctions PEPs dataset packages publicly available PEP data
-            from various sources in a consistent structured format.
-            <a href="#sources">Read more about our data PEP sources</a> and how
+            from various sources in a consistent structured format. <a href="#sources">Read
+            more about our data PEP sources</a> and how
             they are maintained.
           </Col>
           <Col md={4} className={styles.explainer}>
@@ -91,7 +94,7 @@ export default async function Page() {
             PEP datasets are not as complete as other lists and are mostly
             maintained and updated by volunteers. Our aim is to transparently
             and continuously improve our data quality while also understanding
-            its limitations.
+            its limitations. <a href="#quality">Read more...</a>
           </Col>
         </Row>
         <Row>
@@ -107,8 +110,7 @@ export default async function Page() {
               their families should be the subject of enhanced public scrutiny.
               This is also mandated by financial crime laws in many countries.</p>
             <p>The reason someone is included in the dataset is indicated in the data
-              via the <a href="https://www.opensanctions.org/reference/#type.topic">
-                topic</a> property:</p>
+              via the <a href="https://www.opensanctions.org/reference/#type.topic">topic</a> property:</p>
 
             <Table size="sm">
               <thead>
@@ -142,33 +144,60 @@ export default async function Page() {
         <Row>
           <section>
             <h2 id="sources">Data sources</h2>
+
+            <p>OpenSanctions does not monitor political events and capture changes
+              in roles manually based on election results or appointment press
+              releases. Instead we automatically monitor and import updates from
+              a set of public datasets of Politically Exposed Persons with various
+              degrees of geographic influence coverage.</p>
+
+            <p>We then <Link href={"/docs/enrichment/"}>enrich the PEP data</Link> with
+              further information about their potential influence such as companies
+              they control based on matches to company data in official and
+              investigative sources.</p>
+
             <SourcesTable sources={sources} />
-            <p>The <a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> data
+
+            <p>Official sources are generally state departments and inter-governmental 
+              agencies. Non-official sources are generally community, civil-society
+              or journalistic organisations.</p>
+
+            <p><a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> data
               is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects.
               OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
               administrators for changes. Note however that this data is only as up to date as the community-contributed
               updates. In future, OpenSanctions hopes to support more active maintenance of the data in Wikidata, and by extension
               this dataset. <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
-            <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician project</a> by
-              mySociety was shut down in June 2019. While it contains a significant foundation of data for national
-              and sub-national legislatures in 233 countries and territories, it is becoming less representative over
-              time and will be removed or replaced in time. <a href="https://www.opensanctions.org/datasets/everypolitician/">Read more...</a></p>
-            <p>The RUPEP dataset is ...</p>
+
+            <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician</a> project
+              by mySociety contains a significant foundation of data for national
+              and sub-national legislatures. It was shut down, however, in June
+              of 2019 and is quickly becoming more outdated. We aim to remove or
+              replace this dataset in time. <a href="https://www.opensanctions.org/datasets/everypolitician/">Read more...</a></p>
+            
+            <p>The <Link href={"/datasets/ru_rupep/"}>RUPEP dataset</Link> is a
+              database of politically exposed persons and their connections in
+              Russia and Belarus, and beyond, maintained by qualified researchers.</p>
           </section>
         </Row>
         <Row>
           <section>
-            <h2>How do we measure the quality of this PEP data?</h2>
-            <p>Currently we only know when our source datasets last changed, and how many entities have been extracted.</p>
-            <p>In the near future we would like to generate and publish:</p>
+            <h2 id="quality">How do we measure the quality of this PEP data?</h2>
+            <p>Currently we only monitor</p>
+            <ul>
+              <li>when our source datasets last changed, and</li>
+              <li>how many entities have been extracted from each source.</li>
+            </ul>
+            <p>In the near future we would like to generate and publish indicators such as</p>
             <ul>
               <li>How many out of the total posts in a jurisdiction are included.</li>
               <li>Which posts are included, and which are not.</li>
-              <li>...</li>
+              <li>Which kinds of posts are covered, in which countries.</li>
+              <li>The <a href="https://github.com/opensanctions/opensanctions/issues/267#issuecomment-1460735867">risk level</a> of persons based on FATF guidelines for their post </li>
             </ul>
             <p>In the longer term, we would like to establish quality metrics, e.g. identifying what proportion of
-              positions are out of date via random spot-checks.
-            </p>
+              positions are out of date via random spot-checks.</p>
+            <p>Tell us what you would like to see</p>
           </section>
         </Row>
       </Container>
