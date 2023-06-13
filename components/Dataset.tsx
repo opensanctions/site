@@ -127,7 +127,7 @@ function DatasetItem({ dataset }: DatasetProps) {
   )
 }
 
-type SourcesTableProps = {
+export type SourcesTableProps = {
   sources: Array<ISource>
 }
 
