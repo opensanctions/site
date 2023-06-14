@@ -10,10 +10,15 @@ import { HelpLink, Numeric, Plural, Spacer } from './util';
 type DatasetCountryListingProps = {
   datasetName: string
   countries: IAggregatedCountry[]
+  defaultExpanded?: boolean
+  defaultLimit?: number | null
 }
 
-export default function DatasetCountryListing({ datasetName, countries }: DatasetCountryListingProps) {
-  const [coverageExpanded, setCoverageExpanded] = useState(false);
+export default function DatasetCountryListing({ datasetName, countries, defaultExpanded=false, defaultLimit=null }: DatasetCountryListingProps) {
+  const [coverageExpanded, setCoverageExpanded] = useState(defaultExpanded);
+  const [limit, setLimit] = useState(defaultLimit);
+  const visibleCountries = (typeof(limit) == "number") ? countries.slice(0, limit-1) : countries;
+
   return (
     <Table size="sm" className="inner-table">
       <thead>
@@ -22,7 +27,7 @@ export default function DatasetCountryListing({ datasetName, countries }: Datase
             <Plural value={countries.length} one="country" many="countries" />
             <HelpLink href={`/reference/#type.country`} />
             <Spacer />
-            {coverageExpanded && (
+            {coverageExpanded && !defaultExpanded && (
               <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
             )}
             {!coverageExpanded && (
@@ -32,7 +37,7 @@ export default function DatasetCountryListing({ datasetName, countries }: Datase
         </tr>
       </thead>
       <tbody>
-        {coverageExpanded && countries.map(c =>
+        {coverageExpanded && visibleCountries.map(c =>
           <tr key={c.code}>
             <td>
               <a href={`/search/?scope=${datasetName}&countries=${c.code}`}>
@@ -42,6 +47,9 @@ export default function DatasetCountryListing({ datasetName, countries }: Datase
             <td className="numeric"><Numeric value={c.count} /></td>
           </tr>
         )}
+        {coverageExpanded && limit !== null  && (
+              <a onClick={(e) => { e.preventDefault(); setLimit(null) }} href='#'>Show all...</a>
+            )}
       </tbody>
     </Table>
   )
