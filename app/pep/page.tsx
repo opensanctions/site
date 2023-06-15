@@ -12,38 +12,40 @@ import DatasetCountryListing from '../../components/DatasetCountryListing';
 function SourcesTable({ sources }: SourcesTableProps) {
   const sourcesSorted = sources.sort((a, b) => b.target_count - a.target_count)
   return (
-    <Table size="sm">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Last changed</th>
-          <th>Publisher locality</th>
-          <th className="numeric">Targets</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sourcesSorted.map(source =>
-          <tr key={source.name}>
-            <td>
-              <Link href={source.link}>{source.title}</Link>
-              {!source.publisher.official && (
-                <>
-                  <Spacer />
-                  <UnofficialBadge />
-                </>
-              )}
-            </td>
-            <td><FormattedDate date={source.last_change} /></td>
-            <td>
-              <Badge bg="light">{source.publisher.country_label}</Badge>
-            </td>
-            <td className="numeric">
-              <Numeric value={source.target_count} />
-            </td>
+    <div className="table-responsive">
+      <Table size="sm">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last changed</th>
+            <th className="d-none  d-sm-table-cell">Publisher locality</th>
+            <th className="numeric">Targets</th>
           </tr>
-        )}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {sourcesSorted.map(source =>
+            <tr key={source.name}>
+              <td>
+                <Link href={source.link}>{source.title}</Link>
+                {!source.publisher.official && (
+                  <>
+                    <br />
+                    <UnofficialBadge />
+                  </>
+                )}
+              </td>
+              <td><FormattedDate date={source.last_change} /></td>
+              <td className="d-none d-sm-table-cell">
+                <Badge bg="light">{source.publisher.country_label}</Badge>
+              </td>
+              <td className="numeric">
+                <Numeric value={source.target_count} />
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </Table>
+    </div>
   )
 }
 
@@ -99,7 +101,7 @@ export default async function Page() {
             becomes a de-facto global commodity.
           </Col>
         </Row>
-        <Row>
+        <Row style={{ marginTop: "2em" }}>
           <Col md={8}>
             <Row>
               <section>
@@ -113,41 +115,11 @@ export default async function Page() {
                   wrong. However, the concept is important because PEPs and members of
                   their families should be the subject of enhanced public scrutiny.
                   This is also mandated by financial crime laws in many countries.</p>
-                <p>The reason someone is included in the dataset is indicated in the data
-                  via the <a href="https://www.opensanctions.org/reference/#type.topic">topic</a> property:</p>
-
-                <Table size="sm">
-                  <thead>
-                    <tr>
-                      <th>Topic</th>
-                      <th className="w-75">Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>role.pep</code></td>
-                      <td>Politically-exposed persons</td>
-                    </tr>
-                    <tr>
-                      <td><code>role.rca</code></td>
-                      <td>Relatives and close associates</td>
-                    </tr>
-                    <tr>
-                      <td><code>poi</code></td>
-                      <td>Persons who do not meet the general requirements for being considered PEPs but are maintained
-                        on lists for closer scrutiny by investigative organisations</td>
-                    </tr>
-                    <tr>
-                      <td><code>sanctioned</code></td>
-                      <td>Officially sanctioned entities</td>
-                    </tr>
-                  </tbody>
-                </Table>
               </section>
             </Row>
             <Row>
               <section>
-                <h2 id="sources">Data sources</h2>
+                <h2 id="sources">Where is our PEP data sourced from?</h2>
 
                 <p>OpenSanctions does not monitor political events and capture changes
                   in roles manually based on election results or appointment press
