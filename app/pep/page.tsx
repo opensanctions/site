@@ -138,17 +138,17 @@ export default async function Page() {
                   agencies. Non-official sources are generally community, civil-society
                   or journalistic organisations.</p>
 
-                <p><a href="https://www.opensanctions.org/datasets/wd_peps/">Wikidata Politically Exposed Persons</a> data
+                <p><Link href={"/datasets/wd_peps/"}>Wikidata Politically Exposed Persons</Link> data
                   is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects.
                   OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
                   administrators for changes. Note, however, that as a volunteer-run organization, there is no guarantee of
-                  how up-to-date the information is. <a href="https://www.opensanctions.org/datasets/wd_peps/">Read more...</a></p>
+                  how up-to-date the information is. <Link href={"/datasets/wd_peps/"}>Read more...</Link></p>
 
-                <p>The <a href="https://www.opensanctions.org/datasets/everypolitician/">EveryPolitician</a> project
+                <p>The <Link href={"/datasets/everypolitician/"}>EveryPolitician</Link> project
                   by mySociety contains a significant foundation of data for national
                   and sub-national legislatures. It was shut down, however, in June
                   of 2019 and is quickly becoming more outdated. We aim to remove or
-                  replace this dataset in time. <a href="https://www.opensanctions.org/datasets/everypolitician/">Read more...</a></p>
+                  replace this dataset in time. <Link href={"/datasets/everypolitician/"}>Read more...</Link></p>
 
                 <p>The <Link href={"/datasets/ru_rupep/"}>RUPEP dataset</Link> is a
                   database of politically exposed persons and their connections in
@@ -157,22 +157,20 @@ export default async function Page() {
             </Row>
             <Row>
               <section>
-                <h2 id="quality">How do we measure the quality of this PEP data?</h2>
-                <p>Currently we only monitor</p>
+                <h2 id="quality">How complete and up to date is your coverage?</h2>
+                <p>The <Link href={dataset.link}>PEPs dataset page</Link> summarises the dataset by the country a position is/was held in, as we do here.
+                  Select a country to see e.g. how many politicians, close associates, etc are known for that country.</p>
+                <p>You can also see when our source datasets last changed, and how many entities have been extracted from each source.</p>
+                <p>We are working on a public summary of:</p>
                 <ul>
-                  <li>when our source datasets last changed, and</li>
-                  <li>how many entities have been extracted from each source.</li>
+                  <li>Which posts in a jurisdiction are monitored in each country.</li>
+                  <li>Which posts have a person known to hold the post.</li>
+                  <li>Which kinds of posts are covered in each country.</li>
+                  <li>The <a href="https://github.com/opensanctions/opensanctions/issues/267#issuecomment-1460735867">risk level</a> of persons based on FATF guidelines based on their post.</li>
                 </ul>
-                <p>In the near future we would like to generate and publish indicators such as</p>
-                <ul>
-                  <li>How many out of the total posts in a jurisdiction are included.</li>
-                  <li>Which posts are included, and which are not.</li>
-                  <li>Which kinds of posts are covered, in which countries.</li>
-                  <li>The <a href="https://github.com/opensanctions/opensanctions/issues/267#issuecomment-1460735867">risk level</a> of persons based on FATF guidelines for their post </li>
-                </ul>
-                <p>In the longer term, we would like to establish quality metrics, e.g. identifying what proportion of
-                  positions are out of date via random spot-checks.</p>
-                <p><Link href="/contact/">Tell us</Link> what you would like to see.</p>
+                <p>Until that is online, please <Link href="/contact/">get in touch</Link> with specific enquiries about our data coverage.</p>
+                <p>In the longer term, we would like to establish quality metrics that assess coverage and freshness, e.g. identifying what proportion of
+                  positions are out of date, e.g. via periodic surveys.</p>
               </section>
             </Row>
           </Col>
