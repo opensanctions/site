@@ -4,7 +4,7 @@ import utilStyles from '../../styles/util.module.scss'
 import { Col, Row, Container, Badge, Button, Table } from '../../components/wrapped';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { FormattedDate, Numeric, UnofficialBadge, Spacer } from '../../components/util';
-import { getDatasets, getDatasetByName } from '../../lib/data';
+import { getDatasets, getDatasetByName, filterMatchingNames } from '../../lib/data';
 import { isCollection, isSource } from '../../lib/types'
 import DatasetCountryListing from '../../components/DatasetCountryListing';
 import { LicenseInfo } from '../../components/Policy';
@@ -63,9 +63,7 @@ export default async function Page() {
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
 
   const sources = !isCollection(dataset) ? [] :
-    dataset.sources
-      .map((name) => visibleDatasets.find((d) => d.name == name))
-      .filter((s) => s !== undefined)
+    filterMatchingNames(visibleDatasets, dataset.sources)
       .filter(isSource)
   return (
     <LayoutFrame>

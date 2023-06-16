@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
-import { IDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse } from "./types";
+import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE, INDEX_URL } from "./constants";
 // import 'server-only';
 
@@ -111,6 +111,11 @@ export async function getDatasets(): Promise<Array<IDataset>> {
 export async function getDatasetByName(name: string): Promise<IDataset | undefined> {
   const datasets = await getDatasets()
   return datasets.find((dataset) => dataset.name === name)
+}
+
+export function filterMatchingNames(datasets: Array<IDataset>, names: Array<string>): Array<IDataset> {
+  return names.map((name) => datasets.find((d) => d.name == name))
+    .filter(isDataset) // Exclude undefineds (non-matches) and guarantee return member types
 }
 
 export async function getIssues(): Promise<Array<IIssue>> {

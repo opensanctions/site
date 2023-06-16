@@ -157,6 +157,10 @@ export function isExternal(dataset?: IDataset): dataset is IExternal {
   return dataset?.type === 'external';
 }
 
+export function isDataset(dataset: IDataset | undefined): dataset is IDataset {
+  return isCollection(dataset) || isSource(dataset) || isExternal(dataset);
+}
+
 export interface IMatcherFeature {
   coefficient: number
   description: string
