@@ -105,6 +105,7 @@ export interface IDatasetPublisher {
   official: boolean
   country?: string
   country_label?: string
+  logo_url?: string
 }
 
 export interface IDatasetCoverage {
