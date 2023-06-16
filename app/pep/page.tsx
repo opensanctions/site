@@ -1,15 +1,18 @@
 import Link from 'next/link'
-import styles from '../../styles/Home.module.scss'
 import claimStyles from '../../styles/ClaimBanner.module.scss'
-import { Col, Row, Container, Badge, Button, ButtonGroup, Table } from '../../components/wrapped';
+import utilStyles from '../../styles/util.module.scss'
+import { Col, Row, Container, Badge, Button, Table } from '../../components/wrapped';
 import LayoutFrame from '../../components/layout/LayoutFrame';
-import { SourcesTableProps } from '../../components/Dataset';
 import { FormattedDate, Numeric, UnofficialBadge, Spacer } from '../../components/util';
 import { getDatasets, getDatasetByName } from '../../lib/data';
 import { isCollection, isSource } from '../../lib/types'
 import DatasetCountryListing from '../../components/DatasetCountryListing';
 import { LicenseInfo } from '../../components/Policy';
+import { ISource } from '../../lib/types';
 
+type SourcesTableProps = {
+  sources: Array<ISource>
+}
 
 function SourcesTable({ sources }: SourcesTableProps) {
   const sourcesSorted = sources.sort((a, b) => b.target_count - a.target_count)
@@ -83,20 +86,20 @@ export default async function Page() {
       </div>
       <Container>
         <Row>
-          <Col md={4} className={styles.explainer}>
+          <Col md={4} className={utilStyles.explainer}>
             <h2>Consolidated data sources</h2>
             The OpenSanctions PEPs dataset packages publicly available PEP data
             from various sources in a consistent, structured format. <a href="#sources">Read
               more about our data PEP sources</a> and how
             they are maintained.
           </Col>
-          <Col md={4} className={styles.explainer}>
+          <Col md={4} className={utilStyles.explainer}>
             <h2>Cross-referenced and merged</h2>
             Over time our PEP data is <Link href={"/docs/enrichment/"}>enriched</Link> from various sources. Entities are
             cross-referenced and where possible, multiple references to the same
             real world entity are <Link href={"/docs/identifiers/"}>merged to a single identifier</Link>.
           </Col>
-          <Col md={4} className={styles.explainer}>
+          <Col md={4} className={utilStyles.explainer}>
             <h2>PEPs data as a commodity</h2>
             Our ultimate objective is not to build another proprietary PEPs database,
             but to expand the coverage of political persons in Wikidata such that it
@@ -177,7 +180,7 @@ export default async function Page() {
 
             <h2 id="get-the-data">How do I get the data?</h2>
             <span>The PEP dataset is available for commercial licensing as part of the OpenSanctions Default dataset bulk data license and SaaS API.</span>
-            
+
             <LicenseInfo />
           </Col>
 

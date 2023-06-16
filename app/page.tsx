@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import articleStyles from '../styles/Article.module.scss'
 import claimStyles from '../styles/ClaimBanner.module.scss'
+import utilStyles from '../styles/util.module.scss'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY, REVALIDATE_BASE } from '../lib/constants'
 import { Search } from 'react-bootstrap-icons';
@@ -87,17 +88,17 @@ export default async function Page() {
       </div>
       <Container>
         <Row>
-          <Col md={4} className={styles.explainer}>
+          <Col md={4} className={utilStyles.explainer}>
             <h2>People and companies that matter</h2>
             Persons of interest data provides the key that helps analysts find evidence of
             corruption, money laundering and other criminal activity.
           </Col>
-          <Col md={4} className={styles.explainer}>
+          <Col md={4} className={utilStyles.explainer}>
             <h2>Clean data and transparent process</h2>
             Our open source data pipeline takes on the complex task of building a clean,
             de-duplicated, and <Link href="/reference/">well-understood dataset</Link>.
           </Col>
-          <Col md={4} className={styles.explainer}>
+          <Col md={4} className={utilStyles.explainer}>
             <h2>Sources with global scope</h2>
             We integrate data from over sixty global sources, including official sanctions
             lists, data on politically exposed persons and entities of criminal interest.
@@ -125,7 +126,7 @@ export default async function Page() {
         </Container>
       </div>
       <Container>
-        <Row className={styles.explainer}>
+        <Row className={utilStyles.explainer}>
           <h2>News &amp; updates</h2>
           <Col md={3}>
             <p>
@@ -141,7 +142,7 @@ export default async function Page() {
             </p>
           </Col>
         </Row>
-        <Row className={styles.explainer}>
+        <Row className={utilStyles.explainer}>
           <h2>Collections</h2>
           <Col md={3}>
             <p>
