@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import articleStyles from '../styles/Article.module.scss'
+import claimStyles from '../styles/ClaimBanner.module.scss'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY, REVALIDATE_BASE } from '../lib/constants'
 import { Search } from 'react-bootstrap-icons';
@@ -37,14 +38,14 @@ export default async function Page() {
   return (
     <LayoutFrame>
       <StructuredData data={getSchemaWebSite()} />
-      <div className={styles.claimBanner}>
+      <div className={claimStyles.claimBanner}>
         <Container>
           <Row>
             <Col md={8}>
-              <h1 className={styles.claim}>
+              <h1 className={claimStyles.claim}>
                 {CLAIM}
               </h1>
-              <p className={styles.subClaim}>
+              <p className={claimStyles.subClaim}>
                 {SUBCLAIM}
               </p>
               <div className={styles.search}>
