@@ -9,6 +9,9 @@ import { isCollection, isSource } from '../../lib/types'
 import DatasetCountryListing from '../../components/DatasetCountryListing';
 import { LicenseInfo } from '../../components/Policy';
 import { ISource } from '../../lib/types';
+import { getGenerateMetadata } from '../../lib/meta';
+
+
 
 type SourcesTableProps = {
   sources: Array<ISource>
@@ -53,6 +56,15 @@ function SourcesTable({ sources }: SourcesTableProps) {
     </div>
   )
 }
+
+export async function generateMetadata() {
+
+  return getGenerateMetadata({
+    title: "Politically Exposed Persons (PEPs) data from OpenSanctions",
+    description: "Consolidated information about public office holders from most countries in the world into an easy-to-use dataset."
+  })
+}
+
 
 export default async function Page() {
   const dataset = await getDatasetByName("peps");
