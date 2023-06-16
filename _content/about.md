@@ -5,7 +5,7 @@ summary:
     OpenSanctions is an international database of persons and companies of political, criminal, or economic interest. 
 ---
 
-The project combines the sanctions lists, databases of politically exposed persons, and other information about persons in the public interest into a single, easy-to-use dataset. This makes it easy to:
+Our data combines the sanctions lists, databases of politically exposed persons, and other information about persons in the public interest into a single, easy-to-use dataset. This makes it easy to:
 
 * **Cross-check databases** for conflicts of interests and signs of illicit activity.
 * **Screen potential customers** and partners in international dealings.
@@ -14,7 +14,7 @@ The project combines the sanctions lists, databases of politically exposed perso
 
 ### What makes OpenSanctions different?
 
-* **Comprehensive coverage**: we bring together data from [60+ data sources](/datasets/) and from around the world into a single dataset that combines sanctions, PEPs and crime-related entities.
+* **Comprehensive coverage**: we bring together data from [60+ data sources](/datasets/) and from around the world into a single dataset that combines sanctions, [PEPs](/pep/) and crime-related entities.
 * **Focus on data quality**: the dataset is carefully cleaned, including a human-in-the-loop process for [entity de-duplication across lists](/articles/2021-11-11-deduplication/), and thousands of hand-crafted *data patches* that structure identifying information like birth dates, countries, addresses or tax identifiers in a consistent way.
 * **Bulk data for everybody**: we make our raw data easy to access, enabling use cases that require access to the full archive (instead of an entity-by-entity API), and even empowering our customers to [self-host our API server](/docs/self-hosted/) inside their own infrastructure.
 * **Auditable and open source**: anyone can verify how OpenSanctions works by browsing the [source code](https://github.com/opensanctions), highlight issues, suggest changes, and propose improvements.

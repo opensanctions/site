@@ -45,7 +45,7 @@ export default function Footer() {
                       <Link href="/datasets/sanctions/">Consolidated global sanctions</Link>
                     </li>
                     <li>
-                      <Link href="/datasets/peps/">Politically exposed persons</Link>
+                      <Link href="/pep/">Politically exposed persons</Link>
                     </li>
                     <li>
                       <Link href="/datasets/crime/">Criminal watchlists</Link>

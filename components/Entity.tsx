@@ -296,20 +296,20 @@ export function EntityTopics({ entity }: EntityTopicsProps) {
             {entity.caption} is subject to sanctions.
             <> See <a href="#rel.sanctions">the individual program listings</a> below.</>
             {isPEP && (
-              <> They are also a <Link href="/docs/faq/#peps">politically exposed person</Link>.</>
+              <> They are also a <Link href="/pep/">politically exposed person</Link>.</>
             )}
           </>
         )}
         {showPEP && (
           <>
-            {entity.caption} is a <Link href="/docs/faq/#peps">politically exposed person</Link>.
+            {entity.caption} is a <Link href="/pep/">politically exposed person</Link>.
             They are a <Link href="/docs/criteria/">person of interest</Link>, but have not been
             found on international sanctions lists.
           </>
         )}
         {showRCA && (
           <>
-            {entity.caption} is a family member or associate of a <Link href="/docs/faq/#peps">politically exposed person</Link>.
+            {entity.caption} is a family member or associate of a <Link href="/pep/">politically exposed person</Link>.
             They have not been found on international sanctions lists.
           </>
         )}

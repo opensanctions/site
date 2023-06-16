@@ -49,7 +49,7 @@ export default function Page() {
                 </CardText>
                 <ul>
                   <li>30+ sanctions lists</li>
-                  <li>160,000+ PEP profiles</li>
+                  <li>160,000+ <Link href="/pep/">PEP profiles</Link></li>
                   <li>11 crime watchlists</li>
                   <li>clean and de-duplicated</li>
                   <li>updated daily</li>

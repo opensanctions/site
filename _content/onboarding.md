@@ -12,7 +12,7 @@ slices:
 
 * [Full OpenSanctions data](/datasets/default/) bulk downloads with all data sources.
 * [Sanctions-only data](/datasets/sanctions/) bulk downloads with data from 30+ sanctions lists.
-* [PEPs data](/datasets/peps/) bulk downloads with 160,000+ politically exposed persons.
+* [PEPs data](/pep/) bulk downloads with 160,000+ politically exposed persons.
 
 As you start processing the data, we recommend you read the introduction to [entity data](/docs/entities/) and have a look at the [data dictionary](/reference/).
 
