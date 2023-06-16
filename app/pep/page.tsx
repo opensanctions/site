@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import claimStyles from '../../styles/ClaimBanner.module.scss'
 import utilStyles from '../../styles/util.module.scss'
-import { Col, Row, Container, Badge, Button, Table } from '../../components/wrapped';
+import { Col, Row, Container, Badge, Table } from '../../components/wrapped';
 import LayoutFrame from '../../components/layout/LayoutFrame';
-import { FormattedDate, Numeric, UnofficialBadge, Spacer } from '../../components/util';
+import { Numeric, UnofficialBadge } from '../../components/util';
 import { getDatasets, getDatasetByName, filterMatchingNames } from '../../lib/data';
 import { isCollection, isSource } from '../../lib/types'
 import DatasetCountryListing from '../../components/DatasetCountryListing';
@@ -25,7 +25,6 @@ function SourcesTable({ sources }: SourcesTableProps) {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Last changed</th>
             <th className="d-none  d-sm-table-cell">Publisher locality</th>
             <th className="numeric">Targets</th>
           </tr>
@@ -42,7 +41,6 @@ function SourcesTable({ sources }: SourcesTableProps) {
                   </>
                 )}
               </td>
-              <td><FormattedDate date={source.last_change} /></td>
               <td className="d-none d-sm-table-cell">
                 <Badge bg="light">{source.publisher.country_label}</Badge>
               </td>
@@ -61,7 +59,7 @@ export async function generateMetadata() {
 
   return getGenerateMetadata({
     title: "Politically Exposed Persons (PEPs) data from OpenSanctions",
-    description: "Consolidated information about public office holders from most countries in the world into an easy-to-use dataset."
+    description: "Consolidated information about public office holders from most countries in the world as an easy-to-use dataset."
   })
 }
 
@@ -89,8 +87,6 @@ export default async function Page() {
             <p className={claimStyles.subClaim}>
               We consolidate information about public office holders from most countries in the world into an easy-to-use dataset.
             </p>
-            <p><Button href="#get-the-data" variant="light">Get the data</Button></p>
-
           </Row>
         </Container>
       </div>
@@ -99,46 +95,49 @@ export default async function Page() {
           <Col md={4}>
             <h2>Consolidated data sources</h2>
             The OpenSanctions PEPs dataset packages publicly available PEP data
-            from various sources in a consistent, structured format. <a href="#sources">Read
+            from various sources in a consistently structured format. <a href="#sources">Read
               more about our data PEP sources</a> and how
             they are maintained.
           </Col>
           <Col md={4}>
-            <h2>Cross-referencing and deduplication</h2>
-            Over time our PEP data is <Link href={"/docs/enrichment/"}>enriched</Link> from various sources. Entities are
-            cross-referenced and where possible, multiple references to the same
-            real world entity are <Link href={"/docs/identifiers/"}>merged to a single identifier</Link>.
+            <h2>De-duplicated profiles</h2>
+            Persons are cross-referenced and where possible, multiple references to the same
+            real world individual are <Link href={"/docs/identifiers/"}>merged to a single identifier</Link>.
+            The profiles are also <Link href={"/docs/enrichment/"}>enriched</Link> with information from
+            various sources of beneficial ownership information.
           </Col>
           <Col md={4}>
-            <h2>PEPs data as a commodity</h2>
+            <h2>Built by community</h2>
             Our ultimate objective is not to build another proprietary PEPs database,
             but to expand the coverage of political persons in Wikidata such that it
-            becomes a de-facto global commodity.
+            becomes a de-facto data commodity.
           </Col>
         </Row>
         <Row className={utilStyles.explainer}>
           <Col md={8}>
 
-            <h2>Who are Politically Exposed Persons? Who needs this?</h2>
+            <h2>What are Politically Exposed Persons? Who needs this?</h2>
 
-            <p>Politically exposed persons (PEP) is a term from the banking
-              industry to describe individuals who have been entrusted with a
-              prominent public function. This might include members of cabinets,
-              parliaments, senior public servants or people that run state-owned
-              companies.</p>
+            <p>Politically exposed persons (PEP) is a term from the financial
+              services industry to describe individuals who have been entrusted
+              with a prominent public function. This might include members of cabinets,
+              parliaments, senior public servants, the military, or people that
+              run state-owned companies.</p>
 
-            <p>Being classified as a PEP in no way implies you have done anything
+            <p>
+              Being classified as a PEP does not imply you have done anything
               wrong. However, the concept is important because PEPs and members of
               their families should be the subject of enhanced public scrutiny.
-              This is also mandated by financial crime laws in many countries.</p>
+              This is also mandated by financial crime laws in many countries.
+            </p>
 
             <h2 id="sources">Where is our PEP data sourced from?</h2>
 
             <p>OpenSanctions does not monitor political events and capture changes
               in roles manually based on election results or appointment press
               releases. Instead we automatically monitor and import updates from
-              a set of public datasets of Politically Exposed Persons with varying
-              degrees of coverage of influence in various countries.</p>
+              a set of public datasets with varying degrees of coverage of influence
+              in various countries.</p>
 
             <p>We then <Link href={"/docs/enrichment/"}>enrich</Link> the PEP data with
               further information about their potential influence such as companies
@@ -147,25 +146,31 @@ export default async function Page() {
 
             <SourcesTable sources={sources} />
 
-            <p>Official sources are generally government departments and inter-governmental
+            <p>
+              Official sources are generally government departments and inter-governmental
               agencies. Non-official sources are generally community, civil-society
-              or journalistic organisations.</p>
+              or journalistic organisations:
+            </p>
 
-            <p><Link href={"/datasets/wd_peps/"}>Wikidata Politically Exposed Persons</Link> data
-              is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects.
-              OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
-              administrators for changes. Note, however, that as a volunteer-run organization, there is no guarantee of
-              how up-to-date the information is.</p>
-
-            <p>The <Link href={"/datasets/everypolitician/"}>EveryPolitician</Link> project
-              by mySociety contains a significant foundation of data for national
-              and sub-national legislatures. It was shut down, however, in June
-              of 2019 and is quickly becoming more outdated. We aim to remove or
-              replace this dataset in time. </p>
-
-            <p>The <Link href={"/datasets/ru_rupep/"}>RUPEP dataset</Link> is a
-              database of politically exposed persons and their connections in
-              Russia and Belarus, and beyond, maintained by qualified researchers. </p>
+            <ul>
+              <li><Link href={"/datasets/wd_peps/"}>Wikidata Politically Exposed Persons</Link> data
+                is maintained by volunteers in a similar manner to the rest of the Wikimedia Foundation projects.
+                OpenSanctions monitors specific positions in national and sub-national legislatures, executives and senior
+                administrators for changes. As a volunteer-driven project, there are very limited guarantees of
+                how up-to-date the information is.
+              </li>
+              <li>
+                mySociety's <Link href={"/datasets/everypolitician/"}>EveryPolitician</Link> project
+                contains a significant foundation of data for national legislatures. However, its maintenance
+                ended in June 2019 and the data is quickly becoming more outdated. We aim to remove or
+                replace this dataset in time.
+              </li>
+              <li>
+                The <Link href={"/datasets/ru_rupep/"}>RuPEP dataset</Link> is a database of politically
+                exposed persons from Russia and Belarus, as well as their families and buisness interests.
+                It is maintained by an expert team of researchers. Learn more at <Link href="https://www.rupep.org">RuPEP.org</Link>.
+              </li>
+            </ul>
 
             <h2 id="quality">How complete and up to date is your coverage?</h2>
 
@@ -189,8 +194,13 @@ export default async function Page() {
               positions are out of date, e.g. via periodic surveys.</p>
 
             <h2 id="get-the-data">How do I get the data?</h2>
-            <span>The PEP dataset is available for commercial licensing as part of the OpenSanctions Default dataset bulk data license and SaaS API.</span>
-
+            <p>
+              You can download the PEP data in bulk, or search individual entries on our list, on
+              the <Link href="/datasets/peps">dataset information page</Link>. Commercial users of
+              the data can license it as part of the OpenSanctions <Link href="/licensing/">bulk
+                data license</Link> or access the data via the hosted <Link href="/api/">OpenSanctions
+                  API</Link>. We do not offer a separate licensing option for PEPs data alone.
+            </p>
             <LicenseInfo />
           </Col>
 
@@ -200,7 +210,7 @@ export default async function Page() {
               countries={dataset.things.countries}
               datasetName={dataset.name}
               defaultExpanded={true}
-              defaultLimit={20}
+              defaultLimit={50}
               isNested={false}
             />
           </Col>
