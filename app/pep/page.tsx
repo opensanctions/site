@@ -93,7 +93,7 @@ export default async function Page() {
       <Container>
         <Row className={utilStyles.explainer}>
           <Col md={4}>
-            <h2>Consolidated data sources</h2>
+            <h2>Diverse data sources</h2>
             The OpenSanctions PEPs dataset packages publicly available PEP data
             from various sources in a consistently structured format. <a href="#sources">Read
               more about our data PEP sources</a> and how
