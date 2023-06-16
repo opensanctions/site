@@ -4,7 +4,7 @@ import { Download, Search } from 'react-bootstrap-icons';
 
 import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, Table, Button, InputGroup, Container } from '../../../components/wrapped'
 import Dataset from '../../../components/Dataset'
-import { getDatasets, getDatasetByName, getDatasetIssues, getRecentEntities, getGraphCatalog } from '../../../lib/data'
+import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog } from '../../../lib/data'
 import { isCollection, isSource, isExternal } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
@@ -51,19 +51,13 @@ export default async function Page({ params }: DatasetPageProps) {
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
   const issues = await getDatasetIssues(dataset)
   const sources = !isCollection(dataset) ? [] :
-    dataset.sources
-      .map((name) => visibleDatasets.find((d) => d.name == name))
-      .filter((s) => s !== undefined)
+    filterMatchingNames(visibleDatasets, dataset.sources)
       .filter(isSource);
   const externals = !isCollection(dataset) ? [] :
-    dataset.externals
-      .map((name) => visibleDatasets.find((d) => d.name == name))
-      .filter((s) => s !== undefined)
+    filterMatchingNames(visibleDatasets, dataset.externals)
       .filter(isExternal)
   const collections = !(isSource(dataset) || isExternal(dataset)) ? [] :
-    dataset.collections
-      .map((name) => visibleDatasets.find((d) => d.name == name))
-      .filter((s) => s !== undefined)
+    filterMatchingNames(visibleDatasets, dataset.collections)
       .filter(isCollection)
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);

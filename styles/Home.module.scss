@@ -11,43 +11,10 @@
     }
 }
 
-.claimBanner {
-    background-color: $theme-blue-dark;
-    color: white;
-    padding-top: 3em;
-    padding-bottom: 3em;
-}
-
-.claimLink {
-    color: white;
-
-    &:hover {
-        color: shift-color(white, $link-shade-percentage);
-    }
-}
-
-.claim {
-    @include heading-font;
-    color: white;
-    font-size: 2em;
-    line-height: 1.5;
-    margin-bottom: 1em;
-}
-
-.subClaim {
-    margin-bottom: 1em;
-    font-size: 1.2em;
-    color: $gray-100;
-}
-
 .search {
     input[type=search] {
         border: 0;
     }
-}
-
-.explainer {
-    margin-top: 2em !important;
 }
 
 .stats {
