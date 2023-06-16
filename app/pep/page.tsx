@@ -77,34 +77,34 @@ export default async function Page() {
             <p className={claimStyles.subClaim}>
               We consolidate information about public office holders from most countries in the world into an easy-to-use dataset.
             </p>
-            <p><a href="#get-the-data"><Button variant="light">Get the data</Button></a></p>
+            <p><Button href="#get-the-data" variant="light">Get the data</Button></p>
 
           </Row>
         </Container>
       </div>
       <Container>
-        <Row>
-          <Col md={4} className={utilStyles.explainer}>
+        <Row className={utilStyles.explainer}>
+          <Col md={4}>
             <h2>Consolidated data sources</h2>
             The OpenSanctions PEPs dataset packages publicly available PEP data
             from various sources in a consistent, structured format. <a href="#sources">Read
               more about our data PEP sources</a> and how
             they are maintained.
           </Col>
-          <Col md={4} className={utilStyles.explainer}>
-            <h2>Cross-referenced and merged</h2>
+          <Col md={4}>
+            <h2>Cross-referencing and deduplication</h2>
             Over time our PEP data is <Link href={"/docs/enrichment/"}>enriched</Link> from various sources. Entities are
             cross-referenced and where possible, multiple references to the same
             real world entity are <Link href={"/docs/identifiers/"}>merged to a single identifier</Link>.
           </Col>
-          <Col md={4} className={utilStyles.explainer}>
+          <Col md={4}>
             <h2>PEPs data as a commodity</h2>
             Our ultimate objective is not to build another proprietary PEPs database,
             but to expand the coverage of political persons in Wikidata such that it
             becomes a de-facto global commodity.
           </Col>
         </Row>
-        <Row style={{ marginTop: "2em" }}>
+        <Row className={utilStyles.explainer}>
           <Col md={8}>
 
             <h2>Who are Politically Exposed Persons? Who needs this?</h2>
@@ -125,8 +125,8 @@ export default async function Page() {
             <p>OpenSanctions does not monitor political events and capture changes
               in roles manually based on election results or appointment press
               releases. Instead we automatically monitor and import updates from
-              a set of public datasets of Politically Exposed Persons with various
-              degrees of geographic influence coverage.</p>
+              a set of public datasets of Politically Exposed Persons with varying
+              degrees of coverage of influence in various countries.</p>
 
             <p>We then <Link href={"/docs/enrichment/"}>enrich</Link> the PEP data with
               further information about their potential influence such as companies
@@ -184,7 +184,13 @@ export default async function Page() {
 
           <Col md={4}>
             <h2>Which countries are in the dataset?</h2>
-            <DatasetCountryListing countries={dataset.things.countries} datasetName={dataset.name} defaultExpanded={true} defaultLimit={20} />
+            <DatasetCountryListing
+              countries={dataset.things.countries}
+              datasetName={dataset.name}
+              defaultExpanded={true}
+              defaultLimit={20}
+              isNested={false}
+            />
           </Col>
         </Row>
       </Container >

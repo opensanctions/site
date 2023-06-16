@@ -12,16 +12,17 @@ type DatasetCountryListingProps = {
   countries: IAggregatedCountry[]
   defaultExpanded?: boolean
   defaultLimit?: number | null
+  isNested?: boolean
 }
 
-export default function DatasetCountryListing({ datasetName, countries, defaultExpanded = false, defaultLimit = null }: DatasetCountryListingProps) {
+export default function DatasetCountryListing({ datasetName, countries, defaultExpanded = false, defaultLimit = null, isNested=true}: DatasetCountryListingProps) {
   const [coverageExpanded, setCoverageExpanded] = useState(defaultExpanded);
   const [limit, setLimit] = useState(defaultLimit);
   const visibleCountries = (typeof (limit) == "number") ? countries.slice(0, limit - 1) : countries;
 
   return (
     <>
-      <Table size="sm" className="inner-table">
+      <Table size="sm" className={isNested ? "inner-table" : ""}>
         <thead>
           <tr>
             <td colSpan={2}>
