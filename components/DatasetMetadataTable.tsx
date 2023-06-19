@@ -95,6 +95,8 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
           <tr>
             <th className={styles.tableHeader}>Publisher:</th>
             <td>
+              {dataset.publisher.logo_url &&
+                <img src={dataset.publisher.logo_url} className={styles.publisherLogo} />}
               <URLLink url={dataset.publisher.url} label={dataset.publisher.name} icon={false} />
               {!!dataset.publisher.country && (
                 <> ({dataset.publisher.country_label})</>
@@ -103,6 +105,7 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
                 <>{' '} <UnofficialBadge /></>
               )}
               <p className={styles.publisherDescription}>{dataset.publisher.description}</p>
+
             </td>
           </tr>
         )}
