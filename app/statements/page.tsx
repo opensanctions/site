@@ -59,7 +59,7 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
 
   if (propType === 'entity' || prop === 'id') {
     return (
-      <Link href={filterQuery({ entity_id: value })}>
+      <Link href={filterQuery({ entity_id: value })} prefetch={false} rel="nofollow">
         {value}
       </Link>
     );
@@ -119,7 +119,7 @@ export default async function Page({ searchParams }: PageProps) {
                 {response.results.map((stmt) => (
                   <tr key={`stmt-${stmt.id}`}>
                     <td className={styles.colCanonical}>
-                      <Link href={filterQuery({ canonical_id: stmt.canonical_id })}>
+                      <Link href={filterQuery({ canonical_id: stmt.canonical_id })} prefetch={false} rel="nofollow">
                         {stmt.canonical_id}
                       </Link>
                     </td>
@@ -132,13 +132,13 @@ export default async function Page({ searchParams }: PageProps) {
                       <StatementValue value={stmt.value} prop={stmt.prop} propType={stmt.prop_type} />
                     </td>
                     <td className={styles.colDataset}>
-                      <Link href={filterQuery({ dataset: stmt.dataset })}>
+                      <Link href={filterQuery({ dataset: stmt.dataset })} prefetch={false} rel="nofollow">
                         {stmt.dataset}
                       </Link>
                     </td>
                     <Expand href={`/datasets/${stmt.dataset}/`} />
                     <td className={styles.colEntity}>
-                      <Link href={filterQuery({ entity_id: stmt.entity_id })}>
+                      <Link href={filterQuery({ entity_id: stmt.entity_id })} prefetch={false} rel="nofollow">
                         {stmt.entity_id}
                       </Link>
                     </td>
