@@ -4,7 +4,7 @@ import { getDatasets, getSitemapEntities } from '../lib/data'
 import { BASE_URL, REVALIDATE_BASE } from '../lib/constants';
 
 export const revalidate = REVALIDATE_BASE;
-const PAGES = ['/', '/contact/', '/datasets/', '/docs/']
+const PAGES = ['', 'contact/', 'datasets/', 'docs/', 'pep/']
 
 function dateTruncate(date: string | null | undefined) {
   if (date === null || date === undefined) {

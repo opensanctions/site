@@ -137,7 +137,7 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
   const statements = await fetchObject<IStatementAPIResponse>(`/statements`, {
-    'limit': 2000,
+    'limit': 500,
     'dataset': 'sanctions',
     'target': true,
     'prop': 'topics',
