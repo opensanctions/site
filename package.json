@@ -30,7 +30,7 @@
     "remark-heading-id": "^1.0.0",
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
-    "sass": "^1.63.4",
+    "sass": "^1.63.5",
     "supports-color": "^9.3.1",
     "swr": "^2.1.5",
     "unified": "^10.1.2",
