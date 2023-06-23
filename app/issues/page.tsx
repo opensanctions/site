@@ -8,7 +8,8 @@ import { DocumentationMenu } from '../../components/Menu';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { getGenerateMetadata } from '../../lib/meta';
 
-export const revalidate = 1800;
+export const revalidate = REVALIDATE_BASE;
+
 const TITLE = "Warnings and errors from all datasets";
 
 export async function generateMetadata() {

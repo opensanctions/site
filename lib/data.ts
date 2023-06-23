@@ -6,6 +6,7 @@ import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATAL
 // import 'server-only';
 
 import indexJson from '../data/index.json';
+import issuesJson from '../data/issues.json';
 
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
 
@@ -119,7 +120,8 @@ export function filterMatchingNames(datasets: Array<IDataset>, names: Array<stri
 }
 
 export async function getIssues(): Promise<Array<IIssue>> {
-  const index = await fetchUrl<IIssueIndex>(ISSUES_URL);
+  // const index = await fetchUrl<IIssueIndex>(ISSUES_URL);
+  const index = issuesJson as any as IIssueIndex;
   return index.issues
 }
 
