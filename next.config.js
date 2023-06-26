@@ -3,7 +3,7 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    // appDir: true,
     serverComponentsExternalPackages: ['react-bootstrap']
   },
   staticPageGenerationTimeout: 360,
