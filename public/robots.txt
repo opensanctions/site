@@ -3,3 +3,6 @@ Sitemap: https://opensanctions.org/sitemap.xml
 User-agent: *
 Allow: /
 Disallow: /impressum/
+Disallow: /statements/
+Disallow: /service/account/
+Disallow: /entities/Q1045488/
