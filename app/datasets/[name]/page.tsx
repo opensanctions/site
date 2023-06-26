@@ -23,6 +23,7 @@ interface DatasetPageProps {
 }
 
 export const revalidate = REVALIDATE_BASE;
+export const dynamic = 'force-static';
 
 
 export async function generateMetadata({ params }: DatasetPageProps) {

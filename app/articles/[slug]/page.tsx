@@ -13,6 +13,7 @@ import { getSchemaArticle } from '../../../lib/schema';
 import StructuredData from '../../../components/utils/StructuredData';
 
 export const revalidate = REVALIDATE_BASE;
+export const dynamic = 'force-static';
 
 interface ArticlePageProps {
   params: { slug: string }

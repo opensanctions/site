@@ -5,6 +5,7 @@ import { REVALIDATE_BASE } from '../../../lib/constants';
 import { getContentMetadata } from '../../../lib/meta';
 
 export const revalidate = REVALIDATE_BASE;
+export const dynamic = 'force-static';
 
 interface ContentPageProps {
   params: { slug: string[] }
