@@ -262,6 +262,8 @@ export interface IStatement {
   value: string
   target: boolean
   external: boolean
+  lang?: string
+  original_value?: string
   first_seen: string
   last_seen: string
 }

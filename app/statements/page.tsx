@@ -6,12 +6,14 @@ import { ResponsePagination } from '../../components/util';
 import { FormattedDate } from '../../components/util';
 import { AspectRatioFill, Link45deg } from 'react-bootstrap-icons';
 import { getStatements } from '../../lib/data';
+import { getGenerateMetadata } from '../../lib/meta';
 import { PageProps } from '../../components/utils/PageProps';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { Container, Row, Col, Table, Alert, AlertLink } from '../../components/wrapped';
 
 import styles from '../../styles/Statement.module.scss'
-import { getGenerateMetadata } from '../../lib/meta';
+import { IStatement } from '../../lib/types';
+
 
 export const revalidate = 0;
 const TITLE = "Raw data explorer";
@@ -36,12 +38,10 @@ function Expand({ href }: ExpandProps) {
 }
 
 type StatementValueProps = {
-  value: string
-  prop: string
-  propType: string
+  stmt: IStatement
 }
 
-function StatementValue({ value, prop, propType }: StatementValueProps) {
+function StatementValue({ stmt }: StatementValueProps) {
   const filterQuery = (args: any) => {
     const newQuery = queryString.stringify({
       ...args
@@ -49,22 +49,25 @@ function StatementValue({ value, prop, propType }: StatementValueProps) {
     return `/statements/?${newQuery}`;
   }
 
-  if (propType === 'url') {
+  if (stmt.prop_type === 'url') {
     return (
-      <a href={value}>
-        <Link45deg /> {value}
+      <a href={stmt.value}>
+        <Link45deg /> {stmt.value}
       </a>
     );
   }
 
-  if (propType === 'entity' || prop === 'id') {
+  if (stmt.prop_type === 'entity') {
     return (
-      <Link href={filterQuery({ entity_id: value })} prefetch={false} rel="nofollow">
-        {value}
+      <Link href={filterQuery({ entity_id: stmt.value })} prefetch={false} rel="nofollow">
+        {stmt.value}
       </Link>
     );
   }
-  return <>{value}</>;
+  if (!!stmt.original_value) {
+    return <abbr title={stmt.original_value}>{stmt.value}</abbr>;
+  }
+  return <>{stmt.value}</>;
 }
 
 
@@ -109,9 +112,11 @@ export default async function Page({ searchParams }: PageProps) {
                   <th className={styles.colCanonical} colSpan={2}>ID</th>
                   <th className={styles.colProp} colSpan={2}>Property</th>
                   <th className={styles.colValue}>Value</th>
+                  <th className={styles.colLang}>Lang</th>
                   <th className={styles.colDataset} colSpan={2}>Source dataset</th>
                   <th className={styles.colEntity}>Source ID</th>
                   <th className={styles.colDate}>First seen</th>
+
                   {/* <th className={styles.colDate}>Last seen</th> */}
                 </tr>
               </thead>
@@ -129,7 +134,10 @@ export default async function Page({ searchParams }: PageProps) {
                     </td>
                     <Expand href={`/reference/#schema.${stmt.schema}`} />
                     <td className={styles.colValue}>
-                      <StatementValue value={stmt.value} prop={stmt.prop} propType={stmt.prop_type} />
+                      <StatementValue stmt={stmt} />
+                    </td>
+                    <td className={styles.colLang}>
+                      {stmt.lang || ''}
                     </td>
                     <td className={styles.colDataset}>
                       <Link href={filterQuery({ dataset: stmt.dataset })} prefetch={false} rel="nofollow">

@@ -1,5 +1,8 @@
-
-.colCanonical, .colEntity, .colValue, .colDataset, .colEntity {
+.colCanonical,
+.colEntity,
+.colValue,
+.colDataset,
+.colEntity {
     a {
         text-decoration: none;
 
@@ -9,7 +12,8 @@
     }
 }
 
-.colCanonical, .colEntity {
+.colCanonical,
+.colEntity {
     max-width: 8em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -18,7 +22,9 @@
     // font-family: monospace;
 }
 
-.colCanonical, .colProp, .colDataset {
+.colCanonical,
+.colProp,
+.colDataset {
     border-right: 0 !important;
     padding-right: 1px !important;
 }
@@ -30,7 +36,8 @@
     white-space: nowrap;
 }
 
-.colDate {
+.colDate,
+.colLang {
     width: 1%;
     white-space: nowrap;
 }
