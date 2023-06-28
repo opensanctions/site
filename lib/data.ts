@@ -2,13 +2,30 @@ import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
 import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse, ISearchAPIResponse } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, ISSUES_URL, GRAPH_CATALOG_URL, REVALIDATE_BASE, INDEX_URL } from "./constants";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE } from "./constants";
 // import 'server-only';
 
 import indexJson from '../data/index.json';
 import issuesJson from '../data/issues.json';
 
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
+
+const index = indexJson as any as IIndex;
+index.datasets = index.datasets.map((raw: any) => {
+  const ds = {
+    ...raw,
+    link: `/datasets/${raw.name}/`
+  };
+  ds.opensanctions_url = BASE_URL + ds.link
+  if (ds.type === 'collection') {
+    return ds as ICollection;
+  }
+  if (ds.type === 'external') {
+    return ds as IExternal;
+  }
+  return ds as ISource;
+});
+const ftmModel = new Model(index.model);
 
 
 export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promise<T | null> {
@@ -81,31 +98,16 @@ export async function fetchIndex(): Promise<IIndex> {
   // if (!data.ok) {
   //   throw Error("Cannot fetch index file!")
   // }
-  const index = indexJson as any as IIndex;
-  index.datasets = index.datasets.map((raw: any) => {
-    const ds = {
-      ...raw,
-      link: `/datasets/${raw.name}/`
-    };
-    ds.opensanctions_url = BASE_URL + ds.link
-    if (ds.type === 'collection') {
-      return ds as ICollection;
-    }
-    if (ds.type === 'external') {
-      return ds as IExternal;
-    }
-    return ds as ISource;
-  })
   return index;
 }
 
 export async function getModel(): Promise<Model> {
-  const index = await fetchIndex()
-  return new Model(index.model);
+  // const index = await fetchIndex()
+  return ftmModel;
 }
 
 export async function getDatasets(): Promise<Array<IDataset>> {
-  const index = await fetchIndex()
+  // const index = await fetchIndex()
   return index.datasets
 }
 
@@ -155,7 +157,7 @@ export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
 }
 
 export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecentEntity>> {
-  const model = await getModel();
+  // const model = await getModel();
   const params = {
     'limit': 15,
     'sort': 'first_seen:desc',
@@ -163,8 +165,8 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
   }
   const response = await fetchObject<ISearchAPIResponse>(`/search/${dataset.name}`, params);
   return response.results.map((result) => {
-    const entity = model.getEntity(result)
-    const country = model.getType('country');
+    const entity = ftmModel.getEntity(result)
+    const country = ftmModel.getType('country');
     return {
       id: entity.id,
       caption: entity.caption,
@@ -199,8 +201,8 @@ export async function getEntity(entityId: string) {
   if (entityData === null) {
     return null;
   }
-  const model = await getModel();
-  return model.getEntity(entityData);
+  // const model = await getModel();
+  return ftmModel.getEntity(entityData);
 }
 
 export async function getEntityDatasets(entity: Entity) {
