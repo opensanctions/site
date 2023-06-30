@@ -45,7 +45,7 @@ export function EntityLink({ entity, children }: React.PropsWithChildren<EntityD
 
 export interface EntityPropsTableProps extends EntityDisplayProps {
   entity: Entity
-  datasets?: Array<IDataset>
+  datasets: Array<IDataset>
   showEmpty?: boolean
   via?: Property
 }
@@ -57,6 +57,8 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
     // .filter((p) => p.getRange() === undefined)
     .filter((p) => showEmpty || entity.getProperty(p).length > 0)
     .sort(compareDisplayProps);
+
+  const entityDatasets = datasets.filter((d) => entity.datasets.indexOf(d.name) !== -1);
 
   return (
     <Table className={styles.cardTable} size="sm">
@@ -78,11 +80,11 @@ export function EntityPropsTable({ entity, via, datasets, showEmpty = false }: E
             </td>
           </tr>
         )}
-        {datasets !== undefined && datasets.length > 0 && (
+        {entityDatasets.length > 0 && (
           <tr key="datasets">
             <th className={styles.cardProp}>Data sources</th>
             <td colSpan={2}>
-              <SpacedList values={entity.datasets.map((n) => datasets.find((d) => d.name === n)).map((d) => <Dataset.Link dataset={d} />)} />
+              <SpacedList values={entityDatasets.map((d) => <Dataset.Link dataset={d} />)} />
             </td>
           </tr>
         )}
@@ -162,7 +164,7 @@ function FeaturedValues({ entity, schema, prop }: FeaturedValuesProps) {
 
 export type EntitySchemaTableProps = {
   entities: Array<Entity>,
-  datasets?: Array<IDataset>,
+  datasets: Array<IDataset>,
   prop: Property
 }
 

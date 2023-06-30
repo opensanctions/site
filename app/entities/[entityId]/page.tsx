@@ -3,7 +3,7 @@ import { notFound, redirect } from 'next/navigation';
 
 import Research from '../../../components/Research';
 import { Row, Col, Nav, NavLink, Container } from '../../../components/wrapped';
-import { getEntity, getEntityDatasets, getStatements, isBlocked } from '../../../lib/data';
+import { getDatasets, getEntity, getEntityDatasets, getStatements, isBlocked } from '../../../lib/data';
 import { Entity } from '../../../lib/ftm';
 import { BlockedEntity, EntityWarning, LicenseInfo } from '../../../components/Policy';
 import { isExternal, isSource } from '../../../lib/types';
@@ -39,6 +39,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
     return <BlockedEntity entity={entity} />
   }
   const datasets = await getEntityDatasets(entity);
+  const allDatasets = await getDatasets();
   const structured = getSchemaEntityPage(entity, datasets);
   const properties = entity.getDisplayProperties();
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
@@ -79,7 +80,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
                       <EntitySchemaTable
                         prop={prop}
                         entities={entity.getProperty(prop).map((v) => v as Entity)}
-                        datasets={datasets}
+                        datasets={allDatasets}
                       />
                     </div>
                   )}
