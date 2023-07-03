@@ -114,8 +114,8 @@ export default async function EntityPage({ params }: EntityPageProps) {
                     Source data IDs<HelpLink href="/docs/identifiers/" />: <SpacedList values={entity.referents.map((r) => <code>{r}</code>)} />
                   </>
                 )}
-                <p>For experts: <Link rel="nofollow" href={`/statements/?canonical_id=${entity.id}`}>raw data
-                  explorer</Link></p>
+                <p>For experts: <a rel="nofollow" href={`/statements/?canonical_id=${entity.id}`}>raw data
+                  explorer</a></p>
               </div>
             </Col>
             <Col md={3} className="order-1">
