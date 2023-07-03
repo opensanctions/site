@@ -47,6 +47,7 @@ export function SearchFacet({ field, facet, searchParams }: SearchFacetProps) {
               as={Link}
               href={filteredUrl(value.name)}
               className={styles.facetListItem}
+              prefetch={false}
             >
               <NumericBadge value={value.count} bg="light" className={styles.facetCount} />
               <span className={styles.facetLabel}>{value.label}</span>
