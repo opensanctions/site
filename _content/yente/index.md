@@ -26,14 +26,3 @@ While `yente` is the open source core code base for the [OpenSanctions API](http
 
 * [API endpoints](https://api.opensanctions.org)
     * [openapi.json](https://api.opensanctions.org/openapi.json)
-
-## Technical overview
-
-Here is a very quick tour of how `yente` works:
-
-* When the application starts, it will download a metadata file from `data.opensanctions.org` which states the latest version of the OpenSanctions data that was been released. 
-* If there is fresh data, it will create an ElasticSearch index with a timestamp that match the latest release of the data (e.g. `yente-entities-all-00220221030xxxx`).
-* It will then fetch the latest data from `data.opensanctions.org` (a 500MB+ JSON file) and store it onto the `/tmp` volume of the container.
-* Once the data is downloaded, it will read entity data from the file and push it into ElasticSearch in small batches.
-* When all the data is indexed, `yente` will create an ES index alias from `yente-entities-all` to the latest snapshot of the index (e.g. `yente-entities-all-00220221030xxxx`) and delete all older snapshots of the index.
-* Only once this has completed will the `/search` and `/match` APIs work correctly. On the plus side, any future updates to the data will be indexed first, and the switch-over to the new data will be instantaneous.

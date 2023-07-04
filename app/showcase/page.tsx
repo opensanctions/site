@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { Container, Row, Col, Card, CardTitle, CardImg, CardBody, CardText, CardLink } from '../../components/wrapped';
 import { Summary } from '../../components/util';
-import Link from 'next/link';
 import { LicenseInfo } from '../../components/Policy';
 import LayoutFrame from '../../components/layout/LayoutFrame';
 import { REVALIDATE_BASE } from '../../lib/constants';

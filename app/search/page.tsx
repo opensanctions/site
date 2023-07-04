@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Model } from '../../lib/ftm/model';
 
 import Research from '../../components/Research';
@@ -6,7 +7,7 @@ import { ISearchAPIResponse } from '../../lib/types';
 import { Container, Row, Col, Alert, AlertHeading } from '../../components/wrapped';
 import { fetchIndex, fetchObject, getDatasets } from '../../lib/data';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../../components/Search';
-import { SEARCH_DATASET, SEARCH_SCHEMA } from '../../lib/constants';
+import { SEARCH_DATASET, SEARCH_SCHEMA, SPACER } from '../../lib/constants';
 import { FormattedDate, ResponsePagination } from '../../components/util';
 import { LicenseInfo } from '../../components/Policy';
 import { getGenerateMetadata } from '../../lib/meta';
@@ -72,6 +73,7 @@ export default async function Search({ searchParams }: PageProps) {
             </Col>
             <Col md={4}>
               <p className={styles.searchNotice}>
+                <Link href="/docs/api/search">Search guide</Link> {SPACER}
                 Data current as of <FormattedDate date={scope.last_change} />
               </p>
             </Col>

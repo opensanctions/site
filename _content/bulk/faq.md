@@ -6,9 +6,11 @@ summary: >
 
 ### <a id="updates"></a> How frequently is OpenSanctions updated?
 
-Most data sources are updated daily and refreshed data extracts are published several times a day (currently ca. every five hours). You can see a list of any [errors or warnings each dataset](/issues/) has generated.
+Most data sources are updated every four to twelve hours. Refreshed data exports are published several times a day (currently ca. every five hours). You can see a list of any [errors or warnings each dataset](/issues/) has generated.
 
-For data sources that require screen scraping rather than publishing structured data, a HTTP response cache with a maximum age of ten days is used to avoid running into rate limiting errors.
+For data sources that require screen scraping rather than publishing structured data, a HTTP response cache with a maximum age of 14 days is used to avoid running into rate limiting errors.
+
+See also: [How often is data in the self-hosted API updated?](/docs/yente/faq/#updates)
 
 
 ### <a id="securities"></a> Does the data contain securities identifiers (ISINs) and ticker symbols for companies?

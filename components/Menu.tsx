@@ -80,13 +80,16 @@ export function DocumentationMenu({ path }: MenuProps) {
             <RoutedNavLink href="/docs/self-hosted/" current={path}>Self-hosted API</RoutedNavLink>
           </NavItem>
           <NavItem>
+            <RoutedNavLink href="/docs/api/authentication/" current={path}>Authentication</RoutedNavLink>
+          </NavItem>
+          <NavItem>
             <RoutedNavLink href="/docs/api/matching/" current={path}>Using the matching API</RoutedNavLink>
           </NavItem>
           <NavItem>
             <RoutedNavLink href="/docs/api/scoring/" current={path}>Scoring algorithms</RoutedNavLink>
           </NavItem>
           <NavItem>
-            <RoutedNavLink href="/docs/api/authentication/" current={path}>Authentication</RoutedNavLink>
+            <RoutedNavLink href="/docs/api/search/" current={path}>Using the search API</RoutedNavLink>
           </NavItem>
           <NavItem>
             <RoutedNavLink href="/docs/api/faq/" current={path}>Frequently asked questions</RoutedNavLink>
