@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Model } from '../lib/ftm/model';
 import queryString from "query-string";
 
@@ -12,7 +13,6 @@ import { ensureArray } from '../lib/util';
 import { ServerSearchParams } from './utils/PageProps';
 
 import styles from '../styles/Search.module.scss'
-import Link from 'next/link';
 
 
 

@@ -25,7 +25,7 @@ export function EntityRawLink({ entity, prop }: EntityRawLinkProps) {
     canonical_id: entity.id,
     prop: prop
   })
-  return <a className={styles.rawLink} data-nosnippet rel="nofollow" href={`/statements/?${query}`}>[sources]</a>
+  return <Link className={styles.rawLink} data-nosnippet prefetch={false} href={`/statements/?${query}`}>[sources]</Link>
 }
 
 export interface EntityDisplayProps {
