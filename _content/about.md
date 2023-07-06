@@ -23,11 +23,12 @@ Our data combines the sanctions lists, databases of politically exposed persons,
 
 Collecting persons of interest data is a labour intensive process, including data cleaning and quality assurance. This creates unnecessary and duplicative work for all users of persons-of-interest data, whether they are fintech/regtech technologists, investigative journalists, academics or others.
 
-We believe that the solution to this is to establish a **data commons**, an open resource that provides high-quality, up-to-date data, is open to feedback and set up to [provide a long-term solution](/licensing/) for data sourcing.
+We believe that the solution to this is to establish a sustainable **data commons**, an open resource that provides high-quality, up-to-date data, is open to feedback and set up to [provide a long-term solution](/licensing/) for data sourcing.
 
 ### Team
 
-The development of OpenSanctions is coordinated by [Friedrich Lindenberg](https://pudo.org).
+The development and maintenance of OpenSanctions is coordinated by a for-profit entity (OpenSanctions Datenbanken GmbH) that offers [bulk data subscriptions](/licensing/) and [API access](/api/) to the data. Its goal is to produce financial sustainability that allows us to keep the data available and reliable on an ongoing basis.
+
 From 2017 to 2019, maintenance of the crawlers was assumed by [Tarashish Mishra](https://sunu.in/) at the [Organized Crime and Corruption Reporting Project](https://occrp.org). You can
 see a list of those who have contributed crawlers [on Github](https://github.com/opensanctions/opensanctions/graphs/contributors).
 
