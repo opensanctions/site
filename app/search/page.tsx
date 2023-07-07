@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { Model } from '../../lib/ftm/model';
 
 import Research from '../../components/Research';
 import { ISearchAPIResponse } from '../../lib/types';
 import { Container, Row, Col, Alert, AlertHeading } from '../../components/wrapped';
-import { fetchIndex, fetchObject, getDatasets } from '../../lib/data';
+import { getModel, fetchObject, getDatasets } from '../../lib/data';
 import { SearchFacet, SearchFilterTags, SearchResultEntity } from '../../components/Search';
 import { SEARCH_DATASET, SEARCH_SCHEMA, SPACER } from '../../lib/constants';
 import { FormattedDate, ResponsePagination } from '../../components/util';
@@ -30,7 +29,6 @@ export async function generateMetadata() {
 
 
 export default async function Search({ searchParams }: PageProps) {
-  const index = await fetchIndex();
   const datasets = await getDatasets();
   if (searchParams === undefined) {
     return <LayoutFrame activeSection="research" />;
@@ -44,8 +42,6 @@ export default async function Search({ searchParams }: PageProps) {
     'simple': 'true',
     'schema': schemaName
   }
-  const response = await fetchObject<ISearchAPIResponse>(`/search/${scopeName}`, params);
-  const model = new Model(index.model);
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
 
@@ -61,6 +57,8 @@ export default async function Search({ searchParams }: PageProps) {
     );
   }
 
+  const response = await fetchObject<ISearchAPIResponse>(`/search/${scopeName}`, params);
+  const model = await getModel();
   const title = hasScope ? `Search in: ${scope.title}` : 'Search OpenSanctions';
 
   return (
