@@ -4,7 +4,7 @@ import queryString from 'query-string';
 
 import { Table } from "./wrapped";
 import { Entity, Property, Schema } from '../lib/ftm';
-import { compareDisplayProps } from '../lib/ftm/ordering';
+import { compareDisplayProps, pickFeaturedValues } from '../lib/ftm/ordering';
 import { IDataset, isCollection, IStatement } from '../lib/types';
 import { isBlocked, isIndexRelevant } from '../lib/data';
 import { PropertyValues } from './Property';
@@ -145,18 +145,19 @@ export type FeaturedValuesProps = {
 }
 
 function FeaturedValues({ entity, schema, prop }: FeaturedValuesProps) {
-  const values = <PropertyValues
+  const values = pickFeaturedValues(entity, prop);
+  const valuesElement = <PropertyValues
     prop={prop}
-    values={entity.getProperty(prop)}
+    values={values}
     empty="-"
     limit={4}
     entity={EntityLink}
   />;
   if (prop.type.name === 'entity') {
-    return values;
+    return valuesElement;
   }
   if (schema.isA('Thing') && schema.caption.indexOf(prop.name) !== -1) {
-    return <EntityLink entity={entity}>{values}</EntityLink>;
+    return <EntityLink entity={entity}>{valuesElement}</EntityLink>;
   }
   return values;
 }

@@ -10,6 +10,11 @@ interface IEdgeSpecification {
   required?: string[]
 }
 
+interface ITemportalExtent {
+  start?: string[]
+  end?: string[]
+}
+
 export type SchemaSpec = string | null | undefined | Schema;
 
 export interface ISchemaDatum {
@@ -23,6 +28,7 @@ export interface ISchemaDatum {
   generated?: boolean
   description?: string
   edge?: IEdgeSpecification
+  temporalExtent?: ITemportalExtent
   featured?: string[]
   caption?: string[]
   required?: string[]
@@ -49,6 +55,7 @@ export class Schema {
   public readonly caption: string[]
   public readonly required: string[]
   public readonly edge?: IEdgeSpecification
+  public readonly temporalExtent?: ITemportalExtent
   public readonly isEdge: boolean
   private properties: Map<string, Property> = new Map()
 
@@ -69,6 +76,7 @@ export class Schema {
     this.description = config.description || null
     this.isEdge = !!config.edge
     this.edge = config.edge
+    this.temporalExtent = config.temporalExtent
 
     Object.entries(config.properties).forEach(
       ([propertyName, property]) => {
@@ -142,6 +150,35 @@ export class Schema {
       return prop
     }
     return this.getProperties().get(prop);
+  }
+
+  getTemporalExtent(): ITemportalExtent | null {
+    if (this.temporalExtent) {
+      return this.temporalExtent
+    }
+    for (const ext of this.getExtends()) {
+      const temporalExtent = ext.getTemporalExtent()
+      if (temporalExtent) {
+        return temporalExtent
+      }
+    }
+    return null;
+  }
+
+  getTemporalStartPropNames(): string[] {
+    const temporalExtent = this.getTemporalExtent()
+    if (temporalExtent && temporalExtent.start) {
+      return temporalExtent.start
+    }
+    return []
+  }
+
+  getTemporalEndPropNames(): string[] {
+    const temporalExtent = this.getTemporalExtent()
+    if (temporalExtent && temporalExtent.end) {
+      return temporalExtent.end
+    }
+    return []
   }
 
   isA(schema: SchemaSpec): boolean {

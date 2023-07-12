@@ -1,4 +1,5 @@
 import { Property } from "./property";
+import { Entity, Values } from "./entity";
 
 interface WeightsType {
   [name: string]: number
@@ -43,4 +44,20 @@ export function compareDisplayProps(a: Property, b: Property): number {
 
 export function sortPropertiesForDisplay(props: Property[]) {
   return props.sort(compareDisplayProps);
+}
+
+export function pickFeaturedValues(entity: Entity, prop: Property): Values {
+  const values = entity.getProperty(prop);
+  if (values.length === 0) {
+    return values;
+  }
+  const stringValues = values as string[];
+  if (entity.schema.getTemporalStartPropNames().indexOf(prop.name) !== -1) {
+    return [stringValues.sort((a, b) => a.localeCompare(b))[0]];
+  }
+  if (entity.schema.getTemporalEndPropNames().indexOf(prop.name) !== -1) {
+    const value = stringValues.sort((a, b) => a.localeCompare(b)).pop();
+    return value ? [value] : values;
+  }
+  return values;
 }
