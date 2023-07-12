@@ -159,7 +159,7 @@ function FeaturedValues({ entity, schema, prop }: FeaturedValuesProps) {
   if (schema.isA('Thing') && schema.caption.indexOf(prop.name) !== -1) {
     return <EntityLink entity={entity}>{valuesElement}</EntityLink>;
   }
-  return values;
+  return valuesElement;
 }
 
 
