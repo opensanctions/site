@@ -11,7 +11,7 @@ type MetaProps = {
 }
 
 export function getGenerateMetadata({ title, description, imageUrl, noIndex }: MetaProps): Metadata {
-  const imageDefaultUrl = !!imageUrl ? imageUrl : "https://assets.opensanctions.org/images/ura/claim.png";
+  const imageDefaultUrl = !!imageUrl ? imageUrl : "https://assets.opensanctions.org/images/ura/social.png";
   // FIXME: <link rel="search" type="application/opensearchdescription+xml" title="OpenSanctions" href="/opensearch.xml" />
   const meta: Metadata = {
     metadataBase: new URL('https://www.opensanctions.org'),
@@ -30,7 +30,11 @@ export function getGenerateMetadata({ title, description, imageUrl, noIndex }: M
       images: [{ url: imageDefaultUrl }],
     },
     twitter: {
-      creator: "@open_sanctions"
+      card: 'summary',
+      title: title,
+      description: description,
+      creator: "@open_sanctions",
+      images: [{ url: imageDefaultUrl }],
     },
     robots: {
       index: !noIndex
