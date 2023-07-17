@@ -3,7 +3,8 @@ import LayoutFrame from "../../../components/layout/LayoutFrame";
 import { getGenerateMetadata } from "../../../lib/meta";
 import { REVALIDATE_BASE } from "../../../lib/constants";
 import { Plus } from 'react-bootstrap-icons';
-import { Spacer } from "../../../components/util";
+import { ExpandableRow } from "./components";
+import { HelpLink } from "../../../components/util";
 
 export const revalidate = REVALIDATE_BASE;
 
@@ -23,7 +24,7 @@ export default async function Page() {
         <Row>
           <Col md={3}>
             <p>
-              <strong>Sanctions</strong> data for 12,345 entities connected with <strong>Russia</strong> are availble from 123 sources.
+              <strong>Sanctions</strong> data for 12,345 entities connected with Russia are availble from 123 sources.
             </p>
           </Col>
           <Col md={9}>
@@ -34,62 +35,31 @@ export default async function Page() {
         <Row>
           <Col md={3}>
             <p>
-              <strong>Politically-exposed persons (PEP)</strong> data is available for 12,345 persons connected with <strong>Russia</strong> from 123 sources.
+              <strong>Politically-exposed persons (PEP)</strong> data is available for 12,345 persons connected with Russia from 123 sources.
             </p>
           </Col>
           <Col md={9}>
             <table className="table table-responsive">
               <thead>
                 <tr>
-                  <th/>
-                  <th/>
+                  <th />
+                  <th />
                   <th colSpan={3}>
-                    Number of known occupants
+                    Number of known occupants<HelpLink href="#" />
                   </th>
                 </tr>
                 <tr>
-                  <th/>
+                  <th />
                   <th>Category</th>
                   <th>Current</th>
                   <th>Ended</th>
                   <th>Unsure</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr className="clickable" data-toggle="collapse" data-target="#group-of-rows-1">
-                  <td><Plus/></td>
-                  <td>Office of the head of national government</td>
-                  <td>4</td>
-                  <td>13</td>
-                  <td>3</td>
-                </tr>
-              </tbody>
-              <tbody id="group-of-rows-1" className="">
-                <tr>
-                  <tr/>
-                  <td>President of Russia</td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <tr/>
-                  <td>Vice President of Russia</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <tr/>
-                  <td>Prime Minister of Russia</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
+              <ExpandableRow />
               <tbody>
                 <tr className="clickable" data-toggle="collapse" data-target="#group-of-rows-2">
-                  <td><Plus/></td>
+                  <td><Plus /></td>
                   <td>Executive branch of the national government</td>
                   <td>4</td>
                   <td>13</td>
@@ -98,7 +68,7 @@ export default async function Page() {
               </tbody>
               <tbody>
                 <tr className="clickable" data-toggle="collapse" data-target="#group-of-rows-3">
-                  <td><Plus/></td>
+                  <td><Plus /></td>
                   <td>Legislative branch of the national government</td>
                   <td>4</td>
                   <td>13</td>
@@ -107,7 +77,7 @@ export default async function Page() {
               </tbody>
               <tbody>
                 <tr className="clickable" data-toggle="collapse" data-target="#group-of-rows-3">
-                  <td><Plus/></td>
+                  <td><Plus /></td>
                   <td>Office of the head of regional government</td>
                   <td>4</td>
                   <td>13</td>
