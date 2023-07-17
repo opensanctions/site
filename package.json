@@ -15,7 +15,7 @@
     "filesize": "^10.0.7",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
-    "next": "13.4.8",
+    "next": "13.4.10",
     "query-string": "^8.1.0",
     "react": "18.2.0",
     "react-bootstrap": "2.8.0",
