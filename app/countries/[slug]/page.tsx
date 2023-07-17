@@ -5,6 +5,9 @@ import { REVALIDATE_BASE } from "../../../lib/constants";
 import { Plus } from 'react-bootstrap-icons';
 import { ExpandableRow } from "./components";
 import { HelpLink } from "../../../components/util";
+import Image from 'next/image'
+import first from "../../../public/Screenshot_2023-07-17_15-25-35.png";
+import second from "../../../public/Screenshot_2023-07-17_15-25-53.png";
 
 export const revalidate = REVALIDATE_BASE;
 
@@ -42,7 +45,12 @@ export default async function Page() {
             </p>
           </Col>
           <Col md={9}>
-            something something truncated list of datasets?
+            <div style={{ display: "inline", margin: "10px"}}>
+              <Image src={first} width={384} height={337} />
+            </div>
+            <div style={{ display: "inline", margin: "10px" }}>
+              <Image src={second} width={384} height={340} />
+            </div>
           </Col>
         </Row>
         <hr className="d-print-none" />
@@ -91,7 +99,7 @@ export default async function Page() {
               <ExpandableRow label="Political parties" current="20" ended="15" unsure="23" />
               <ExpandableRow label="Private organizations" current="467" ended="123" unsure="456" />
               <ExpandableRow label="Religious" current="3" ended="2" unsure="23" />
-              
+
             </table>
           </Col>
 

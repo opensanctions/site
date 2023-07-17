@@ -21,21 +21,21 @@ export function ExpandableRow(props) {
       </tbody>
       <tbody style={{ display: open ? "contents" : "none" }}>
         <tr>
-          <tr />
+          <td />
           <td><a href="#">President of Russia</a></td>
           <td>1</td>
           <td>2</td>
           <td>0</td>
         </tr>
         <tr>
-          <tr />
+          <td />
           <td><a href="#">Vice President of Russia</a></td>
           <td>1</td>
           <td>4</td>
           <td>1</td>
         </tr>
         <tr>
-          <tr />
+          <td />
           <td><a href="#">Prime Minister of Russia</a></td>
           <td>1</td>
           <td>3</td>
