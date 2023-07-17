@@ -2,12 +2,11 @@ import Link from 'next/link';
 import { CalendarDateFill } from 'react-bootstrap-icons';
 
 import { Nav, NavItem } from './wrapped';
+import { LicenseInfo } from './Policy';
 import { IArticleInfo } from '../lib/types'
 import { FormattedDate, RoutedNavLink } from './util';
 
 import styles from '../styles/Article.module.scss';
-import Image from 'next/image';
-import { LicenseInfo } from './Policy';
 
 
 type ArticleProps = {
@@ -53,7 +52,7 @@ function ArticleItem({ article }: ArticleProps) {
     <li key={article.slug}>
       {article.image_url && (
         <div className={styles.articleListImage}>
-          <Image src={article.image_url} width={200} height={100} alt={article.title} />
+          <img src={article.image_url} width={200} height={100} alt={article.title} />
         </div>
       )}
       <p className={styles.articleListTitle}>
