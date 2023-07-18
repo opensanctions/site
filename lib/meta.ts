@@ -30,7 +30,7 @@ export function getGenerateMetadata({ title, description, imageUrl, noIndex }: M
       images: [{ url: imageDefaultUrl }],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: title,
       description: description,
       creator: "@open_sanctions",
