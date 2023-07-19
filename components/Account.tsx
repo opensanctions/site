@@ -197,6 +197,9 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
               <NavLink href="/reference">Data dictionary</NavLink>
             </NavItem>
             <NavItem>
+              <NavLink href="https://status.opensanctions.org">System status</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink href="/contact">Contact support</NavLink>
             </NavItem>
           </Nav>
