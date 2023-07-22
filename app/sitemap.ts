@@ -41,5 +41,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE_URL}${a.path}`,
     lastModified: dateTruncate(a.date)
   }))
-  return [...baseMap, ...articleMap, ...contentMap, ...datasetMap, ...entityMap];
+  //return [...baseMap, ...articleMap, ...contentMap, ...datasetMap, ...entityMap];
+  return [...baseMap, ...articleMap, ...contentMap, ...datasetMap];
 }
