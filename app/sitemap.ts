@@ -31,11 +31,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE_URL}/datasets/${d.name}/`,
     lastModified: dateTruncate(d.last_change)
   }))
-  const entities = await getSitemapEntities()
-  const entityMap = entities.map((e) => ({
-    url: `${BASE_URL}/entities/${e.id}/`,
-    lastModified: dateTruncate(e.lastmod)
-  }))
+  // const entities = await getSitemapEntities()
+  // const entityMap = entities.map((e) => ({
+  //   url: `${BASE_URL}/entities/${e.id}/`,
+  //   lastModified: dateTruncate(e.lastmod)
+  // }))
   const articles = await getArticles()
   const articleMap = articles.map((a) => ({
     url: `${BASE_URL}${a.path}`,
