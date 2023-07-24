@@ -21,3 +21,11 @@ While ElasticSearch internally generates result scores for `/search` results, th
 Calling the `/entities/XXXX` endpoint (for an entity with the ID `XXXX`) will retrieve the full details about that entity from the database. The full record will include adjacent entities, such as company owners and subsidiaries, family members and associates for PEPs, and detailed records for addresses and identification documents linked to entities. This endpoint can be used to perform incremental traversal of the OpenSanctions entity graph.
 
 Read about the [entity data model](/docs/entities/) and consult the [data dictionary](/reference/) to see all entity types, how they can reference each other and their other properties.
+
+## <a id="metering"></a> What uses of the API are metered and cost money?
+
+When using the [OpenSanctions API](/api/), all API endpoints which access data (e.g. `/search`, `/match`, `/entities`, and the OpenRefine API) incur a cost per query (see the [product page](/api/)). The `/match` API counts the **number of logical queries you've conducted**: if you submit a batch of 10 query entities to be screened, that HTTP request will be counted as 10 queries. Any request which returns an error (indicated by a non-200 HTTP response code) is not counted.
+
+You can review your API usage costs on the [account overview](/service/account/) page.
+
+The [self-hosted API](/docs/self-hosted/) does not use metering, you only need a [bulk data license](/licensing/) to have the right to use the data.

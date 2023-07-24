@@ -52,13 +52,13 @@ If you need no further convincing, you can also just [purchase access to our API
 
 ### <a id="exemptions"></a> Who is exempted from commercial licensing?
 
+Please note that any use of the data undertaken by for-profit businesses that do not directly generate revenue (product demos, showcases) are considered commercial use. The following exemptions apply:
+
 Beyond the definition of [non-commercial use](https://creativecommons.org/faq/#does-my-use-violate-the-noncommercial-clause-of-the-licenses) provided by Creative Commons, we also grant a zero-cost license to the groups listed below:
 
 * any journalistic media that publish their findings [in the public interest](https://gijn.org/membership-in-gijn/)
 * advocacy and non-profit groups working to improve democratic governance
 * any public institution of a country invaded by the Russian Armed Forces (UA, GE, MD, BY, KZ).
-
-Please note that activities undertaken by for-profit businesses that do not directly generate revenue (product demos, showcases) are considered commercial use, unless otherwise agreed.
 
 ### Do you offer a trial/evaluation period?
 
