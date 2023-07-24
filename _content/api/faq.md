@@ -29,3 +29,7 @@ When using the [OpenSanctions API](/api/), all API endpoints which access data (
 You can review your API usage costs on the [account overview](/service/account/) page.
 
 The [self-hosted API](/docs/self-hosted/) does not use metering, you only need a [bulk data license](/licensing/) to have the right to use the data.
+
+## <a id="scaling"></a> Can the API absorb a high request volume?
+
+Our service is built to be scalable and handle high request volumes. If your use is likely to exceed 2 million queries per month or if you're planning to bring high loads in a very short time window (> 200,000 requests/hr), please [reach out to us](/contact/) to make sure we know your traffic is legitimate.
