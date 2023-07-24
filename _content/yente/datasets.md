@@ -52,9 +52,6 @@ datasets:
   - name: offshoreleaks
     title: ICIJ OffshoreLeaks
     entities_url: https://data.opensanctions.org/graph/icij_offshoreleaks/entities.ftm.json
-    # children:
-    #   - all
-    #   - offshore
   # Example B: a local dataset from a path that is visible within the container used
   # to run the service:
   - name: blocklist
@@ -72,13 +69,6 @@ datasets:
       - offshoreleaks
       - blocklist
       # include OpenSanctions collections:
-      - sanctions
-  # Example D: an extra sanctions list that appends itself to the members of the
-  # `sanctions` collection defined upstream in OpenSanctions:
-  - name: zz_extra_sanctions
-    title: Extra sanctions data
-    path: /data/extra-sanctions.json
-    collections:
       - sanctions
 ```
 
