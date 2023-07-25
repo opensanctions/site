@@ -31,7 +31,13 @@ export async function generateMetadata() {
   }
 ]*/
 
-export default async function Page() {
+// for designer export during dev
+export async function generateStaticParams() {
+  return [{ slug: "ru-russia" }]
+}
+
+
+export default async function Page({params}: {params: {slug: string}}) {
   return (
     <LayoutFrame>
       <Container>
