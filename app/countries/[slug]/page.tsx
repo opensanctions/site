@@ -46,10 +46,10 @@ export default async function Page() {
           </Col>
           <Col md={9}>
             <div style={{ display: "inline", margin: "10px"}}>
-              <Image src={first} width={384} height={337} />
+              <Image src={first} width={384} height={337} alt=""/>
             </div>
             <div style={{ display: "inline", margin: "10px" }}>
-              <Image src={second} width={384} height={340} />
+              <Image src={second} width={384} height={340} alt=""/>
             </div>
           </Col>
         </Row>

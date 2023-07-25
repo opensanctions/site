@@ -2,7 +2,14 @@
 import { useState } from "react";
 import { Plus, Dash } from "react-bootstrap-icons";
 
-export function ExpandableRow(props) {
+interface ExpandableRowProps {
+  current: string,
+  ended: string,
+  unsure: string,
+  label: string 
+}
+
+export function ExpandableRow(props: ExpandableRowProps) {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen((current) => !open);
 
