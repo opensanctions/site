@@ -10,6 +10,7 @@ import { Summary } from '../../../components/util';
 import { fetchJsonUrl } from '../../../lib/data';
 import { IAccountInfo } from '../../../lib/types';
 import { API_URL } from '../../../lib/constants';
+import { getAccount } from "@/lib/auth";
 
 
 export const revalidate = 0;
@@ -23,7 +24,8 @@ export async function generateMetadata() {
 
 export default async function Page({ searchParams }: PageProps) {
   const welcome = searchParams ? !!searchParams['welcome'] : false;
-  const secret = searchParams ? searchParams['secret'] : undefined;
+  let secret = searchParams ? searchParams['secret'] : undefined;
+  const account = await getAccount();
 
   let info = null;
   if (!!secret) {
@@ -32,6 +34,9 @@ export default async function Page({ searchParams }: PageProps) {
       'query': { 'api_key': secret }
     })
     info = await fetchJsonUrl<IAccountInfo>(apiUrl, false);
+  } else if (account) {
+    info = account;
+    secret = info?.account.secret;
   }
 
   return (
