@@ -35,7 +35,7 @@ export default async function Page({ searchParams }: PageProps) {
   }
 
   return (
-    <LayoutFrame activeSection="datasets">
+    <LayoutFrame activeSection="account">
       <Container>
         <h1>{TITLE}</h1>
         <Row>
