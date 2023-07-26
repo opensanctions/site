@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { NavbarBrand, NavbarToggle, NavbarCollapse, Navbar, Nav, Container } from '../wrapped';
 
 import styles from '../../styles/Navigation.module.scss';
+import { API_URL } from '@/lib/constants';
 
 type NavLinkProps = {
   active: boolean
@@ -21,6 +22,8 @@ function NavLink({ active, href, children }: NavLinkProps) {
 type NavbarSectionProps = {
   activeSection?: string
 }
+
+const loginUrl = `${API_URL}/auth/login`;
 
 export default function Navigation({ activeSection }: NavbarSectionProps) {
   return (
@@ -45,6 +48,7 @@ export default function Navigation({ activeSection }: NavbarSectionProps) {
             <NavLink href="/showcase/" active={activeSection === 'showcase'}>Showcase</NavLink>
             <NavLink href="/docs/" active={activeSection === 'docs'}>Documentation</NavLink>
             <NavLink href="/docs/about/" active={activeSection === 'about'}>About</NavLink>
+            <NavLink href={loginUrl} active={false}>Login</NavLink>
           </Nav>
         </NavbarCollapse>
       </Container>
