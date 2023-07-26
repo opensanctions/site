@@ -6,7 +6,7 @@ import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, 
 import Dataset from '../../../components/Dataset'
 import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog } from '../../../lib/data'
 import { isCollection, isSource, isExternal } from '../../../lib/types'
-import { Summary, FileSize, NumericBadge, JSONLink, HelpLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
+import { Summary, FileSize, NumericBadge, JSONLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
 import { LicenseInfo } from '../../../components/Policy';
 import { API_URL, REVALIDATE_BASE } from '../../../lib/constants';

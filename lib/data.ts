@@ -6,7 +6,6 @@ import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVA
 // import 'server-only';
 
 import indexJson from '../data/index.json';
-import issuesJson from '../data/issues.json';
 
 const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
 
@@ -121,22 +120,17 @@ export function filterMatchingNames(datasets: Array<IDataset>, names: Array<stri
     .filter(isDataset) // Exclude undefineds (non-matches) and guarantee return member types
 }
 
-export async function getIssues(): Promise<Array<IIssue>> {
-  // const index = await fetchUrl<IIssueIndex>(ISSUES_URL);
-  const index = issuesJson as any as IIssueIndex;
-  return index.issues
-}
-
 export async function getAlgorithms(): Promise<IAlgorithmResponse> {
   return await fetchObject<IAlgorithmResponse>(`/algorithms`);
 }
 
 export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue>> {
-  const issues = await getIssues()
   if (dataset === undefined) {
     return []
   }
-  return issues.filter(issue => issue.dataset === dataset.name);
+  const issues_url = `https://data.opensanctions.org/datasets/latest/${dataset.name}/issues.json`
+  const index = await fetchUrl<IIssueIndex>(issues_url);
+  return index.issues;
 }
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {

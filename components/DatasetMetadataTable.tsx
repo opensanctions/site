@@ -161,7 +161,7 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
                   <Spacer />
                 </>
               )}
-              <Link href="/issues">See all...</Link>
+              <Link href={`/issues/${dataset.name}/`}>See details...</Link>
             </td>
           </tr>
         )}

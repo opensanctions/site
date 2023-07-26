@@ -15,7 +15,7 @@ var download = function (url, dest, cb) {
 
 const dataPath = path.resolve(path.join(__dirname, '..', 'data'));
 const INDEX_URL = "https://data.opensanctions.org/datasets/latest/index.json";
-const ISSUES_URL = "https://data.opensanctions.org/datasets/latest/issues.json";
+// const ISSUES_URL = "https://data.opensanctions.org/datasets/latest/issues.json";
 
 download(INDEX_URL, path.join(dataPath, 'index.json'), function () { });
-download(ISSUES_URL, path.join(dataPath, 'issues.json'), function () { });
+// download(ISSUES_URL, path.join(dataPath, 'issues.json'), function () { });
