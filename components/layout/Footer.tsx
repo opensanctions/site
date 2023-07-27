@@ -3,10 +3,13 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { Twitter, Github, HeartFill, Slack } from 'react-bootstrap-icons';
 
-import { CLAIM, LICENSE_URL, SPACER } from '../../lib/constants';
+import { API_URL, CLAIM, LICENSE_URL, SPACER } from '../../lib/constants';
 import { Row, Col, Container } from '../wrapped';
 import styles from '../../styles/Footer.module.scss';
 import { Spacer } from '../util';
+
+
+const loginUrl = `${API_URL}/auth/login`;
 
 export default function Footer() {
   return (
@@ -80,6 +83,8 @@ export default function Footer() {
                 </p>
                 <p className={styles.copyright}>
                   Made with <HeartFill className={styles.love} /> in Berlin
+                  {SPACER}
+                  <Link href={loginUrl}>Login</Link>
                   {SPACER}
                   <Link href="https://status.opensanctions.org">System status</Link>
                   {SPACER}
