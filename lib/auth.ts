@@ -5,6 +5,8 @@ import { API_URL } from "@/lib/constants";
 import { fetchJsonUrl } from "@/lib/data";
 import { IAccountInfo } from "@/lib/types";
 
+export const loginUrl = `${API_URL}/auth/login`;
+
 export async function getAccount() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access_token")?.value;

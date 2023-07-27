@@ -3,13 +3,11 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { Twitter, Github, HeartFill, Slack } from 'react-bootstrap-icons';
 
-import { API_URL, CLAIM, LICENSE_URL, SPACER } from '../../lib/constants';
+import { CLAIM, LICENSE_URL, SPACER } from '../../lib/constants';
 import { Row, Col, Container } from '../wrapped';
 import styles from '../../styles/Footer.module.scss';
 import { Spacer } from '../util';
-
-
-const loginUrl = `${API_URL}/auth/login`;
+import { loginUrl } from '@/lib/auth';
 
 export default function Footer() {
   return (
