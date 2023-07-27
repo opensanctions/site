@@ -5,14 +5,9 @@ import { API_URL } from "@/lib/constants";
 import { fetchJsonUrl } from "@/lib/data";
 import { IAccountInfo } from "@/lib/types";
 
-async function getAcessToken() {
+export async function getAccount() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access_token")?.value;
-  return accessToken;
-}
-
-export async function getAccount() {
-  const accessToken = await getAcessToken();
   if (!accessToken) {
     return null;
   }

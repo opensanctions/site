@@ -24,5 +24,5 @@ export async function GET(request: NextRequest) {
     path: "/",
   });
 
-  return redirect("/service/account");
+  return redirect("/service/account/");
 }
