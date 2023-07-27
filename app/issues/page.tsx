@@ -27,7 +27,7 @@ export default async function Page() {
     <LayoutFrame activeSection="datasets">
       <Content.Menu title={TITLE} jsonLink={ISSUES_URL} Menu={DocumentationMenu} path="/issues">
         <Summary summary="Below is an overview of all parsing and processing issues that appeared while importing the data." />
-        <Table>
+        <Table size="sm">
           <thead>
             <tr>
               <th>Dataset</th>

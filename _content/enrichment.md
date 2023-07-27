@@ -2,7 +2,7 @@
 title: Enrichment from external databases
 summary: >
     A large number of data sources contain relevant details about the entities in
-    our database, but including some of them in full as sources would be impractical. That's why we import them in part, whereever the contained data have direct links to the target entities in OpenSanctions.
+    our database, but including some of them in full as sources would be impractical. That's why we import them in part, wherever the contained data have direct links to the target entities in OpenSanctions.
 ---
 
 The motivation for data enrichment comes from the following user needs:
