@@ -27,8 +27,8 @@ index.datasets = index.datasets.map((raw: any) => {
 const ftmModel = new Model(index.model);
 
 
-export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promise<T | null> {
-  const headers = authz ? { 'Authorization': `ApiKey ${API_TOKEN}` } : undefined;
+export async function fetchJsonUrl<T>(url: string, authz: boolean = true, authScheme: string = 'ApiKey'): Promise<T | null> {
+  const headers = authz ? { 'Authorization': `${authScheme} ${API_TOKEN}` } : undefined;
   const data = await fetch(url, { headers });
   if (!data.ok) {
     return null;

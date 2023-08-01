@@ -1,3 +1,7 @@
+/**
+ * NOTE: This page will be superseded by the /account page
+ */
+
 import queryString from 'query-string';
 import { Row, Col, Container } from "../../../components/wrapped";
 
@@ -35,7 +39,7 @@ export default async function Page({ searchParams }: PageProps) {
   }
 
   return (
-    <LayoutFrame activeSection="datasets">
+    <LayoutFrame activeSection="account">
       <Container>
         <h1>{TITLE}</h1>
         <Row>
