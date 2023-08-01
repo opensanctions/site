@@ -1,6 +1,6 @@
 ---
 title: Using the OpenSanctions CLI
-menu_path: /docs/opensource/
+menu_path: /docs/opensource/pipeline/
 summary:
     Below you'll find instructions on how to run the OpenSanctions software and how to add additional crawlers to the system.
 ---
@@ -22,7 +22,9 @@ A peculiarity of the data in OpenSanctions is that sources may mention entities 
 
 ## Using the command-line tool
 
-Once you've successfully [installed](/docs/opensource/install/) the OpenSanctions code base, you can use the built-in command-line tool to run parts of the system:
+Once you've successfully [installed](https://zavod.opensanctions.org/install/) the OpenSanctions data pipeline `zavod`, you can use the built-in command-line tool to run parts of the system:
+
+**Note**: The OpenSanctions data pipeline is undergoing restructuring. After installing `zavod`, also install the tooling as documented here by running `pip install -e legacy`. These instructions will be updated when all the functionality below has been moved to `zavod`.
 
 ```bash
 # Before everything else, flush away cached source data. If you don't 
@@ -57,6 +59,6 @@ $ opensanctions export us_ofac_cons
 $ opensanctions clear us_ofac_cons
 ```
 
-The available dataset names are determined from the set of metadata YAML files found in ``OPENSANCTIONS_METADATA_PATH`` [configuration](/docs/opensource/install/#config).
+The available dataset names are determined from the set of metadata YAML files found in ``OPENSANCTIONS_METADATA_PATH`` [configuration](https://zavod.opensanctions.org/install/#configuration).
 
-Next: [Developing a crawler](/docs/opensource/crawlers/)
+Next: [Developing a crawler](https://zavod.opensanctions.org/tutorial/)
