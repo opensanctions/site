@@ -3,6 +3,7 @@ import { Nav, NavItem } from "./wrapped";
 import { RoutedNavLink } from './util';
 
 import { LicenseInfo } from './Policy';
+import { BoxArrowUpRight } from "react-bootstrap-icons";
 
 export type MenuProps = {
   path: string
@@ -98,13 +99,13 @@ export function DocumentationMenu({ path }: MenuProps) {
         <NavItem>
           <RoutedNavLink href="/docs/opensource/" current={path}>Open source</RoutedNavLink>
           <NavItem>
-            <RoutedNavLink href="/docs/opensource/pipeline/" current={path}>Data pipeline</RoutedNavLink>
-          </NavItem>
-          <NavItem>
             <RoutedNavLink href="/docs/yente/" current={path}>yente</RoutedNavLink>
           </NavItem>
+          <NavItem>
+            <RoutedNavLink href="https://zavod.opensanctions.org" current={path}>zavod <BoxArrowUpRight className="menu-icon" /></RoutedNavLink>
+          </NavItem>
         </NavItem>
-      </Nav>
+      </Nav >
       <LicenseInfo />
     </>
   );
