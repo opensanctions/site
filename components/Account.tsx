@@ -7,6 +7,7 @@ import styles from '../styles/Account.module.scss'
 import { API_URL } from "../lib/constants";
 import { FormattedDate, Money } from "./util";
 import { ClipboardCopy } from "./utils/ClipboardCopy";
+import { ChargebeePortal } from "./ChargebeePortal";
 
 export const TITLE = 'API account and usage information';
 export const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
@@ -147,10 +148,12 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
                 <td colSpan={info.charge_info ? 1 : 3}>
                   {account.stripe_customer_id && (
                     <>
-                      <p>Your account is linked to a Stripe subscription.</p>
-                      <Button href={portalUrl} variant="primary">
-                        Manage billing and payment
-                      </Button>
+                      <p>Your account is linked to a Chargebee subscription.</p>
+                      <ChargebeePortal>
+                        <Button variant="primary">
+                          Manage billing and payment
+                        </Button>
+                      </ChargebeePortal>
                     </>
                   )}
                   {!account.stripe_customer_id && (
