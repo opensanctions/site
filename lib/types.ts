@@ -84,6 +84,7 @@ export interface IDatasetBase extends INKDatasetBase {
   index_url: string
   last_change: string
   last_export: string
+  updated_at: string
   issue_count: number
   issue_levels: IIssueType
   issues_url: string
@@ -137,7 +138,6 @@ export interface ICollection extends IDatasetBase {
 export type IDataset = ISource | IExternal | ICollection
 
 export interface INKDataset extends INKDatasetBase {
-  updated_at: string
   version: string
   children: Array<string>
   publisher?: IDatasetPublisher
