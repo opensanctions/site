@@ -3,7 +3,9 @@ title: "Introducing our new Advanced Screening search"
 image_url: https://assets.opensanctions.org/images/articles/advanced-search.png
 summary: |
     We're introducing a new advanced screening search, which lets you use multiple search criteria and fuzzy matching to identify watchlist entities.
-# draft: false
+tags: 
+    - Website
+    - Screening
 ---
 
 The OpenSanctions Default dataset includes a wide variety of information on entities that are under sanctions, are politically exposed people (PEPs), or are on criminal wanted lists. We currently compile 65 data sources and 283,590 targets.

@@ -3,7 +3,9 @@ title: "Understanding interrelationships in the ‘Security State’ in the Midd
 image_url: https://assets.opensanctions.org/images/articles/syria-wedding.jpg
 summary: |
     Canadian data scientist and activist Wael Alalwani wants to map relationships between members of what he calls the ‘Security State’ - business elites, political actors, army generals and others. 
-draft: false
+tags:
+    - Syria
+    - PEPs
 ---
 
 The small team at [Obsalytics](https://obsalytics.org/), the nonprofit social enterprise Alalwani founded in Canada, maps these relationships using publicly available data, which they share freely with others - including OpenSanctions - so that people can comprehend the nature of power in the Middle East.

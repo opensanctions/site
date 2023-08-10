@@ -3,6 +3,9 @@ title: "New scoring modes in the OpenSanctions API"
 image_url: https://assets.opensanctions.org/images/articles/regression.png
 summary: |
     You can now select from a range of different algorithms that score your results when you use the OpenSanctions API to screen a set of companies and people.
+tags: 
+    - API
+    - Scoring
 ---
 
 The OpenSanctions API - both the easy-to-use [hosted service](/api/) and the [self-hosted option](/docs/self-hosted/) - provides an easy way to submit a set of entity descriptions (e.g. a list of customers, business counterparties, or subjects of an investigation) and check their presence on a [sanctions](/datasets/sanctions/) or [PEPs list](/datasets/peps/).

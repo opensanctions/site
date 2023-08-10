@@ -22,6 +22,7 @@ export interface IArticleInfo extends IContentBase {
   path: string
   url: string
   section: string
+  tags: string[]
   draft: boolean
 }
 

@@ -5,6 +5,9 @@ summary: |
     Both OpenSanctions and OpenCorporates provide powerful data building blocks for
     compliance. By linking our databases up, we make it easier to track assets or
     assess exposure.
+tags:
+    - Companies
+    - Linkage
 ---
 
 <!--img class="img-fluid" src="https://assets.opensanctions.org/images/articles/opencorporates-home.png" -->
