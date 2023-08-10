@@ -1,14 +1,10 @@
 "use client";
 
-import Script from "next/script";
 import { type ChargebeeInstance } from "@chargebee/chargebee-js-types";
+import Script from "next/script";
 
-import { type ReactNode, useRef } from "react";
-import { API_URL } from "@/lib/constants";
-
-// TODO: Grab from constants via NEXT_PUBLIC_ENV_VAR_NAME
-const CHARGEBEE_SITE = "opensanctions-test";
-const CHARGEBEE_PUBLISHABLE_KEY = "test_zPAH9l3rj4NgJawamAFWgsgDHZwODxGz";
+import { API_URL, CHARGEBEE_PUBLISHABLE_KEY, CHARGEBEE_SITE } from "@/lib/constants";
+import { useRef, type ReactNode } from "react";
 
 type ChargebeePortalProps = {
   children: ReactNode;
