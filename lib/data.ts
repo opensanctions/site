@@ -16,6 +16,10 @@ index.datasets = index.datasets.map((raw: any) => {
     link: `/datasets/${raw.name}/`
   };
   ds.opensanctions_url = BASE_URL + ds.link
+  ds.issue_count = ds.issue_count || 0;
+  ds.issue_levels = ds.issue_levels || {};
+  ds.things = ds.things || { total: 0, countries: [], schemata: [] };
+  ds.thing_count = ds.things.total;
   if (ds.type === 'collection') {
     return ds as ICollection;
   }

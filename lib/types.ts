@@ -88,6 +88,7 @@ export interface IDatasetBase extends INKDatasetBase {
   issues_url: string
   target_count: number
   entity_count: number
+  thing_count: number
   targets: IAggregatedStats
   things: IAggregatedStats
 }

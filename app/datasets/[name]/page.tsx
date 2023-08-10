@@ -48,6 +48,7 @@ export default async function Page({ params }: DatasetPageProps) {
   }
   const datasets = await getDatasets();
   const graphCatalog = await getGraphCatalog();
+  // FIXME: when the graph catalog is merged:
   const inGraphCatalog = undefined !== graphCatalog.datasets.find((gd) => gd.name === dataset.name);
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
   const issues = await getDatasetIssues(dataset)
@@ -56,10 +57,10 @@ export default async function Page({ params }: DatasetPageProps) {
       .filter(isSource);
   const externals = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.externals)
-      .filter(isExternal)
+      .filter(isExternal);
   const collections = !(isSource(dataset) || isExternal(dataset)) ? [] :
     filterMatchingNames(visibleDatasets, dataset.collections)
-      .filter(isCollection)
+      .filter(isCollection);
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);
   const markdown = markdownToHtml(dataset.description || '')

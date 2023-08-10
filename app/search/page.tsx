@@ -35,12 +35,15 @@ export default async function Search({ searchParams }: PageProps) {
   }
   const scopeName = searchParams['scope'] || SEARCH_DATASET;
   const schemaName = searchParams['schema'] || SEARCH_SCHEMA;
+  const excludeSchema = ['Address', 'Position'].filter((s) => s !== schemaName);
   const params = {
     ...searchParams,
     'limit': 25,
     'fuzzy': 'false',
     'simple': 'true',
-    'schema': schemaName
+    'schema': schemaName,
+    'exclude_dataset': 'validation',
+    'exclude_schema': excludeSchema
   }
   const hasScope = scopeName !== SEARCH_DATASET;
   const scope = datasets.find((d) => d.name === scopeName);
