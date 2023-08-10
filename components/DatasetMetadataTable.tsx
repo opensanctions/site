@@ -153,7 +153,7 @@ export default function DatasetMetadataTable({ dataset, collections }: DatasetSc
             )}
           </td>
         </tr>
-        {(isSource(dataset) || isExternal(dataset)) && dataset.issue_count && (
+        {(isSource(dataset) || isExternal(dataset)) && dataset.issue_count > 0 && (
           <tr>
             <th className={styles.tableHeader}>Errors:</th>
             <td colSpan={1}>
