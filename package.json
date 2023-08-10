@@ -37,7 +37,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/gtag.js": "^0.0.12",
+    "@types/gtag.js": "^0.0.13",
     "@types/node": "^20.4.9",
     "@types/react": "^18.2.18",
     "@types/react-text-truncate": "^0.14.1",
