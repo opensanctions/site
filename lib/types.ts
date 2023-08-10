@@ -72,9 +72,11 @@ export interface INKDatasetBase {
   type: string
   title: string
   link: string
+  updated_at: string
   summary: string
   description?: string
   resources: Array<IResource>
+  coverage?: IDatasetCoverage
 }
 
 
@@ -84,7 +86,6 @@ export interface IDatasetBase extends INKDatasetBase {
   index_url: string
   last_change: string
   last_export: string
-  updated_at: string
   issue_count: number
   issue_levels: IIssueType
   issues_url: string
@@ -115,6 +116,7 @@ export interface IDatasetCoverage {
   start: string
   end: string
   countries: string[]
+  frequency: string
 }
 
 export interface ISource extends IDatasetBase {
@@ -126,6 +128,7 @@ export interface ISource extends IDatasetBase {
 
 export interface IExternal extends IDatasetBase {
   url?: string
+  data?: ISourceData
   publisher: IDatasetPublisher
   collections: Array<string>
 }
@@ -141,7 +144,6 @@ export interface INKDataset extends INKDatasetBase {
   version: string
   children: Array<string>
   publisher?: IDatasetPublisher
-  coverage?: IDatasetCoverage
 }
 
 export interface INKDataCatalog {

@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
-import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse, ISearchAPIResponse } from "./types";
+import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse, ISearchAPIResponse, isCollection } from "./types";
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE } from "./constants";
 // import 'server-only';
 
@@ -117,6 +117,13 @@ export async function getDatasets(): Promise<Array<IDataset>> {
 export async function getDatasetByName(name: string): Promise<IDataset | undefined> {
   const datasets = await getDatasets()
   return datasets.find((dataset) => dataset.name === name)
+}
+
+export async function getDatasetCollections(dataset: IDataset): Promise<Array<ICollection>> {
+  const datasets = await getDatasets();
+  return datasets
+    .filter(isCollection)
+    .filter((c) => c.sources.indexOf(dataset.name) !== -1 || c.externals.indexOf(dataset.name) !== -1)
 }
 
 export function filterMatchingNames(datasets: Array<IDataset>, names: Array<string>): Array<IDataset> {
