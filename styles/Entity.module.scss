@@ -8,7 +8,7 @@
     vertical-align: top;
     padding-left: 1em !important;
     width: 20%;
-    min-width: 20%;
+    min-width: 10%;
     max-width: 20%;
     color: $gray-600;
 }
@@ -80,6 +80,7 @@
 
 .rawColumn {
     width: 1%;
+    text-align: right;
 }
 
 .rawLink {

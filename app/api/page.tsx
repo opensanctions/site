@@ -35,7 +35,7 @@ export default async function Page() {
               </CardText>
               <ul className={styles.featureList}>
                 <li>Powerful API for entity matching and search</li>
-                <li>30 sanctions lists, 160,000+ PEPs, 11 crime lists</li>
+                <li>Sanctions, PEPs, debarment and criminal watchlist data</li>
                 <li>Pay-as-you-go pricing</li>
               </ul>
               <Table size="sm" variant="dark" className={styles.pricingTable}>
