@@ -37,8 +37,10 @@ Next, it's time to connect Refine to OpenSanctions: using the dropdown arrow nex
 In the dialog that pops up, we can see the data sources that the Refine tool already knows about. Using the *Add standard service...* button in the bottom left of that screen, we can  add OpenSanctions by inserting this URL:
 
 ```
-https://api.opensanctions.org/reconcile/default
+https://api.opensanctions.org/reconcile/default?api_key=XXXX
 ```
+
+Replace the `XXXX` above with your OpenSanctions API key. If you don't have an API key yet, [you can sign up](/api/) for the service or [request a non-commercial use key](/contact/) if appropriate.
 
 <a href="https://assets.opensanctions.org/images/articles/openrefine/add-service.png">
     <img class="img-fluid" src="https://assets.opensanctions.org/images/articles/openrefine/add-service.png">
