@@ -20,7 +20,15 @@ export const THEME_COLOR = '#2563eb';
 // client-side variables
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://api.opensanctions.org"
 export const CHARGEBEE_SITE = process.env.NEXT_PUBLIC_CHARGEBEE_SITE || "opensanctions"
-export const CHARGEBEE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CHARGEBEE_PUBLISHABLE_KEY
+const CHARGEBEE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CHARGEBEE_PUBLISHABLE_KEY
+
+if (!CHARGEBEE_PUBLISHABLE_KEY) {
+  throw new Error("Missing CHARGEBEE_PUBLISHABLE_KEY")
+}
+
+export {
+  CHARGEBEE_PUBLISHABLE_KEY as string
+}
 
 // fake up a semantic ordering of collections
 export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];
