@@ -89,24 +89,6 @@ export default function DatasetMetadataTable({ dataset, collections }: DatasetSc
         )}
         {(isSource(dataset) || isExternal(dataset)) && (
           <tr>
-            <th className={styles.tableHeader}>Publisher:</th>
-            <td colSpan={3}>
-              {dataset.publisher.logo_url &&
-                <img src={dataset.publisher.logo_url} className={styles.publisherLogo} />}
-              <URLLink url={dataset.publisher.url} label={dataset.publisher.name} icon={false} />
-              {!!dataset.publisher.country && (
-                <> ({dataset.publisher.country_label})</>
-              )}
-              {!dataset.publisher.official && (
-                <>{' '} <UnofficialBadge /></>
-              )}
-              <p className={styles.publisherDescription}>{dataset.publisher.description}</p>
-
-            </td>
-          </tr>
-        )}
-        {(isSource(dataset) || isExternal(dataset)) && (
-          <tr>
             {dataset.url && (
               <>
                 <th className={styles.tableHeader}>Information:</th>
@@ -180,6 +162,24 @@ export default function DatasetMetadataTable({ dataset, collections }: DatasetSc
               {(!dataset.issue_levels.warning) && (
                 <Badge bg='light'>no warnings</Badge>
               )}
+            </td>
+          </tr>
+        )}
+        {(isSource(dataset) || isExternal(dataset)) && (
+          <tr>
+            <th className={styles.tableHeader}>Publisher:</th>
+            <td colSpan={3}>
+              {dataset.publisher.logo_url &&
+                <img src={dataset.publisher.logo_url} className={styles.publisherLogo} />}
+              <URLLink url={dataset.publisher.url} label={dataset.publisher.name} icon={false} />
+              {!!dataset.publisher.country && (
+                <> ({dataset.publisher.country_label})</>
+              )}
+              {!dataset.publisher.official && (
+                <>{' '} <UnofficialBadge /></>
+              )}
+              <p className={styles.publisherDescription}>{dataset.publisher.description}</p>
+
             </td>
           </tr>
         )}
