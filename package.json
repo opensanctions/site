@@ -32,7 +32,7 @@
     "remark-rehype": "^10.1.0",
     "sass": "^1.64.2",
     "supports-color": "^9.4.0",
-    "swr": "^2.2.0",
+    "swr": "^2.2.1",
     "unified": "^10.1.2",
     "uuid": "^9.0.0"
   },
