@@ -9,6 +9,7 @@
 public/sitemap.xml
 data/index.json
 data/issues.json
+data/pep-positions.json
 
 # testing
 /coverage
