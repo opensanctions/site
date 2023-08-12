@@ -60,7 +60,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
               }
             </table>
           </Col>
-
+          <h2 id="explainer">What do these numbers mean?</h2>
+          <p>Any person holding a position is counted once. If a person previously held a position, 
+            and also currently holds the same position, they are only counted once and recorded
+            under Current. If it is unclear from the source whether they have left the position,
+            they will be counted under Unknown and not under Ended.</p>
         </Row>
       </Container>
     </LayoutFrame>
