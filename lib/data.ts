@@ -1,34 +1,38 @@
+import 'server-only';
 import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
 import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse, ISearchAPIResponse, isCollection } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE } from "./constants";
-// import 'server-only';
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE, REVALIDATE_SHORT } from "./constants";
 
 import indexJson from '../data/index.json';
 
-const cacheConfig = { next: { revalidate: REVALIDATE_BASE } };
+const cacheBase = { next: { revalidate: REVALIDATE_BASE } };
+const cacheShort = { next: { revalidate: REVALIDATE_SHORT } };
 
 const index = indexJson as any as IIndex;
-index.datasets = index.datasets.map((raw: any) => {
-  const ds = {
-    ...raw,
-    link: `/datasets/${raw.name}/`
-  };
-  ds.opensanctions_url = BASE_URL + ds.link
-  ds.issue_count = ds.issue_count || 0;
-  ds.issue_levels = ds.issue_levels || {};
-  ds.things = ds.things || { total: 0, countries: [], schemata: [] };
-  ds.thing_count = ds.things.total;
-  if (ds.type === 'collection') {
-    return ds as ICollection;
-  }
-  if (ds.type === 'external') {
-    return ds as IExternal;
-  }
-  return ds as ISource;
-});
+index.datasets = index.datasets.map(parseDataset);
 const ftmModel = new Model(index.model);
+
+
+function parseDataset(data: any): IDataset {
+  const dataset = {
+    ...data,
+    link: `/datasets/${data.name}/`,
+    opensanctions_url: BASE_URL + `/datasets/${data.name}/`,
+    issue_count: data.issue_count || 0,
+    issue_levels: data.issue_levels || {},
+    things: data.things || { total: 0, countries: [], schemata: [] },
+    thing_count: data.things.total,
+  };
+  if (dataset.type === 'collection') {
+    return dataset as ICollection;
+  }
+  if (dataset.type === 'external') {
+    return dataset as IExternal;
+  }
+  return dataset as ISource;
+}
 
 
 export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promise<T | null> {
@@ -41,7 +45,7 @@ export async function fetchJsonUrl<T>(url: string, authz: boolean = true): Promi
 }
 
 export async function fetchUrl<T>(url: string): Promise<T> {
-  const data = await fetch(url, { ...cacheConfig });
+  const data = await fetch(url, { ...cacheBase });
   if (!data.ok) {
     throw Error(`Backend error: ${data.statusText}`);
   }
@@ -62,7 +66,7 @@ export async function fetchObject<T>(path: string, query: any = undefined, authz
     'url': `${API_URL}${path}`,
     'query': query
   })
-  const data = await fetch(apiUrl, { headers, ...cacheConfig });
+  const data = await fetch(apiUrl, { headers, ...cacheBase });
   if (!data.ok) {
     throw Error(`Backend error: ${data.statusText}`);
   }
@@ -115,8 +119,13 @@ export async function getDatasets(): Promise<Array<IDataset>> {
 }
 
 export async function getDatasetByName(name: string): Promise<IDataset | undefined> {
-  const datasets = await getDatasets()
-  return datasets.find((dataset) => dataset.name === name)
+  const datasetUrl = `https://data.opensanctions.org/datasets/latest/${name}/index.json`
+  const data = await fetch(datasetUrl, cacheShort);
+  if (!data.ok) {
+    return undefined;
+  }
+  const jsonData = await data.json();
+  return parseDataset(jsonData);
 }
 
 export async function getDatasetCollections(dataset: IDataset): Promise<Array<ICollection>> {
@@ -168,7 +177,10 @@ export async function getRecentEntities(dataset: IDataset): Promise<Array<IRecen
     'sort': 'first_seen:desc',
     'target': true,
   }
-  const response = await fetchObject<ISearchAPIResponse>(`/search/${dataset.name}`, params);
+  const response = await fetchObjectMaybe<ISearchAPIResponse>(`/search/${dataset.name}`, params);
+  if (response === null) {
+    return []
+  }
   return response.results.map((result) => {
     const entity = ftmModel.getEntity(result)
     const country = ftmModel.getType('country');
