@@ -30,8 +30,9 @@ data, in which only a select set of key columns is provided. These include:
 * ``phones``: a list of phone numbers in E.164 format.
 * ``emails``: a list of email addresses linked to the entity.
 * ``dataset``: the dataset this entity is in.
-* ``last_seen``: the last time this entity was observed in source data.
 * ``first_seen``: the earliest date this entity has been noticed by OpenSanctions.
+* ``last_seen``: the most recent time this entity was observed in source data.
+* ``last_change``: the most recent time the checksum of the values in this entity has changed.
 
 Further technical notes:
 
