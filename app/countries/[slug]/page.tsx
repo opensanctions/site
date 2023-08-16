@@ -2,14 +2,16 @@ import { Col, Container, Row } from "../../../components/wrapped";
 import LayoutFrame from "../../../components/layout/LayoutFrame";
 import { getGenerateMetadata } from "../../../lib/meta";
 import { REVALIDATE_BASE } from "../../../lib/constants";
-import { TableRow } from "./components";
 import { HelpLink } from "../../../components/util";
 
 import { getCountry } from "../../../lib/peps";
+import { getDatasetByName } from "../../../lib/data";
 export const revalidate = REVALIDATE_BASE;
 
+const slugCountryCode = (slug: string) => slug.split("-")[0];
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const country = getCountry(params.slug);
+  const country = getCountry(slugCountryCode(params.slug));
   return getGenerateMetadata({
     title: `Data available for ${country.label}`
   })
@@ -17,8 +19,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const country = getCountry(params.slug);
-   
+  const countryCode = slugCountryCode(params.slug);
+  const country = getCountry(countryCode);
+  const peps = await getDatasetByName("peps");
+  const countryPeps = peps?.things.countries.filter((c) => c.code == countryCode)[0];
+
   return (
     <LayoutFrame>
       <Container>
@@ -28,7 +33,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <Row>
           <Col md={3}>
             <p>
-              <strong>Politically-exposed persons (PEP)</strong> data is available for <i>nn</i> persons connected with {country.label} from <i>nn</i> sources.
+              Our <strong>Politically-exposed persons (PEP)</strong> dataset contains {countryPeps?.count} entities
+              connected with <a href={`/search/?scope=peps&countries=${countryCode}`}></a>{country.label}.</p>
+            <p>Here's a summary of the positions held by known Politically Exposed Persons for {country.label}.
             </p>
           </Col>
           <Col md={9}>
@@ -47,24 +54,29 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   <th>Unsure</th>
                 </tr>
               </thead>
-              {
-                Object.entries(country.positions).map((entry: any) => {
-                  const position: any = entry[1];
-                  return <TableRow
-                    label={position.position_name}
-                    current={position.counts.current}
-                    ended={position.counts.ended}
-                    unsure={position.counts.unknown}
-                  />
-                })
-              }
+              <tbody>
+                {
+                  Object.entries(country.positions).map((entry: any) => {
+                    const position = entry[1];
+                    return (
+                      <tr>
+                        <td>{position.position_name}</td>
+                        <td>{position.counts.current}</td>
+                        <td>{position.counts.ended}</td>
+                        <td>{position.counts.unknown}</td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
             </table>
+
+            <h2 id="explainer">What do these numbers mean?</h2>
+            <p>Any person holding a position is counted once. If a person previously held a position,
+              and also currently holds the same position, they are only counted once and recorded
+              under Current. If it is unclear from the source whether they have left the position,
+              they will be counted under Unknown and not under Ended.</p>
           </Col>
-          <h2 id="explainer">What do these numbers mean?</h2>
-          <p>Any person holding a position is counted once. If a person previously held a position, 
-            and also currently holds the same position, they are only counted once and recorded
-            under Current. If it is unclear from the source whether they have left the position,
-            they will be counted under Unknown and not under Ended.</p>
         </Row>
       </Container>
     </LayoutFrame>
