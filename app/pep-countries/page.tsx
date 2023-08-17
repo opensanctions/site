@@ -14,6 +14,9 @@ export async function generateMetadata() {
 
 
 export default async function Page() {
+  const countryTuples: Array<Array<any>> = Object.entries(getCountries());
+  countryTuples.sort((c1: any, c2: any) => c1[1].label > c2[1].label ? 1 : -1);
+
   return (
     <LayoutFrame>
       <Container>
@@ -35,7 +38,7 @@ export default async function Page() {
           </thead>
           <tbody>
             {
-              Object.entries(getCountries()).map((entry: any) => {
+              countryTuples.map((entry: any) => {
                 const [countryCode, country] = entry;
                 return (
                   <tr>
