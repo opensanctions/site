@@ -75,7 +75,7 @@ async function PositionTable(props: {positionTuples: Array<Array<any>>}) {
             return (
               <tr>
                 <td>{positionLabel}</td>
-                <td>{position.countries.length}</td>
+                <td>{Object.keys(position.countries).length}</td>
                 <td>{position.counts.current}</td>
                 <td>{position.counts.ended}</td>
                 <td>{position.counts.unknown}</td>
@@ -93,6 +93,10 @@ export default async function Page() {
   countryTuples.sort((c1: any, c2: any) => c1[1].label > c2[1].label ? 1 : -1);
 
   const positionTuples: Array<Array<any>> = Object.entries(getPositions());
+  positionTuples.sort((p1: any, p2: any) => {
+    console.log(p2[1].countries)
+    return Object.keys(p2[1].countries).length - Object.keys(p1[1].countries).length
+  });
 
   return (
     <LayoutFrame>
