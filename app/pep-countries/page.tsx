@@ -13,42 +13,100 @@ export async function generateMetadata() {
 }
 
 
+async function CountryTable(props: {countryTuples: Array<Array<any>>}) {
+  return (
+    <table className="table table-responsive">
+      <thead>
+        <tr>
+          <th />
+          <th colSpan={3}>
+            Number of known PEPs by status
+          </th>
+        </tr>
+        <tr>
+          <th>Country</th>
+          <th>Current</th>
+          <th>Ended</th>
+          <th>Unknown</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          props.countryTuples.map((entry: any) => {
+            const [countryCode, country] = entry;
+            return (
+              <tr>
+                <td><a href={`/countries/${countryCode}`}>{country.label}</a></td>
+                <td>{country.counts.current}</td>
+                <td>{country.counts.ended}</td>
+                <td>{country.counts.unknown}</td>
+              </tr>
+            )
+          })
+        }
+      </tbody>
+    </table>
+  );
+}
+
+async function PositionTable(props: {positionTuples: Array<Array<any>>}) {
+  return (
+    <table className="table table-responsive">
+      <thead>
+        <tr>
+          <th />
+          <th />
+          <th colSpan={3}>
+            Number of known PEPs by status
+          </th>
+        </tr>
+        <tr>
+          <th>Position</th>
+          <th>Number of countries</th>
+          <th>Current</th>
+          <th>Ended</th>
+          <th>Unknown</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          props.positionTuples.map((entry: any) => {
+            const [positionLabel, position] = entry;
+            return (
+              <tr>
+                <td>{positionLabel}</td>
+                <td>{Object.keys(position.countries).length}</td>
+                <td>{position.counts.current}</td>
+                <td>{position.counts.ended}</td>
+                <td>{position.counts.unknown}</td>
+              </tr>
+            )
+          })
+        }
+      </tbody>
+    </table>
+  );
+}
+
 export default async function Page() {
+  const countryTuples: Array<Array<any>> = Object.entries(getCountries());
+  countryTuples.sort((c1: any, c2: any) => c1[1].label > c2[1].label ? 1 : -1);
+
+  const positionTuples: Array<Array<any>> = Object.entries(getPositions());
+  positionTuples.sort((p1: any, p2: any) => {
+    console.log(p2[1].countries)
+    return Object.keys(p2[1].countries).length - Object.keys(p1[1].countries).length
+  });
+
   return (
     <LayoutFrame>
       <Container>
-        <h1>Countries with known Politically-exposed persons</h1>
-        <table className="table table-responsive">
-          <thead>
-            <tr>
-              <th />
-              <th colSpan={3}>
-                Number of known PEP position occupants
-              </th>
-            </tr>
-            <tr>
-              <th>Country</th>
-              <th>Current</th>
-              <th>Ended</th>
-              <th>Unknown</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              Object.entries(getCountries()).map((entry: any) => {
-                const [countryCode, country] = entry;
-                return (
-                  <tr>
-                    <td><a href={`/countries/${countryCode}`}>{country.label}</a></td>
-                    <td>{country.counts.current}</td>
-                    <td>{country.counts.ended}</td>
-                    <td>{country.counts.unknown}</td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
+        <h1>Politically-exposed Persons data for each country</h1>
+        <h2>Countries</h2>
+        <CountryTable countryTuples={countryTuples} />
+
+        <h2>Positions</h2>
+        <PositionTable positionTuples={positionTuples} />
       </Container>
     </LayoutFrame>
   );
