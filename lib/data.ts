@@ -149,8 +149,13 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
     return []
   }
   const issues_url = `https://data.opensanctions.org/datasets/latest/${dataset.name}/issues.json`
-  const index = await fetchUrl<IIssueIndex>(issues_url);
-  return index.issues;
+  try {
+    const index = await fetchUrl<IIssueIndex>(issues_url);
+    return index.issues;
+  } catch (error) {
+    console.error(`Error fetching issues for dataset '${dataset.name}'.`, error);
+    return [];
+  }
 }
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {
