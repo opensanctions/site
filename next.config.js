@@ -58,7 +58,8 @@ const nextConfig = {
       },
       {
         source: '/meeting/',
-        destination: 'https://meetings-eu1.hubspot.com/douglas-arellanes',
+        destination: 'https://calendly.com/flindenberg/30min',
+        // destination: 'https://meetings-eu1.hubspot.com/douglas-arellanes',
         permanent: false,
       },
       {
