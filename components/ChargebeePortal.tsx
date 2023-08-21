@@ -3,7 +3,11 @@
 import { type ChargebeeInstance } from "@chargebee/chargebee-js-types";
 import Script from "next/script";
 
-import { API_URL, CHARGEBEE_PUBLISHABLE_KEY, CHARGEBEE_SITE } from "@/lib/constants";
+import {
+  API_URL,
+  CHARGEBEE_PUBLISHABLE_KEY,
+  CHARGEBEE_SITE,
+} from "@/lib/constants";
 import { useRef, type ReactNode } from "react";
 
 type ChargebeePortalProps = {
@@ -16,10 +20,28 @@ export const ChargebeePortal: React.FC<ChargebeePortalProps> = ({
   const chargebeeRef = useRef<ChargebeeInstance | null>(null);
 
   const openPortal = () => {
-    const portal = chargebeeRef.current?.createChargebeePortal();
+    // const portal = chargebeeRef.current?.createChargebeePortal();
 
     // @ts-ignore: Portal.open doesn't require arguments
-    portal.open();
+    // portal.open();
+
+    chargebeeRef.current.openCheckout({
+      // @ts-ignore: Enum isn't exposed in the types
+      layout: "in_app",
+
+      hostedPage: async () =>
+        await (
+          await fetch(`${API_URL}/auth/chargebee_checkout`, {
+            credentials: "include",
+          })
+        ).json(),
+
+      loaded: () => {},
+      error: () => {},
+      close: () => {},
+      success: () => {},
+      step: () => {},
+    });
   };
 
   return (

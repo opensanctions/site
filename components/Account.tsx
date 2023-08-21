@@ -148,10 +148,10 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
                 <td colSpan={info.charge_info ? 1 : 3}>
                   {account.stripe_customer_id && (
                     <>
-                      <p>Your account is linked to a Chargebee subscription.</p>
+                      {/* <p>Your account is linked to a Chargebee subscription.</p> */}
                       <ChargebeePortal>
                         <Button variant="primary">
-                          Manage billing and payment
+                          Set up payment
                         </Button>
                       </ChargebeePortal>
                     </>
