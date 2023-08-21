@@ -99,6 +99,12 @@ th.narrow {
     color: $text-muted;
 }
 
+.menu-icon {
+    margin-left: 0.2em;
+    margin-top: -0.2em;
+    font-size: small;
+}
+
 .btn {
     font-weight: 700;
     text-decoration: none;
@@ -296,7 +302,7 @@ th.narrow {
 
 .contains-inner-table {
     padding-top: 0.25rem !important;
-    padding-left: 0 !important;
+    padding-left: 0.25rem !important;
     padding-right: 0 !important;
     padding-bottom: 0 !important;
 }

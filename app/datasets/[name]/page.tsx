@@ -4,7 +4,7 @@ import { Download, Search } from 'react-bootstrap-icons';
 
 import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, Table, Button, InputGroup, Container } from '../../../components/wrapped'
 import Dataset from '../../../components/Dataset'
-import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog } from '../../../lib/data'
+import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog, getDatasetCollections } from '../../../lib/data'
 import { isCollection, isSource, isExternal } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
@@ -47,19 +47,19 @@ export default async function Page({ params }: DatasetPageProps) {
     notFound()
   }
   const datasets = await getDatasets();
+  const allCollections = await getDatasetCollections(dataset);
+  const collections = allCollections.filter((c) => !c.hidden);
   const graphCatalog = await getGraphCatalog();
+  // FIXME: when the graph catalog is merged:
   const inGraphCatalog = undefined !== graphCatalog.datasets.find((gd) => gd.name === dataset.name);
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
-  const issues = await getDatasetIssues(dataset)
   const sources = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.sources)
       .filter(isSource);
   const externals = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.externals)
-      .filter(isExternal)
-  const collections = !(isSource(dataset) || isExternal(dataset)) ? [] :
-    filterMatchingNames(visibleDatasets, dataset.collections)
-      .filter(isCollection)
+      .filter(isExternal);
+
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);
   const markdown = markdownToHtml(dataset.description || '')
@@ -99,7 +99,7 @@ export default async function Page({ params }: DatasetPageProps) {
                   </InputGroup>
                 </Form>
               )}
-              <DatasetMetadataTable dataset={dataset} collections={collections} issues={issues} />
+              <DatasetMetadataTable dataset={dataset} collections={collections} />
             </section>
 
             {isExternal(dataset) && inGraphCatalog && (

@@ -52,7 +52,7 @@ function DatasetCard({ dataset }: DatasetProps) {
         </h5>
         <CardSubtitle className="mb-2 text-muted">
           {isCollection(dataset) && (
-            <><Numeric value={dataset.sources.length} /> data sources</>
+            <><Numeric value={dataset.sources.length + dataset.externals.length} /> data sources</>
           )}
           {isSource(dataset) && (
             <>
@@ -66,7 +66,7 @@ function DatasetCard({ dataset }: DatasetProps) {
             </>
           )}
           <Spacer />
-          <Numeric value={dataset.target_count} /> targets
+          <Numeric value={dataset.thing_count} /> entities
         </CardSubtitle>
         <CardText>
           {dataset.summary}
@@ -83,9 +83,7 @@ function DatasetItem({ dataset }: DatasetProps) {
       <CardBody>
         <a href={dataset.link} className={styles.itemHeader}>
           <DatasetIcon dataset={dataset} /> {dataset.title}
-          {!isExternal(dataset) && (
-            <NumericBadge value={dataset.target_count} className={styles.itemTargets} />
-          )}
+          <NumericBadge value={dataset.thing_count} className={styles.itemTargets} />
         </a>
         <p className={styles.itemSummary}>
           <TextTruncate line={1} text={dataset.summary} element="span" />

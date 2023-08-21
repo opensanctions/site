@@ -1,23 +1,23 @@
 import Link from 'next/link'
 
-import articleStyles from '../styles/Article.module.scss'
-import claimStyles from '../styles/ClaimBanner.module.scss'
-import utilStyles from '../styles/util.module.scss'
 import { getDatasets } from '../lib/data'
 import { CLAIM, SUBCLAIM, SPACER, COLLECTIONS, ARTICLE_INDEX_SUMMARY, REVALIDATE_BASE } from '../lib/constants'
 import { Search } from 'react-bootstrap-icons';
 import { FormattedDate, NumericBadge } from '../components/util';
-import { ICollection, isCollection, isSource } from '../lib/types';
+import { ICollection, isCollection } from '../lib/types';
 import { getArticles } from '../lib/content';
 import Dataset from '../components/Dataset';
 import Article from '../components/Article';
 import { Col, Row, Container, Form, FormControl, Badge, Button, ButtonGroup, InputGroup } from '../components/wrapped';
 import LayoutFrame from '../components/layout/LayoutFrame';
 import { getSchemaWebSite } from "../lib/schema";
-
-import styles from '../styles/Home.module.scss'
 import StructuredData from '../components/utils/StructuredData';
 import { getGenerateMetadata } from '../lib/meta';
+
+import styles from '../styles/Home.module.scss'
+import articleStyles from '../styles/Article.module.scss'
+import claimStyles from '../styles/ClaimBanner.module.scss'
+import utilStyles from '../styles/util.module.scss'
 
 export const revalidate = REVALIDATE_BASE;
 
@@ -33,9 +33,9 @@ export default async function Page() {
   const publishedArticles = articles.filter((a) => !a.draft);
   const datasets = await getDatasets()
   const collections = datasets.filter(isCollection)
-  const sources = datasets.filter(isSource)
-  const all = collections.find((c) => c.name === 'all');
+  const refDataset = collections.find((c) => c.name === 'default');
   const sortedCollections = COLLECTIONS.map((name) => collections.find((c) => c.name === name)) as Array<ICollection>
+  const datasetCount = (refDataset?.externals?.length || 0) + (refDataset?.sources?.length || 0);
   return (
     <LayoutFrame>
       <StructuredData data={getSchemaWebSite()} />
@@ -66,15 +66,15 @@ export default async function Page() {
                   </InputGroup>
                 </Form>
               </div>
-              {all && (
+              {refDataset && (
                 <p className={styles.stats}>
-                  <NumericBadge value={all.target_count} /> targets
+                  <NumericBadge value={refDataset.thing_count} /> entities
                   {SPACER}
-                  <NumericBadge value={sources.length} /> data sources
+                  <NumericBadge value={datasetCount} /> data sources
                   {SPACER}
                   updated{' '}
                   <Badge>
-                    <FormattedDate date={all.last_change} />
+                    <FormattedDate date={refDataset.last_change} />
                   </Badge>
                   {SPACER}
                   <Link href="/datasets">get bulk data</Link>
@@ -100,7 +100,7 @@ export default async function Page() {
           </Col>
           <Col md={4} className={utilStyles.explainer}>
             <h2>Sources with global scope</h2>
-            We integrate data from over sixty global sources, including official sanctions
+            We integrate data from over eighty global sources, including official sanctions
             lists, data on politically exposed persons and entities of criminal interest.
           </Col>
         </Row>
@@ -112,8 +112,8 @@ export default async function Page() {
             <Col md={8}>
               <p>
                 OpenSanctions is <strong>free for non-commercial users.</strong> Business
-                and commercial users must either acquire a data license to use the high-quality
-                dataset, or they can subscribe to our pay-as-you-go API service.
+                and commercial users must either acquire a data license to use our high-quality
+                dataset, or subscribe to our pay-as-you-go API service.
               </p>
             </Col>
             <Col md={4} className="d-print-none">

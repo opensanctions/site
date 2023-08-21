@@ -83,6 +83,7 @@ export async function getArticleBySlug(slug: string): Promise<IArticle> {
     path: `/articles/${realSlug}/`,
     url: `${BASE_URL}/articles/${realSlug}/`,
     title: data.title || realSlug,
+    tags: data.tags || [],
     draft: data.draft || false,
     no_index: data.draft || false,
     section: data.section || "about",

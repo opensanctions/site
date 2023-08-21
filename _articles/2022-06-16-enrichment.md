@@ -5,6 +5,9 @@ summary: |
     We're adding linked data from the GLEIF company database and the ICIJ 
     OffshoreLeaks to enrich the corporate targets in our system with relevant 
     ownership or officership relations.
+tags:
+    - Companies
+    - Beneficial Ownership
 ---
 
 Running a sanctions or PEPs check is about more than just looking up a name on a government list. To truly understand if a company or person is affected by sanctions and poses a risk, analysts also need to consider their network - entities they are affiliated with, companies they own, even personal relationships. 

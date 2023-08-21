@@ -1,28 +1,14 @@
 ---
-title: OpenSanctions open source codebase
+title: Open source software components
 menu_path: /docs/opensource/
 summary:
-    This technical documentation is intended to be read by Python developers who wish to run the OpenSanctions crawlers on their own infrastructure, or plan to add their own crawlers to the system.
+    OpenSanctions releases both its data pipeline and entity matching service as free software that can be extended, adapted and verified by its users.
 ---
 
-This documentation is only relevant if you wish to run the OpenSanctions open source code. This will not be needed for the vast majority of data users.
+We're making available the following software components for anyone's use under MIT license terms:
 
-**Caveat:** running the open source version of the data will not produce the same output data as the data on this website. This is caused by a variety of configuration issues, mainly related to deduplication and data enrichment. The deduplication mappings - which determine the entity IDs used in the OpenSanctions data - are a commercial asset of OpenSanctions.
+* **[yente](/docs/yente/)** - an entity matching API that can be used to run queries against the data produced by OpenSanctions. It is used to run [self-hosted screening applications](/docs/self-hosted/).
+* **[zavod](https://zavod.opensanctions.org)** - the toolkit used to run the OpenSanctions data pipeline, which manages how we ingest, normalise, and publish data repeatably from many varied sources.
+* **[nomenklatura](https://github.com/opensanctions/nomenklatura)** - the data integration system used to store entity data with full lineage and to integrate entity profiles across multiple sources. 
+* We also make available the **code for all of our data crawlers** in our [main GitHub repository](https://github.com/opensanctions/opensanctions). Please note our FAQ item on [replicating the OpenSanctions data](/docs/bulk/faq/#replication) from source.
 
-## System overview
-
-The OpenSanctions pipeline handles the following key steps:
-
-* Fetching entity data from online sources and parsing the original format
-* Normalising the entities in source data into the [OpenSanctions data model](/docs/entities/)
-* Storing entities to a local staging database for processing
-* Merging entities across different [sources](/datasets/)
-* Exporting data into a [variety of target formats](/docs/bulk/) (JSON, CSV)
-
-These steps are triggered using a command-line utility, ``opensanctions``, which can run [parts of this process](/docs/opensource/usage/) for specific segments of the data.
-
-## Documentation
-
-* [Installing the open source code base](/docs/opensource/install/)
-* [Using the OpenSanctions CLI](/docs/opensource/usage/)
-* [Developing a crawler](/docs/opensource/crawlers/)

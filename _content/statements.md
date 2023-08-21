@@ -24,6 +24,8 @@ As a database schema, this results in a table with the following columns:
 * ``prop`` (property): the entity attribute that this statement relates to, e.g. ``birthDate``, or ``name`` (see [data dictionary](/reference/#schema)).
 * ``prop_type`` (property type): the data type of the given property, e.g. ``date``, ``country``, ``name`` etc.
 * ``value``: the actual value of the property for the entity. If multiple values are indicated in the source data, each of them will result in a separate statement.
+* ``lang``: the language (3 letter code) of the value, if it is known.
+* ``original_value``: the property value before it was cleaned (e.g. country name vs. code, unparsed date).
 * ``dataset`` (source dataset): the source dataset identifier (same as the [dataset URL slugs](/datasets/#sources)).
 * ``schema`` (schema): the type of the given entity. Specific statements can indicate more or less specific schemata, e.g. ``LegalEntity`` and ``Company`` (the resulting entity would be a ``Company``) - see [data dictionary](/reference/#schema).
 * ``first_seen`` (first seen): the first date when the processing pipeline found this value linked to the given entity. Please note that this only records values after July 2021, when we started tracking the data - more realistic evidence of when an entity was added to the given sanctions list can be found in the ``createdAt`` property.

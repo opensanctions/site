@@ -3,6 +3,9 @@ title: "Self-hosted and extensible: the OpenSanctions API"
 image_url: https://assets.opensanctions.org/images/articles/servers.png
 summary: |
     In this post, we’ll explain how you can use our open source components to build a customized sanctions and PEPs matching service - on your own premises, with your own data, with complete privacy and meeting your own requirements.
+tags:
+    - API
+    - yente
 ---
 
 As we talk to the organizations that use OpenSanctions, the more we learn about the multitude of ways in which people use our data and service as building blocks in their own solutions: investigative tools, know-your-customer (KYC) workflows or even building complex knowledge graphs.

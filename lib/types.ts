@@ -22,6 +22,7 @@ export interface IArticleInfo extends IContentBase {
   path: string
   url: string
   section: string
+  tags: string[]
   draft: boolean
 }
 
@@ -71,9 +72,11 @@ export interface INKDatasetBase {
   type: string
   title: string
   link: string
+  updated_at: string
   summary: string
   description?: string
   resources: Array<IResource>
+  coverage?: IDatasetCoverage
 }
 
 
@@ -88,6 +91,7 @@ export interface IDatasetBase extends INKDatasetBase {
   issues_url: string
   target_count: number
   entity_count: number
+  thing_count: number
   targets: IAggregatedStats
   things: IAggregatedStats
 }
@@ -112,6 +116,7 @@ export interface IDatasetCoverage {
   start: string
   end: string
   countries: string[]
+  frequency: string
 }
 
 export interface ISource extends IDatasetBase {
@@ -123,6 +128,7 @@ export interface ISource extends IDatasetBase {
 
 export interface IExternal extends IDatasetBase {
   url?: string
+  data?: ISourceData
   publisher: IDatasetPublisher
   collections: Array<string>
 }
@@ -135,11 +141,9 @@ export interface ICollection extends IDatasetBase {
 export type IDataset = ISource | IExternal | ICollection
 
 export interface INKDataset extends INKDatasetBase {
-  updated_at: string
   version: string
   children: Array<string>
   publisher?: IDatasetPublisher
-  coverage?: IDatasetCoverage
 }
 
 export interface INKDataCatalog {

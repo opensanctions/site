@@ -17,6 +17,7 @@
     li {
         margin-bottom: 1em;
         break-inside: avoid;
+        display: flex;
     }
 
     p {
@@ -36,16 +37,24 @@
 .articleListImage {
     float: left;
     margin-right: 1em;
+    width: 20%;
 }
 
-.articleListDate {
-    color: $text-muted;
+.articleListContent {
+    width: 80%;
+}
+
+.articleTags {
+    // color: $text-muted;
     // font-size: 0.8em;
+    // margin-left: 0.5em;
 }
 
 .articleListSummary {
     // color: $text-muted;
     line-height: 1.5;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .articleBody {

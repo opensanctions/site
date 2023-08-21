@@ -111,7 +111,7 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
       <tbody>
         <tr>
           <th className={styles.cardProp}>Type</th>
-          <td>{entity.schema.label}</td>
+          <td colSpan={4}>{entity.schema.label}</td>
           <td className={styles.rawColumn}>
             <EntityRawLink entity={entity} prop="id" />
           </td>
@@ -119,7 +119,7 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
         {props.map((prop) =>
           <tr key={prop.qname}>
             <th className={styles.cardProp}>{prop.label}</th>
-            <td>
+            <td colSpan={4}>
               <PropertyValues
                 prop={prop}
                 values={entity.getProperty(prop)}
@@ -133,6 +133,14 @@ export function EntityFactsheet({ entity }: EntityFactsheetProps) {
             </td>
           </tr>
         )}
+        <tr>
+          <th className={styles.cardProp}>Last changed</th>
+          <td><FormattedDate date={entity.last_change} /></td>
+          <th>Last checked</th>
+          <td><FormattedDate date={entity.last_seen} /></td>
+          <th>First seen</th>
+          <td><FormattedDate date={entity.first_seen} /></td>
+        </tr>
       </tbody>
     </Table>
   )
