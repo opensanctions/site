@@ -6,8 +6,9 @@ import { AccountInfo, SUMMARY, TITLE } from "@/components/Account";
 
 import LayoutFrame from "@/components/layout/LayoutFrame";
 import { Summary } from "@/components/util";
-import { getAccount, loginUrl } from "@/lib/auth";
+import { getUser, loginUrl } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { UserInfo } from "@/components/User";
 
 export const revalidate = 0;
 
@@ -20,13 +21,11 @@ export async function generateMetadata() {
 
 export default async function Page({ searchParams }: PageProps) {
   const welcome = !!searchParams?.["welcome"];
-  
-  const info = await getAccount();
+
+  const info = await getUser();
   if (!info) {
     return redirect(loginUrl);
   }
-
-  const secret = info.account.secret;
 
   return (
     <LayoutFrame activeSection="account">
@@ -37,7 +36,7 @@ export default async function Page({ searchParams }: PageProps) {
             <Summary summary={SUMMARY} />
           </Col>
         </Row>
-        <AccountInfo info={info} welcome={welcome} secret={secret} />
+        <UserInfo info={info} welcome={welcome} secret="nein" />
       </Container>
     </LayoutFrame>
   );

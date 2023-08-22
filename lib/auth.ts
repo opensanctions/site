@@ -7,21 +7,26 @@ import { IAccountInfo } from "@/lib/types";
 
 export const loginUrl = `${API_URL}/auth/login`;
 
-export async function getAccount() {
+export async function getUser() {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access_token")?.value;
   if (!accessToken) {
     return null;
   }
 
-  return fetchAccount(accessToken);
+  return fetchUser(accessToken);
 }
 
-export async function fetchAccount(accessToken: string) {
+export async function fetchUser(accessToken: string) {
   const apiUrl = queryString.stringifyUrl({
     url: `${API_URL}/account`,
     query: { access_token: accessToken },
   });
 
-  return await fetchJsonUrl<IAccountInfo>(apiUrl, false);
+  const user = await fetchJsonUrl<IAccountInfo>(apiUrl, false);
+  if (!user) {
+    throw new Error("Error fetching user");
+  }
+
+  return user;
 }

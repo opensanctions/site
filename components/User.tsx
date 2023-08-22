@@ -1,21 +1,37 @@
-import { Row, Col, Alert, AlertHeading, Table, Form, FormGroup, FormControl, FormLabel, Button, Badge, Nav, NavItem, NavLink } from "./wrapped";
+import {
+  Row,
+  Col,
+  Alert,
+  AlertHeading,
+  Table,
+  Form,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  Button,
+  Badge,
+  Nav,
+  NavItem,
+  NavLink,
+} from "./wrapped";
 
-import { IAccountInfo, IAccountUsage } from "../lib/types"
+import { IAccountInfo, IAccountUsage } from "../lib/types";
 import Link from "next/link";
 
-import styles from '../styles/Account.module.scss'
+import styles from "../styles/Account.module.scss";
 import { API_URL } from "../lib/constants";
 import { FormattedDate, Money } from "./util";
 import { ClipboardCopy } from "./utils/ClipboardCopy";
+import { ChargebeeCheckout, ChargebeePortal } from "./Chargebee";
 
-export const TITLE = 'API account and usage information';
-export const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
-  + "and review their metered service usage."
-
+export const TITLE = "API account and usage information";
+export const SUMMARY =
+  "Users of the OpenSanctions API can manage their billing details, " +
+  "and review their metered service usage.";
 
 type UsageTableProps = {
-  usage: IAccountUsage
-}
+  usage: IAccountUsage;
+};
 
 function UsageTable({ usage }: UsageTableProps) {
   return (
@@ -39,37 +55,41 @@ function UsageTable({ usage }: UsageTableProps) {
               </tr>
             </thead>
             <tbody>
-              {usage.dates.map((date) => <>
-                {date.routes.map((route, ridx) => (
-                  <tr key={ridx}>
-                    {ridx == 0 && (
-                      <td rowSpan={date.routes.length}>{date.date}</td>
-                    )}
-                    <td>{route.route}</td>
-                    <td className="numeric">{route.count}</td>
-                    {ridx == 0 && (
-                      <td rowSpan={date.routes.length} className="numeric">{date.total}</td>
-                    )}
-                  </tr>
-                ))}
-              </>)}
+              {usage.dates.map((date) => (
+                <>
+                  {date.routes.map((route, ridx) => (
+                    <tr key={ridx}>
+                      {ridx == 0 && (
+                        <td rowSpan={date.routes.length}>{date.date}</td>
+                      )}
+                      <td>{route.route}</td>
+                      <td className="numeric">{route.count}</td>
+                      {ridx == 0 && (
+                        <td rowSpan={date.routes.length} className="numeric">
+                          {date.total}
+                        </td>
+                      )}
+                    </tr>
+                  ))}
+                </>
+              ))}
             </tbody>
           </Table>
         )}
       </Col>
     </Row>
-  )
+  );
 }
 
 type AccountInfoProps = {
-  info: IAccountInfo
-  welcome: boolean
-  secret: string | string[]
-}
+  info: any; // IAccountInfo
+  welcome: boolean;
+  secret: string | string[];
+};
 
-export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
-  const account = info.account;
-  const accountName = account.name || account.key;
+export function UserInfo({ info, welcome, secret }: AccountInfoProps) {
+  const user = info.user;
+  const accountName = user.name || user.key;
   const portalUrl = `${API_URL}/stripe/portal?api_key=${secret}`;
   return (
     <>
@@ -79,99 +99,84 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
             <Alert variant="success">
               <AlertHeading>Welcome to OpenSanctions!</AlertHeading>
               <p>
-                You've successfully subscribed to the OpenSanctions API. Use the credentials
-                below to start querying and exploring the system.
+                You've successfully subscribed to the OpenSanctions API. Use the
+                credentials below to start querying and exploring the system.
               </p>
             </Alert>
           )}
           <Table className={styles.accountInfo} responsive>
             <tbody>
               <tr>
-                <th>
-                  API key
-                </th>
+                <th>API key</th>
                 <td>
-                  <code>{account.secret}</code>
-                  <ClipboardCopy text={account.secret} />
+                  <code>{user.secret}</code>
+                  <ClipboardCopy text={user.secret} />
                 </td>
-                <th>
-                  API
-                </th>
+                <th>API</th>
                 <td>
                   <Link href={API_URL}>{API_URL}</Link>
                 </td>
               </tr>
               <tr>
-                <th>
-                  Status
-                </th>
+                <th>Status</th>
                 <td>
-                  {account.active && (
-                    <Badge bg="success">active</Badge>
-                  )}
-                  {!account.active && (
-                    <Badge bg="danger">inactive</Badge>
-                  )}
+                  {user.active && <Badge bg="success">active</Badge>}
+                  {!user.active && <Badge bg="danger">inactive</Badge>}
                 </td>
-                <th>
-                  Signed up
-                </th>
+                <th>Signed up</th>
                 <td>
-                  <FormattedDate date={account.created_at} />
+                  <FormattedDate date={user.created_at} />
                 </td>
               </tr>
               <tr>
-                <th>
-                  Name
-                </th>
+                <th>Name</th>
                 <td>
                   {accountName}
-                  {!accountName && (
-                    <span className="text-muted">unknown</span>
-                  )}
+                  {!accountName && <span className="text-muted">unknown</span>}
                 </td>
-                <th>
-                  E-Mail
-                </th>
+                <th>E-Mail</th>
                 <td>
-                  {account.email}
-                  {!account.email && (
-                    <span className="text-muted">unknown</span>
-                  )}
+                  {user.email}
+                  {!user.email && <span className="text-muted">unknown</span>}
                 </td>
               </tr>
               <tr>
-                <th>
-                  Billing
-                </th>
+                <th>Billing</th>
                 <td colSpan={info.charge_info ? 1 : 3}>
-                  {account.stripe_customer_id && (
+                  {user.chargebee_customer_id ? (
                     <>
-                      <p>Your account is linked to a Stripe subscription.</p>
-                      <Button href={portalUrl} variant="primary">
-                        Manage billing and payment
-                      </Button>
+                      <p>Your account is linked to a Chargebee subscription.</p>
+                      <ChargebeePortal>
+                        <Button variant="primary">
+                          Manage billing & payment
+                        </Button>
+                      </ChargebeePortal>
                     </>
-                  )}
-                  {!account.stripe_customer_id && (
-                    <>Your account does not use automatic billing</>
+                  ) : (
+                    <>
+                      <p>Your account does not use automatic billing.</p>
+                      <ChargebeeCheckout>
+                        <Button variant="primary">Set up billing</Button>
+                      </ChargebeeCheckout>
+                    </>
                   )}
                 </td>
                 {!!info.charge_info && (
                   <>
-                    <th>
-                      Cost
-                    </th>
+                    <th>Cost</th>
                     <td>
                       <>
                         <div>
-                          {'Charges incurred: '}
-                          <Money value={info.charge_info.total / 100.0} currency={info.charge_info.currency} />
+                          {"Charges incurred: "}
+                          <Money
+                            value={info.charge_info.total / 100.0}
+                            currency={info.charge_info.currency}
+                          />
                         </div>
                         <div className="text-tiny">
-                          {'Billing period: '}
+                          {"Billing period: "}
                           <FormattedDate date={info.charge_info.start_date} />
-                          {' to '}
+                          {" to "}
                           <FormattedDate date={info.charge_info.end_date} />
                         </div>
                         <div className="text-tiny">
@@ -188,7 +193,9 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
         <Col md={3}>
           <Nav className="flex-column justify-content-start" variant="pills">
             <NavItem>
-              <NavLink active={true} href="#">Account and usage</NavLink>
+              <NavLink active={true} href="#">
+                Account and usage
+              </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href={API_URL}>API Documentation</NavLink>
@@ -197,7 +204,9 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
               <NavLink href="/reference">Data dictionary</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://status.opensanctions.org">System status</NavLink>
+              <NavLink href="https://status.opensanctions.org">
+                System status
+              </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/contact">Contact support</NavLink>
@@ -207,13 +216,12 @@ export function AccountInfo({ info, welcome, secret }: AccountInfoProps) {
       </Row>
       <UsageTable usage={info.usage} />
     </>
-  )
+  );
 }
-
 
 type AccountLoginProps = {
-  secret?: string | string[] | null
-}
+  secret?: string | string[] | null;
+};
 
 export function AccountLogin({ secret }: AccountLoginProps) {
   const failed = !!secret;
@@ -247,8 +255,8 @@ export function AccountLogin({ secret }: AccountLoginProps) {
           </FormGroup>
           <FormGroup as={Row} className="mb-3">
             <Col sm={{ span: 10, offset: 2 }} className="text-muted">
-              Don't know your API key?
-              Please <Link href="/contact">contact us</Link> to get access.
+              Don't know your API key? Please{" "}
+              <Link href="/contact">contact us</Link> to get access.
             </Col>
           </FormGroup>
         </Form>
