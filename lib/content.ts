@@ -36,7 +36,7 @@ export async function getContentBySlug(slug: string): Promise<IContent> {
     path: urlPath,
     menu_path: data.menu_path || urlPath,
     no_index: !!(data.redirect),
-    content: markdownToHtml(content),
+    content: await markdownToHtml(content),
     section: data.section || "docs",
     image_url: data.image_url || null,
     summary: data.summary || null,
@@ -88,7 +88,7 @@ export async function getArticleBySlug(slug: string): Promise<IArticle> {
     no_index: data.draft || false,
     section: data.section || "about",
     image_url: data.image_url || null,
-    content: markdownToHtml(content),
+    content: await markdownToHtml(content),
     summary: data.summary || null,
   }
 }

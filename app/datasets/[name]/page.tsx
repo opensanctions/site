@@ -63,7 +63,7 @@ export default async function Page({ params }: DatasetPageProps) {
 
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);
-  const markdown = markdownToHtml(dataset.description || '')
+  const markdown = await markdownToHtml(dataset.description || '')
 
   return (
     <LayoutFrame>
