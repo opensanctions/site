@@ -17,7 +17,7 @@ type DatasetCountryListingProps = {
 
 export default function DatasetCountryListing({ datasetName, countries, defaultLimit = null, isNested = true, defaultExpanded = false }: DatasetCountryListingProps) {
   const alwaysExpanded = defaultExpanded || countries.length < 6;
-  const [coverageExpanded, setCoverageExpanded] = useState(defaultExpanded);
+  const [coverageExpanded, setCoverageExpanded] = useState(alwaysExpanded);
   const [limit, setLimit] = useState(defaultLimit);
   const visibleCountries = (typeof (limit) == "number") ? countries.slice(0, limit - 1) : countries;
 
