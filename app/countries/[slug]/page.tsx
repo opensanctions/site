@@ -2,7 +2,7 @@ import { Col, Container, Row } from "../../../components/wrapped";
 import LayoutFrame from "../../../components/layout/LayoutFrame";
 import { getGenerateMetadata } from "../../../lib/meta";
 import { REVALIDATE_BASE } from "../../../lib/constants";
-import { HelpLink } from "../../../components/util";
+import { HelpLink, Numeric } from "../../../components/util";
 
 import { getCountry } from "../../../lib/peps";
 import { getDatasetByName } from "../../../lib/data";
@@ -43,15 +43,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
               <thead>
                 <tr>
                   <th />
-                  <th colSpan={3}>
+                  <th colSpan={3} className="numeric">
                     Number of known occupants<HelpLink href="#explainer" />
                   </th>
                 </tr>
                 <tr>
                   <th>Position</th>
-                  <th>Current</th>
-                  <th>Ended</th>
-                  <th>Unsure</th>
+                  <th className="numeric">Current</th>
+                  <th className="numeric">Ended</th>
+                  <th className="numeric">Unsure</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,9 +61,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     return (
                       <tr>
                         <td>{position.position_name}</td>
-                        <td>{position.counts.current}</td>
-                        <td>{position.counts.ended}</td>
-                        <td>{position.counts.unknown}</td>
+                        <td className="numeric">
+                          <Numeric value={position.counts.current} />
+                        </td>
+                        <td className="numeric">
+                          <Numeric value={position.counts.ended} />
+                        </td>
+                        <td className="numeric">
+                          <Numeric value={position.counts.unknown} />
+                        </td>
                       </tr>
                     )
                   })
