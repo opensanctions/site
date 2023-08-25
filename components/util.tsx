@@ -99,14 +99,18 @@ export function FileSize({ size }: FileSizeProps) {
 
 type MarkdownProps = {
   markdown?: string | null
+  className?: string
 }
 
-export function Markdown({ markdown }: MarkdownProps) {
+export function Markdown({ markdown, className }: MarkdownProps) {
   if (markdown === undefined || markdown === null) {
     return null;
   }
   //const html = markdownToHtml(markdown);
-  return <div className="text-body" dangerouslySetInnerHTML={{ __html: markdown }} />
+  return <div
+    className={classNames("text-body", className)}
+    dangerouslySetInnerHTML={{ __html: markdown }}
+  />
 }
 
 type FormattedDateProps = {

@@ -6,16 +6,16 @@ import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue,
 import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE, REVALIDATE_SHORT, SEARCH_DATASET } from "./constants";
 
 import indexJson from '../data/index.json';
+import { markdownToHtml } from './util';
 
 const cacheBase = { next: { revalidate: REVALIDATE_BASE } };
 const cacheShort = { next: { revalidate: REVALIDATE_SHORT } };
 
 const index = indexJson as any as IIndex;
-index.datasets = index.datasets.map(parseDataset);
 const ftmModel = new Model(index.model);
 
 
-function parseDataset(data: any): IDataset {
+async function parseDataset(data: any): Promise<IDataset> {
   const dataset = {
     ...data,
     link: `/datasets/${data.name}/`,
@@ -25,6 +25,9 @@ function parseDataset(data: any): IDataset {
     things: data.things || { total: 0, countries: [], schemata: [] },
     thing_count: data.things.total,
   };
+  if (!!dataset.publisher && !!dataset.publisher.description) {
+    dataset.publisher.html = await markdownToHtml(dataset.publisher.description);
+  }
   if (dataset.type === 'collection') {
     return dataset as ICollection;
   }
@@ -114,8 +117,8 @@ export async function getModel(): Promise<Model> {
 }
 
 export async function getDatasets(): Promise<Array<IDataset>> {
-  // const index = await fetchIndex()
-  return index.datasets
+  const datasets = Promise.all(index.datasets.map(parseDataset));
+  return datasets
 }
 
 export async function getDatasetByName(name: string): Promise<IDataset | undefined> {
@@ -125,7 +128,7 @@ export async function getDatasetByName(name: string): Promise<IDataset | undefin
     return undefined;
   }
   const jsonData = await data.json();
-  return parseDataset(jsonData);
+  return await parseDataset(jsonData);
 }
 
 export async function getDatasetCollections(dataset: IDataset): Promise<Array<ICollection>> {

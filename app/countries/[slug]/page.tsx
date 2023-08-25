@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <Row>
           <Col md={3}>
             <p>
-              Our <strong>Politically-exposed persons (PEP)</strong> dataset contains {countryPeps?.count} entities
+              Our <strong>Politically-exposed persons (PEP)</strong> dataset contains <Numeric value={countryPeps?.count} /> entities
               connected with <a href={`/search/?scope=peps&countries=${countryCode}`}></a>{country.label}.</p>
             <p>Here's a summary of the positions held by known Politically Exposed Persons for {country.label}.
             </p>

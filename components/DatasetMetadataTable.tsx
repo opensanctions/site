@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Badge, Table } from "./wrapped";
 import { IDataset, ICollection, isSource, isExternal, isCollection } from '../lib/types';
-import { FormattedDate, HelpLink, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util';
+import { FormattedDate, HelpLink, Markdown, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util';
 import DatasetCountryListing from './DatasetCountryListing';
 import { FrequencyBadge } from './Metadata';
 import { wordList } from '../lib/util';
@@ -17,7 +17,7 @@ type DatasetScreenProps = {
   collections?: Array<ICollection>
 }
 
-export default function DatasetMetadataTable({ dataset, collections, canSearch }: DatasetScreenProps) {
+export default async function DatasetMetadataTable({ dataset, collections, canSearch }: DatasetScreenProps) {
   return (
     <Table responsive="md">
       <tbody>
@@ -25,35 +25,44 @@ export default function DatasetMetadataTable({ dataset, collections, canSearch }
           <th className={styles.tableHeader}>
             Entities<HelpLink href="/docs/entities/" />:
           </th>
-          <td className='numeric'>
-            {dataset.things.total > 0 && canSearch && (
-              <>
-                <a href={`/search/?scope=${dataset.name}`}>
-                  <Plural value={dataset.things.total}
-                    one={"searchable"}
-                    many={"searchable"}
-                  />
-                </a>
-                <Spacer />
-              </>
-            )}
-            <Plural
-              value={dataset.entity_count}
-              one={"total"}
-              many={"total"}
-            />
+          <td className="contains-inner-table">
+            <Table size="sm" className="inner-table">
+              <tbody>
+                <tr>
+                  <td>Total</td>
+                  <td className='numeric'>
+                    <Numeric value={dataset.entity_count} />
+                  </td>
+                </tr>
+                {dataset.things.total > 0 && canSearch && (
+                  <tr>
+                    <td>
+                      Searchable
+                      <HelpLink href={`/reference/#schema.Thing`} />
+                    </td>
+                    <td className='numeric'>
+                      <a href={`/search/?scope=${dataset.name}`}>
+                        <Numeric value={dataset.things.total} />
+                      </a>
+                    </td>
+                  </tr>
+                )}
+                {!!dataset.target_count && dataset.target_count > 0 && (
+                  <tr>
+                    <td>
+                      Targets
+                      <HelpLink href="/reference/#targets" />
+                    </td>
+                    <td className='numeric'>
+                      <Numeric value={dataset.target_count} />
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
           </td>
+
         </tr>
-        {!!dataset.target_count && dataset.target_count > 0 && (
-          <tr>
-            <th className={styles.tableHeader}>
-              Targets<HelpLink href="/reference/#targets" />:
-            </th>
-            <td className='numeric'>
-              <Numeric value={dataset.target_count} />
-            </td>
-          </tr>
-        )}
         {dataset.things.schemata.length > 0 && (
           <tr>
             <th className={styles.tableHeader}>
@@ -108,7 +117,7 @@ export default function DatasetMetadataTable({ dataset, collections, canSearch }
               {!dataset.publisher.official && (
                 <>{' '} <UnofficialBadge /></>
               )}
-              <p className={styles.publisherDescription}>{dataset.publisher.description}</p>
+              <Markdown className={styles.publisherDescription} markdown={dataset.publisher.html} />
             </td>
           </tr>
         )}
