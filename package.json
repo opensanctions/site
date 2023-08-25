@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.13",
-    "@types/node": "^20.4.9",
+    "@types/node": "^20.5.6",
     "@types/react": "^18.2.21",
     "@types/react-text-truncate": "^0.14.1",
     "typescript": "5.2.2"
