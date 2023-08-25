@@ -14,5 +14,5 @@ export function FrequencyBadge({ coverage }: FrequencyBadgeProps) {
   if (coverage.frequency == 'never') {
     return <Badge bg="warning">not updated</Badge>
   }
-  return <Badge bg="light">{coverage.frequency}</Badge>
+  return <Badge bg="light">updated {coverage.frequency}</Badge>
 }

@@ -67,16 +67,35 @@ export interface IAggregatedStats {
   schemata: Array<IAggregatedSchema>
 }
 
+export interface IDatasetPublisher {
+  url?: string
+  name: string
+  description: string
+  official: boolean
+  country?: string
+  country_label?: string
+  logo_url?: string
+}
+
+export interface IDatasetCoverage {
+  start: string
+  end: string
+  countries: string[]
+  frequency: string
+}
+
 export interface INKDatasetBase {
   name: string
   type: string
   title: string
   link: string
+  url?: string
   updated_at: string
   summary: string
   description?: string
   resources: Array<IResource>
   coverage?: IDatasetCoverage
+  publisher?: IDatasetPublisher
 }
 
 
@@ -97,39 +116,18 @@ export interface IDatasetBase extends INKDatasetBase {
 }
 
 export interface ISourceData {
-  url?: string
   format?: string
   model?: string
-}
-
-export interface IDatasetPublisher {
   url?: string
-  name: string
-  description: string
-  official: boolean
-  country?: string
-  country_label?: string
-  logo_url?: string
-}
-
-export interface IDatasetCoverage {
-  start: string
-  end: string
-  countries: string[]
-  frequency: string
 }
 
 export interface ISource extends IDatasetBase {
-  url?: string
   data: ISourceData
-  publisher: IDatasetPublisher
   collections: Array<string>
 }
 
 export interface IExternal extends IDatasetBase {
-  url?: string
   data?: ISourceData
-  publisher: IDatasetPublisher
   collections: Array<string>
 }
 
@@ -143,7 +141,6 @@ export type IDataset = ISource | IExternal | ICollection
 export interface INKDataset extends INKDatasetBase {
   version: string
   children: Array<string>
-  publisher?: IDatasetPublisher
 }
 
 export interface INKDataCatalog {
