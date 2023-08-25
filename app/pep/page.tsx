@@ -211,6 +211,7 @@ export default async function Page() {
             <DatasetCountryListing
               countries={dataset.things.countries}
               datasetName={dataset.name}
+              defaultExpanded={true}
               defaultLimit={50}
               isNested={false}
             />

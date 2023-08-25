@@ -7,7 +7,7 @@ export function getCountries(): any {
 }
 
 export function getCountry(countryCode: string): any {
-  return stats.countries[countryCode];
+  return stats.countries[countryCode] || {};
 }
 
 export function getPositions(): any {

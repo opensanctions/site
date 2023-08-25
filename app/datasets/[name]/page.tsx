@@ -40,6 +40,11 @@ export async function generateMetadata({ params }: DatasetPageProps) {
   })
 }
 
+export async function generateStaticParams() {
+  const datasets = await getDatasets()
+  return datasets.map((d) => ({ name: d.name }))
+}
+
 
 export default async function Page({ params }: DatasetPageProps) {
   const dataset = await getDatasetByName(params.name);
@@ -333,9 +338,4 @@ export default async function Page({ params }: DatasetPageProps) {
       </Container>
     </LayoutFrame >
   )
-}
-
-export async function generateStaticParams() {
-  const datasets = await getDatasets()
-  return datasets.map((d) => ({ name: d.name }))
 }
