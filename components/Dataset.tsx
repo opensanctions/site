@@ -54,7 +54,7 @@ function DatasetCard({ dataset }: DatasetProps) {
           {isCollection(dataset) && (
             <><Numeric value={dataset.sources.length + dataset.externals.length} /> data sources</>
           )}
-          {isSource(dataset) && (
+          {!!dataset.publisher && (
             <>
               {dataset.publisher.country_label}
               {!dataset.publisher.official && (
@@ -96,7 +96,7 @@ function DatasetItem({ dataset }: DatasetProps) {
               <Numeric value={dataset.sources.length} /> data sources
             </>
           )}
-          {(isSource(dataset) || isExternal(dataset)) && (
+          {!!dataset.publisher && (
             <>
               {isExternal(dataset) && (
                 <>
@@ -147,7 +147,9 @@ function SourcesTable({ sources }: SourcesTableProps) {
               <Link href={source.link}>{source.title}</Link>
             </td>
             <td>
-              <Badge bg="light">{source.publisher.country_label}</Badge>
+              {!!source.publisher && (
+                <Badge bg="light">{source.publisher.country_label}</Badge>
+              )}
             </td>
             <td className="numeric">
               <Numeric value={source.target_count} />
@@ -180,7 +182,11 @@ function ExternalsTable({ externals }: ExternalsTableProps) {
               <Link href={ext.link}>{ext.title}</Link>
             </td>
             <td>
-              {ext.publisher.name}
+              {!!ext.publisher && (
+                <>
+                  {ext.publisher.name}
+                </>
+              )}
             </td>
           </tr>
         )}
