@@ -167,7 +167,7 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
     const index = await fetchUrl<IIssueIndex>(issues_url);
     return index.issues;
   } catch (error) {
-    console.error(`Error fetching issues for dataset '${dataset.name}'.`, error);
+    // console.error(`Error fetching issues for dataset '${dataset.name}'.`, error);
     return [];
   }
 }
