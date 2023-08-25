@@ -4,7 +4,7 @@ import { Download, Search } from 'react-bootstrap-icons';
 
 import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, Table, Button, InputGroup, Container } from '../../../components/wrapped'
 import Dataset from '../../../components/Dataset'
-import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog, getDatasetCollections } from '../../../lib/data'
+import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog, getDatasetCollections, canSearchDataset } from '../../../lib/data'
 import { isCollection, isSource, isExternal } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
@@ -52,6 +52,7 @@ export default async function Page({ params }: DatasetPageProps) {
   const graphCatalog = await getGraphCatalog();
   // FIXME: when the graph catalog is merged:
   const inGraphCatalog = undefined !== graphCatalog.datasets.find((gd) => gd.name === dataset.name);
+  const canSearch = await canSearchDataset(dataset);
   const visibleDatasets = datasets.filter((ds) => !ds.hidden);
   const sources = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.sources)
@@ -81,7 +82,7 @@ export default async function Page({ params }: DatasetPageProps) {
                 <a id="overview"></a>
                 Data overview
               </h3>
-              {!isExternal(dataset) && (
+              {!isExternal(dataset) && canSearch && (
                 <Form className="d-flex d-print-none" action="/search/">
                   <input type="hidden" name="scope" value={dataset.name} />
                   <InputGroup className={styles.searchBox} size="lg">
@@ -99,7 +100,7 @@ export default async function Page({ params }: DatasetPageProps) {
                   </InputGroup>
                 </Form>
               )}
-              <DatasetMetadataTable dataset={dataset} collections={collections} />
+              <DatasetMetadataTable dataset={dataset} collections={collections} canSearch={canSearch} />
             </section>
 
             {isExternal(dataset) && inGraphCatalog && (

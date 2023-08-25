@@ -13,12 +13,11 @@ import styles from '../styles/Dataset.module.scss';
 
 type DatasetScreenProps = {
   dataset: IDataset
+  canSearch: boolean
   collections?: Array<ICollection>
 }
 
-export default function DatasetMetadataTable({ dataset, collections }: DatasetScreenProps) {
-  const errors = dataset.issue_levels.error;
-  const warnings = dataset.issue_levels.error;
+export default function DatasetMetadataTable({ dataset, collections, canSearch }: DatasetScreenProps) {
   return (
     <Table responsive="md">
       <tbody>
@@ -27,7 +26,7 @@ export default function DatasetMetadataTable({ dataset, collections }: DatasetSc
             Entities<HelpLink href="/docs/entities/" />:
           </th>
           <td>
-            {dataset.things.total > 0 && (
+            {dataset.things.total > 0 && canSearch && (
               <>
                 <a href={`/search/?scope=${dataset.name}`}>
                   <Plural value={dataset.things.total}
@@ -62,9 +61,14 @@ export default function DatasetMetadataTable({ dataset, collections }: DatasetSc
                   {dataset.things.schemata.map((ts) =>
                     <tr key={ts.name}>
                       <td>
-                        <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
+                        {canSearch && (
+                          <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
+                            <Plural one={ts.label} many={ts.plural} />
+                          </a>
+                        )}
+                        {!canSearch && (
                           <Plural one={ts.label} many={ts.plural} />
-                        </a>
+                        )}
                         <HelpLink href={`/reference/#schema.${ts.name}`} />
                       </td>
                       <td className="numeric">

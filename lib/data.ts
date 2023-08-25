@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
 import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse, ISearchAPIResponse, isCollection } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE, REVALIDATE_SHORT } from "./constants";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE, REVALIDATE_SHORT, SEARCH_DATASET } from "./constants";
 
 import indexJson from '../data/index.json';
 
@@ -133,6 +133,17 @@ export async function getDatasetCollections(dataset: IDataset): Promise<Array<IC
   return datasets
     .filter(isCollection)
     .filter((c) => c.sources.indexOf(dataset.name) !== -1 || c.externals.indexOf(dataset.name) !== -1)
+}
+
+export async function canSearchDataset(dataset: IDataset): Promise<boolean> {
+  const scope = await getDatasetByName(SEARCH_DATASET);
+  if (scope === undefined || !isCollection(scope)) {
+    return false;
+  }
+  const scopes = [...scope.sources, ...scope.externals];
+  const range = isCollection(dataset) ? [...dataset.sources, ...dataset.externals] : [dataset.name];
+  const intersection = range.filter(x => scopes.includes(x));
+  return intersection.length == range.length;
 }
 
 export function filterMatchingNames(datasets: Array<IDataset>, names: Array<string>): Array<IDataset> {
