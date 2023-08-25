@@ -174,7 +174,7 @@ export default async function Page({ params }: DatasetPageProps) {
               </section>
             )}
 
-            {!isExternal(dataset) && (
+            {canSearch && (
               <section>
                 <h3>
                   <a id="api"></a>
