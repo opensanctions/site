@@ -27,6 +27,8 @@ export default async function Page({ searchParams }: PageProps) {
     return redirect(loginUrl);
   }
 
+  const secret = info.credentials[0]?.secret;
+
   return (
     <LayoutFrame activeSection="account">
       <Container>
@@ -36,7 +38,7 @@ export default async function Page({ searchParams }: PageProps) {
             <Summary summary={SUMMARY} />
           </Col>
         </Row>
-        <UserInfo info={info} welcome={welcome} secret="nein" />
+        <UserInfo info={info} welcome={welcome} secret={secret} />
       </Container>
     </LayoutFrame>
   );

@@ -325,8 +325,17 @@ export interface IChargeInfo {
   end_date: string
 }
 
+export interface ICredential {
+  id: string
+  label: string
+  secret: string
+  created_at: string
+  expires_at: string
+}
+
 export interface IAccountInfo {
   account: IAccount
+  credentials: ICredential[]
   usage: IAccountUsage
   charge_info?: IChargeInfo
 }

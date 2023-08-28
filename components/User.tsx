@@ -84,7 +84,7 @@ function UsageTable({ usage }: UsageTableProps) {
 type AccountInfoProps = {
   info: any; // IAccountInfo
   welcome: boolean;
-  secret: string | string[];
+  secret: string;
 };
 
 export function UserInfo({ info, welcome, secret }: AccountInfoProps) {
@@ -109,8 +109,14 @@ export function UserInfo({ info, welcome, secret }: AccountInfoProps) {
               <tr>
                 <th>API key</th>
                 <td>
-                  <code>{user.secret}</code>
-                  <ClipboardCopy text={user.secret} />
+                  {secret ? (
+                    <>
+                      <code>{secret}</code>
+                      <ClipboardCopy text={secret} />
+                    </>
+                  ) : (
+                    "—"
+                  )}
                 </td>
                 <th>API</th>
                 <td>
