@@ -15,12 +15,12 @@ import {
   NavLink,
 } from "./wrapped";
 
-import { IAccountInfo, IAccountUsage } from "../lib/types";
+import { ICredentialUsage, IUserInfo, ICredential } from "../lib/types";
 import Link from "next/link";
 
 import styles from "../styles/Account.module.scss";
 import { API_URL } from "../lib/constants";
-import { FormattedDate, Money } from "./util";
+import { FormattedDate } from "./util";
 import { ClipboardCopy } from "./utils/ClipboardCopy";
 import { ChargebeeCheckout, ChargebeePortal } from "./Chargebee";
 
@@ -30,115 +30,159 @@ export const SUMMARY =
   "and review their metered service usage.";
 
 type UsageTableProps = {
-  usage: IAccountUsage;
+  usage: ICredentialUsage;
 };
 
 function UsageTable({ usage }: UsageTableProps) {
+  if (usage.total === 0) {
+    return null;
+  }
   return (
     <Row>
       <Col md={9}>
         <h3>Usage metrics (last {usage.days} days)</h3>
-        {usage.total == 0 && (
-          <Alert variant="dark">
-            Once you've started using the API, this section will show the number
-            and type of calls you have made.
-          </Alert>
-        )}
-        {usage.total > 0 && (
-          <Table size="sm">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Endpoint</th>
-                <th className="numeric">Requests</th>
-                <th className="numeric">Total</th>
+        <Table size="sm">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Endpoint</th>
+              <th className="numeric">Requests</th>
+              <th className="numeric">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usage.dates.map((date) => (
+              <>
+                {date.routes.map((route, ridx) => (
+                  <tr key={ridx}>
+                    {ridx == 0 && (
+                      <td rowSpan={date.routes.length}>{date.date}</td>
+                    )}
+                    <td>{route.route}</td>
+                    <td className="numeric">{route.count}</td>
+                    {ridx == 0 && (
+                      <td rowSpan={date.routes.length} className="numeric">
+                        {date.total}
+                      </td>
+                    )}
+                  </tr>
+                ))}
+              </>
+            ))}
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
+  );
+}
+
+type CredentialTableProps = {
+  credentials: ICredential[];
+};
+
+function CredentialTable({ credentials }: CredentialTableProps) {
+  const now = (new Date()).toISOString();
+  if (credentials.length == 0) {
+    return (
+      <Alert variant="secondary">
+        <AlertHeading>Ready to use the API?</AlertHeading>
+        <p>
+          Create a key to use our programming interface and use OpenSanctions
+          as a backend service for your application.
+        </p>
+        <div>
+          <ChargebeeCheckout>
+            <Button variant="outline-success">
+              Generate an API key
+            </Button>
+          </ChargebeeCheckout>
+        </div>
+      </Alert>
+    );
+  }
+  return (
+    <Row>
+      <Col md={9}>
+        <h3>
+          <ChargebeeCheckout>
+            <Button className={styles.newCredential} variant="primary" size="sm">
+              New...
+            </Button>
+          </ChargebeeCheckout>
+
+          Credentials
+        </h3>
+        <Table size="sm">
+          <thead>
+            <tr>
+              <th>API Key</th>
+              <th>Label</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Created on</th>
+            </tr>
+          </thead>
+          <tbody>
+            {credentials.map((credential) => (
+              <tr key={credential.id}>
+                <td width="50%">
+                  <code>{credential.secret}</code>
+                  <ClipboardCopy text={credential.secret} />
+                </td>
+
+                <td>{credential.label}</td>
+                <td>
+                  {(!!credential.stripe_subscription_id || !!credential.chargebee_subscription_id) && (
+                    <Badge bg="light">paid</Badge>
+                  )}
+                  {(!credential.stripe_subscription_id || !credential.chargebee_subscription_id) && (
+                    <Badge bg="light">unpaid</Badge>
+                  )}
+                </td>
+                <td>
+                  {!credential.expires_at && (
+                    <Badge bg="success">active</Badge>
+                  )}
+                  {(!!credential.expires_at && credential.expires_at > now) && (
+                    <Badge bg="warning">expires <FormattedDate date={credential.expires_at} /></Badge>
+                  )}
+                  {(!!credential.expires_at && credential.expires_at <= now) && (
+                    <Badge bg="danger">disabled</Badge>
+                  )}
+                </td>
+                <td><FormattedDate date={credential.created_at} /></td>
               </tr>
-            </thead>
-            <tbody>
-              {usage.dates.map((date) => (
-                <>
-                  {date.routes.map((route, ridx) => (
-                    <tr key={ridx}>
-                      {ridx == 0 && (
-                        <td rowSpan={date.routes.length}>{date.date}</td>
-                      )}
-                      <td>{route.route}</td>
-                      <td className="numeric">{route.count}</td>
-                      {ridx == 0 && (
-                        <td rowSpan={date.routes.length} className="numeric">
-                          {date.total}
-                        </td>
-                      )}
-                    </tr>
-                  ))}
-                </>
-              ))}
-            </tbody>
-          </Table>
-        )}
+            ))}
+          </tbody>
+        </Table>
       </Col>
     </Row>
   );
 }
 
 type AccountInfoProps = {
-  info: any; // IAccountInfo
-  welcome: boolean;
-  secret: string;
+  info: IUserInfo;
 };
 
-export function UserInfo({ info, welcome, secret }: AccountInfoProps) {
+export function UserInfo({ info }: AccountInfoProps) {
   const user = info.user;
-  const accountName = user.name || user.key;
-  const portalUrl = `${API_URL}/stripe/portal?api_key=${secret}`;
+  const customer = info.customer;
+  const credential = info.credentials.length > 0 ? info.credentials[0] : null;
+  const secret = credential ? credential.secret : 'none';
+  const stripePortalUrl = `${API_URL}/stripe/portal?api_key=${secret}`;
+  console.log(info);
   return (
     <>
       <Row>
         <Col md={9}>
-          {welcome && (
-            <Alert variant="success">
-              <AlertHeading>Welcome to OpenSanctions!</AlertHeading>
-              <p>
-                You've successfully subscribed to the OpenSanctions API. Use the
-                credentials below to start querying and exploring the system.
-              </p>
-            </Alert>
-          )}
+
           <Table className={styles.accountInfo} responsive>
             <tbody>
               <tr>
-                <th>API key</th>
-                <td>
-                  {secret ? (
-                    <>
-                      <code>{secret}</code>
-                      <ClipboardCopy text={secret} />
-                    </>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-                <th>API</th>
-                <td>
-                  <Link href={API_URL}>{API_URL}</Link>
-                </td>
-              </tr>
-              <tr>
-                <th>Status</th>
-                <td>
-                  {user.active && <Badge bg="success">active</Badge>}
-                  {!user.active && <Badge bg="danger">inactive</Badge>}
-                </td>
-                <th>Signed up</th>
-                <td>
-                  <FormattedDate date={user.created_at} />
-                </td>
-              </tr>
-              <tr>
                 <th>Name</th>
                 <td>
-                  {accountName}
-                  {!accountName && <span className="text-muted">unknown</span>}
+                  {user.name}
+                  {!user.name && <span className="text-muted">unknown</span>}
                 </td>
                 <th>E-Mail</th>
                 <td>
@@ -148,53 +192,32 @@ export function UserInfo({ info, welcome, secret }: AccountInfoProps) {
               </tr>
               <tr>
                 <th>Billing</th>
-                <td colSpan={info.charge_info ? 1 : 3}>
-                  {user.chargebee_customer_id ? (
-                    <>
-                      <p>Your account is linked to a Chargebee subscription.</p>
-                      <ChargebeePortal>
-                        <Button variant="primary">
-                          Manage billing & payment
-                        </Button>
-                      </ChargebeePortal>
-                    </>
-                  ) : (
-                    <>
-                      <p>Your account does not use automatic billing.</p>
-                      <ChargebeeCheckout>
-                        <Button variant="primary">Set up billing</Button>
-                      </ChargebeeCheckout>
-                    </>
-                  )}
-                </td>
-                {!!info.charge_info && (
+                <td>{customer.name}</td>
+                <td colSpan={2}>
                   <>
-                    <th>Cost</th>
-                    <td>
+                    {(!!customer.stripe_id && !customer.chargebee_id) && (
                       <>
-                        <div>
-                          {"Charges incurred: "}
-                          <Money
-                            value={info.charge_info.total / 100.0}
-                            currency={info.charge_info.currency}
-                          />
-                        </div>
-                        <div className="text-tiny">
-                          {"Billing period: "}
-                          <FormattedDate date={info.charge_info.start_date} />
-                          {" to "}
-                          <FormattedDate date={info.charge_info.end_date} />
-                        </div>
-                        <div className="text-tiny">
-                          Usage is reported/updated daily.
-                        </div>
+                        <Button href={stripePortalUrl} size="sm" variant="primary">
+                          Manage billing and payment
+                        </Button>
                       </>
-                    </td>
+                    )}
+                    {!!customer.chargebee_id && (
+                      <>
+                        <ChargebeePortal>
+                          <Button variant="primary" size="sm" >
+                            Manage billing & payment
+                          </Button>
+                        </ChargebeePortal>
+                      </>
+                    )}
                   </>
-                )}
+                </td>
               </tr>
             </tbody>
           </Table>
+          <CredentialTable credentials={info.credentials} />
+          <UsageTable usage={info.usage} />
         </Col>
         <Col md={3}>
           <Nav className="flex-column justify-content-start" variant="pills">
@@ -220,7 +243,6 @@ export function UserInfo({ info, welcome, secret }: AccountInfoProps) {
           </Nav>
         </Col>
       </Row>
-      <UsageTable usage={info.usage} />
     </>
   );
 }

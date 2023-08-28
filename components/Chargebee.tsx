@@ -47,7 +47,7 @@ export const ChargebeePortal: React.FC<ChargebeePortalProps> = ({
           chargebeeRef.current.setPortalSession(
             async () =>
               await (
-                await fetch(`${API_URL}/auth/chargebee_portal_session`, {
+                await fetch(`${API_URL}/billing/chargebee_portal_session`, {
                   credentials: "include",
                 })
               ).json()
@@ -68,10 +68,13 @@ export const ChargebeeCheckout: React.FC<ChargebeePortalProps> = ({
     chargebeeRef.current?.openCheckout({
       hostedPage: async () =>
         await (
-          await fetch(`${API_URL}/auth/chargebee_checkout`, {
+          await fetch(`${API_URL}/billing/chargebee_checkout`, {
             credentials: "include",
           })
         ).json(),
+      success: async () => {
+        setTimeout(location.reload, 1000)
+      },
     });
   };
 

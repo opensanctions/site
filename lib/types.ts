@@ -289,14 +289,10 @@ export interface IRecentEntity {
   countries: string[]
 }
 
-export interface IAccount {
-  key?: string
+export interface IUser {
+  id?: string
   name?: string
   email?: string
-  secret: string
-  active: boolean
-  stripe_customer_id?: string
-  stripe_subscription_id?: string
   created_at: string
 }
 
@@ -311,31 +307,33 @@ export interface IDateUsage {
   total: number
 }
 
-export interface IAccountUsage {
+export interface ICredentialUsage {
   dates: IDateUsage[]
   days: number
   total: number
-}
-
-export interface IChargeInfo {
-  total: number
-  total_excluding_tax: number
-  currency: string
-  start_date: string
-  end_date: string
 }
 
 export interface ICredential {
   id: string
   label: string
   secret: string
+  stripe_subscription_id?: string
+  chargebee_subscription_id?: string
   created_at: string
-  expires_at: string
+  expires_at?: string
 }
 
-export interface IAccountInfo {
-  account: IAccount
+export interface ICustomer {
+  id: string
+  name?: string
+  stripe_id?: string
+  chargebee_id?: string
+  created_at: string
+}
+
+export interface IUserInfo {
+  user: IUser
+  customer: ICustomer
   credentials: ICredential[]
-  usage: IAccountUsage
-  charge_info?: IChargeInfo
+  usage: ICredentialUsage
 }

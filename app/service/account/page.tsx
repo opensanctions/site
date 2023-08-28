@@ -7,16 +7,19 @@ import { Row, Col, Container } from "../../../components/wrapped";
 
 import { PageProps } from '../../../components/utils/PageProps';
 import { getGenerateMetadata } from '../../../lib/meta';
-import { AccountInfo, AccountLogin, SUMMARY, TITLE } from '../../../components/Account';
-
+import { AccountLogin } from '../../../components/Account';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
 import { Summary } from '../../../components/util';
 import { fetchJsonUrl } from '../../../lib/data';
-import { IAccountInfo } from '../../../lib/types';
+import { IUserInfo } from '../../../lib/types';
 import { API_URL } from '../../../lib/constants';
+import { UserInfo } from '@/components/User';
 
 
 export const revalidate = 0;
+export const TITLE = 'API account and usage information';
+export const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
+  + "and review their metered service usage."
 
 export async function generateMetadata() {
   return getGenerateMetadata({
@@ -26,7 +29,6 @@ export async function generateMetadata() {
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  const welcome = searchParams ? !!searchParams['welcome'] : false;
   const secret = searchParams ? searchParams['secret'] : undefined;
 
   let info = null;
@@ -35,7 +37,7 @@ export default async function Page({ searchParams }: PageProps) {
       'url': `${API_URL}/account`,
       'query': { 'api_key': secret }
     })
-    info = await fetchJsonUrl<IAccountInfo>(apiUrl, false);
+    info = await fetchJsonUrl<IUserInfo>(apiUrl, false);
   }
 
   return (
@@ -47,7 +49,7 @@ export default async function Page({ searchParams }: PageProps) {
             <Summary summary={SUMMARY} />
           </Col>
         </Row>
-        {(!!secret && !!info) && <AccountInfo info={info} welcome={welcome} secret={secret} />}
+        {!!info && <UserInfo info={info} />}
         {!info && <AccountLogin secret={secret} />}
       </Container>
     </LayoutFrame>

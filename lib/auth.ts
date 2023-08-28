@@ -3,30 +3,28 @@ import queryString from "query-string";
 
 import { API_URL } from "@/lib/constants";
 import { fetchJsonUrl } from "@/lib/data";
-import { IAccountInfo } from "@/lib/types";
+import { IUserInfo } from "@/lib/types";
 
-export const loginUrl = `${API_URL}/auth/login`;
+export const LOGIN_URL = `${API_URL}/auth/login`;
 
-export async function getUser() {
+export function getAccessToken(): string | null {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access_token")?.value;
   if (!accessToken) {
     return null;
   }
-
-  return fetchUser(accessToken);
+  return accessToken;
 }
 
-export async function fetchUser(accessToken: string) {
+export async function getUserInfo(): Promise<IUserInfo | null> {
+  const accessToken = getAccessToken();
   const apiUrl = queryString.stringifyUrl({
-    url: `${API_URL}/account`,
+    url: `${API_URL}/billing/account`,
     query: { access_token: accessToken },
   });
-
-  const user = await fetchJsonUrl<IAccountInfo>(apiUrl, false);
+  const user = await fetchJsonUrl<IUserInfo>(apiUrl, false);
   if (!user) {
-    throw new Error("Error fetching user");
+    return null;
   }
-
   return user;
 }
