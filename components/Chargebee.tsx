@@ -20,6 +20,11 @@ function initChargebee() {
   }) as ChargebeeInstance;
 }
 
+async function refreshScreen() {
+  // alert("please refresh!");
+  setTimeout(() => window.location.reload(), 4000)
+}
+
 type ChargebeePortalProps = {
   children: ReactNode;
 };
@@ -33,7 +38,9 @@ export const ChargebeePortal: React.FC<ChargebeePortalProps> = ({
     const portal = chargebeeRef.current?.createChargebeePortal();
 
     // @ts-ignore: Portal.open doesn't require arguments
-    portal.open();
+    portal.open({
+      close: refreshScreen,
+    });
   };
 
   return (
@@ -72,9 +79,7 @@ export const ChargebeeCheckout: React.FC<ChargebeePortalProps> = ({
             credentials: "include",
           })
         ).json(),
-      success: async () => {
-        setTimeout(location.reload, 1000)
-      },
+      success: refreshScreen,
     });
   };
 

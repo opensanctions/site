@@ -101,62 +101,60 @@ function CredentialTable({ credentials }: CredentialTableProps) {
     );
   }
   return (
-    <Row>
-      <Col md={9}>
-        <h3>
-          <ChargebeeCheckout>
-            <Button className={styles.newCredential} variant="primary" size="sm">
-              New...
-            </Button>
-          </ChargebeeCheckout>
+    <>
+      <h3>
+        <ChargebeeCheckout>
+          <Button className={styles.newCredential} variant="primary" size="sm">
+            New...
+          </Button>
+        </ChargebeeCheckout>
 
-          Credentials
-        </h3>
-        <Table size="sm">
-          <thead>
-            <tr>
-              <th>API Key</th>
-              <th>Label</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Created on</th>
+        Credentials
+      </h3>
+      <Table size="sm">
+        <thead>
+          <tr>
+            <th>API Key</th>
+            <th>Label</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Created on</th>
+          </tr>
+        </thead>
+        <tbody>
+          {credentials.map((credential) => (
+            <tr key={credential.id}>
+              <td width="50%">
+                <code>{credential.secret}</code>
+                <ClipboardCopy text={credential.secret} />
+              </td>
+
+              <td>{credential.label}</td>
+              <td>
+                {(!!credential.stripe_subscription_id || !!credential.chargebee_subscription_id) && (
+                  <Badge bg="light">paid</Badge>
+                )}
+                {(!credential.stripe_subscription_id && !credential.chargebee_subscription_id) && (
+                  <Badge bg="light">unpaid</Badge>
+                )}
+              </td>
+              <td>
+                {!credential.expires_at && (
+                  <Badge bg="success">active</Badge>
+                )}
+                {(!!credential.expires_at && credential.expires_at > now) && (
+                  <Badge bg="warning">expires <FormattedDate date={credential.expires_at} /></Badge>
+                )}
+                {(!!credential.expires_at && credential.expires_at <= now) && (
+                  <Badge bg="danger">disabled</Badge>
+                )}
+              </td>
+              <td><FormattedDate date={credential.created_at} /></td>
             </tr>
-          </thead>
-          <tbody>
-            {credentials.map((credential) => (
-              <tr key={credential.id}>
-                <td width="50%">
-                  <code>{credential.secret}</code>
-                  <ClipboardCopy text={credential.secret} />
-                </td>
-
-                <td>{credential.label}</td>
-                <td>
-                  {(!!credential.stripe_subscription_id || !!credential.chargebee_subscription_id) && (
-                    <Badge bg="light">paid</Badge>
-                  )}
-                  {(!credential.stripe_subscription_id || !credential.chargebee_subscription_id) && (
-                    <Badge bg="light">unpaid</Badge>
-                  )}
-                </td>
-                <td>
-                  {!credential.expires_at && (
-                    <Badge bg="success">active</Badge>
-                  )}
-                  {(!!credential.expires_at && credential.expires_at > now) && (
-                    <Badge bg="warning">expires <FormattedDate date={credential.expires_at} /></Badge>
-                  )}
-                  {(!!credential.expires_at && credential.expires_at <= now) && (
-                    <Badge bg="danger">disabled</Badge>
-                  )}
-                </td>
-                <td><FormattedDate date={credential.created_at} /></td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Col>
-    </Row>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }
 
@@ -170,7 +168,6 @@ export function UserInfo({ info }: AccountInfoProps) {
   const credential = info.credentials.length > 0 ? info.credentials[0] : null;
   const secret = credential ? credential.secret : 'none';
   const stripePortalUrl = `${API_URL}/stripe/portal?api_key=${secret}`;
-  console.log(info);
   return (
     <>
       <Row>
@@ -191,7 +188,7 @@ export function UserInfo({ info }: AccountInfoProps) {
                 </td>
               </tr>
               <tr>
-                <th>Billing</th>
+                <th>Customer</th>
                 <td>{customer.name}</td>
                 <td colSpan={2}>
                   <>
