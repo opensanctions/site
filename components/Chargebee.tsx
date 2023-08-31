@@ -20,9 +20,8 @@ function initChargebee() {
   }) as ChargebeeInstance;
 }
 
-async function refreshScreen() {
-  // alert("please refresh!");
-  setTimeout(() => window.location.reload(), 4000)
+async function syncCustomer() {
+  window.location.href = `${API_URL}/billing/chargebee_sync`;
 }
 
 type ChargebeePortalProps = {
@@ -39,7 +38,7 @@ export const ChargebeePortal: React.FC<ChargebeePortalProps> = ({
 
     // @ts-ignore: Portal.open doesn't require arguments
     portal.open({
-      close: refreshScreen,
+      close: syncCustomer,
     });
   };
 
@@ -79,7 +78,7 @@ export const ChargebeeCheckout: React.FC<ChargebeePortalProps> = ({
             credentials: "include",
           })
         ).json(),
-      success: refreshScreen,
+      success: syncCustomer,
     });
   };
 

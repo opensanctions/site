@@ -38,41 +38,39 @@ function UsageTable({ usage }: UsageTableProps) {
     return null;
   }
   return (
-    <Row>
-      <Col md={9}>
-        <h3>Usage metrics (last {usage.days} days)</h3>
-        <Table size="sm">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Endpoint</th>
-              <th className="numeric">Requests</th>
-              <th className="numeric">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {usage.dates.map((date) => (
-              <>
-                {date.routes.map((route, ridx) => (
-                  <tr key={ridx}>
-                    {ridx == 0 && (
-                      <td rowSpan={date.routes.length}>{date.date}</td>
-                    )}
-                    <td>{route.route}</td>
-                    <td className="numeric">{route.count}</td>
-                    {ridx == 0 && (
-                      <td rowSpan={date.routes.length} className="numeric">
-                        {date.total}
-                      </td>
-                    )}
-                  </tr>
-                ))}
-              </>
-            ))}
-          </tbody>
-        </Table>
-      </Col>
-    </Row>
+    <>
+      <h3>Usage metrics (last {usage.days} days)</h3>
+      <Table size="sm">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Endpoint</th>
+            <th className="numeric">Requests</th>
+            <th className="numeric">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usage.dates.map((date) => (
+            <>
+              {date.routes.map((route, ridx) => (
+                <tr key={ridx}>
+                  {ridx == 0 && (
+                    <td rowSpan={date.routes.length}>{date.date}</td>
+                  )}
+                  <td>{route.route}</td>
+                  <td className="numeric">{route.count}</td>
+                  {ridx == 0 && (
+                    <td rowSpan={date.routes.length} className="numeric">
+                      {date.total}
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }
 
@@ -128,7 +126,6 @@ function CredentialTable({ credentials }: CredentialTableProps) {
                 <code>{credential.secret}</code>
                 <ClipboardCopy text={credential.secret} />
               </td>
-
               <td>{credential.label}</td>
               <td>
                 {(!!credential.stripe_subscription_id || !!credential.chargebee_subscription_id) && (
@@ -199,7 +196,7 @@ export function UserInfo({ info }: AccountInfoProps) {
                         </Button>
                       </>
                     )}
-                    {!!customer.chargebee_id && (
+                    {(!!customer.chargebee_id || !customer.stripe_id) && (
                       <>
                         <ChargebeePortal>
                           <Button variant="primary" size="sm" >
