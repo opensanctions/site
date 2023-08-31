@@ -44,8 +44,8 @@ export default function Page() {
                 </CardTitle>
                 <CardText>
                   Use the OpenSanctions dataset for internal applications (e.g.
-                  the <Link href="/docs/self-hosted/">self-hosted API</Link>) or as a
-                  component of value-add products and services.
+                  the <Link href="/docs/self-hosted/">self-hosted API</Link>),
+                  such as counter-party screening.
                 </CardText>
                 <ul>
                   <li>Ideal for in-house screening and data analysis</li>
@@ -78,8 +78,8 @@ export default function Page() {
                   </Badge>
                 </CardTitle>
                 <CardText>
-                  Use OpenSanctions to provide compliance solutions to third
-                  parties, or include our graph in your own data products.
+                  Use OpenSanctions to provide products and solutions to third
+                  parties, or to include our graph in your own data products.
                 </CardText>
                 <ul>
                   <li>Ideal for building APIs, software solutions and data products</li>
