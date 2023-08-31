@@ -1,7 +1,7 @@
 
 import Content from '../../components/Content';
 import { Summary } from '../../components/util';
-import { ISSUES_URL, REVALIDATE_BASE } from '../../lib/constants';
+import { ISSUES_URL, REVALIDATE_SHORT } from '../../lib/constants';
 import { getDatasets } from '../../lib/data';
 import { DocumentationMenu } from '../../components/Menu';
 import LayoutFrame from '../../components/layout/LayoutFrame';
@@ -10,7 +10,7 @@ import { isCollection } from '../../lib/types';
 import { Table } from '../../components/wrapped'
 import Link from 'next/link';
 
-export const revalidate = REVALIDATE_BASE;
+export const revalidate = REVALIDATE_SHORT;
 
 const TITLE = "Warnings and errors from all datasets";
 

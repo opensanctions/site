@@ -44,15 +44,16 @@ export default function Page() {
                 </CardTitle>
                 <CardText>
                   Use the OpenSanctions dataset for internal applications (e.g.
-                  the <Link href="/docs/self-hosted/">self-hosted API</Link>) or as a
-                  component of value-add products and services.
+                  the <Link href="/docs/self-hosted/">self-hosted API</Link>),
+                  such as counter-party screening.
                 </CardText>
                 <ul>
-                  <li>30+ sanctions lists</li>
-                  <li>160,000+ <Link href="/pep/">PEP profiles</Link></li>
-                  <li>11 crime watchlists</li>
-                  <li>clean and de-duplicated</li>
-                  <li>updated daily</li>
+                  <li>Ideal for in-house screening and data analysis</li>
+                  <li>
+                    <Link href="/datasets/default/">Full dataset</Link>:
+                    Sanctions, <Link href="/pep/">PEPs</Link> and criminal watchlists
+                  </li>
+                  <li>Updated daily</li>
                 </ul>
               </CardBody>
               <CardFooter>
@@ -71,20 +72,22 @@ export default function Page() {
             <Card className={classNames(styles.offer, "themed-card-medium")}>
               <CardBody>
                 <CardTitle>
-                  OEM bulk data<br />
+                  Reseller/OEM bulk data<br />
                   <Badge bg="light">
                     <span className="num">custom</span>
                   </Badge>
                 </CardTitle>
                 <CardText>
-                  Use OpenSanctions to provide compliance solutions to third
-                  parties, or include our graph in your own data products.
+                  Use OpenSanctions to provide products and solutions to third
+                  parties, or to include our graph in your own data products.
                 </CardText>
                 <ul>
-                  <li>65+ data sources</li>
-                  <li>standardised data format</li>
-                  <li>cross-list de-duplication</li>
-                  <li>complex relationship graph</li>
+                  <li>Ideal for building APIs, software solutions and data products</li>
+                  <li>
+                    <Link href="/datasets/default/">Full dataset</Link>:
+                    Sanctions, <Link href="/pep/">PEPs</Link> and criminal watchlists
+                  </li>
+                  <li>Updated daily</li>
                 </ul>
               </CardBody>
               <CardFooter>
@@ -113,10 +116,10 @@ export default function Page() {
                   or research processes with our powerful matching and search APIs.
                 </CardText>
                 <ul>
-                  <li>pay-as-you-go pricing</li>
-                  <li>search within the full dataset</li>
-                  <li>easy-to-integrate list checking</li>
-                  <li>powerful matching system</li>
+                  <li>Pay-as-you-go pricing</li>
+                  <li>Search within the full dataset</li>
+                  <li>Easy-to-integrate list checking</li>
+                  <li>Powerful matching system</li>
                 </ul>
               </CardBody>
               <CardFooter>
@@ -126,9 +129,6 @@ export default function Page() {
                     Get started now
                   </Button>
                 </ButtonGroup>
-                {/* <div className="buy-now">
-                  In a hurry? <a href="https://buy.stripe.com/8wM151fxn6PL4nu7sF">Subscribe now</a>.
-                </div> */}
               </CardFooter>
             </Card>
           </CardGroup>
@@ -136,10 +136,7 @@ export default function Page() {
             <strong>Not ideal for you?</strong> OpenSanctions
             provides <strong><Link href="/docs/commercial/faq/#exemptions">licensing exemptions
               for journalists and activists</Link></strong>. We are also happy to provide
-            {' '}<strong>discounts for startups</strong>, and those building new products. Beyond that,
-            we're committed to make this data available to everyone. If the licensing is
-            stopping you from using OpenSanctions, <Link href="/contact/">contact us</Link> and
-            we'll fix it.
+            {' '}<strong>discounts for startups</strong>, and those building new products.
           </p>
           <p>
             <strong>Got more questions?</strong> Check out the <Link href="/docs/commercial/faq/">Commercial use FAQ</Link>

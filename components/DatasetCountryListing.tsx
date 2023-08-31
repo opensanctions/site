@@ -10,39 +10,42 @@ import { HelpLink, Numeric, Plural, Spacer } from './util';
 type DatasetCountryListingProps = {
   datasetName: string
   countries: IAggregatedCountry[]
-  defaultExpanded?: boolean
   defaultLimit?: number | null
+  defaultExpanded?: boolean
   isNested?: boolean
 }
 
-export default function DatasetCountryListing({ datasetName, countries, defaultExpanded = false, defaultLimit = null, isNested=true}: DatasetCountryListingProps) {
-  const [coverageExpanded, setCoverageExpanded] = useState(defaultExpanded);
+export default function DatasetCountryListing({ datasetName, countries, defaultLimit = null, isNested = true, defaultExpanded = false }: DatasetCountryListingProps) {
+  const alwaysExpanded = defaultExpanded || countries.length < 6;
+  const [coverageExpanded, setCoverageExpanded] = useState(alwaysExpanded);
   const [limit, setLimit] = useState(defaultLimit);
   const visibleCountries = (typeof (limit) == "number") ? countries.slice(0, limit - 1) : countries;
 
   return (
     <>
       <Table size="sm" className={isNested ? "inner-table" : ""}>
-        <thead>
-          <tr>
-            <td colSpan={2}>
-              <Plural value={countries.length} one="country" many="countries" />
-              <HelpLink href={`/reference/#type.country`} />
-              {coverageExpanded && !defaultExpanded && (
-                <>
-                  <Spacer />
-                  <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
-                </>
-              )}
-              {!coverageExpanded && (
-                <>
-                  <Spacer />
-                  <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(true) }} href='#'>Show overview...</a>
-                </>
-              )}
-            </td>
-          </tr>
-        </thead>
+        {!alwaysExpanded && (
+          <thead>
+            <tr>
+              <td colSpan={2}>
+                <Plural value={countries.length} one="country" many="countries" />
+                <HelpLink href={`/reference/#type.country`} />
+                {coverageExpanded && (
+                  <>
+                    <Spacer />
+                    <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(false) }} href='#'>Hide overview...</a>
+                  </>
+                )}
+                {!coverageExpanded && (
+                  <>
+                    <Spacer />
+                    <a onClick={(e) => { e.preventDefault(); setCoverageExpanded(true) }} href='#'>Show overview...</a>
+                  </>
+                )}
+              </td>
+            </tr>
+          </thead>
+        )}
         <tbody>
           {coverageExpanded && visibleCountries.map(c =>
             <tr key={c.code}>

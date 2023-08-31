@@ -2,14 +2,17 @@ import { Row, Col, Container } from "@/components/wrapped";
 
 import { PageProps } from "@/components/utils/PageProps";
 import { getGenerateMetadata } from "@/lib/meta";
-import { AccountInfo, SUMMARY, TITLE } from "@/components/Account";
 
 import LayoutFrame from "@/components/layout/LayoutFrame";
 import { Summary } from "@/components/util";
-import { getAccount, loginUrl } from "@/lib/auth";
+import { getUserInfo, LOGIN_URL } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { UserInfo } from "@/components/User";
 
 export const revalidate = 0;
+const TITLE = 'API account and usage information';
+const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
+  + "and review their metered service usage."
 
 export async function generateMetadata() {
   return getGenerateMetadata({
@@ -19,17 +22,12 @@ export async function generateMetadata() {
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  const welcome = !!searchParams?.["welcome"];
-  
-  const info = await getAccount();
-  if (!info) {
-    return redirect(loginUrl);
+  const info = await getUserInfo();
+  if (info === null) {
+    redirect(LOGIN_URL);
   }
-
-  const secret = info.account.secret;
-
   return (
-    <LayoutFrame activeSection="account">
+    <LayoutFrame activeSection="about">
       <Container>
         <h1>{TITLE}</h1>
         <Row>
@@ -37,7 +35,7 @@ export default async function Page({ searchParams }: PageProps) {
             <Summary summary={SUMMARY} />
           </Col>
         </Row>
-        <AccountInfo info={info} welcome={welcome} secret={secret} />
+        <UserInfo info={info} />
       </Container>
     </LayoutFrame>
   );

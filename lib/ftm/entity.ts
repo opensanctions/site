@@ -11,8 +11,9 @@ export interface IEntityDatum {
   caption: string
   referents: Array<string>
   datasets: Array<string>
-  last_seen: string
-  first_seen: string
+  first_seen?: string
+  last_seen?: string
+  last_change?: string
   target: boolean
   schema: Schema | string
   properties?: EntityProperties
@@ -28,8 +29,9 @@ export class Entity {
   public properties: Map<Property, Values> = new Map()
   public readonly schema: Schema
   public caption: string
-  public first_seen: string
-  public last_seen: string
+  public first_seen?: string
+  public last_seen?: string
+  public last_change?: string
   public referents: Array<string>
   public datasets: Array<string>
   public target: boolean
@@ -40,6 +42,7 @@ export class Entity {
     this.caption = data.caption
     this.first_seen = data.first_seen
     this.last_seen = data.last_seen
+    this.last_change = data.last_change
     this.referents = data.referents
     this.datasets = data.datasets
     this.target = data.target

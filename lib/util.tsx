@@ -8,14 +8,14 @@ import rehypeStringify from 'rehype-stringify'
 import rehypeHighlight from 'rehype-highlight'
 
 
-export function markdownToHtml(markdown: string): string {
-  const result = unified()
+export async function markdownToHtml(markdown: string): Promise<string> {
+  const result = await unified()
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeHighlight)
     .use(rehypeStringify)
-    .processSync(markdown)
+    .process(markdown)
   return result.value as string;
 }
 

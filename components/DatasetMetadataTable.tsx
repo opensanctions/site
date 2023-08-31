@@ -1,59 +1,67 @@
 import Link from 'next/link';
 
 import { Badge, Table } from "./wrapped";
-import { IDataset, ICollection, isSource, isExternal, IIssue, LEVEL_ERROR, LEVEL_WARNING } from '../lib/types';
-import { FormattedDate, HelpLink, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util';
+import { IDataset, ICollection, isSource, isExternal, isCollection } from '../lib/types';
+import { FormattedDate, HelpLink, Markdown, Numeric, Plural, Spacer, UnofficialBadge, URLLink } from './util';
+import DatasetCountryListing from './DatasetCountryListing';
+import { FrequencyBadge } from './Metadata';
 import { wordList } from '../lib/util';
 
 import styles from '../styles/Dataset.module.scss';
-import DatasetCountryListing from './DatasetCountryListing';
+
 
 
 type DatasetScreenProps = {
   dataset: IDataset
-  issues: Array<IIssue>
+  canSearch: boolean
   collections?: Array<ICollection>
 }
 
-export default function DatasetMetadataTable({ dataset, collections, issues }: DatasetScreenProps) {
-  const errors = issues.filter((i) => i.level === LEVEL_ERROR);
-  const warnings = issues.filter((i) => i.level === LEVEL_WARNING);
+export default async function DatasetMetadataTable({ dataset, collections, canSearch }: DatasetScreenProps) {
   return (
     <Table responsive="md">
       <tbody>
         <tr>
           <th className={styles.tableHeader}>
-            Entity count:
+            Entities<HelpLink href="/docs/entities/" />:
           </th>
-          <td>
-            {dataset.target_count > 0 && (
-              <>
-                <Plural
-                  value={dataset.target_count}
-                  one={"target entity"}
-                  many={"target entities"}
-                />
-                <HelpLink href="/reference/#targets" />
-                <Spacer />
-              </>
-            )}
-            {dataset.things.total > 0 && (
-              <>
-                <a href={`/search/?scope=${dataset.name}`}>
-                  <Plural value={dataset.things.total}
-                    one={"searchable entity"}
-                    many={"searchable entities"}
-                  />
-                </a>
-                <Spacer />
-              </>
-            )}
-            <Plural
-              value={dataset.entity_count}
-              one={"total"}
-              many={"total"}
-            />
+          <td className="contains-inner-table">
+            <Table size="sm" className="inner-table">
+              <tbody>
+                <tr>
+                  <td>Total</td>
+                  <td className='numeric'>
+                    <Numeric value={dataset.entity_count} />
+                  </td>
+                </tr>
+                {dataset.things.total > 0 && canSearch && (
+                  <tr>
+                    <td>
+                      Searchable
+                      <HelpLink href={`/reference/#schema.Thing`} />
+                    </td>
+                    <td className='numeric'>
+                      <a href={`/search/?scope=${dataset.name}`}>
+                        <Numeric value={dataset.things.total} />
+                      </a>
+                    </td>
+                  </tr>
+                )}
+                {!!dataset.target_count && dataset.target_count > 0 && (
+                  <tr>
+                    <td>
+                      Targets
+                      <HelpLink href="/reference/#targets" />
+                    </td>
+                    <td className='numeric'>
+                      <Numeric value={dataset.target_count} />
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
           </td>
+
         </tr>
         {dataset.things.schemata.length > 0 && (
           <tr>
@@ -66,9 +74,14 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
                   {dataset.things.schemata.map((ts) =>
                     <tr key={ts.name}>
                       <td>
-                        <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
+                        {canSearch && (
+                          <a href={`/search/?scope=${dataset.name}&schema=${ts.name}`}>
+                            <Plural one={ts.label} many={ts.plural} />
+                          </a>
+                        )}
+                        {!canSearch && (
                           <Plural one={ts.label} many={ts.plural} />
-                        </a>
+                        )}
                         <HelpLink href={`/reference/#schema.${ts.name}`} />
                       </td>
                       <td className="numeric">
@@ -84,14 +97,14 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
         {dataset.things.countries.length > 0 && (
           <tr>
             <th className={styles.tableHeader}>
-              Coverage:
+              Countries:
             </th>
             <td className="contains-inner-table">
               <DatasetCountryListing countries={dataset.things.countries} datasetName={dataset.name} />
             </td>
           </tr>
         )}
-        {(isSource(dataset) || isExternal(dataset)) && (
+        {!!dataset.publisher && (
           <tr>
             <th className={styles.tableHeader}>Publisher:</th>
             <td>
@@ -104,25 +117,7 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
               {!dataset.publisher.official && (
                 <>{' '} <UnofficialBadge /></>
               )}
-              <p className={styles.publisherDescription}>{dataset.publisher.description}</p>
-
-            </td>
-          </tr>
-        )}
-        {(isSource(dataset) || isExternal(dataset)) && !!dataset.url && (
-          <tr>
-            <th className={styles.tableHeader}>Information:</th>
-            <td>
-              <URLLink url={dataset.url} />
-            </td>
-          </tr>
-        )}
-        {isSource(dataset) && dataset.data.url && (
-          <tr>
-            <th className={styles.tableHeader}>Source data:</th>
-            <td>
-              <URLLink url={dataset.data.url} />
-              <> ({dataset.data.format})</>
+              <Markdown className={styles.publisherDescription} markdown={dataset.publisher.html} />
             </td>
           </tr>
         )}
@@ -141,34 +136,87 @@ export default function DatasetMetadataTable({ dataset, collections, issues }: D
             </td>
           </tr>
         )}
-        {(isSource(dataset) || isExternal(dataset)) && !!issues?.length && (
+        {!!dataset.url && (
           <tr>
-            <th className={styles.tableHeader}>Issues:</th>
-            <td>
-              {errors.length > 0 && (
+            {dataset.url && (
+              <>
+                <th className={styles.tableHeader}>Information:</th>
+                <td>
+                  <URLLink url={dataset.url} />
+                </td>
+              </>
+            )}
+          </tr>
+        )}
+        {!isCollection(dataset) && dataset.data?.url && (
+          <tr>
+            <th className={styles.tableHeader}>Source data:</th>
+            <td colSpan={dataset.url ? 1 : 3}>
+              <URLLink url={dataset.data.url} />
+              {dataset.data.format && (
                 <>
-                  <Badge bg='danger'>
-                    <Plural value={errors.length} one="Error" many="Errors" />
-                  </Badge>
                   <Spacer />
+                  <Badge bg="light">{dataset.data.format}</Badge>
                 </>
               )}
-              {warnings.length > 0 && (
-                <>
-                  <Badge bg='warning'>
-                    <Plural value={warnings.length} one="Warning" many="Warnings" />
-                  </Badge>
-                  <Spacer />
-                </>
-              )}
-              <Link href={`/issues/${dataset.name}/`}>See details...</Link>
             </td>
           </tr>
         )}
-        <tr>
-          <th className={styles.tableHeader}>Last changed<HelpLink href="/docs/bulk/faq/#updates" />:</th>
-          <td><FormattedDate date={dataset.last_change} /></td>
-        </tr>
+        {!!dataset.last_change && (
+          <tr>
+            <th className={styles.tableHeader}>Last changed:</th>
+            <td>
+              <FormattedDate date={dataset.last_change} />
+              {dataset.coverage && dataset.coverage.end && (
+                <>
+                  &nbsp;
+                  (data until: <FormattedDate date={dataset.coverage.end} />)
+                </>
+              )}
+            </td>
+          </tr>
+        )}
+        {!!dataset.last_export && (
+          <tr>
+            <th className={styles.tableHeader}>Last checked<HelpLink href="/docs/bulk/faq/#updates" />:</th>
+            <td>
+              <FormattedDate date={dataset.last_export} />
+              {dataset.coverage && dataset.coverage.frequency !== 'unknown' && (
+                <>
+                  <Spacer />
+                  <FrequencyBadge coverage={dataset.coverage} />
+                </>
+              )}
+            </td>
+          </tr>
+        )}
+        {(dataset.issue_levels.error && dataset.issue_levels.error && (
+          <tr>
+            <th className={styles.tableHeader}>Errors:</th>
+            <td>
+              <Link href={`/issues/${dataset.name}/`}>
+                <Badge bg='danger'>
+                  <Plural value={dataset.issue_levels.error} one="Error" many="Errors" />
+                </Badge>
+              </Link>
+            </td>
+          </tr>
+        ))}
+        {dataset.issue_levels.warning && dataset.issue_levels.warning > 0 && (
+          <tr>
+            <th className={styles.tableHeader}>Warnings:</th>
+            <td>
+              <Link href={`/issues/${dataset.name}/`}>
+                <Badge bg='warning'>
+                  <Plural value={dataset.issue_levels.warning} one="Warning" many="Warnings" />
+                </Badge>
+              </Link>
+              {(!dataset.issue_levels.warning) && (
+                <Badge bg='light'>no warnings</Badge>
+              )}
+            </td>
+          </tr>
+        )}
       </tbody>
     </Table >
 

@@ -52,9 +52,9 @@ function DatasetCard({ dataset }: DatasetProps) {
         </h5>
         <CardSubtitle className="mb-2 text-muted">
           {isCollection(dataset) && (
-            <><Numeric value={dataset.sources.length} /> data sources</>
+            <><Numeric value={dataset.sources.length + dataset.externals.length} /> data sources</>
           )}
-          {isSource(dataset) && (
+          {!!dataset.publisher && (
             <>
               {dataset.publisher.country_label}
               {!dataset.publisher.official && (
@@ -66,7 +66,7 @@ function DatasetCard({ dataset }: DatasetProps) {
             </>
           )}
           <Spacer />
-          <Numeric value={dataset.target_count} /> targets
+          <Numeric value={dataset.thing_count} /> entities
         </CardSubtitle>
         <CardText>
           {dataset.summary}
@@ -83,9 +83,7 @@ function DatasetItem({ dataset }: DatasetProps) {
       <CardBody>
         <a href={dataset.link} className={styles.itemHeader}>
           <DatasetIcon dataset={dataset} /> {dataset.title}
-          {!isExternal(dataset) && (
-            <NumericBadge value={dataset.target_count} className={styles.itemTargets} />
-          )}
+          <NumericBadge value={dataset.thing_count} className={styles.itemTargets} />
         </a>
         <p className={styles.itemSummary}>
           <TextTruncate line={1} text={dataset.summary} element="span" />
@@ -98,7 +96,7 @@ function DatasetItem({ dataset }: DatasetProps) {
               <Numeric value={dataset.sources.length} /> data sources
             </>
           )}
-          {(isSource(dataset) || isExternal(dataset)) && (
+          {!!dataset.publisher && (
             <>
               {isExternal(dataset) && (
                 <>
@@ -149,7 +147,9 @@ function SourcesTable({ sources }: SourcesTableProps) {
               <Link href={source.link}>{source.title}</Link>
             </td>
             <td>
-              <Badge bg="light">{source.publisher.country_label}</Badge>
+              {!!source.publisher && (
+                <Badge bg="light">{source.publisher.country_label}</Badge>
+              )}
             </td>
             <td className="numeric">
               <Numeric value={source.target_count} />
@@ -182,7 +182,11 @@ function ExternalsTable({ externals }: ExternalsTableProps) {
               <Link href={ext.link}>{ext.title}</Link>
             </td>
             <td>
-              {ext.publisher.name}
+              {!!ext.publisher && (
+                <>
+                  {ext.publisher.name}
+                </>
+              )}
             </td>
           </tr>
         )}

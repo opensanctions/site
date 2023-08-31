@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Content from '../../../components/Content';
 import { IssuesList } from '../../../components/Issue';
 import { Summary } from '../../../components/util';
-import { REVALIDATE_BASE } from '../../../lib/constants';
+import { REVALIDATE_SHORT } from '../../../lib/constants';
 import { getDatasetIssues, getDatasets, getDatasetByName } from '../../../lib/data';
 import { DocumentationMenu } from '../../../components/Menu';
 import LayoutFrame from '../../../components/layout/LayoutFrame';
@@ -15,7 +15,7 @@ interface IssuesPageProps {
   params: { dataset: string }
 }
 
-export const revalidate = REVALIDATE_BASE;
+export const revalidate = REVALIDATE_SHORT;
 export const dynamic = 'force-static';
 
 const TITLE = "Warnings and errors from all datasets";

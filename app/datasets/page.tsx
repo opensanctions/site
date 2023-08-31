@@ -27,7 +27,9 @@ export default async function Page() {
   const allCollections = datasets.filter(isCollection)
   const collections = COLLECTIONS.map(n => allCollections.find(c => c.name == n)) as Array<ICollection>
   const sources = datasets.filter(isSource)
+    .sort((a, b) => a.title.localeCompare(b.title));
   const externals = datasets.filter(isExternal)
+    .sort((a, b) => a.title.localeCompare(b.title));
   return (
     <LayoutFrame activeSection="datasets">
       <StructuredData data={getDataCatalog()} />

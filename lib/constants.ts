@@ -15,6 +15,7 @@ export const ARTICLE_INDEX_SUMMARY = "Updates from the OpenSanctions project, in
 export const GA_TRACKING_ID = 'G-YRZENQXNNR';
 export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.json"
 export const REVALIDATE_BASE = 3600 * 36;
+export const REVALIDATE_SHORT = 3600;
 export const THEME_COLOR = '#2563eb';
 
 // client-side variables

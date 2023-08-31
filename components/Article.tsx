@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { CalendarDateFill } from 'react-bootstrap-icons';
 
-import { Nav, NavItem } from './wrapped';
+import { Badge, Nav, NavItem } from './wrapped';
 import { LicenseInfo } from './Policy';
 import { IArticleInfo } from '../lib/types'
-import { FormattedDate, RoutedNavLink } from './util';
+import { FormattedDate, RoutedNavLink, Spacer } from './util';
 
 import styles from '../styles/Article.module.scss';
 
@@ -55,18 +55,26 @@ function ArticleItem({ article }: ArticleProps) {
           <img src={article.image_url} width={200} height={100} alt={article.title} />
         </div>
       )}
-      <p className={styles.articleListTitle}>
+      <div className={styles.articleListContent}>
+        <p className={styles.articleListTitle}>
+          <Link href={article.path}>{article.title}</Link>
+        </p>
+        <p className={styles.articleListSummary}>
+          {article.summary}
+        </p>
         <span className={styles.articleListDate}>
-          <FormattedDate date={article.date} />
-          {': '}
+          <Badge bg="light">
+            <FormattedDate date={article.date} />
+          </Badge>
+          {article.tags.map((tag) => (
+            <span key={tag}>
+              <Spacer />
+              <Badge bg="secondary">{tag}</Badge>
+            </span>
+          ))}
         </span>
-        <Link href={article.path}>{article.title}</Link>
-      </p>
-      <p className={styles.articleListSummary}>
-        {article.summary}
-      </p>
-      <div className="clearfix"></div>
-    </li>
+      </div>
+    </li >
   )
 }
 

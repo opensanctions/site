@@ -28,6 +28,11 @@ export function RoutedNavLink({ href, current, children }: React.PropsWithChildr
 }
 
 
+export function NullValue() {
+  return <span className={styles.nullValue}>-</span>;
+}
+
+
 type NumericProps = {
   value?: number | null
   digits?: number
@@ -35,8 +40,8 @@ type NumericProps = {
 
 export function Numeric({ value, digits }: NumericProps) {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
-  if (value === undefined || value === null) {
-    return null;
+  if (value === undefined || value === null || value === 0 || isNaN(value)) {
+    return <NullValue />;
   }
   const options = {
     maximumSignificantDigits: digits,
@@ -75,7 +80,11 @@ type PluralProps = {
 
 
 export function Plural({ value, one, many }: PluralProps) {
-  return <><Numeric value={value} /> {value === 1 ? one : many}</>;
+  const text = value === 1 ? one : many;
+  if (value === null || value === undefined) {
+    return <>{text}</>;
+  }
+  return <><Numeric value={value} /> {text}</>;
 }
 
 
@@ -85,19 +94,23 @@ type FileSizeProps = {
 
 
 export function FileSize({ size }: FileSizeProps) {
-  return <span>{filesize(size, { round: 0, standard: 'jedec', locale: 'en-US' }) as string}</span>
+  return <span>{filesize(size, { standard: 'jedec', 'base': 2, locale: 'en-US', output: 'string' }) as string}</span>
 }
 
 type MarkdownProps = {
   markdown?: string | null
+  className?: string
 }
 
-export function Markdown({ markdown }: MarkdownProps) {
+export function Markdown({ markdown, className }: MarkdownProps) {
   if (markdown === undefined || markdown === null) {
     return null;
   }
   //const html = markdownToHtml(markdown);
-  return <div className="text-body" dangerouslySetInnerHTML={{ __html: markdown }} />
+  return <div
+    className={classNames("text-body", className)}
+    dangerouslySetInnerHTML={{ __html: markdown }}
+  />
 }
 
 type FormattedDateProps = {

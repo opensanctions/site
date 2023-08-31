@@ -22,6 +22,7 @@ export interface IArticleInfo extends IContentBase {
   path: string
   url: string
   section: string
+  tags: string[]
   draft: boolean
 }
 
@@ -66,14 +67,36 @@ export interface IAggregatedStats {
   schemata: Array<IAggregatedSchema>
 }
 
+export interface IDatasetPublisher {
+  url?: string
+  name: string
+  description: string
+  html?: string
+  official: boolean
+  country?: string
+  country_label?: string
+  logo_url?: string
+}
+
+export interface IDatasetCoverage {
+  start: string
+  end: string
+  countries: string[]
+  frequency: string
+}
+
 export interface INKDatasetBase {
   name: string
   type: string
   title: string
   link: string
+  url?: string
+  updated_at: string
   summary: string
   description?: string
   resources: Array<IResource>
+  coverage?: IDatasetCoverage
+  publisher?: IDatasetPublisher
 }
 
 
@@ -88,42 +111,24 @@ export interface IDatasetBase extends INKDatasetBase {
   issues_url: string
   target_count: number
   entity_count: number
+  thing_count: number
   targets: IAggregatedStats
   things: IAggregatedStats
 }
 
 export interface ISourceData {
-  url?: string
   format?: string
   model?: string
-}
-
-export interface IDatasetPublisher {
   url?: string
-  name: string
-  description: string
-  official: boolean
-  country?: string
-  country_label?: string
-  logo_url?: string
-}
-
-export interface IDatasetCoverage {
-  start: string
-  end: string
-  countries: string[]
 }
 
 export interface ISource extends IDatasetBase {
-  url?: string
   data: ISourceData
-  publisher: IDatasetPublisher
   collections: Array<string>
 }
 
 export interface IExternal extends IDatasetBase {
-  url?: string
-  publisher: IDatasetPublisher
+  data?: ISourceData
   collections: Array<string>
 }
 
@@ -135,11 +140,8 @@ export interface ICollection extends IDatasetBase {
 export type IDataset = ISource | IExternal | ICollection
 
 export interface INKDataset extends INKDatasetBase {
-  updated_at: string
   version: string
   children: Array<string>
-  publisher?: IDatasetPublisher
-  coverage?: IDatasetCoverage
 }
 
 export interface INKDataCatalog {
@@ -285,14 +287,10 @@ export interface IRecentEntity {
   countries: string[]
 }
 
-export interface IAccount {
-  key?: string
+export interface IUser {
+  id?: string
   name?: string
   email?: string
-  secret: string
-  active: boolean
-  stripe_customer_id?: string
-  stripe_subscription_id?: string
   created_at: string
 }
 
@@ -307,22 +305,33 @@ export interface IDateUsage {
   total: number
 }
 
-export interface IAccountUsage {
+export interface ICredentialUsage {
   dates: IDateUsage[]
   days: number
   total: number
 }
 
-export interface IChargeInfo {
-  total: number
-  total_excluding_tax: number
-  currency: string
-  start_date: string
-  end_date: string
+export interface ICredential {
+  id: string
+  label: string
+  secret: string
+  stripe_subscription_id?: string
+  chargebee_subscription_id?: string
+  created_at: string
+  expires_at?: string
 }
 
-export interface IAccountInfo {
-  account: IAccount
-  usage: IAccountUsage
-  charge_info?: IChargeInfo
+export interface ICustomer {
+  id: string
+  name?: string
+  stripe_id?: string
+  chargebee_id?: string
+  created_at: string
+}
+
+export interface IUserInfo {
+  user: IUser
+  customer: ICustomer
+  credentials: ICredential[]
+  usage: ICredentialUsage
 }

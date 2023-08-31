@@ -34,7 +34,7 @@ function SourcesTable({ sources }: SourcesTableProps) {
             <tr key={source.name}>
               <td>
                 <Link href={source.link}>{source.title}</Link>
-                {!source.publisher.official && (
+                {!source.publisher?.official && (
                   <>
                     <br />
                     <UnofficialBadge />
@@ -42,7 +42,9 @@ function SourcesTable({ sources }: SourcesTableProps) {
                 )}
               </td>
               <td className="d-none d-sm-table-cell">
-                <Badge bg="light">{source.publisher.country_label}</Badge>
+                {!!source.publisher?.country_label && (
+                  <Badge bg="light">{source.publisher.country_label}</Badge>
+                )}
               </td>
               <td className="numeric">
                 <Numeric value={source.target_count} />
