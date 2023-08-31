@@ -3,19 +3,19 @@ import queryString from 'query-string';
 import intersection from 'lodash/intersection';
 import { Entity, IEntityDatum, Model } from "./ftm";
 import { IDataset, isDataset, ICollection, ISource, IIssueIndex, IIndex, IIssue, IStatementAPIResponse, ISitemapEntity, IExternal, IRecentEntity, INKDataCatalog, IMatchAPIResponse, IMatchQuery, IAlgorithmResponse, ISearchAPIResponse, isCollection } from "./types";
-import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE, REVALIDATE_SHORT } from "./constants";
+import { BASE_URL, API_TOKEN, API_URL, BLOCKED_ENTITIES, GRAPH_CATALOG_URL, REVALIDATE_BASE, REVALIDATE_SHORT, SEARCH_DATASET } from "./constants";
 
 import indexJson from '../data/index.json';
+import { markdownToHtml } from './util';
 
 const cacheBase = { next: { revalidate: REVALIDATE_BASE } };
 const cacheShort = { next: { revalidate: REVALIDATE_SHORT } };
 
 const index = indexJson as any as IIndex;
-index.datasets = index.datasets.map(parseDataset);
 const ftmModel = new Model(index.model);
 
 
-function parseDataset(data: any): IDataset {
+async function parseDataset(data: any): Promise<IDataset> {
   const dataset = {
     ...data,
     link: `/datasets/${data.name}/`,
@@ -25,6 +25,9 @@ function parseDataset(data: any): IDataset {
     things: data.things || { total: 0, countries: [], schemata: [] },
     thing_count: data.things.total,
   };
+  if (!!dataset.publisher && !!dataset.publisher.description) {
+    dataset.publisher.html = await markdownToHtml(dataset.publisher.description);
+  }
   if (dataset.type === 'collection') {
     return dataset as ICollection;
   }
@@ -114,8 +117,8 @@ export async function getModel(): Promise<Model> {
 }
 
 export async function getDatasets(): Promise<Array<IDataset>> {
-  // const index = await fetchIndex()
-  return index.datasets
+  const datasets = Promise.all(index.datasets.map(parseDataset));
+  return datasets
 }
 
 export async function getDatasetByName(name: string): Promise<IDataset | undefined> {
@@ -125,7 +128,7 @@ export async function getDatasetByName(name: string): Promise<IDataset | undefin
     return undefined;
   }
   const jsonData = await data.json();
-  return parseDataset(jsonData);
+  return await parseDataset(jsonData);
 }
 
 export async function getDatasetCollections(dataset: IDataset): Promise<Array<ICollection>> {
@@ -133,6 +136,17 @@ export async function getDatasetCollections(dataset: IDataset): Promise<Array<IC
   return datasets
     .filter(isCollection)
     .filter((c) => c.sources.indexOf(dataset.name) !== -1 || c.externals.indexOf(dataset.name) !== -1)
+}
+
+export async function canSearchDataset(dataset: IDataset): Promise<boolean> {
+  const scope = await getDatasetByName(SEARCH_DATASET);
+  if (scope === undefined || !isCollection(scope)) {
+    return false;
+  }
+  const scopes = [...scope.sources, ...scope.externals];
+  const range = isCollection(dataset) ? [...dataset.sources, ...dataset.externals] : [dataset.name];
+  const intersection = range.filter(x => scopes.includes(x));
+  return intersection.length == range.length;
 }
 
 export function filterMatchingNames(datasets: Array<IDataset>, names: Array<string>): Array<IDataset> {
@@ -149,8 +163,13 @@ export async function getDatasetIssues(dataset?: IDataset): Promise<Array<IIssue
     return []
   }
   const issues_url = `https://data.opensanctions.org/datasets/latest/${dataset.name}/issues.json`
-  const index = await fetchUrl<IIssueIndex>(issues_url);
-  return index.issues;
+  try {
+    const index = await fetchUrl<IIssueIndex>(issues_url);
+    return index.issues;
+  } catch (error) {
+    // console.error(`Error fetching issues for dataset '${dataset.name}'.`, error);
+    return [];
+  }
 }
 
 export async function getSitemapEntities(): Promise<Array<ISitemapEntity>> {

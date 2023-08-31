@@ -25,7 +25,11 @@
 .publisherDescription {
     margin-bottom: 0;
     padding-bottom: 0;
-    color: $text-muted;
+    color: $text-muted !important;
+
+    p {
+        margin-bottom: 0;
+    }
 }
 
 .publisherLogo {

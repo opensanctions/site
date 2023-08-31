@@ -94,7 +94,6 @@ export default async function Page() {
 
   const positionTuples: Array<Array<any>> = Object.entries(getPositions());
   positionTuples.sort((p1: any, p2: any) => {
-    console.log(p2[1].countries)
     return Object.keys(p2[1].countries).length - Object.keys(p1[1].countries).length
   });
 
