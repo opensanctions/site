@@ -103,6 +103,7 @@ export interface INKDatasetBase {
 export interface IDatasetBase extends INKDatasetBase {
   hidden: boolean
   opensanctions_url: string
+  full_dataset?: string
   index_url: string
   last_change: string
   last_export: string

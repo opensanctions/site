@@ -42,8 +42,8 @@ export default async function Page() {
         <Row>
           <Col md={3}>
             <p>
-              <strong>Collections</strong> are datasets
-              provided by OpenSanctions that combine data from
+              <strong>Collections</strong> are data
+              distributions provided by OpenSanctions that combine entities from
               many sources based on a topic.
               {' '}<a href="/docs/faq/#collections">Learn more...</a>
             </p>
