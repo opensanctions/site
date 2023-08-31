@@ -82,7 +82,7 @@ export default function Footer() {
                 <p className={styles.copyright}>
                   Made with <HeartFill className={styles.love} /> in Berlin
                   {SPACER}
-                  <Link href={LOGIN_URL}>Login</Link>
+                  <Link href="/account/">API console</Link>
                   {SPACER}
                   <Link href="https://status.opensanctions.org">System status</Link>
                   {SPACER}
