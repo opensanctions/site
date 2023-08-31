@@ -10,8 +10,8 @@ import { redirect } from "next/navigation";
 import { UserInfo } from "@/components/User";
 
 export const revalidate = 0;
-export const TITLE = 'API account and usage information';
-export const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
+const TITLE = 'API account and usage information';
+const SUMMARY = "Users of the OpenSanctions API can manage their billing details, "
   + "and review their metered service usage."
 
 export async function generateMetadata() {
