@@ -5,7 +5,7 @@ import { Download, Search } from 'react-bootstrap-icons';
 import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, Table, Button, InputGroup, Container } from '../../../components/wrapped'
 import Dataset from '../../../components/Dataset'
 import { getDatasets, getDatasetByName, filterMatchingNames, getRecentEntities, getGraphCatalog, getDatasetCollections, canSearchDataset } from '../../../lib/data'
-import { isCollection, isSource, isExternal } from '../../../lib/types'
+import { isCollection, isSource, isExternal, IDataset } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
 import { LicenseInfo } from '../../../components/Policy';
@@ -51,18 +51,19 @@ export default async function Page({ params }: DatasetPageProps) {
   if (dataset === undefined) {
     notFound()
   }
-  const datasets = await getDatasets();
+  const allDatasets = await getDatasets();
   const allCollections = await getDatasetCollections(dataset);
   const collections = allCollections.filter((c) => !c.hidden);
   const graphCatalog = await getGraphCatalog();
   const canSearch = await canSearchDataset(dataset);
-  const visibleDatasets = datasets.filter((ds) => !ds.hidden);
+  const visibleDatasets = allDatasets.filter((ds) => !ds.hidden);
   const sources = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.sources)
       .filter(isSource);
   const externals = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.externals)
       .filter(isExternal);
+  const datasets = [...sources, ...externals] as IDataset[];
 
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);
@@ -240,29 +241,13 @@ export default async function Page({ params }: DatasetPageProps) {
                 <h3>
                   <a id="sources"></a>
                   Data sources
-                  <NumericBadge value={sources.length} />
+                  <NumericBadge value={datasets.length} />
                 </h3>
                 <p>
                   {dataset.title} is a <a href="/docs/faq/#collections">collection dataset</a> which
-                  bundles together entities from the following data sources:
+                  bundles together entities from the following sources:
                 </p>
-                <Dataset.SourcesTable sources={sources} />
-              </section>
-            )}
-
-            {isCollection(dataset) && !!externals?.length && (
-              <section>
-                <h3>
-                  <a id="externals"></a>
-                  External databases
-                  <NumericBadge value={externals.length} />
-                </h3>
-                <p>
-                  {dataset.title} also includes <Link href="/docs/enrichment/">selected
-                    details and connections</Link> from the following
-                  external databases:
-                </p>
-                <Dataset.ExternalsTable externals={externals} />
+                <Dataset.DatasetsTable datasets={datasets} />
               </section>
             )}
 
