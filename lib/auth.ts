@@ -13,11 +13,11 @@ export function getAccessToken(): string | null {
   if (!accessToken) {
     return null;
   }
-  const body = JSON.parse(atob(accessToken.split('.')[1]));
-  const now = Math.floor(Date.now() / 1000);
-  if (body.exp <= now) {
-    return null;
-  }
+  // const body = JSON.parse(atob(accessToken.split('.')[1]));
+  // const now = Math.floor(Date.now() / 1000);
+  // if (body.exp <= now) {
+  //   return null;
+  // }
   return accessToken;
 }
 
