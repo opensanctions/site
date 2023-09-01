@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import queryString from "query-string";
 
-import { API_URL } from "@/lib/constants";
+import { API_URL, COOKIE_NAME } from "@/lib/constants";
 import { fetchJsonUrl } from "@/lib/data";
 import { IUserInfo } from "@/lib/types";
 
@@ -9,15 +9,10 @@ export const LOGIN_URL = `${API_URL}/auth/login`;
 
 export function getAccessToken(): string | null {
   const cookieStore = cookies();
-  const accessToken = cookieStore.get("access_token")?.value;
+  const accessToken = cookieStore.get(COOKIE_NAME)?.value;
   if (!accessToken) {
     return null;
   }
-  // const body = JSON.parse(atob(accessToken.split('.')[1]));
-  // const now = Math.floor(Date.now() / 1000);
-  // if (body.exp <= now) {
-  //   return null;
-  // }
   return accessToken;
 }
 
