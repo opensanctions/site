@@ -103,6 +103,7 @@ export interface INKDatasetBase {
 export interface IDatasetBase extends INKDatasetBase {
   hidden: boolean
   opensanctions_url: string
+  full_dataset?: string
   index_url: string
   last_change: string
   last_export: string
@@ -287,14 +288,10 @@ export interface IRecentEntity {
   countries: string[]
 }
 
-export interface IAccount {
-  key?: string
+export interface IUser {
+  id?: string
   name?: string
   email?: string
-  secret: string
-  active: boolean
-  stripe_customer_id?: string
-  stripe_subscription_id?: string
   created_at: string
 }
 
@@ -309,22 +306,33 @@ export interface IDateUsage {
   total: number
 }
 
-export interface IAccountUsage {
+export interface ICredentialUsage {
   dates: IDateUsage[]
   days: number
   total: number
 }
 
-export interface IChargeInfo {
-  total: number
-  total_excluding_tax: number
-  currency: string
-  start_date: string
-  end_date: string
+export interface ICredential {
+  id: string
+  label: string
+  secret: string
+  stripe_subscription_id?: string
+  chargebee_subscription_id?: string
+  created_at: string
+  expires_at?: string
 }
 
-export interface IAccountInfo {
-  account: IAccount
-  usage: IAccountUsage
-  charge_info?: IChargeInfo
+export interface ICustomer {
+  id: string
+  name?: string
+  stripe_id?: string
+  chargebee_id?: string
+  created_at: string
+}
+
+export interface IUserInfo {
+  user: IUser
+  customer: ICustomer
+  credentials: ICredential[]
+  usage: ICredentialUsage
 }

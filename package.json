@@ -37,6 +37,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@chargebee/chargebee-js-types": "^1.0.1",
     "@types/gtag.js": "^0.0.13",
     "@types/node": "^20.5.7",
     "@types/react": "^18.2.21",

@@ -4,8 +4,8 @@ import { Download, Search } from 'react-bootstrap-icons';
 
 import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, Table, Button, InputGroup, Container } from '../../../components/wrapped'
 import Dataset from '../../../components/Dataset'
-import { getDatasets, getDatasetByName, filterMatchingNames, getDatasetIssues, getRecentEntities, getGraphCatalog, getDatasetCollections, canSearchDataset } from '../../../lib/data'
-import { isCollection, isSource, isExternal } from '../../../lib/types'
+import { getDatasets, getDatasetByName, filterMatchingNames, getRecentEntities, getGraphCatalog, getDatasetCollections, canSearchDataset } from '../../../lib/data'
+import { isCollection, isSource, isExternal, IDataset } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
 import { LicenseInfo } from '../../../components/Policy';
@@ -51,24 +51,26 @@ export default async function Page({ params }: DatasetPageProps) {
   if (dataset === undefined) {
     notFound()
   }
-  const datasets = await getDatasets();
+  const allDatasets = await getDatasets();
   const allCollections = await getDatasetCollections(dataset);
   const collections = allCollections.filter((c) => !c.hidden);
   const graphCatalog = await getGraphCatalog();
-  // FIXME: when the graph catalog is merged:
-  const inGraphCatalog = undefined !== graphCatalog.datasets.find((gd) => gd.name === dataset.name);
   const canSearch = await canSearchDataset(dataset);
-  const visibleDatasets = datasets.filter((ds) => !ds.hidden);
+  const visibleDatasets = allDatasets.filter((ds) => !ds.hidden);
   const sources = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.sources)
       .filter(isSource);
   const externals = !isCollection(dataset) ? [] :
     filterMatchingNames(visibleDatasets, dataset.externals)
       .filter(isExternal);
+  const datasets = [...sources, ...externals] as IDataset[];
 
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);
-  const markdown = await markdownToHtml(dataset.description || '')
+  const markdown = await markdownToHtml(dataset.description || '');
+
+  const inGraphCatalog = undefined !== graphCatalog.datasets.find((gd) => gd.name === dataset.name);
+  const fullDataset = dataset.full_dataset ? await getDatasetByName(dataset.full_dataset) : undefined;
 
   return (
     <LayoutFrame>
@@ -82,6 +84,37 @@ export default async function Page({ params }: DatasetPageProps) {
           <Col md={9}>
             <Summary summary={dataset.summary} />
             <Markdown markdown={markdown} />
+            {isExternal(dataset) && (
+              <Alert variant="secondary">
+                <AlertHeading>Enrichment-based dataset</AlertHeading>
+                <p>
+                  This dataset contains entities from a larger database
+                  that is used to <Link href="/docs/enrichment/">enrich the data</Link> in
+                  OpenSanctions with additional details and connections.
+
+                  We only include entities from the source where there
+                  is a relevant connection to the entities in the main OpenSanctions
+                  database (e.g. to a sanctions target or a politician).
+                </p>
+                {fullDataset && (
+                  <p>
+                    <Button variant="secondary" href={fullDataset.link}>
+                      View the full dataset
+                    </Button>
+                  </p>
+                )}
+
+              </Alert>
+            )}
+            {inGraphCatalog && (
+              <Alert variant="secondary">
+                {/* <AlertHeading>Corporate dataset</AlertHeading> */}
+                <div>
+                  This dataset is part of the <strong>Know-Your-Business</strong> add-on
+                  product of OpenSanctions. <Link href="/kyb/">Learn more...</Link>
+                </div>
+              </Alert>
+            )}
             <section>
               <h3>
                 <a id="overview"></a>
@@ -108,20 +141,7 @@ export default async function Page({ params }: DatasetPageProps) {
               <DatasetMetadataTable dataset={dataset} collections={collections} canSearch={canSearch} />
             </section>
 
-            {isExternal(dataset) && inGraphCatalog && (
-              <section>
-                <h3>
-                  <a id="download"></a>
-                  Bulk download
-                </h3>
-                <p>
-                  You can download bulk data for <strong>{dataset.title}</strong> from
-                  the <Link href={`/kyb/#dataset.${dataset.name}`}>OpenSanctions KYB</Link> page.
-                </p>
-              </section>
-            )}
-
-            {dataset.resources.length > 0 && (
+            {dataset.resources.length > 0 && !isExternal(dataset) && (
               <section>
                 <h3>
                   <a id="download"></a>
@@ -216,56 +236,18 @@ export default async function Page({ params }: DatasetPageProps) {
               </section>
             )}
 
-            {isExternal(dataset) && (
-              <Alert variant="secondary">
-                <AlertHeading>About external databases</AlertHeading>
-                <p>
-                  {dataset.title} is an external database that is used
-                  to <Link href="/docs/enrichment/">enrich the data</Link> in
-                  OpenSanctions with additional details and connections.
-                </p>
-                <p>
-                  This means that we have only included entities where there
-                  is a connection (e.g. to a sanctions target or a politician)
-                  and we are not reproducing the database in full.
-                </p>
-                <p>
-                  Data from {dataset.title} is included in the collections
-                  listed above. However, since the enrichment data only makes
-                  sense in conjunction with the entities it relates to, we
-                  are not offering it for bulk download separately.
-                </p>
-              </Alert>
-            )}
-
             {isCollection(dataset) && !!sources?.length && (
               <section>
                 <h3>
                   <a id="sources"></a>
                   Data sources
-                  <NumericBadge value={sources.length} />
+                  <NumericBadge value={datasets.length} />
                 </h3>
                 <p>
                   {dataset.title} is a <a href="/docs/faq/#collections">collection dataset</a> which
-                  bundles together entities from the following data sources:
+                  bundles together entities from the following sources:
                 </p>
-                <Dataset.SourcesTable sources={sources} />
-              </section>
-            )}
-
-            {isCollection(dataset) && !!externals?.length && (
-              <section>
-                <h3>
-                  <a id="externals"></a>
-                  External databases
-                  <NumericBadge value={externals.length} />
-                </h3>
-                <p>
-                  {dataset.title} also includes <Link href="/docs/enrichment/">selected
-                    details and connections</Link> from the following
-                  external databases:
-                </p>
-                <Dataset.ExternalsTable externals={externals} />
+                <Dataset.DatasetsTable datasets={datasets} />
               </section>
             )}
 

@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { CloudFill, FolderFill, Server } from 'react-bootstrap-icons';
+import { FolderFill, NodePlusFill, Server } from 'react-bootstrap-icons';
 
-import { Badge, Table, Card, CardBody, CardTitle, CardSubtitle, CardText, TextTruncate } from "./wrapped";
-import { IDataset, IExternal, isCollection, isExternal, ISource, isSource } from '../lib/types';
+import { Badge, Table, Card, CardBody, CardSubtitle, CardText, TextTruncate } from "./wrapped";
+import { IDataset, IExternal, isCollection, isExternal } from '../lib/types';
 import { Numeric, NumericBadge, Spacer, UnofficialBadge } from './util';
 
 import styles from '../styles/Dataset.module.scss';
@@ -26,7 +26,7 @@ function DatasetIcon({ dataset, ...props }: DatasetIconProps) {
     return <FolderFill className="bsIcon" {...props} />
   }
   if (isExternal(dataset)) {
-    return <CloudFill className="bsIcon" {...props} />
+    return <NodePlusFill className="bsIcon" {...props} />
   }
   return <Server className="bsIcon" {...props} />
 }
@@ -125,34 +125,38 @@ function DatasetItem({ dataset }: DatasetProps) {
   )
 }
 
-type SourcesTableProps = {
-  sources: Array<ISource>
+type DatasetsTableProps = {
+  datasets: Array<IDataset>
 }
 
-function SourcesTable({ sources }: SourcesTableProps) {
-  const sourcesSorted = sources.sort((a, b) => b.target_count - a.target_count)
+function DatasetsTable({ datasets }: DatasetsTableProps) {
+  // const datasetsSorted = datasets.sort((a, b) => b.entity_count - a.entity_count)
+  const datasetsSorted = datasets.sort((a, b) => a.title.localeCompare(b.title));
   return (
     <Table size="sm">
       <thead>
         <tr>
-          <th>Name</th>
+          <th colSpan={2}>Name</th>
           <th>Country</th>
-          <th className="numeric">Targets</th>
+          <th className="numeric">Entities</th>
         </tr>
       </thead>
       <tbody>
-        {sourcesSorted.map(source =>
-          <tr key={source.name}>
+        {datasetsSorted.map(dataset =>
+          <tr key={dataset.name}>
             <td>
-              <Link href={source.link}>{source.title}</Link>
+              <DatasetIcon dataset={dataset} />
             </td>
             <td>
-              {!!source.publisher && (
-                <Badge bg="light">{source.publisher.country_label}</Badge>
+              <Link href={dataset.link}>{dataset.title}</Link>
+            </td>
+            <td>
+              {!!dataset.publisher && (
+                <Badge bg="light">{dataset.publisher.country_label}</Badge>
               )}
             </td>
             <td className="numeric">
-              <Numeric value={source.target_count} />
+              <Numeric value={dataset.entity_count} />
             </td>
           </tr>
         )}
@@ -198,7 +202,7 @@ function ExternalsTable({ externals }: ExternalsTableProps) {
 export default class Dataset {
   static Card = DatasetCard
   static Item = DatasetItem
-  static SourcesTable = SourcesTable
+  static DatasetsTable = DatasetsTable
   static ExternalsTable = ExternalsTable
   static Icon = DatasetIcon
   static Link = DatasetLink

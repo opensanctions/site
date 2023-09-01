@@ -4,7 +4,6 @@ export const BASE_URL = "https://www.opensanctions.org"
 export const INDEX_URL = "https://data.opensanctions.org/datasets/latest/index.json"
 export const ISSUES_URL = "https://data.opensanctions.org/datasets/latest/issues.json"
 export const LICENSE_URL = "https://creativecommons.org/licenses/by-nc/4.0/"
-export const API_URL = process.env.API_URL || "https://api.opensanctions.org"
 export const API_TOKEN = process.env.API_TOKEN || "site-dev"
 export const SEARCH_DATASET = "default"
 export const RENDER_DATASET = "sanctions"
@@ -18,6 +17,15 @@ export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.j
 export const REVALIDATE_BASE = 3600 * 36;
 export const REVALIDATE_SHORT = 3600;
 export const THEME_COLOR = '#2563eb';
+
+// client-side variables
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://api.opensanctions.org"
+export const CHARGEBEE_SITE = process.env.NEXT_PUBLIC_CHARGEBEE_SITE || "opensanctions"
+export const CHARGEBEE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CHARGEBEE_PUBLISHABLE_KEY as string
+
+if (!CHARGEBEE_PUBLISHABLE_KEY) {
+  throw new Error("Missing CHARGEBEE_PUBLISHABLE_KEY")
+}
 
 // fake up a semantic ordering of collections
 export const COLLECTIONS = ['default', 'sanctions', 'peps', 'crime'];

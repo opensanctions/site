@@ -25,11 +25,8 @@ export default async function Page() {
   const allDatasets = await getDatasets()
   const datasets = allDatasets.filter((d) => !d.hidden);
   const allCollections = datasets.filter(isCollection)
+  const allSources = datasets.filter((d) => !isCollection(d));
   const collections = COLLECTIONS.map(n => allCollections.find(c => c.name == n)) as Array<ICollection>
-  const sources = datasets.filter(isSource)
-    .sort((a, b) => a.title.localeCompare(b.title));
-  const externals = datasets.filter(isExternal)
-    .sort((a, b) => a.title.localeCompare(b.title));
   return (
     <LayoutFrame activeSection="datasets">
       <StructuredData data={getDataCatalog()} />
@@ -42,8 +39,8 @@ export default async function Page() {
         <Row>
           <Col md={3}>
             <p>
-              <strong>Collections</strong> are datasets
-              provided by OpenSanctions that combine data from
+              <strong>Collections</strong> are data
+              distributions provided by OpenSanctions that combine entities from
               many sources based on a topic.
               {' '}<a href="/docs/faq/#collections">Learn more...</a>
             </p>
@@ -66,7 +63,7 @@ export default async function Page() {
         <Row>
           <Col md={3}>
             <p>
-              <strong>Data sources</strong> collect targeted entities from a
+              <strong>Data sources</strong> collect entities from a
               particular origin. Many sources are published by government authorities
               or international organisations.
             </p>
@@ -76,34 +73,7 @@ export default async function Page() {
             </p>
           </Col>
           <Col md={9}>
-            {sources.map((d) => (
-              <Dataset.Item key={d.name} dataset={d} />
-            ))}
-          </Col>
-        </Row>
-        <hr className="d-print-none" />
-        <h1 className="new-page">
-          <a id="externals" />
-          External databases
-        </h1>
-        <Row>
-          <Col md={3}>
-            <p>
-              <strong>External databases</strong> are used
-              to <Link href="/docs/enrichment/">enrich the data</Link> in
-              OpenSanctions with additional properties and entities linked to
-              entities of interest.
-            </p>
-            <p>
-              Entities from external sources are only included if there is a
-              confirmed match between an entity in the source data and the
-              external database.
-            </p>
-          </Col>
-          <Col md={9}>
-            {externals.map((d) => (
-              <Dataset.Item key={d.name} dataset={d} />
-            ))}
+            <Dataset.DatasetsTable datasets={allSources} />
           </Col>
         </Row>
       </Container>
