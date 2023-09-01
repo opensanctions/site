@@ -20,7 +20,7 @@ export const THEME_COLOR = '#2563eb';
 
 // client-side variables
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://api.opensanctions.org"
-export const COOKIE_NAME = process.env.NEXT_PUBLIC_COOKIE_NAME || "site_token"
+export const COOKIE_NAME = process.env.NEXT_PUBLIC_COOKIE_NAME || "os_site_token"
 export const CHARGEBEE_SITE = process.env.NEXT_PUBLIC_CHARGEBEE_SITE || "opensanctions"
 export const CHARGEBEE_PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CHARGEBEE_PUBLISHABLE_KEY as string
 
