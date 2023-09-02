@@ -51,19 +51,13 @@ export default async function Page({ params }: DatasetPageProps) {
   if (dataset === undefined) {
     notFound()
   }
-  const allDatasets = await getDatasets();
   const allCollections = await getDatasetCollections(dataset);
   const collections = allCollections.filter((c) => !c.hidden);
   const graphCatalog = await getGraphCatalog();
   const canSearch = await canSearchDataset(dataset);
-  const visibleDatasets = allDatasets.filter((ds) => !ds.hidden);
-  const sources = !isCollection(dataset) ? [] :
-    filterMatchingNames(visibleDatasets, dataset.sources)
-      .filter(isSource);
-  const externals = !isCollection(dataset) ? [] :
-    filterMatchingNames(visibleDatasets, dataset.externals)
-      .filter(isExternal);
-  const datasets = [...sources, ...externals] as IDataset[];
+  const datasetNames = !isCollection(dataset) ? [] : [...dataset.sources, ...dataset.externals];
+  const childDatasets = await Promise.all(datasetNames.map((name) => getDatasetByName(name)));
+  const datasets = childDatasets.filter((ds) => !!ds && !ds.hidden) as IDataset[];
 
   const recents = !isSource(dataset) ? [] :
     await getRecentEntities(dataset);
@@ -236,7 +230,7 @@ export default async function Page({ params }: DatasetPageProps) {
               </section>
             )}
 
-            {isCollection(dataset) && !!sources?.length && (
+            {isCollection(dataset) && !!datasets?.length && (
               <section>
                 <h3>
                   <a id="sources"></a>
@@ -303,11 +297,8 @@ export default async function Page({ params }: DatasetPageProps) {
                     <NavLink href="#api">API</NavLink>
                   </>
                 )}
-                {!!sources?.length && (
+                {!!datasets?.length && (
                   <NavLink href="#sources">Data sources</NavLink>
-                )}
-                {!!externals?.length && (
-                  <NavLink href="#externals">External databases</NavLink>
                 )}
                 {!!recents?.length && (
                   <NavLink href="#recents">Recent additions</NavLink>
