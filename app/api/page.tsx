@@ -62,7 +62,10 @@ export default async function Page() {
               </Table>
             </CardBody>
             <CardFooter>
-              <Button href={`${API_URL}/stripe/subscribe`} variant="secondary">
+              {/* <Button href={`${API_URL}/stripe/subscribe`} variant="secondary">
+                <CreditCard2BackFill className="bsIcon" /> Sign up now
+              </Button> */}
+              <Button href="/account" variant="secondary">
                 <CreditCard2BackFill className="bsIcon" /> Sign up now
               </Button>
             </CardFooter>
