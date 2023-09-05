@@ -45,6 +45,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
   const entityProperties = properties.filter((p) => p.type.name === 'entity');
   const sources = datasets.filter(isSource);
   const externals = datasets.filter(isExternal);
+
   return (
     <LayoutFrame activeSection="research">
       <StructuredData data={structured} />
@@ -75,7 +76,8 @@ export default async function EntityPage({ params }: EntityPageProps) {
               {entityProperties.length > 0 && (
                 <>
                   <h2><a id="links"></a>Relationships</h2>
-                  {entityProperties.map((prop) =>
+                  {entityProperties.map((prop) => (
+                    entity.getProperty(prop).length > 0 &&
                     <div className={styles.entityPageSection} key={prop.qname}>
                       <EntitySchemaTable
                         prop={prop}
@@ -83,6 +85,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
                         datasets={allDatasets}
                       />
                     </div>
+                    )
                   )}
                 </>
               )}
