@@ -42,7 +42,8 @@ export default async function EntityPage({ params }: EntityPageProps) {
   const allDatasets = await getDatasets();
   const structured = getSchemaEntityPage(entity, datasets);
   const properties = entity.getDisplayProperties();
-  const entityProperties = properties.filter((p) => p.type.name === 'entity');
+  const entityProperties = properties
+    .filter((p) => p.type.name === 'entity' && entity.getProperty(p).length > 0);
   const sources = datasets.filter(isSource);
   const externals = datasets.filter(isExternal);
 
@@ -77,7 +78,6 @@ export default async function EntityPage({ params }: EntityPageProps) {
                 <>
                   <h2><a id="links"></a>Relationships</h2>
                   {entityProperties.map((prop) => (
-                    entity.getProperty(prop).length > 0 &&
                     <div className={styles.entityPageSection} key={prop.qname}>
                       <EntitySchemaTable
                         prop={prop}
@@ -85,7 +85,7 @@ export default async function EntityPage({ params }: EntityPageProps) {
                         datasets={allDatasets}
                       />
                     </div>
-                    )
+                  )
                   )}
                 </>
               )}
