@@ -7,6 +7,8 @@ import { IArticleInfo } from '../lib/types'
 import { FormattedDate, RoutedNavLink, Spacer } from './util';
 
 import styles from '../styles/Article.module.scss';
+import Image from 'next/image';
+import { SOCIAL_IMAGE_URL } from '@/lib/constants';
 
 
 type ArticleProps = {
@@ -48,13 +50,12 @@ function ArticleSidebar({ article }: ArticleProps) {
 }
 
 function ArticleItem({ article }: ArticleProps) {
+  const imageUrl = article.image_url || SOCIAL_IMAGE_URL;
   return (
     <li key={article.slug}>
-      {article.image_url && (
-        <div className={styles.articleListImage}>
-          <img src={article.image_url} width={200} height={100} alt={article.title} />
-        </div>
-      )}
+      <div className={styles.articleListImage}>
+        <Image src={imageUrl} width={200} height={100} alt={article.title} />
+      </div>
       <div className={styles.articleListContent}>
         <p className={styles.articleListTitle}>
           <Link href={article.path}>{article.title}</Link>

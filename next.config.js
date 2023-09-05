@@ -42,6 +42,11 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/blog/',
+        destination: '/articles/',
+        permanent: false,
+      },
+      {
         source: '/recent/:page',
         destination: '/datasets/:page',
         permanent: false,

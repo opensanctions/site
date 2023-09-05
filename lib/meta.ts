@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { IContentBase } from "./types"
-import { THEME_COLOR } from "./constants"
+import { SOCIAL_IMAGE_URL, THEME_COLOR } from "./constants"
 
 
 type MetaProps = {
@@ -11,7 +11,7 @@ type MetaProps = {
 }
 
 export function getGenerateMetadata({ title, description, imageUrl, noIndex }: MetaProps): Metadata {
-  const imageDefaultUrl = !!imageUrl ? imageUrl : "https://assets.opensanctions.org/images/ura/social.png";
+  const imageDefaultUrl = !!imageUrl ? imageUrl : SOCIAL_IMAGE_URL;
   // FIXME: <link rel="search" type="application/opensearchdescription+xml" title="OpenSanctions" href="/opensearch.xml" />
   const meta: Metadata = {
     metadataBase: new URL('https://www.opensanctions.org'),

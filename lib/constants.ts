@@ -17,6 +17,7 @@ export const GRAPH_CATALOG_URL = "https://data.opensanctions.org/graph/catalog.j
 export const REVALIDATE_BASE = 3600 * 36;
 export const REVALIDATE_SHORT = 3600;
 export const THEME_COLOR = '#2563eb';
+export const SOCIAL_IMAGE_URL = "https://assets.opensanctions.org/images/ura/social.png";
 
 // client-side variables
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://api.opensanctions.org"

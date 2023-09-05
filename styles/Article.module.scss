@@ -35,13 +35,13 @@
 }
 
 .articleListImage {
-    float: left;
+    flex-direction: column;
     margin-right: 1em;
-    width: 20%;
+    // width: 20%;
 }
 
 .articleListContent {
-    width: 80%;
+    // width: 80%;
 }
 
 .articleTags {
