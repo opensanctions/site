@@ -26,7 +26,7 @@ Read about the [entity data model](/docs/entities/) and consult the [data dictio
 
 When using the [OpenSanctions API](/api/), all API endpoints which access data (e.g. `/search`, `/match`, `/entities`, and the OpenRefine API) incur a cost per query (see the [product page](/api/)). The `/match` API counts the **number of logical queries you've conducted**: if you submit a batch of 10 query entities to be screened, that HTTP request will be counted as 10 queries. Any request which returns an error (indicated by a non-200 HTTP response code) is not counted.
 
-You can review your API usage costs on the [account overview](/service/account/) page.
+You can review your API usage costs on the [account overview](/account/) page.
 
 The [self-hosted API](/docs/self-hosted/) does not use metering, you only need a [bulk data license](/licensing/) to have the right to use the data.
 

@@ -4,5 +4,6 @@ User-agent: *
 Allow: /
 Disallow: /impressum/
 Disallow: /statements/
+Disallow: /account/
 Disallow: /service/account/
 Disallow: /entities/Q1045488/

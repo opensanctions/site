@@ -97,7 +97,7 @@ export default async function Page() {
             <h5>Service guidance</h5>
             <ul>
               <li><a href={API_URL}>Service (API) documentation</a></li>
-              <li><a href="/service/account/">Account and usage dashboard</a></li>
+              <li><a href="/account/">Account and usage dashboard</a></li>
               <li>Tutorial: <a href="/docs/api/matching/">Using the matching API</a></li>
             </ul>
           </Col>
