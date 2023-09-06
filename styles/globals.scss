@@ -247,6 +247,12 @@ th.narrow {
     margin-top: 0.5em;
 }
 
+hr {
+    // margin-top: 1em;
+    margin-bottom: 1em;
+    clear: both;
+}
+
 .clearfix::after {
     content: "";
     clear: both;

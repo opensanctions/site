@@ -18,6 +18,9 @@ export function AboutMenu({ path }: MenuProps) {
           <RoutedNavLink href="/docs/about/" current={path}>About OpenSanctions</RoutedNavLink>
         </NavItem>
         <NavItem>
+          <RoutedNavLink href="/docs/company/team/" current={path}>The team</RoutedNavLink>
+        </NavItem>
+        <NavItem>
           <RoutedNavLink href="/docs/faq/" current={path}>Frequently asked questions</RoutedNavLink>
         </NavItem>
         <NavItem>
