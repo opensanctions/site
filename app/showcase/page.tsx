@@ -106,6 +106,23 @@ export default function Page() {
           </Col>
           <Col>
             <Card bg="light">
+              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/chipper.png" />
+              <CardBody>
+                <CardTitle>Chipper Cash</CardTitle>
+                <CardText>
+                  Chipper Cash is a financial technology company serving more than
+                  five million customers across the African continent. Chipper
+                  provides a frictionless way to send and receive money cross-border
+                  and enables financial inclusivity across the continent.
+                </CardText>
+                <CardLink href="https://chippercash.com/blog/spotlight-on-chipper-id-talking-commonality-cause-and-collaboration-with-opensanctions">
+                  Chipper Cash X OpenSanctions
+                </CardLink>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col>
+            <Card bg="light">
               <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/blackdot.png" />
               <CardBody>
                 <CardTitle>Blackdot Solutions Videris</CardTitle>
@@ -154,23 +171,6 @@ export default function Page() {
                 </CardText>
                 <CardLink href="https://ruassets.com/">
                   Information and sign-up
-                </CardLink>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col>
-            <Card bg="light">
-              <CardImg variant="top" src="https://assets.opensanctions.org/images/showcase/chipper.png" />
-              <CardBody>
-                <CardTitle>Chipper Cash</CardTitle>
-                <CardText>
-                  Chipper Cash is a financial technology company serving more than
-                  five million customers across the African continent. Chipper
-                  provides a frictionless way to send and receive money cross-border
-                  and enables financial inclusivity across the continent.
-                </CardText>
-                <CardLink href="https://chippercash.com/blog/spotlight-on-chipper-id-talking-commonality-cause-and-collaboration-with-opensanctions">
-                  Chipper Cash X OpenSanctions
                 </CardLink>
               </CardBody>
             </Card>
