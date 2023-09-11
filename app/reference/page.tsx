@@ -29,7 +29,7 @@ export default async function Page() {
 
   return (
     <LayoutFrame activeSection={content.section}>
-      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={DocumentationMenu} path="/reference">
+      <Content.Menu title={content.title} jsonLink={INDEX_URL} Menu={DocumentationMenu} path="/reference/">
         <Summary summary={content.summary} />
         <div>
           <Content.Body content={content} />
