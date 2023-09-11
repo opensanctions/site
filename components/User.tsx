@@ -211,6 +211,9 @@ export function UserInfo({ info }: AccountInfoProps) {
             </tbody>
           </Table>
           <CredentialTable credentials={info.credentials} />
+          <p className="text-tiny">
+            Need a trial API key for development, or free access for journalistic or NGO
+            use? Please contact <Link href="mailto:support@opensanctions.org">support@opensanctions.org</Link>.</p>
           <UsageTable usage={info.usage} />
         </Col>
         <Col md={3}>
