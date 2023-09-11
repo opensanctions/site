@@ -33,8 +33,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const countryCode = slugCountryCode(params.slug);
   const label = model.getType('country').getLabel(countryCode);
   const country = getCountry(countryCode);
+  const positions = !!country.positions ? Object.values(country.positions) : [];
   const peps = await getDatasetByName("peps");
   const countryPeps = peps?.things.countries.filter((c) => c.code == countryCode)[0];
+
+  positions.sort((a: any, b: any) => {
+    return a.position_name.toLowerCase() > b.position_name.toLowerCase() ? 1 : -1
+  });
 
   return (
     <LayoutFrame>
@@ -42,7 +47,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <h1>
           {label}
         </h1>
-        {!!country.positions && (
+        {positions.length > 0 && (
           <Row>
             <Col md={3}>
               <p>
@@ -69,8 +74,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 </thead>
                 <tbody>
                   {
-                    Object.entries(country.positions).map((entry: any) => {
-                      const position = entry[1];
+                    positions.map((position: any) => {
                       return (
                         <tr>
                           <td>{position.position_name}</td>
