@@ -23,7 +23,7 @@ async function parseDataset(data: any): Promise<IDataset> {
     issue_count: data.issue_count || 0,
     issue_levels: data.issue_levels || {},
     things: data.things || { total: 0, countries: [], schemata: [] },
-    thing_count: data.things.total,
+    thing_count: data.things?.total || 0,
   };
   if (!!dataset.publisher && !!dataset.publisher.description) {
     dataset.publisher.html = await markdownToHtml(dataset.publisher.description);
@@ -281,6 +281,7 @@ export function isIndexRelevant(entity: Entity): boolean {
   return false;
 }
 
-export async function getGraphCatalog(): Promise<INKDataCatalog> {
-  return await fetchUrl<INKDataCatalog>(GRAPH_CATALOG_URL);
+export async function getGraphDatasets(): Promise<IDataset[]> {
+  const catalog = await fetchUrl<INKDataCatalog>(GRAPH_CATALOG_URL);
+  return Promise.all(catalog.datasets.map(parseDataset))
 }

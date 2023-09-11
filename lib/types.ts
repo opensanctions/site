@@ -140,13 +140,8 @@ export interface ICollection extends IDatasetBase {
 
 export type IDataset = ISource | IExternal | ICollection
 
-export interface INKDataset extends INKDatasetBase {
-  version: string
-  children: Array<string>
-}
-
 export interface INKDataCatalog {
-  datasets: Array<INKDataset>
+  datasets: Array<IDataset>
 }
 
 export function isCollection(dataset?: IDataset): dataset is ICollection {

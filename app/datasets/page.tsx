@@ -73,7 +73,7 @@ export default async function Page() {
             </p>
           </Col>
           <Col md={9}>
-            <Dataset.DatasetsTable datasets={allSources} />
+            <Dataset.Table datasets={allSources} />
           </Col>
         </Row>
       </Container>

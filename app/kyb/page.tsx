@@ -5,8 +5,8 @@ import { Container, Row, Col, Card, CardHeader, Table } from '../../components/w
 import { FormattedDate, JSONLink, SpacedList, Summary } from '../../components/util';
 import { GRAPH_CATALOG_URL, REVALIDATE_BASE } from '../../lib/constants';
 import LayoutFrame from '../../components/layout/LayoutFrame';
-import { getGraphCatalog } from '../../lib/data';
-import { INKDataset } from '../../lib/types';
+import { getGraphDatasets } from '../../lib/data';
+import { IDataset } from '../../lib/types';
 
 import styles from '../../styles/Graph.module.scss'
 import { getGenerateMetadata } from '../../lib/meta';
@@ -23,7 +23,7 @@ export async function generateMetadata() {
 }
 
 type GraphDatasetCardProps = {
-  dataset: INKDataset
+  dataset: IDataset
 }
 
 function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
@@ -64,18 +64,6 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
               </td>
             </tr>
           )}
-          {(dataset.children && dataset.children.length > 0) && (
-            <tr>
-              <th className={styles.datasetCardTableHeader}>
-                Datasets:
-              </th>
-              <td>
-                <SpacedList values={dataset.children.map((child) =>
-                  <code>{child}</code>
-                )} />
-              </td>
-            </tr>
-          )}
         </tbody>
       </Table>
     </Card >
@@ -84,7 +72,7 @@ function GraphDatasetCard({ dataset }: GraphDatasetCardProps) {
 
 
 export default async function Page() {
-  const catalog = await getGraphCatalog();
+  const datasets = await getGraphDatasets();
   return (
     <LayoutFrame activeSection="datasets">
       <Container>
@@ -178,7 +166,7 @@ export default async function Page() {
           </Col>
           <Col md={6}>
             <h3>Available datasets</h3>
-            {catalog.datasets.map((dataset) =>
+            {datasets.map((dataset) =>
               <div key={dataset.name}>
                 <GraphDatasetCard dataset={dataset} />
               </div>

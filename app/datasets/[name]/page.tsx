@@ -4,7 +4,7 @@ import { Download, Search } from 'react-bootstrap-icons';
 
 import { Row, Col, Nav, NavLink, Form, FormControl, Alert, AlertHeading, Badge, Table, Button, InputGroup, Container } from '../../../components/wrapped'
 import Dataset from '../../../components/Dataset'
-import { getDatasets, getDatasetByName, filterMatchingNames, getRecentEntities, getGraphCatalog, getDatasetCollections, canSearchDataset } from '../../../lib/data'
+import { getDatasets, getDatasetByName, filterMatchingNames, getRecentEntities, getDatasetCollections, canSearchDataset, getGraphDatasets } from '../../../lib/data'
 import { isCollection, isSource, isExternal, IDataset } from '../../../lib/types'
 import { Summary, FileSize, NumericBadge, JSONLink, Markdown, Spacer, FormattedDate, SpacedList, Sticky } from '../../../components/util'
 import DatasetMetadataTable from '../../../components/DatasetMetadataTable'
@@ -53,7 +53,7 @@ export default async function Page({ params }: DatasetPageProps) {
   }
   const allCollections = await getDatasetCollections(dataset);
   const collections = allCollections.filter((c) => !c.hidden);
-  const graphCatalog = await getGraphCatalog();
+  const graphDatasets = await getGraphDatasets();
   const canSearch = await canSearchDataset(dataset);
   const datasetNames = !isCollection(dataset) ? [] : [...dataset.sources, ...dataset.externals];
   const childDatasets = await Promise.all(datasetNames.map((name) => getDatasetByName(name)));
@@ -63,7 +63,7 @@ export default async function Page({ params }: DatasetPageProps) {
     await getRecentEntities(dataset);
   const markdown = await markdownToHtml(dataset.description || '');
 
-  const inGraphCatalog = undefined !== graphCatalog.datasets.find((gd) => gd.name === dataset.name);
+  const inGraphCatalog = undefined !== graphDatasets.find((gd) => gd.name === dataset.name);
   const fullDataset = dataset.full_dataset ? await getDatasetByName(dataset.full_dataset) : undefined;
 
   return (
@@ -241,7 +241,7 @@ export default async function Page({ params }: DatasetPageProps) {
                   {dataset.title} is a <a href="/docs/faq/#collections">collection dataset</a> which
                   bundles together entities from the following sources:
                 </p>
-                <Dataset.DatasetsTable datasets={datasets} />
+                <Dataset.Table datasets={datasets} />
               </section>
             )}
 

@@ -6,6 +6,7 @@ import { IDataset, IExternal, isCollection, isExternal } from '../lib/types';
 import { Numeric, NumericBadge, Spacer, UnofficialBadge } from './util';
 
 import styles from '../styles/Dataset.module.scss';
+import { FrequencyBadge } from './Metadata';
 
 
 type DatasetProps = {
@@ -127,36 +128,73 @@ function DatasetItem({ dataset }: DatasetProps) {
 
 type DatasetsTableProps = {
   datasets: Array<IDataset>
+  icon?: boolean
+  publisher?: boolean
+  country?: boolean
+  frequency?: boolean
 }
 
-function DatasetsTable({ datasets }: DatasetsTableProps) {
+function DatasetsTable({ datasets, icon = true, publisher = false, country = true, frequency = false }: DatasetsTableProps) {
   // const datasetsSorted = datasets.sort((a, b) => b.entity_count - a.entity_count)
   const datasetsSorted = datasets.sort((a, b) => a.title.localeCompare(b.title));
   return (
     <Table size="sm">
       <thead>
         <tr>
-          <th colSpan={2}>Name</th>
-          <th>Country</th>
+          <th colSpan={icon ? 2 : 1}>Name</th>
+          {publisher && (
+            <th>Publisher</th>
+          )}
+          {country && (
+            <th>Country</th>
+          )}
+          {frequency && (
+            <th>Coverage</th>
+          )}
           <th className="numeric">Entities</th>
         </tr>
       </thead>
       <tbody>
         {datasetsSorted.map(dataset =>
           <tr key={dataset.name}>
-            <td>
-              <DatasetIcon dataset={dataset} />
-            </td>
+            {icon && (
+              <td>
+                <DatasetIcon dataset={dataset} />
+              </td>
+            )}
             <td>
               <Link href={dataset.link}>{dataset.title}</Link>
             </td>
-            <td>
-              {!!dataset.publisher && (
-                <Badge bg="light">{dataset.publisher.country_label}</Badge>
-              )}
-            </td>
+            {publisher && (
+              <td>
+                {!!dataset.publisher && (
+                  <>
+                    {dataset.publisher.name}
+                    {!dataset.publisher.official && (
+                      <>
+                        <UnofficialBadge />
+                      </>
+                    )}
+                  </>
+                )}
+              </td>
+            )}
+            {country && (
+              <td>
+                {!!dataset.publisher && (
+                  <Badge bg="light">{dataset.publisher.country_label}</Badge>
+                )}
+              </td>
+            )}
+            {frequency && (
+              <td>
+                {!!dataset.coverage && (
+                  <FrequencyBadge coverage={dataset.coverage} />
+                )}
+              </td>
+            )}
             <td className="numeric">
-              <Numeric value={dataset.entity_count} />
+              <Numeric value={dataset.thing_count} />
             </td>
           </tr>
         )}
@@ -202,8 +240,7 @@ function ExternalsTable({ externals }: ExternalsTableProps) {
 export default class Dataset {
   static Card = DatasetCard
   static Item = DatasetItem
-  static DatasetsTable = DatasetsTable
-  static ExternalsTable = ExternalsTable
+  static Table = DatasetsTable
   static Icon = DatasetIcon
   static Link = DatasetLink
 }
