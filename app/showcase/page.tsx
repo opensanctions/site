@@ -110,10 +110,10 @@ export default function Page() {
               <CardBody>
                 <CardTitle>Chipper Cash</CardTitle>
                 <CardText>
-                  Chipper Cash is a financial technology company serving more than
-                  five million customers across the African continent. Chipper
-                  provides a frictionless way to send and receive money cross-border
-                  and enables financial inclusivity across the continent.
+                  Chipper Cash is a financial technology company serving more than five million
+                  customers across Africa. Chipper provides a frictionless way to send and
+                  receive money cross-border, plus offers personal investments and digital
+                  business solutions.
                 </CardText>
                 <CardLink href="https://chippercash.com/blog/spotlight-on-chipper-id-talking-commonality-cause-and-collaboration-with-opensanctions">
                   Chipper Cash X OpenSanctions
