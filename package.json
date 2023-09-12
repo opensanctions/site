@@ -34,7 +34,7 @@
     "supports-color": "^9.4.0",
     "swr": "^2.2.2",
     "unified": "^10.1.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@chargebee/chargebee-js-types": "^1.0.1",
